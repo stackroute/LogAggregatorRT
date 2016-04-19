@@ -7,19 +7,3 @@ a {
   color: #FFFFFF;
 }
 
-.lnButton {
-  margin: 1px;
-  background-color: #16B3A4;
-  border-radius: 4px;
-  border-color: #01A797;
-  padding: 10px;
-  margin: 5px;
-}
-
-.lnButton:hover {
-  background-color: #19736B;
-}
-
-.lnButton a {
-  color: #fff;
-}
