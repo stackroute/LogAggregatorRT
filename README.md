@@ -24,7 +24,7 @@ Start contributing by cloning the repository, when you are done building a featu
 
 		git clone https://github.com/stackroute/LogAggregatorRT.git
 
-2. Optionally, you can clone from a specific branch, we recommend to branch from `devbranch_v1`
+2. Optionally, you can clone from a specific branch, we recommend to use branch `devbranch_v1` for contributing, pull request are accepted only on this branch
 	
 		git clone https://github.com/stackroute/LogAggregatorRT.git -b devbranch_v1
 
@@ -37,3 +37,10 @@ Start contributing by cloning the repository, when you are done building a featu
 		npm start 
 
 If you don't have [npm](https://docs.npmjs.com)  and [bower](http://bower.io/#install-bower) , refer to its corresponding installation 
+
+PS: If you are trying to do `npm insall` from a vagrant box, you may have to use `--no-bin-install` option, like below
+
+		npm install --no-bin-install
+
+
+
