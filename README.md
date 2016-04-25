@@ -17,3 +17,23 @@ This application is very useful, where time series data is intensive, flowing wi
 For more feature details refer [Wiki](https://github.com/stackroute/LogAggregatorRT/wiki)
 
 
+### Contributing
+Start contributing by cloning the repository, when you are done building a features/fixing, create a pull request
+
+1. To get started, clone the repository to your local
+
+		git clone https://github.com/stackroute/LogAggregatorRT.git
+
+2. Optionally, you can clone from a specific branch, we recommend to branch from `devbranch_v1`
+	
+		git clone https://github.com/stackroute/LogAggregatorRT.git -b devbranch_v1
+
+3. To build, run the project, follow these below commands from inside of the project folder
+
+		cd LogAggregatorRT
+
+		npm install
+		bower install
+		npm start 
+
+If you don't have [npm](https://docs.npmjs.com)  and [bower](http://bower.io/#install-bower) , refer to its corresponding installation 
