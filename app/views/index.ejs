@@ -1,17 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Data Display App</title>
-
-	<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
+<title>Data Display App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="angular-material-icons/angular-material-icons.css">
+   
 </head>
-<body>
-<h1>Complex Event Processor - Real Time</h1>
-</body>
+<body ng-app="dataApp" ng-cloak>
 
-<script src="/angular/angular.min.js" charset="utf-8"></script>
-<script src="/angular-route/angular-route.min.js" charset="utf-8"></script>
-<script src="/angular-bootstrap/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
 
-</html>
+
+<div>
+<md-button ui-sref="login_reg" class="md-raised md-primary">Login</md-button>
+<md-button ui-sref="func" class="md-raised md-primary">Functions</md-button>
+  </div>
+
+
+
+<div ui-view>
+</div >
+
+<!-- <div >
+  <div ui-view="heading"></div>
+  <div ui-view="log"></div>
+ 
+</div> -->
+
+
+ 
+<script src="angular/angular.js" charset="utf-8"></script>
+<script src="angular-route/angular-route.js" charset="utf-8"></script>
+<script src="angular-animate/angular-animate.min.js"></script>
+<script src="angular-aria/angular-aria.min.js"></script>
+<script src="angular-messages/angular-messages.min.js"></script> 
+
+  <!-- Angular Material Library -->
+ <!-- Angular Material Dependencies -->
+
+    <!-- Angular Material Javascript now available via Google CDN; version 1.0.7 used here -->
+    <script type="text/javascript" src="ace-builds/src-min-noconflict/ace.js"></script>
+    <script src="angular-material/angular-material.min.js"></script>
+    
+    <script type="text/javascript" src="angular-ui-ace/ui-ace.js"></script>
+    <script src="angular-material-icons/angular-material-icons.min.js"></script>
+     <script src="angular-ui-router/release/angular-ui-router.min.js"></script>  
+  <!-- Angular Material Library -->
+
+   <script src="js/dataApp.js"></script>
+ 
+
+
+  </body>
+  </html>
