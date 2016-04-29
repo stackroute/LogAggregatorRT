@@ -28,6 +28,20 @@ app.use(express.static(path.join(__dirname, 'bower_modules')));
 app.use('/', routes);
 app.use('/users', users);
 
+/*app.get('/',function(req,res){
+    
+   res.render('index');
+});*/
+
+app.get('/login_reg',function(req,res){
+    
+   res.send("OK");
+});
+
+app.get('/function',function(req,res){
+    
+   res.send("OK");
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
