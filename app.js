@@ -25,8 +25,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_modules')));
 
-app.use('/', routes);
-app.use('/users', users);
+// app.use('/', routes);
+// app.use('/users', users);
+
+app.get('/', function(req, res){
+  res.render('index');
+});
+
+app.get('/fetchfile', function(req, res){
+  res.sendfile(path.join(__dirname, '/json/guestMenu.json'));
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

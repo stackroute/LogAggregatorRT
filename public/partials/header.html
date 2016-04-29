@@ -1,0 +1,16 @@
+<md-toolbar class="md-info">
+  <div class="md-toolbar-tools">
+    <!-- <ng-md-icon class="menu" icon="menu" ng-click="openLeftMenu()"></ng-md-icon> -->
+    <!-- <button type="button" ng-click="openLeftMenu()"name="button">menu</button>   -->
+    <md-icon class="icon" ng-click="openLeftMenu()" md-svg-src="images/svg/menu-button.svg"></md-icon>
+    <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">{{header}}</span></h2>
+  </div>
+</md-toolbar>
+<md-sidenav md-component-id="left" class="md-sidenav-left">
+  <md-list flex>
+    <md-list-item class="sideNavItem" ng-repeat="item in items" ng-click="null">
+      <a ui-sref="{{item.menu}}">{{item.menu}}</a>
+    </md-list-item>
+    <div ui-view></div>
+  </md-list>
+</md-sidenav>
