@@ -46,7 +46,30 @@
 
    <script src="js/dataApp.js"></script>
 
+	<title>LogAggregatorRT</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
 
+</head>
+<body ng-app='tattva' ng-controller="ctrl">
+	<div layout="column" ng-clock>
+    <!-- <a ui-sref="guest"></a> -->
+		<div ui-view="header"></div>
+    <div ui-view="content"></div>
+    <div ui-view="footer"></div>
+	</div>
+</body>
+
+<script src="/angular/angular.min.js" charset="utf-8"></script>
+<script src="/angular-animate/angular-animate.min.js" charset="utf-8"></script>
+<script src="/angular-aria/angular-aria.min.js" charset="utf-8"></script>
+<script src="/angular-messages/angular-messages.min.js" charset="utf-8"></script>
+<script src="/angular-route/angular-route.min.js" charset="utf-8"></script>
+<script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
+<script src="/angular-material-icons/angular-material-icons.min.js" charset="utf-8"></script>
+<script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="/js/tattva.js" charset="utf-8"></script>
 
   </body>
   </html>
