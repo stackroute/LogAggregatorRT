@@ -1,0 +1,28 @@
+[{
+		"name": "Surya",
+		"img": "/image/person.jpg",
+		"email": "rajiff@gmail.com",
+		"password": "myname@123"
+	},
+	{
+		"name": "surya",
+		"img": "/image/person.jpg",
+		"email": "Surya@gmail.com",
+		"password": "default@123"
+	}, {
+		"name": "Ram",
+		"img": "/image/person.jpg",
+		"email": "ram@gmail.com",
+		"password": "default@123"
+	}, {
+		"name": "shyam",
+		"img": "/image/person.jpg",
+		"email": "shyam@gmail.com",
+		"password": "default@123"
+	}, {
+		"name": "dinesh",
+		"img": "/image/person.jpg",
+		"email": "dinesh@gmail.com",
+		"password": "default@123"
+	}
+]

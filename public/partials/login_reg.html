@@ -1,0 +1,252 @@
+<!-- <md-card flex-gt-sm="90" flex-gt-md="80"> -->
+
+<div class="usrListContainer">
+  <div layout="row">
+    <div flex="10">
+      <md-card-avatar>
+        <img class="md-user-avatar imgbg" src="/image/wipro_logo.jpg">
+      </md-card-avatar>
+    </div>
+    <div flex="90" >
+      <div layout="column">
+        <span class="md-title set1">Wipro Technologies Limited</span></div>
+      <div layout="column">
+        <span class="md-subhead set2">Bangalore</span>
+      </div>
+    </div>
+  </div>
+  <div layout="row">
+    <div flex="60"></div>
+    <div flex="20" >
+      <div class="md-hue-1" ng-show="showSearch">
+          <md-input-container md-theme="input">
+            <input ng-model="search.name" placeholder="enter search">
+          </md-input-container>
+      </div>
+    </div>
+    <div flex="20">
+      <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+        <ng-md-icon icon="search"></ng-md-icon>
+      </md-button>
+    <ng-md-icon icon="person_add" ng-click="showAdd()" size="30px"></ng-md-icon>
+    </div>
+  </div>
+  <md-divider></md-divider>
+
+  <div layout="row">
+  <!-- <md-content flex="100">
+      <md-list>
+        <md-list-item ng-repeat="person in data | filter:search" ng-click="null">
+          <div layout="row" layout-fill>
+          <div layout="row" flex="60">
+          <img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar"/>
+          <p>{{ person.name }}</p>
+        </div>
+        <div flex="25"></div>
+        <div flex="15" flex-offset="20">
+          <ng-md-icon icon="more_horiz" ng-class="{'selected-item': $index == selectedUserIndex}" ng-click="selectUserIndex($index)"></ng-md-icon>
+        </div>
+      </div>
+      <div layout="row" flex="100">
+        <div flex="30">
+          <p>Email:{{person.email}}</p>
+        </div>
+      </div>
+          <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+          <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-content> -->
+
+    <md-content flex="100">
+      <md-list>
+        <md-list-item ng-repeat="person in data | filter:search" ng-click="null">
+          <div layout="column">
+            <div layout="row">
+              <img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar"/>
+              <p>{{ person.name }}</p>
+              <ng-md-icon icon="more_horiz" class="md-secondary" ng-class="{'selected-item': $index == selectedUserIndex}" ng-click="selectUserIndex($index)"></ng-md-icon>
+            </div>
+            <div ng-show="$index == selectedUserIndex">
+              <div layout="row">
+                <div flex="45" flex-offset="10">Email:{{person.email}}</div>
+                <div  flex="45" flex-offset="60">Password:{{person.password}}</div>
+              </div>
+              <div layout="row">
+                <div flex="20" flex-offset="10"><md-checkbox>Admin</md-checkbox></div>
+                <div flex="20" flex-offset="95"><ng-md-icon icon="delete" ng-click="deleteMe()"></ng-md-icon></div>
+                <div flex="20" flex-offset="90"><md-checkbox>Save</md-checkbox></div>
+              </div>
+            </div>
+          </div>
+          <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+          <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-content>
+
+  </div>
+<!-- </md-card> -->
+</div>
+
+<!-- <md-card flex-gt-sm="90" flex-gt-md="80">
+  <md-card-header>
+    <md-card-avatar>
+      <img class="md-user-avatar imgbg" src="/image/wipro_logo.jpg">
+    </md-card-avatar>
+    <md-card-header-text>
+      <span class="md-title set1">Wipro Technologies Limited</span>
+      <span class="md-subhead set2">Bangalore</span>
+    </md-card-header-text>
+  </md-card-header>
+  <div layout="row">
+    <div flex="80"></div>
+      <div flex-offset="5">
+        <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+          <ng-md-icon icon="search"></ng-md-icon>
+        </md-button>
+      <ng-md-icon icon="person_add" ng-click="showAdd()" size="30px"></ng-md-icon>
+      <div class="md-hue-1" ng-show="showSearch">
+          <md-input-container md-theme="input" flex>
+            <input ng-model="search.name" placeholder="enter search">
+          </md-input-container>
+      </div>
+    </div>
+  </div>
+  <md-divider></md-divider>
+  <md-content>
+    <md-list>
+      <md-list-item ng-repeat="person in data | filter:search" ng-click="null">
+        <div layout="column">
+          <div layout="row">
+            <img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar"/>
+            <p>{{ person.name }}</p>
+            <ng-md-icon icon="more_horiz" class="md-secondary" ng-class="{'selected-item': $index == selectedUserIndex}" ng-click="selectUserIndex($index)"></ng-md-icon>
+          </div>
+          <div ng-show="$index == selectedUserIndex">
+            <div layout="row">
+              <div flex-offset="10">Email:{{person.email}}</div>
+              <div flex-offset="70">Password:{{person.password}}</div>
+            </div>
+            <div layout="row">
+              <div flex-offset="10"><md-checkbox>Admin</md-checkbox></div>
+              <div flex-offset="95"><ng-md-icon icon="delete" ng-click="deleteMe()"></ng-md-icon></div>
+              <div flex-offset="90"><md-checkbox>Save</md-checkbox></div>
+            </div>
+          </div>
+        </div>
+        <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+        <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+  </md-content>
+  </md-card> -->
+
+
+
+
+
+
+
+
+ <!-- <div class="sample tabsdemoStaticTabs inputdemoIcons" layout="row"  layout-align="center" ng-cloak=""> -->
+ <!-- <md-toolbar class="md-theme-light">
+    <h2 class="md-toolbar-tools">
+      <user-avatar></user-avatar>
+    </h2>
+  </md-toolbar> -->
+
+  <!-- <md-toolbar>
+  <div class="md-toolbar-tools">
+  <div layout="row">
+
+    <div layout="column" >
+      <img class="imgbg" ng-src="/image/wipro_logo.jpg">
+    </div>
+    <div layout="column"  ><p class="set1">Bangalore</p></div>
+    <div layout="column" >
+      <h2 class="set2">Wipro Digital</h2>
+    </div>
+    <div layout="column" ><p class="set3">digital@wipro.com</p></div>
+
+  </div>
+  </div>
+
+  </md-toolbar> -->
+
+<!-- <div layout="row" layout-align="end">
+<md-button aria-label="Search" ng-click="showSearch = !showSearch">
+            <ng-md-icon icon="search"></ng-md-icon>
+          </md-button>
+
+
+<ng-md-icon icon="person_add" ng-click="showAdd()" size="30px"></ng-md-icon>
+</div> -->
+
+
+   <!-- <md-list>
+   <md-list-item ng-repeat="person in data" class="noright">
+     <div layout="row">
+    <img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar" />
+     <p>{{ person.name }}</p>
+     <ng-md-icon icon="more_horiz" class="md-secondary md-hue-3" ng-class="{'selected-item': $index == selectedUserIndex}" ng-click="selectUserIndex($index)"></ng-md-icon>
+     </div> -->
+
+
+     <!-- <md-checkbox class="md-secondary" ng-model="person.selected"></md-checkbox> -->
+     <!-- <md-icon md-svg-icon="communication:email"  ng-click="doSecondaryAction($event)" aria-label="Send Email" class="md-secondary md-hue-3" ></md-icon>
+     <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat" md-svg-icon="communication:message"></md-icon> -->
+
+
+     <!-- <div ng-show="$index == selectedUserIndex" layout="column" flex="100%" class="set4">
+         <div>Email:{{person.email}}</div>
+         <div layout="row">
+           <div flex="33">Password:{{person.password}}</div>
+           <div flex="33">Make Admin <md-checkbox></md-checkbox></div>
+           <div><ng-md-icon icon="delete" ng-click="deleteMe()"></ng-md-icon></div>
+         </div>
+     </div>
+
+     <md-divider ></md-divider>
+   </md-list-item>
+ </md-list> -->
+
+ <!-- <md-list>
+ <md-list-item ng-repeat="person in data">
+<div layout="row">
+  <div layout="column"><img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar" /></div>
+  <div layout="column">
+    <div><span><h4>{{ person.name }}
+      <md-tooltip md-direction="right" md-autohide="true">
+        <ng-md-icon icon="mode_edit" /></md-tooltip></h4></span>
+    </div>
+    <div ng-show="$index == selectedUserIndex">
+    <div><span>Email : {{person.email}}
+      <md-tooltip md-direction="right">
+        <ng-md-icon icon="mode_edit" /></md-tooltip> </span>
+    </div>
+    <div layout="row">
+    <div><span>Password : {{person.password}}
+      <md-tooltip md-direction="right">
+        <ng-md-icon icon="mode_edit" /></md-tooltip></span>
+    </div>
+      <div>
+        <span><md-checkbox></md-checkbox>Admin</span></div> -->
+
+      <!-- <div flex="30"></div> -->
+
+      <!-- <div><md-checkbox></md-checkbox>Save</div>
+      <div><ng-md-icon icon="delete" ng-click="deleteMe()"></ng-md-icon></div>
+    </div>
+  </div>
+  </div> -->
+
+  <!-- <div layout="column" flex="60"></div> -->
+
+  <!-- <div layout="column" class="md-secondary md-hue-3">
+    <ng-md-icon icon="more_horiz" ng-class="{'selected-item': $index == selectedUserIndex}" ng-click="selectUserIndex($index)"/></div>
+</div>
+<md-divider></md-divider>
+</md-list-item>
+<md-list> -->
+  <!-- </div> -->
