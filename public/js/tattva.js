@@ -81,10 +81,17 @@ tattva.controller('ctrl', function($scope, $state, $mdSidenav, $anchorScroll, $l
   //  }
 
    $scope.login = function() {
-      $scope.isMember=true;
- 		 $scope.login=false;
- 		 $state.go('user');
-    };
+    $scope.isMember=true;
+    $scope.signOut=true;
+ 		$scope.login=false;
+ 		$state.go('user');
+  };
+
+  $scope.signout = function(){
+    $scope.signOut=false;
+    $scope.login=true;
+    $state.go('guest');
+  }
 
 	$scope.gotoSlide1 = function(){
 		$location.hash('slide1');
@@ -105,9 +112,15 @@ tattva.controller('ctrl', function($scope, $state, $mdSidenav, $anchorScroll, $l
 });
 
 tattva.controller('headerCtrl',function($scope,$http){
-  $scope.header="TATTVA - CEP";
-  $http.get("/json/guestMenu.json").success(function(data){
+    $scope.header="TATTVA - CEP";
+    $http.get("/json/guestMenu.json").success(function(data){
     $scope.items=data;
+    // $scope.show = function() {
+    //   $scope.sublist=true;
+    // };
+    // $scope.hide = function() {
+    //   $scope.sublist=false;
+    // };
   });
 
   // $scope.loadData = function(){

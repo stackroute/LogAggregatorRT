@@ -60,15 +60,6 @@ body {
   margin: auto;
 }
 
-#hero{
-  background: url("/images/CEP-overview.png") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  position: relative;
-}
-
 .nav {
     position: absolute;
     bottom: 10%;
@@ -81,6 +72,10 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
   background-color: #0CD4D4;
   position: fixed;
   color: black;
+}
+
+.card{
+  width: 33%;
 }
 
 .content{
@@ -96,9 +91,15 @@ md-list-item a {
   color: #868686;
 }
 
+.mainImg{
+  width: 85%;
+  margin: auto;
+}
+
 .person{
-  width: 100%;
-  height: 100%;
+  width: 70%;
+  height: 80%;
+  border-radius: 50%;
 }
 
 .footer_part1{
@@ -122,9 +123,10 @@ md-list-item a {
   margin-top: 75px;
 }
 
-/*span{
-  color: white;
-}*/
+.listItem{
+  background-color: black;
+  margin: 5px;
+}
 
 .full_width{
   padding-top: 40px;

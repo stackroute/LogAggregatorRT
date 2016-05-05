@@ -28,5 +28,17 @@
         "link" : "watchlist"
       }
     ]
+  },
+  {
+    "menu" : "Organisation",
+    "link" : "organisation"
+  },
+  {
+    "menu" : "Action",
+    "link" : "action"
+  },
+  {
+    "menu" : "Notification",
+    "link" : "notification"
   }
 ]
