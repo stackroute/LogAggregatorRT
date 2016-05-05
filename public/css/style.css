@@ -9,7 +9,40 @@ body {
   font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
   font-size: auto;
 }
+.fix
+{
+  height: 250px;
+}
+.shad:hover
+{
+    box-shadow:  0px 0px 30px 0px #737373;
+}
+.shad
+{
+    height:480px;
+      border:1px solid #cfcfd6;
+}
+.md-toolbar-tools
+{
+  background-color:#eaeaed;
+}
+button
+{
+height: 50px;
+float: right;
+}
+.flexcontainer {
+	display: -webkit-flex;
+		display: flex;
+ -webkit-flex-direction: row;
+ flex-direction: row;
+ -webkit-flex-wrap:wrap;
+ flex-wrap: wrap;
+ background-color:  #f8f8f9;
+}
+.flex-item
+{
 
-a {
-  color: #FFFFFF;
+width:47.5%;
+ padding: 15px;
 }
