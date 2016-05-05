@@ -1,31 +1,14 @@
-var tattva = angular.module('tattva', ["ngMaterial","ui.router"]);
-
-// tattva.config(function($mdThemingProvider) {
-//   $mdThemingProvider.theme('red')
-//     .primaryPalette('pink')
-//     .accentPalette('orange');
-// });
+var tattva = angular.module('tattva', ["ngMaterial","ui.router","ngMdIcons"]);
 
 tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   $stateProvider
   .state('guest',
   {
-    url:"/guest/{series}",
+    url:"/tattva",
     views: {
       "header" : {
         templateUrl: "/partials/header.html",
-        controller: function($scope,$http) {
-          $scope.header="TATTVA - Log Aggregator";
-          // $http.get("/json/guestMenu.json").success(function(data){
-          //   $scope.items=data;
-          // });
-          $scope.loadData = function(){
-            // var url='/' + $stateParams.series ;
-            // console.log($stateParams.series);
-            $http.get('/fetchfile').then(function(response){ $scope.items = response.data; });
-          }
-          $scope.loadData();
-        }
+        controller: "headerCtrl"
       },
       "content" : {
         templateUrl: "/partials/content.html"
@@ -35,18 +18,13 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       },
     }
   })
-  .state('Login',
+  .state('login',
   {
-    url: "Login",
+    url: "/login",
     views: {
       "header" : {
         templateUrl: "/partials/header.html",
-        controller: function($scope,$http) {
-          $scope.header="Login / Sign UP"
-          $http.get("/json/guestMenu.json").success(function(data){
-            $scope.items=data;
-          });
-        }
+        controller: "headerCtrl"
       },
       "content@" : {
         templateUrl: "/partials/login.html"
@@ -56,21 +34,32 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       }
     }
   })
-  .state('Home',
+	.state('user',
   {
-    url: "/",
+    url: "/dashboard",
     views: {
       "header" : {
         templateUrl: "/partials/header.html",
-        controller: function($scope,$http) {
-          $scope.header="Login / Sign UP"
-          $http.get("/json/guestMenu.json").success(function(data){
-            $scope.items=data;
-          });
-        }
+        controller: "headerCtrl"
       },
       "content@" : {
-        templateUrl: "/partials/content.html"
+        templateUrl: "/partials/dashboard.html"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
+	.state('design',
+  {
+    url: "/design",
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl: "/partials/design.html"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
@@ -79,7 +68,7 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   })
 }]);
 
-tattva.controller('ctrl', function($scope, $state, $mdSidenav, $http) {
+tattva.controller('ctrl', function($scope, $state, $mdSidenav, $anchorScroll, $location) {
 
   $state.go('guest');
 
@@ -87,15 +76,45 @@ tattva.controller('ctrl', function($scope, $state, $mdSidenav, $http) {
      $mdSidenav('left').toggle();
    };
 
- // 		$http.get('/').then(function(response){
-  //      $scope.data = response.data;
-  //   });
-	// }
-	// $scope.loadData();
+  //  $scope.hideSignIn=function(){
+  //    $scope.login=false;
+  //  }
+
+   $scope.login = function() {
+      $scope.isMember=true;
+ 		 $scope.login=false;
+ 		 $state.go('user');
+    };
+
+	$scope.gotoSlide1 = function(){
+		$location.hash('slide1');
+		$anchorScroll();
+	}
+	$scope.gotoSlide2 = function(){
+		$location.hash('slide2');
+		$anchorScroll();
+	}
+	$scope.gotoSlide3 = function(){
+		$location.hash('slide3');
+		$anchorScroll();
+	}
+	$scope.gotoFooter = function(){
+		$location.hash('footer');
+		$anchorScroll();
+	}
 });
 
-// tattva.service('dataService',function($http){
-//   this.getData=function(){
-//     return $http.get('/fetchfile');
-//   }
-// });
+tattva.controller('headerCtrl',function($scope,$http){
+  $scope.header="TATTVA - CEP";
+  $http.get("/json/guestMenu.json").success(function(data){
+    $scope.items=data;
+  });
+
+  // $scope.loadData = function(){
+  //   $http.get('/fetchfile').then(function(response){
+  //     $scope.items=response.data;
+  //   });
+  // }
+  // $scope.loadData();
+
+});

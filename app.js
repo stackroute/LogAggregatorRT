@@ -32,9 +32,9 @@ app.get('/', function(req, res){
   res.render('index');
 });
 
-app.get('/fetchfile', function(req, res){
-  res.sendfile(path.join(__dirname, '/json/guestMenu.json'));
-});
+// app.get('/fetchfile', function(req, res){
+//   res.sendfile(path.join(__dirname, '/public/json/guestMenu.json'));
+// });
 
 
 // catch 404 and forward to error handler
