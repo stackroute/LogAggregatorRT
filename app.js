@@ -34,13 +34,6 @@ app.get('/', function(req, res){
   res.render('index');
 });
 
-app.get('/login_reg', function(req, res){
-   res.sendFile(path.join(__dirname, 'public/data.json'));
-});
-app.get('/fetchfile', function(req, res){
-  res.sendfile(path.join(__dirname, '/json/guestMenu.json'));
-});
-
 
 app.post('/login_reg1',jsonParser,function (request, response) {
   var body1=request.body;

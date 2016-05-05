@@ -1,17 +1,32 @@
 [
   {
-    "menu" : "Home"
+    "menu" : "Dashboard",
+    "link" : "user"
   },
   {
-    "menu" : "Login"
-  },
-  {
-    "menu" : "AboutUs"
-  },
-  {
-    "menu" : "How It Works"
-  },
-  {
-    "menu" : "Team"
+    "menu" : "Design",
+    "link" : "design",
+    "children" : [
+      {
+        "menu" : "Namespace",
+        "link" : "namespace"
+      },
+      {
+        "menu" : "Instance",
+        "link" : "instance"
+      },
+      {
+        "menu" : "Streams",
+        "link" : "streams"
+      },
+      {
+        "menu" : "Functions",
+        "link" : "functions"
+      },
+      {
+        "menu" : "Watclist",
+        "link" : "watchlist"
+      }
+    ]
   }
 ]

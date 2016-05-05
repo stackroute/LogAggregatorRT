@@ -1,25 +1,30 @@
-
-
-	<!-- <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8"> -->
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
-<link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-    <!-- <script src="/angular-material-icons/angular-material-icons.min.js"></script> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
-		  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-			<script src="/js/tattva.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>LogAggregatorRT</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
 </head>
-<body ng-app='myApp' ng-controller="myController" >
-<div class="flexcontainer">
-	<div class="flex-item" ng-repeat="item in itemcollection">
-<dashboardlayout  result="item"  data="logdata">
-			</dashboardlayout>
-		</div>
-</div>
-
+<body ng-app='tattva' ng-controller="ctrl">
+	<div layout="column" ng-clock>
+    <!-- <a ui-sref="guest"></a> -->
+		<div ui-view="header"></div>
+    <div ui-view="content"></div>
+    <div ui-view="footer"></div>
+	</div>
 </body>
+
+<script src="/angular/angular.js" charset="utf-8"></script>
+<script src="/angular-animate/angular-animate.min.js" charset="utf-8"></script>
+<script src="/angular-aria/angular-aria.min.js" charset="utf-8"></script>
+<script src="/angular-messages/angular-messages.min.js" charset="utf-8"></script>
+<script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
+<script src="/angular-material-icons/angular-material-icons.min.js" charset="utf-8"></script>
+<script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
+<!-- <script src="/d3/d3.min.js"></script> -->
+ <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="/js/tattva.js" charset="utf-8"></script>
+
+  </body>
+  </html>
