@@ -9,8 +9,8 @@
     "angular-material-icons": "^0.7.0",
     "angular-xeditable": "^0.1.12",
     "angular-ui-router": "^0.2.18",
-    "angular-route": "^1.5.3",
     "angular-material": "^1.0.7",
-    "angular-material-icons": "^0.7.0"
+    "ng-letter-avatar": "ngletteravatar#^4.0.2",
+    "angular-ui-ace": "bower"
   }
 }

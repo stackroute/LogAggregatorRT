@@ -42,7 +42,21 @@ app.get('/fetchfile', function(req, res){
 });
 
 
+app.get('/func_link', function(req, res){
+   res.sendFile(path.join(__dirname, 'public/function_data.json'));
+});
+
+app.get('/func_link_data', function(req, res){
+   res.sendFile(path.join(__dirname, 'public/function_data_display.json'));
+});
+
 app.post('/login_reg1',jsonParser,function (request, response) {
+  var body1=request.body;
+  console.log(body1);
+  //response.send("hi");
+});
+
+app.post('/func_send_data',jsonParser,function (request, response) {
   var body1=request.body;
   console.log(body1);
   //response.send("hi");

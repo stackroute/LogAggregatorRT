@@ -1,4 +1,5 @@
-[{
+[
+	{
 		"name": "Surya",
 		"img": "/image/person.jpg",
 		"email": "rajiff@gmail.com",
@@ -21,6 +22,12 @@
 		"password": "default@123"
 	}, {
 		"name": "dinesh",
+		"img": "/image/person.jpg",
+		"email": "dinesh@gmail.com",
+		"password": "default@123"
+	},
+	{
+		"name": "Ganesh",
 		"img": "/image/person.jpg",
 		"email": "dinesh@gmail.com",
 		"password": "default@123"
