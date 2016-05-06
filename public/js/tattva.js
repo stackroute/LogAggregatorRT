@@ -1,5 +1,19 @@
 var tattva = angular.module('tattva', ["ngMaterial","ui.router","ngMdIcons"]);
 
+tattva.config(function($mdThemingProvider) {
+  var primary = $mdThemingProvider.extendPalette('red', {
+    '500': '00BCD4'
+  });
+
+  $mdThemingProvider.definePalette('primary', primary);
+
+  $mdThemingProvider.theme('default')
+  .primaryPalette('primary')
+  .accentPalette('light-blue')
+  .warnPalette('green')
+  .backgroundPalette('grey');
+});
+
 tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   $stateProvider
   .state('guest',
@@ -88,6 +102,7 @@ tattva.controller('ctrl', function($scope, $state, $mdSidenav, $anchorScroll, $l
   };
 
   $scope.signout = function(){
+    $scope.isMember=false;
     $scope.signOut=false;
     $scope.login=true;
     $state.go('guest');
@@ -102,11 +117,11 @@ tattva.controller('ctrl', function($scope, $state, $mdSidenav, $anchorScroll, $l
 		$anchorScroll();
 	}
 	$scope.gotoSlide3 = function(){
-		$location.hash('slide3');
+		$location.hash('footer');
 		$anchorScroll();
 	}
-	$scope.gotoFooter = function(){
-		$location.hash('footer');
+  $scope.gotohead = function(){
+		$location.hash('head');
 		$anchorScroll();
 	}
 });

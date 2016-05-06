@@ -82,20 +82,41 @@ body {
 
 .nav {
     position: absolute;
-    bottom: 10%;
+    bottom: 12%;
     right: 50%;
     font-size: 18px;
 }
 
 
 md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){
-  background-color: #0CD4D4;
+  /*background-color: #0CD4D4;*/
   position: fixed;
   color: black;
 }
 
+#hero{
+  background-color: #FDFDFD;
+}
+
+#slide1{
+  padding-top: 60px;
+}
+
+.navlast {
+    position: absolute;
+    bottom: 3%;
+    right: 50%;
+    font-size: 18px;
+}
+
+#slide2Content{
+  padding-top: 80px;
+  margin-bottom: 40px;
+}
+
 .card{
   width: 33%;
+  background-color: #F8F9F9;
 }
 
 .content{
@@ -118,38 +139,33 @@ md-list-item a {
 
 .person{
   width: 70%;
-  height: 80%;
+  height: 90%;
   border-radius: 50%;
+  box-shadow: -1px 0px 20px 1px #0A6969;
 }
 
 .footer_part1{
   height: 200px;
   width: 100%;
-  background-color: #0F6D6D;
+  background-color: #454848;
   padding-top: 30px;
-}
-
-.footer_part2{
-  height: 70px;
-  width: 100%;
-  background-color: #0CD4D4;
 }
 
 .footer{
   padding-top: 0px;
 }
 
+.navfooter{
+  float: right;
+  padding-right: 30px;
+}
+
 .copyright{
   margin-top: 75px;
 }
 
-.listItem{
-  background-color: black;
-  margin: 5px;
-}
-
 .full_width{
-  padding-top: 40px;
+  /*padding-top: 40px;*/
   width: 100%;
   height: 100vh;
   position: relative;
@@ -369,4 +385,5 @@ md-input-container.md-input-invalid [ng-message-exp] {
   width: 550px;
   margin: auto;
   margin-top: 100px;
+  margin-bottom: 40px;
 }
