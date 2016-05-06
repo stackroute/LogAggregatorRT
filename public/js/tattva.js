@@ -1,5 +1,19 @@
 var tattva = angular.module('tattva', ["ngMaterial","ui.router","ngMdIcons"]);
 
+tattva.config(function($mdThemingProvider) {
+  var primary = $mdThemingProvider.extendPalette('red', {
+    '500': '00BCD4'
+  });
+
+  $mdThemingProvider.definePalette('primary', primary);
+
+  $mdThemingProvider.theme('default')
+  .primaryPalette('primary')
+  .accentPalette('light-blue')
+  .warnPalette('green')
+  .backgroundPalette('grey');
+});
+
 tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   $stateProvider
   .state('guest',
