@@ -1,4 +1,4 @@
-<div class="shad">
+<!-- <div class="shad">
 <div class="pray">{{myresult.wlname}}</div>
    <md-tabs md-dynamic-height md-border-bottom>
          <md-tab label="Graph">
@@ -16,4 +16,29 @@
 <md-button class="md-raised md-primary">Add page</md-button>
 <md-button class="md-raised md-primary">Edit page</md-button>
 
-     </div>
+     </div> -->
+
+     <div class="shad">
+     <div class="pray">{{myresult.wlname}}</div>
+        <md-tabs md-dynamic-height md-border-bottom>
+              <md-tab label="Graph">
+                <!-- <mygraph type="myresult.charttype"></mygraph> -->
+
+                <!-- <div ng-include src="getChartTemplate()"></div> -->
+                <div ng-include src="'/partials/' + myresult.charttype + '.html'"></div>
+              </md-tab>
+              <md-tab label="log Data">
+                <!-- <data></data> -->
+<div ng-include src="'/partials/' + myresult.datatype + '.html'"></div>
+
+              </md-tab>
+              <md-tab label="Execution Flow">
+                 <flow></flow>
+              </md-tab>
+            </md-tabs>
+            <md-divider></md-divider>
+
+     <md-button class="md-raised md-primary">Add page</md-button>
+     <md-button class="md-raised md-primary">Edit page</md-button>
+
+          </div>
