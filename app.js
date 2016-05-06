@@ -10,6 +10,8 @@ var users = require('./routes/users');
 
 var app = express();
 
+var jsonParser = bodyParser.json();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');
@@ -27,6 +29,19 @@ app.use(express.static(path.join(__dirname, 'bower_modules')));
 
 app.use('/', routes);
 app.use('/users', users);
+// app.use('/', routes);
+// app.use('/users', users);
+
+app.get('/', function(req, res){
+  res.render('index');
+});
+
+
+app.post('/login_reg1',jsonParser,function (request, response) {
+  var body1=request.body;
+  // console.log(body1);
+  //response.send("hi");
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

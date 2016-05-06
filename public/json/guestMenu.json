@@ -1,0 +1,44 @@
+[
+  {
+    "menu" : "Dashboard",
+    "link" : "user"
+  },
+  {
+    "menu" : "Design",
+    "link" : "design",
+    "children" : [
+      {
+        "menu" : "Namespace",
+        "link" : "namespace"
+      },
+      {
+        "menu" : "Instance",
+        "link" : "instance"
+      },
+      {
+        "menu" : "Streams",
+        "link" : "streams"
+      },
+      {
+        "menu" : "Functions",
+        "link" : "functions"
+      },
+      {
+        "menu" : "Watclist",
+        "link" : "watchlist"
+      }
+    ]
+  },
+  {
+    "menu" : "Organisation",
+    "link" : "organisation"
+  },
+  {
+    "menu" : "Action",
+    "link" : "action"
+  },
+  {
+    "menu" : "Notification",
+    "link" : "notification"
+  }
+]

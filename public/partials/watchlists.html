@@ -1,73 +1,74 @@
-<md-toolbar layout-padding>Welcome to Watchlists</md-toolbar>
-<div layout="column" class="relative" layout-fill role="main">
-      <a ui-sref='watchlist.create'><md-button class="md-fab md-fab-bottom-right" aria-label="Add">Add
-      </md-button></a>
-      <md-toolbar  ng-show="!showSearch">
-        <div class="md-toolbar-tools">
-          <span flex></span>
-          <md-button aria-label="Search" ng-click="showSearch = !showSearch">
-            <ng-md-icon icon="search"></ng-md-icon>
-          </md-button>
-        </div>
-        <md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex">
-          <md-tab id="tab1" aria-controls="tab1-content">
-            <b>Watch List</b>
-          </md-tab>
-        </md-tabs>
-      </md-toolbar>
-      <md-toolbar class="md-hue-1" ng-show="showSearch">
-        <div class="md-toolbar-tools">
-          <md-button ng-click="showSearch = !showSearch" aria-label="Back">
-            <ng-md-icon icon="arrow_back"></ng-md-icon>
-          </md-button>
-          <h3 flex="10">
-            Back
-          </h3>
-          <md-input-container md-theme="input" flex>
-            <label>&nbsp;</label>
-            <input ng-model="search.what" placeholder="enter search">
-          </md-input-container>
-          <md-button aria-label="Search" ng-click="showSearch = !showSearch">
-            <ng-md-icon icon="search"></ng-md-icon>
-          </md-button>
-        </div>
-      </md-toolbar>
-      <md-content flex md-scroll-y>
-        <ui-view layout="column" layout-fill layout-padding>
-          <div class="inset" hide-sm></div>
-            <ng-switch on="data.selectedIndex" class="tabpanel-container">
-              <div role="tabpanel"
-                   id="tab1-content"
-                   aria-labelledby="tab1"
-                   ng-switch-when="0"
-                   layout="row" layout-align="center center">
-                  <md-card flex-gt-sm="90" flex-gt-md="90">
-                    <md-card-content>
-                      <h2>Available WatchList</h2>
-                      <md-list>
-                        <md-item ng-show ="data.length" ng-repeat="item in data">
-                          <md-item-content layout="row">
+<div ng-controller='AppCtrl' class="watchlist">
+  <div layout="column" class="relative" layout-fill role="main">
+        <a ui-sref='watchlist.create'><md-button class="md-fab md-fab-bottom-right" aria-label="Add">Add
+        </md-button></a>
+        <md-toolbar  ng-show="!showSearch">
+          <div class="md-toolbar-tools">
+            <span flex></span>
+            <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+              <ng-md-icon icon="search"></ng-md-icon>
+            </md-button>
+          </div>
+          <md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex">
+            <md-tab id="tab1" aria-controls="tab1-content">
+              <b>Watch List</b>
+            </md-tab>
+          </md-tabs>
+        </md-toolbar>
+        <md-toolbar class="md-hue-1" ng-show="showSearch">
+          <div class="md-toolbar-tools">
+            <md-button ng-click="showSearch = !showSearch" aria-label="Back">
+              <ng-md-icon icon="arrow_back"></ng-md-icon>
+            </md-button>
+            <h3 flex="10">
+              Back
+            </h3>
+            <md-input-container md-theme="input" flex>
+              <label>&nbsp;</label>
+              <input ng-model="search.what" placeholder="enter search">
+            </md-input-container>
+            <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+              <ng-md-icon icon="search"></ng-md-icon>
+            </md-button>
+          </div>
+        </md-toolbar>
+        <md-content flex md-scroll-y class="availableWatchlist">
+          <ui-view layout="column" layout-fill layout-padding>
+            <div class="inset" hide-sm></div>
+              <ng-switch on="data.selectedIndex" class="tabpanel-container">
+                <div role="tabpanel"
+                     id="tab1-content"
+                     aria-labelledby="tab1"
+                     ng-switch-when="0"
+                     layout="row" layout-align="center center">
+                    <md-card flex-gt-sm="90" flex-gt-md="90">
+                      <md-card-content>
+                        <h2>Available WatchList</h2>
+                        <md-list>
+                          <md-item ng-show ="data.length" ng-repeat="item in data">
+                            <md-item-content layout="row">
 
-                            <div flex="10" class="md-tile-left inset" hide-sm>
-                              <ng-letter-avatar shape="round" avatarcustombgcolor="orange" data="{{item.what}}"></ng-letter-avatar>
-                            </div>
-                            <div flex class="md-tile-content" layout-padding>
-                              <h2>{{item.what}}</h2>
-                              <p>
-                                {{item.who}}
-                                {{item.details}}
-                              </p>
-                            </div>
-                          </md-item-content>
-                          <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
-                          <md-divider hide-gt-sm ng-if="!$last"></md-divider>
-                        </md-item>
-                      </md-list>
-                    </md-card-content>
-                  </md-card>
-              </div>
-          </ng-switch>
-        </ui-view>
-      </md-content>
-    </div>
-<div ui-view></div>
+                              <div flex="10" class="md-tile-left inset" hide-sm>
+                                <ng-letter-avatar shape="round" avatarcustombgcolor="orange" data="{{item.what}}"></ng-letter-avatar>
+                              </div>
+                              <div flex class="md-tile-content" layout-padding>
+                                <h2>{{item.what}}</h2>
+                                <p>
+                                  {{item.who}}
+                                  {{item.details}}
+                                </p>
+                              </div>
+                            </md-item-content>
+                            <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                            <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+                          </md-item>
+                        </md-list>
+                      </md-card-content>
+                    </md-card>
+                </div>
+            </ng-switch>
+          </ui-view>
+        </md-content>
+      </div>
+  <div ui-view></div>
+</div>
