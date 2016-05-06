@@ -88,6 +88,7 @@ tattva.controller('ctrl', function($scope, $state, $mdSidenav, $anchorScroll, $l
   };
 
   $scope.signout = function(){
+    $scope.isMember=false;
     $scope.signOut=false;
     $scope.login=true;
     $state.go('guest');
@@ -102,11 +103,11 @@ tattva.controller('ctrl', function($scope, $state, $mdSidenav, $anchorScroll, $l
 		$anchorScroll();
 	}
 	$scope.gotoSlide3 = function(){
-		$location.hash('slide3');
+		$location.hash('footer');
 		$anchorScroll();
 	}
-	$scope.gotoFooter = function(){
-		$location.hash('footer');
+  $scope.gotohead = function(){
+		$location.hash('head');
 		$anchorScroll();
 	}
 });
