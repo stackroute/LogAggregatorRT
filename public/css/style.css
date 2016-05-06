@@ -11,5 +11,27 @@ body {
 }
 
 a {
-  color: #FFFFFF;
+  color: #FFFFF;
+  text-decoration: none;
+}
+#add{
+  color:white!important;
+}
+#namespace{
+margin-top: 2px;
+}
+
+img{
+  height: 2%;
+  width:2%;
+}
+#output{
+  margin-top: 7em;
+}
+#footer{
+  height: 20px;
+}
+#on
+{
+  padding-top: 10px;
 }
