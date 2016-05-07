@@ -1,0 +1,27 @@
+[
+    {
+      "name":"apatche",
+      "location":"location 1"
+	},
+	  {
+      "name":"ngnix",
+      "location":"location 2"
+	},
+	{
+      "name":"apatche",
+      "location":"location 3"
+	},
+	  {
+      "name":"ngnix",
+      "location":"location 4"
+	},
+  {
+      "name":"apatche",
+      "location":"location 5"
+  },
+    {
+      "name":"ngnix",
+      "location":"location 6"
+  }
+
+	]

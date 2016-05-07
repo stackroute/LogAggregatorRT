@@ -1,0 +1,62 @@
+
+<div class="viewInst listdemoBasicUsage buttondemoBasicUsage">
+<div layout="row">
+
+<md-list class="listInst" flex="90">
+<md-content class="instanceList">
+<md-list-item class="md-3-line" ng-repeat="object in instance" ng-if="$index % 2 == 0" layout="row">
+<md-button ng-href="{{googleUrl}}" target="_blank">
+<md-item-content layout="row">
+<div flex="20">
+ <ng-letter-avatar data={{instance[$index].name}} avatarcustombgcolor="#2e2eb8" size=16px shape="round"></ng-letter-avatar>
+ </div>
+
+      <div flex="80" class="eachinst md-list-item-text" layout="column">
+         <h3> {{instance[$index].name}}</h3>
+          <p>{{instance[$index].ip}}</p>
+          <p>{{instance[$index].location}}</p>
+        </div>
+       
+
+</md-item-content>
+</md-button>
+
+ <md-divider></md-divider>
+<md-button ng-href="{{googleUrl}}" target="_blank">
+
+<md-item-content  layout="row" >
+<div flex="20" ng-if="instance.length > $index+1">
+ <ng-letter-avatar  data={{instance[$index+1].name}} avatarcustombgcolor="#2e2eb8" size=12px shape="round"></ng-letter-avatar>
+ </div>
+
+      <div flex="80" class="eachinst md-list-item-text" layout="column" ng-if="instance.length > $index+1">
+          <h3>{{instance[$index+1].name}}</h3>
+          <p>{{instance[$index+1].ip}}</p>
+          <p>{{instance[$index+1].location}}</p>
+        </div>
+        
+        <md-divider></md-divider>
+
+</md-item-content>
+
+</md-button>
+<md-divider></md-divider>
+   </md-list-item>  
+<!-- <div layout="row">
+    <div flex="50" ng-if='$index % 2 === 0' >{{object.name}}</div>
+    <div flex="50" ng-init='$index=$index+1' ng-if='$index % 2 != 0 '>{{object.name}}</div>
+    </div> -->
+</md-content>
+   
+</md-list>
+<div flex="10">
+  <md-button class="md-fab md-mini" aria-label="Favorite" ui-sref="design.submitInstance.viewInstance.addInstance" ng-click="addInstance($event)">
+          <md-icon md-svg-icon="image/svg/add-plus-button.svg"></md-icon>
+        </md-button>
+ </div>
+</div>
+</div>
+
+
+
+

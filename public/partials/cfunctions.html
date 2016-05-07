@@ -1,0 +1,74 @@
+<div class="md-padding toolbardemoBasicUsage">
+ <md-toolbar>
+      <div class="md-toolbar-tools">
+  <!--       <md-button aria-label="Go Back">
+          Go Back
+        </md-button> -->
+        <h2>
+          <span sytle="text-transform:uppercase">Create your own functions</span>
+        </h2>
+        <span flex=""></span>
+        <md-button class="md-fab md-mini" aria-label="Favorite">
+          <md-icon md-svg-icon="image/svg/add-plus-button.svg"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <div layout="row"> 
+<div flex="35" layout-align="right" class="inputdemoIcons">
+<md-input-container class="md-block">
+      <md-icon md-svg-src="image/svg/add-label-button.svg"></md-icon>
+      <input ng-model="function.name" type="text" placeholder="Name" required>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <md-icon md-svg-src="image/svg/sort-button-with-three-lines.svg"></md-icon>
+      <textarea ng-model="function.des" type="textarea" placeholder="Description" required>
+      </textarea>
+    </md-input-container>
+<!Doctype html>
+<html>
+<head></head>
+<body ng-app="dataApp" ng-cloak>
+    <md-input-container class="md-block">
+      <md-icon md-svg-src="image/svg/function.svg"></md-icon>
+           <div layout="row" >
+    <div class=label flex="60">
+   <label>Function Variables Type</label>
+     </div>
+       <div class="funcCheck" flex="40"  layout="column" layout="layout-padding">
+              <div flex="50">
+              <md-checkbox  ng-click="">
+              Dimensions
+              </md-checkbox>
+              </div>
+              <div flex="50">
+              <md-checkbox ng-click="">
+              Measures
+              </md-checkbox>
+              </div>
+              </div>
+
+            </div>
+    </md-input-container>
+     <md-input-container class="md-block">
+      <md-icon md-svg-src="image/svg/icon.svg"></md-icon>
+      <textarea class="textarea" ng-model="function.var" type="textarea" placeholder=Variables required>
+      </textarea>
+     </md-input-container>
+</div>
+<div flex="65">
+<div layout="column">
+<div flex="20">
+<h1 class="md-title code ">Write your function here....</h1>
+</div>
+<div flex="60">
+<div ui-ace>
+</div>
+</div>
+
+<div flex="20" class="buttondemoBasicUsage">
+	<md-button class="md-accent md-raised md-hue-1" id="save">Save</md-button>
+</div>
+
+</div>
+</div>

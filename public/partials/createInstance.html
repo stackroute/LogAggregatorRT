@@ -1,0 +1,45 @@
+
+<div class="instanceMain" ng-cloak >
+<form name="createInstance" ng-submit="submitInstance()">
+  <div class="instance inputdemoIcons" flex="40" flex-xs="60" flex-sm="60">
+    <md-input-container class="md-block" >
+      <!-- <md-icon md-svg-src = '/images/icons/ic  _aspect_ratio_black_24px.svg'></md-icon> -->
+      <!-- <i class="material-icons">face</i> -->
+      <label>Name of Instance</label>
+      <md-icon md-svg-icon="image/svg/add-label-button.svg"></md-icon>
+      <input type="text" ng-model="namespace.name">
+    </md-input-container>
+    <div layout="row">
+    <div flex="55">
+    <md-input-container class="md-block">
+      <label>IP Address</label>
+      <md-icon md-svg-icon="image/svg/ip.svg"></md-icon>
+      <input type="text" ng-model="namespace.ipAddress">
+    </md-input-container>
+    </div>
+    <div flex="10"></div>
+    <div flex="35">
+      <md-input-container class="md-block">
+      <label>Port</label>
+      <md-icon md-svg-icon="image/svg/universal-port-sign.svg"></md-icon>
+      <input type="text" ng-model="namespace.port">
+    </md-input-container>
+    </div>
+    </div>
+    
+    <md-input-container class="md-block">
+      <label>Description</label>
+      <md-icon md-svg-icon="image/svg/sort-button-with-three-lines.svg"></md-icon>
+      <input type="text" ng-model="namespace.description">
+    </md-input-container>
+    <md-input-container class="md-block">
+      <label>Location</label>
+      <md-icon md-svg-icon="image/svg/location.svg"></md-icon>
+      <input type="text" ng-model="namespace.location">
+    </md-input-container>
+    <div layout="column" layout-align="center center">
+      <input type="submit" value="CREATE" class="md-raised md-primary"/>
+    </div>
+  </div>
+</form>
+</div>

@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="angular-material/angular-material.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="angular-material-icons/angular-material-icons.css">
+    <link rel="stylesheet" href="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" type="text/css"/>
    
 </head>
 <body ng-app="dataApp" ng-cloak>
@@ -15,7 +16,7 @@
 
 <div>
 <md-button ui-sref="login_reg" class="md-raised md-primary">Login</md-button>
-<md-button ui-sref="func" class="md-raised md-primary">Functions</md-button>
+ <a ui-sref="design">Design</a>
   </div>
 
 
@@ -41,12 +42,16 @@
  <!-- Angular Material Dependencies -->
 
     <!-- Angular Material Javascript now available via Google CDN; version 1.0.7 used here -->
+     <script src="jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="ace-builds/src-min-noconflict/ace.js"></script>
     <script src="angular-material/angular-material.min.js"></script>
     
     <script type="text/javascript" src="angular-ui-ace/ui-ace.js"></script>
     <script src="angular-material-icons/angular-material-icons.min.js"></script>
      <script src="angular-ui-router/release/angular-ui-router.min.js"></script>  
+     <script src="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="ng-scrollbars/dist/scrollbars.min.js"></script>
+    <script src="ng-letter-avatar/ngletteravatar.js"></script>
   <!-- Angular Material Library -->
 
    <script src="js/dataApp.js"></script>
