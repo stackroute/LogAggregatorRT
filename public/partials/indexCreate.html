@@ -1,0 +1,177 @@
+<!-- <div class="jumbotron">
+  <md-card>
+    <md-card-title>
+      <md-card-title-text class="header">
+        <span class="md-headline">Creating Stream</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+
+    <div layout="row" layout-align="center">
+
+      <form name="projectForm">
+        <md-input-container class="md-block">
+          <label>Stream Name</label>
+          <input required="" name="streamName" ng-model="project.streamName">
+          <div ng-messages="projectForm.streamName.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+<div  layout="row">
+
+<div flex = "50">
+  <md-input-container class="md-block" flex-gt-sm="">
+    <label>Namespace</label>
+    <md-select ng-model="user.namespace">
+      <md-option ng-repeat="namespace in namespaces" value="{{namespace.abbrev}}">
+        {{namespace.abbrev}}
+      </md-option>
+    </md-select>
+  </md-input-container>
+</div>
+
+<div flex="50">
+    <md-input-container class="md-block" flex-gt-sm="">
+      <label>Instance</label>
+      <md-select ng-model="user.instance">
+        <md-option ng-repeat="instance in instances" value="{{instance.abbrev}}">
+          {{instance.abbrev}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+</div>
+</div> -->
+
+
+      <!-- <md-input-container>
+        <label>Namespace</label>
+        <md-select ng-model="routerCtrl.nameSpace">
+          <md-option ng-repeat="state in routerCtrl.states" value="{{namespace.abbrev}}" ng-disabled="$index === 1">
+            {{namespace.abbrev}}
+          </md-option>
+        </md-select>
+      </md-input-container> -->
+
+      <!-- </form>
+
+    </div>
+
+    </md-card-content> -->
+    <!-- <md-card-actions layout="row" layout-align="center">
+      <md-button class="md-raised md-primary"><a ui-sref=".create">Create</a></md-button>
+    </md-card-actions> -->
+
+    <!-- <div class="dialog-demo-content" layout="column" layout-align="center center" style="width:100%">
+          <md-button class="md-primary md-raised edgePadding" ng-click="open()">
+            Create
+          </md-button> -->
+<!-- <div layout="row" layout-align="center center">
+    <md-button class="md-primary md-raised" ng-click="showPrompt($event)">
+      Create
+    </md-button>
+</div>
+
+<div ng-if="status" id="status">
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{status}}
+    </b>
+  </div>
+
+
+    </div>
+  </md-card>
+</div> -->
+<style>
+.listInstance md-toolbar{
+background-color: #cfcfd6;
+}
+</style>
+<div ng-controller="createController" class="content">
+<div class="listInstance">
+  <md-toolbar >
+    <div class="md-toolbar-tools">
+      <h2>
+        <span>Creating Stream</span>
+      </h2>
+    </div>
+  </md-toolbar>
+</div>
+
+<div flex>
+  <!-- <md-grid-list md-cols="12" md-cols-sm="12" md-gutter="12px">
+    <md-grid-tile md-colspan="4" md-rowspan="2" class="green">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+      ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+      in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident,
+      sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </md-grid-tile>
+  </md-grid-list> -->
+
+  <md-whiteframe class="md-whiteframe-1dp" layout="row" flex="70" flex-offset="15">
+  <form name="projectForm" flex layout="row" >
+  <div layout="column" flex>
+  <div layout="row" flex>
+
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Select Namespace</label>
+      <md-select ng-model="user_namespace">
+        <md-option ng-repeat="namespace in namespace_collection" ng-value="namespace">
+          {{namespace.name}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Select Instance</label>
+      <md-select ng-model="user_instance">
+        <md-option ng-repeat="instance in user_namespace.instance" ng-value="instance">
+          {{instance.name}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+
+    <!-- <md-input-container class="md-block" flex="50" flex-offset="10">
+      <label>Data Source</label>
+      <input required name="stringName" ng-model="project.stringName">
+      <div ng-messages="projectForm.stringName.$error">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container> -->
+
+  </div>
+
+  <div layout="row">
+    <md-input-container class="md-block" flex="50" >
+      <label>Name of Stream</label>
+      <input required name="streamName" ng-model="user_streamName">
+      <div ng-messages="projectForm.streamName.$error">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
+  </div>
+
+<!-- <textarea name="name" rows="4" cols="20" placeholder="Description about stream"></textarea> -->
+<div layout="row" flex>
+  <md-input-container flex="100" >
+    <textarea class="textarea" ng-model="stringDescription" type="textarea" placeholder="Description"></textarea>
+  </md-input-container>
+</div>
+<h3>--Query Criteria--</h3>
+
+<query></query>
+
+<md-divider></md-divider>
+
+<div layout="row" flex-offset="40">
+<md-button class="md-raised md-warn" ng-click="save()" ng-disabled="projectForm.$invalid">Save</md-button>
+<md-button class="md-raised md-warn" ng-click="cancel()">Cancel</md-button>
+</div>
+
+</div>
+  </form>
+  </md-whiteframe>
+</div>
+</div>

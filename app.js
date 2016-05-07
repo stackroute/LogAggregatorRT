@@ -16,6 +16,8 @@ var users = require('./routes/users');
 
 var app = express();
 
+var jsonParser = bodyParser.json();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');
@@ -33,6 +35,24 @@ app.use(express.static(path.join(__dirname, 'bower_modules')));
 
 app.use('/', routes);
 app.use('/users', users);
+// app.use('/', routes);
+// app.use('/users', users);
+
+app.get('/', function(req, res){
+  res.render('index');
+});
+
+
+app.get('/login_reg', function(req, res){
+   res.sendFile(path.join(__dirname, 'public/data.json'));
+});
+
+
+app.post('/login_reg1',jsonParser,function (request, response) {
+  var body1=request.body;
+  // console.log(body1);
+  //response.send("hi");
+});
 
 /*app.get('/',function(req,res){
     

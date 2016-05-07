@@ -1,62 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Data Display App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Angular Material style sheet -->
-  <link rel="stylesheet" href="angular-material/angular-material.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="angular-material-icons/angular-material-icons.css">
-    <link rel="stylesheet" href="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" type="text/css"/>
-   
+	<title>LogAggregatorRT</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
+      <link rel="stylesheet" href="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" type="text/css"/>
 </head>
-<body ng-app="dataApp" ng-cloak>
+<body ng-app='tattva' ng-controller="ctrl" ng-cloak>
+	<div layout="column" ng-clock>
+    <!-- <a ui-sref="guest"></a> -->
+		<div ui-view="header"></div>
+    <div ui-view="content"></div>
+    <div ui-view="footer"></div>
+	</div>
+</body>
 
-
-
-<div>
-<md-button ui-sref="login_reg" class="md-raised md-primary">Login</md-button>
- <a ui-sref="design">Design</a>
-  </div>
-
-
-
-<div ui-view>
-</div >
-
-<!-- <div >
-  <div ui-view="heading"></div>
-  <div ui-view="log"></div>
- 
-</div> -->
-
-
- 
-<script src="angular/angular.js" charset="utf-8"></script>
-<script src="angular-route/angular-route.js" charset="utf-8"></script>
-<script src="angular-animate/angular-animate.min.js"></script>
-<script src="angular-aria/angular-aria.min.js"></script>
-<script src="angular-messages/angular-messages.min.js"></script> 
-
-  <!-- Angular Material Library -->
- <!-- Angular Material Dependencies -->
-
-    <!-- Angular Material Javascript now available via Google CDN; version 1.0.7 used here -->
-     <script src="jquery/dist/jquery.min.js"></script>
+<script src="/angular/angular.js" charset="utf-8"></script>
+ <script src="jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="ace-builds/src-min-noconflict/ace.js"></script>
-    <script src="angular-material/angular-material.min.js"></script>
-    
-    <script type="text/javascript" src="angular-ui-ace/ui-ace.js"></script>
-    <script src="angular-material-icons/angular-material-icons.min.js"></script>
-     <script src="angular-ui-router/release/angular-ui-router.min.js"></script>  
-     <script src="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="angular-ui-ace/ui-ace.js"></script>
+<script src="/angular-animate/angular-animate.min.js" charset="utf-8"></script>
+<script src="/angular-aria/angular-aria.min.js" charset="utf-8"></script>
+<script src="/angular-messages/angular-messages.min.js" charset="utf-8"></script>
+<script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
+<script src="/angular-material-icons/angular-material-icons.min.js" charset="utf-8"></script>
+<script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
+ <script src="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="ng-scrollbars/dist/scrollbars.min.js"></script>
-    <script src="ng-letter-avatar/ngletteravatar.js"></script>
-  <!-- Angular Material Library -->
-
-   <script src="js/dataApp.js"></script>
- 
-
+   <!--  <script src="ng-letter-avatar/ngletteravatar.js"></script> -->
+<!-- <script src="/d3/d3.min.js"></script> -->
+ <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="/js/tattva.js" charset="utf-8"></script>
 
   </body>
   </html>

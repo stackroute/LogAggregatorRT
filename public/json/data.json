@@ -1,0 +1,27 @@
+[
+{
+"namespace" : "apacheTomcat",
+"instance" : "ap_instance",
+"streams" : "stream-1a"
+},
+{
+  "namespace" : "ngnix",
+  "instance" : "nx_instance",
+  "streams" : "stream-2"
+},
+{
+"namespace" : "apacheTomcat",
+"instance" : "ap_instance2",
+"streams" : "stream-1b"
+},
+{
+  "namespace" : "Boa",
+  "instance" : "boa_instance",
+  "streams" : "stream-3"
+},
+{
+  "namespace" : "HFS",
+  "instance" : "hfs_instance",
+  "streams" : "stream-4"
+}
+]
