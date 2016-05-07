@@ -1,4 +1,85 @@
-var tattva = angular.module('tattva', ["ngMaterial","ui.router","ngMdIcons"]);
+
+var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ngLetterAvatar']);
+tattva.controller('AppCtrl', ['$scope', '$rootScope',
+  function($scope) {
+    $scope.operator=['>','<']
+    $scope.showmesecound=true;
+    $scope.showmefirst=true;
+    $scope.namespaces = [{
+      "name": "ngnix",
+      "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
+    }, {
+      "name": "apache",
+      "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
+    }, {
+      "name": "iot-sound",
+      "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
+    }, {
+      "name": "iot-temprature",
+      "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
+    }];
+    $scope.datastreams = [{
+      "name": "ngnix-stream-GET",
+      "namespace": "ngnix"
+    }, {
+      "name": "ngnix-stream-POST",
+      "namespace": "ngnix"
+    }, {
+      "name": "apache-stream-GET",
+      "namespace": "apache"
+    }, {
+      "name": "apache-stream-POST",
+      "namespace": "apache"
+    }];
+//     removestatement:function(){
+//     //  console.log($scope.wlstdef.statements);
+//     var lastItem = $scope.wlstdef.statements.length-1;
+//     console.log(lastItem);
+//   //  $scope.statements.splice(lastItem);
+// };
+
+    $scope.savewatchlist=function(){
+    }
+    $scope.wlstdef = {
+      statements: [],
+      // savejoinby:function('name'){$scope.name=name,console.log($scope.name)},
+      removestatement:function(){
+        var lastItem = $scope.wlstdef.statements.length-1;
+        this.statements.splice(lastItem);
+      },
+      addNewStatement: function(name) {
+        if($scope.showmesecound){
+          $scope.showmesecound=false;
+        }
+        var newStmt = {
+          _id: (this.statements.length + 1),
+          _joinexpressionBy:name,
+          criterias: [],
+          addNewClause: function(name) {
+            if($scope.showmefirst){
+              $scope.showmefirst=false;
+            }
+            var newClause = {_id: (this.criterias.length + 1),_joinby:name };
+            this.criterias.push(newClause);
+          },
+           removecriterias:function(){
+             var lastItem = this.criterias.length-1;
+            this.criterias.splice(lastItem);
+           }
+        }
+        this.statements.push(newStmt);
+      }
+    }
+  }
+]);
+
+tattva.service('wlstDataService', ['$http', function($http){
+    this.getData = function() {
+      return $http.get('/fileFetch');
+    }
+}]);
+
+
 
 tattva.config(function($mdThemingProvider) {
   var primary = $mdThemingProvider.extendPalette('red', {
@@ -80,6 +161,38 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       }
     }
   })
+  .state('watchlist',
+  {
+    url:'/watchlist',
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl: "/partials/watchlists.html"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
+  .state('watchlist.create', {
+    url:'/new',
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl:'/partials/newwatchlist.html',
+        controller: 'AppCtrl'
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
 }]);
 
 tattva.controller('ctrl', function($scope, $state, $mdSidenav, $anchorScroll, $location) {
@@ -151,35 +264,39 @@ tattva.controller('headerCtrl',function($scope,$http){
             var directive = {};
             directive.restrict = 'E';
             directive.templateUrl = "/partials/dashboardlayout.html";
-
+            // directive.link = function(scope, elem, attr) {
+            //   console.log("From dashboardlayout link function: " , scope.myresult.charttype);
+            //   elem.getElementById('graphTab').appendchild('<mygraph type=scope.myresult.charttype></mygraph>');
+            // }
+            // directive.controller = function($scope) {
+            //   $scope.getChartTemplate = function() { return "/partials/" + $scope.myresult.charttype + ".html"; }
+            // };
             directive.scope = {
-               mydata: '=name',
                myresult: '=result',
-							 myname2:'=name2',
 							 mylog:'=data'
             }
 
          return directive;
          });
 
-				 tattva.directive('graph', function() {
-            var directive = {};
-            directive.restrict = 'E';
-            directive.templateUrl = "/partials/graph.html";
-         return directive;
-         });
-				 tattva.directive('data', function() {
-            var directive = {};
-            directive.restrict = 'E';
-            directive.templateUrl = "/partials/data.html";
-         return directive;
-         });
-				 tattva.directive('flow', function() {
-            var directive = {};
-            directive.restrict = 'E';
-            directive.templateUrl = "/partials/flow.html";
-         return directive;
-         });
+				//  tattva.directive('graph', function() {
+        //     var directive = {};
+        //     directive.restrict = 'E';
+        //     directive.templateUrl = "/partials/graph.html";
+        //  return directive;
+        //  });
+				//  tattva.directive('data', function() {
+        //     var directive = {};
+        //     directive.restrict = 'E';
+        //     directive.templateUrl = "/partials/data.html";
+        //  return directive;
+        //  });
+				//  tattva.directive('flow', function() {
+        //     var directive = {};
+        //     directive.restrict = 'E';
+        //     directive.templateUrl = "/partials/flow.html";
+        //  return directive;
+        //  });
          tattva.controller('SalesController', ['$scope','$interval', function($scope, $interval){
              $scope.salesData=[
                  {hour: 1,sales: 54},
@@ -198,7 +315,7 @@ tattva.controller('headerCtrl',function($scope,$http){
                  var hour=$scope.salesData.length+1;
                  var sales= Math.round(Math.random() * 100);
                  $scope.salesData.push({hour: hour, sales:sales});
-             }, 1000);
+             }, 2000);
          }]);
 
                   tattva.directive('linearChart', function($parse, $window){
@@ -301,6 +418,7 @@ tattva.controller('headerCtrl',function($scope,$http){
       function link(scope, el, attr){
 
         var color = d3.scale.category10();
+        console.log(scope.myresult.value);
         var data = scope.myresult.value;
         var width = 230;
         var height =230;
@@ -329,10 +447,23 @@ tattva.controller('headerCtrl',function($scope,$http){
       };
     });
 
-                 tattva.controller('myController', ['$scope',function($scope) {
 
+    // tattva.directive('mygraph', function() {
+    //   return {
+    //     template: '<div ng-include src="computeUrl(myresult.charttype)"></div>',
+    //     controller: function($scope) {
+    //       $scope.computeUrl = function(url) {
+    //         return "/partials/"+url+".html";
+    //       }
+    //     }
+    //   };
+    // });
+
+       tattva.controller('myController', ['$scope',function($scope) {
                 $scope.itemcollection=[
 {"wlname": "WatchlistONE",
+"charttype":"graph",
+"datatype":"data",
   "wldef":{
     "CountryName": "India",
     "CountryCode": "IND"
@@ -340,6 +471,8 @@ tattva.controller('headerCtrl',function($scope,$http){
 	"value":[8, 3, 7]
 },
 	{"wlname": "WatchlistSECNOD",
+  "charttype":"flow",
+  "datatype":"rawdata",
 	  "wldef":{
     "CountryName": "Pakistan",
     "CountryCode": "PAK"
@@ -347,6 +480,8 @@ tattva.controller('headerCtrl',function($scope,$http){
 	"value":[15, 30, 27]
 },
 {	"wlname": "WatchlistTHIRD",
+"charttype":"flow",
+"datatype":"rawdata",
 	  "wldef":{
     "CountryName": "America",
     "CountryCode": "USA"
@@ -354,6 +489,8 @@ tattva.controller('headerCtrl',function($scope,$http){
 	"value":[38, 13, 70]
 },
 	{"wlname": "WatchlistFOUR",
+  "charttype":"graph",
+  "datatype":"data",
 	  "wldef":{
     "CountryName": "Britan",
     "CountryCode": "UK"

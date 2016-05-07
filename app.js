@@ -27,6 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_modules')));
 
+app.use('/', routes);
+app.use('/users', users);
 // app.use('/', routes);
 // app.use('/users', users);
 
@@ -42,7 +44,7 @@ app.get('/login_reg', function(req, res){
 
 app.post('/login_reg1',jsonParser,function (request, response) {
   var body1=request.body;
-  console.log(body1);
+  // console.log(body1);
   //response.send("hi");
 });
 

@@ -124,7 +124,7 @@ body {
 {
   background-color:#eaeaed;
   height: 60px;
-  font-size: 32px;
+  font-size: 24px;
   padding-left: 10px;
 }
 button{
@@ -477,9 +477,57 @@ md-input-container.md-input-invalid [ng-message-exp] {
   text-align:right;
 }
 
+a {
+  color: #FFFFF;
+  text-decoration: none;
+}
+#add{
+  color:white!important;
+}
+#namespace{
+margin-top: 2px;
+}
+
+img{
+  height: 2%;
+  width:2%;
+}
+#output{
+  margin-top: 7em;
+}
+#footer{
+  height: 20px;
+}
+#on
+{
+  padding-top: 10px;
+}
 .outerDiv{
   width: 550px;
   margin: auto;
   margin-top: 100px;
   margin-bottom: 40px;
+}
+
+.watchlist{
+  padding-top: 100px;
+}
+
+.availableWatchlist{
+  padding-top: 100px;
+}
+
+.envelop {
+    margin: 10px;
+    padding: 10px;
+}
+#plus
+{
+  float: right;
+}
+.heading
+{
+  padding-left: 20px;
+  font-weight: bold;
+  padding-top: 15px;
 }

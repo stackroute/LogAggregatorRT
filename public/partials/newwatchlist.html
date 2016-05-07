@@ -1,0 +1,105 @@
+<div class="watchlist">
+
+  <div class='envelop'>
+      <md-input-container>
+          <label>Watch List Name</label>
+          <input type="text" ng-model="wlstdef.name">
+      </md-input-container>
+      <div></div>
+      <md-input-container>
+          <label>Description</label>
+          <textarea ng-model="wlstdef.description"></textarea>
+      </md-input-container>
+      <md-select ng-model="wlstdef.namespace" placeholder="Namespace">
+          <md-select-label>Select a Namespace</md-select-label>
+          <md-option ng-value="ns.name" ng-repeat="ns in namespaces">{{ ns.name }}</md-option>
+      </md-select>
+      <div ng-repeat-start="stmt in wlstdef.statements">
+          <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+            <div class="flex container">
+            <div class="heading">
+              SELECT DATA FROM :
+            </div>
+              <md-select flex-offset="15" ng-model="stmt.srcstream" aria-label="" placeholder="Source Data Stream">
+                  <md-option ng-value="stream.name" ng-repeat="stream in datastreams">{{ stream.name }}</md-option>
+              </md-select>
+              <div class="heading">
+              Where :
+              </div>
+              <div layout="row" ng-repeat-start="clause in stmt.criterias">
+                      <md-select flex-offset="15" ng-model="clause.lfunction" aria-label="" placeholder="Field or dimension">
+                      <md-select-label>Select a field for criteria</md-select-label>
+                   <md-option ng-repeat="field in namespaces">{{ field.dataFields[0].name }}</md-option>
+                  </md-select>
+                  <md-select flex-offset="15" ng-model="clause.operator" aria-label="" placeholder="Operator">
+               <md-option ng-repeat="field in operator">{{ field }}</md-option>
+              </md-select>
+                   <!-- <md-select flex-offset="5" ng-model="clause.lfield" aria-label="" placeholder="Select fields or Measures">
+                      <md-select-label>Select a field for criteria</md-select-label>
+                      <md-option  ng-repeat="field in namespaces">{{ field.dataFields[0].name }}</md-option>
+                  </md-select>  -->
+
+                  <!-- <md-input-container flex-offset="10">
+                    <input ng-model="clause.lfield"><label>Field or dimension</label></input>
+                  </md-input-container> -->
+                  <!-- <md-input-container flex-offset="10">
+                    <input ng-model="clause.operator"><label>Operator</label></input>
+                  </md-input-container> -->
+                  <md-input-container flex-offset="10">
+                    <input ng-model="clause.rfield"><label>Value</label></input>
+                  </md-input-container>
+                  <!-- <md-select flex-offset="5" ng-model="clause.operator" aria-label="" placeholder="Select Operator">
+                      <md-select-label>Select a field for criteria</md-select-label>
+                      <md-option ng-repeat="field in namespaces">{{ field.dataFields[0].name }}</md-option>
+                  </md-select> -->
+                  <!--<md-select flex-offset="5" ng-model="clause.rfunction" aria-label="" placeholder="Select function">
+                      <md-select-label>Select a field for criteria</md-select-label>
+                      <md-option  ng-repeat="field in namespaces">{{ field.dataFields[0].name }}</md-option>
+                  </md-select>
+                  <md-select flex-offset="5" ng-model="clause.rfield" aria-label="" placeholder="Select fields or Measures">
+                      <md-select-label>Select a field for criteria</md-select-label>
+                      <md-option ng-repeat="field in namespaces">{{ field.dataFields[0].name }}</md-option>
+                  </md-select>
+                 <md-select ng-model="clause.logicaloperator" aria-label="" placeholder="Operator">
+                 <md-option>AND</md-option>
+                 <md-option>OR</md-option>
+                 <md-option>NONE</md-option>
+                  </md-select> -->
+              </div>
+              <div ng-repeat-end>
+                <md-button class="md-fab md-mini" ng-click="stmt.removecriterias();" aria-label="">-</md-button>
+              </div>
+              <md-button id="plus" class="md-fab md-mini" aria-label="" ng-show="!showmefirst" ng-click="stmt.addNewClause('And')">AND</md-button>
+              <md-button id="plus" class="md-fab md-mini" aria-label="" ng-show="!showmefirst" ng-click="stmt.addNewClause('OR')">OR</md-button>
+              <md-button id="plus" class="md-fab md-mini" aria-label="" ng-show="showmefirst" ng-click="stmt.addNewClause()">+</md-button>
+      </div>
+
+      </div>
+      </md-whiteframe>
+      <div ng-repeat-end>
+           <md-button class="md-fab md-mini" ng-click="wlstdef.removestatement();" aria-label="">-</md-button>
+           <md-button class="md-fab md-mini" ng-show="!showmesecound" ng-click="wlstdef.addNewStatement('AND');" aria-label="">AND</md-button>
+           <md-button class="md-fab md-mini" ng-show="!showmesecound" ng-click="wlstdef.addNewStatement('OR');" aria-label="">OR</md-button>
+      </div>
+      <md-button class="md-raised" aria-label="" ng-show="showmesecound" ng-click="wlstdef.addNewStatement()">Add Expression</md-button>
+  </div>
+  <div layout="row">
+    <div flex="10">
+    <h3 class="heading">Output To</h3>
+  </div>
+  <md-select flex="20" ng-model="wlstdef.outputstream" aria-label="" placeholder="Stream">
+    <md-option ng-repeat="field in namespaces">{{ field.dataFields[0].name }}</md-option> </md-select>
+   <div flex="10" flex-offset="20">
+   <h3 class="heading">Publish</h3>
+  </div>
+  <md-select flex="20" ng-model="wlstdef.publish" aria-label="" placeholder="Publish">
+    <md-option ng-repeat="field in namespaces">{{ field.dataFields[0].name }}</md-option>
+  </md-select>
+  </div>
+  <md-button flex="5" flex-offset="90" class="md-raised md-primary" ng-click="savewatchlist();">Save</md-button>
+      <h3>
+        Object Structure:
+      </h3>
+      <b>{{wlstdef}}</b>
+
+</div>
