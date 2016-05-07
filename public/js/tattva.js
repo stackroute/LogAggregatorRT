@@ -1,31 +1,28 @@
-var tattva = angular.module('tattva', ["ngMaterial","ui.router"]);
+var tattva = angular.module('tattva', ["ngMaterial","ui.router","ngMdIcons"]);
 
-// tattva.config(function($mdThemingProvider) {
-//   $mdThemingProvider.theme('red')
-//     .primaryPalette('pink')
-//     .accentPalette('orange');
-// });
+tattva.config(function($mdThemingProvider) {
+  var primary = $mdThemingProvider.extendPalette('red', {
+    '500': '00BCD4'
+  });
+
+  $mdThemingProvider.definePalette('primary', primary);
+
+  $mdThemingProvider.theme('default')
+  .primaryPalette('primary')
+  .accentPalette('light-blue')
+  .warnPalette('green')
+  .backgroundPalette('grey');
+});
 
 tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   $stateProvider
   .state('guest',
   {
-    url:"/guest/{series}",
+    url:"/tattva",
     views: {
       "header" : {
         templateUrl: "/partials/header.html",
-        controller: function($scope,$http) {
-          $scope.header="TATTVA - Log Aggregator";
-          // $http.get("/json/guestMenu.json").success(function(data){
-          //   $scope.items=data;
-          // });
-          $scope.loadData = function(){
-            // var url='/' + $stateParams.series ;
-            // console.log($stateParams.series);
-            $http.get('/fetchfile').then(function(response){ $scope.items = response.data; });
-          }
-          $scope.loadData();
-        }
+        controller: "headerCtrl"
       },
       "content" : {
         templateUrl: "/partials/content.html"
@@ -35,18 +32,13 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       },
     }
   })
-  .state('Login',
+  .state('login',
   {
-    url: "Login",
+    url: "/login",
     views: {
       "header" : {
         templateUrl: "/partials/header.html",
-        controller: function($scope,$http) {
-          $scope.header="Login / Sign UP"
-          $http.get("/json/guestMenu.json").success(function(data){
-            $scope.items=data;
-          });
-        }
+        controller: "headerCtrl"
       },
       "content@" : {
         templateUrl: "/partials/login.html"
@@ -56,21 +48,32 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       }
     }
   })
-  .state('Home',
+	.state('user',
   {
-    url: "/",
+    url: "/dashboard",
     views: {
       "header" : {
         templateUrl: "/partials/header.html",
-        controller: function($scope,$http) {
-          $scope.header="Login / Sign UP"
-          $http.get("/json/guestMenu.json").success(function(data){
-            $scope.items=data;
-          });
-        }
+        controller: "headerCtrl"
       },
       "content@" : {
-        templateUrl: "/partials/content.html"
+        templateUrl: "/partials/dashboard.html"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
+	.state('design',
+  {
+    url: "/design",
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl: "/partials/design.html"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
@@ -79,7 +82,7 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   })
 }]);
 
-tattva.controller('ctrl', function($scope, $state, $mdSidenav, $http) {
+tattva.controller('ctrl', function($scope, $state, $mdSidenav, $anchorScroll, $location) {
 
   $state.go('guest');
 
@@ -87,15 +90,295 @@ tattva.controller('ctrl', function($scope, $state, $mdSidenav, $http) {
      $mdSidenav('left').toggle();
    };
 
- // 		$http.get('/').then(function(response){
-  //      $scope.data = response.data;
-  //   });
-	// }
-	// $scope.loadData();
+  //  $scope.hideSignIn=function(){
+  //    $scope.login=false;
+  //  }
+
+   $scope.login = function() {
+    $scope.isMember=true;
+    $scope.signOut=true;
+ 		$scope.login=false;
+ 		$state.go('user');
+  };
+
+  $scope.signout = function(){
+    $scope.isMember=false;
+    $scope.signOut=false;
+    $scope.login=true;
+    $state.go('guest');
+  }
+
+	$scope.gotoSlide1 = function(){
+		$location.hash('slide1');
+		$anchorScroll();
+	}
+	$scope.gotoSlide2 = function(){
+		$location.hash('slide2');
+		$anchorScroll();
+	}
+	$scope.gotoSlide3 = function(){
+		$location.hash('footer');
+		$anchorScroll();
+	}
+  $scope.gotohead = function(){
+		$location.hash('head');
+		$anchorScroll();
+	}
 });
 
-// tattva.service('dataService',function($http){
-//   this.getData=function(){
-//     return $http.get('/fetchfile');
-//   }
-// });
+tattva.controller('headerCtrl',function($scope,$http){
+    $scope.header="TATTVA - CEP";
+    $http.get("/json/guestMenu.json").success(function(data){
+    $scope.items=data;
+    // $scope.show = function() {
+    //   $scope.sublist=true;
+    // };
+    // $scope.hide = function() {
+    //   $scope.sublist=false;
+    // };
+  });
+
+  // $scope.loadData = function(){
+  //   $http.get('/fetchfile').then(function(response){
+  //     $scope.items=response.data;
+  //   });
+  // }
+  // $scope.loadData();
+
+});
+
+         tattva.directive('dashboardlayout', function() {
+            var directive = {};
+            directive.restrict = 'E';
+            directive.templateUrl = "/partials/dashboardlayout.html";
+
+            directive.scope = {
+               mydata: '=name',
+               myresult: '=result',
+							 myname2:'=name2',
+							 mylog:'=data'
+            }
+
+         return directive;
+         });
+
+				 tattva.directive('graph', function() {
+            var directive = {};
+            directive.restrict = 'E';
+            directive.templateUrl = "/partials/graph.html";
+         return directive;
+         });
+				 tattva.directive('data', function() {
+            var directive = {};
+            directive.restrict = 'E';
+            directive.templateUrl = "/partials/data.html";
+         return directive;
+         });
+				 tattva.directive('flow', function() {
+            var directive = {};
+            directive.restrict = 'E';
+            directive.templateUrl = "/partials/flow.html";
+         return directive;
+         });
+         tattva.controller('SalesController', ['$scope','$interval', function($scope, $interval){
+             $scope.salesData=[
+                 {hour: 1,sales: 54},
+                 {hour: 2,sales: 66},
+                 {hour: 3,sales: 77},
+                 {hour: 4,sales: 70},
+                 {hour: 5,sales: 60},
+                 {hour: 6,sales: 63},
+                 {hour: 7,sales: 55},
+                 {hour: 8,sales: 47},
+                 {hour: 9,sales: 55},
+                 {hour: 10,sales: 30}
+             ];
+
+             $interval(function(){
+                 var hour=$scope.salesData.length+1;
+                 var sales= Math.round(Math.random() * 100);
+                 $scope.salesData.push({hour: hour, sales:sales});
+             }, 1000);
+         }]);
+
+                  tattva.directive('linearChart', function($parse, $window){
+            return{
+               restrict:'EA',
+               template:"<svg width='490' height='200'></svg>",
+                link: function(scope, elem, attrs){
+                    var exp = $parse(attrs.chartData);
+
+                    var salesDataToPlot=exp(scope);
+                    var padding = 20;
+                    var pathClass="path";
+                    var xScale, yScale, xAxisGen, yAxisGen, lineFun;
+
+                    var d3 = $window.d3;
+                    var rawSvg=elem.find('svg');
+                    var svg = d3.select(rawSvg[0]);
+
+                    scope.$watchCollection(exp, function(newVal, oldVal){
+                        salesDataToPlot=newVal;
+                        redrawLineChart();
+                    });
+
+                    function setChartParameters(){
+
+                        xScale = d3.scale.linear()
+                            .domain([salesDataToPlot[0].hour, salesDataToPlot[salesDataToPlot.length-1].hour])
+                            .range([padding + 5, rawSvg.attr("width") - padding]);
+
+                        yScale = d3.scale.linear()
+                            .domain([0, d3.max(salesDataToPlot, function (d) {
+                                return d.sales;
+                            })])
+                            .range([rawSvg.attr("height") - padding, 0]);
+
+                        xAxisGen = d3.svg.axis()
+                            .scale(xScale)
+                            .orient("bottom")
+                            .ticks(salesDataToPlot.length - 1);
+
+                        yAxisGen = d3.svg.axis()
+                            .scale(yScale)
+                            .orient("left")
+                            .ticks(5);
+
+                        lineFun = d3.svg.line()
+                            .x(function (d) {
+                                return xScale(d.hour);
+                            })
+                            .y(function (d) {
+                                return yScale(d.sales);
+                            })
+                            .interpolate("basis");
+                    }
+
+                  function drawLineChart() {
+
+                        setChartParameters();
+
+                        svg.append("svg:g")
+                            .attr("class", "x axis")
+                            .attr("transform", "translate(0,180)")
+                            .call(xAxisGen);
+
+                        svg.append("svg:g")
+                            .attr("class", "y axis")
+                            .attr("transform", "translate(20,0)")
+                            .call(yAxisGen);
+
+                        svg.append("svg:path")
+                            .attr({
+                                d: lineFun(salesDataToPlot),
+                                "stroke": "blue",
+                                "stroke-width": 2,
+                                "fill": "none",
+                                "class": pathClass
+                            });
+                    }
+
+                    function redrawLineChart() {
+
+                        setChartParameters();
+
+                        svg.selectAll("g.y.axis").call(yAxisGen);
+
+                        svg.selectAll("g.x.axis").call(xAxisGen);
+
+                        svg.selectAll("."+pathClass)
+                            .attr({
+                                d: lineFun(salesDataToPlot)
+                            });
+                    }
+
+                    drawLineChart();
+                }
+            };
+         });
+
+				 tattva.directive('donutchart', function(){
+      function link(scope, el, attr){
+
+        var color = d3.scale.category10();
+        var data = scope.myresult.value;
+        var width = 230;
+        var height =230;
+        var min = Math.min(width, height);
+        var svg = d3.select(el[0]).append('svg');
+        var pie = d3.layout.pie().sort(null);
+        var arc = d3.svg.arc()
+          .outerRadius(min / 2 * 0.9)
+          .innerRadius(min / 2 * 0.5);
+
+        svg.attr({width: width, height: height});
+        var g = svg.append('g')
+          // center the donut chart
+          .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+
+        // add the <path>s for each arc slice
+        g.selectAll('path').data(pie(data))
+          .enter().append('path')
+            .style('stroke', 'white')
+            .attr('d', arc)
+            .attr('fill', function(d, i){ return color(i) });
+      }
+      return {
+        link: link,
+        restrict: 'E'
+      };
+    });
+
+                 tattva.controller('myController', ['$scope',function($scope) {
+
+                $scope.itemcollection=[
+{"wlname": "WatchlistONE",
+  "wldef":{
+    "CountryName": "India",
+    "CountryCode": "IND"
+  },
+	"value":[8, 3, 7]
+},
+	{"wlname": "WatchlistSECNOD",
+	  "wldef":{
+    "CountryName": "Pakistan",
+    "CountryCode": "PAK"
+  },
+	"value":[15, 30, 27]
+},
+{	"wlname": "WatchlistTHIRD",
+	  "wldef":{
+    "CountryName": "America",
+    "CountryCode": "USA"
+  },
+	"value":[38, 13, 70]
+},
+	{"wlname": "WatchlistFOUR",
+	  "wldef":{
+    "CountryName": "Britan",
+    "CountryCode": "UK"
+  },
+	"value":[58, 32, 17]
+}
+];
+
+	$scope.logdata=[
+{
+"CountryName": "India",
+"CountryCode": "IND"
+},
+{
+"CountryName": "Pakistan",
+"CountryCode": "PAK"
+},
+{
+	"CountryName": "America",
+	"CountryCode": "USA"
+},
+{
+	"CountryName": "Britan",
+	"CountryCode": "UK"
+}
+];
+
+                 }]);

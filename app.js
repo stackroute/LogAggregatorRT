@@ -34,21 +34,11 @@ app.get('/', function(req, res){
   res.render('index');
 });
 
+
 app.get('/login_reg', function(req, res){
    res.sendFile(path.join(__dirname, 'public/data.json'));
 });
-app.get('/fetchfile', function(req, res){
-  res.sendfile(path.join(__dirname, '/json/guestMenu.json'));
-});
 
-
-app.get('/func_link', function(req, res){
-   res.sendFile(path.join(__dirname, 'public/function_data.json'));
-});
-
-app.get('/func_link_data', function(req, res){
-   res.sendFile(path.join(__dirname, 'public/function_data_display.json'));
-});
 
 app.post('/login_reg1',jsonParser,function (request, response) {
   var body1=request.body;
@@ -56,11 +46,6 @@ app.post('/login_reg1',jsonParser,function (request, response) {
   //response.send("hi");
 });
 
-app.post('/func_send_data',jsonParser,function (request, response) {
-  var body1=request.body;
-  console.log(body1);
-  //response.send("hi");
-});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

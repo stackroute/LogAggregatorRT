@@ -8,32 +8,7 @@ dataApp.config(function($stateProvider, $urlRouterProvider) {
     templateUrl: '/partials/Admin_Page.html',
 		controller: 'data_1_Ctrlr'
 
-	})
-  .state('inbox1', {
-    url: '/functional',
-  	templateUrl: '/partials/function_page.html',
-	   controller: 'data_2_Ctrlr'
-
-	}).state('inbox2', {
-    url: '/functional_Edit',
-    templateUrl: '/partials/FunctionEdit.html',
-	  controller: 'data_3_Ctrlr'
-
 	});
-  // .state('inbox1',{
-  //   views: {
-  //     'functional':{
-  //       url: '/functional',
-  //       templateUrl: '/partials/function_page.html',
-  //     	controller: 'data_2_Ctrlr'
-  //     },
-  //     'functional_data' :{
-  //       url: '/functional_Edit',
-  //       templateUrl: '/partials/FunctionEdit.html',
-  //     	controller: 'data_3_Ctrlr'
-  //     }
-  //   }
-  // });
 });
 
 dataApp.controller('data_1_Ctrlr', function($scope, $mdDialog, $http) {
@@ -134,78 +109,3 @@ function DialogController($scope, $mdDialog,$http) {
     $mdDialog.hide(answer);
   };
 };
-
-dataApp.controller('data_2_Ctrlr', ['$scope', '$http','$mdDialog',
-	function($scope, $http, $mdDialog) {
-		//Your controller code goes here
-		$scope.loadData = function() {
-			$http.get('/func_link').then(function(response){ $scope.data = response.data; });
-		}
-		$scope.loadData();
-
-    $scope.selectedUserIndex = undefined;
-    $scope.selectUserIndex = function (index) {
-      if ($scope.selectedUserIndex !== index) {
-        $scope.selectedUserIndex = index;
-      }
-      else {
-        $scope.selectedUserIndex = undefined;
-      }
-    };
-
-    $scope.selectedUserIndex1 = undefined;
-    $scope.selectUserIndex1 = function (index) {
-      if ($scope.selectedUserIndex1 !== index) {
-        $scope.selectedUserIndex1 = index;
-      }
-      else {
-        $scope.selectedUserIndex1 = undefined;
-      }
-    };
-
-    $scope.deleteMe = function(ev) {
-     //  Appending dialog to document.body to cover sidenav in docs app
-       var confirm = $mdDialog.confirm()
-             .title('Delete')
-             .textContent('Are you surely want to delete.')
-             .ariaLabel('Lucky day')
-             .targetEvent(ev)
-             .ok('Yes')
-             .cancel('Cancel');
-       $mdDialog.show(confirm);
-     };
-	}
-]);
-
-dataApp.controller('data_3_Ctrlr', ['$scope', '$http','$mdDialog',
-	function($scope, $http, $mdDialog) {
-
-    $scope.loadData = function() {
-			$http.get('/func_link_data').then(function(response){ $scope.data = response.data; });
-		}
-		$scope.loadData();
-
-    $scope.saveData=function(){
-      var item={fun_name:$scope.data[0].fun_name,Descr:$scope.data[0].Descr,var:$scope.data[0].var,fun:$scope.data[0].fun};
-      console.log(item);
-
-      $http({
-            method  : 'POST',
-            url     : '/func_send_data',
-            data    : item //forms user object
-            // headers : {'Content-Type': 'application/x-www-form-urlencoded'}
-           })
-            .success(function(data) {
-              if (data.errors) {
-                // Showing errors.
-                $scope.errorName = data.errors.name;
-                $scope.errorUserName = data.errors.username;
-                $scope.errorEmail = data.errors.email;
-              } else {
-                $scope.message = data.message;
-              }
-            });
-    };
-
-  }
-]);

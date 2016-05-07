@@ -1,3 +1,4 @@
+
 /*begin -- This Style sheet used in the public/partials/login_reg.html by surya sah*/
 
 .listdemoListControls md-divider {
@@ -92,3 +93,393 @@ border-radius:7px;}
 
 
 /*Style sheet is ended of  public/partials/login_reg.html by surya sah*/
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
+  font: 14px;
+  font-size: auto;
+  margin: auto;
+}
+.fix
+{
+  height: 250px;
+}
+.shad:hover
+{
+    box-shadow:  0px 0px 30px 0px #737373;
+}
+.shad
+{
+    height:455px;
+      border:1px solid #cfcfd6;
+}
+.pray
+{
+  background-color:#eaeaed;
+  height: 60px;
+  font-size: 32px;
+  padding-left: 10px;
+}
+button{
+    cursor: pointer;
+    float: right;
+}
+.flexcontainer {
+	display: -webkit-flex;
+		display: flex;
+ -webkit-flex-direction: row;
+ flex-direction: row;
+ -webkit-flex-wrap:wrap;
+ flex-wrap: wrap;
+ background-color:  #f8f8f9;
+}
+.flex-item
+{
+width:47.5%;
+ padding: 15px;
+}
+
+.axis path,
+.axis line{
+  fill: none;
+  stroke:black;
+  shape-rendering:crispEdge;
+}
+
+.axis text{
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+h1{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+.tick
+{
+  stroke-dasharray: 1, 2;
+}
+
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
+  font: 14px;
+  font-size: auto;
+  margin: auto;
+}
+
+.nav {
+    position: absolute;
+    bottom: 12%;
+    right: 50%;
+    font-size: 18px;
+}
+
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){
+  /*background-color: #0CD4D4;*/
+  position: fixed;
+  color: black;
+}
+
+#hero{
+  background-color: #FDFDFD;
+}
+
+#slide1{
+  padding-top: 60px;
+}
+
+.navlast {
+    position: absolute;
+    bottom: 3%;
+    right: 50%;
+    font-size: 18px;
+}
+
+#slide2Content{
+  padding-top: 80px;
+  margin-bottom: 40px;
+}
+
+.card{
+  width: 33%;
+  background-color: #F8F9F9;
+}
+
+.content{
+  padding-top: 60px;
+}
+
+a{
+  text-decoration: none;
+  color:#E0F2F1;
+}
+
+md-list-item a {
+  color: #868686;
+}
+
+.mainImg{
+  width: 85%;
+  margin: auto;
+}
+
+.person{
+  width: 70%;
+  height: 90%;
+  border-radius: 50%;
+  box-shadow: -1px 0px 20px 1px #0A6969;
+}
+
+.footer_part1{
+  height: 200px;
+  width: 100%;
+  background-color: #454848;
+  padding-top: 30px;
+}
+
+.footer{
+  padding-top: 0px;
+}
+
+.navfooter{
+  float: right;
+  padding-right: 30px;
+}
+
+.copyright{
+  margin-top: 75px;
+}
+
+.full_width{
+  /*padding-top: 40px;*/
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+
+/* Pooja Style sheet*/
+
+.whiteframedemoBasicClassUsage {
+  /* For breakpoint `-xs` */
+  /* For breakpoint `-sm` */
+  /* For breakpoint `-md` */
+  /* For breakpoint `-gt-md` */ }
+.mytabs{
+  padding:0;
+  width:40%;
+  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
+-moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
+
+/* rounded corners */
+-webkit-border-radius: 12px;
+-moz-border-radius: 7px;
+border-radius: 7px;
+
+/* gradients */
+-webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
+-moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
+
+/* rounded corners */
+-webkit-border-radius: 12px;
+-moz-border-radius: 7px;
+border-radius: 7px;
+
+/* gradients */
+background: -webkit-gradient(linear, left top, left bottom,
+color-stop(0%, white), color-stop(15%, white), color-stop(100%, #D7E9F5));
+background: -moz-linear-gradient(top, white 0%, white 55%, #009688 130%);
+}
+
+.mytabs md-tabs.tabs.ng-isolate-scope.md-dynamic-height.flex{
+  padding:0;
+
+}
+#fp{
+  font-size:9pt;
+}
+.inputdemoIcons md-content{
+    width:100%;
+   height:100%;
+  overflow:hidden;
+
+}
+#cb{
+  color:#607D8B;
+  font-size:10pt;
+}
+.bottom{
+  margin-bottom:0;
+}
+
+.ar{
+  margin:0;
+  margin-top:5px;
+  text-align:center;
+}
+#sign{
+  font-size:12pt;
+}
+#reg{
+  background-color:#00695C;
+  width:80%
+
+}
+.bottom p{
+  color:#4E342E;
+    font-size:16pt;
+  font-weight:bold;
+  font-family:monospace;
+}
+.whiteframedemoBasicClassUsage .mic{
+  height:30px;
+}
+
+.whiteframedemoBasicClassUsage md-input-container .ng-pristine{
+  width:95%;
+}
+
+.inputdemoIcons md-icon{
+  size:16px;
+}
+
+  .whiteframedemoBasicClassUsage md-whiteframe {
+    background: #fff;
+   width:450px;;
+    height: 600px;
+    margin:auto;
+-webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
+-moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
+
+/* rounded corners */
+-webkit-border-radius: 12px;
+-moz-border-radius: 7px;
+border-radius: 7px;
+
+/* gradients */
+-webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
+-moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
+
+/* rounded corners */
+-webkit-border-radius: 12px;
+-moz-border-radius: 7px;
+border-radius: 7px;
+
+/* gradients */
+background: -webkit-gradient(linear, left top, left bottom,
+color-stop(0%, white), color-stop(15%, white), color-stop(100%, #fff));
+background: -moz-linear-gradient(top, white 0%, white 55%, #fff 130%); }
+
+
+  @media (max-width: 599px) {
+    .whiteframedemoBasicClassUsage md-whiteframe {
+      margin: 7px;
+      height: 550px;
+      background-color: #c8e4fa; }
+    .whiteframedemoBasicClassUsage md-whiteframe > span {
+      font-size: 0.4em; } }
+  @media (min-width: 600px) and (max-width: 959px) {
+    .whiteframedemoBasicClassUsage md-whiteframe {
+      margin: 20px;
+      height: 550px; }
+    .whiteframedemoBasicClassUsage md-whiteframe > span {
+      font-size: 0.6em; } }
+  @media (min-width: 960px) and (max-width: 1279px) {
+    .whiteframedemoBasicClassUsage md-whiteframe {
+      margin: 20px;
+      height: 550px;
+      background-color: #fcddde; }
+    .whiteframedemoBasicClassUsage md-whiteframe > span {
+      font-size: 0.9em; } }
+  @media (min-width: 1280px) {
+    .whiteframedemoBasicClassUsage md-whiteframe {
+      margin: 25px;
+      background-color: #F2FCE2; }
+    .whiteframedemoBasicClassUsage md-whiteframe > span {
+      font-size: 1.0em; } }
+
+
+.inputdemoIcons .inputIconDemo {
+    min-height: 48px; }
+
+.mic md-icon{
+
+   width:18px;
+  height:18px;
+}
+
+/*
+Login  whiteframe css
+*/
+
+.whiteframedemoBasicClassUsage .login {
+    background: #fff;
+    width:450px;
+    height: 300px;
+    margin:auto;
+    margin-top: 20px;
+  }
+
+
+    #inside{
+      margin:20px;
+
+    }
+
+ md-input-container label {
+
+text-transform: uppercase;
+font-size: 9pt;
+}
+
+.error{
+  text-align:right ;
+  padding-right:8px;
+
+}
+
+
+.mytabs md-input-container input{
+  font-size:11pt;
+  font-family:sans-serif;
+  font-weight: normal;
+
+  color:#262626;
+}
+.mytabs md-input-container .md-errors-spacer{
+  min-height: 0px;
+  min-width: 0px;
+}
+
+.mytabs md-tabs md-ink-bar{
+  color:rgb(121,134,203);
+background-color:   rgb(121,134,203);
+}
+
+md-input-container.md-input-invalid [ng-message-exp] {
+    color: grey;
+    text-align: right;
+}
+
+.msg-error{
+  font-size:9pt;
+  color:grey;
+  text-align:right;
+}
+
+.outerDiv{
+  width: 550px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 40px;
+}

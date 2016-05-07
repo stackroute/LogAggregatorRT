@@ -1,16 +1,51 @@
-<md-toolbar class="md-info">
-  <div class="md-toolbar-tools">
-    <!-- <ng-md-icon class="menu" icon="menu" ng-click="openLeftMenu()"></ng-md-icon> -->
-    <!-- <button type="button" ng-click="openLeftMenu()"name="button">menu</button>   -->
-    <md-icon class="icon" ng-click="openLeftMenu()" md-svg-src="images/svg/menu-button.svg"></md-icon>
-    <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">{{header}}</span></h2>
-  </div>
-</md-toolbar>
-<md-sidenav md-component-id="left" class="md-sidenav-left">
-  <md-list flex>
-    <md-list-item class="sideNavItem" ng-repeat="item in items" ng-click="null">
-      <a ui-sref="{{item.menu}}">{{item.menu}}</a>
-    </md-list-item>
-    <div ui-view></div>
-  </md-list>
-</md-sidenav>
+<div ng-controller="headerCtrl" id="head">
+  <!-- <a href="http://github.com/stackroute/LogAggregatorRT"> -->
+  <!-- <img style="position: absolute; top: 0; right: 0; border: 0; z-index:9999" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a> -->
+  <md-toolbar class="md-info">
+    <div class="md-toolbar-tools" layout="row">
+      <div class="" flex="5">
+        <!-- <md-icon class="icon" ng-show='isMember' ng-click="openLeftMenu()" md-svg-src="images/svg/menu-button.svg"></md-icon> -->
+        <ng-md-icon icon="menu" ng-show='isMember' ng-click="openLeftMenu()" style="fill: white" size="25"></ng-md-icon>
+      </div>
+      <div class="" flex="85">
+        <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">{{header}}</span></h2>
+      </div>
+      <div class="" flex="10" ng-show='signOut'>
+        <a ui-sref="guest"><md-button ng-click="signout()">Sign Out</md-button></a>
+      </div>
+      <div class="" flex="10" ng-show='login'>
+        <a ui-sref="login"><md-button ng-click="hideSignIn()">Sign IN</md-button></a>
+      </div>
+    </div>
+  </md-toolbar>
+  <md-sidenav md-component-id="left" class="md-sidenav-left">
+    <md-content>
+      <span><img ng-src="/images/LogoWipro.jpg"/></span>
+      <span><h3>WIPRO</h3></span>
+  </md-content>
+  <md-divider></md-divider>
+  <md-list>
+    <md-list-item ng-repeat="item in items" >
+      <div ng-mouseover="sublist=true" ng-mouseleave="sublist=false">
+        <a ui-sref="{{item.link}}">{{item.menu}}</a>
+          <md-list ng-if="item.children.length > 0" >
+            <md-list-item  ng-show="sublist" ng-repeat="child in item.children">
+              <a ui-sref="{{child.link}}">{{child.menu}}</a>
+            </md-list-item>
+          </md-list>
+        </div>
+      </md-list-item>
+    </md-list>
+    <md-divider></md-divider>
+    <md-content>
+      <md-list>
+        <md-list-item>
+          <h>Stackroute</h3>
+        </md-list-item>
+        <md-list-item>
+          <a href="#">Privacy</a> & <a href="#">Terms</a>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
+</div>

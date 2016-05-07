@@ -11,6 +11,8 @@
     "angular-ui-router": "^0.2.18",
     "angular-material": "^1.0.7",
     "ng-letter-avatar": "ngletteravatar#^4.0.2",
-    "angular-ui-ace": "bower"
+    "angular-ui-ace": "bower",
+    "angular-material-icons": "^0.7.0",
+    "angular-ui-router": "^0.2.18"
   }
 }
