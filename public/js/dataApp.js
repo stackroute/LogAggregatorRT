@@ -1,5 +1,5 @@
 
-var dataApp = angular.module('dataApp', ['ui.router','ngMaterial', 'ngMessages','ngMdIcons','xeditable','ngLetterAvatar','ui.ace']);
+var dataApp = angular.module('dataApp', ['ui.router','ngMaterial', 'ngMessages','ngMdIcons','xeditable']);
 
 dataApp.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
