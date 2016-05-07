@@ -16,8 +16,8 @@
         "link" : "instance"
       },
       {
-        "menu" : "Streams",
-        "link" : "streams"
+        "menu" : "MainStreams",
+        "link" : "mainstream"
       },
       {
         "menu" : "Functions",

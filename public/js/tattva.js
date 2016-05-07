@@ -1,5 +1,5 @@
 
-var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router']);
+var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ngLetterAvatar']);
 tattva.controller('AppCtrl', ['$scope', '$rootScope',
   function($scope) {
     $scope.operator=['>','<']
@@ -172,6 +172,138 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       },
       "content@" : {
         templateUrl: "/partials/design.html"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
+
+  .state('mainstream',
+  {
+    url:'/streams',
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl: "/partials/mainstream.html"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
+
+  .state('mainstream.subscription',
+  {
+    url:'/subscription',
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl: "/partials/index1.html"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
+  .state('mainstream.streams',
+  {
+    url:'/streams',
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl: "/partials/indexview.html"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
+  .state('mainstream.function',
+  {
+    url:'/function',
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl: "/partials/index3.html"
+
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
+  .state('mainstream.watchlist',
+  {
+    url:'/watchlist',
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl: "/partials/index4.html"
+
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
+  .state('mainstream.streams.viewInstance',
+  {
+  	url:'/:name',
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl: "/partials/viewInstance.html"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
+  .state('mainstream.streams.viewdata',
+  {
+  	url:'/:name',
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl: "/partials/viewdata.html"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
+  .state('mainstream.create',
+  {
+      url: '/create',
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl: "/partials/indexCreate.html"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
@@ -638,3 +770,105 @@ tattva.controller('headerCtrl',function($scope,$http){
                      $mdDialog.hide(answer);
                    };
                  };
+
+// swagat controller
+
+tattva.directive('query',function(){
+var directive={};
+directive.restrict="E";
+directive.templateUrl="/partials/query.html";
+return directive;
+});
+
+
+tattva.controller('routerCtrl',['$scope', '$http',function($scope, $http){
+  $scope.loadData=function()
+{
+   //console.log($routeParams.series);
+	 // var url = '/data/' + $routeParams.series;
+	 $http.get('/viewStreams').then(function(response){ $scope.data = response.data;});
+};
+$scope.loadData();
+}]);
+
+tattva.controller('VICtrl',['$scope', '$http' , '$stateParams',function($scope,$http,$stateParams){
+    // console.log(typeof $stateParams.name);
+       $scope.objectJson=JSON.parse($stateParams.name);
+    // console.log(typeof $stateParams.name);
+       $scope.params=$scope.objectJson.streams;
+       $scope.avatar=$scope.objectJson.instance;
+    // $scope.params=$scope.objectJson.streams;
+    // console.log($scope.objectJson.streams);
+    // alert($scope.params);
+    // $scope.loadData=function(){
+    // $http.get('/json/'+url).then(function(response){$scope.data = response.data});
+    // };
+    // $scope.loadData();
+}]);
+
+tattva.controller('viewCtrl',['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
+    $scope.value=JSON.parse($stateParams.name);
+    //console.log($scope.value);
+}]);
+
+tattva.controller('createController', ['$scope', '$http','namespaceService', 'instanceService', function($scope, $http, namespaceService, instanceService){
+  // $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+  //     'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+  //     'WY').split(' ').map(function(state) {
+  //         return {abbrev: state};
+  //       })
+
+  // $scope.loadData=function(){
+  // $http.get('/viewNamespace').then(function(response){$scope.data = response.data;});
+  // };
+  // $scope.loadData();
+  // console.log(data);
+
+  // $scope.namespace=["n1","n2","n3","n4","n5"];
+  // $scope.instance=["i1","i2","i3","i4"]
+  // $scope.field=["ip", "temperature", "humidity", "voltage"];
+  $scope.operator=[">", ">=", "<", "<=", "==", "!=" ]
+  namespaceService.getData().success(function(data){
+  $scope.namespace_collection=data;
+});
+  instanceService.getData().success(function(data){
+  $scope.instance_collection=data;
+});
+
+  $scope.save=function(){
+  // console.log("Saved");
+
+  var streamData={namespace : $scope.user_namespace.name , instance : $scope.user_instance.name , nameofstream : $scope.user_streamName , description : $scope.stringDescription , query : {field: $scope.user_fields , operator: $scope.user_operator , value: $scope.user_value}};
+  console.log(streamData);
+  $http({
+      method : 'post',
+      url : '/filewrite',
+      data : streamData
+    }).success(function(data){
+  if(data.errors){
+    $scope.errorName = data.errors.name;
+    $scope.errorUserName = data.errors.username;
+    $scope.errorEmail = data.errors.email;
+    }
+  else{
+    $scope.message=data.message;
+}
+});
+}
+  $scope.cancel=function(){
+  console.log("Cancelled");
+}
+}]);
+
+
+tattva.service('namespaceService',['$http',function($http){
+this.getData=function(){
+return $http.get('/viewNamespace');
+}
+}]);
+
+tattva.service('instanceService',['$http',function($http){
+this.getData=function(){
+return $http.get('/viewInstance')
+}
+}]);
