@@ -1,5 +1,5 @@
 
-var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ui.ace','ngScrollbars']);
+var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ui.ace','ngLetterAvatar']);
 tattva.controller('AppCtrl', ['$scope', '$rootScope',
   function($scope) {
     $scope.operator=['>','<']
@@ -184,7 +184,7 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   {
     url: "/instance",
         templateUrl: "/partials/createInstance.html",
-         controller:"instCtrl"  
+         controller:"instCtrl"
   })
   .state('design.listInstance', {
         url: "/instance/listInstance",
@@ -911,7 +911,7 @@ tattva.controller('LoginCtrl', ['$scope', '$http', '$state',
       //Your controller code goes here
       $scope.loadData = function() {
         $http.get('/login_reg').then(function(response){
-     
+
        var tabs = [
             { title: 'Login'},
             { title: 'Register'}
@@ -931,11 +931,11 @@ tattva.controller('LoginCtrl', ['$scope', '$http', '$state',
         name:'',
         email:'',
         pwd:'',
-        cfpwd:'' 
+        cfpwd:''
       }
     });
 
-  })};  
+  })};
       $scope.loadData();
 
       $scope.signUp=function(){
@@ -946,14 +946,14 @@ tattva.controller('LoginCtrl', ['$scope', '$http', '$state',
           }
     }
 
-     
-    
+
+
   ]);
 
 tattva.controller("instCtrl",["$scope","$state","$http",function($scope,$state,$http,$mdDialog,$mdMedia){
 
    $scope.submitInstance=function()
-  { 
+  {
     $state.go('design.submitInstance');
 
    }
@@ -972,7 +972,7 @@ tattva.controller("viewinstCtrl",["$scope","$state","$http","$stateParams","$mdD
       }
       $scope.loadData();
 
-    
+
       $scope.status='';
   $scope.customFullscreen=$mdMedia('xs') || $mdMedia('sm');
   $scope.addInstance= function($event){
@@ -986,13 +986,13 @@ tattva.controller("viewinstCtrl",["$scope","$state","$http","$stateParams","$mdD
          parent: angular.element(document.body),
             scope: $scope
 
-        
+
       }).then(function(answer) {
         $scope.status = 'You decided to get rid of your debt.';
       }, function() {
         $scope.status = 'You decided to keep your debt.';
       });
-   
+
 
 
    $scope.$watch(function() {
@@ -1012,7 +1012,7 @@ tattva.controller("viewinstCtrl",["$scope","$state","$http","$stateParams","$mdD
       location:""
 
      };
-      
+
     $scope.instanceSubmit=function(){
 
     var data={
@@ -1025,23 +1025,23 @@ tattva.controller("viewinstCtrl",["$scope","$state","$http","$stateParams","$mdD
       data: data
     })
      .success(function(response) {
-      
+
               if (data.errors) {
                 $scope.errorName = data.errors.name;
                 $scope.errorUserName = data.errors.username;
                 $scope.errorEmail = data.errors.email;
               } else {
-               
+
                 $scope.data=response;
                /*$state.go("design.submitInstance.viewInstance({name: '"+$scope.nspname+"' })");*/
-              } 
-          
+              }
+
 
 
             });
-         
+
     $mdDialog.hide();
-          
+
   }
 
   }
@@ -1137,5 +1137,3 @@ $scope.loadData();
 
   }
 ]);
-
-
