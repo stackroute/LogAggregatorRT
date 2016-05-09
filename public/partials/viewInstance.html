@@ -15,7 +15,7 @@
           <p>{{instance[$index].ip}}</p>
           <p>{{instance[$index].location}}</p>
         </div>
-       
+
 
 </md-item-content>
 </md-button>
@@ -33,16 +33,111 @@
           <p>{{instance[$index+1].ip}}</p>
           <p>{{instance[$index+1].location}}</p>
         </div>
-        
+
         <md-divider></md-divider>
 
 </md-item-content>
 
 </md-button>
 <md-divider></md-divider>
-   </md-list-item>  
+   </md-list-item>
 </md-content>
-   
+
+</md-list>
+<div flex="10">
+  <md-button class="md-fab md-mini" aria-label="Favorite" ui-sref="design.submitInstance.viewInstance.addInstance" ng-click="addInstance($event)">
+          <md-icon md-svg-icon="image/svg/add-plus-button.svg"></md-icon>
+        </md-button>
+ </div>
+</div>
+</div>
+
+
+<!-- <div>
+<md-card>
+<md-card-content>
+<div layout="row" class="md-list-item-text md-tile-left inset">
+
+  <div layout-align="end center">
+    <ng-letter-avatar data={{params}} shape="round" size="20px"></ng-letter-avatar>
+  </div>
+{{params}}
+<a ui-sref="streams.viewdata({name: '{{objectJson}}'})"><md-card-actions layout-align="end center">
+
+<md-icon md-svg-src="images/editing.svg" alt="edit" ></md-icon>
+</md-card-action>
+</a>
+
+</div>
+</md-card-content>
+
+</md-card>
+</div> -->
+
+<div ng-controller="VICtrl">
+<md-grid-list flex md-cols="12" md-row-height="40px" md-gutter="12px" layout-padding layout-margin>
+ <md-grid-tile md-rowspan="2" md-colspan="6">
+   <div layout="row" class="md-list-item-text md-tile-left inset">
+     <div>
+      <ng-letter-avatarlflex-offset="5" data={{avatar}} shape="round" size="20px"></ng-letter-avatar>
+      {{params}}
+      <a ui-sref="mainstream.streams.viewdata({name: '{{objectJson}}'})">
+  <!--   <md-card-actions layout-align="end center"> -->
+      <md-icon md-svg-src="images/editing.svg" alt="edit" ></md-icon>
+  <!--   </md-card-actions> -->
+      </a>
+    </div>
+  </div>
+ </md-grid-tile>
+</md-grid-list>
+</div>
+
+=======
+<div class="viewInst listdemoBasicUsage buttondemoBasicUsage">
+<div layout="row">
+
+<md-list class="listInst" flex="90">
+<md-content class="instanceList">
+<md-list-item class="md-3-line" ng-repeat="object in instance" ng-if="$index % 2 == 0" layout="row">
+<md-button ng-href="{{googleUrl}}" target="_blank">
+<md-item-content layout="row">
+<div flex="20">
+ <ng-letter-avatar data={{instance[$index].name}} avatarcustombgcolor="#2e2eb8" size=16px shape="round"></ng-letter-avatar>
+ </div>
+
+      <div flex="80" class="eachinst md-list-item-text" layout="column">
+         <h3> {{instance[$index].name}}</h3>
+          <p>{{instance[$index].ip}}</p>
+          <p>{{instance[$index].location}}</p>
+        </div>
+
+
+</md-item-content>
+</md-button>
+
+ <md-divider></md-divider>
+<md-button ng-href="{{googleUrl}}" target="_blank">
+
+<md-item-content layout="row" >
+<div flex="20" ng-if="instance.length > $index+1">
+ <ng-letter-avatar  data={{instance[$index+1].name}} avatarcustombgcolor="#2e2eb8" size=12px shape="round"></ng-letter-avatar>
+ </div>
+
+      <div flex="80" class="eachinst md-list-item-text" layout="column" ng-if="instance.length > $index+1">
+          <h3>{{instance[$index+1].name}}</h3>
+          <p>{{instance[$index+1].ip}}</p>
+          <p>{{instance[$index+1].location}}</p>
+        </div>
+
+        <md-divider></md-divider>
+
+</md-item-content>
+
+</md-button>
+<md-divider></md-divider>
+   </md-list-item>
+</md-content>
+
 </md-list>
 <div flex="10">
   <md-button class="md-fab md-mini" aria-label="Favorite" ui-sref="design.submitInstance.viewInstance.addInstance" ng-click="addInstance($event)">
@@ -92,3 +187,4 @@
 </md-grid-list>
 </div>
 
+>>>>>>> e35064730a9416992e2dca135fe96397ad3a8af6
