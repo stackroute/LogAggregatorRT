@@ -1,19 +1,21 @@
  [
   {
     "menu" : "Dashboard",
-    "link" : "user"
+    "link" : "user",
+    "icon" : "dashboard"
   },
   {
     "menu" : "Design",
     "link" : "design",
+    "icon" : "playlist_add",
     "children" : [
       {
         "menu" : "Namespace",
-        "link" : "design.namespace"
+        "link" : "namespace"
       },
       {
         "menu" : "Instance",
-        "link" : "design.instance"
+        "link" : "instance"
       },
       {
         "menu" : "MainStreams",
@@ -21,7 +23,7 @@
       },
       {
         "menu" : "Functions",
-        "link" : "functions"
+        "link" : "function"
       },
       {
         "menu" : "Watchlist",
@@ -31,14 +33,18 @@
   },
   {
     "menu" : "Organisation",
-    "link" : "organisation"
+    "link" : "organisation",
+    "icon" : "group"
   },
   {
     "menu" : "Action",
-    "link" : "action"
+    "link" : "action",
+    "icon" : "gavel"
   },
   {
     "menu" : "Notification",
-    "link" : "notification"
+    "link" : "notification",
+    "icon" :  "notifications"
+
   }
 ]

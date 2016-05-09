@@ -41,7 +41,7 @@ app.use('/users', users);
 var data1=[];
 
 app.get('/nameSpaceList', function(req, res){
-  res.sendFile(path.join(__dirname, 'public/json/namespace.json'));
+  res.sendFile(path.join(__dirname, 'public/json/listnamespace.json'));
 });
 
 app.post('/createNamespacePost',jsonParser,function (request, response) {
@@ -75,30 +75,21 @@ console.log(data);
 // });
 
 
-
-app.get('/login_reg', function(req, res){
-   res.sendFile(path.join(__dirname, 'public/data.json'));
+app.get('/org_admin', function(req, res){
+   res.sendFile(path.join(__dirname, 'public/json/admindata.json'));
 });
-
-
 app.post('/login_reg1',jsonParser,function (request, response) {
   var body1=request.body;
   // console.log(body1);
   //response.send("hi");
 });
 
-/*app.get('/',function(req,res){
-
-   res.render('index');
-});*/
-
-app.get('/login_reg',function(req,res){
-
-   res.send("OK");
+app.get('/login_reg', function(req, res){
+   res.sendFile(path.join(__dirname, 'public/data.json'));
 });
 
-app.get('/functionlist',function(req,res){
 
+app.get('/functionlist',function(req,res){
    res.sendFile(path.join(__dirname, 'public/data/functionlist.json'));
 });
 

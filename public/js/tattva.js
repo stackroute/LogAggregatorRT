@@ -155,78 +155,137 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
         controller: "headerCtrl"
       },
       "content@" : {
-        templateUrl: "/partials/Admin_Page.html"
+        templateUrl: "/partials/Admin_Page.html",
+          controller: "orgCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
       }
     }
   })
-  .state('design',
+
+  .state('instance',
   {
-    url: "/design",
+    url: "/instance",
     views: {
       "header" : {
         templateUrl: "/partials/header.html",
         controller: "headerCtrl"
       },
       "content@" : {
-        templateUrl: "/partials/design.html"
+        templateUrl: "/partials/createInstance.html",
+          controller: "instCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
       }
     }
   })
-
-  .state('design.instance',
-  {
-    url: "/instance",
-    templateUrl: "/partials/createInstance.html",
-    controller:"instCtrl"
-  })
-  .state('design.listInstance', {
+  .state('instance.listInstance', {
     url: "/instance/listInstance",
     templateUrl: "partials/listInstance.html"
     // controller:"createInstanceCtrl"
   })
-  .state('design.submitInstance', {
+  .state('instance.submitInstance', {
     url: "/submitInstance",
-    templateUrl: "partials/listInstance.html",
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+         templateUrl: "partials/listInstance.html",
     controller:"instCtrl"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+
   })
-  .state('design.submitInstance.viewInstance', {
+  .state('instance.submitInstance.viewInstance', {
     url: "/:name",
     templateUrl:"partials/viewInstance.html",
     controller:"viewinstCtrl"
   })
-  .state('design.submitInstance.viewInstance.addInstance',{
+  .state('instance.submitInstance.viewInstance.addInstance',{
     url:"/addInstance",
     controller:"viewinstCtrl"
-  }).state('design.submitInstance.viewInstance.createInstance',{
+  }).state('instance.submitInstance.viewInstance.createInstance',{
     url:"/createdialogInstance/:nspname",
     controller:"InstDialogctrl"
   })
 
 
-  .state('design.function',
+  // .state('mainstream.streams',
+  // {
+  //   url:'/streams',
+  //   views: {
+  //     "header" : {
+  //       templateUrl: "/partials/header.html",
+  //       controller: "headerCtrl"
+  //     },
+  //     "content@" : {
+  //       templateUrl: "/partials/indexview.html"
+  //     },
+  //     "footer" : {
+  //       templateUrl: "/partials/footer.html"
+  //     }
+  //   }
+  // })
+  .state('function',
   {
     url:'/function',
-    templateUrl: "partials/functionlist.html",
+     views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+         templateUrl: "partials/functionlist.html",
     controller:"functionlistCtrl"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+
   })
-  .state('inbox1', {
+  .state('function.inbox2', {
     url: '/functional',
-    templateUrl: '/partials/FunctionEdit.html',
+     views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+     templateUrl: '/partials/FunctionEdit.html',
     controller: 'functionEditCtrl'
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
 
   })
-  .state('design.addfunction', {
+  .state('function.addfunction', {
     url:"/addFunction",
+     views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
     templateUrl:"partials/cfunctions.html"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+
   })
 
-<!--Streams-->
+
   .state('mainstream',
   {
     url:'/streams',
@@ -278,32 +337,57 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
     templateUrl: "/partials/indexCreate.html",
     controller: 'createController'
 })
- <!--=====-->
 
-  .state('design.namespace', {
+
+  .state('namespace', {
     url: "/namespace",
-    templateUrl: "partials/namespace.html",
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+         templateUrl: "partials/namespace.html",
     controller:"createNamespaceCtrl"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
   })
-  // .state('design.namespace', {
-  //   url: "/namespace",
-  //   templateUrl: "partials/namespace.html",
-  //   controller:"createNamespaceCtrl"
-  // })
-  // .state('namespace', {
-  //   url: "/namespace",
-  //   templateUrl: "partials/namespace.html",
-  //   controller:"createNamespaceCtrl"
-  // })
-  .state('design.listNameSpace', {
+  .state('namespace.listNameSpace', {
     url: "/namespace/listNameSpace",
-    templateUrl: "partials/listNamespace.html",
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+       templateUrl: "partials/listNamespace.html",
     controller:"createNamespaceCtrl"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+
   })
-  .state('design.createNamespace', {
+  .state('namespace.createNamespace', {
     url: "/createNamespace",
-    templateUrl: "partials/createNamespace.html",
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+      templateUrl: "partials/createNamespace.html",
     controller:"createNamespaceCtrl"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+
 
   })
 
@@ -392,20 +476,8 @@ tattva.controller('headerCtrl',function($scope,$http){
   $scope.header="TATTVA - CEP";
   $http.get("/json/guestMenu.json").success(function(data){
     $scope.items=data;
-    // $scope.show = function() {
-    //   $scope.sublist=true;
-    // };
-    // $scope.hide = function() {
-    //   $scope.sublist=false;
-    // };
   });
 
-  // $scope.loadData = function(){
-  //   $http.get('/fetchfile').then(function(response){
-  //     $scope.items=response.data;
-  //   });
-  // }
-  // $scope.loadData();
 
 });
 
@@ -856,11 +928,73 @@ tattva.service('instanceService',['$http',function($http){
 
 /*Pooja Singh*/
 /*login*/
+tattva.controller('orgCtrl', function($scope, $mdDialog, $http) {
+    //Your controller code goes here
+    $scope.loadData = function() {
+      $http.get('/org_admin').then(function(response){ $scope.data = response.data; });
+    }
+    $scope.loadData();
+
+
+
+    $scope.selectedUserIndex = undefined;
+    $scope.selectUserIndex = function (index) {
+      if ($scope.selectedUserIndex !== index) {
+        $scope.selectedUserIndex = index;
+      }
+      else {
+        $scope.selectedUserIndex = undefined;
+      }
+    };
+
+    $scope.selectedUserIndex1 = undefined;
+    $scope.selectUserIndex1 = function (index) {
+      if ($scope.selectedUserIndex1 !== index) {
+        $scope.selectedUserIndex1 = index;
+      }
+      else {
+        $scope.selectedUserIndex1 = undefined;
+      }
+    };
+
+    $scope.showAdd = function(ev) {
+   $mdDialog.show({
+     controller: DialogController,
+     template: '<md-dialog aria-label="Mango (Fruit)">'+
+     '<md-content class="md-padding"> <form name="userForm" ng-submit="saveData()">'+
+     '<div layout layout-sm="column">'+
+     '<md-input-container flex> <label>User Name</label> <input ng-model="uName"> </md-input-container> '+
+     '</div>'+
+      '<md-input-container flex> <label>Email ID</label> <input ng-model="uEmail"> </md-input-container>'+
+      '<div layout layout-sm="column">'+
+      '<md-input-container flex> <label>Password</label> <input ng-model="uPassword"> </md-input-container>'+
+      '</form> </md-content> <div class="md-actions" layout="row"> '+
+      '<span flex></span> <md-button ng-click="answer(\'not useful\')"> Cancel </md-button>'+
+      ' <md-button type="submit" class="md-primary"> Save </md-button>'+
+      ' </div>'+
+      '</md-dialog>',
+     targetEvent: ev,
+   });
+
+ }
+
+ $scope.deleteMe = function(ev) {
+    var confirm = $mdDialog.confirm()
+          .title('Delete')
+          .textContent('Are you surely want to delete.')
+          .ariaLabel('Lucky day')
+          .targetEvent(ev)
+          .ok('Yes')
+          .cancel('Cancel');
+    $mdDialog.show(confirm);
+  };
+});
+
 tattva.controller('LoginCtrl', ['$scope', '$http', '$state',
 function($scope, $http, $state) {
   //Your controller code goes here
   $scope.loadData = function() {
-    $http.get('/login_reg').then(function(response){
+  // $http.get('/login_reg').then(function(response){
 
       var tabs = [
         { title: 'Login'},
@@ -885,7 +1019,8 @@ function($scope, $http, $state) {
         }
       });
 
-    })};
+    //})
+};
     $scope.loadData();
 
     $scope.signUp=function(){
@@ -905,7 +1040,7 @@ tattva.controller("instCtrl",["$scope","$state","$http",function($scope,$state,$
   $scope.selectedIndex = 1;
   $scope.submitInstance=function()
   {
-    $state.go('design.submitInstance');
+    $state.go('instance.submitInstance');
 
   }
   $scope.loadData=function(){
@@ -1121,22 +1256,22 @@ tattva.controller("createNamespaceCtrl",["$scope","$state","$http","$mdToast","$
     .position("bottom right");
     $mdToast.show(toast).then(function(response) {
 
-      $state.go("design.listNameSpace");
+      $state.go("namespace.listNameSpace");
     });
 
-    $http({
-      method  : 'POST',
-      url     : '/createNamespacePost',
-      data    : $scope.nameSpace.dataSchema
-      // headers : {'Content-Type': 'application/x-www-form-urlencoded'}
-    })
-    .success(function(data) {
-      // if (data.errors) {
-      //   $scope.errorName = data.errors.name;;
-      // } else {
-      //   $scope.message = data.message;
-      // }
-    });
+    // $http({
+    //   method  : 'POST',
+    //   url     : '/createNamespacePost',
+    //   data    : $scope.nameSpace.dataSchema
+    //   // headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+    // })
+    // .success(function(data) {
+    //   // if (data.errors) {
+    //   //   $scope.errorName = data.errors.name;;
+    //   // } else {
+    //   //   $scope.message = data.message;
+    //   // }
+    // });
 
   }
 
