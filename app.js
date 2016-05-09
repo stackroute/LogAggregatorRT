@@ -56,6 +56,14 @@ app.get('/', function(req, res){
   res.render('index');
 });
 
+app.get('/org_admin', function(req, res){
+   res.sendFile(path.join(__dirname, 'public/json/admindata.json'));
+});
+app.post('/login_reg1',jsonParser,function (request, response) {
+  var body1=request.body;
+  // console.log(body1);
+  //response.send("hi");
+});
 
 app.get('/login_reg', function(req, res){
    res.sendFile(path.join(__dirname, 'public/data.json'));
