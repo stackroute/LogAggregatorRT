@@ -162,7 +162,7 @@ body {
 }
 .shad
 {
-    height:455px;
+    height:490px;
       border:1px solid #cfcfd6;
 }
 .pray
@@ -888,15 +888,7 @@ body {
 {
   height: 250px;
 }
-.shad:hover
-{
-    box-shadow:  0px 0px 30px 0px #737373;
-}
-.shad
-{
-    height:455px;
-      border:1px solid #cfcfd6;
-}
+
 .pray
 {
   background-color:#eaeaed;
@@ -1572,10 +1564,6 @@ margin:15px;
   font-family: 'Open Sans';
   font-size:9pt;
 }
-
-
-
-
 .envelop {
     margin: 10px;
     padding: 10px;
@@ -1590,7 +1578,6 @@ margin:15px;
   font-weight: bold;
   padding-top: 15px;
 }
-<<<<<<< HEAD
 
 #createNameSpaceInputBtn{
   margin-left: 25%;

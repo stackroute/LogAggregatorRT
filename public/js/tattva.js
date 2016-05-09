@@ -542,7 +542,7 @@ tattva.controller('SalesController', ['$scope','$interval', function($scope, $in
 tattva.directive('linearChart', function($parse, $window){
   return{
     restrict:'EA',
-    template:"<svg width='490' height='200'></svg>",
+    template:"<svg width='470' height='200'></svg>",
     link: function(scope, elem, attrs){
       var exp = $parse(attrs.chartData);
 
