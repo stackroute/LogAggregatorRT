@@ -1,5 +1,6 @@
 
 var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ui.ace','ngLetterAvatar']);
+
 tattva.controller('AppCtrl', ['$scope', '$rootScope',
   function($scope) {
     $scope.operator=['>','<']
@@ -952,15 +953,16 @@ tattva.controller('LoginCtrl', ['$scope', '$http', '$state',
 
 tattva.controller("instCtrl",["$scope","$state","$http",function($scope,$state,$http,$mdDialog,$mdMedia){
 
+  $scope.selectedIndex = 1;
    $scope.submitInstance=function()
   {
     $state.go('design.submitInstance');
 
    }
-    $scope.loadData=function(){
+   $scope.loadData=function(){
      $http.get('/submitInstance').then(function(response){$scope.data = response.data; console.log($scope.data)});
   }
-  $scope.loadData();
+   $scope.loadData();
 
 
   }]);
