@@ -167,48 +167,55 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       }
     }
   })
-  .state('design',
+
+  .state('instance',
   {
-    url: "/design",
+    url: "/instance",
     views: {
       "header" : {
         templateUrl: "/partials/header.html",
         controller: "headerCtrl"
       },
       "content@" : {
-        templateUrl: "/partials/design.html"
+        templateUrl: "/partials/createInstance.html",
+          controller: "instCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
       }
     }
   })
-
-  .state('design.instance',
-  {
-    url: "/instance",
-    templateUrl: "/partials/createInstance.html",
-    controller:"instCtrl"
-  })
-  .state('design.listInstance', {
+  .state('instance.listInstance', {
     url: "/instance/listInstance",
     templateUrl: "partials/listInstance.html"
     // controller:"createInstanceCtrl"
   })
-  .state('design.submitInstance', {
+  .state('instance.submitInstance', {
     url: "/submitInstance",
-    templateUrl: "partials/listInstance.html",
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+         templateUrl: "partials/listInstance.html",
     controller:"instCtrl"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+   
   })
-  .state('design.submitInstance.viewInstance', {
+  .state('instance.submitInstance.viewInstance', {
     url: "/:name",
     templateUrl:"partials/viewInstance.html",
     controller:"viewinstCtrl"
   })
-  .state('design.submitInstance.viewInstance.addInstance',{
+  .state('instance.submitInstance.viewInstance.addInstance',{
     url:"/addInstance",
     controller:"viewinstCtrl"
-  }).state('design.submitInstance.viewInstance.createInstance',{
+  }).state('instance.submitInstance.viewInstance.createInstance',{
     url:"/createdialogInstance/:nspname",
     controller:"InstDialogctrl"
   })
@@ -262,21 +269,56 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       }
     }
   })
-  .state('design.function',
+  .state('function',
   {
     url:'/function',
-    templateUrl: "partials/functionlist.html",
+     views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+         templateUrl: "partials/functionlist.html",
     controller:"functionlistCtrl"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+   
   })
-  .state('design.inbox2', {
+  .state('function.inbox2', {
     url: '/functional',
-    templateUrl: '/partials/FunctionEdit.html',
+     views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+     templateUrl: '/partials/FunctionEdit.html',
     controller: 'functionEditCtrl'
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }  
 
   })
-  .state('design.addfunction', {
+  .state('function.addfunction', {
     url:"/addFunction",
+     views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
     templateUrl:"partials/cfunctions.html"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }  
+    
   })
   .state('mainstream.watchlist',
   {
@@ -328,30 +370,55 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
     }
   })
 
-  .state('design.namespace', {
+  .state('namespace', {
     url: "/namespace",
-    templateUrl: "partials/namespace.html",
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+         templateUrl: "partials/namespace.html",
     controller:"createNamespaceCtrl"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
   })
-  // .state('design.namespace', {
-  //   url: "/namespace",
-  //   templateUrl: "partials/namespace.html",
-  //   controller:"createNamespaceCtrl"
-  // })
-  // .state('namespace', {
-  //   url: "/namespace",
-  //   templateUrl: "partials/namespace.html",
-  //   controller:"createNamespaceCtrl"
-  // })
-  .state('design.listNameSpace', {
+  .state('namespace.listNameSpace', {
     url: "/namespace/listNameSpace",
-    templateUrl: "partials/listNamespace.html",
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+       templateUrl: "partials/listNamespace.html",
     controller:"createNamespaceCtrl"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+    
   })
-  .state('design.createNamespace', {
+  .state('namespace.createNamespace', {
     url: "/createNamespace",
-    templateUrl: "partials/createNamespace.html",
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+      templateUrl: "partials/createNamespace.html",
     controller:"createNamespaceCtrl"
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+   
 
   })
   .state('mainstream.create',
@@ -1051,7 +1118,7 @@ tattva.controller("instCtrl",["$scope","$state","$http",function($scope,$state,$
   $scope.selectedIndex = 1;
   $scope.submitInstance=function()
   {
-    $state.go('design.submitInstance');
+    $state.go('instance.submitInstance');
 
   }
   $scope.loadData=function(){
@@ -1267,7 +1334,7 @@ tattva.controller("createNamespaceCtrl",["$scope","$state","$http","$mdToast","$
     .position("bottom right");
     $mdToast.show(toast).then(function(response) {
 
-      $state.go("design.listNameSpace");
+      $state.go("namespace.listNameSpace");
     });
 
     $http({
