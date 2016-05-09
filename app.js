@@ -10,6 +10,8 @@ var users = require('./routes/users');
 
 var app = express();
 
+var JSONparser = bodyParser.json();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');
@@ -20,22 +22,29 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-//Configure these folders for static & public access (so that they can be reverse cached for browser access)
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_modules')));
 
-// app.use('/', routes);
-// app.use('/users', users);
+app.use('/', routes);
+app.use('/users', users);
 
-app.get('/', function(req, res){
-  res.render('index');
+app.get('/viewNamespace', function(req, res){
+res.sendFile(path.join(__dirname,'/public/json/namespace.json'));
+});
+app.get('/viewInstance', function(req, res){
+res.sendFile(path.join(__dirname, '/public/json/instance.json'))
+});
+app.get('/viewStreams', function(req, res){
+res.sendFile(path.join(__dirname, '/public/json/data.json'));
 });
 
-app.get('/fetchfile', function(req, res){
-  res.sendfile(path.join(__dirname, '/json/guestMenu.json'));
+app.post('/filewrite', JSONparser, function(req, res){
+var data= req.body;
+console.log(data);
 });
-
+// app.get('/viewNamespace', function(req, res){
+// res.sendFile(path.join(__dirname, '/public/json/namespace.json'));
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

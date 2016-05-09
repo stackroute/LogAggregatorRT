@@ -1,0 +1,31 @@
+{
+  "name": "ng-letter-avatar",
+  "main": "./ngletteravatar.js",
+  "version": "4.0.2",
+  "keywords": [
+    "angular",
+    "ngletteravatar",
+    "letteravatar",
+    "gmaillikelettericon",
+    "letterimage"
+  ],
+  "ignore": [
+    "demo",
+    "app.js",
+    "index.html"
+  ],
+  "dependencies": {
+    "angular": "*"
+  },
+  "homepage": "https://github.com/uttesh/ngletteravatar",
+  "_release": "4.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.0.2",
+    "commit": "29217976f9b3a99167e0e67f41fbd5db41d11511"
+  },
+  "_source": "https://github.com/uttesh/ngletteravatar.git",
+  "_target": "^4.0.2",
+  "_originalSource": "ngletteravatar",
+  "_direct": true
+}

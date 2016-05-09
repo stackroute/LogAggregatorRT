@@ -1,0 +1,57 @@
+<md-content layout-padding>
+  <form name="projectForm">
+    <div layout="row" flex>
+<!--===========================DropDown(Fields)==============================-->
+        <!-- <md-input-container class="md-block" flex="30">
+          <label>Filter Field</label>
+          <input required name="stringName" ng-model="project.stringName">
+          <div ng-messages="projectForm.stringName.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container> -->
+        <!-- {{user_namespace}} -->
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Select field</label>
+          <md-select ng-model="user_fields">
+              <md-option ng-repeat="namespace_field in user_namespace.dataformat" value="{{namespace_field.fieldAlias}}">
+              <!-- <ng-letter-avatar data={{namespace_field.fieldType}} shape="round" size="10px" avatarcustombgcolor="#339933" charCount=1 ></ng-letter-avatar> -->
+              {{namespace_field.fieldName}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+<!--==========================DropDown(Operator)=============================-->
+        <!-- <md-input-container class="md-block" flex="30">
+          <label>Operator</label>
+          <input required name="stringName" ng-model="project.stringName">
+          <div ng-messages="projectForm.stringName.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container> -->
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Operators</label>
+          <md-select ng-model="user_operator">
+            <md-option ng-repeat="operators in operator" value="{{operators}}">
+              <!-- {{operator.fieldType}} -->{{operators}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+<!--===========================TextBox(Value)================================-->
+        <md-input-container class="md-block" flex="30">
+          <label>Value</label>
+          <input required name="value" ng-model="user_value">
+          <div ng-messages="projectForm.value.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+    </div>
+<div layout="row">
+  <md-button class="md-raised md-primary">And</md-button>
+  <md-button class="md-raised md-primary">Or</md-button>
+
+</div>
+  </form>
+</md-content>
