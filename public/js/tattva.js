@@ -268,7 +268,7 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
     templateUrl: "partials/functionlist.html",
     controller:"functionlistCtrl"
   })
-  .state('inbox1', {
+  .state('design.inbox2', {
     url: '/functional',
     templateUrl: '/partials/FunctionEdit.html',
     controller: 'functionEditCtrl'
