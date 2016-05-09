@@ -1,17 +1,44 @@
-[
+ [
   {
-    "menu" : "Home"
+    "menu" : "Dashboard",
+    "link" : "user"
   },
   {
-    "menu" : "Login"
+    "menu" : "Design",
+    "link" : "design",
+    "children" : [
+      {
+        "menu" : "Namespace",
+        "link" : "namespace"
+      },
+      {
+        "menu" : "Instance",
+        "link" : "design.instance"
+      },
+      {
+        "menu" : "MainStreams",
+        "link" : "mainstream.streams"
+      },
+      {
+        "menu" : "Functions",
+        "link" : "functions"
+      },
+      {
+        "menu" : "Watchlist",
+        "link" : "watchlist"
+      }
+    ]
   },
   {
-    "menu" : "AboutUs"
+    "menu" : "Organisation",
+    "link" : "organisation"
   },
   {
-    "menu" : "How It Works"
+    "menu" : "Action",
+    "link" : "action"
   },
   {
-    "menu" : "Team"
+    "menu" : "Notification",
+    "link" : "notification"
   }
 ]

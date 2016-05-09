@@ -1,32 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
 
-<link rel="stylesheet" href="/angular-material/angular-material.min.css">
-<script src="/angular/angular.min.js"></script>
-<script src="/angular-animate/angular-animate.min.js"></script>
-<script src="/angular-aria/angular-aria.min.js"></script>
-<script src="/angular-material/angular-material.min.js"></script>
-<script src="/angular-messages/angular-messages.min.js"></script>
-<script src="/angular-ui-router/release/angular-ui-router.js"></script>
-<script src="/js/dataApp.js"></script>
-
+	<title>LogAggregatorRT</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
+      <!-- <link rel="stylesheet" href="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" type="text/css"/> -->
 </head>
+<body ng-app='tattva' ng-controller="ctrl" ng-cloak>
+	<div layout="column" ng-clock>
+    <!-- <a ui-sref="guest"></a> -->
+		<div ui-view="header"></div>
+    <div ui-view="content"></div>
+    <div ui-view="footer"></div>
+	</div>
 
-<body ng-app="routerApp" ng-controller="routerCtrl">
-<!-- <div layout="column">
-  <md-tabs md-center-tabs="true" md-dynamic-height="true" md-stretch-tabs="always" class="head-tab">
-    <md-tab class="body-tab" ui-sref="subscription"><a >Subscription</a></md-tab>
-    <md-tab class="body-tab" ui-sref="streams"><a >Streams</a></md-tab>
-    <md-tab class="body-tab" ui-sref="function"><a >Function</a></md-tab>
-    <md-tab class="body-tab" ui-sref="watchlist"><a >Watch List</a></md-tab>
-  </md-tabs>
-</div> -->
+<script src="/angular/angular.js" charset="utf-8"></script>
+<script src="ng-letter-avatar/dist/ngletteravatar.min.js"></script>
+ <script src="jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="ace-builds/src-min-noconflict/ace.js"></script>
+<script type="text/javascript" src="angular-ui-ace/ui-ace.js"></script>
+<script src="/angular-animate/angular-animate.min.js" charset="utf-8"></script>
+<script src="/angular-aria/angular-aria.min.js" charset="utf-8"></script>
+<script src="/angular-messages/angular-messages.min.js" charset="utf-8"></script>
+<script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
+<script src="/angular-material-icons/angular-material-icons.min.js" charset="utf-8"></script>
+<script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-  <!-- <div ui-view></div> -->
-<a ui-sref="mainstream">Design</a>
-<div ui-view></div>
-<script src="/ng-letter-avatar/dist/ngletteravatar.min.js"></script>
-<link rel="stylesheet" href="/css/style.css">
-</body>
-</html>
+ <!-- <script src="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script> -->
+    <!-- <script src="ng-scrollbars/dist/scrollbars.min.js"></script> -->
+    <script src="ng-letter-avatar/dist/ngletteravatar.min.js"></script>
+
+ <!-- <script src="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script> -->
+
+    <!-- <script src="ng-scrollbars/dist/scrollbars.min.js"></script> -->
+
+
+<!-- <script src="/d3/d3.min.js"></script> -->
+ <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="/js/tattva.js" charset="utf-8"></script>
+
+  </body>
+  </html>

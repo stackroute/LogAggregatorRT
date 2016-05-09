@@ -1,0 +1,51 @@
+[
+  { 
+    "name":"server1",
+      "ip": "server1-ip",
+   "description": "des1",
+   "location": "block-III,Tower-8"
+    
+  },
+  { 
+    "name":"server2",
+      "ip": "server2-ip",
+   "description": "des2",
+   "location": "block-I,tower-6"
+    
+  },
+  { 
+    "name":"server3",
+      "ip": "server1-ip",
+   "description": "des1",
+   "location": "Block-I,tower-8"
+    
+  },
+  { 
+    "name":"server4",
+      "ip": "server2-ip",
+   "description": "des2",
+   "location": "Block-II,building-2,EC"
+    
+  },{ 
+    "name":"server5",
+      "ip": "server1-ip",
+   "description": "des1",
+   "location": "tower-3,silkboard"
+    
+  },
+  { 
+    "name":"server6",
+      "ip": "server2-ip",
+   "description": "des2",
+   "location": "block-IV"
+    
+  },{ 
+    "name":"server7",
+      "ip": "server2-ip",
+   "description": "des2",
+   "location": "tower-4,shollingnallur"
+    
+  }
+
+
+]

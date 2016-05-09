@@ -7,6 +7,8 @@ padding-left: 20px;
 }
 </style>
 
+<div ng-controller="routerCtrl" class="content">
+
 <div class="listInstance">
   <md-toolbar >
     <div class="md-toolbar-tools">
@@ -15,12 +17,12 @@ padding-left: 20px;
       </h2>
       <span flex=""></span>
       <md-button class="md-fab md-mini" aria-label="Favorite" ui-sref="mainstream.streams.create">
+
         <md-icon md-svg-icon="images/add-plus-button.svg"></md-icon>
       </md-button>
     </div>
   </md-toolbar>
 </div>
-
 
 <div layout="row">
   <div layout="row" flex="30">
@@ -28,7 +30,9 @@ padding-left: 20px;
       <md-list flex="">
         <md-content  class="listmenu" flex="80">
           <md-list-item  class="md-2-line" ng-click="null" ng-show="data.length" ng-repeat="object in data">
+
             <md-item-content ui-sref="mainstream.streams.viewStreams({name : '{{object}}'})" layout="row">
+
               <div class="md-list-item-text md-tile-left inset" flex="30">
                 <ng-letter-avatar data={{object.namespace}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
               </div>
@@ -44,5 +48,7 @@ padding-left: 20px;
   </div>
 
   <div ui-view layout="row" flex="70"></div>
+
+</div>
 
 </div>
