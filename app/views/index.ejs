@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
-	<title>LogAggregatorRT</title>
+  <title>AngularJS Material</title>
+  <link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="angular-material/angular-material.css">
+  <link rel="stylesheet" href="angular-material-data-table/dist/md-data-table.min.css">
+  <!-- <link rel='stylesheet' href='/css/style.css' /> -->
 
-	<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
+
 </head>
-<body>
-<h1>Complex Event Processor - Real Time</h1>
+
+<body ng-controller="myController">
+
+  <h2>AngularJS Sample Application</h2>
+
+  <p><a ui-sref="design">Design</a></p>
+  <a ui-sref="home">Home</a>
+  <div ui-view ></div>
+  <a >sdf</a>
+
+  <script src="angular/angular.min.js"></script>
+  <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <!-- <script src="/angular-route/angular-route.min.js" charset="utf-8"></script> -->
+  <script src="/angular-animate/angular-animate.js"></script>
+  <script src="/angular-aria/angular-aria.js"></script>
+  <script src="/angular-material/angular-material.js"></script>
+  <script src="/angular-messages/angular-messages.js"></script>
+  <script src="/ng-letter-avatar/ngletteravatar.js"></script>
+  <script src="/angular-material-data-table/dist/md-data-table.min.js"></script>
+  <script src="/js/tattva.js"></script>
+
+
 </body>
-
-<script src="/angular/angular.min.js" charset="utf-8"></script>
-<script src="/angular-route/angular-route.min.js" charset="utf-8"></script>
-<script src="/angular-bootstrap/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
-
 </html>

@@ -27,6 +27,17 @@ app.use(express.static(path.join(__dirname, 'bower_modules')));
 
 app.use('/', routes);
 app.use('/users', users);
+var data1=[];
+
+app.get('/nameSpaceList', function(req, res){
+  res.sendFile(path.join(__dirname, 'public/json/namespace.json'));
+});
+
+app.post('/createNamespacePost',jsonParser,function (request, response) {
+  var body1=request.body;
+  console.log("body1 = "+body1);
+  alert("reached")
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -58,6 +69,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

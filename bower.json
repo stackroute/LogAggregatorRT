@@ -1,10 +1,13 @@
 {
-  "name": "logaggregatorrt",
+  "name": "uidemo",
   "version": "1.0.0",
   "dependencies": {
     "angular": "^1.5.3",
     "angular-route": "^1.5.3",
     "angular-material": "^1.0.7",
-    "angular-material-icons": "^0.7.0"
+    "angular-material-icons": "^0.7.0",
+    "angular-ui-router": "^0.2.18",
+    "ng-letter-avatar": "ngletteravatar#^4.0.2",
+    "angular-material-data-table": "^0.10.9"
   }
 }

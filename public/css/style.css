@@ -10,6 +10,91 @@ body {
   font-size: auto;
 }
 
-a {
-  color: #FFFFFF;
+
+md-tab-content {
+  padding: 25px;
+}
+md-tabs.md-accent > md-tabs-wrapper{
+  background-color: #00BFFF;
+}
+md-tab-content:nth-child(1) {
+  background-color: white;
+}
+md-tab-content:nth-child(2) {
+  background-color:	white;
+}
+md-tab-content:nth-child(3) {
+  background-color:	white;
+}
+#createNameSpaceInputBtn{
+  margin-left: 25%;
+}
+#createNameSpaceInputBtn button{
+  background-color: teal;
+}
+/*#createNamespaceTable{
+  border:1px solid grey;
+}*/
+
+/*md-content md-tabs md-tabs-wrapper {
+  background-color:teal;
+}
+md-tabs .md-tab{
+  color:white;
+}*/
+
+#tabView{
+  /*background-color: #D4E8BE;*/
+  border:1px solid #e1e1e1;
+  /*height:300px;*/
+}
+
+
+#noSubscriber{
+  background:#e1e1e1;
+  text-align: center;
+  height: 600px;
+}
+
+.viewDiv{
+  height:300px;
+}
+
+#fieldType{
+  padding-top:12px;
+}
+.createNameSpaceTable{
+  background-color:teal;
+}
+
+#nameSpaceTable{
+  /*display:none;*/
+  border:1px solid grey;
+}
+
+
+table {
+  /*border: 1px solid #D0D3DA;*/
+  /*margin: auto;*/
+  width:100%;
+}
+
+th {
+  /*border: 1px solid #D0D3DA;*/
+  /*padding: 20px;*/
+  text-transform: uppercase;
+  text-align:center;
+}
+
+tr {
+  /*border: 1px solid #D0D3DA;*/
+  /*padding: 20px;*/
+  text-align:center;
+}
+
+td {
+  /*border: 1px solid #D0D3DA;*/
+  /*padding: 20px;*/
+  text-transform: capitalize;
+  text-align:center;
 }
