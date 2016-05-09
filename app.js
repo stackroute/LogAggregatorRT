@@ -1,3 +1,4 @@
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -37,6 +38,18 @@ app.use(express.static(path.join(__dirname, 'bower_modules')));
 app.use('/', routes);
 app.use('/users', users);
 
+var data1=[];
+
+app.get('/nameSpaceList', function(req, res){
+  res.sendFile(path.join(__dirname, 'public/json/namespace.json'));
+});
+
+app.post('/createNamespacePost',jsonParser,function (request, response) {
+  var body1=request.body;
+  console.log("body1 = "+body1);
+  alert("reached")
+});
+
 // app.use('/', routes);
 // app.use('/users', users);
 
@@ -46,8 +59,9 @@ res.sendFile(path.join(__dirname,'/public/json/namespace.json'));
 });
 
 app.get('/viewInstance', function(req, res){
-res.sendFile(path.join(__dirname, '/public/json/instance.json'))
+res.sendFile(path.join(__dirname, '/public/json/instance.json'));
 });
+
 app.get('/viewStreams', function(req, res){
 res.sendFile(path.join(__dirname, '/public/json/data.json'));
 });
@@ -215,6 +229,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

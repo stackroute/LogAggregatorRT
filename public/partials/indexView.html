@@ -24,15 +24,13 @@ padding-left: 20px;
   </md-toolbar>
 </div>
 
-<div layout="row">
+<div layout="row" ng-init="loadData()">
   <div layout="row" flex="30">
     <md-content flex>
       <md-list flex="">
         <md-content  class="listmenu" flex="80">
           <md-list-item  class="md-2-line" ng-click="null" ng-show="data.length" ng-repeat="object in data">
-
-            <md-item-content ui-sref="mainstream.streams.viewStreams({name : '{{object}}'})" layout="row">
-
+            <md-item-content ui-sref="mainstream.streams.viewStreams({name : 'object'})" layout="row">
               <div class="md-list-item-text md-tile-left inset" flex="30">
                 <ng-letter-avatar data={{object.namespace}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
               </div>
@@ -46,9 +44,3 @@ padding-left: 20px;
       </md-list>
     </md-content>
   </div>
-
-  <div ui-view layout="row" flex="70"></div>
-
-</div>
-
-</div>

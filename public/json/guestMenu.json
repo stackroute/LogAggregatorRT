@@ -9,7 +9,7 @@
     "children" : [
       {
         "menu" : "Namespace",
-        "link" : "namespace"
+        "link" : "design.namespace"
       },
       {
         "menu" : "Instance",

@@ -1,5 +1,5 @@
 {
-  "name": "logaggregatorrt",
+  "name": "uidemo",
   "version": "1.0.0",
   "dependencies": {
     "angular": "^1.5.3",
@@ -11,10 +11,13 @@
     "angular-xeditable": "^0.1.12",
     "angular-ui-router": "^0.2.18",
     "angular-material": "^1.0.7",
-
+    "angular-ui-router": "^0.2.18",
+    "ng-letter-avatar": "ngletteravatar#^4.0.2",
+    "angular-material-data-table": "^0.10.9",
     "angular-ui-ace": "bower",
 
     "angular-material-icons": "^0.7.0",
     "angular-ui-router": "^0.2.18"
+
   }
 }
