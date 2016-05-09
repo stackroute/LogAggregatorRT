@@ -1,0 +1,51 @@
+<style>
+.listInstance md-toolbar{
+background-color: #cfcfd6;
+}
+.namespace{
+padding-left: 20px;
+}
+</style>
+
+<div ng-controller="routerCtrl" class="content">
+
+<div class="listInstance">
+  <md-toolbar >
+    <div class="md-toolbar-tools">
+      <h2>
+        <span>Streams</span>
+      </h2>
+      <span flex=""></span>
+      <md-button class="md-fab md-mini" aria-label="Favorite" ui-sref="mainstream.create">
+        <md-icon md-svg-icon="images/add-plus-button.svg"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+</div>
+
+<div layout="row">
+  <div layout="row" flex="30">
+    <md-content flex>
+      <md-list flex="">
+        <md-content  class="listmenu" flex="80">
+          <md-list-item  class="md-2-line" ng-click="null" ng-show="data.length" ng-repeat="object in data">
+            <md-item-content ui-sref=".viewInstance({name : '{{object}}'})" layout="row">
+              <div class="md-list-item-text md-tile-left inset" flex="30">
+                <ng-letter-avatar data={{object.namespace}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
+              </div>
+              <div class="namespace" flex class="md-tile-content" layout-padding flex="70">
+                <h5>{{object.namespace}}</h5>
+              </div>
+            </md-item-content>
+            <md-divider></md-divider>
+          </md-list-item>
+        </md-content>
+      </md-list>
+    </md-content>
+  </div>
+
+  <div ui-view layout="row" flex="70"></div>
+
+</div>
+
+</div>

@@ -5,10 +5,18 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+var fs=require("fs");
+
+var jsonParser=bodyParser.json();
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+var jsonParser = bodyParser.json();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
@@ -27,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'bower_modules')));
 
 app.use('/', routes);
 app.use('/users', users);
+
 var data1=[];
 
 app.get('/nameSpaceList', function(req, res){
@@ -39,11 +48,141 @@ app.post('/createNamespacePost',jsonParser,function (request, response) {
   alert("reached")
 });
 
+// app.use('/', routes);
+// app.use('/users', users);
+
+app.get('/', function(req, res){
+  res.render('index');
+});
+
+
+app.get('/login_reg', function(req, res){
+   res.sendFile(path.join(__dirname, 'public/data.json'));
+});
+
+
+app.post('/login_reg1',jsonParser,function (request, response) {
+  var body1=request.body;
+  // console.log(body1);
+  //response.send("hi");
+});
+
+/*app.get('/',function(req,res){
+
+   res.render('index');
+});*/
+
+app.get('/login_reg',function(req,res){
+
+   res.send("OK");
+});
+
+app.get('/functionlist',function(req,res){
+
+   res.sendFile(path.join(__dirname, 'public/data/functionlist.json'));
+});
+
+app.get('/submitInstance',function(req,res){
+res.sendFile(path.join(__dirname, 'public/data/namespace.json'));
+});
+app.get('/data/:param',function(req,res){
+    var name=req.params.param;
+    res.sendFile(path.join(__dirname, 'public/data/'+name+'Instance.json'));
+});
+
+app.post('/createdialogInstance',jsonParser,function(req,res){
+ var instdata=req.body;
+ var arr=[];
+var jsonObj={};
+ fs.readFile(path.join(__dirname, 'public/data/instance.json'), function (err, data) {
+   if (err) {
+       return console.error(err);
+   }
+ arr=JSON.parse(data);
+
+for(var i=0;i<arr.length;i++)
+{
+
+  if(arr[i].namespace===instdata.namespace)
+  {
+   (arr[i].instances).push(instdata.instance);
+   break;
+  }
+}
+jsonObj=JSON.stringify(arr);
+fs.writeFile(path.join(__dirname,'public/data/instance.json'),jsonObj,function(err){
+   if (err) {
+       return console.error(err);
+   }
+    res.sendFile(path.join(__dirname, 'public/data/instance.json'));
+ });
+});
+
+
+
+});
+
+/*functions*/
+app.get('/func_link', function(req, res){
+   res.sendFile(path.join(__dirname, 'public/data/function_data.json'));
+});
+
+app.get('/func_link_data', function(req, res){
+   res.sendFile(path.join(__dirname, 'public/data/function_data_display.json'));
+});/*functions*/
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
+});
+
+
+
+
+/*ui-router*/
+
+
+app.get('/submitInstance',function(req,res){
+res.sendFile(path.join(__dirname, 'public/data/namespace.json'));
+});
+app.get('/data/:param',function(req,res){
+    var name=req.params.param;
+    res.sendFile(path.join(__dirname, 'public/data/'+name+'Instance.json'));
+});
+
+app.post('/createdialogInstance',jsonParser,function(req,res){
+ var instdata=req.body;
+ var arr=[];
+var jsonObj={};
+ fs.readFile(path.join(__dirname, 'public/data/instance.json'), function (err, data) {
+   if (err) {
+       return console.error(err);
+   }
+ arr=JSON.parse(data);
+
+for(var i=0;i<arr.length;i++)
+{
+
+  if(arr[i].namespace===instdata.namespace)
+  {
+   (arr[i].instances).push(instdata.instance);
+   break;
+  }
+}
+jsonObj=JSON.stringify(arr);
+fs.writeFile(path.join(__dirname,'public/data/instance.json'),jsonObj,function(err){
+   if (err) {
+       return console.error(err);
+   }
+    res.sendFile(path.join(__dirname, 'public/data/instance.json'));
+ });
+});
+
+
+
 });
 
 // error handlers
