@@ -1,6 +1,15 @@
 <div class="listInstance dialogdemoBasicUsage" id="popupContainer">
+<md-content md-padding>
+    <md-tabs md-stretch-tabs="never" md-selected="selectedIndex" md-swipe-content="true" md-border-bottom >
+      <md-tab label="Namespace" ui-sref=".namespace"></md-tab>
+      <md-tab label="Instance" ui-sref=".instance"></md-tab>
+      <md-tab label="Streams" ui-sref=".stream"></md-tab>
+      <md-tab label="Functions" ui-sref=".function"></md-tab>
+      <md-tab label="Watchlist" ui-sref=".watchlist"></md-tab>
+    </md-tabs>
+  </md-content>
  <md-toolbar>
- <div class="md-toolbar-tools">
+ <div class="md-toolbar-tools" >
   <!--       <md-button aria-label="Go Back">
           Go Back
         </md-button> -->
@@ -15,6 +24,13 @@
          <md-button aria-label="Search" ng-click="showSearch = !showSearch">
             <md-icon md-svg-icon="image/svg/musica-searcher.svg"></md-icon>
           </md-button>
+          </div>
+
+  <md-button class="md-fab md-mini" aria-label="Favorite" ui-sref="instance.submitInstance.listInstance.addInstance" ng-click="addInstance($event)">
+          <md-icon md-svg-icon="image/svg/add-plus-button.svg"></md-icon>
+          </md-button>
+        
+
         </div>
 
          
@@ -24,10 +40,15 @@
 
 <div layout="row" class="listdemoBasicUsage">
   <div layout="row" flex="25">
-    <md-content class="listmain" flex>
+    <md-content class="listmain" flex >
+   <h5 class="md-title" flex-offset="5">Namespaces</h5>
     <md-list>
    <md-content class="listmenu">
-   
+
+     <!--  <div ng-show="data.length == 0">
+        <p>Create new instance<
+      </div>
+    -->
       <md-list-item ng-repeat="object in data" ui-sref="instance.submitInstance.viewInstance({name: '{{object.name}}' })" class="md-2-line"  ng-click="null" ng-show="data.length" >
 <md-item-content layout="row" flex>
         <div class="md-list-item-text md-tile-left inset" flex="30" >

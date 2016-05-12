@@ -1,4 +1,3 @@
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -46,7 +45,7 @@ app.get('/nameSpaceList', function(req, res){
 
 app.post('/createNamespacePost',jsonParser,function (request, response) {
   var body1=request.body;
-  console.log("body1 = "+body1);
+  /*console.log("body1 = "+body1);*/
   alert("reached")
 });
 
@@ -68,7 +67,7 @@ res.sendFile(path.join(__dirname, '/public/json/data.json'));
 
 app.post('/filewrite', JSONparser, function(req, res){
 var data= req.body;
-console.log(data);
+/*console.log(data);*/
 });
 // app.get('/viewNamespace', function(req, res){
 // res.sendFile(path.join(__dirname, '/public/json/namespace.json'));
