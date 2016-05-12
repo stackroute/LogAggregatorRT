@@ -1,5 +1,5 @@
 
-var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ui.ace','ngLetterAvatar']);
+var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ui.ace','ngLetterAvatar','ngMessages']);
 tattva.controller('AppCtrl', ['$scope', '$rootScope',
 function($scope) {
   $scope.operator=['>','<']
@@ -71,6 +71,9 @@ function($scope) {
     }
   }
 }
+// modal
+
+
 ]);
 
 tattva.service('wlstDataService', ['$http', function($http){
@@ -219,7 +222,7 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
     }
 
   })
- 
+
   .state('instance.submitInstance.viewInstance.createInstance',{
     url:"/createdialogInstance/:nspname",
     controller:"InstDialogctrl"
@@ -382,10 +385,14 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   {
     url:'/watchlist',
         templateUrl: "/partials/watchlists.html"
-    
+
   })
 
-
+  .state('design.watchlist.publish',
+  {
+    url: "/publish",
+    controller: "publishCtrl"
+  })
 
   .state('watchlist.create', {
     url:'/new',
@@ -1124,9 +1131,9 @@ tattva.controller("viewinstCtrl",["$scope","$state","$http","$stateParams","$mdD
    }
   else
    {
-   $scope.show="false"; 
+   $scope.show="false";
    }
-  
+
   }
 
 }]);
@@ -1269,6 +1276,99 @@ tattva.controller("createNamespaceCtrl",["$scope","$state","$http","$mdToast","$
     //   // }
     // });
 
+  }
+
+}]);
+// publishui controlller
+
+tattva.controller("publishCtrl",["$scope","$state","$http","$stateParams","$mdDialog","$mdMedia",function($scope,$state,$http,$stateParams,$mdDialog,$mdMedia){
+
+  // $scope.selectedIndex = 1;
+  // $scope.submitInstance=function()
+  // {
+  //   $state.go('instance.submitInstance');
+  //
+  // }
+  // $scope.loadData=function(){
+  //   $http.get('/submitInstance').then(function(response){
+  //        $scope.data = response.data;
+  //   });
+  // }
+  // $scope.loadData();
+
+  $scope.status='';
+  $scope.customFullscreen=$mdMedia('xs') || $mdMedia('sm');
+  console.log("hello");
+  $scope.publish= function($event){
+
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+    $mdDialog.show({
+      targetEvent: $event,
+      controller: publishDialog,
+      templateUrl: "partials/publish.html",
+      clickOutsideToClose:true,
+      fullscreen: useFullScreen,
+      parent: angular.element(document.body),
+      scope: $scope
+
+
+    }).then(function(answer) {
+      $scope.status = 'You decided to get rid of your debt.';
+    }, function() {
+      $scope.status = 'You decided to keep your debt.';
+    });
+
+
+
+    $scope.$watch(function() {
+      return $mdMedia('xs') || $mdMedia('sm');
+    }, function(wantsFullScreen) {
+      $scope.customFullscreen = (wantsFullScreen === true);
+    });
+
+    function publishDialog($scope,$state, $mdDialog,$http){
+       $http.get('/submitInstance').then(function(response){
+         $scope.namespaceSelect = response.data;
+    });
+
+      /*console.log($scope.nspname);*/
+      $scope.dInstance={
+        namespace:"",
+        name:"",
+        ipAddress:"",
+        port:"",
+        description:"",
+        location:""
+
+      };
+
+      $scope.instanceSubmit=function(){
+
+        var data={
+          instance:$scope.dInstance
+        };
+        $http({
+          method:'POST',
+          url:'/createdialogInstance',
+          data: data
+        })
+        .success(function(response) {
+
+          if (data.errors) {
+            $scope.errorName = data.errors.name;
+            $scope.errorUserName = data.errors.username;
+            $scope.errorEmail = data.errors.email;
+          } else {
+
+            $scope.data=response;
+            /*$state.go("design.submitInstance.viewInstance({name: '"+$scope.nspname+"' })");*/
+          }
+
+        });
+        $mdDialog.hide();
+      }
+
+    }
   }
 
 }]);
