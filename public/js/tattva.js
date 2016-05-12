@@ -1,5 +1,5 @@
 
-var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ui.ace','ngLetterAvatar']);
+var tattva = angular.module('tattva', ['ngMaterial','ngMessages','ngMdIcons','ui.router','ui.ace','ngLetterAvatar']);
 tattva.controller('AppCtrl', ['$scope', '$rootScope',
 function($scope) {
   $scope.operator=['>','<']
@@ -188,11 +188,11 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
         templateUrl: "/partials/instance.html",
           controller: "instCtrl"
   })
-   .state('instance.addInstance',{
+   .state('design.instance.addInstance',{
     url:"/addInstance",
     controller:"instCtrl"
   })
-  .state('instance.viewInstance', {
+  .state('design.instance.viewInstance', {
     url: "/:name",
     templateUrl:"partials/viewInstance.html",
     controller:"viewinstCtrl"
