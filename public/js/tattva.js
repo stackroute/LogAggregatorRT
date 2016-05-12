@@ -201,11 +201,11 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
         templateUrl: "/partials/instance.html",
           controller: "instCtrl"
   })
-   .state('instance.addInstance',{
+   .state('design.instance.addInstance',{
     url:"/addInstance",
     controller:"instCtrl"
   })
-  .state('instance.viewInstance', {
+  .state('design.instance.viewInstance', {
     url: "/:name",
     templateUrl:"partials/viewInstance.html",
     controller:"viewinstCtrl"
