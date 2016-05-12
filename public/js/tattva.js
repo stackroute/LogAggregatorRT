@@ -252,20 +252,21 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
 
   })
   .state('function.inbox2', {
-    url: '/functional',
+    url: '/functional/:functionname',
      views: {
       "header" : {
         templateUrl: "/partials/header.html",
         controller: "headerCtrl"
       },
       "content@" : {
-     templateUrl: '/partials/FunctionEdit.html',
+     templateUrl: '/partials/cfunctions.html',
     controller: 'functionEditCtrl'
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
       }
     }
+    // params: { function_name :'function_name' }
 
   })
   .state('function.addfunction', {
@@ -1191,14 +1192,21 @@ function($scope, $http, $mdDialog) {
 
 
 
-tattva.controller('functionEditCtrl', ['$scope', '$http','$mdDialog',
-function($scope, $http, $mdDialog) {
+tattva.controller('functionEditCtrl', ['$scope', '$http','$mdDialog','$stateParams',
+function($scope, $http, $mdDialog,$stateParams) {
+  var name=$stateParams.functionname;
+   $scope.loadData = function() {
+    $http.get('/func_link_data').then(function(response){ $scope.data = response.data;
+        for(var i in $scope.data) {
+          if($scope.data[i].fun_name===name){
+            $scope.function=$scope.data[i];
+          }
 
-  $scope.loadData = function() {
-    $http.get('/func_link_data').then(function(response){ $scope.data = response.data; });
+        }
+    });
   }
   $scope.loadData();
-
+  // console.log("outside"+$scope.data);
   $scope.saveData=function(){
     var item={fun_name:$scope.data[0].fun_name,Descr:$scope.data[0].Descr,var:$scope.data[0].var,fun:$scope.data[0].fun};
     console.log(item);

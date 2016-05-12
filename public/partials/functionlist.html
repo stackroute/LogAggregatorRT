@@ -13,7 +13,7 @@
       <md-list-item class="md-3-line" ng-repeat="item in data" ng-if="$index % 2 == 0" ng-click="null">
         <div layout="column" flex="100">
           <div layout="row" layout-padding>
-          <p><ng-letter-avatar data="{{ data[$index].fun_name  }}"></ng-letter-avatar></p>
+          <p><ng-letter-avatar data="{{ data[$index].fun_name  }}" shape="round" avatarcustombgcolor="#ff944d"></ng-letter-avatar></p>
           <h4>{{ data[$index].fun_name  }}</h4>
           <ng-md-icon class="md-secondary" icon="more_horiz" ng-class="{'selected-item': $index == selectedUserIndex}" ng-click="selectUserIndex($index)"></ng-md-icon>
         </div>
@@ -22,7 +22,8 @@
         </div>
         <div layout="row" ng-show="$index == selectedUserIndex">
           <div flex="50" flex-offset="10"><ng-md-icon icon="delete" ng-click="deleteMe()"></ng-md-icon></div>
-          <div flex="40"><ng-md-icon icon=" mode_edit" ui-sref="function.inbox2"></ng-md-icon></div>
+          <!-- <div flex="40"><ng-md-icon icon=" mode_edit" ui-sref="function.inbox2({function_name:{{data[$index].fun_name}}})"></ng-md-icon></div> -->
+          <div flex="40"><ng-md-icon icon=" mode_edit" ui-sref="function.inbox2({functionname: data[$index].fun_name })"></ng-md-icon></div>
         </div>
       </div>
       <md-divider md-inset ng-if="!$last"></md-divider>
@@ -32,7 +33,7 @@
     <md-list-item class="md-3-line" ng-repeat="item in data" ng-if="$index % 2 == 0" ng-click="null">
       <div layout="column" flex="100">
         <div layout="row" layout-padding>
-        <p><ng-letter-avatar data="{{ data[$index+1].fun_name  }}"></ng-letter-avatar></p>
+        <p><ng-letter-avatar data="{{ data[$index+1].fun_name  }}" shape="round" avatarcustombgcolor="#ff944d"></ng-letter-avatar></p>
         <h4>{{ data[$index+1].fun_name  }}</h4>
         <ng-md-icon class="md-secondary" icon="more_horiz" ng-class="{'selected-item': $index == selectedUserIndex1}" ng-click="selectUserIndex1($index)"></ng-md-icon>
       </div>
@@ -41,7 +42,7 @@
       </div>
       <div layout="row" ng-show="$index == selectedUserIndex1">
         <div flex="50" flex-offset="10"><ng-md-icon icon="delete" ng-click="deleteMe()"></ng-md-icon></div>
-        <div flex="40"><ng-md-icon icon=" mode_edit" ui-sref="function.inbox2"></ng-md-icon></div>
+        <div flex="40"><ng-md-icon icon=" mode_edit" ui-sref="function.inbox2({functionname: data[$index+1].fun_name })"></ng-md-icon></div>
       </div>
     </div>
     <md-divider md-inset ng-if="!$last"></md-divider>
