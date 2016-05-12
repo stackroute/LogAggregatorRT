@@ -1,3 +1,4 @@
+
 var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ui.ace','ngLetterAvatar']);
 tattva.controller('AppCtrl', ['$scope', '$rootScope',
 function($scope) {
