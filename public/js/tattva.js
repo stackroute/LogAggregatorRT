@@ -1,7 +1,20 @@
 
 var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ui.ace','ngLetterAvatar']);
-tattva.controller('AppCtrl', ['$scope', '$rootScope',
-function($scope) {
+tattva.controller('AppCtrl', ['$scope', '$rootScope','$mdDialog', function($scope,$rootScope,$mdDialog) {
+
+  $scope.UI_Publish = function(ev) {
+    $mdDialog.show({
+      targetEvent: ev,
+      parent: angular.element(document.body),
+      clickOutsideToClose: true,
+      title: 'This is an alert title',
+      textContent: 'You can specify some description text in here.',
+      ariaLabel:'Alert Dialog Demo',
+      ok:'Got it!'
+    }
+    );
+  };
+
   $scope.operator=['>','<']
   $scope.showmesecound=true;
   $scope.showmefirst=true;
@@ -219,7 +232,7 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
     }
 
   })
- 
+
   .state('instance.submitInstance.viewInstance.createInstance',{
     url:"/createdialogInstance/:nspname",
     controller:"InstDialogctrl"
@@ -382,7 +395,7 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   {
     url:'/watchlist',
         templateUrl: "/partials/watchlists.html"
-    
+
   })
 
 
@@ -495,7 +508,8 @@ tattva.directive('dashboardlayout', function() {
 //     directive.templateUrl = "/partials/flow.html";
 //  return directive;
 //  });
-tattva.controller('SalesController', ['$scope','$interval', function($scope, $interval){
+tattva.controller('SalesController', ['$scope','$interval','$mdDialog', function($scope, $interval, $mdDialog){
+
   $scope.salesData=[
     {hour: 1,sales: 54},
     {hour: 2,sales: 66},
@@ -657,7 +671,15 @@ tattva.directive('donutchart', function(){
 //   };
 // });
 
-tattva.controller('myController', ['$scope',function($scope) {
+tattva.controller('gotoWatchlist',['$scope','$state',function($scope,$state){
+  $scope.edit_watchlist=function (){
+    console.log("go to watchlist");
+    $state.go("design.watchlist");
+  }
+}]);
+
+tattva.controller('myController', ['$scope','$state',function($scope,$state) {
+
   $scope.itemcollection=[
     {"wlname": "WatchlistONE",
     "charttype":"graph",
@@ -1124,9 +1146,9 @@ tattva.controller("viewinstCtrl",["$scope","$state","$http","$stateParams","$mdD
    }
   else
    {
-   $scope.show="false"; 
+   $scope.show="false";
    }
-  
+
   }
 
 }]);
