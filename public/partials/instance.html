@@ -10,7 +10,7 @@
     </md-tabs>
   </md-content> -->
  <md-toolbar>
- <div class="md-toolbar-tools">
+ <div class="instancetoolbar md-toolbar-tools">
   <!--       <md-button aria-label="Go Back">
           Go Back
         </md-button> -->
@@ -27,7 +27,7 @@
           </md-button>
         </div>
 
- <md-button class="md-fab md-mini" aria-label="Favorite" ui-sref="instance.addInstance" ng-click="addInstance($event)">
+ <md-button class="md-fab md-mini" aria-label="Favorite" ui-sref="design.instance.addInstance" ng-click="addInstance($event)">
           <md-icon md-svg-icon="image/svg/add-plus-button.svg"></md-icon>
           </md-button>
          
@@ -38,11 +38,13 @@
 <div layout="row" class="listdemoBasicUsage">
   <div layout="row" flex="25">
    <md-content class="listmain" flex >
-   <h5 class="md-title" flex-offset="5">Namespaces</h5>
+   <md-toolbar><div class="md-toolbar-tools">
+   <span class="md-title" flex-offset="5">Namespaces</span>
+   </div></md-toolbar>
     <md-list>
    <md-content class="listmenu">
    
-      <md-list-item ng-repeat="object in data" ui-sref="instance.viewInstance({name: '{{object.name}}' })" class="md-2-line"  ng-click="null" ng-show="data.length" >
+      <md-list-item ng-repeat="object in data" ui-sref="design.instance.viewInstance({name: '{{object.name}}' })" class="md-2-line"  ng-click="null" ng-show="data.length" >
 <md-item-content layout="row" flex>
         <div class="md-list-item-text md-tile-left inset" flex="30" >
           <ng-letter-avatar data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
