@@ -26,10 +26,12 @@
           </md-input-container>
       </div>
     </div>
-    <div flex="20">
+    <div flex="10">
       <md-button aria-label="Search" ng-click="showSearch = !showSearch">
         <ng-md-icon icon="search"></ng-md-icon>
       </md-button>
+    </div>
+    <div flex="10" flex-offset="5">
     <ng-md-icon icon="person_add" ng-click="showAdd()" size="30px"></ng-md-icon>
     </div>
   </div>
@@ -56,7 +58,7 @@
         <div layout="row">
           <div flex="20" flex-offset="5"><md-checkbox>Admin</md-checkbox></div>
           <div flex="20" flex-offset="30"><ng-md-icon icon="delete" ng-click="deleteMe()"></ng-md-icon></div>
-          <div flex="20" flex-offset="10"><md-checkbox>Save</md-checkbox></div>
+          <div flex="20" flex-offset="10"><md-button class="md-raised md-primary"> Save </md-button></div>
         </div>
       </div>
     </div>
@@ -82,7 +84,7 @@
       <div layout="row">
         <div flex="20" flex-offset="5"><md-checkbox>Admin</md-checkbox></div>
         <div flex="20" flex-offset="30"><ng-md-icon icon="delete" ng-click="deleteMe()"></ng-md-icon></div>
-        <div flex="20" flex-offset="10"><md-checkbox>Save</md-checkbox></div>
+        <div flex="20" flex-offset="10"><md-button class="md-raised md-primary"> Save </md-button></div>
       </div>
     </div>
   </div>
