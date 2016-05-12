@@ -12,19 +12,13 @@ a {
 background-color: teal;
 }
 
-.listInstance{
-background-color: grey;
-}
+
 
 
 .header{
 text-align: center;
 }
 
-.listmenu{
-overflow-x:hidden;
-max-height: 393px !important;
-}
 
 .body-tab{
 background-color: #00bfa5;
@@ -172,10 +166,7 @@ body {
   font-size: 24px;
   padding-left: 10px;
 }
-button{
-    cursor: pointer;
-    float: right;
-}
+
 .flexcontainer {
 	display: -webkit-flex;
 		display: flex;
@@ -394,9 +385,6 @@ border-radius: 7px;
 }
 
 
-.inputdemoIcons md-icon{
-  size:16px;
-}
 
   .whiteframedemoBasicClassUsage md-whiteframe {
     background: #fff;
@@ -466,10 +454,7 @@ background: -moz-linear-gradient(top, white 0%, white 55%, #fff 130%); }
 .inputdemoIcons .inputIconDemo {
     min-height: 48px; }
 
-.mic md-icon{
-   width:18px;
-  height:18px;
-}
+
 
 /*
 Login  whiteframe css
@@ -488,7 +473,7 @@ Login  whiteframe css
       margin:20px;
     }
 
- md-input-container label {
+md-input-container label {
 
 text-transform: uppercase;
 font-size: 9pt;
@@ -622,10 +607,7 @@ margin-top: 2px;
   height:300px;
 }
 
-md-icon{
-height:18px;
-width:18px;
-}
+
 
 #output{
   margin-top: 7em;
@@ -672,6 +654,8 @@ md-input-container label{
   margin-left:15%;
 
 }
+
+
 #av{
   margin-right: 5px;
 }
@@ -748,10 +732,20 @@ margin:15px;
     width: 100%;
 }
 
-.instance md-input-container,.instanceDialog md-input-container {
-    margin-bottom: 0;
+.instance md-input-container,.instanceDialog md-input-container{
+   
+    height:3em;
 }
+.detail button{
+  min-width:30px !important;
+  min-height:10px !important;
+  border-radius: 99%;
+}
+.detail md-icon{
+  width:10px !important;
+   height:10px !important;
 
+}
 .viewInst md-list md-list-item.md-3-line .md-list-item-text h3{
  font-family: 'Open Sans';
     font-size: 12pt;
@@ -1124,7 +1118,8 @@ border-radius: 7px;
 
 
 .inputdemoIcons md-icon{
-  size:16px;
+width:16px !important;
+  height:16px !important;
 }
 
   .whiteframedemoBasicClassUsage md-whiteframe {
@@ -1195,10 +1190,7 @@ background: -moz-linear-gradient(top, white 0%, white 55%, #fff 130%); }
 .inputdemoIcons .inputIconDemo {
     min-height: 48px; }
 
-.mic md-icon{
-   width:18px;
-  height:18px;
-}
+
 
 /*
 Login  whiteframe css
@@ -1432,10 +1424,7 @@ table#nameSpaceTable td {
   text-transform: capitalize;
   text-align:center;}
 
-md-icon{
-height:18px;
-width:18px;
-}
+
 
 #output{
   margin-top: 7em;
