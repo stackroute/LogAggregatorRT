@@ -1,7 +1,21 @@
 
-var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ui.ace','ngLetterAvatar','ngMessages']);
-tattva.controller('AppCtrl', ['$scope', '$rootScope',
-function($scope) {
+
+var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ui.ace','ngLetterAvatar']);
+tattva.controller('AppCtrl', ['$scope', '$rootScope','$mdDialog', function($scope,$rootScope,$mdDialog) {
+
+  $scope.UI_Publish = function(ev) {
+    $mdDialog.show({
+      targetEvent: ev,
+      parent: angular.element(document.body),
+      clickOutsideToClose: true,
+      title: 'This is an alert title',
+      textContent: 'You can specify some description text in here.',
+      ariaLabel:'Alert Dialog Demo',
+      ok:'Got it!'
+    }
+    );
+  };
+
   $scope.operator=['>','<']
   $scope.showmesecound=true;
   $scope.showmefirst=true;
@@ -191,11 +205,11 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
         templateUrl: "/partials/instance.html",
           controller: "instCtrl"
   })
-   .state('instance.addInstance',{
+   .state('design.instance.addInstance',{
     url:"/addInstance",
     controller:"instCtrl"
   })
-  .state('instance.viewInstance', {
+  .state('design.instance.viewInstance', {
     url: "/:name",
     templateUrl:"partials/viewInstance.html",
     controller:"viewinstCtrl"
@@ -248,42 +262,20 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   .state('design.function',
   {
     url:'/function',
-         templateUrl: "partials/functionlist.html",
+    templateUrl: "partials/functionlist.html",
     controller:"functionlistCtrl"
 
   })
-  .state('function.inbox2', {
-    url: '/functional',
-     views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-     templateUrl: '/partials/FunctionEdit.html',
+  .state('design.functionEdit', {
+     url: '/functional/:functionname',
+    templateUrl: '/partials/cfunctions.html',
     controller: 'functionEditCtrl'
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
-    }
-
+    // params: { function_name :'function_name' }
   })
-  .state('function.addfunction', {
-    url:"/addFunction",
-     views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-    templateUrl:"partials/cfunctions.html"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
-    }
 
+  .state('design.addfunction', {
+    url:"/addFunction",
+    templateUrl:"partials/cfunctions.html"
   })
 
 
@@ -385,8 +377,8 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   {
     url:'/watchlist',
         templateUrl: "/partials/watchlists.html"
-
   })
+
 
   .state('design.watchlist.publish',
   {
@@ -502,7 +494,8 @@ tattva.directive('dashboardlayout', function() {
 //     directive.templateUrl = "/partials/flow.html";
 //  return directive;
 //  });
-tattva.controller('SalesController', ['$scope','$interval', function($scope, $interval){
+tattva.controller('SalesController', ['$scope','$interval','$mdDialog', function($scope, $interval, $mdDialog){
+
   $scope.salesData=[
     {hour: 1,sales: 54},
     {hour: 2,sales: 66},
@@ -664,7 +657,15 @@ tattva.directive('donutchart', function(){
 //   };
 // });
 
-tattva.controller('myController', ['$scope',function($scope) {
+tattva.controller('gotoWatchlist',['$scope','$state',function($scope,$state){
+  $scope.edit_watchlist=function (){
+    console.log("go to watchlist");
+    $state.go("design.watchlist");
+  }
+}]);
+
+tattva.controller('myController', ['$scope','$state',function($scope,$state) {
+
   $scope.itemcollection=[
     {"wlname": "WatchlistONE",
     "charttype":"graph",
@@ -1194,14 +1195,22 @@ function($scope, $http, $mdDialog) {
 
 
 
-tattva.controller('functionEditCtrl', ['$scope', '$http','$mdDialog',
-function($scope, $http, $mdDialog) {
+tattva.controller('functionEditCtrl', ['$scope', '$http','$mdDialog','$stateParams',
+function($scope, $http, $mdDialog,$stateParams) {
 
-  $scope.loadData = function() {
-    $http.get('/func_link_data').then(function(response){ $scope.data = response.data; });
+  var name=$stateParams.functionname;
+   $scope.loadData = function() {
+    $http.get('/func_link_data').then(function(response){ $scope.data = response.data;
+        for(var i in $scope.data) {
+          if($scope.data[i].fun_name===name){
+            $scope.function=$scope.data[i];
+          }
+
+        }
+    });
   }
   $scope.loadData();
-
+  // console.log("outside"+$scope.data);
   $scope.saveData=function(){
     var item={fun_name:$scope.data[0].fun_name,Descr:$scope.data[0].Descr,var:$scope.data[0].var,fun:$scope.data[0].fun};
     /*console.log(item);
