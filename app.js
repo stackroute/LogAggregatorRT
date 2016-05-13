@@ -74,6 +74,10 @@ var data= req.body;
 // res.sendFile(path.join(__dirname, '/public/json/namespace.json'));
 // });
 
+app.post('/publisherData', JSONparser, function(req, res){
+var data= req.body;
+console.log(data);
+});
 
 app.get('/org_admin', function(req, res){
    res.sendFile(path.join(__dirname, 'public/json/admindata.json'));
