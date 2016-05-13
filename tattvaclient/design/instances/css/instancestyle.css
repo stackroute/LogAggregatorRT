@@ -1,0 +1,160 @@
+.listmenu{
+overflow: scroll;
+overflow-x:hidden;
+max-height: 453px !important;
+
+-webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+-moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+}
+
+.viewInst .md-button{
+  text-transform: none;
+}
+.listInst{
+ max-height: 453px !important;
+}
+
+.instance md-input-container,.instanceDialog md-input-container{
+
+    height:3em;
+}
+.detail button{
+  min-width:30px !important;
+  min-height:10px !important;
+  border-radius: 99%;
+}
+.detail md-icon{
+  width:10px !important;
+   height:10px !important;
+
+}
+
+.viewInst md-list md-list-item.md-3-line .md-list-item-text h3{
+ font-family: 'Open Sans';
+    font-size: 12pt;
+    font-weight:bold;
+  }
+.viewInst md-list md-list-item.md-3-line .md-list-item-text p{
+  font-family: 'Open Sans';
+  font-size:9pt;
+}
+
+
+
+
+
+/*full styles*/
+md-input-container label{
+  text-transform: uppercase;
+  font-size: 9pt;
+}
+
+
+/* search box*/
+.searchbox .md-button{
+  min-width:50px;
+}
+.searchbox md-input-container input{
+  font-size: 11pt;
+}
+.searchbox md-input-container .md-errors-spacer {
+    min-height: 0;
+}
+
+.instance{
+  padding-top:5%;
+  margin-left:30%;
+}
+
+#av{
+  margin-right: 5px;
+}
+
+
+.listmain{
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+}
+.listmain md-list{
+  padding:0;
+}
+
+.listmenu{
+overflow: scroll;
+overflow-x:hidden;
+max-height: 453px !important;
+
+-webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+-moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+}
+.eachnamespc{
+  margin-left:5%;
+}
+
+.eachnamespc p.ng-binding, .eachnamespc h3.ng-binding{
+    font-family: 'Open Sans';
+    margin:0;
+
+}
+.eachnamespc h3.ng-binding
+{
+  font-size:12pt;
+
+}
+.eachnamespc p.ng-binding{
+  font-size: 9pt;
+  line-height: 26px;
+}
+.viewInst{
+  width:100%;
+  height:100%
+
+
+}
+.instancetoolbar{
+  background-color: #f2f2f2;
+  font-family:'Open Sans';
+  color:black;
+
+}
+
+.viewInst .md-button{
+  text-transform: none;
+}
+.listInst{
+ max-height: 453px !important;
+
+}
+.eachinst{
+  text-align:left;
+}
+
+.eachinst p{
+
+  font-weight: bold;
+  font-size: 9pt;
+
+}
+.instanceList{
+margin:15px;
+}
+
+.instanceList a.md-button.md-ink-ripple {
+    width: 100%;
+}
+
+.instance md-input-container,.instanceDialog md-input-container {
+    margin-bottom: 0;
+}
+
+.viewInst md-list md-list-item.md-3-line .md-list-item-text h3{
+ font-family: 'Open Sans';
+    font-size: 12pt;
+    font-weight:bold;
+  }
+.viewInst md-list md-list-item.md-3-line .md-list-item-text p{
+  font-family: 'Open Sans';
+  font-size:9pt;
+}
+

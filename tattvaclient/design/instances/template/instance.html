@@ -1,0 +1,94 @@
+<div ng-if="data.length!=0">
+  <div class="listInstance dialogdemoBasicUsage" id="popupContainer">
+<!-- <md-content md-padding>
+    <md-tabs md-stretch-tabs="never" md-selected="selectedIndex" md-swipe-content="true" md-border-bottom >
+      <md-tab label="Namespace" ui-sref=".namespace"></md-tab>
+      <md-tab label="Instance" ui-sref=".instance"></md-tab>
+      <md-tab label="Streams" ui-sref=".stream"></md-tab>
+      <md-tab label="Functions" ui-sref=".function"></md-tab>
+      <md-tab label="Watchlist" ui-sref=".watchlist"></md-tab>
+    </md-tabs>
+  </md-content> -->
+  <md-toolbar>
+  <div class="instancetoolbar md-toolbar-tools">
+  <!--       <md-button aria-label="Go Back">
+          Go Back
+        </md-button> -->
+        <h2>
+          <span>Recent Data Sources</span>
+        </h2>
+        <span flex=""></span>
+        <div class="searchbox">
+         <md-input-container md-theme="input" ng-show="showSearch" >
+         <input ng-model="search.who" placeholder="Search here...">
+       </md-input-container >
+       <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+       <md-icon md-svg-icon="image/svg/musica-searcher.svg"></md-icon>
+     </md-button>
+   </div>
+
+   <md-button class="md-fab md-mini" aria-label="Favorite" ng-click="addInstance($event)">
+    <md-icon md-svg-icon="image/svg/add-plus-button.svg"></md-icon>
+   </md-button>
+
+
+</div>
+</md-toolbar>
+
+<div layout="row" class="listdemoBasicUsage">
+  <div layout="row" flex="25">
+   <md-content class="listmain" flex >
+   <md-toolbar><div class="md-toolbar-tools">
+   <span class="md-title" flex-offset="5">Namespaces</span>
+ </div></md-toolbar>
+ <md-list>
+ <md-content class="listmenu">
+
+ <md-list-item ng-repeat="object in data" ui-sref="design.instance.viewInstance({name: '{{object.name}}' })" class="md-2-line"  ng-click="null" ng-show="data.length" >
+ <md-item-content layout="row" flex>
+ <div class="md-list-item-text md-tile-left inset" flex="30" >
+  <ng-letter-avatar data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
+</div>
+<div flex class="eachnamespc md-tile-content" flex="70">
+  <h3>{{object.name}}</h3>
+  <p>{{object.location}}</p>
+</div>
+</md-item-content>
+<md-divider></md-divider>
+</md-list-item>
+</md-content>
+</md-list>
+
+</md-content>
+</div>
+
+
+<div ui-view layout="row" flex="75">
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- No instance available -->
+
+<div ng-if="data.length==0">
+  <md-content md-padding>
+  <md-tabs md-stretch-tabs="never" md-selected="selectedIndex" md-swipe-content="true" md-border-bottom >
+  <md-tab label="Namespace" ui-sref=".namespace"></md-tab>
+  <md-tab label="Instance" ui-sref=".instance"></md-tab>
+  <md-tab label="Streams" ui-sref=".stream"></md-tab>
+  <md-tab label="Functions" ui-sref=".function"></md-tab>
+  <md-tab label="Watchlist" ui-sref=".watchlist"></md-tab>
+</md-tabs>
+<div ui-view></div>
+</md-content>
+<div layout="row" flex id="noSubscriber" layout-align="center center">
+  <div  flex layout-padding layout-margin layout-align="start">
+    <h2>Create Namespace</h2>
+    <p>Namespace list is empty. Click on the below button to create a namespace.</p>
+    <md-button class="md-raised md-primary" ui-sref='namespace.createNamespace'>Create</md-button>
+    <!-- <md-button class="md-raised md-primary" ui-sref="design.namespace1">Create</md-button> -->
+  </div>
+</div>
+</div>

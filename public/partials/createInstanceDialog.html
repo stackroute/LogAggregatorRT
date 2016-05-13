@@ -1,14 +1,22 @@
-
-<div class="instanceMain" ng-cloak >
-
-<form name="createInstance" ng-submit="instanceSubmit()">
-  <div class="instanceDialog inputdemoIcons" flex-offset>
-    <h4 class="md-subhead" flex-offset="25">CREATE NEW DATA SOURCE</h4>
+<!-- <div layout="column" flex-offset="10" ng-show="success">
+<div flex="70">
+<h3 class="md-title">Instance Created Successfully</h3>
+</div>
+<div flex="30">
+<md-button flex-offset="20" ui-sref="design.instance" ng-click="hideDialogAfterSuccess">OK</md-button>
+</div>
+</div> -->
+<md-dialog>
+<md-dialog-content>
+<div class="instanceMain" ng-cloak flex="90" ng-hide="success">
+<form name="createInstance" ng-submit="instanceSubmit()" flex-offset="10">
+  <div class="instanceDialog inputdemoIcons">
+    <h4 class="md-subhead" flex-offset="25">CREATE NEW DATA SOURCE</h4>      
         <md-input-container class="md-block">
         <label>Select a namespace</label>
          <md-icon md-svg-icon="image/svg/data-analytics-flow-chart-symbol.svg"></md-icon>
-        <md-select ng-model="size">
-          <md-option ng-repeat="namespace in namespaceSelect track by $index" value="{{namespace.name}}">{{namespace.name}}</md-option>
+        <md-select ng-model="dInstance.namespace" >
+          <md-option  ng-repeat="namespace in namespaceSelect track by $index" value="{{namespace.name}}">{{namespace.name}}</md-option>
         </md-select>
       </md-input-container>
 
@@ -16,7 +24,7 @@
      
       <label>Name of Instance</label>
       <md-icon md-svg-icon="image/svg/add-label-button.svg"></md-icon>
-      <input type="text" ng-model="dInstance.name" >
+      <input type="text" ng-model="dInstance.name" ng-required="true" >
 
     </md-input-container>
   <div layout="row">
@@ -26,10 +34,10 @@
       <md-icon md-svg-icon="image/svg/ip.svg"></md-icon>
        <div layout="column">
       <div flex>
-      <input type="text" name="ip" only-digits ng-model="dInstance.ipAddress" minlength="8" ng-required="true" ng-pattern="/^([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})$/">
+      <input type="text" name="ip" ng-model="dInstance.ipAddress" ng-required="true" ng-pattern="/^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/">
       </div>
       <div flex layout-align="right" ng-messages="createInstance.ip.$error" class="error" id="myerr" role="alert">
-                <div ng-message-exp="['required','pattern']">
+                <div ng-message-exp="['pattern']">
                 Invalid IP
                 </div>
 
@@ -48,7 +56,7 @@
       <input type="text" ng-model="dInstance.port" name="port" maxlength="4" ng-required="true" ng-pattern="/^\d{4}$/">
       </div>
       <div flex layout-align="right" ng-messages="createInstance.port.$error" class="error" id="myerr" role="alert">
-                <div ng-message-exp="['required','pattern']">
+                <div ng-message-exp="['pattern']">
                 Invalid port
                 </div>
 
@@ -60,22 +68,32 @@
     <md-input-container class="md-block">
       <label>Description</label>
       <md-icon md-svg-icon="image/svg/sort-button-with-three-lines.svg"></md-icon>
-      <input type="text" ng-model="dInstance.description">
+      <input type="text" ng-model="dInstance.description" ng-required="true">
     </md-input-container>
-    <md-input-container class="md-block">
+    <md-input-container class="md-block" ng-required="true">
       <label>Location</label>
       <md-icon md-svg-icon="image/svg/location.svg"></md-icon>
       <input type="text" ng-model="dInstance.location">
     </md-input-container>
     <div layout="row">
     <div flex-offset="20">
-      <md-button  class="md-raised md-primary">CREATE</md-button>
+      <md-button type="submit" class="md-raised md-primary">CREATE</md-button>
       </div>
       <div flex-offset="5">
-      <md-button  class="md-raised md-primary" ng-click="cancel()">CANCEL</md-button>
+      <md-button class="md-raised md-primary" ng-click="cancel()">CANCEL</md-button>
       </div>
 
     </div>
   </div>
-</form>
+
+</form> 
 </div>
+
+<md-content class="instanceMain" ng-show="success">
+  <h2>{{createMsg}}</h2>
+  <md-button class="md-raised" ng-click="cancel()" ng-show="success">Ok</md-button>
+</md-content>
+
+
+</md-dialog-content>
+</md-dialog>

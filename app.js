@@ -74,6 +74,10 @@ var data= req.body;
 // res.sendFile(path.join(__dirname, '/public/json/namespace.json'));
 // });
 
+app.post('/publisherData', JSONparser, function(req, res){
+var data= req.body;
+console.log(data);
+});
 
 app.get('/org_admin', function(req, res){
    res.sendFile(path.join(__dirname, 'public/json/admindata.json'));
@@ -103,6 +107,9 @@ app.get('/data/:param',function(req,res){
 
 app.post('/createdialogInstance',jsonParser,function(req,res){
  var instdata=req.body;
+
+ console.log("Adding new instance to system: ", instdata);
+
  var arr=[];
 var jsonObj={};
  fs.readFile(path.join(__dirname, 'public/data/instance.json'), function (err, data) {
@@ -167,6 +174,7 @@ app.get('/data/:param',function(req,res){
 
 app.post('/createdialogInstance',jsonParser,function(req,res){
  var instdata=req.body;
+
  var arr=[];
 var jsonObj={};
  fs.readFile(path.join(__dirname, 'public/data/instance.json'), function (err, data) {

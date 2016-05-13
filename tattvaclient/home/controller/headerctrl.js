@@ -17,19 +17,19 @@ angular.module('tattva')
           "link" : "design.namespace"
         },
         {
-          "menu" : "Instance",
+          "menu" : "Data Sources",
           "link" : "design.instance"
         },
         {
-          "menu" : "MainStreams",
-          "link" : "mainstream.streams"
+          "menu" : "Data Streams",
+          "link" : "design.streams"
         },
         {
           "menu" : "Functions",
           "link" : "design.function"
         },
         {
-          "menu" : "Watchlist",
+          "menu" : "Watch Lists",
           "link" : "design.watchlist"
         }
       ]

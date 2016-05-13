@@ -1,0 +1,37 @@
+<div class="publisherModel" ng-controller="publisherCtrl">
+  <div layout="row" layout-wrap flex>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Size of widget</label>
+      <md-select ng-model="size">
+        <md-option value="30">30</md-option>
+        <md-option value="50">50</md-option>
+        <md-option value="70">70</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+  <div layout="row" layout-wrap flex>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Graph Type</label>
+      <md-select ng-model="graphtype">
+        <md-option value="donut">Donut</md-option>
+        <md-option value="line">Line Chart</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+  <div layout="row" layout-wrap flex>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Log Viewer</label>
+      <md-select ng-model="log">
+        <md-option value="raw">Log Data</md-option>
+        <md-option value="table">Tables</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+  <div layout="row" layout-wrap flex>
+    <label flex="30">Log Viewer</label>
+    <div flex-xs flex="50">
+      <md-checkbox ng-repeat="tab in tabs" selected="tab.selected">{{tab.name}}</md-checkbox>
+    </div>
+  </div>
+  <md-button class="md-raised md-primary" ng-click="save()">Save</md-button>
+</div>
