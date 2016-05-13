@@ -17,7 +17,7 @@
       <md-list class="listInst" flex>
       <md-content class="instanceList">
       <md-list-item class="md-3-line" ng-repeat="object in instance" ng-if="$index % 2 == 0" layout="row">
-      <md-button target="_blank">
+      <md-button flex="50">
       <md-item-content layout="row">
       <div flex="20">
        <ng-letter-avatar data={{instance[$index].name}} avatarcustombgcolor="#2e2eb8" size=16px shape="round"></ng-letter-avatar>
@@ -47,7 +47,7 @@
   </md-button>
 
   <md-divider></md-divider>
-  <md-button>
+  <md-button flex="50">
 
   <md-item-content layout="row" >
   <div flex="20" ng-if="instance.length > $index+1">
