@@ -1,20 +1,41 @@
 
 <div class="instanceMain" ng-cloak >
+
 <form name="createInstance" ng-submit="instanceSubmit()">
-  <div class="instanceDialog inputdemoIcons" flex="70">
+  <div class="instanceDialog inputdemoIcons" flex-offset>
+    <h4 class="md-subhead" flex-offset="25">CREATE NEW DATA SOURCE</h4>
+        <md-input-container class="md-block">
+        <label>Select a namespace</label>
+         <md-icon md-svg-icon="image/svg/data-analytics-flow-chart-symbol.svg"></md-icon>
+        <md-select ng-model="size">
+          <md-option ng-repeat="namespace in namespaceSelect track by $index" value="{{namespace.name}}">{{namespace.name}}</md-option>
+        </md-select>
+      </md-input-container>
+
     <md-input-container class="md-block" >
-      <!-- <md-icon md-svg-src = '/images/icons/ic  _aspect_ratio_black_24px.svg'></md-icon> -->
-      <!-- <i class="material-icons">face</i> -->
+     
       <label>Name of Instance</label>
       <md-icon md-svg-icon="image/svg/add-label-button.svg"></md-icon>
-      <input type="text" ng-model="dInstance.name">
+      <input type="text" ng-model="dInstance.name" >
+
     </md-input-container>
   <div layout="row">
     <div flex="55">
     <md-input-container class="md-block">
       <label>IP Address</label>
       <md-icon md-svg-icon="image/svg/ip.svg"></md-icon>
-      <input type="text" ng-model="dInstance.ipAddress">
+       <div layout="column">
+      <div flex>
+      <input type="text" name="ip" only-digits ng-model="dInstance.ipAddress" minlength="8" ng-required="true" ng-pattern="/^([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})$/">
+      </div>
+      <div flex layout-align="right" ng-messages="createInstance.ip.$error" class="error" id="myerr" role="alert">
+                <div ng-message-exp="['required','pattern']">
+                Invalid IP
+                </div>
+
+            </div>
+            </div>
+
     </md-input-container>
     </div>
     <div flex="10"></div>
@@ -22,7 +43,17 @@
       <md-input-container class="md-block">
       <label>Port</label>
       <md-icon md-svg-icon="image/svg/universal-port-sign.svg"></md-icon>
-      <input type="text" ng-model="dInstance.port">
+        <div layout="column">
+      <div flex>
+      <input type="text" ng-model="dInstance.port" name="port" maxlength="4" ng-required="true" ng-pattern="/^\d{4}$/">
+      </div>
+      <div flex layout-align="right" ng-messages="createInstance.port.$error" class="error" id="myerr" role="alert">
+                <div ng-message-exp="['required','pattern']">
+                Invalid port
+                </div>
+
+            </div>
+            </div>
     </md-input-container>
     </div>
     </div>
@@ -36,8 +67,13 @@
       <md-icon md-svg-icon="image/svg/location.svg"></md-icon>
       <input type="text" ng-model="dInstance.location">
     </md-input-container>
-    <div layout="column" layout-align="center center">
-      <input type="submit" value="CREATE" class="md-raised md-primary"/>
+    <div layout="row">
+    <div flex-offset="20">
+      <md-button  class="md-raised md-primary">CREATE</md-button>
+      </div>
+      <div flex-offset="5">
+      <md-button  class="md-raised md-primary" ng-click="cancel()">CANCEL</md-button>
+      </div>
 
     </div>
   </div>

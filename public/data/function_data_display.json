@@ -3,5 +3,30 @@
 		"Descr": "This is an invalid function",
 		"var": "Number x,Number y",
 		"fun": "int Sum(int x,char y){ return x+y};"
+	}, {
+    "fun_name": "Multiply",
+		"Descr": "This is an invalid function",
+		"var": "Number x,Number y",
+		"fun": "int Mul(int x,char y){ return x*y};"
+	},{
+    "fun_name": "Divide",
+		"Descr": "This is an invalid function",
+		"var": "Number x,Number y",
+		"fun": "int Divide(int x,char y){ return x/y};"
+	},{
+    "fun_name": "Subtract",
+		"Descr": "This is an invalid function",
+		"var": "Number x,Number y",
+		"fun": "int Sub(int x,char y){ return x-y};"
+	}, {
+    "fun_name": "Calculate",
+		"Descr": "This is an invalid function",
+		"var": "Number x,Number y",
+		"fun": "int Calculate(int x,char y){ return x+y+2};"
+	}, {
+    "fun_name": "Aggregate",
+		"Descr": "This is an invalid function",
+		"var": "Number x,Number y",
+		"fun": "int Aggr(int x,char y){ return x+y/2};"
 	}
 ]

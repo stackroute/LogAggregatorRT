@@ -15,7 +15,7 @@
       },
       {
         "menu" : "Instance",
-        "link" : "instance"
+        "link" : "design.instance"
       },
       {
         "menu" : "MainStreams",
@@ -23,11 +23,11 @@
       },
       {
         "menu" : "Functions",
-        "link" : "function"
+        "link" : "design.function"
       },
       {
         "menu" : "Watchlist",
-        "link" : "watchlist"
+        "link" : "design.watchlist"
       }
     ]
   },
