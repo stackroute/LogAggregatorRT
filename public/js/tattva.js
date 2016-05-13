@@ -377,7 +377,6 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
 {
   url:'/watchlist',
   templateUrl: "/partials/watchlist.html",
-  /*controller:"watchlistNsp"*/
 })
 
 
@@ -988,7 +987,7 @@ function($scope, $http, $state) {
 
 ]);
 
-/*tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialog","$mdMedia",
+/*tattva.controller("watchlistNsp",["$scope","$state","$http","$stateParams","$mdDialog","$mdMedia",
   function($scope,$state,$http,$stateParams,$mdDialog,$mdMedia){
 
   $scope.selectedIndex = 1;
@@ -1003,7 +1002,8 @@ function($scope, $http, $state) {
     });
   }
   $scope.loadData();
-  }*/
+  }
+}]);*/
 
 tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialog","$mdMedia",
   function($scope,$state,$http,$stateParams,$mdDialog,$mdMedia){
@@ -1031,7 +1031,7 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
       controller: DialogController,
       templateUrl: "partials/createInstanceDialog.html",
       clickOutsideToClose:false,
-      fullscreen: useFullScreen,
+      fullscreen: true;
       parent: angular.element(document.body)
      /* scope:{success:'false'}*/
     }).then(function(answer) {
