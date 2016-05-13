@@ -112,6 +112,22 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       },
     }
   })
+  .state('design',{
+    url:"/design",
+    views: {
+      "header" : {
+        templateUrl: "/partials/header.html",
+        controller: "headerCtrl"
+      },
+      "content@" : {
+        templateUrl:"/partials/design.html",
+      },
+      "footer" : {
+        templateUrl: "/partials/footer.html"
+      }
+    }
+  })
+
   .state('login',
   {
     url: "/login",
@@ -156,7 +172,7 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       },
       "content@" : {
         templateUrl: "/partials/Admin_Page.html",
-          controller: "orgCtrl"
+        controller: "orgCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
@@ -174,7 +190,7 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       },
       "content@" : {
         templateUrl: "/partials/createInstance.html",
-          controller: "instCtrl"
+        controller: "instCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
@@ -194,8 +210,8 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
         controller: "headerCtrl"
       },
       "content@" : {
-         templateUrl: "partials/listInstance.html",
-    controller:"instCtrl"
+        templateUrl: "partials/listInstance.html",
+        controller:"instCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
@@ -236,14 +252,14 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   .state('function',
   {
     url:'/function',
-     views: {
+    views: {
       "header" : {
         templateUrl: "/partials/header.html",
         controller: "headerCtrl"
       },
       "content@" : {
-         templateUrl: "partials/functionlist.html",
-    controller:"functionlistCtrl"
+        templateUrl: "partials/functionlist.html",
+        controller:"functionlistCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
@@ -253,14 +269,14 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   })
   .state('function.inbox2', {
     url: '/functional',
-     views: {
+    views: {
       "header" : {
         templateUrl: "/partials/header.html",
         controller: "headerCtrl"
       },
       "content@" : {
-     templateUrl: '/partials/FunctionEdit.html',
-    controller: 'functionEditCtrl'
+        templateUrl: '/partials/FunctionEdit.html',
+        controller: 'functionEditCtrl'
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
@@ -270,73 +286,65 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   })
   .state('function.addfunction', {
     url:"/addFunction",
-     views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-    templateUrl:"partials/cfunctions.html"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
-    }
-
-  })
-
-
-  .state('mainstream',
-  {
-    url:'/streams',
     views: {
       "header" : {
         templateUrl: "/partials/header.html",
         controller: "headerCtrl"
       },
       "content@" : {
-        templateUrl: "/partials/mainstream.html"
+        templateUrl:"partials/cfunctions.html"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
       }
     }
+
   })
 
-  .state('mainstream.streams',
+
+  // .state('mainstream',
+  // {
+  //   url:'/streams',
+  //   views: {
+  //     "header" : {
+  //       templateUrl: "/partials/header.html",
+  //       controller: "headerCtrl"
+  //     },
+  //     "content@" : {
+  //       templateUrl: "/partials/mainstream.html"
+  //     },
+  //     "footer" : {
+  //       templateUrl: "/partials/footer.html"
+  //     }
+  //   }
+  // })
+
+  .state('design.streams',
   {
-    url:'/streams',
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-        templateUrl: "/partials/indexView.html"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
-    }
+    url:'/displayStreams',
+    templateUrl: "/partials/indexView.html"
   })
-  .state('mainstream.streams.viewStreams',
+
+  .state('design.streams.viewStreams',
   {
-  	url:'/:name',
+    url:'/:name',
     templateUrl: "/partials/viewStreams.html",
     controller: 'VICtrl'
   })
-  .state('mainstream.streams.viewdata',
+
+  .state('design.streams.viewdata',
   {
-  	url:'/:name',
+    url:'/:name',
     templateUrl: "/partials/viewdata.html",
     controller: 'viewCtrl'
   })
-  .state('mainstream.streams.create',
+
+  .state('design.streams.create',
   {
     url: '/create',
     templateUrl: "/partials/indexCreate.html",
     controller: 'createController'
-})
+  })
 
 
   .state('namespace', {
@@ -347,8 +355,8 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
         controller: "headerCtrl"
       },
       "content@" : {
-         templateUrl: "partials/namespace.html",
-    controller:"createNamespaceCtrl"
+        templateUrl: "partials/namespace.html",
+        controller:"createNamespaceCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
@@ -363,8 +371,8 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
         controller: "headerCtrl"
       },
       "content@" : {
-       templateUrl: "partials/listNamespace.html",
-    controller:"createNamespaceCtrl"
+        templateUrl: "partials/listNamespace.html",
+        controller:"createNamespaceCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
@@ -380,8 +388,8 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
         controller: "headerCtrl"
       },
       "content@" : {
-      templateUrl: "partials/createNamespace.html",
-    controller:"createNamespaceCtrl"
+        templateUrl: "partials/createNamespace.html",
+        controller:"createNamespaceCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
@@ -856,41 +864,55 @@ tattva.directive('query',function(){
 tattva.controller('routerCtrl',['$scope', '$http',function($scope, $http){
   $scope.loadData=function()
   {
-    $http.get('/viewStreams').then(function(response){ $scope.data = response.data;});
-    // console.log(response.data);
-    // console.log("view streams");
+    $http.get('/viewStreams').then(function(response) {$scope.data = response.data;} );
   };
   $scope.loadData();
 }]);
 
-tattva.controller('VICtrl',['$scope', '$http' , '$stateParams',function($scope,$http,$stateParams){
-  // console.log("1=", $stateParams.name);
-  $scope.objectJson=JSON.parse($stateParams.name);
+tattva.controller('VICtrl',['$scope', '$http' , '$stateParams', 'streamFactory', 'namespaceService',function($scope, $http, $stateParams, streamFactory, namespaceService){
+  // console.log("1=",$stateParams.name);
+  $scope.objectJson=$stateParams.name;
+  console.log("from controller= " , $scope.objectJson);
+  $scope.streamResultData={};
+
+  namespaceService.getData().success(function(data){
+    //console.log("data1=",data);
+    $scope.namespace_collection=data;
+  });
+
+  $scope.getStreamData=function(objectJson){
+    $scope.streamResultData = streamFactory.sendStream(objectJson);
+    console.log("streamResult= ",$scope.streamResultData);
+  }
+  // $scope.objectJson=$stateParams.name;
   // console.log("2=",typeof $stateParams.name);
-  $scope.params=$scope.objectJson.streams;
-  $scope.avatar=$scope.objectJson.instance;
+  //   $scope.params=$scope.objectJson.streamname;
+  // console.log("$scope.params=",$scope.objectJson.streamname);
+  //   $scope.avatar=$scope.objectJson.instance;
+  // console.log("  $scope.avatar=",  $scope.avatar);
 }]);
 
 tattva.controller('viewCtrl',['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
-  $scope.value=JSON.parse($stateParams.name);
-  //console.log($scope.value);
+  $scope.streamDetails=$stateParams.name;
+  console.log("sadfhs=", $scope.streamDetails);
 }]);
 
 tattva.controller('createController', ['$scope', '$http','namespaceService', 'instanceService', function($scope, $http, namespaceService, instanceService){
 
   $scope.operator=[">", ">=", "<", "<=", "==", "!=" ]
   namespaceService.getData().success(function(data){
+    //console.log("data1=",data);
     $scope.namespace_collection=data;
   });
   instanceService.getData().success(function(data){
+    //console.log("data2=",data);
     $scope.instance_collection=data;
   });
 
   $scope.save=function(){
     // console.log("Saved");
 
-    var streamData={namespace : $scope.user_namespace.name , instance : $scope.user_instance.name , nameofstream : $scope.user_streamName , description : $scope.stringDescription , query : {field: $scope.user_fields , operator: $scope.user_operator , value: $scope.user_value}};
-    console.log(streamData);
+    var streamData={namespace : $scope.user_namespace.name , instance : $scope.user_instance.name , streamname : $scope.user_streamName , description : $scope.stringDescription , query : [{field: $scope.user_fields , operator: $scope.user_operator , value: $scope.user_value }] };
     $http({
       method : 'post',
       url : '/filewrite',
@@ -906,6 +928,8 @@ tattva.controller('createController', ['$scope', '$http','namespaceService', 'in
       }
     });
   }
+
+
   $scope.cancel=function(){
     console.log("Cancelled");
   }
@@ -924,47 +948,84 @@ tattva.service('instanceService',['$http',function($http){
   }
 }]);
 
+tattva.service('streamService',['$http',function($http){
+  this.getData=function(){
+    return $http.get('/viewStream')
+  }
+}]);
+
+tattva.factory('streamFactory',function(){
+  var streamData={
+    sendStream : function(sendData){
+      console.log("from factory=",sendData);
+
+      var result = [{
+        "namespace": "apacheTomcat",
+        "instance": "ap_instance",
+        "streamname": "stream-1a",
+        "description": "This is apache stream",
+        "query": [{
+          "field": "response code",
+          "operator": "==",
+          "value": "200"
+        }]
+      }, {
+        "namespace": "ngnix",
+        "instance": "nx_instance",
+        "streamname": "stream-2",
+        "description": "This is ngnix stream",
+        "query": [{
+          "field": "response code",
+          "operator": ">",
+          "value": "300"
+        }]
+      }];
+      return result;
+    }
+  }
+  return streamData;
+});
 
 
 /*Pooja Singh*/
 /*login*/
 tattva.controller('orgCtrl', function($scope, $mdDialog, $http) {
-    //Your controller code goes here
-    $scope.loadData = function() {
-      $http.get('/org_admin').then(function(response){ $scope.data = response.data; });
+  //Your controller code goes here
+  $scope.loadData = function() {
+    $http.get('/org_admin').then(function(response){ $scope.data = response.data; });
+  }
+  $scope.loadData();
+
+
+
+  $scope.selectedUserIndex = undefined;
+  $scope.selectUserIndex = function (index) {
+    if ($scope.selectedUserIndex !== index) {
+      $scope.selectedUserIndex = index;
     }
-    $scope.loadData();
+    else {
+      $scope.selectedUserIndex = undefined;
+    }
+  };
 
+  $scope.selectedUserIndex1 = undefined;
+  $scope.selectUserIndex1 = function (index) {
+    if ($scope.selectedUserIndex1 !== index) {
+      $scope.selectedUserIndex1 = index;
+    }
+    else {
+      $scope.selectedUserIndex1 = undefined;
+    }
+  };
 
-
-    $scope.selectedUserIndex = undefined;
-    $scope.selectUserIndex = function (index) {
-      if ($scope.selectedUserIndex !== index) {
-        $scope.selectedUserIndex = index;
-      }
-      else {
-        $scope.selectedUserIndex = undefined;
-      }
-    };
-
-    $scope.selectedUserIndex1 = undefined;
-    $scope.selectUserIndex1 = function (index) {
-      if ($scope.selectedUserIndex1 !== index) {
-        $scope.selectedUserIndex1 = index;
-      }
-      else {
-        $scope.selectedUserIndex1 = undefined;
-      }
-    };
-
-    $scope.showAdd = function(ev) {
-   $mdDialog.show({
-     controller: DialogController,
-     template: '<md-dialog aria-label="Mango (Fruit)">'+
-     '<md-content class="md-padding"> <form name="userForm" ng-submit="saveData()">'+
-     '<div layout layout-sm="column">'+
-     '<md-input-container flex> <label>User Name</label> <input ng-model="uName"> </md-input-container> '+
-     '</div>'+
+  $scope.showAdd = function(ev) {
+    $mdDialog.show({
+      controller: DialogController,
+      template: '<md-dialog aria-label="Mango (Fruit)">'+
+      '<md-content class="md-padding"> <form name="userForm" ng-submit="saveData()">'+
+      '<div layout layout-sm="column">'+
+      '<md-input-container flex> <label>User Name</label> <input ng-model="uName"> </md-input-container> '+
+      '</div>'+
       '<md-input-container flex> <label>Email ID</label> <input ng-model="uEmail"> </md-input-container>'+
       '<div layout layout-sm="column">'+
       '<md-input-container flex> <label>Password</label> <input ng-model="uPassword"> </md-input-container>'+
@@ -973,19 +1034,19 @@ tattva.controller('orgCtrl', function($scope, $mdDialog, $http) {
       ' <md-button type="submit" class="md-primary"> Save </md-button>'+
       ' </div>'+
       '</md-dialog>',
-     targetEvent: ev,
-   });
+      targetEvent: ev,
+    });
 
- }
+  }
 
- $scope.deleteMe = function(ev) {
+  $scope.deleteMe = function(ev) {
     var confirm = $mdDialog.confirm()
-          .title('Delete')
-          .textContent('Are you surely want to delete.')
-          .ariaLabel('Lucky day')
-          .targetEvent(ev)
-          .ok('Yes')
-          .cancel('Cancel');
+    .title('Delete')
+    .textContent('Are you surely want to delete.')
+    .ariaLabel('Lucky day')
+    .targetEvent(ev)
+    .ok('Yes')
+    .cancel('Cancel');
     $mdDialog.show(confirm);
   };
 });
@@ -994,42 +1055,42 @@ tattva.controller('LoginCtrl', ['$scope', '$http', '$state',
 function($scope, $http, $state) {
   //Your controller code goes here
   $scope.loadData = function() {
-  // $http.get('/login_reg').then(function(response){
+    // $http.get('/login_reg').then(function(response){
 
-      var tabs = [
-        { title: 'Login'},
-        { title: 'Register'}
+    var tabs = [
+      { title: 'Login'},
+      { title: 'Register'}
 
-      ],
-      selected = null,
-      previous = null;
-      $scope.tabs = tabs;
-      $scope.selectedIndex = 0;
-      $scope.$watch('selectedIndex', function(current, old){
-        previous = selected;
-        selected = tabs[current];
-        $scope.user = {
-          site:'',
-          orgn:'',
-          location:'',
-          name:'',
-          email:'',
-          pwd:'',
-          cfpwd:''
-        }
-      });
+    ],
+    selected = null,
+    previous = null;
+    $scope.tabs = tabs;
+    $scope.selectedIndex = 0;
+    $scope.$watch('selectedIndex', function(current, old){
+      previous = selected;
+      selected = tabs[current];
+      $scope.user = {
+        site:'',
+        orgn:'',
+        location:'',
+        name:'',
+        email:'',
+        pwd:'',
+        cfpwd:''
+      }
+    });
 
     //})
-};
-    $scope.loadData();
+  };
+  $scope.loadData();
 
-    $scope.signUp=function(){
-      $scope.selectedIndex=1;
-    }
-    $scope.signIn=function(){
-      $scope.selectedIndex=0;
-    }
+  $scope.signUp=function(){
+    $scope.selectedIndex=1;
   }
+  $scope.signIn=function(){
+    $scope.selectedIndex=0;
+  }
+}
 
 
 
@@ -1044,7 +1105,7 @@ tattva.controller("instCtrl",["$scope","$state","$http",function($scope,$state,$
 
   }
   $scope.loadData=function(){
-    $http.get('/submitInstance').then(function(response){$scope.data = response.data; console.log($scope.data)});
+    $http.get('/submitInstance').then(function(response){$scope.data = response.data;});
   }
   $scope.loadData();
 
@@ -1138,7 +1199,7 @@ tattva.controller("viewinstCtrl",["$scope","$state","$http","$stateParams","$mdD
 
 tattva.controller("InstDialogctrl",["$scope","$state","$http","$stateParams",function($scope,$state,$http,$stateParams){
   $scope.fetchnspname=$stateParams.nspname;
-  console.log("hello");
+
   /*$scope.loadData = function() {
   $http.get("/data/"+ $scope.nspname).then(function(response){ $scope.instance = response.data;});
 }

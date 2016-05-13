@@ -16,7 +16,7 @@
         <md-input-container class="md-block" flex-gt-sm>
           <label>Select field</label>
           <md-select ng-model="user_fields">
-              <md-option ng-repeat="namespace_field in user_namespace.dataformat" value="{{namespace_field.fieldAlias}}">
+              <md-option ng-repeat="namespace_field in user_namespace.dataformat" value="{{namespace_field.fieldName}}">
               <!-- <ng-letter-avatar data={{namespace_field.fieldType}} shape="round" size="10px" avatarcustombgcolor="#339933" charCount=1 ></ng-letter-avatar> -->
               {{namespace_field.fieldName}}
             </md-option>
@@ -51,8 +51,7 @@
         </md-input-container>
     </div>
 <div layout="row">
-  <md-button class="md-raised md-primary">And</md-button>
-  <md-button class="md-raised md-primary">Or</md-button>
+  <md-button class="md-raised md-primary" ng-click="and()">and</md-button>
 
 </div>
   </form>

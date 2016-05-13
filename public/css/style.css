@@ -21,10 +21,10 @@ background-color: grey;
 text-align: center;
 }
 
-.listmenu{
+/*.listmenu{
 overflow-x:hidden;
-max-height: 393px !important;
-}
+max-height: 500px !important;
+}*/
 
 .body-tab{
 background-color: #00bfa5;
@@ -687,11 +687,14 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 .listmenu{
 overflow: scroll;
 overflow-x:hidden;
-max-height: 453px !important;
+max-height: 530px !important;
 
 -webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 -moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+}
+.listmenuView{
+max-height: none;
 }
 .eachnamespc{
   margin-left:5%;
@@ -725,6 +728,7 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 }
 .viewInst .md-button{
   text-transform: none;
+  padding-left: 40px;
 }
 .listInst{
  max-height: 453px !important;
@@ -777,7 +781,7 @@ margin:15px;
   padding-top: 15px;
 }
 
-/*begin -- This Style sheet used in the public/partials/login_reg.html by surya sah*/
+begin -- This Style sheet used in the public/partials/login_reg.html by surya sah*/
 
 .listdemoListControls md-divider {
   margin-top: 0;
@@ -940,6 +944,26 @@ h1{
   font-weight: bold;
   font-size: 16px;
 }
+
+.streamDetailsHeader{
+padding-left: 350px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 70%;
+    padding: 300px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+
+
 .tick
 {
   stroke-dasharray: 1, 2;
@@ -1495,15 +1519,7 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
   padding:0;
 }
 
-.listmenu{
-overflow: scroll;
-overflow-x:hidden;
-max-height: 453px !important;
 
--webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
--moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
-}
 .eachnamespc{
   margin-left:5%;
 }
@@ -1636,4 +1652,4 @@ table #nameSpaceTable {
   border: 1px solid #D0D3DA;
   margin: auto;
   width:100%;
-}*/
+}

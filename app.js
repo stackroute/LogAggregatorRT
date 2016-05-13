@@ -1,4 +1,3 @@
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -6,11 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
 var fs=require("fs");
 
 var jsonParser=bodyParser.json();
-
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -20,7 +17,6 @@ var app = express();
 var JSONparser = bodyParser.json();
 
 var jsonParser = bodyParser.json();
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
@@ -69,10 +65,30 @@ res.sendFile(path.join(__dirname, '/public/json/data.json'));
 app.post('/filewrite', JSONparser, function(req, res){
 var data= req.body;
 console.log(data);
+var obj={};
+fs.readFile(path.join(__dirname, '/public/json/data.json'), function(err , jsonobject){
+if(err){
+console.error(err);
+}
+else{
+var arr=JSON.parse(jsonobject);
+for(var i=0;i<arr.length;i++){
+  if(arr[i].namespace === data.namespace){
+    if(arr[i].instance === data.instance){
+        arr.push(data);
+      }
+    }
+  }
+}
+obj=JSON.stringify(arr);
+fs.writeFile(path.join(__dirname, '/public/json/data.json'), obj, function(err){
+   if (err) {
+       return console.error(err);
+   }
+    res.sendFile(path.join(__dirname, '/public/json/data.json'));
+  });
+ });
 });
-// app.get('/viewNamespace', function(req, res){
-// res.sendFile(path.join(__dirname, '/public/json/namespace.json'));
-// });
 
 
 app.get('/org_admin', function(req, res){
@@ -80,8 +96,6 @@ app.get('/org_admin', function(req, res){
 });
 app.post('/login_reg1',jsonParser,function (request, response) {
   var body1=request.body;
-  // console.log(body1);
-  //response.send("hi");
 });
 
 app.get('/login_reg', function(req, res){
@@ -153,10 +167,6 @@ app.use(function(req, res, next) {
 
 
 
-
-/*ui-router*/
-
-
 app.get('/submitInstance',function(req,res){
 res.sendFile(path.join(__dirname, 'public/data/namespace.json'));
 });
@@ -192,8 +202,6 @@ fs.writeFile(path.join(__dirname,'public/data/instance.json'),jsonObj,function(e
     res.sendFile(path.join(__dirname, 'public/data/instance.json'));
  });
 });
-
-
 
 });
 

@@ -1,22 +1,37 @@
-<div >
+<div flex flex-offset="20">
 <div ng-controller="viewCtrl" class="content">
-
-<table border="solid 2px black">
-
+<table>
 <tr>
-<td>Namespace :</td>
-<td>{{value.namespace}}</td>
+  <th colspan="2" style="text-align: center">
+    <h2>Stream Details</h3>
+  </th>
+</tr>
+<tr>
+<th>Namespace </th>
+<td>{{streamDetails.namespace}}</td>
 </tr>
 
 <tr>
-<td>Instance :</td>
-<td>{{value.instance}}</td>
+<th>Instance </th>
+<td>{{streamDetails.instance}}</td>
 </tr>
 
 <tr>
-<td>Streams :</td>
-<td>{{value.streams}}</td>
+<th>Stream </th>
+<td>{{streamDetails.streamname}}</td>
 </tr>
+
+<tr>
+<th>Description </th>
+<td>{{streamDetails.description}}</td>
+</tr>
+
+<tr ng-repeat="val in streamDetails.query">
+<th>Query </th>
+<td>{{val.field}} {{val.operator}} {{val.value}}</td>
+</tr>
+
+
 
 </table>
 

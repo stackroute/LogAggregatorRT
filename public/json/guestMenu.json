@@ -11,7 +11,7 @@
     "children" : [
       {
         "menu" : "Namespace",
-        "link" : "namespace"
+        "link" : "design.namespace"
       },
       {
         "menu" : "Instance",
@@ -19,7 +19,7 @@
       },
       {
         "menu" : "MainStreams",
-        "link" : "mainstream.streams"
+        "link" : "design.streams"
       },
       {
         "menu" : "Functions",
