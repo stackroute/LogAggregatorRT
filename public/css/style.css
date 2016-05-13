@@ -1,9 +1,4 @@
-.instanceDialog{
 
-   padding:5%;
-  margin-left:15%;
-
-}
 
 .listmenu{
 overflow: scroll;
@@ -21,7 +16,6 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 .listInst{
  max-height: 453px !important;
 }
-
 
 .instance md-input-container,.instanceDialog md-input-container{
 
@@ -47,9 +41,7 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
   font-family: 'Open Sans';
   font-size:9pt;
 }
-/*.viewInst md-subheader{
-  height:30px;
-}*/
+
 .envelop {
     margin: 10px;
     padding: 10px;
@@ -85,22 +77,8 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
   user-select: none;
   /* Likely future */ }
 
-.imgbg1 {
-  height: 100px;
-  width: 100px;
-  padding-top: -10px;
-  position: absolute;
-}
 
-.imgbg {
-  height: 85px;
-  width: 85px;
-  position: absolute;
-}
 
-.set1{
-  padding-top: 30px;
-}
 
 .usrListContainer{
   padding:50px;
@@ -649,9 +627,7 @@ md-input-container label{
   text-transform: uppercase;
   font-size: 9pt;
 }
- md-dialog{
-  min-width:50%;
- }
+
 
 /* search box*/
 .searchbox .md-button{
@@ -668,12 +644,7 @@ md-input-container label{
   padding-top:5%;
   margin-left:30%;
 }
-.instanceDialog{
 
-   padding:5%;
-  margin-left:15%;
-
-}
 #av{
   margin-right: 5px;
 }
@@ -892,23 +863,6 @@ background-color: #00bfa5;
   /* IE 10+ */
   user-select: none;
   /* Likely future */ }
-
-.imgbg1 {
-  height: 100px;
-  width: 100px;
-  padding-top: -10px;
-  position: absolute;
-}
-
-.imgbg {
-  height: 85px;
-  width: 85px;
-  position: absolute;
-}
-
-.set1{
-  padding-top: 30px;
-}
 
 .usrListContainer{
   padding:50px;
@@ -1376,9 +1330,7 @@ md-input-container label{
   text-transform: uppercase;
   font-size: 9pt;
 }
- md-dialog{
-  min-width:50%;
- }
+
 
 /* search box*/
 .searchbox .md-button{
@@ -1395,12 +1347,12 @@ md-input-container label{
   padding-top:5%;
   margin-left:30%;
 }
-.instanceDialog{
+/*.instanceDialog{
 
    padding:5%;
   margin-left:15%;
 
-}
+}*/
 #av{
   margin-right: 5px;
 }
@@ -1521,23 +1473,6 @@ margin:15px;
   /* IE 10+ */
   user-select: none;
   /* Likely future */ }
-
-.imgbg1 {
-  height: 100px;
-  width: 100px;
-  padding-top: -10px;
-  position: absolute;
-}
-
-.imgbg {
-  height: 85px;
-  width: 85px;
-  position: absolute;
-}
-
-.set1{
-  padding-top: 30px;
-}
 
 .usrListContainer{
   padding:50px;
@@ -2075,9 +2010,7 @@ md-input-container label{
   text-transform: uppercase;
   font-size: 9pt;
 }
- md-dialog{
-  min-width:50%;
- }
+ 
 
 /* search box*/
 .searchbox .md-button{
@@ -2094,12 +2027,7 @@ md-input-container label{
   padding-top:5%;
   margin-left:30%;
 }
-.instanceDialog{
 
-   padding:5%;
-  margin-left:15%;
-
-}
 #av{
   margin-right: 5px;
 }

@@ -2,6 +2,8 @@
   angular.module("tattva",[
     'ngMaterial',
     'ngMdIcons',
-    'ui.router'
+    'ui.router',
+    'ui.ace',
+    'ngLetterAvatar'
   ]);
 })();
