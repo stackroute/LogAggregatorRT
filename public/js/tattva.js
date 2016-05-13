@@ -11,77 +11,77 @@ tattva.controller('AppCtrl', ['$scope', '$rootScope','$mdDialog', function($scop
       ariaLabel:'Alert Dialog Demo',
       ok:'Got it!'
     }
-    );
-  };
+  );
+};
 
-  $scope.operator=['>','<']
-  $scope.showmesecound=true;
-  $scope.showmefirst=true;
-  $scope.namespaces = [{
-    "name": "ngnix",
-    "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
-  }, {
-    "name": "apache",
-    "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
-  }, {
-    "name": "iot-sound",
-    "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
-  }, {
-    "name": "iot-temprature",
-    "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
-  }];
-  $scope.datastreams = [{
-    "name": "ngnix-stream-GET",
-    "namespace": "ngnix"
-  }, {
-    "name": "ngnix-stream-POST",
-    "namespace": "ngnix"
-  }, {
-    "name": "apache-stream-GET",
-    "namespace": "apache"
-  }, {
-    "name": "apache-stream-POST",
-    "namespace": "apache"
-  }];
-  //     removestatement:function(){
-  //     //  console.log($scope.wlstdef.statements);
-  //     var lastItem = $scope.wlstdef.statements.length-1;
-  //     console.log(lastItem);
-  //   //  $scope.statements.splice(lastItem);
-  // };
+$scope.operator=['>','<']
+$scope.showmesecound=true;
+$scope.showmefirst=true;
+$scope.namespaces = [{
+  "name": "ngnix",
+  "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
+}, {
+  "name": "apache",
+  "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
+}, {
+  "name": "iot-sound",
+  "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
+}, {
+  "name": "iot-temprature",
+  "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
+}];
+$scope.datastreams = [{
+  "name": "ngnix-stream-GET",
+  "namespace": "ngnix"
+}, {
+  "name": "ngnix-stream-POST",
+  "namespace": "ngnix"
+}, {
+  "name": "apache-stream-GET",
+  "namespace": "apache"
+}, {
+  "name": "apache-stream-POST",
+  "namespace": "apache"
+}];
+//     removestatement:function(){
+//     //  console.log($scope.wlstdef.statements);
+//     var lastItem = $scope.wlstdef.statements.length-1;
+//     console.log(lastItem);
+//   //  $scope.statements.splice(lastItem);
+// };
 
-  $scope.savewatchlist=function(){
-  }
-  $scope.wlstdef = {
-    statements: [],
-    // savejoinby:function('name'){$scope.name=name,console.log($scope.name)},
-    removestatement:function(){
-      var lastItem = $scope.wlstdef.statements.length-1;
-      this.statements.splice(lastItem);
-    },
-    addNewStatement: function(name) {
-      if($scope.showmesecound){
-        $scope.showmesecound=false;
-      }
-      var newStmt = {
-        _id: (this.statements.length + 1),
-        _joinexpressionBy:name,
-        criterias: [],
-        addNewClause: function(name) {
-          if($scope.showmefirst){
-            $scope.showmefirst=false;
-          }
-          var newClause = {_id: (this.criterias.length + 1),_joinby:name };
-          this.criterias.push(newClause);
-        },
-        removecriterias:function(){
-          var lastItem = this.criterias.length-1;
-          this.criterias.splice(lastItem);
-        }
-      }
-      this.statements.push(newStmt);
+$scope.savewatchlist=function(){
+}
+$scope.wlstdef = {
+  statements: [],
+  // savejoinby:function('name'){$scope.name=name,console.log($scope.name)},
+  removestatement:function(){
+    var lastItem = $scope.wlstdef.statements.length-1;
+    this.statements.splice(lastItem);
+  },
+  addNewStatement: function(name) {
+    if($scope.showmesecound){
+      $scope.showmesecound=false;
     }
+    var newStmt = {
+      _id: (this.statements.length + 1),
+      _joinexpressionBy:name,
+      criterias: [],
+      addNewClause: function(name) {
+        if($scope.showmefirst){
+          $scope.showmefirst=false;
+        }
+        var newClause = {_id: (this.criterias.length + 1),_joinby:name };
+        this.criterias.push(newClause);
+      },
+      removecriterias:function(){
+        var lastItem = this.criterias.length-1;
+        this.criterias.splice(lastItem);
+      }
+    }
+    this.statements.push(newStmt);
   }
+}
 }
 // modal
 
@@ -144,22 +144,22 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       }
     }
   })
-  .state('user',
-  {
-    url: "/dashboard",
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-        templateUrl: "/partials/dashboard.html"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
-    }
-  })
+  // .state('user',
+  // {
+  //   url: "/dashboard",
+  //   views: {
+  //     "header" : {
+  //       templateUrl: "/partials/header.html",
+  //       controller: "headerCtrl"
+  //     },
+  //     "content@" : {
+  //       templateUrl: "/partials/dashboard.html"
+  //     },
+  //     "footer" : {
+  //       templateUrl: "/partials/footer.html"
+  //     }
+  //   }
+  // })
 
   .state('organisation',
   {
@@ -171,7 +171,7 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       },
       "content@" : {
         templateUrl: "/partials/Admin_Page.html",
-          controller: "orgCtrl"
+        controller: "orgCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
@@ -179,9 +179,9 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
     }
   })
 
-.state('design',{
+  .state('design',{
 
-  url: "/design",
+    url: "/design",
     views: {
       "header" : {
         templateUrl: "/partials/header.html",
@@ -189,21 +189,21 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       },
       "content@" : {
         templateUrl: "/partials/design.html",
-          controller: "orgCtrl"
+        controller: "orgCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
       }
     }
 
-})
+  })
   .state('design.instance',
   {
     url: "/instance",
-        templateUrl: "/partials/instance.html",
-          controller: "instCtrl"
+    templateUrl: "/partials/instance.html",
+    controller: "instCtrl"
   })
-   .state('design.instance.addInstance',{
+  .state('design.instance.addInstance',{
     url:"/addInstance",
     controller:"instCtrl"
   })
@@ -212,194 +212,194 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
     templateUrl:"partials/viewInstance.html",
     controller:"viewinstCtrl"
   })
-/*  .state('instance.listInstance', {
-    url: "/instance/listInstance",
-    templateUrl: "partials/listInstance.html"
-    // controller:"createInstanceCtrl"
-  })*/
-  .state('instance.submitInstance', {
-    url: "/submitInstance",
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-         templateUrl: "partials/listInstance.html",
-    controller:"instCtrl"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
+  /*  .state('instance.listInstance', {
+  url: "/instance/listInstance",
+  templateUrl: "partials/listInstance.html"
+  // controller:"createInstanceCtrl"
+})*/
+.state('instance.submitInstance', {
+  url: "/submitInstance",
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
+      templateUrl: "partials/listInstance.html",
+      controller:"instCtrl"
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
     }
+  }
 
-  })
+})
 
-  .state('instance.submitInstance.viewInstance.createInstance',{
-    url:"/createdialogInstance/:nspname",
-    controller:"InstDialogctrl"
-  })
-
-
-  // .state('mainstream.streams',
-  // {
-  //   url:'/streams',
-  //   views: {
-  //     "header" : {
-  //       templateUrl: "/partials/header.html",
-  //       controller: "headerCtrl"
-  //     },
-  //     "content@" : {
-  //       templateUrl: "/partials/indexview.html"
-  //     },
-  //     "footer" : {
-  //       templateUrl: "/partials/footer.html"
-  //     }
-  //   }
-  // })
-  .state('design.function',
-  {
-    url:'/function',
-    templateUrl: "partials/functionlist.html",
-    controller:"functionlistCtrl"
-
-  })
-  .state('design.functionEdit', {
-     url: '/functional/:functionname',
-    templateUrl: '/partials/cfunctions.html',
-    controller: 'functionEditCtrl'
-    // params: { function_name :'function_name' }
-  })
-
-  .state('design.addfunction', {
-    url:"/addFunction",
-    templateUrl:"partials/cfunctions.html"
-  })
-
-
-  .state('mainstream',
-  {
-    url:'/streams',
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-        templateUrl: "/partials/mainstream.html"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
-    }
-  })
-
-  .state('mainstream.streams',
-  {
-    url:'/streams',
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-        templateUrl: "/partials/indexView.html"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
-    }
-  })
-  .state('mainstream.streams.viewStreams',
-  {
-  	url:'/:name',
-    templateUrl: "/partials/viewStreams.html",
-    controller: 'VICtrl'
-  })
-  .state('mainstream.streams.viewdata',
-  {
-  	url:'/:name',
-    templateUrl: "/partials/viewdata.html",
-    controller: 'viewCtrl'
-  })
-  .state('mainstream.streams.create',
-  {
-    url: '/create',
-    templateUrl: "/partials/indexCreate.html",
-    controller: 'createController'
+.state('instance.submitInstance.viewInstance.createInstance',{
+  url:"/createdialogInstance/:nspname",
+  controller:"InstDialogctrl"
 })
 
 
-  .state('design.namespace', {
-    url: "/namespace",
-         templateUrl: "partials/namespace.html",
-    controller:"createNamespaceCtrl"
-  })
-  .state('namespace.listNameSpace', {
-    url: "/namespace/listNameSpace",
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-       templateUrl: "partials/listNamespace.html",
-    controller:"createNamespaceCtrl"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
-    }
+// .state('mainstream.streams',
+// {
+//   url:'/streams',
+//   views: {
+//     "header" : {
+//       templateUrl: "/partials/header.html",
+//       controller: "headerCtrl"
+//     },
+//     "content@" : {
+//       templateUrl: "/partials/indexview.html"
+//     },
+//     "footer" : {
+//       templateUrl: "/partials/footer.html"
+//     }
+//   }
+// })
+.state('design.function',
+{
+  url:'/function',
+  templateUrl: "partials/functionlist.html",
+  controller:"functionlistCtrl"
 
-  })
-  .state('namespace.createNamespace', {
-    url: "/createNamespace",
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
+})
+.state('design.functionEdit', {
+  url: '/functional/:functionname',
+  templateUrl: '/partials/cfunctions.html',
+  controller: 'functionEditCtrl'
+  // params: { function_name :'function_name' }
+})
+
+.state('design.addfunction', {
+  url:"/addFunction",
+  templateUrl:"partials/cfunctions.html"
+})
+
+
+.state('mainstream',
+{
+  url:'/streams',
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
+      templateUrl: "/partials/mainstream.html"
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
+    }
+  }
+})
+
+.state('mainstream.streams',
+{
+  url:'/streams',
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
+      templateUrl: "/partials/indexView.html"
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
+    }
+  }
+})
+.state('mainstream.streams.viewStreams',
+{
+  url:'/:name',
+  templateUrl: "/partials/viewStreams.html",
+  controller: 'VICtrl'
+})
+.state('mainstream.streams.viewdata',
+{
+  url:'/:name',
+  templateUrl: "/partials/viewdata.html",
+  controller: 'viewCtrl'
+})
+.state('mainstream.streams.create',
+{
+  url: '/create',
+  templateUrl: "/partials/indexCreate.html",
+  controller: 'createController'
+})
+
+
+.state('design.namespace', {
+  url: "/namespace",
+  templateUrl: "partials/namespace.html",
+  controller:"createNamespaceCtrl"
+})
+.state('namespace.listNameSpace', {
+  url: "/namespace/listNameSpace",
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
+      templateUrl: "partials/listNamespace.html",
+      controller:"createNamespaceCtrl"
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
+    }
+  }
+
+})
+.state('namespace.createNamespace', {
+  url: "/createNamespace",
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
       templateUrl: "partials/createNamespace.html",
-    controller:"createNamespaceCtrl"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
+      controller:"createNamespaceCtrl"
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
     }
+  }
 
 
-  })
+})
 
-  .state('design.watchlist',
-  {
-    url:'/watchlist',
-        templateUrl: "/partials/watchlists.html"
-  })
+.state('design.watchlist',
+{
+  url:'/watchlist',
+  templateUrl: "/partials/watchlists.html"
+})
 
 
-  .state('design.watchlist.publish',
-  {
-    url: "/publish",
-    controller: "publishCtrl"
-  })
+.state('design.watchlist.publish',
+{
+  url: "/publish",
+  controller: "publishCtrl"
+})
 
-  .state('watchlist.create', {
-    url:'/new',
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-        templateUrl:'/partials/newwatchlist.html',
-        controller: 'AppCtrl'
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
+.state('watchlist.create', {
+  url:'/new',
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
+      templateUrl:'/partials/newwatchlist.html',
+      controller: 'AppCtrl'
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
     }
-  })
+  }
+})
 }]);
 
 tattva.controller('AppRouteCtrl', function($scope,$mdSidenav, $state, $anchorScroll, $location) {
@@ -455,194 +455,6 @@ tattva.controller('headerCtrl',function($scope,$http){
 
 });
 
-tattva.directive('dashboardlayout', function() {
-  var directive = {};
-  directive.restrict = 'E';
-  directive.templateUrl = "/partials/dashboardlayout.html";
-  // directive.link = function(scope, elem, attr) {
-  //   console.log("From dashboardlayout link function: " , scope.myresult.charttype);
-  //   elem.getElementById('graphTab').appendchild('<mygraph type=scope.myresult.charttype></mygraph>');
-  // }
-  // directive.controller = function($scope) {
-  //   $scope.getChartTemplate = function() { return "/partials/" + $scope.myresult.charttype + ".html"; }
-  // };
-  directive.scope = {
-    myresult: '=result',
-    mylog:'=data'
-  }
-
-  return directive;
-});
-
-//  tattva.directive('graph', function() {
-//     var directive = {};
-//     directive.restrict = 'E';
-//     directive.templateUrl = "/partials/graph.html";
-//  return directive;
-//  });
-//  tattva.directive('data', function() {
-//     var directive = {};
-//     directive.restrict = 'E';
-//     directive.templateUrl = "/partials/data.html";
-//  return directive;
-//  });
-//  tattva.directive('flow', function() {
-//     var directive = {};
-//     directive.restrict = 'E';
-//     directive.templateUrl = "/partials/flow.html";
-//  return directive;
-//  });
-tattva.controller('SalesController', ['$scope','$interval','$mdDialog', function($scope, $interval, $mdDialog){
-
-  $scope.salesData=[
-    {hour: 1,sales: 54},
-    {hour: 2,sales: 66},
-    {hour: 3,sales: 77},
-    {hour: 4,sales: 70},
-    {hour: 5,sales: 60},
-    {hour: 6,sales: 63},
-    {hour: 7,sales: 55},
-    {hour: 8,sales: 47},
-    {hour: 9,sales: 55},
-    {hour: 10,sales: 30}
-  ];
-
-  $interval(function(){
-    var hour=$scope.salesData.length+1;
-    var sales= Math.round(Math.random() * 100);
-    $scope.salesData.push({hour: hour, sales:sales});
-  }, 2000);
-}]);
-
-tattva.directive('linearChart', function($parse, $window){
-  return{
-    restrict:'EA',
-    template:"<svg width='490' height='200'></svg>",
-    link: function(scope, elem, attrs){
-      var exp = $parse(attrs.chartData);
-
-      var salesDataToPlot=exp(scope);
-      var padding = 20;
-      var pathClass="path";
-      var xScale, yScale, xAxisGen, yAxisGen, lineFun;
-
-      var d3 = $window.d3;
-      var rawSvg=elem.find('svg');
-      var svg = d3.select(rawSvg[0]);
-
-      scope.$watchCollection(exp, function(newVal, oldVal){
-        salesDataToPlot=newVal;
-        redrawLineChart();
-      });
-
-      function setChartParameters(){
-
-        xScale = d3.scale.linear()
-        .domain([salesDataToPlot[0].hour, salesDataToPlot[salesDataToPlot.length-1].hour])
-        .range([padding + 5, rawSvg.attr("width") - padding]);
-
-        yScale = d3.scale.linear()
-        .domain([0, d3.max(salesDataToPlot, function (d) {
-          return d.sales;
-        })])
-        .range([rawSvg.attr("height") - padding, 0]);
-
-        xAxisGen = d3.svg.axis()
-        .scale(xScale)
-        .orient("bottom")
-        .ticks(salesDataToPlot.length - 1);
-
-        yAxisGen = d3.svg.axis()
-        .scale(yScale)
-        .orient("left")
-        .ticks(5);
-
-        lineFun = d3.svg.line()
-        .x(function (d) {
-          return xScale(d.hour);
-        })
-        .y(function (d) {
-          return yScale(d.sales);
-        })
-        .interpolate("basis");
-      }
-
-      function drawLineChart() {
-
-        setChartParameters();
-
-        svg.append("svg:g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0,180)")
-        .call(xAxisGen);
-
-        svg.append("svg:g")
-        .attr("class", "y axis")
-        .attr("transform", "translate(20,0)")
-        .call(yAxisGen);
-
-        svg.append("svg:path")
-        .attr({
-          d: lineFun(salesDataToPlot),
-          "stroke": "blue",
-          "stroke-width": 2,
-          "fill": "none",
-          "class": pathClass
-        });
-      }
-
-      function redrawLineChart() {
-
-        setChartParameters();
-
-        svg.selectAll("g.y.axis").call(yAxisGen);
-
-        svg.selectAll("g.x.axis").call(xAxisGen);
-
-        svg.selectAll("."+pathClass)
-        .attr({
-          d: lineFun(salesDataToPlot)
-        });
-      }
-
-      drawLineChart();
-    }
-  };
-});
-
-tattva.directive('donutchart', function(){
-  function link(scope, el, attr){
-
-    var color = d3.scale.category10();
-    // console.log(scope.myresult.value);
-    var data = scope.myresult.value;
-    var width = 230;
-    var height =230;
-    var min = Math.min(width, height);
-    var svg = d3.select(el[0]).append('svg');
-    var pie = d3.layout.pie().sort(null);
-    var arc = d3.svg.arc()
-    .outerRadius(min / 2 * 0.9)
-    .innerRadius(min / 2 * 0.5);
-
-    svg.attr({width: width, height: height});
-    var g = svg.append('g')
-    // center the donut chart
-    .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
-
-    // add the <path>s for each arc slice
-    g.selectAll('path').data(pie(data))
-    .enter().append('path')
-    .style('stroke', 'white')
-    .attr('d', arc)
-    .attr('fill', function(d, i){ return color(i) });
-  }
-  return {
-    link: link,
-    restrict: 'E'
-  };
-});
-
 
 // tattva.directive('mygraph', function() {
 //   return {
@@ -661,71 +473,6 @@ tattva.controller('gotoWatchlist',['$scope','$state',function($scope,$state){
     $state.go("design.watchlist");
   }
 }]);
-
-tattva.controller('myController', ['$scope','$state',function($scope,$state) {
-
-  $scope.itemcollection=[
-    {"wlname": "WatchlistONE",
-    "charttype":"graph",
-    "datatype":"data",
-    "wldef":{
-      "CountryName": "India",
-      "CountryCode": "IND"
-    },
-    "value":[8, 3, 7]
-  },
-  {"wlname": "WatchlistSECNOD",
-  "charttype":"flow",
-  "datatype":"rawdata",
-  "wldef":{
-    "CountryName": "Pakistan",
-    "CountryCode": "PAK"
-  },
-  "value":[15, 30, 27]
-},
-{	"wlname": "WatchlistTHIRD",
-"charttype":"flow",
-"datatype":"rawdata",
-"wldef":{
-  "CountryName": "America",
-  "CountryCode": "USA"
-},
-"value":[38, 13, 70]
-},
-{"wlname": "WatchlistFOUR",
-"charttype":"graph",
-"datatype":"data",
-"wldef":{
-  "CountryName": "Britan",
-  "CountryCode": "UK"
-},
-"value":[58, 32, 17]
-}
-];
-
-$scope.logdata=[
-  {
-    "CountryName": "India",
-    "CountryCode": "IND"
-  },
-  {
-    "CountryName": "Pakistan",
-    "CountryCode": "PAK"
-  },
-  {
-    "CountryName": "America",
-    "CountryCode": "USA"
-  },
-  {
-    "CountryName": "Britan",
-    "CountryCode": "UK"
-  }
-];
-
-}]);
-
-
-
 
 tattva.controller('data_1_Ctrlr', function($scope, $mdDialog, $http) {
   //Your controller code goes here
@@ -912,42 +659,42 @@ tattva.service('instanceService',['$http',function($http){
 /*Pooja Singh*/
 /*login*/
 tattva.controller('orgCtrl', function($scope, $mdDialog, $http) {
-    //Your controller code goes here
-    $scope.loadData = function() {
-      $http.get('/org_admin').then(function(response){ $scope.data = response.data; });
+  //Your controller code goes here
+  $scope.loadData = function() {
+    $http.get('/org_admin').then(function(response){ $scope.data = response.data; });
+  }
+  $scope.loadData();
+
+
+
+  $scope.selectedUserIndex = undefined;
+  $scope.selectUserIndex = function (index) {
+    if ($scope.selectedUserIndex !== index) {
+      $scope.selectedUserIndex = index;
     }
-    $scope.loadData();
+    else {
+      $scope.selectedUserIndex = undefined;
+    }
+  };
 
+  $scope.selectedUserIndex1 = undefined;
+  $scope.selectUserIndex1 = function (index) {
+    if ($scope.selectedUserIndex1 !== index) {
+      $scope.selectedUserIndex1 = index;
+    }
+    else {
+      $scope.selectedUserIndex1 = undefined;
+    }
+  };
 
-
-    $scope.selectedUserIndex = undefined;
-    $scope.selectUserIndex = function (index) {
-      if ($scope.selectedUserIndex !== index) {
-        $scope.selectedUserIndex = index;
-      }
-      else {
-        $scope.selectedUserIndex = undefined;
-      }
-    };
-
-    $scope.selectedUserIndex1 = undefined;
-    $scope.selectUserIndex1 = function (index) {
-      if ($scope.selectedUserIndex1 !== index) {
-        $scope.selectedUserIndex1 = index;
-      }
-      else {
-        $scope.selectedUserIndex1 = undefined;
-      }
-    };
-
-    $scope.showAdd = function(ev) {
-   $mdDialog.show({
-     controller: DialogController,
-     template: '<md-dialog aria-label="Mango (Fruit)">'+
-     '<md-content class="md-padding"> <form name="userForm" ng-submit="saveData()">'+
-     '<div layout layout-sm="column">'+
-     '<md-input-container flex> <label>User Name</label> <input ng-model="uName"> </md-input-container> '+
-     '</div>'+
+  $scope.showAdd = function(ev) {
+    $mdDialog.show({
+      controller: DialogController,
+      template: '<md-dialog aria-label="Mango (Fruit)">'+
+      '<md-content class="md-padding"> <form name="userForm" ng-submit="saveData()">'+
+      '<div layout layout-sm="column">'+
+      '<md-input-container flex> <label>User Name</label> <input ng-model="uName"> </md-input-container> '+
+      '</div>'+
       '<md-input-container flex> <label>Email ID</label> <input ng-model="uEmail"> </md-input-container>'+
       '<div layout layout-sm="column">'+
       '<md-input-container flex> <label>Password</label> <input ng-model="uPassword"> </md-input-container>'+
@@ -956,19 +703,19 @@ tattva.controller('orgCtrl', function($scope, $mdDialog, $http) {
       ' <md-button type="submit" class="md-primary"> Save </md-button>'+
       ' </div>'+
       '</md-dialog>',
-     targetEvent: ev,
-   });
+      targetEvent: ev,
+    });
 
- }
+  }
 
- $scope.deleteMe = function(ev) {
+  $scope.deleteMe = function(ev) {
     var confirm = $mdDialog.confirm()
-          .title('Delete')
-          .textContent('Are you surely want to delete.')
-          .ariaLabel('Lucky day')
-          .targetEvent(ev)
-          .ok('Yes')
-          .cancel('Cancel');
+    .title('Delete')
+    .textContent('Are you surely want to delete.')
+    .ariaLabel('Lucky day')
+    .targetEvent(ev)
+    .ok('Yes')
+    .cancel('Cancel');
     $mdDialog.show(confirm);
   };
 });
@@ -977,42 +724,42 @@ tattva.controller('LoginCtrl', ['$scope', '$http', '$state',
 function($scope, $http, $state) {
   //Your controller code goes here
   $scope.loadData = function() {
-  // $http.get('/login_reg').then(function(response){
+    // $http.get('/login_reg').then(function(response){
 
-      var tabs = [
-        { title: 'Login'},
-        { title: 'Register'}
+    var tabs = [
+      { title: 'Login'},
+      { title: 'Register'}
 
-      ],
-      selected = null,
-      previous = null;
-      $scope.tabs = tabs;
-      $scope.selectedIndex = 0;
-      $scope.$watch('selectedIndex', function(current, old){
-        previous = selected;
-        selected = tabs[current];
-        $scope.user = {
-          site:'',
-          orgn:'',
-          location:'',
-          name:'',
-          email:'',
-          pwd:'',
-          cfpwd:''
-        }
-      });
+    ],
+    selected = null,
+    previous = null;
+    $scope.tabs = tabs;
+    $scope.selectedIndex = 0;
+    $scope.$watch('selectedIndex', function(current, old){
+      previous = selected;
+      selected = tabs[current];
+      $scope.user = {
+        site:'',
+        orgn:'',
+        location:'',
+        name:'',
+        email:'',
+        pwd:'',
+        cfpwd:''
+      }
+    });
 
     //})
-};
-    $scope.loadData();
+  };
+  $scope.loadData();
 
-    $scope.signUp=function(){
-      $scope.selectedIndex=1;
-    }
-    $scope.signIn=function(){
-      $scope.selectedIndex=0;
-    }
+  $scope.signUp=function(){
+    $scope.selectedIndex=1;
   }
+  $scope.signIn=function(){
+    $scope.selectedIndex=0;
+  }
+}
 
 
 
@@ -1028,7 +775,7 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
   }
   $scope.loadData=function(){
     $http.get('/submitInstance').then(function(response){
-         $scope.data = response.data;
+      $scope.data = response.data;
     });
   }
   $scope.loadData();
@@ -1063,9 +810,9 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
 
     function DialogController($scope,$state, $mdDialog,$http){
 
-       $http.get('/submitInstance').then(function(response){
-         $scope.namespaceSelect = response.data;
-    });
+      $http.get('/submitInstance').then(function(response){
+        $scope.namespaceSelect = response.data;
+      });
 
       /*console.log($scope.nspname);*/
       $scope.dInstance={
@@ -1125,15 +872,15 @@ tattva.controller("viewinstCtrl",["$scope","$state","$http","$stateParams","$mdD
 
   $scope.dspDetail=function()
   { if($scope.show==="false")
-   {
+  {
     $scope.show="true";
-   }
-  else
-   {
-   $scope.show="false";
-   }
-
   }
+  else
+  {
+    $scope.show="false";
+  }
+
+}
 
 }]);
 
@@ -1197,14 +944,14 @@ tattva.controller('functionEditCtrl', ['$scope', '$http','$mdDialog','$statePara
 function($scope, $http, $mdDialog,$stateParams) {
 
   var name=$stateParams.functionname;
-   $scope.loadData = function() {
+  $scope.loadData = function() {
     $http.get('/func_link_data').then(function(response){ $scope.data = response.data;
-        for(var i in $scope.data) {
-          if($scope.data[i].fun_name===name){
-            $scope.function=$scope.data[i];
-          }
-
+      for(var i in $scope.data) {
+        if($scope.data[i].fun_name===name){
+          $scope.function=$scope.data[i];
         }
+
+      }
     });
   }
   $scope.loadData();
@@ -1212,7 +959,7 @@ function($scope, $http, $mdDialog,$stateParams) {
   $scope.saveData=function(){
     var item={fun_name:$scope.data[0].fun_name,Descr:$scope.data[0].Descr,var:$scope.data[0].var,fun:$scope.data[0].fun};
     /*console.log(item);
-*/
+    */
     $http({
       method  : 'POST',
       url     : '/func_send_data',
@@ -1334,9 +1081,9 @@ tattva.controller("publishCtrl",["$scope","$state","$http","$stateParams","$mdDi
     });
 
     function publishDialog($scope,$state, $mdDialog,$http){
-       $http.get('/submitInstance').then(function(response){
-         $scope.namespaceSelect = response.data;
-    });
+      $http.get('/submitInstance').then(function(response){
+        $scope.namespaceSelect = response.data;
+      });
 
       /*console.log($scope.nspname);*/
       $scope.dInstance={
