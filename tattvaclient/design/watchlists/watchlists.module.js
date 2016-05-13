@@ -16,18 +16,20 @@ function($stateProvider, $urlRouterProvider){
   // })
   .state('design.watchlist.create', {
     url:'/new',
-    views: {
-      "header" : {
-        templateUrl: "/home/template/header.html",
-        controller: "HeaderCtrl"
-      },
-      "content@" : {
-        templateUrl:'/design/watchlists/template/newwatchlist.html',
-        controller: 'WatchListCtrl'
-      },
-      "footer" : {
-        templateUrl: "/home/template/footer.html"
-      }
-    }
+    templateUrl:'/design/watchlists/template/newwatchlist.html',
+    controller: 'WatchListCtrl'
+    // views: {
+    //   "header" : {
+    //     templateUrl: "/home/template/header.html",
+    //     controller: "HeaderCtrl"
+    //   },
+    //   "content@" : {
+    //     templateUrl:'/design/watchlists/template/newwatchlist.html',
+    //     controller: 'WatchListCtrl'
+    //   },
+    //   "footer" : {
+    //     templateUrl: "/home/template/footer.html"
+    //   }
+    // }
   })
 }]);
