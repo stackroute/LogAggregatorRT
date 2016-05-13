@@ -2,9 +2,10 @@ angular.module('tattva')
 .controller("AppRouteCtrl", [
   "$scope",
   "$state",
+  "$mdSidenav",
   "$anchorScroll",
   "$location",
-  function($scope, $state, $anchorScroll, $location) {
+  function($scope, $state, $mdSidenav, $anchorScroll, $location) {
     $state.go('guest');
 
     $scope.openLeftMenu = function() {
