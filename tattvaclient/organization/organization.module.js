@@ -6,15 +6,15 @@ angular.module('tattva').config(['$stateProvider','$urlRouterProvider', function
   url: "/organisation",
   views: {
     "header" : {
-      templateUrl: "/partials/header.html",
-      controller: "headerCtrl"
+      templateUrl: "/home/template/header.html",
+      controller: "HeaderCtrl"
     },
     "content@" : {
       templateUrl: "organization/views/Admin_Page.html",
         controller: "orgCtrl"
     },
     "footer" : {
-      templateUrl: "/partials/footer.html"
+      templateUrl: "/home/template/footer.html"
     }
   }
 });
