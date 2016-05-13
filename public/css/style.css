@@ -1,6 +1,5 @@
 
 
-
 .listmenu{
 overflow: scroll;
 overflow-x:hidden;
@@ -19,7 +18,7 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 }
 
 .instance md-input-container,.instanceDialog md-input-container{
-   
+
     height:3em;
 }
 .detail button{
@@ -78,22 +77,8 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
   user-select: none;
   /* Likely future */ }
 
-.imgbg1 {
-  height: 100px;
-  width: 100px;
-  padding-top: -10px;
-  position: absolute;
-}
 
-.imgbg {
-  height: 85px;
-  width: 85px;
-  position: absolute;
-}
 
-.set1{
-  padding-top: 30px;
-}
 
 .usrListContainer{
   padding:50px;
@@ -224,98 +209,6 @@ h1{
 .tick
 {
   stroke-dasharray: 1, 2;
-}
-
-
-.nav {
-    position: absolute;
-    bottom: 12%;
-    right: 50%;
-    font-size: 18px;
-}
-
-
-.md-info md-toolbar.md-default-theme:not(.md-menu-toolbar),.md-info md-toolbar:not(.md-menu-toolbar){
-  /*background-color: #0CD4D4;*/
-  position:fixed;
-  color: black;
-}
-
-#hero{
-  background-color: #FDFDFD;
-}
-
-#slide1{
-  padding-top: 60px;
-}
-
-.navlast {
-    position: absolute;
-    bottom: 3%;
-    right: 50%;
-    font-size: 18px;
-}
-
-#slide2Content{
-  padding-top: 80px;
-  margin-bottom: 40px;
-}
-
-.card{
-  width: 33%;
-  background-color: #F8F9F9;
-}
-
-.content{
-  padding-top: 60px;
-}
-
-a{
-  text-decoration: none;
-  color:#E0F2F1;
-}
-
-md-list-item a {
-  color: #868686;
-}
-
-.mainImg{
-  width: 85%;
-  margin: auto;
-}
-
-.person{
-  width: 70%;
-  height: 90%;
-  border-radius: 50%;
-  box-shadow: -1px 0px 20px 1px #0A6969;
-}
-
-.footer_part1{
-  height: 200px;
-  width: 100%;
-  background-color: #454848;
-  padding-top: 30px;
-}
-
-.footer{
-  padding-top: 0px;
-}
-
-.navfooter{
-  float: right;
-  padding-right: 30px;
-}
-
-.copyright{
-  margin-top: 75px;
-}
-
-.full_width{
-  /*padding-top: 40px;*/
-  width: 100%;
-  height: 100vh;
-  position: relative;
 }
 
 
@@ -860,7 +753,6 @@ margin:15px;
   font-weight: bold;
   padding-top: 15px;
 }
-<<<<<<< HEAD
 
 #createNameSpaceInputBtn{
   margin-left: 25%;
@@ -971,23 +863,6 @@ background-color: #00bfa5;
   /* IE 10+ */
   user-select: none;
   /* Likely future */ }
-
-.imgbg1 {
-  height: 100px;
-  width: 100px;
-  padding-top: -10px;
-  position: absolute;
-}
-
-.imgbg {
-  height: 85px;
-  width: 85px;
-  position: absolute;
-}
-
-.set1{
-  padding-top: 30px;
-}
 
 .usrListContainer{
   padding:50px;
@@ -1121,99 +996,7 @@ h1{
 }
 
 
-body {
-  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
-  font: 14px;
-  font-size: auto;
-  margin: auto;
-}
 
-.nav {
-    position: absolute;
-    bottom: 12%;
-    right: 50%;
-    font-size: 18px;
-}
-
-
-.md-info md-toolbar.md-default-theme:not(.md-menu-toolbar),.md-info md-toolbar:not(.md-menu-toolbar){
-  /*background-color: #0CD4D4;*/
-  position:fixed;
-  color: black;
-}
-
-#hero{
-  background-color: #FDFDFD;
-}
-
-.navlast {
-    position: absolute;
-    bottom: 3%;
-    right: 50%;
-    font-size: 18px;
-}
-
-#slide2Content{
-  padding-top: 80px;
-  margin-bottom: 40px;
-}
-
-.card{
-  width: 33%;
-  background-color: #F8F9F9;
-}
-
-/*.content{
-  padding-top: 60px;
-}*/
-
-a{
-  text-decoration: none;
-  color:#E0F2F1;
-}
-
-md-list-item a {
-  color: #868686;
-}
-
-.mainImg{
-  width: 85%;
-  margin: auto;
-}
-
-.person{
-  width: 70%;
-  height: 90%;
-  border-radius: 50%;
-  box-shadow: -1px 0px 20px 1px #0A6969;
-}
-
-.footer_part1{
-  height: 200px;
-  width: 100%;
-  background-color: #454848;
-  padding-top: 30px;
-}
-
-.footer{
-  padding-top: 0px;
-}
-
-.navfooter{
-  float: right;
-  padding-right: 30px;
-}
-
-.copyright{
-  margin-top: 75px;
-}
-
-.full_width{
-  /*padding-top: 40px;*/
-  width: 100%;
-  height: 100vh;
-  position: relative;
-}
 
 
 /* Pooja Style sheet*/
@@ -1691,23 +1474,6 @@ margin:15px;
   user-select: none;
   /* Likely future */ }
 
-.imgbg1 {
-  height: 100px;
-  width: 100px;
-  padding-top: -10px;
-  position: absolute;
-}
-
-.imgbg {
-  height: 85px;
-  width: 85px;
-  position: absolute;
-}
-
-.set1{
-  padding-top: 30px;
-}
-
 .usrListContainer{
   padding:50px;
   margin: 180px;
@@ -1830,100 +1596,6 @@ h1{
 {
   stroke-dasharray: 1, 2;
 }
-
-
-.nav {
-    position: absolute;
-    bottom: 12%;
-    right: 50%;
-    font-size: 18px;
-}
-
-
-.md-info 
-.md-default-theme:not(.md-menu-toolbar),.md-info md-toolbar:not(.md-menu-toolbar){
-  /*background-color: #0CD4D4;*/
-  position:fixed;
-  color: black;
-}
-
-#hero{
-  background-color: #FDFDFD;
-}
-
-#slide1{
-  padding-top: 60px;
-}
-
-.navlast {
-    position: absolute;
-    bottom: 3%;
-    right: 50%;
-    font-size: 18px;
-}
-
-#slide2Content{
-  padding-top: 80px;
-  margin-bottom: 40px;
-}
-
-.card{
-  width: 33%;
-  background-color: #F8F9F9;
-}
-
-.content{
-  padding-top: 60px;
-}
-
-a{
-  text-decoration: none;
-  color:#E0F2F1;
-}
-
-md-list-item a {
-  color: #868686;
-}
-
-.mainImg{
-  width: 85%;
-  margin: auto;
-}
-
-.person{
-  width: 70%;
-  height: 90%;
-  border-radius: 50%;
-  box-shadow: -1px 0px 20px 1px #0A6969;
-}
-
-.footer_part1{
-  height: 200px;
-  width: 100%;
-  background-color: #454848;
-  padding-top: 30px;
-}
-
-.footer{
-  padding-top: 0px;
-}
-
-.navfooter{
-  float: right;
-  padding-right: 30px;
-}
-
-.copyright{
-  margin-top: 75px;
-}
-
-.full_width{
-  /*padding-top: 40px;*/
-  width: 100%;
-  height: 100vh;
-  position: relative;
-}
-
 
 /* Pooja Style sheet*/
 
@@ -2492,4 +2164,3 @@ margin:15px;
   border:1px solid grey;
   width:100%;
 }
-
