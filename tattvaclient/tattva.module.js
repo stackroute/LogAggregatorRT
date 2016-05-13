@@ -3,6 +3,7 @@
     'ngMaterial',
     'ngMdIcons',
     'ui.router',
+    'ui.ace',
     'ngLetterAvatar'
   ]);
 })();
