@@ -2,13 +2,21 @@
 <html lang="en">
 <head>
 	<title>LogAggregatorRT</title>
+
+		<link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
+      <!-- <link rel="stylesheet" href="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" type="text/css"/> -->
+      <link rel="stylesheet" href="angular-material-data-table/dist/md-data-table.min.css">
+
+<link rel="stylesheet" href="/design/instances/css/instancestyle.css">
 	<link rel="stylesheet" href="/home/css/homestyle.css">
-	<link rel="stylesheet" href="/css/style.css">
+ <link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="angular-material-data-table/dist/md-data-table.min.css">
 	<link rel="stylesheet" href="/organization/css/organisationstyle.css">
 	<link rel="stylesheet" href="/Function/css/function.style.css">
+
 </head>
 <body ng-app='tattva' ng-controller="AppRouteCtrl" ng-cloak>
 	<div layout="column" ng-clock>
@@ -43,7 +51,6 @@
 <script src="/auth/auth.module.js" charset="utf-8"></script>
 <script src="/auth/controller/loginctrl.js" charset="utf-8"></script>
 <!-- End of Login module -->
-
 <!-- organization module -->
 <script src="/organization/controllers/organization.controller.js"></script>
 <script src="/organization/organization.module.js"></script>
@@ -63,6 +70,14 @@
 <script src="/watchlists/directive/donutchart_directive.js" charset="utf-8"></script>
 <script src="/watchlists/directive/linechart_directive.js" charset="utf-8"></script>
 <!--dashboard end  -->
+
+<!--instance module scripts-->
+<script src="design/instances/controller/instancecontroller.js" charset="utf-8"></script>
+<script src="design/instances/controller/viewinstancecontroller.js" charset="utf-8"></script>
+<script src="design/instances/instance.module.js" charset="utf-8"></script>
+
+
+<!--instance scripts end-->
 
 
 </body>

@@ -59,7 +59,8 @@ $scope.wlstdef = {
     var lastItem = $scope.wlstdef.statements.length-1;
     this.statements.splice(lastItem);
   },
-  addNewStatement: function(name) {
+  addN
+  ewStatement: function(name) {
     if($scope.showmesecound){
       $scope.showmesecound=false;
     }
@@ -172,11 +173,21 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
     url:"/addInstance",
     controller:"instCtrl"
   })
+   .state('design.instance.addInstance.created',{
+    url:"/createdInstance",
+    templateUrl:"partials/status.html",
+    controller:"instCtrl"
+   /*views:{
+    "@":{
+   templateUrl:"partials/status.html",
+    controller:"instCtrl"
+   }}*/})
   .state('design.instance.viewInstance', {
     url: "/:name",
     templateUrl:"partials/viewInstance.html",
     controller:"viewinstCtrl"
   })
+
   /*  .state('instance.listInstance', {
   url: "/instance/listInstance",
   templateUrl: "partials/listInstance.html"
@@ -222,7 +233,6 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
 //     }
 //   }
 // })
-
 
 .state('mainstream',
 {
@@ -321,7 +331,8 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
 .state('design.watchlist',
 {
   url:'/watchlist',
-  templateUrl: "/partials/watchlists.html"
+  templateUrl: "/partials/watchlist.html",
+  /*controller:"watchlistNsp"*/
 })
 
 
@@ -613,7 +624,25 @@ function($scope, $http, $state) {
 
 ]);
 
-tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialog","$mdMedia",function($scope,$state,$http,$stateParams,$mdDialog,$mdMedia){
+/*tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialog","$mdMedia",
+  function($scope,$state,$http,$stateParams,$mdDialog,$mdMedia){
+
+  $scope.selectedIndex = 1;
+  $scope.submitInstance=function()
+  {
+    $state.go('instance.submitInstance');
+
+  }
+  $scope.loadData=function(){
+    $http.get('/submitInstance').then(function(response){
+      $scope.data = response.data;
+    });
+  }
+  $scope.loadData();
+  }*/
+
+tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialog","$mdMedia",
+  function($scope,$state,$http,$stateParams,$mdDialog,$mdMedia){
 
   $scope.selectedIndex = 1;
   $scope.submitInstance=function()
@@ -632,16 +661,15 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
   $scope.customFullscreen=$mdMedia('xs') || $mdMedia('sm');
   $scope.addInstance= function($event){
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+
     $mdDialog.show({
       targetEvent: $event,
       controller: DialogController,
       templateUrl: "partials/createInstanceDialog.html",
-      clickOutsideToClose:true,
+      clickOutsideToClose:false,
       fullscreen: useFullScreen,
-      parent: angular.element(document.body),
-      scope: $scope
-
-
+      parent: angular.element(document.body)
+     /* scope:{success:'false'}*/
     }).then(function(answer) {
       $scope.status = 'You decided to get rid of your debt.';
     }, function() {
@@ -658,10 +686,12 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
 
     function DialogController($scope,$state, $mdDialog,$http){
 
-      $http.get('/submitInstance').then(function(response){
-        $scope.namespaceSelect = response.data;
-      });
 
+       $http.get('/submitInstance').then(function(response){
+         $scope.namespaceSelect = response.data;
+    });
+
+       $scope.success=false;
       /*console.log($scope.nspname);*/
       $scope.dInstance={
         namespace:"",
@@ -673,34 +703,83 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
 
       };
 
+      $scope.createMsg="";
       $scope.instanceSubmit=function(){
+        console.log("data in ctrl ", $scope.dInstance);
 
-        var data={
-          instance:$scope.dInstance
-        };
         $http({
           method:'POST',
           url:'/createdialogInstance',
-          data: data
-        })
-        .success(function(response) {
-
+          data: $scope.dInstance
+        }).success(function(response) {
+          var data = {};
           if (data.errors) {
             $scope.errorName = data.errors.name;
             $scope.errorUserName = data.errors.username;
             $scope.errorEmail = data.errors.email;
           } else {
+            $scope.updatedInstance=response;
+            $scope.success=true;
+            $scope.createMsg="Created successfully..!";
 
-            $scope.data=response;
-            /*$state.go("design.submitInstance.viewInstance({name: '"+$scope.nspname+"' })");*/
+          /*  $mdDialog.templateUrl="partials/status.html";*/
+          //$state.go('design.instance.addInstance.created');
+          /*$scope.hideDialogAfterSuccess=function(){
+            $mdDialog.hide();
+          }*/
+
+           /* console.dir($state);
+            console.dir($state.href);*/
+            /*$mdDialog.hide();*/
+       /*$mdDialog.show({
+                skipHide: true,
+                controllerAs: 'DialogController',
+                clickOutsideToClose:true,
+                fullscreen: useFullScreen,
+                parent: angular.element(document.body),
+                controller: function($scope,$mdDialog){
+                  $scope.status="true";
+                  $scope.hideDialogAfterSuccess=function(){
+                    $state.go('design.instance');
+                    $mdDialog.hide();
+
+                  }
+
+                  },
+            templateUrl:"partials/status.html"
+              });*/
+
+
+
+
+
+            /*$mdDialog.hide();*/
+            /*$state.go("design.instance");*/
+
+            /*if($scope.nspname===null)
+              $state.go("design.instance");
+            else
+            $state.go("design.instance.viewInstance({name: '"+$scope.nspname+"' })");*/
           }
-
-
-
         });
+      }
 
-        $mdDialog.hide();
 
+
+      $scope.cancel=function(){
+        //$state.go('design.instance');
+
+        $mdDialog.cancel();
+
+         /*if(($scope.nspname).length===0)
+         { console.log("empty");
+              $state.go('design.instance');
+            }
+            else
+            {console.log(" not empty");
+            $state.go("design.instance.viewInstance({name: '"+$scope.nspname+"' })");
+          }
+*/
       }
 
     }
@@ -736,10 +815,10 @@ tattva.controller("viewinstCtrl",["$scope","$state","$http","$stateParams","$mdD
 tattva.controller("InstDialogctrl",["$scope","$state","$http","$stateParams",function($scope,$state,$http,$stateParams){
   $scope.fetchnspname=$stateParams.nspname;
   /*console.log("hello");*/
-  /*$scope.loadData = function() {
-  $http.get("/data/"+ $scope.nspname).then(function(response){ $scope.instance = response.data;});
-}
-$scope.loadData();*/
+  $scope.loadData = function() {
+/*  $http.get("/data/"+ $scope.nspname).then(function(response){ $scope.instance = response.data;});
+*/}
+$scope.loadData();
 }]);
 
 

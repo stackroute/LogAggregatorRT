@@ -8,20 +8,12 @@
       "location":"location 2"
 	},
 	{
-      "name":"apatche",
+      "name":"lighttpd",
       "location":"location 3"
 	},
 	  {
-      "name":"ngnix",
+      "name":"X5",
       "location":"location 4"
-	},
-  {
-      "name":"apatche",
-      "location":"location 5"
-  },
-    {
-      "name":"ngnix",
-      "location":"location 6"
-  }
+	}
 
 	]
