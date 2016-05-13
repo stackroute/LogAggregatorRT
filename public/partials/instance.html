@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+<div ng-if="data.length!=0">
+<div class="listInstance dialogdemoBasicUsage" id="popupContainer">
+=======
 <div ng-if="data.length!=0">
   <div class="listInstance dialogdemoBasicUsage" id="popupContainer">
+>>>>>>> f4800cd6ed2b9defcb436cd506d1401d0cfc9d4b
 <!-- <md-content md-padding>
     <md-tabs md-stretch-tabs="never" md-selected="selectedIndex" md-swipe-content="true" md-border-bottom >
       <md-tab label="Namespace" ui-sref=".namespace"></md-tab>
@@ -40,6 +45,22 @@
    <md-content class="listmain" flex >
    <md-toolbar><div class="md-toolbar-tools">
    <span class="md-title" flex-offset="5">Namespaces</span>
+<<<<<<< HEAD
+   </div></md-toolbar>
+    <md-list>
+   <md-content class="listmenu">
+
+
+      <md-list-item ng-repeat="object in data" ui-sref="design.instance.viewInstance({name: '{{object.name}}' })" class="md-2-line"  ng-click="null" ng-show="data.length" >
+<md-item-content layout="row" flex>
+        <div class="md-list-item-text md-tile-left inset" flex="30" >
+          <ng-letter-avatar data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
+        </div>
+        <div flex class="eachnamespc md-tile-content" flex="70">
+          <h3>{{object.name}}</h3>
+          <p>{{object.location}}</p>
+      </div>
+=======
  </div></md-toolbar>
  <md-list>
  <md-content class="listmenu">
@@ -53,6 +74,7 @@
   <h3>{{object.name}}</h3>
   <p>{{object.location}}</p>
 </div>
+>>>>>>> f4800cd6ed2b9defcb436cd506d1401d0cfc9d4b
 </md-item-content>
 <md-divider></md-divider>
 </md-list-item>
@@ -73,6 +95,9 @@
 <!-- No instance available -->
 
 <div ng-if="data.length==0">
+<<<<<<< HEAD
+
+=======
   <md-content md-padding>
   <md-tabs md-stretch-tabs="never" md-selected="selectedIndex" md-swipe-content="true" md-border-bottom >
   <md-tab label="Namespace" ui-sref=".namespace"></md-tab>
@@ -83,6 +108,7 @@
 </md-tabs>
 <div ui-view></div>
 </md-content>
+>>>>>>> f4800cd6ed2b9defcb436cd506d1401d0cfc9d4b
 <div layout="row" flex id="noSubscriber" layout-align="center center">
   <div  flex layout-padding layout-margin layout-align="start">
     <h2>Create Namespace</h2>
@@ -91,4 +117,5 @@
     <!-- <md-button class="md-raised md-primary" ui-sref="design.namespace1">Create</md-button> -->
   </div>
 </div>
+
 </div>

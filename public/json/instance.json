@@ -5,29 +5,30 @@
 		{
 			"name":"server1",
 			"ip": "server1-ip",
+      "port":"3001",
      		"port":"3001",
 			"description": "des1",
 			"location": "block-III,Tower-8",
 			"namespace": "apache",
 			"security": {
-							"authToken": "dsafdsafsadfsa",
-							"authmethod": "ssh"
-						}
+	"authToken": "dsafdsafsadfsa",
+"authmethod": "ssh"
+}
 
 		},
 		{
 			"name":"server2",
 			"ip": "server2-ip",
+      "port":"3002",
      		"port":"3002",
 			"description": "des2",
 			"location": "block-I,tower-6",
 			"namespace": "apache",
 			"security": {
-							"authToken": "dsafdsafsadfsa",
- 							"authmethod": "ssh"
- 						}
-
-		},
+	"authToken": "dsafdsafsadfsa",
+ "authmethod": "ssh"
+ }
+ },
 		{
 			"name":"server3",
 			"ip": "server1-ip",
@@ -175,8 +176,7 @@
 	"authToken": "dsafdsafsadfsa",
 "authmethod": "ssh"
 }
-
-		},
+},
 		{ "name":"inst2",
 			"ip": "ip2",
      "port":"8081",
@@ -187,8 +187,7 @@
 	"authToken": "dsafdsafsadfsa",
 "authmethod": "ssh"
 }
-
-		},
+},
 		{ "name":"inst3",
 			"ip": "ip3",
       "port":"8080",
@@ -199,8 +198,7 @@
 	"authToken": "dsafdsafsadfsa",
 "authmethod": "ssh"
 }
-
-		}
+}
 	]
 }
 ]
