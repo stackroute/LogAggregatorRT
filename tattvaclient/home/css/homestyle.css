@@ -29,7 +29,6 @@ body {
 
 #hero{
   background-color: #FDFDFD;
-  padding-top: 50px;
 }
 
 #slide1{
@@ -98,4 +97,12 @@ md-list-item a {
   width: 100%;
   height: 100vh;
   position: relative;
+}
+
+
+/* publisherModel */
+
+.publisherModel{
+  width: 400px;
+  height: 400px;
 }
