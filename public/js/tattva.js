@@ -1,5 +1,3 @@
-
-
 var tattva = angular.module('tattva', ['ngMaterial', 'ngMdIcons','ui.router','ui.ace','ngLetterAvatar']);
 tattva.controller('AppCtrl', ['$scope', '$rootScope','$mdDialog', function($scope,$rootScope,$mdDialog) {
 
@@ -404,7 +402,7 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
 })
 }]);
 
-tattva.controller('ctrl', function($scope, $state, $mdSidenav, $anchorScroll, $location) {
+tattva.controller('AppRouteCtrl', function($scope,$mdSidenav, $state, $anchorScroll, $location) {
 
   $state.go('guest');
 

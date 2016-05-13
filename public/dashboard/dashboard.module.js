@@ -5,14 +5,14 @@ angular.module("tattva").config(['$stateProvider','$urlRouterProvider', function
     url: "/dashboard",
     views: {
       "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
+        templateUrl: "/home/template/header.html",
+        controller: "HeaderCtrl"
       },
       "content@" : {
         templateUrl: "/dashboard/template/dashboard.html"
       },
       "footer" : {
-        templateUrl: "/partials/footer.html"
+        templateUrl: "/home/template/footer.html"
       }
     }
   })

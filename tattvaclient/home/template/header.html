@@ -1,0 +1,49 @@
+<div ng-controller="HeaderCtrl" id="head">
+  <md-toolbar class="md-info">
+    <div class="md-toolbar-tools" layout="row">
+      <div class="" flex="5">
+        <ng-md-icon icon="menu" ng-show='isMember' ng-click="openLeftMenu()" style="fill: white" size="25"></ng-md-icon>
+      </div>
+      <div class="" flex="85">
+        <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">{{header}}</span></h2>
+      </div>
+      <div class="" flex="10" ng-show='signOut'>
+        <a ui-sref="guest"><md-button ng-click="signout()">Sign Out</md-button></a>
+      </div>
+      <div class="" flex="10" ng-show='login'>
+        <a ui-sref="login"><md-button ng-click="hideSignIn()">Sign IN</md-button></a>
+      </div>
+    </div>
+  </md-toolbar>
+  <md-sidenav md-component-id="left" class="md-sidenav-left" layout="column">
+    <md-content layout="row" class="snvhead" flex="15">
+      <span flex="30"><img ng-src="/images/LogoWipro.jpg"/></span>
+      <span flex="70"><h3>WIPRO</h3></span>
+    </md-content>
+    <md-divider></md-divider>
+    <md-list flex="70">
+      <md-list-item ng-repeat="item in items" >
+        <div ng-mouseover="sublist=true" ng-mouseleave="sublist=false">
+          <ng-md-icon icon="{{item.icon}}" style="fill: #00BCD4" size="20"></ng-md-icon>
+          <a ui-sref="{{item.link}}">{{item.menu}}</a>
+          <md-list ng-if="item.children.length > 0" >
+            <md-list-item  ng-show="sublist" ng-repeat="child in item.children">
+              <a ui-sref="{{child.link}}">{{child.menu}}</a>
+            </md-list-item>
+          </md-list>
+        </div>
+      </md-list-item>
+    </md-list>
+    <md-divider></md-divider>
+    <md-content flex="20">
+      <md-list>
+        <md-list-item>
+          <h>Stackroute</h3>
+          </md-list-item>
+          <md-list-item>
+            <a href="#">Privacy</a> & <a href="#">Terms</a>
+          </md-list-item>
+        </md-list>
+      </md-content>
+    </md-sidenav>
+  </div>
