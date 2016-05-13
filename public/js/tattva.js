@@ -189,6 +189,7 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   })
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // .state('mainstream',
   // {
   //   url:'/streams',
@@ -230,6 +231,106 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
 //   templateUrl: "/partials/streamCreate.html",
 //   controller: 'createController'
 // })
+=======
+  /*  .state('instance.listInstance', {
+  url: "/instance/listInstance",
+  templateUrl: "partials/listInstance.html"
+  // controller:"createInstanceCtrl"
+})*/
+.state('instance.submitInstance', {
+  url: "/submitInstance",
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
+      templateUrl: "partials/listInstance.html",
+      controller:"instCtrl"
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
+    }
+  }
+
+})
+
+.state('instance.submitInstance.viewInstance.createInstance',{
+  url:"/createdialogInstance/:nspname",
+  controller:"InstDialogctrl"
+})
+
+
+// .state('mainstream.streams',
+// {
+//   url:'/streams',
+//   views: {
+//     "header" : {
+//       templateUrl: "/partials/header.html",
+//       controller: "headerCtrl"
+//     },
+//     "content@" : {
+//       templateUrl: "/partials/indexview.html"
+//     },
+//     "footer" : {
+//       templateUrl: "/partials/footer.html"
+//     }
+//   }
+// })
+
+.state('mainstream',
+{
+  url:'/streams',
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
+      templateUrl: "/partials/mainstream.html"
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
+    }
+  }
+})
+
+.state('mainstream.streams',
+{
+  url:'/streams',
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
+      templateUrl: "/partials/indexView.html"
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
+    }
+  }
+})
+.state('mainstream.streams.viewStreams',
+{
+  url:'/:name',
+  templateUrl: "/partials/viewStreams.html",
+  controller: 'VICtrl'
+})
+.state('mainstream.streams.viewdata',
+{
+  url:'/:name',
+  templateUrl: "/partials/viewdata.html",
+  controller: 'viewCtrl'
+})
+.state('mainstream.streams.create',
+{
+  url: '/create',
+  templateUrl: "/partials/indexCreate.html",
+  controller: 'createController'
+})
+
+>>>>>>> d42173acd378bb6d90a874cb16030dcbceae7ce3
 
 .state('design.namespace', {
   url: "/namespace",
@@ -924,7 +1025,7 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
   $scope.customFullscreen=$mdMedia('xs') || $mdMedia('sm');
   $scope.addInstance= function($event){
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-   
+
     $mdDialog.show({
       targetEvent: $event,
       controller: DialogController,
@@ -953,7 +1054,7 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
        $http.get('/submitInstance').then(function(response){
          $scope.namespaceSelect = response.data;
     });
-      
+
        $scope.success=false;
       /*console.log($scope.nspname);*/
       $scope.dInstance={
@@ -984,7 +1085,7 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
             $scope.updatedInstance=response;
             $scope.success=true;
             $scope.createMsg="Created successfully..!";
-             
+
           /*  $mdDialog.templateUrl="partials/status.html";*/
           //$state.go('design.instance.addInstance.created');
           /*$scope.hideDialogAfterSuccess=function(){
@@ -1011,14 +1112,14 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
                   },
             templateUrl:"partials/status.html"
               });*/
-           
-      
 
 
-                
+
+
+
             /*$mdDialog.hide();*/
             /*$state.go("design.instance");*/
-  
+
             /*if($scope.nspname===null)
               $state.go("design.instance");
             else
@@ -1027,13 +1128,13 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
         });
       }
 
-     
+
 
       $scope.cancel=function(){
         //$state.go('design.instance');
 
         $mdDialog.cancel();
-    
+
          /*if(($scope.nspname).length===0)
          { console.log("empty");
               $state.go('design.instance');
@@ -1086,90 +1187,6 @@ $scope.loadData();
 
 
 /*functions*/
-tattva.controller('functionlistCtrl', ['$scope', '$http','$mdDialog',
-function($scope, $http, $mdDialog) {
-
-  $scope.loadData = function() {
-    $http.get('/func_link').then(function(response){ $scope.data = response.data; });
-  }
-  $scope.loadData();
-
-  $scope.selectedUserIndex = undefined;
-  $scope.selectUserIndex = function (index) {
-    if ($scope.selectedUserIndex !== index) {
-      $scope.selectedUserIndex = index;
-    }
-    else {
-      $scope.selectedUserIndex = undefined;
-    }
-  };
-
-  $scope.selectedUserIndex1 = undefined;
-  $scope.selectUserIndex1 = function (index) {
-    if ($scope.selectedUserIndex1 !== index) {
-      $scope.selectedUserIndex1 = index;
-    }
-    else {
-      $scope.selectedUserIndex1 = undefined;
-    }
-  };
-
-  $scope.deleteMe = function(ev) {
-    //  Appending dialog to document.body to cover sidenav in docs app
-    var confirm = $mdDialog.confirm()
-    .title('Delete')
-    .textContent('Are you surely want to delete.')
-    .ariaLabel('Lucky day')
-    .targetEvent(ev)
-    .ok('Yes')
-    .cancel('Cancel');
-    $mdDialog.show(confirm);
-  };
-}
-]);
-
-
-
-tattva.controller('functionEditCtrl', ['$scope', '$http','$mdDialog','$stateParams',
-function($scope, $http, $mdDialog,$stateParams) {
-
-  var name=$stateParams.functionname;
-  $scope.loadData = function() {
-    $http.get('/func_link_data').then(function(response){ $scope.data = response.data;
-      for(var i in $scope.data) {
-        if($scope.data[i].fun_name===name){
-          $scope.function=$scope.data[i];
-        }
-
-      }
-    });
-  }
-  $scope.loadData();
-  // console.log("outside"+$scope.data);
-  $scope.saveData=function(){
-    var item={fun_name:$scope.data[0].fun_name,Descr:$scope.data[0].Descr,var:$scope.data[0].var,fun:$scope.data[0].fun};
-    /*console.log(item);
-    */
-    $http({
-      method  : 'POST',
-      url     : '/func_send_data',
-      data    : item //forms user object
-      // headers : {'Content-Type': 'application/x-www-form-urlencoded'}
-    })
-    .success(function(data) {
-      if (data.errors) {
-        // Showing errors.
-        $scope.errorName = data.errors.name;
-        $scope.errorUserName = data.errors.username;
-        $scope.errorEmail = data.errors.email;
-      } else {
-        $scope.message = data.message;
-      }
-    });
-  };
-
-}
-]);
 tattva.controller("createNamespaceCtrl",["$scope","$state","$http","$mdToast","$document",function($scope, $state, $http, $mdToast, $document){
   $scope.nameSpace = {
     dataSchema: []

@@ -3,18 +3,19 @@
 <head>
 	<title>LogAggregatorRT</title>
 
-		<link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
-      <!-- <link rel="stylesheet" href="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" type="text/css"/> -->
-      <link rel="stylesheet" href="angular-material-data-table/dist/md-data-table.min.css">
-   
-<link rel="stylesheet" href="/design/instances/css/instancestyle.css">
+	<!-- <link rel="stylesheet" href="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" type="text/css"/> -->
+	<link rel="stylesheet" href="angular-material-data-table/dist/md-data-table.min.css">
+
+	<link rel="stylesheet" href="/design/instances/css/instancestyle.css">
 	<link rel="stylesheet" href="/home/css/homestyle.css">
- <link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="angular-material-data-table/dist/md-data-table.min.css">
 	<link rel="stylesheet" href="/organization/css/organisationstyle.css">
+	<link rel="stylesheet" href="/Function/css/function.style.css">
 
 </head>
 <body ng-app='tattva' ng-controller="AppRouteCtrl" ng-cloak>
@@ -40,59 +41,57 @@
 
 	<!-- <script src="/js/tattva.js" charset="utf-8"></script> -->
 
-<!-- Tattva App  -->
+	<!-- Tattva App  -->
 	<script src="tattva.module.js" charset="utf-8"></script>
-<!-- End of Tattva App  -->
+	<!-- End of Tattva App  -->
 
-<!-- Login module -->
-<script src="/auth/auth.module.js" charset="utf-8"></script>
-<script src="/auth/controller/loginctrl.js" charset="utf-8"></script>
-<!-- End of Login module -->
+	<!-- Login module -->
+	<script src="/auth/auth.module.js" charset="utf-8"></script>
+	<script src="/auth/controller/loginctrl.js" charset="utf-8"></script>
+	<!-- End of Login module -->
 
-<<<<<<< HEAD
-<!-- Organization module -->
-=======
+	<!-- Organization module -->
+	<script src="/organization/controllers/organization.controller.js"></script>
+	<script src="/organization/organization.module.js"></script>
+	<!-- End of Organization module -->
 
->>>>>>> f4800cd6ed2b9defcb436cd506d1401d0cfc9d4b
-<script src="/organization/controllers/organization.controller.js"></script>
-<script src="/organization/organization.module.js"></script>
-<!-- End of Organization module -->
+	
 
-<!--  dashboard module-->
-<script src="/watchlists/controller/linechartcontroller.js" charset="utf-8"></script>
-<script src="/watchlists/directive/dashboardlayout.js" charset="utf-8"></script>
-<script src="/watchlists/watchlists.module.js" charset="utf-8"></script>
-<script src="/dashboard/controller/dashboardcontroller.js" charset="utf-8"></script>
-<script src="/dashboard/controller/publisherCtrl.js" charset="utf-8"></script>
-<script src="/dashboard/dashboard.module.js" charset="utf-8"></script>
-<script src="/watchlists/directive/donutchart_directive.js" charset="utf-8"></script>
-<script src="/watchlists/directive/linechart_directive.js" charset="utf-8"></script>
-<!--dashboard end  -->
+	<!-- function module -->
+	<script src="/Function/function.module.js"></script>
+	<script src="/Function/controller/function.contoller.js"></script>
+	<!-- end of function module -->
 
-<<<<<<< HEAD
-<!-- Streams module -->
-<script src="design/streams/streams.module.js" charset="utf-8"></script>
-<script src="design/streams/service/streams.factory.js" charset="utf-8"></script>
-<script src="design/streams/service/streams.service.js" charset="utf-8"></script>
-<script src="design/streams/directive/createquery.js" charset="utf-8"></script>
-<script src="design/streams/controller/streams.controller.js" charset="utf-8"></script>
-<!--End of Streams module -->
+	<!--  dashboard module-->
+	<script src="/watchlists/controller/linechartcontroller.js" charset="utf-8"></script>
+	<script src="/watchlists/directive/dashboardlayout.js" charset="utf-8"></script>
+	<script src="/watchlists/watchlists.module.js" charset="utf-8"></script>
+	<script src="/dashboard/controller/dashboardcontroller.js" charset="utf-8"></script>
+	<script src="/dashboard/controller/publisherCtrl.js" charset="utf-8"></script>
+	<script src="/dashboard/dashboard.module.js" charset="utf-8"></script>
+	<script src="/watchlists/directive/donutchart_directive.js" charset="utf-8"></script>
+	<script src="/watchlists/directive/linechart_directive.js" charset="utf-8"></script>
+	<!--dashboard end  -->
 
-<!-- Home Module -->
+	<!-- Streams module -->
+	<script src="design/streams/streams.module.js" charset="utf-8"></script>
+	<script src="design/streams/service/streams.factory.js" charset="utf-8"></script>
+	<script src="design/streams/service/streams.service.js" charset="utf-8"></script>
+	<script src="design/streams/directive/createquery.js" charset="utf-8"></script>
+	<script src="design/streams/controller/streams.controller.js" charset="utf-8"></script>
+	<!--End of Streams module -->
+
+	<!-- Home Module -->
 	<script src="/home/home.module.js" charset="utf-8"></script>
 	<script src="/home/controller/approutectrl.js" charset="utf-8"></script>
 	<script src="/home/controller/headerctrl.js" charset="utf-8"></script>
-<!-- End Home Module -->
-=======
-<!--instance module scripts-->
-<script src="design/instances/controller/instancecontroller.js" charset="utf-8"></script>
-<script src="design/instances/controller/viewinstancecontroller.js" charset="utf-8"></script>
-<script src="design/instances/instance.module.js" charset="utf-8"></script>
+	<!-- End Home Module -->
 
-
-<!--instance scripts end-->
-
->>>>>>> f4800cd6ed2b9defcb436cd506d1401d0cfc9d4b
+	<!--instance module scripts-->
+	<script src="design/instances/controller/instancecontroller.js" charset="utf-8"></script>
+	<script src="design/instances/controller/viewinstancecontroller.js" charset="utf-8"></script>
+	<script src="design/instances/instance.module.js" charset="utf-8"></script>
+	<!--instance scripts end-->
 
 </body>
 </html>

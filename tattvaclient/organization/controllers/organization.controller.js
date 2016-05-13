@@ -1,41 +1,41 @@
 angular.module('tattva')
 .controller('orgCtrl', function($scope, $mdDialog, $http) {
-    //Your controller code goes here
-    $scope.loadData = function() {
-      $http.get('/org_admin').then(function(response){ $scope.data = response.data; });
+  //Your controller code goes here
+  $scope.loadData = function() {
+    $http.get('/org_admin').then(function(response){ $scope.data = response.data; });
+  }
+  $scope.loadData();
+
+
+
+  $scope.selectedUserIndex = undefined;
+  $scope.selectUserIndex = function (index) {
+    if ($scope.selectedUserIndex !== index) {
+      $scope.selectedUserIndex = index;
     }
-    $scope.loadData();
+    else {
+      $scope.selectedUserIndex = undefined;
+    }
+  };
 
+  $scope.selectedUserIndex1 = undefined;
+  $scope.selectUserIndex1 = function (index) {
+    if ($scope.selectedUserIndex1 !== index) {
+      $scope.selectedUserIndex1 = index;
+    }
+    else {
+      $scope.selectedUserIndex1 = undefined;
+    }
+  };
 
-
-    $scope.selectedUserIndex = undefined;
-    $scope.selectUserIndex = function (index) {
-      if ($scope.selectedUserIndex !== index) {
-        $scope.selectedUserIndex = index;
-      }
-      else {
-        $scope.selectedUserIndex = undefined;
-      }
-    };
-
-    $scope.selectedUserIndex1 = undefined;
-    $scope.selectUserIndex1 = function (index) {
-      if ($scope.selectedUserIndex1 !== index) {
-        $scope.selectedUserIndex1 = index;
-      }
-      else {
-        $scope.selectedUserIndex1 = undefined;
-      }
-    };
-
-    $scope.showAdd = function(ev) {
-   $mdDialog.show({
-     controller: DialogController,
-     template: '<md-dialog aria-label="Mango (Fruit)">'+
-     '<md-content class="md-padding"> <form name="userForm" ng-submit="saveData()">'+
-     '<div layout layout-sm="column">'+
-     '<md-input-container flex> <label>User Name</label> <input ng-model="uName"> </md-input-container> '+
-     '</div>'+
+  $scope.showAdd = function(ev) {
+    $mdDialog.show({
+      controller: DialogController,
+      template: '<md-dialog aria-label="Mango (Fruit)">'+
+      '<md-content class="md-padding"> <form name="userForm" ng-submit="saveData()">'+
+      '<div layout layout-sm="column">'+
+      '<md-input-container flex> <label>User Name</label> <input ng-model="uName"> </md-input-container> '+
+      '</div>'+
       '<md-input-container flex> <label>Email ID</label> <input ng-model="uEmail"> </md-input-container>'+
       '<div layout layout-sm="column">'+
       '<md-input-container flex> <label>Password</label> <input ng-model="uPassword"> </md-input-container>'+
@@ -44,19 +44,19 @@ angular.module('tattva')
       ' <md-button type="submit" class="md-primary"> Save </md-button>'+
       ' </div>'+
       '</md-dialog>',
-     targetEvent: ev,
-   });
+      targetEvent: ev,
+    });
 
- }
+  }
 
- $scope.deleteMe = function(ev) {
+  $scope.deleteMe = function(ev) {
     var confirm = $mdDialog.confirm()
-          .title('Delete')
-          .textContent('Are you surely want to delete.')
-          .ariaLabel('Lucky day')
-          .targetEvent(ev)
-          .ok('Yes')
-          .cancel('Cancel');
+    .title('Delete')
+    .textContent('Are you surely want to delete.')
+    .ariaLabel('Lucky day')
+    .targetEvent(ev)
+    .ok('Yes')
+    .cancel('Cancel');
     $mdDialog.show(confirm);
   };
 });
