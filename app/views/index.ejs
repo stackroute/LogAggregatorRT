@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
 	<title>LogAggregatorRT</title>
+	<link rel="stylesheet" href="/home/css/homestyle.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="angular-material-data-table/dist/md-data-table.min.css">
+	<link rel="stylesheet" href="/organization/css/organisationstyle.css">
+
 </head>
-<body ng-app='tattva' ng-controller="ctrl" ng-cloak>
+<body ng-app='tattva' ng-controller="AppRouteCtrl" ng-cloak>
 	<div layout="column" ng-clock>
 		<div ui-view="header"></div>
 		<div ui-view="content"></div>
@@ -27,14 +30,46 @@
 	<script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="/angular-material-data-table/dist/md-data-table.min.js"></script>
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-	<script src="/js/tattva.js" charset="utf-8"></script>
 
-												  	<!--Swagat-->
-	<script src="design/streams/controllers/streams.controller.js" charset="utf-8"></script>
-	<script src="design/streams/factory/streams.factory.js" charset="utf-8"></script>
-	<script src="design/streams/services/streams.service.js" charset="utf-8"></script>
-	<script src="design/streams/streams.module.js" charset="utf-8"></script>
-	<script src="design/streams/directive/createquery.js" charset="utf-8"></script>
+	<!-- <script src="/js/tattva.js" charset="utf-8"></script> -->
+
+<!-- Tattva App  -->
+	<script src="tattva.module.js" charset="utf-8"></script>
+<!-- End of Tattva App  -->
+
+<!-- Login module -->
+<script src="/auth/auth.module.js" charset="utf-8"></script>
+<script src="/auth/controller/loginctrl.js" charset="utf-8"></script>
+<!-- End of Login module -->
+
+<!-- Organization module -->
+<script src="/organization/controllers/organization.controller.js"></script>
+<script src="/organization/organization.module.js"></script>
+<!-- End of Organization module -->
+
+<!--  dashboard module-->
+<script src="/watchlists/controller/linechartcontroller.js" charset="utf-8"></script>
+<script src="/watchlists/directive/dashboardlayout.js" charset="utf-8"></script>
+<script src="/watchlists/watchlists.module.js" charset="utf-8"></script>
+<script src="/dashboard/controller/dashboardcontroller.js" charset="utf-8"></script>
+<script src="/dashboard/dashboard.module.js" charset="utf-8"></script>
+<script src="/watchlists/directive/donutchart_directive.js" charset="utf-8"></script>
+<script src="/watchlists/directive/linechart_directive.js" charset="utf-8"></script>
+<!--dashboard end  -->
+
+<!-- Streams module -->
+<script src="design/streams/streams.module.js" charset="utf-8"></script>
+<script src="design/streams/service/streams.factory.js" charset="utf-8"></script>
+<script src="design/streams/service/streams.service.js" charset="utf-8"></script>
+<script src="design/streams/directive/createquery.js" charset="utf-8"></script>
+<script src="design/streams/controller/streams.controller.js" charset="utf-8"></script>
+<!--End of Streams module -->
+
+<!-- Home Module -->
+	<script src="/home/home.module.js" charset="utf-8"></script>
+	<script src="/home/controller/approutectrl.js" charset="utf-8"></script>
+	<script src="/home/controller/headerctrl.js" charset="utf-8"></script>
+<!-- End Home Module -->
 
 </body>
 </html>

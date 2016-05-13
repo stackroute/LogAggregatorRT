@@ -11,77 +11,77 @@ tattva.controller('AppCtrl', ['$scope', '$rootScope','$mdDialog', function($scop
       ariaLabel:'Alert Dialog Demo',
       ok:'Got it!'
     }
-    );
-  };
+  );
+};
 
-  $scope.operator=['>','<']
-  $scope.showmesecound=true;
-  $scope.showmefirst=true;
-  $scope.namespaces = [{
-    "name": "ngnix",
-    "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
-  }, {
-    "name": "apache",
-    "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
-  }, {
-    "name": "iot-sound",
-    "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
-  }, {
-    "name": "iot-temprature",
-    "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
-  }];
-  $scope.datastreams = [{
-    "name": "ngnix-stream-GET",
-    "namespace": "ngnix"
-  }, {
-    "name": "ngnix-stream-POST",
-    "namespace": "ngnix"
-  }, {
-    "name": "apache-stream-GET",
-    "namespace": "apache"
-  }, {
-    "name": "apache-stream-POST",
-    "namespace": "apache"
-  }];
-  //     removestatement:function(){
-  //     //  console.log($scope.wlstdef.statements);
-  //     var lastItem = $scope.wlstdef.statements.length-1;
-  //     console.log(lastItem);
-  //   //  $scope.statements.splice(lastItem);
-  // };
+$scope.operator=['>','<']
+$scope.showmesecound=true;
+$scope.showmefirst=true;
+$scope.namespaces = [{
+  "name": "ngnix",
+  "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
+}, {
+  "name": "apache",
+  "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
+}, {
+  "name": "iot-sound",
+  "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
+}, {
+  "name": "iot-temprature",
+  "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
+}];
+$scope.datastreams = [{
+  "name": "ngnix-stream-GET",
+  "namespace": "ngnix"
+}, {
+  "name": "ngnix-stream-POST",
+  "namespace": "ngnix"
+}, {
+  "name": "apache-stream-GET",
+  "namespace": "apache"
+}, {
+  "name": "apache-stream-POST",
+  "namespace": "apache"
+}];
+//     removestatement:function(){
+//     //  console.log($scope.wlstdef.statements);
+//     var lastItem = $scope.wlstdef.statements.length-1;
+//     console.log(lastItem);
+//   //  $scope.statements.splice(lastItem);
+// };
 
-  $scope.savewatchlist=function(){
-  }
-  $scope.wlstdef = {
-    statements: [],
-    // savejoinby:function('name'){$scope.name=name,console.log($scope.name)},
-    removestatement:function(){
-      var lastItem = $scope.wlstdef.statements.length-1;
-      this.statements.splice(lastItem);
-    },
-    addNewStatement: function(name) {
-      if($scope.showmesecound){
-        $scope.showmesecound=false;
-      }
-      var newStmt = {
-        _id: (this.statements.length + 1),
-        _joinexpressionBy:name,
-        criterias: [],
-        addNewClause: function(name) {
-          if($scope.showmefirst){
-            $scope.showmefirst=false;
-          }
-          var newClause = {_id: (this.criterias.length + 1),_joinby:name };
-          this.criterias.push(newClause);
-        },
-        removecriterias:function(){
-          var lastItem = this.criterias.length-1;
-          this.criterias.splice(lastItem);
-        }
-      }
-      this.statements.push(newStmt);
+$scope.savewatchlist=function(){
+}
+$scope.wlstdef = {
+  statements: [],
+  // savejoinby:function('name'){$scope.name=name,console.log($scope.name)},
+  removestatement:function(){
+    var lastItem = $scope.wlstdef.statements.length-1;
+    this.statements.splice(lastItem);
+  },
+  addNewStatement: function(name) {
+    if($scope.showmesecound){
+      $scope.showmesecound=false;
     }
+    var newStmt = {
+      _id: (this.statements.length + 1),
+      _joinexpressionBy:name,
+      criterias: [],
+      addNewClause: function(name) {
+        if($scope.showmefirst){
+          $scope.showmefirst=false;
+        }
+        var newClause = {_id: (this.criterias.length + 1),_joinby:name };
+        this.criterias.push(newClause);
+      },
+      removecriterias:function(){
+        var lastItem = this.criterias.length-1;
+        this.criterias.splice(lastItem);
+      }
+    }
+    this.statements.push(newStmt);
   }
+}
 }
 // modal
 
@@ -144,44 +144,9 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       }
     }
   })
-  .state('user',
-  {
-    url: "/dashboard",
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-        templateUrl: "/partials/dashboard.html"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
-    }
-  })
 
-  .state('organisation',
-  {
-    url: "/organisation",
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-        templateUrl: "/partials/Admin_Page.html",
-          controller: "orgCtrl"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
-    }
-  })
-
-.state('design',{
-
-  url: "/design",
+  .state('design',{
+    url: "/design",
     views: {
       "header" : {
         templateUrl: "/partials/header.html",
@@ -189,21 +154,21 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       },
       "content@" : {
         templateUrl: "/partials/design.html",
-          controller: "orgCtrl"
+        controller: "orgCtrl"
       },
       "footer" : {
         templateUrl: "/partials/footer.html"
       }
     }
 
-})
+  })
   .state('design.instance',
   {
     url: "/instance",
-        templateUrl: "/partials/instance.html",
-          controller: "instCtrl"
+    templateUrl: "/partials/instance.html",
+    controller: "instCtrl"
   })
-   .state('design.instance.addInstance',{
+  .state('design.instance.addInstance',{
     url:"/addInstance",
     controller:"instCtrl"
   })
@@ -212,71 +177,72 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
     templateUrl:"partials/viewInstance.html",
     controller:"viewinstCtrl"
   })
-/*  .state('instance.listInstance', {
-    url: "/instance/listInstance",
-    templateUrl: "partials/listInstance.html"
-    // controller:"createInstanceCtrl"
-  })*/
-  .state('instance.submitInstance', {
-    url: "/submitInstance",
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-         templateUrl: "partials/listInstance.html",
-    controller:"instCtrl"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
+  /*  .state('instance.listInstance', {
+  url: "/instance/listInstance",
+  templateUrl: "partials/listInstance.html"
+  // controller:"createInstanceCtrl"
+})*/
+.state('instance.submitInstance', {
+  url: "/submitInstance",
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
+      templateUrl: "partials/listInstance.html",
+      controller:"instCtrl"
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
     }
+  }
 
-  })
+})
 
-  .state('instance.submitInstance.viewInstance.createInstance',{
-    url:"/createdialogInstance/:nspname",
-    controller:"InstDialogctrl"
-  })
-
-
-  // .state('mainstream.streams',
-  // {
-  //   url:'/streams',
-  //   views: {
-  //     "header" : {
-  //       templateUrl: "/partials/header.html",
-  //       controller: "headerCtrl"
-  //     },
-  //     "content@" : {
-  //       templateUrl: "/partials/indexview.html"
-  //     },
-  //     "footer" : {
-  //       templateUrl: "/partials/footer.html"
-  //     }
-  //   }
-  // })
-  .state('design.function',
-  {
-    url:'/function',
-    templateUrl: "partials/functionlist.html",
-    controller:"functionlistCtrl"
-
-  })
-  .state('design.functionEdit', {
-     url: '/functional/:functionname',
-    templateUrl: '/partials/cfunctions.html',
-    controller: 'functionEditCtrl'
-    // params: { function_name :'function_name' }
-  })
-
-  .state('design.addfunction', {
-    url:"/addFunction",
-    templateUrl:"partials/cfunctions.html"
-  })
+.state('instance.submitInstance.viewInstance.createInstance',{
+  url:"/createdialogInstance/:nspname",
+  controller:"InstDialogctrl"
+})
 
 
+// .state('mainstream.streams',
+// {
+//   url:'/streams',
+//   views: {
+//     "header" : {
+//       templateUrl: "/partials/header.html",
+//       controller: "headerCtrl"
+//     },
+//     "content@" : {
+//       templateUrl: "/partials/indexview.html"
+//     },
+//     "footer" : {
+//       templateUrl: "/partials/footer.html"
+//     }
+//   }
+// })
+.state('design.function',
+{
+  url:'/function',
+  templateUrl: "partials/functionlist.html",
+  controller:"functionlistCtrl"
+
+})
+.state('design.functionEdit', {
+  url: '/functional/:functionname',
+  templateUrl: '/partials/cfunctions.html',
+  controller: 'functionEditCtrl'
+  // params: { function_name :'function_name' }
+})
+
+.state('design.addfunction', {
+  url:"/addFunction",
+  templateUrl:"partials/cfunctions.html"
+})
+
+
+<<<<<<< HEAD
   // .state('mainstream',
   // {
   //   url:'/streams',
@@ -319,80 +285,79 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
 //   controller: 'createController'
 // })
 
-
-  .state('design.namespace', {
-    url: "/namespace",
-         templateUrl: "partials/namespace.html",
-    controller:"createNamespaceCtrl"
-  })
-  .state('namespace.listNameSpace', {
-    url: "/namespace/listNameSpace",
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-       templateUrl: "partials/listNamespace.html",
-    controller:"createNamespaceCtrl"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
+.state('design.namespace', {
+  url: "/namespace",
+  templateUrl: "partials/namespace.html",
+  controller:"createNamespaceCtrl"
+})
+.state('namespace.listNameSpace', {
+  url: "/namespace/listNameSpace",
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
+      templateUrl: "partials/listNamespace.html",
+      controller:"createNamespaceCtrl"
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
     }
+  }
 
-  })
-  .state('namespace.createNamespace', {
-    url: "/createNamespace",
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
+})
+.state('namespace.createNamespace', {
+  url: "/createNamespace",
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
       templateUrl: "partials/createNamespace.html",
-    controller:"createNamespaceCtrl"
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
+      controller:"createNamespaceCtrl"
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
     }
+  }
 
 
-  })
+})
 
-  .state('design.watchlist',
-  {
-    url:'/watchlist',
-        templateUrl: "/partials/watchlists.html"
-  })
+.state('design.watchlist',
+{
+  url:'/watchlist',
+  templateUrl: "/partials/watchlists.html"
+})
 
 
-  .state('design.watchlist.publish',
-  {
-    url: "/publish",
-    controller: "publishCtrl"
-  })
+.state('design.watchlist.publish',
+{
+  url: "/publish",
+  controller: "publishCtrl"
+})
 
-  .state('watchlist.create', {
-    url:'/new',
-    views: {
-      "header" : {
-        templateUrl: "/partials/header.html",
-        controller: "headerCtrl"
-      },
-      "content@" : {
-        templateUrl:'/partials/newwatchlist.html',
-        controller: 'AppCtrl'
-      },
-      "footer" : {
-        templateUrl: "/partials/footer.html"
-      }
+.state('watchlist.create', {
+  url:'/new',
+  views: {
+    "header" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
+      templateUrl:'/partials/newwatchlist.html',
+      controller: 'AppCtrl'
+    },
+    "footer" : {
+      templateUrl: "/partials/footer.html"
     }
-  })
+  }
+})
 }]);
 
-tattva.controller('ctrl', function($scope, $state, $mdSidenav, $anchorScroll, $location) {
+tattva.controller('AppRouteCtrl', function($scope,$mdSidenav, $state, $anchorScroll, $location) {
 
   $state.go('guest');
 
@@ -445,6 +410,7 @@ tattva.controller('headerCtrl',function($scope,$http){
 
 });
 
+<<<<<<< HEAD
 tattva.directive('dashboardlayout', function() {
   var directive = {};
   directive.restrict = 'E';
@@ -616,6 +582,18 @@ tattva.directive('donutchart', function(){
   };
 });
 
+// tattva.directive('mygraph', function() {
+//   return {
+//     template: '<div ng-include src="computeUrl(myresult.charttype)"></div>',
+//     controller: function($scope) {
+//       $scope.computeUrl = function(url) {
+//         return "/partials/"+url+".html";
+//       }
+//     }
+//   };
+// });
+
+
 tattva.controller('gotoWatchlist',['$scope','$state',function($scope,$state){
   $scope.edit_watchlist=function (){
     console.log("go to watchlist");
@@ -685,6 +663,8 @@ $scope.logdata=[
 
 }]);
 
+=======
+>>>>>>> 8637de2f71f88c454f3bbd85eb7b914c2b927ca2
 tattva.controller('data_1_Ctrlr', function($scope, $mdDialog, $http) {
   //Your controller code goes here
   $scope.loadData = function() {
@@ -744,6 +724,7 @@ tattva.controller('data_1_Ctrlr', function($scope, $mdDialog, $http) {
   };
 });
 
+<<<<<<< HEAD
 function DialogController($scope, $mdDialog,$http) {
   $scope.hide = function() {
     $mdDialog.hide();
@@ -779,6 +760,8 @@ function DialogController($scope, $mdDialog,$http) {
   };
 };
 
+=======
+>>>>>>> 8637de2f71f88c454f3bbd85eb7b914c2b927ca2
 // swagat controller
 
 // tattva.directive('query',function(){
@@ -912,108 +895,46 @@ function DialogController($scope, $mdDialog,$http) {
 
 /*Pooja Singh*/
 /*login*/
-tattva.controller('orgCtrl', function($scope, $mdDialog, $http) {
-    //Your controller code goes here
-    $scope.loadData = function() {
-      $http.get('/org_admin').then(function(response){ $scope.data = response.data; });
-    }
-    $scope.loadData();
-
-
-
-    $scope.selectedUserIndex = undefined;
-    $scope.selectUserIndex = function (index) {
-      if ($scope.selectedUserIndex !== index) {
-        $scope.selectedUserIndex = index;
-      }
-      else {
-        $scope.selectedUserIndex = undefined;
-      }
-    };
-
-    $scope.selectedUserIndex1 = undefined;
-    $scope.selectUserIndex1 = function (index) {
-      if ($scope.selectedUserIndex1 !== index) {
-        $scope.selectedUserIndex1 = index;
-      }
-      else {
-        $scope.selectedUserIndex1 = undefined;
-      }
-    };
-
-    $scope.showAdd = function(ev) {
-   $mdDialog.show({
-     controller: DialogController,
-     template: '<md-dialog aria-label="Mango (Fruit)">'+
-     '<md-content class="md-padding"> <form name="userForm" ng-submit="saveData()">'+
-     '<div layout layout-sm="column">'+
-     '<md-input-container flex> <label>User Name</label> <input ng-model="uName"> </md-input-container> '+
-     '</div>'+
-      '<md-input-container flex> <label>Email ID</label> <input ng-model="uEmail"> </md-input-container>'+
-      '<div layout layout-sm="column">'+
-      '<md-input-container flex> <label>Password</label> <input ng-model="uPassword"> </md-input-container>'+
-      '</form> </md-content> <div class="md-actions" layout="row"> '+
-      '<span flex></span> <md-button ng-click="answer(\'not useful\')"> Cancel </md-button>'+
-      ' <md-button type="submit" class="md-primary"> Save </md-button>'+
-      ' </div>'+
-      '</md-dialog>',
-     targetEvent: ev,
-   });
-
- }
-
- $scope.deleteMe = function(ev) {
-    var confirm = $mdDialog.confirm()
-          .title('Delete')
-          .textContent('Are you surely want to delete.')
-          .ariaLabel('Lucky day')
-          .targetEvent(ev)
-          .ok('Yes')
-          .cancel('Cancel');
-    $mdDialog.show(confirm);
-  };
-});
-
 tattva.controller('LoginCtrl', ['$scope', '$http', '$state',
 function($scope, $http, $state) {
   //Your controller code goes here
   $scope.loadData = function() {
-  // $http.get('/login_reg').then(function(response){
+    // $http.get('/login_reg').then(function(response){
 
-      var tabs = [
-        { title: 'Login'},
-        { title: 'Register'}
+    var tabs = [
+      { title: 'Login'},
+      { title: 'Register'}
 
-      ],
-      selected = null,
-      previous = null;
-      $scope.tabs = tabs;
-      $scope.selectedIndex = 0;
-      $scope.$watch('selectedIndex', function(current, old){
-        previous = selected;
-        selected = tabs[current];
-        $scope.user = {
-          site:'',
-          orgn:'',
-          location:'',
-          name:'',
-          email:'',
-          pwd:'',
-          cfpwd:''
-        }
-      });
+    ],
+    selected = null,
+    previous = null;
+    $scope.tabs = tabs;
+    $scope.selectedIndex = 0;
+    $scope.$watch('selectedIndex', function(current, old){
+      previous = selected;
+      selected = tabs[current];
+      $scope.user = {
+        site:'',
+        orgn:'',
+        location:'',
+        name:'',
+        email:'',
+        pwd:'',
+        cfpwd:''
+      }
+    });
 
     //})
-};
-    $scope.loadData();
+  };
+  $scope.loadData();
 
-    $scope.signUp=function(){
-      $scope.selectedIndex=1;
-    }
-    $scope.signIn=function(){
-      $scope.selectedIndex=0;
-    }
+  $scope.signUp=function(){
+    $scope.selectedIndex=1;
   }
+  $scope.signIn=function(){
+    $scope.selectedIndex=0;
+  }
+}
 
 
 
@@ -1029,7 +950,7 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
   }
   $scope.loadData=function(){
     $http.get('/submitInstance').then(function(response){
-         $scope.data = response.data;
+      $scope.data = response.data;
     });
   }
   $scope.loadData();
@@ -1064,9 +985,9 @@ tattva.controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialo
 
     function DialogController($scope,$state, $mdDialog,$http){
 
-       $http.get('/submitInstance').then(function(response){
-         $scope.namespaceSelect = response.data;
-    });
+      $http.get('/submitInstance').then(function(response){
+        $scope.namespaceSelect = response.data;
+      });
 
       /*console.log($scope.nspname);*/
       $scope.dInstance={
@@ -1126,15 +1047,15 @@ tattva.controller("viewinstCtrl",["$scope","$state","$http","$stateParams","$mdD
 
   $scope.dspDetail=function()
   { if($scope.show==="false")
-   {
+  {
     $scope.show="true";
-   }
-  else
-   {
-   $scope.show="false";
-   }
-
   }
+  else
+  {
+    $scope.show="false";
+  }
+
+}
 
 }]);
 
@@ -1198,14 +1119,14 @@ tattva.controller('functionEditCtrl', ['$scope', '$http','$mdDialog','$statePara
 function($scope, $http, $mdDialog,$stateParams) {
 
   var name=$stateParams.functionname;
-   $scope.loadData = function() {
+  $scope.loadData = function() {
     $http.get('/func_link_data').then(function(response){ $scope.data = response.data;
-        for(var i in $scope.data) {
-          if($scope.data[i].fun_name===name){
-            $scope.function=$scope.data[i];
-          }
-
+      for(var i in $scope.data) {
+        if($scope.data[i].fun_name===name){
+          $scope.function=$scope.data[i];
         }
+
+      }
     });
   }
   $scope.loadData();
@@ -1213,7 +1134,7 @@ function($scope, $http, $mdDialog,$stateParams) {
   $scope.saveData=function(){
     var item={fun_name:$scope.data[0].fun_name,Descr:$scope.data[0].Descr,var:$scope.data[0].var,fun:$scope.data[0].fun};
     /*console.log(item);
-*/
+    */
     $http({
       method  : 'POST',
       url     : '/func_send_data',
@@ -1335,9 +1256,9 @@ tattva.controller("publishCtrl",["$scope","$state","$http","$stateParams","$mdDi
     });
 
     function publishDialog($scope,$state, $mdDialog,$http){
-       $http.get('/submitInstance').then(function(response){
-         $scope.namespaceSelect = response.data;
-    });
+      $http.get('/submitInstance').then(function(response){
+        $scope.namespaceSelect = response.data;
+      });
 
       /*console.log($scope.nspname);*/
       $scope.dInstance={
