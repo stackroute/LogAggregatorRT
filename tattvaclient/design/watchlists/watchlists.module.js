@@ -4,7 +4,7 @@ function($stateProvider, $urlRouterProvider){
   $stateProvider
   .state('design.watchlist', {
     url:'/watchlist',
-    templateUrl:'/watchlists/template/watchlists.html',
+    templateUrl:'/design/watchlists/template/watchlists.html',
     controller: 'WatchListCtrl'
   })
   //
@@ -22,7 +22,7 @@ function($stateProvider, $urlRouterProvider){
         controller: "HeaderCtrl"
       },
       "content@" : {
-        templateUrl:'/watchlists/template/newwatchlist.html',
+        templateUrl:'/design/watchlists/template/newwatchlist.html',
         controller: 'WatchListCtrl'
       },
       "footer" : {

@@ -1,11 +1,12 @@
-angular.module('tattva').config(['$stateProvider','$urlRouterProvider', function($stateProvider){
+angular.module('tattva')
+.config(['$stateProvider','$urlRouterProvider',
+function($stateProvider){
   $stateProvider
   .state('design.streams',
   {
     url:'/displayStreams',
     templateUrl: "design/streams/template/namespaceListView.html"
   })
-
   .state('design.streams.viewStreams',
   {
     url:'/:namespaceobject',
@@ -24,6 +25,4 @@ angular.module('tattva').config(['$stateProvider','$urlRouterProvider', function
     templateUrl: "design/streams/template/streamCreate.html",
     controller: 'createController'
   });
-
-}
-]);
+}]);

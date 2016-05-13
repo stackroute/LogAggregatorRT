@@ -1,13 +1,10 @@
-angular.module("tattva").config(['$stateProvider','$urlRouterProvider', function($stateProvider){
+angular.module("tattva").
+config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   $stateProvider
-  
-  .state('design.instance',
-  {
+  .state('design.instance', {
     url: "/instance",
-    
         templateUrl: "design/instances/template/instance.html",
         controller: "instCtrl"
-      
   })
   .state('design.instance.addInstance',{
     url:"/addInstance",
