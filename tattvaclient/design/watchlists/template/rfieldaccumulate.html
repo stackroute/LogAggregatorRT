@@ -1,0 +1,21 @@
+<md-dialog aria-label="">
+<md-content class="md-padding"> <form name="Form" ng-submit="saveData()">
+ <div layout layout-sm="column">
+ <md-input-container id="watchlistcheckbox" flex="20"> <md-select ng-model="rfieldaccumulatecriteria">
+<label>Select criteria</label>
+<md-option>Count</md-option>
+<md-option>Time</md-option>
+</md-select> </md-input-container>
+ <md-input-container id="watchlistcheckbox" flex> <label>Value</label> <input ng-model="rfieldaccumulatorvalue"> </md-input-container>
+ <md-input-container id="watchlistcheckbox"  flex> <label>Condition</label> <input ng-model="rfieldaccumulatecondition"></md-input-container>
+ <h3 id="watchlistcheckbox">IsContinuous</h3>
+ <md-checkbox id="watchlistcheckbox" flex ng-model="rfieldaccumulatedata.cb1" aria-label="Checkbox 1"></md-checkbox>
+ </form> </md-content> </div>
+<div layout="row">
+ <md-input-container flex="md-block"> <label>Function to be executed at the end of accumulation</label> <input ng-model="rfieldaccumulatorfunctionend"> </md-input-container>
+</div>
+<div class="md-actions" layout="row">
+ <span flex></span> <md-button ng-click="cancel()"> Cancel </md-button>
+  <md-button type="submit" class="md-primary"> Save </md-button>
+  </div>
+ </md-dialog>

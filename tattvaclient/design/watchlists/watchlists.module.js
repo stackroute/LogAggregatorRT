@@ -1,35 +1,28 @@
-angular.module("tattva")
-.config(['$stateProvider','$urlRouterProvider',
-function($stateProvider, $urlRouterProvider){
-  $stateProvider
-  .state('design.watchlist', {
-    url:'/watchlist',
-    templateUrl:'/design/watchlists/template/watchlists.html',
-    controller: 'WatchListCtrl'
-  })
-  //
-  //
-  // .state('design.watchlist.publish',
-  // {
-  //   url: "/publish",
-  //   controller: "publishCtrl"
-  // })
-  .state('design.watchlist.create', {
-    url:'/new',
-    templateUrl:'/design/watchlists/template/newwatchlist.html',
-    controller: 'WatchListCtrl'
-    // views: {
-    //   "header" : {
-    //     templateUrl: "/home/template/header.html",
-    //     controller: "HeaderCtrl"
-    //   },
-    //   "content@" : {
-    //     templateUrl:'/design/watchlists/template/newwatchlist.html',
-    //     controller: 'WatchListCtrl'
-    //   },
-    //   "footer" : {
-    //     templateUrl: "/home/template/footer.html"
-    //   }
-    // }
+angular.module('tattva')
+  .config(['$stateProvider','$urlRouterProvider',
+  function($stateProvider){
+    $stateProvider
+    .state('design.watchlist',
+    {
+      url:'/displayWatchList',
+      templateUrl: "/design/watchlists/template/namespacebasedwatchlist.html"
+    })
+    .state('design.watchlist.viewwatchlist',
+    {
+      url:'/:namespaceobject',
+      templateUrl: "design/watchlists/template/watchlistView.html",
+      controller: 'watchlistviewctrl'
+    })
+    .state('design.watchlist.viewdata',
+    {
+      url:'detailview/:watchlistobject',
+      templateUrl: "design/watchlists/template/watchlistsdetailview.html",
+      controller: 'watchlistsdetailviewCtrl'
+    })
+    .state('design.createwatchlist',
+    {
+      url: '/createwatchlist',
+      templateUrl: "design/watchlists/template/newwatchlist.html",
+      controller: 'WatchListCtrl'
   })
 }]);

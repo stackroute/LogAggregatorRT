@@ -1,0 +1,27 @@
+
+#watchlistpadding
+{
+margin-top: 3% !important;
+}
+#watchListnamespace
+{
+  margin-top: 2% !important;
+
+}
+#lfieldwatchlist
+{
+margin-top: 1% !important;
+}
+#operatorwatchlist
+{
+margin-top: 2% !important;
+}
+#rfieldwatchlist
+{
+margin-top: 2% !important;
+margin-bottom: 2% !important;
+}
+#watchlistcheckbox
+{
+margin-left: 20px;
+}

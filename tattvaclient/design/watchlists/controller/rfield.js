@@ -27,6 +27,67 @@ angular.module("tattva")
   }
   function selectedItemChange(item) {
     $log.info('Item changed to ' + JSON.stringify(item));
+    if(JSON.stringify(item)!=undefined)
+    {
+      console.log(item.value);
+      if(item.value==="accumulate")
+      {
+        $log.info("hi inside dialogue");
+        $scope.showAdd = function(ev) {
+          $mdDialog.show({
+            controller:'DialogControllerwatchlist',
+            //@TODO convert as templateUrl
+            templateUrl:'design/watchlists/template/rfieldaccumulate.html',
+            targetEvent: ev,
+          });
+        }
+        $scope.showAdd();
+      }
+      else if (item.value=="input your own value") {
+        $scope.showAdd = function(ev) {
+          $mdDialog.show({
+            controller:'DialogControllerwatchlist',
+            //@TODO
+            templateUrl:'design/watchlists/template/rfieldwatchlistdialogueentervalue.html',
+            targetEvent: ev,
+          });
+        }
+        $scope.showAdd();
+      }
+      else if (item.value=="constants") {
+        $scope.showAdd = function(ev) {
+          $mdDialog.show({
+            controller:'DialogControllerwatchlist',
+            //@TODO
+            templateUrl:'/design/watchlists/template/rfieldwatchlistdialogueconstants.html',
+            targetEvent: ev,
+          });
+        }
+        $scope.showAdd();
+      }
+      else if (item.value=="function") {
+        $scope.showAdd = function(ev) {
+          $mdDialog.show({
+            controller:'DialogControllerwatchlist',
+            //@TODO
+            templateUrl:'/design/watchlists/template/rfieldwatchlistdialoguefunction.html',
+            targetEvent: ev,
+          });
+        }
+        $scope.showAdd();
+      }
+      else if (item.value=="historic data") {
+        $scope.showAdd = function(ev) {
+          $mdDialog.show({
+            controller:'DialogControllerwatchlist',
+            //@TODO
+            templateUrl:'/design/watchlists/template/rfieldwatchlistdialoguehistoricdata.html',
+            targetEvent: ev,
+          });
+        }
+        $scope.showAdd();
+      }
+    }
   }
   function loadAll() {
     var allStates = 'Data field from namespace, Input your own Value, Constants, Function, Accumulate, Historic Data';
