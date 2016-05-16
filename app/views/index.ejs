@@ -21,9 +21,12 @@
 <body ng-app='tattva' ng-controller="AppRouteCtrl" ng-cloak>
 	<div layout="column" ng-clock>
 		<div ui-view="header"></div>
-		<div ui-view="content"></div>
-		<div ui-view="footer"></div>
+		<div ui-view="content" ></div>
+       <div ui-view="footer" ></div>
 	</div>
+
+
+
 
 	<script src="/angular/angular.js" charset="utf-8"></script>
 	<script src="ng-letter-avatar/dist/ngletteravatar.min.js"></script>
@@ -54,6 +57,7 @@
 	<script src="/organization/organization.module.js"></script>
 	<script src="/organization/controllers/organization.controller.js"></script>
 	<!-- End of Organization module -->
+
 
 	<!-- function module -->
 	<script src="/design/functions/function.module.js"></script>
@@ -96,6 +100,12 @@
 	<!-- Design Home module -->
 	<script src="/design/designhome/designhome.module.js" charset="utf-8"></script>
 	<!-- End of Design Home module -->
+	<!--namespace module-->
+<script src="design/namespaces/namespace.module.js" charset="utf-8"></script>
+<script src="design/namespaces/factory/namespace.factory.js" charset="utf-8"></script>
+<script src="design/namespaces/services/namespace.service.js" charset="utf-8"></script>
+<script src="design/namespaces/controllers/namespace.controller.js" charset="utf-8"></script>
+<!--end of namespace module-->
 
 	<!--  dashboard module-->
 	<script src="/dashboard/dashboard.module.js" charset="utf-8"></script>

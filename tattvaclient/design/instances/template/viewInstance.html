@@ -11,66 +11,94 @@
   <div class="viewInst listdemoBasicUsage buttondemoBasicUsage" ng-if="instance.length!=0">
     <md-subheader class="md-primary" flex-offset="5"><h2>{{nspname}}</h2></md-subheader>
     <md-divider></md-divider>
-    
+
     <div layout="row">
 
       <md-list class="listInst" flex>
       <md-content class="instanceList">
       <md-list-item class="md-3-line" ng-repeat="object in instance" ng-if="$index % 2 == 0" layout="row">
-      <md-button flex="50">
+      <md-button flex="50"  ng-class="{'selected-item': $index == selectedInstanceIndex}" ng-click="selectInstanceIndex($index)">
       <md-item-content layout="row">
       <div flex="20">
        <ng-letter-avatar data={{instance[$index].name}} avatarcustombgcolor="#2e2eb8" size=16px shape="round"></ng-letter-avatar>
      </div>
 
      <div flex="80" class="detail" layout="row">
-      <div flex="90" class="eachinst md-list-item-text" layout="column">
-       <h3 > {{instance[$index].name}}</h3>
-       <p>{{instance[$index].ip}}</p>
-       <p>{{instance[$index].location}}</p>
-       <div ng-if="show==='true'"  layout="row">
-         <p flex="30">Description :</p><h5 flex="70">{{instance[$index].description}}</h5>
-
+      <div flex="80" class="eachinst md-list-item-text" layout="column" ng-hide="editEnable">
+       <h3>{{instance[$index].name}}</h3>
+       <div layout="row">
+         <md-icon flex="10" md-svg-src="image/svg/ip.svg"></md-icon>
+         <p flex="90">{{instance[$index].ip}}</p>
+       </div>
+        <div layout="row">
+         <md-icon flex="10" md-svg-src="image/svg/universal-port-sign.svg"></md-icon>
+       <p flex="90">{{instance[$index].port}}</p>
+     </div>
+     <div layout="row">
+            <md-icon flex="10" md-svg-src="image/svg/location-pin.svg"></md-icon>
+       <p flex="90">{{instance[$index].location}}</p>
+     </div>
+       <div ng-show="$index == selectedInstanceIndex"  layout="row">
+              <md-icon flex="10" md-svg-src="image/svg/sort-button-with-three-lines.svg"></md-icon>
+         <p flex="90">{{instance[$index].description}}</h5>
        </div>
      </div>
-     <div flex="10" layout="column">
-      <md-button flex="30" ng-click=dspDetail()>
-      <md-icon md-svg-src="image/svg/down-arrow.svg"></md-icon>
+      <!-- <div flex="90" class="eachinst md-list-item-text" layout="column" ng-show="editEnable">
+      <h3 > {{instance[$index].name}}</h3>
+      <p>{{instance[$index].ip}}</p>
+
+      <p>{{instance[$index].location}}</p>
+      <div ng-if="show==='true'"  layout="row">
+        <p flex="30">Description :</p><h5 flex="70">{{instance[$index].description}}</h5>
+
+      </div>
+    </div> -->
+     <div flex="30" ng-show="$index == selectedInstanceIndex" layout="column" >
+      <md-button >
+      <md-icon md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
     </md-button>
-    <md-button flex="30" ng-if="show==='true'" ng-click>
+  </div>
+    <!-- <div flex="10" layout="column" ng-if="showDetail">
+    <md-button ng-click>
     <md-icon md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
   </md-button>
-  </div>
+  </div> -->
   </div>
 
   </md-item-content>
   </md-button>
 
   <md-divider></md-divider>
-  <md-button flex="50">
-
+  <md-button flex="50"  ng-class="{'selected-item': ($index+1) == selectedInstanceIndex }" ng-click="selectInstanceIndex($index+1)">
   <md-item-content layout="row" >
   <div flex="20" ng-if="instance.length > $index+1">
    <ng-letter-avatar  data={{instance[$index+1].name}} avatarcustombgcolor="#2e2eb8" size=12px shape="round"></ng-letter-avatar>
   </div>
   <div flex="80" class="detail" layout="row">
-    <div flex="90" class="eachinst md-list-item-text" layout="column" ng-if="instance.length > $index+1">
+    <div flex="70" class="eachinst md-list-item-text" layout="column" ng-if="instance.length > $index+1" >
       <h3>{{instance[$index+1].name}}</h3>
-      <p>{{instance[$index+1].ip}}</p>
-      <p>{{instance[$index+1].location}}</p>
-
-      <div ng-if="show==='true'"  layout="row">
-       <p flex="30">Description :</p><h5 flex="70">{{instance[$index+1].description}}</h5>
+      <div layout="row">
+        <md-icon flex="10" md-svg-src="image/svg/ip.svg"></md-icon>
+      <p flex="90">{{instance[$index+1].ip}}</p>
+    </div>
+    <div layout="row">
+     <md-icon flex="10" md-svg-src="image/svg/universal-port-sign.svg"></md-icon>
+      <p flex="90">{{instance[$index+1].port}}</p>
+    </div>
+    <div layout="row">
+           <md-icon flex="10" md-svg-src="image/svg/location-pin.svg"></md-icon>
+      <p flex="90">{{instance[$index+1].location}}</p>
+    </div>
+      <div ng-show="($index+1) == selectedInstanceIndex" layout="row">
+      <md-icon flex="10" md-svg-src="image/svg/sort-button-with-three-lines.svg"></md-icon>
+       <p flex="90">{{instance[$index+1].description}}</h5>
      </div>
    </div>
-   <div flex="10" layout="column" ng-if="instance.length > $index+1">
-    <md-button flex="30" ng-click=dspDetail()>
-    <md-icon md-svg-src="image/svg/down-arrow.svg"></md-icon>
+   <div flex="30" ng-show="$index+1 == selectedInstanceIndex" layout="column" >
+    <md-button >
+    <md-icon md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
   </md-button>
-  <md-button flex="30" ng-if="show==='true'" ng-click>
-  <md-icon md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
-  </md-button>
-  </div>
+ </div>
   </div>
 
 

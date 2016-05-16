@@ -19,20 +19,16 @@ angular.module('tattva')
   $scope.customFullscreen=$mdMedia('xs') || $mdMedia('sm');
   $scope.addInstance= function($event){
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-   
+
     $mdDialog.show({
       targetEvent: $event,
       controller: DialogController,
-      templateUrl: "partials/createInstanceDialog.html",
+         templateUrl: "design/instances/template/createInstanceDialog.html",
       clickOutsideToClose:false,
       fullscreen: useFullScreen,
       parent: angular.element(document.body)
      /* scope:{success:'false'}*/
-    }).then(function(answer) {
-      $scope.status = 'You decided to get rid of your debt.';
-    }, function() {
-      $scope.status = 'You decided to keep your debt.';
-    });
+   });
 
 
 
@@ -48,7 +44,7 @@ angular.module('tattva')
        $http.get('/submitInstance').then(function(response){
          $scope.namespaceSelect = response.data;
     });
-      
+
        $scope.success=false;
       /*console.log($scope.nspname);*/
       $scope.dInstance={
@@ -79,7 +75,7 @@ angular.module('tattva')
             $scope.updatedInstance=response;
             $scope.success=true;
             $scope.createMsg="Created successfully..!";
-             
+
           /*  $mdDialog.templateUrl="partials/status.html";*/
           //$state.go('design.instance.addInstance.created');
           /*$scope.hideDialogAfterSuccess=function(){
@@ -106,14 +102,14 @@ angular.module('tattva')
                   },
             templateUrl:"partials/status.html"
               });*/
-           
-      
 
 
-                
+
+
+
             /*$mdDialog.hide();*/
             /*$state.go("design.instance");*/
-  
+
             /*if($scope.nspname===null)
               $state.go("design.instance");
             else
@@ -122,13 +118,13 @@ angular.module('tattva')
         });
       }
 
-     
+
 
       $scope.cancel=function(){
         //$state.go('design.instance');
 
         $mdDialog.cancel();
-    
+
          /*if(($scope.nspname).length===0)
          { console.log("empty");
               $state.go('design.instance');
