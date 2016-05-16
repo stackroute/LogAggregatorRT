@@ -329,9 +329,6 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   templateUrl: "/partials/indexCreate.html",
   controller: 'createController'
 })
-
->>>>>>> d42173acd378bb6d90a874cb16030dcbceae7ce3
-
 .state('design.namespace', {
   url: "/namespace",
   templateUrl: "partials/namespace.html",
@@ -369,27 +366,13 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       templateUrl: "/partials/footer.html"
     }
   }
-
-
 })
 
 .state('design.watchlist',
 {
   url:'/watchlist',
-  templateUrl: "/partials/watchlist.html",
-})
-
-
-.state('design.watchlist.publish',
-{
-  url: "/publish",
-  controller: "publishCtrl"
-})
-
-.state('watchlist.create', {
-  url:'/new',
   views: {
-    "header" : {
+    "header@" : {
       templateUrl: "/partials/header.html",
       controller: "headerCtrl"
     },
@@ -397,7 +380,23 @@ tattva.config(['$stateProvider','$urlRouterProvider', function($stateProvider){
       templateUrl:'/partials/newwatchlist.html',
       controller: 'AppCtrl'
     },
-    "footer" : {
+    "footer@" : {
+      templateUrl: "/partials/footer.html"
+    }
+  }
+})
+.state('watchlist.create', {
+  url:'/new',
+  views: {
+    "header@" : {
+      templateUrl: "/partials/header.html",
+      controller: "headerCtrl"
+    },
+    "content@" : {
+      templateUrl:'/partials/newwatchlist.html',
+      controller: 'AppCtrl'
+    },
+    "footer@" : {
       templateUrl: "/partials/footer.html"
     }
   }
@@ -456,8 +455,6 @@ tattva.controller('headerCtrl',function($scope,$http){
 
 
 });
-
-<<<<<<< HEAD
 tattva.directive('dashboardlayout', function() {
   var directive = {};
   directive.restrict = 'E';
@@ -709,9 +706,6 @@ $scope.logdata=[
 ];
 
 }]);
-
-=======
->>>>>>> 8637de2f71f88c454f3bbd85eb7b914c2b927ca2
 tattva.controller('data_1_Ctrlr', function($scope, $mdDialog, $http) {
   //Your controller code goes here
   $scope.loadData = function() {
@@ -770,8 +764,6 @@ tattva.controller('data_1_Ctrlr', function($scope, $mdDialog, $http) {
     $mdDialog.show(confirm);
   };
 });
-
-<<<<<<< HEAD
 function DialogController($scope, $mdDialog,$http) {
   $scope.hide = function() {
     $mdDialog.hide();
@@ -806,9 +798,6 @@ function DialogController($scope, $mdDialog,$http) {
     $mdDialog.hide(answer);
   };
 };
-
-=======
->>>>>>> 8637de2f71f88c454f3bbd85eb7b914c2b927ca2
 // swagat controller
 
 // tattva.directive('query',function(){

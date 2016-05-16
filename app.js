@@ -43,6 +43,9 @@ var data1=[];
 app.get('/nameSpaceList', function(req, res){
   res.sendFile(path.join(__dirname, 'public/json/listnamespace.json'));
 });
+app.get('/viewwatchlist', function(req, res){
+  res.sendFile(path.join(__dirname, 'public/json/watchlist.json'));
+});
 
 app.post('/createNamespacePost',jsonParser,function (request, response) {
   var body1=request.body;

@@ -37,7 +37,29 @@ angular.module("tattva")
           $mdDialog.show({
             controller:'DialogControllerwatchlist',
             //@TODO convert as templateUrl
-            templateUrl:'/partials/accumulate.html',
+            templateUrl:'design/watchlists/template/accumulate.html',
+            targetEvent: ev,
+          });
+        }
+        $scope.showAdd();
+      }
+      else if (item.value=="input your own value") {
+        $scope.showAdd = function(ev) {
+          $mdDialog.show({
+            controller:'DialogControllerwatchlist',
+            //@TODO
+            templateUrl:'design/watchlists/template/watchlistdialogueentervalue.html',
+            targetEvent: ev,
+          });
+        }
+        $scope.showAdd();
+      }
+      else if (item.value=="constants") {
+        $scope.showAdd = function(ev) {
+          $mdDialog.show({
+            controller:'DialogControllerwatchlist',
+            //@TODO
+            templateUrl:'/design/watchlists/template/watchlistdialogueconstants.html',
             targetEvent: ev,
           });
         }
@@ -48,18 +70,18 @@ angular.module("tattva")
           $mdDialog.show({
             controller:'DialogControllerwatchlist',
             //@TODO
-            templateUrl:'/partials/watchlistdialoguefunction.html',
+            templateUrl:'/design/watchlists/template/watchlistdialoguefunction.html',
             targetEvent: ev,
           });
         }
         $scope.showAdd();
       }
-      else if (item.value=="function") {
+      else if (item.value=="historic data") {
         $scope.showAdd = function(ev) {
           $mdDialog.show({
             controller:'DialogControllerwatchlist',
             //@TODO
-            templateUrl:'/partials/Data field from namespace.html',
+            templateUrl:'/design/watchlists/template/watchlistdialoguehistoricdata.html',
             targetEvent: ev,
           });
         }
