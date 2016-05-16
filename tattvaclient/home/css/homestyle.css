@@ -24,7 +24,6 @@ body {
     position: absolute;
     bottom: 12%;
     right: 50%;
-    font-size: 18px;
 }
 
 #hero{
@@ -39,7 +38,6 @@ body {
     position: absolute;
     bottom: 3%;
     right: 50%;
-    font-size: 18px;
 }
 
 #slide2Content{
@@ -54,7 +52,6 @@ body {
 
 a{
   text-decoration: none;
-  color:#E0F2F1;
 }
 
 md-list-item a {
