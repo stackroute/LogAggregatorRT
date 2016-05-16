@@ -1,0 +1,88 @@
+<div flex ng-controller="createNamespaceCtrl" ng-cloak id="popupContainerNamespace">
+  <form name="createNameSpace" novalidate>
+    <div layout="column" layout-padding flex>
+      <md-whiteframe class="md-whiteframe-1dp" flex layout="column">
+        <div  flex layout>
+          <md-input-container flex="30" >
+            <label>Name of NameSpace</label>
+            <input type="text" ng-model="nameSpace.name" name="name" required>
+            <div ng-messages="createNameSpace.name.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div  flex layout>
+          <md-input-container flex="30" >
+            <textarea class="textarea" ng-model="nameSpace.description" type="textarea" placeholder="Description" ></textarea>
+          </md-input-container>
+        </div>
+        <!-- </md-whiteframe>
+        <div></div>
+        <md-whiteframe class="md-whiteframe-1dp" layout-padding> -->
+        <md-input-container flex layout>
+          <label><b>Define data schema for NameSpace</b></label>
+        </md-input-container><br><br>
+        <div layout="row" flex ng-repeat="dataFormatObj in nameSpace.dataSchema">
+          <md-input-container flex="20">
+            <label>Name</label>
+            <input type="text" ng-model="dataFormatObj.fieldAlias" required>
+            <div ng-messages="createNameSpace.dataFormatObj.fieldAlias.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container flex-offset="5" flex="20">
+            <label>Field Name</label>
+            <input type="text" ng-model="dataFormatObj.fieldName" required>
+            <div ng-messages="createNameSpace.dataFormatObj.fieldName.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container flex-offset="5" flex="8">
+            <md-radio-group ng-model="dataFormatObj.fieldType" class="md-primary" required>
+              <md-radio-button value="dimension">Dimension (differentiates data)</md-radio-button>
+              <md-radio-button value="measure">Measure (measurable field)</md-radio-button>
+            </md-radio-group>
+          </md-input-container>
+          <md-input-container flex-offset="5">
+            <md-button class="md-fab md-primary md-mini" ng-click="delete($index)">-</md-button>
+          </md-input-container>
+        </div><!--ng repeat div-->
+        <div >
+          <div layout="row" flex ng-show="!$scope.showNewDataSchemaInputForm">
+            <md-input-container flex="20">
+              <label>Name</label>
+              <input type="text" ng-model="fieldAlias" required>
+              <div ng-messages="createNameSpace.fieldAlias.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <md-input-container flex-offset="5" flex="20">
+              <label>Field Name</label>
+              <input type="text" ng-model="fieldName" required>
+              <div ng-messages="createNameSpace.fieldName.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <md-input-container flex-offset="5" flex="8">
+              <md-radio-group ng-model="fieldType" class="md-primary" required>
+                <md-radio-button value="dimension">Dimension (differentiates data)</md-radio-button>
+                <md-radio-button value="measure">Measure (measurable field)</md-radio-button>
+              </md-radio-group>
+            </md-input-container>
+            <md-input-container flex-offset="">
+              <md-button  ng-click="$scope.showNewDataSchemaInputForm = true"  class="md-fab md-primary md-mini">-</md-button>
+            </md-input-container>
+          </div>
+          <div>
+            <md-button  ng-click="$scope.showNewDataSchemaInputForm = false"   ng-show="$scope.showNewDataSchemaInputForm" class="md-fab md-primary md-mini">+</md-button>
+            <md-button  ng-click="addDataFormat()"  class="md-raised md-primary" ng-show="!$scope.showNewDataSchemaInputForm" ng-disabled="createNameSpace.$invalid">Add</md-button>
+          </div>
+        </div>
+      </md-whiteframe>
+      <div layout layout-align="center center">
+        <md-button class="md-raised md-primary" ng-click="createNamespaceSubmit()">Create</md-button>
+      </div>
+      <!-- </md-whiteframe> -->
+    </div>
+  </form>
+</div>
