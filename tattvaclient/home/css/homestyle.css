@@ -9,7 +9,7 @@ body {
   padding-top: 60px;
 }
 
-.main-toolbar{
+.main-bar{
   position: fixed;
 }
 
@@ -74,10 +74,13 @@ md-list-item a {
 }
 
 .footer_part1{
-  height: 200px;
+
+  height:100px;
   width: 100%;
   background-color: #454848;
   padding-top: 30px;
+
+
 }
 
 .footer{

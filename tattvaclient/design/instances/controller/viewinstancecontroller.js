@@ -7,6 +7,29 @@ angular.module('tattva')
   $scope.loadData();
   $scope.show="false";
 
+$scope.editEnable=false;
+//for first row
+$scope.selectedInstanceIndex = undefined;
+$scope.selectInstanceIndex = function (index) {
+  if ($scope.selectedInstanceIndex !== index) {
+    $scope.selectedInstanceIndex = index;
+  }
+  else {
+    $scope.selectedInstanceIndex = undefined;
+  }
+};
+
+// for second row
+// $scope.selectedUserIndex1 = undefined;
+// $scope.selectUserIndex1 = function (index) {
+//   if ($scope.selectedUserIndex1 !== index) {
+//     $scope.selectedUserIndex1 = index;
+//   }
+//   else {
+//     $scope.selectedUserIndex1 = undefined;
+//   }
+// };
+
   $scope.dspDetail=function()
   { if($scope.show==="false")
   {
