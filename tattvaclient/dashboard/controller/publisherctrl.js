@@ -1,6 +1,11 @@
 angular.module('tattva')
-.controller('publisherCtrl', ['$scope','$state','$http',
-function($scope,$state,$http){
+.controller('publisherCtrl', ['$scope','$state','$http','$mdDialog',
+function($scope,$state,$http,$mdDialog){
+
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+
   $scope.tabs = [{
     'name': 'Graph'
   },

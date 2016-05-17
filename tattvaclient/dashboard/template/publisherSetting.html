@@ -1,37 +1,67 @@
-<div class="publisherModel" ng-controller="publisherCtrl">
-  <div layout="row" layout-wrap flex>
-    <md-input-container class="md-block" flex-gt-sm>
-      <label>Size of widget</label>
-      <md-select ng-model="size">
-        <md-option value="30">30</md-option>
-        <md-option value="50">50</md-option>
-        <md-option value="70">70</md-option>
-      </md-select>
-    </md-input-container>
-  </div>
-  <div layout="row" layout-wrap flex>
-    <md-input-container class="md-block" flex-gt-sm>
-      <label>Graph Type</label>
-      <md-select ng-model="graphtype">
-        <md-option value="donut">Donut</md-option>
-        <md-option value="line">Line Chart</md-option>
-      </md-select>
-    </md-input-container>
-  </div>
-  <div layout="row" layout-wrap flex>
-    <md-input-container class="md-block" flex-gt-sm>
-      <label>Log Viewer</label>
-      <md-select ng-model="log">
-        <md-option value="raw">Log Data</md-option>
-        <md-option value="table">Tables</md-option>
-      </md-select>
-    </md-input-container>
-  </div>
-  <div layout="row" layout-wrap flex>
-    <label flex="30">Log Viewer</label>
-    <div flex-xs flex="50">
-      <md-checkbox ng-repeat="tab in tabs" selected="tab.selected">{{tab.name}}</md-checkbox>
+<md-dialog style="width:600px;"  ng-controller="publisherCtrl">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Watchlist - UI Publish</h2>
     </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <form layout-padding ng-submit="save()">
+        <div layout="row" layout-wrap flex >
+          <label flex="30"><h3>Size of widget</h3></label>
+          <md-radio-group ng-model="size" layout="row" flex="70">
+            <md-radio-button value="30" class="md-primary" flex="35">
+              <i class="fa fa-square fa-1g" aria-hidden="true"></i>
+            </md-radio-button>
+            <md-radio-button value="50" flex="35">
+              <i class="fa fa-square fa-2x" aria-hidden="true"></i>
+            </md-radio-button>
+            <md-radio-button value="70" flex="35">
+              <i class="fa fa-square fa-3x" aria-hidden="true"></i>
+            </md-radio-button>
+          </md-radio-group>
+        </div>
+        <div layout="row">
+          <div flex="30"></div>
+          <div layout="row" flex="70">
+            <label for="small" flex="35">Small</label>
+            <label for="standard" flex="35" flex-offset="10">Standard</label>
+            <label for="large" flex="35" flex-offset="10">Large</label>
+          </div>
+        </div>
+        <md-divider></md-divider>
+        <div layout="row" layout-wrap flex >
+          <label flex="30"><h3>Graph Type</h3></label>
+          <md-radio-group ng-model="graphtype" layout="row" flex="70">
+            <md-radio-button value="line" class="md-primary" flex="50">
+              <i class="fa fa-line-chart fa-3x" aria-hidden="true"></i>
+            </md-radio-button>
+            <md-radio-button value="donut" flex="50">
+              <i class="fa fa-pie-chart fa-3x fa-spin" aria-hidden="true"></i>
+            </md-radio-button>
+          </md-radio-group>
+        </div>
+        <md-divider></md-divider>
+        <div layout="row" layout-wrap flex >
+          <label flex="40"><h3>Data Display Type</h3></label>
+          <md-radio-group ng-model="log" layout="row" flex="60">
+            <div layout="column" flex="50">
+              <md-radio-button value="csv" class="md-primary" flex="50">CSV</md-radio-button>
+              <md-radio-button value="json" class="md-primary" flex="50">JSON</md-radio-button>
+            </div>
+            <div layout="column" flex="50">
+              <md-radio-button value="table" class="md-primary" flex="50">Table</md-radio-button>
+              <md-radio-button value="raw" class="md-primary" flex="50">Raw</md-radio-button>
+            </div>
+          </md-radio-group>
+        </div>
+        
+      </md-dialog-content>
+      <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button type="submit" class="md-raised md-primary">Save</md-button>
+        <md-button class="md-raised md-primary" ng-click="cancel()">Cancel</md-button>
+      </md-dialog-actions>
+    </form>
   </div>
-  <md-button class="md-raised md-primary" ng-click="save()">Save</md-button>
-</div>
+</md-dialog>
