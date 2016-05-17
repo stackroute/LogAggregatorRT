@@ -22,7 +22,9 @@ function($scope,$mdDialog,$state) {
         "CountryCode": "IND"
       },
       "value":[8, 3, 7],
-      "size" : "30"
+      "size" : "30",
+      "slideone":"B",
+      "slidetwo":"B"
     },
     {
       "wlname": "WatchlistSECNOD",
@@ -34,7 +36,9 @@ function($scope,$mdDialog,$state) {
         "CountryCode": "PAK"
       },
       "value":[15, 30, 27],
-      "size" : "50"
+      "size" : "50",
+      "slideone":"A",
+      "slidetwo":"A"
     },
 {	"wlname": "WatchlistTHIRD",
 "charttype":"flow",
@@ -44,7 +48,9 @@ function($scope,$mdDialog,$state) {
   "CountryCode": "USA"
 },
 "value":[38, 13, 70],
-"size" : "70"
+"size" : "70",
+"slideone":"A",
+"slidetwo":"B"
 },
 {"wlname": "WatchlistFOUR",
 "charttype":"graph",
@@ -54,7 +60,9 @@ function($scope,$mdDialog,$state) {
   "CountryCode": "UK"
 },
 "value":[58, 32, 17],
-"size" : "30"
+"size" : "30",
+"slideone":"B",
+"slidetwo":"A"
 }
 ];
 
