@@ -18,7 +18,12 @@ function($scope,$stateParams,$state,namespaceFactory){
     $scope.editNamespaceFlag=false;
   };
   $scope.saveNamespace = function(){
-    
-    $state.go("design.namespace");
+    // namespaceFactory.setNamespaceDetails($scope.editNameSpace)
+    // .then(function(response){
+      $state.go("design.namespace");
+    // })
+  }
+  $scope.delete = function(index){
+    $scope.editNameSpace.dataformat.splice(index,1)
   }
 }]);

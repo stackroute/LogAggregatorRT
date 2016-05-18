@@ -31,15 +31,18 @@
               <md-radio-button value="measure" ng-disabled="editNamespaceFlag">Measure (measurable field)</md-radio-button>
             </md-radio-group>
           </md-input-container>
+          <div>
+            <md-button class="md-fab md-primary md-mini" ng-click="delete($index)" ng-disabled="false" ng-if="!editNamespaceFlag">-</md-button>
+          </div>
         </div><!--ng repeat div-->
       </md-whiteframe>
-      <div layout layout-align="center center" >
-        <md-button class="md-raised md-primary" ng-click="saveNamespace()" ng-disabled="false" ng-if="!editNamespaceFlag">Save</md-button>
-        <md-button class="md-raised md-primary" ui-sref="design.namespace" ng-click="saveNamespace()" ng-disabled="false" ng-if="!editNamespaceFlag">Cancel</md-button>
+      <div layout layout-align="center center" ng-if="!editNamespaceFlag" >
+        <md-button class="md-raised md-primary" ng-click="saveNamespace()" >Save</md-button>
+        <md-button class="md-raised md-primary" ng-click="saveNamespace()" ui-sref="design.namespace">Cancel</md-button>
       </div>
-      <div layout layout-align="center center">
-        <md-button class="md-raised md-primary" ng-click="editNamespacetoggle()" ng-if="editNamespaceFlag">Edit</md-button>
-        <md-button class="md-raised md-primary" ui-sref="design.namespace" ng-click="editNamespacetoggle()" ng-if="editNamespaceFlag">Cancel</md-button>
+      <div layout layout-align="center center" ng-if="editNamespaceFlag">
+        <md-button class="md-raised md-primary" ng-click="editNamespacetoggle()" >Edit</md-button>
+        <md-button class="md-raised md-primary" ng-click="editNamespacetoggle()" ui-sref="design.namespace">Cancel</md-button>
       </div>
     </div>
   </form>

@@ -41,11 +41,9 @@ angular.module('tattva')
         console.log('data=',data);
         return data;
       });
-
-      // var url = '/data/' + $routeParams.series;
-      // $http.get(url).then(function(response){ $scope.data = response.data; });
-
-      // return namespaceName;
+    },
+    setNamespaceDetails : function(data){
+      console.log(data);
     }
   }//end of factory definition
   return factory;
