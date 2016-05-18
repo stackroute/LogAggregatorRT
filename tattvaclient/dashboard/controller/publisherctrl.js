@@ -1,43 +1,53 @@
 angular.module('tattva')
-.controller('publisherCtrl', ['$scope','$state','$http',
-function($scope,$state,$http){
-  $scope.tabs = [{
-    'name': 'Graph'
-  },
-  {
-    'name': 'Summary'
-  },
-  {
-    'name': 'Data'
-  }];
+.controller('publisherCtrl', ['$scope','$state','$http','$mdDialog','publisherSettingFactory',
+function($scope,$state,$http,$mdDialog,publisherSettingFactory){
 
-  $scope.save=function(){
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+
+  $scope.uiPublisherConfig = {
+    "widgetSizes": [
+      {"name":"Small","value":"30","icon":"fa fa-square fa-1g"},
+      {"name":"Standard","value":"50","icon":"fa fa-square fa-2x"},
+      {"name":"Wide","value":"70","icon":"fa fa-square fa-3x"}
+    ],
+    "widgetTabs": [
+      {"name":"Summary","value":"summary", "hasOptions": false},
+      {"name":"Graph","value":"graph", "hasOptions": true, "options": "graphTypes"},
+      {"name":"LogDataViewer","value":"log", "hasOptions": true, "options": "logDataDisplayType"},
+      {"name":"ExecutionFlow","value":"flow", "hasOptions": false}
+    ],
+    "graphTypes": [
+      {"name":"Line","value":"line","icon":"fa fa-line-chart fa-3x"},
+      {"name":"Donut","value":"donut","icon":"fa fa-pie-chart fa-3x fa-spin"}
+    ],
+    "logDataDisplayType": [
+      {"name":"CSV","value":"csv"},
+      {"name":"JSON","value":"json"},
+      {"name":"RawData","value":"rawdata"},
+      {"name":"Table","value":"table"}
+    ]
+  };
+
+
+
+  $scope.save=function(data){
+    $scope.tabs=[];
+    angular.forEach($scope.uiPublisherConfig.widgetTabs, function(tab){
+      if(tab.selected){
+        $scope.tabs.push(tab.name);
+      }
+    })
+
     var publisherData = {
-      size : $scope.size,
-      graphtype : $scope.graphtype,
-      log : $scope.log
+      uiPublisher_widgetSize : $scope.uiPublisher_widgetSize,
+      tabs : $scope.tabs,
+      uiPublisher_graphTypes : $scope.uiPublisher_graphTypes,
+      uiPublisher_logDataDisplayType : $scope.uiPublisher_logDataDisplayType
     };
-  console.log(publisherData);
-  $http({
-      method:'post',
-      url:'/publisherData',
-      data:publisherData
-    }).then(function(response){
-      $scope.publisherData = response.data;
-      console.log("Data");
-    });
-  }
 
-  // $scope.save = function(){
-  //   $scope.tabArray = [];
-  //   angular.forEach($scope.tabs, function(tab){
-  //     console.log(tab.selected);
-  //     if ($scope.tab.selected)
-  //     {
-  //       $scope.tabArray.push(tab.name);
-  //       console.log("helloo");
-  //     }
-  //   });
-  //   console.log($scope.tabArray);
-  // }
+    console.log(publisherData);
+    $scope.publisherData = publisherSettingFactory.publisherFactoryMthd(publisherData);
+  }
 }]);

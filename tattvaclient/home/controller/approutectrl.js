@@ -12,15 +12,17 @@ angular.module('tattva')
       $mdSidenav('left').toggle();
     };
 
+    $scope.isMember=true;
+
     $scope.login = function() {
-      $scope.isMember=true;
+      $scope.isMember=false;
       $scope.signOut=true;
       $scope.login=false;
       $state.go('user');
     };
 
     $scope.signout = function(){
-      $scope.isMember=false;
+      $scope.isMember=true;
       $scope.signOut=false;
       $scope.login=true;
       $state.go('guest');

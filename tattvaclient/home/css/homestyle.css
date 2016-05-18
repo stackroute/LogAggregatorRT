@@ -1,6 +1,5 @@
 body {
   font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
-  font: 14px;
   font-size: auto;
   margin: auto;
 }
@@ -24,7 +23,6 @@ body {
     position: absolute;
     bottom: 12%;
     right: 50%;
-    font-size: 18px;
 }
 
 #hero{
@@ -39,7 +37,6 @@ body {
     position: absolute;
     bottom: 3%;
     right: 50%;
-    font-size: 18px;
 }
 
 #slide2Content{
@@ -54,7 +51,6 @@ body {
 
 a{
   text-decoration: none;
-  color:#E0F2F1;
 }
 
 md-list-item a {
@@ -79,12 +75,14 @@ md-list-item a {
   width: 100%;
   background-color: #454848;
   padding-top: 30px;
+}
 
-
+i{
+  color: #00BCD4;
 }
 
 .footer{
-  padding-top: 0px;
+  bottom: 0%;
 }
 
 .navfooter{
@@ -100,12 +98,4 @@ md-list-item a {
   width: 100%;
   height: 100vh;
   position: relative;
-}
-
-
-/* publisherModel */
-
-.publisherModel{
-  width: 400px;
-  height: 400px;
 }

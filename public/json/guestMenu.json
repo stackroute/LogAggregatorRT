@@ -11,7 +11,7 @@
     "children" : [
       {
         "menu" : "Namespace",
-        "link" : "design.namespace"
+        "link" : "design.namespaces"
       },
       {
         "menu" : "Instance",
