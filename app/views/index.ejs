@@ -5,18 +5,14 @@
 
 	<link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
-	<!-- <link rel="stylesheet" href="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" type="text/css"/> -->
-	<link rel="stylesheet" href="angular-material-data-table/dist/md-data-table.min.css">
-
+	<link rel="stylesheet" href="/design/namespaces/css/namespace.css">
 <link rel="stylesheet" href="/design/watchlists/stylewatchlist/watchliststyle.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="/design/instances/css/instancestyle.css">
 	<link rel="stylesheet" href="/home/css/homestyle.css">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="angular-material-data-table/dist/md-data-table.min.css">
 	<link rel="stylesheet" href="/organization/css/organisationstyle.css">
 	<link rel="stylesheet" href="/design/functions/css/function.style.css">
+	<link rel="stylesheet" href="/dashboard/css/dashboarstyle.css">
 	<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 </head>
 <body ng-app='tattva' ng-controller="AppRouteCtrl" ng-cloak>
@@ -26,9 +22,6 @@
        <div ui-view="footer" ></div>
 	</div>
 
-
-
-
 	<script src="/angular/angular.js" charset="utf-8"></script>
 	<script src="ng-letter-avatar/dist/ngletteravatar.min.js"></script>
 	<script src="jquery/dist/jquery.min.js"></script>
@@ -37,10 +30,12 @@
 	<script src="/angular-animate/angular-animate.min.js" charset="utf-8"></script>
 	<script src="/angular-aria/angular-aria.min.js" charset="utf-8"></script>
 	<script src="/angular-messages/angular-messages.min.js" charset="utf-8"></script>
-	<script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
+	<script src="/angular-material/angular-material.js" charset="utf-8"></script>
 	<script src="/angular-material-icons/angular-material-icons.min.js" charset="utf-8"></script>
 	<script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="/angular-material-data-table/dist/md-data-table.min.js"></script>
+	<script src="/angular-filter/dist/angular-filter.js"></script>
+
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
 	<!-- <script src="/js/tattva.js" charset="utf-8"></script> -->
@@ -58,6 +53,14 @@
 	<script src="/organization/organization.module.js"></script>
 	<script src="/organization/controllers/organization.controller.js"></script>
 	<!-- End of Organization module -->
+
+	<!--namespace module-->
+<script src="design/namespaces/namespace.module.js" charset="utf-8"></script>
+<script src="design/namespaces/factory/namespace.factory.js" charset="utf-8"></script>
+<script src="design/namespaces/controllers/createnamespacectrl.js" charset="utf-8"></script>
+<script src="design/namespaces/controllers/editnamespacectrl.js" charset="utf-8"></script>
+<script src="design/namespaces/controllers/listnamespacectrl.js" charset="utf-8"></script>
+<!--end of namespace module-->
 
 
 	<!-- function module -->
@@ -101,18 +104,16 @@
 	<!-- Design Home module -->
 	<script src="/design/designhome/designhome.module.js" charset="utf-8"></script>
 	<!-- End of Design Home module -->
-	<!--namespace module-->
-<script src="design/namespaces/namespace.module.js" charset="utf-8"></script>
-<script src="design/namespaces/factory/namespace.factory.js" charset="utf-8"></script>
-<script src="design/namespaces/services/namespace.service.js" charset="utf-8"></script>
-<script src="design/namespaces/controllers/namespace.controller.js" charset="utf-8"></script>
-<!--end of namespace module-->
+
 
 	<!--  dashboard module-->
 	<script src="/dashboard/dashboard.module.js" charset="utf-8"></script>
 	<script src="/dashboard/factory/uiPublisher.factory.js" charset="utf-8"></script>
 	<script src="/dashboard/controller/publisherctrl.js" charset="utf-8"></script>
 	<script src="/dashboard/controller/dashboardcontroller.js" charset="utf-8"></script>
+	<script src="/dashboard/factory/slidefactory.js" charset="utf-8"></script>
+	<script src="/dashboard/factory/searchfactory.js" charset="utf-8"></script>
+
 	<!--dashboard end  -->
 
 	<!-- Home Module -->

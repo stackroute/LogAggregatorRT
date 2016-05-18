@@ -1,24 +1,20 @@
-angular.module('tattva').config(['$stateProvider','$urlRouterProvider', function($stateProvider){
+angular.module('tattva')
+.config(['$stateProvider','$urlRouterProvider',
+function($stateProvider){
   $stateProvider
   .state('design.namespace', {
-    url: "/namespace",
-    templateUrl: "/design/namespaces/template/namespace.html",
-    controller:"createNamespaceCtrl"
-  })
-  .state('design.listNameSpace', {
-    url: "/namespaces/listNameSpace",
+    url: "/namespaces",
     templateUrl: "/design/namespaces/template/listNamespace.html",
-    controller:"createNamespaceCtrl"
+    controller:"listNamespaceCtrl"
   })
   .state('design.createNamespace', {
-    url: "/createNamespace",
+    url: "/newnamespace",
     templateUrl: "/design/namespaces/template/createNamespace.html",
     controller:"createNamespaceCtrl"
   })
-  .state('design.viewNamespace', {
-    url: "/:viewNamespaceData",
+  .state('design.editNamespace', {
+    url: "/namespace/:editNamespaceData",
     templateUrl: "/design/namespaces/template/viewNamespace.html",
     controller:"editNamespaceCtrl"
   })
-
 }]);

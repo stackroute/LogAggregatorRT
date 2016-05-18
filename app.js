@@ -11,8 +11,8 @@ var fs=require("fs");
 var jsonParser=bodyParser.json();
 
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+ var routes = require('./routes/index');
+ var users = require('./routes/users');
 
 var app = express();
 
@@ -40,9 +40,132 @@ app.use('/users', users);
 
 var data1=[];
 
-app.get('/nameSpaceList', function(req, res){
+app.get('/namespaces', function(req, res){
   res.sendFile(path.join(__dirname, 'public/json/listnamespace.json'));
 });
+app.post('/namespaces',jsonParser,function (request, response) {
+  var body1=request.body;
+  console.log(body1);//in body1 we have the data to be stored in the database
+});
+
+app.get('/namespace/', function(req, res){
+  console.log("namespace name from server",req.query.name);
+  // return req.params.name;
+  // res.sendFile(path.join(__dirname, 'public/json/listnamespace.json'));
+
+  var data=[
+    {
+      "name":"apache",
+      "description":"This is the data format for namespace apache",
+      "dataformat":[
+        {
+          "fieldAlias":"method",
+          "fieldName":"Method name",
+          "fieldType":"dimension"
+        },
+        {
+          "fieldAlias":"code",
+          "fieldName":"response code",
+          "fieldType":"dimension"
+        },
+        {
+          "fieldAlias":"hitsPerSecond",
+          "fieldName":"Number of hits per second",
+          "fieldType":"measure"
+        }
+      ]
+    },
+    {
+      "name":"NGINX",
+      "description":"This is the data format for namespace NGINX",
+      "dataformat":[
+        {
+          "fieldAlias":"method",
+          "fieldName":"Method name",
+          "fieldType":"dimension"
+        },
+        {
+          "fieldAlias":"code",
+          "fieldName":"response code",
+          "fieldType":"dimension"
+        },
+        {
+          "fieldAlias":"hitsPerSecond",
+          "fieldName":"Number of hits per second",
+          "fieldType":"measure"
+        }
+      ]
+    },
+    {
+      "name":"BOA",
+      "description":"This is the data format for namespace BOA",
+      "dataformat":[
+        {
+          "fieldAlias":"method",
+          "fieldName":"Method name",
+          "fieldType":"dimension"
+        },
+        {
+          "fieldAlias":"code",
+          "fieldName":"response code",
+          "fieldType":"dimension"
+        },
+        {
+          "fieldAlias":"hitsPerSecond",
+          "fieldName":"Number of hits per second",
+          "fieldType":"measure"
+        }
+      ]
+    },
+    {
+      "name":"IOT",
+      "description":"This is the data format for namespace IOT",
+      "dataformat":[
+        {
+          "fieldAlias":"method",
+          "fieldName":"Method name",
+          "fieldType":"dimension"
+        },
+        {
+          "fieldAlias":"code",
+          "fieldName":"response code",
+          "fieldType":"dimension"
+        },
+        {
+          "fieldAlias":"hitsPerSecond",
+          "fieldName":"Number of hits per second",
+          "fieldType":"measure"
+        }
+      ]
+    },
+  ];
+
+  var result =  {
+    "name":"IotApache",
+    "description":"This is the data format for namespace apache",
+    "dataformat":[
+      {
+        "fieldAlias":"method",
+        "fieldName":"Method name",
+        "fieldType":"dimension"
+      },
+      {
+        "fieldAlias":"code",
+        "fieldName":"response code",
+        "fieldType":"dimension"
+      },
+      {
+        "fieldAlias":"hitsPerSecond",
+        "fieldName":"Number of hits per second",
+        "fieldType":"measure"
+      }
+    ]
+  };
+
+  res.send(result);
+});
+
+
 app.get('/viewwatchlist', function(req, res){
   res.sendFile(path.join(__dirname, 'public/json/watchlist.json'));
 });
@@ -53,9 +176,18 @@ app.post('/createNamespacePost',jsonParser,function (request, response) {
   alert("reached")
 });
 
+app.post('/sendslidedata',function (request, response) {
+  console.log("helo");
+  var body1=request.body;
+  console.log("body1 = "+body1);
+});
 // app.use('/', routes);
 // app.use('/users', users);
 
+// mongo search query for particular username or slidename
+// app.get('/user/:username/slides/:slidename', function(req, res){
+// mongo.search();
+// });
 
 app.get('/viewNamespace', function(req, res){
 res.sendFile(path.join(__dirname,'/public/json/namespace.json'));
