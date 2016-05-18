@@ -1,5 +1,5 @@
-md-input-container .textarea{
-     border: 1px solid #eae9eb;
+.functionTextArea{
+     /*border: 1px solid #eae9eb;*/
     box-sizing: border-box;
   border-radius:3px;
 }

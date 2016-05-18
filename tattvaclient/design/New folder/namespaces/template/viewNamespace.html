@@ -1,0 +1,130 @@
+<div flex ng-controller="createNamespaceCtrl" ng-cloak ng-if="!editNamespaceFlag">
+  <form name="createNameSpace" novalidate>
+    <div layout="column" layout-padding flex>
+      <md-whiteframe class="md-whiteframe-1dp" flex layout="column">
+        <div  flex layout>
+          <md-input-container flex="30" >
+            <label>Name of NameSpace</label>
+            <input type="text" ng-model="editNameSpace.name" name="name" ng-disabled="editNamespaceFlag" required>
+          </md-input-container>
+        </div>
+        <div  flex layout>
+          <md-input-container flex="30" >
+            <textarea class="textarea" ng-model="editNameSpace.description" type="textarea" placeholder="Description" ng-disabled="editNamespaceFlag"></textarea>
+          </md-input-container>
+        </div>
+        <md-input-container flex layout>
+          <label><b>Data schema for NameSpace</b></label>
+        </md-input-container><br><br>
+        <div layout="row" flex ng-repeat="dataFormatObj in editNameSpace.dataformat">
+          <md-input-container flex="20" >
+            <label>Name</label>
+            <input type="text" ng-model="dataFormatObj.fieldAlias" ng-disabled="editNamespaceFlag" required>
+          </md-input-container>
+          <md-input-container flex-offset="5" flex="20" >
+            <label>Field Name</label>
+            <input type="text" ng-model="dataFormatObj.fieldName" ng-disabled="editNamespaceFlag" required>
+          </md-input-container>
+          <md-input-container flex-offset="5" flex="8" >
+            <md-radio-group ng-model="dataFormatObj.fieldType" class="md-primary" ng-disabled="editNamespaceFlag" required>
+              <md-radio-button value="dimension">Dimension (differentiates data)</md-radio-button>
+              <md-radio-button value="measure">Measure (measurable field)</md-radio-button>
+            </md-radio-group>
+          </md-input-container>
+        </div>
+      </md-whiteframe>
+      <div layout layout-align="center center" >
+        <md-button class="md-raised md-primary" ng-click="saveNamespace()" ng-disabled="false" ng-if="!editNamespaceFlag">Save</md-button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div ng-if="editNamespaceFlag">
+<md-whiteframe class="md-whiteframe-1dp" >
+  <!-- <div  >
+  <h4>Name of NameSpace: {{editNameSpace.name}}</h4>
+  <h4>Description: {{editNameSpace.description}}</h4>
+  </div>
+</md-whiteframe>
+<div><br></div>
+<md-whiteframe class="md-whiteframe-1dp" flex  >
+  <div flex  layout-align="center">
+    <table flex border >
+      <div flex>
+        <thead flex>
+          <tr flex>
+            <th  ng-repeat="(key, val) in editNameSpace.dataformat[0]" flex>
+              <span>{{key}}</span>
+            </th>
+          </tr>
+        </thead>
+      </div>
+      <div flex>
+        <tbody flex >
+          <tr ng-repeat="dataFormatObj in editNameSpace.dataformat" flex>
+            <td ng-repeat="(key, val) in dataFormatObj" flex>
+              <span>{{val}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </div>
+    </table>
+  </div>
+  <div layout layout-align="center center">
+    <md-button class="md-raised md-primary" ng-click="editNamespacetoggle()" ng-if="editNamespaceFlag">Edit</md-button>
+  </div> -->
+
+  <div flex flex-offset="20">
+    <div  class="content">
+      <table>
+        <tr>
+          <th colspan="2" style="text-align: center">
+            <h2>Namespace Details</h3>
+          </th>
+          </tr>
+          <tr>
+            <th>Name </th>
+            <td>{{editNameSpace.name}}</td>
+          </tr>
+          <tr>
+            <th>Description </th>
+            <td>{{editNameSpace.description}}</td>
+          </tr>
+          <tr>
+            <th>Data Schema </th>
+            <td><div>
+              <table border style="width:100%">
+                <div>
+                  <thead flex>
+                    <tr flex>
+                      <th  ng-repeat="(key, val) in editNameSpace.dataformat[0]" flex>
+                        <span>{{key}}</span>
+                      </th>
+                    </tr>
+                  </thead>
+                </div>
+                <div flex>
+                  <tbody flex >
+                    <tr ng-repeat="dataFormatObj in editNameSpace.dataformat" flex>
+                      <td ng-repeat="(key, val) in dataFormatObj" flex>
+                        <span>{{val}}</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </div>
+              </table>
+            </div></td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+    <br><br>
+    <div layout layout-align="center center">
+      <md-button class="md-raised md-primary" ng-click="editNamespacetoggle()" ng-if="editNamespaceFlag">Edit</md-button>
+    </div>
+    <br><br>
+</md-whiteframe>
+
+</div>
