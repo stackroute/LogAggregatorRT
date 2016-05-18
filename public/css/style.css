@@ -1,5 +1,4 @@
 
-
 .listmenu{
 overflow: scroll;
 overflow-x:hidden;
@@ -41,6 +40,7 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
   font-family: 'Open Sans';
   font-size:9pt;
 }
+
 
 .envelop {
     margin: 10px;
@@ -177,55 +177,13 @@ h1{
 
 
 /* Pooja Style sheet*/
-
-
-.whiteframedemoBasicClassUsage {
-  /* For breakpoint `-xs` */
-  /* For breakpoint `-sm` */
-  /* For breakpoint `-md` */
-  /* For breakpoint `-gt-md` */ }
-.mytabs{
-  padding:0;
-  width:40%;
-  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-/* rounded corners */
--webkit-border-radius: 12px;
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-
-/* gradients */
-background: -webkit-gradient(linear, left top, left bottom,
-color-stop(0%, white), color-stop(15%, white), color-stop(100%, #D7E9F5));
-background: -moz-linear-gradient(top, white 0%, white 55%, #009688 130%);
--moz-border-radius: 7px;
-border-radius: 7px;
-}
-
-.mytabs md-tabs.tabs.ng-isolate-scope.md-dynamic-height.flex{
-  padding:0;
-
-}
-#fp{
-  font-size:9pt;
-}
+/*
 .inputdemoIcons md-content{
     width:100%;
    height:100%;
   overflow:hidden;
 
-}
+}*/
 #cb{
   color:#607D8B;
   font-size:10pt;
@@ -239,125 +197,11 @@ border-radius: 7px;
   margin-top:5px;
   text-align:center;
 }
-#sign{
+/*#sign{
   font-size:12pt;
-}
-#reg{
-  background-color:#00695C;
-  width:80%
-}
-.bottom p{
-  color:#4E342E;
-    font-size:16pt;
-  font-weight:bold;
-  font-family:monospace;
-}
-.whiteframedemoBasicClassUsage .mic{
-  height:30px;
-}
-
-.whiteframedemoBasicClassUsage md-input-container .ng-pristine{
-  width:95%;
-}
+}*/
 
 
-.inputdemoIcons md-icon{
-width:16px !important;
-  height:16px !important;
-}
-
-  .whiteframedemoBasicClassUsage md-whiteframe {
-    background: #fff;
-   width:450px;;
-
-    height: 600px;
-    margin:auto;
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-/* rounded corners */
--webkit-border-radius: 12px;
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-/* rounded corners */
--webkit-border-radius: 12px;
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
-background: -webkit-gradient(linear, left top, left bottom,
-color-stop(0%, white), color-stop(15%, white), color-stop(100%, #fff));
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
-background: -moz-linear-gradient(top, white 0%, white 55%, #fff 130%); }
-
-
-  @media (max-width: 599px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: 7px;
-      height: 550px;
-      background-color: #c8e4fa; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 0.4em; } }
-  @media (min-width: 600px) and (max-width: 959px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: auto;
-      margin-top: 20px;
-                height: 550px; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 0.6em; } }
-  @media (min-width: 960px) and (max-width: 1279px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: auto;
-      margin-top: 20px;
-      height: 550px;
-      background-color: #fcddde; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 0.9em; } }
-  @media (min-width: 1280px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: 25px;
-      background-color: #F2FCE2; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 1.0em; } }
-.inputdemoIcons .inputIconDemo {
-    min-height: 48px; }
-
-
-
-/*
-Login  whiteframe css
-*/
-
-.whiteframedemoBasicClassUsage .login {
-    background: #fff;
-    width:450px;
-    height: 300px;
-    margin:auto;
-    margin-top: 20px;
-  }
-
-
-    #inside{
-      margin:20px;
-    }
-
- md-input-container label {
-
-text-transform: uppercase;
-font-size: 9pt;
-}
 
 .error{
   text-align:right ;
@@ -366,38 +210,12 @@ font-size: 9pt;
 }
 
 
-.mytabs md-input-container input{
-  font-size:11pt;
-  font-family:sans-serif;
-  font-weight: normal;
-  color:#262626;
-}
+
 .mytabs md-input-container .md-errors-spacer{
   min-height: 0px;
   min-width: 0px;
 }
 
-.mytabs md-tabs md-ink-bar{
-  color:rgb(121,134,203);
-background-color:   rgb(121,134,203);
-}
-
-md-input-container.md-input-invalid [ng-message-exp] {
-    color: grey;
-    text-align: right;
-}
-
-.msg-error{
-  font-size:9pt;
-  color:grey;
-  text-align:right;
-}
-
-.label label{
-margin-left:8%;
-font-size:9pt;
-color:#737373;
-}
 
 md-input-container .textarea{
      border: 1px solid #eae9eb;
@@ -459,21 +277,11 @@ border-radius:7px;}
 
 
 
-md-tab-content {
+.loginsignin md-tab-content {
   padding: 25px;
+  padding-top:15px;
 }
-md-tabs.md-accent > md-tabs-wrapper{
-  background-color: #00BFFF;
-}
-md-tab-content:nth-child(1) {
-  background-color: white;
-}
-md-tab-content:nth-child(2) {
-  background-color:	white;
-}
-md-tab-content:nth-child(3) {
-  background-color:	white;
-}
+
 #createNameSpaceInputBtn{
   margin-left: 25%;
 }
@@ -579,18 +387,18 @@ table#nameSpaceTable td {
 {
   padding-top: 10px;
 }
-.outerDiv{
+/*.outerDiv{
   width: 550px;
   margin: auto;
   margin-top: 100px;
   margin-bottom: 40px;
-}
+}*/
 
 
-md-input-container label{
+/*md-input-container label{
   text-transform: uppercase;
   font-size: 9pt;
-}
+}*/
 
 
 /* search box*/
@@ -935,54 +743,12 @@ h1{
 
 /* Pooja Style sheet*/
 
-
-.whiteframedemoBasicClassUsage {
-  /* For breakpoint `-xs` */
-  /* For breakpoint `-sm` */
-  /* For breakpoint `-md` */
-  /* For breakpoint `-gt-md` */ }
-.mytabs{
-  padding:0;
-  width:40%;
-  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-/* rounded corners */
--webkit-border-radius: 12px;
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-
-/* gradients */
-background: -webkit-gradient(linear, left top, left bottom,
-color-stop(0%, white), color-stop(15%, white), color-stop(100%, #D7E9F5));
-background: -moz-linear-gradient(top, white 0%, white 55%, #009688 130%);
--moz-border-radius: 7px;
-border-radius: 7px;
-}
-
 .mytabs md-tabs.tabs.ng-isolate-scope.md-dynamic-height.flex{
   padding:0;
 
 }
-#fp{
-  font-size:9pt;
-}
-.inputdemoIcons md-content{
-    width:100%;
-   height:100%;
-  overflow:hidden;
 
-}
+
 #cb{
   color:#607D8B;
   font-size:10pt;
@@ -996,164 +762,16 @@ border-radius: 7px;
   margin-top:5px;
   text-align:center;
 }
-#sign{
+/*#sign{
   font-size:12pt;
-}
-#reg{
-  background-color:#00695C;
-  width:80%
-}
-.bottom p{
-  color:#4E342E;
-    font-size:16pt;
-  font-weight:bold;
-  font-family:monospace;
-}
-.whiteframedemoBasicClassUsage .mic{
-  height:30px;
-}
-
-.whiteframedemoBasicClassUsage md-input-container .ng-pristine{
-  width:95%;
-}
+}*/
 
 
 
-
-
-  .whiteframedemoBasicClassUsage md-whiteframe {
-    background: #fff;
-   width:450px;;
-
-    height: 600px;
-    margin:auto;
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-/* rounded corners */
--webkit-border-radius: 12px;
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-/* rounded corners */
--webkit-border-radius: 12px;
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
-background: -webkit-gradient(linear, left top, left bottom,
-color-stop(0%, white), color-stop(15%, white), color-stop(100%, #fff));
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
-background: -moz-linear-gradient(top, white 0%, white 55%, #fff 130%); }
-
-
-  @media (max-width: 599px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: 7px;
-      height: 550px;
-      background-color: #c8e4fa; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 0.4em; } }
-  @media (min-width: 600px) and (max-width: 959px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: auto;
-      margin-top: 20px;
-                height: 550px; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 0.6em; } }
-  @media (min-width: 960px) and (max-width: 1279px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: auto;
-      margin-top: 20px;
-      height: 550px;
-      background-color: #fcddde; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 0.9em; } }
-  @media (min-width: 1280px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: 25px;
-      background-color: #F2FCE2; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 1.0em; } }
-.inputdemoIcons .inputIconDemo {
-    min-height: 48px; }
-
-
-
-/*
-Login  whiteframe css
-*/
-
-.whiteframedemoBasicClassUsage .login {
-    background: #fff;
-    width:450px;
-    height: 300px;
-    margin:auto;
-    margin-top: 20px;
-  }
-
-
-    #inside{
-      margin:20px;
-    }
-
- md-input-container label {
-
-text-transform: uppercase;
-font-size: 9pt;
-}
-
-.error{
-  text-align:right ;
-  padding-right:8px;
-
-}
-
-
-.mytabs md-input-container input{
-  font-size:11pt;
-  font-family:sans-serif;
-  font-weight: normal;
-  color:#262626;
-}
 .mytabs md-input-container .md-errors-spacer{
   min-height: 0px;
   min-width: 0px;
 }
-
-.mytabs md-tabs md-ink-bar{
-  color:rgb(121,134,203);
-background-color:   rgb(121,134,203);
-}
-
-md-input-container.md-input-invalid [ng-message-exp] {
-    color: grey;
-    text-align: right;
-}
-
-.msg-error{
-  font-size:9pt;
-  color:grey;
-  text-align:right;
-}
-
-.label label{
-margin-left:8%;
-font-size:9pt;
-color:#737373;
-}
-
 md-input-container .textarea{
      border: 1px solid #eae9eb;
     box-sizing: border-box;
@@ -1174,7 +792,8 @@ margin-left:50px;
 margin-top:10px;
 margin-right:30px;
 border:2px #00cccc solid;
-border-radius:7px;}
+border-radius:7px;
+}
 
 #save{
   background-color: #008080;
@@ -1253,17 +872,7 @@ margin-top: 2px;
   padding-top: 10px;
 }
 
-.outerDiv{
-  width: 550px;
-  margin: auto;
-  margin-top: 100px;
-  margin-bottom: 40px;
-}
 
-md-input-container label{
-  text-transform: uppercase;
-  font-size: 9pt;
-}
 
 
 /* search box*/
@@ -1636,54 +1245,6 @@ md-list-item a {
 
 /* Pooja Style sheet*/
 
-
-.whiteframedemoBasicClassUsage {
-  /* For breakpoint `-xs` */
-  /* For breakpoint `-sm` */
-  /* For breakpoint `-md` */
-  /* For breakpoint `-gt-md` */ }
-.mytabs{
-  padding:0;
-  width:40%;
-  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-/* rounded corners */
--webkit-border-radius: 12px;
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-
-/* gradients */
-background: -webkit-gradient(linear, left top, left bottom,
-color-stop(0%, white), color-stop(15%, white), color-stop(100%, #D7E9F5));
-background: -moz-linear-gradient(top, white 0%, white 55%, #009688 130%);
--moz-border-radius: 7px;
-border-radius: 7px;
-}
-
-.mytabs md-tabs.tabs.ng-isolate-scope.md-dynamic-height.flex{
-  padding:0;
-
-}
-#fp{
-  font-size:9pt;
-}
-.inputdemoIcons md-content{
-    width:100%;
-   height:100%;
-  overflow:hidden;
-
-}
 #cb{
   color:#607D8B;
   font-size:10pt;
@@ -1697,127 +1258,23 @@ border-radius: 7px;
   margin-top:5px;
   text-align:center;
 }
-#sign{
+/*#sign{
   font-size:12pt;
-}
-#reg{
-  background-color:#00695C;
-  width:80%
-}
-.bottom p{
-  color:#4E342E;
-    font-size:16pt;
-  font-weight:bold;
-  font-family:monospace;
-}
-.whiteframedemoBasicClassUsage .mic{
-  height:30px;
-}
-
-.whiteframedemoBasicClassUsage md-input-container .ng-pristine{
-  width:95%;
-}
+}*/
 
 
 .inputdemoIcons md-icon{
   size:16px;
 }
 
-  .whiteframedemoBasicClassUsage md-whiteframe {
-    background: #fff;
-   width:450px;;
 
-    height: 600px;
-    margin:auto;
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-/* rounded corners */
--webkit-border-radius: 12px;
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-/* rounded corners */
--webkit-border-radius: 12px;
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
-background: -webkit-gradient(linear, left top, left bottom,
-color-stop(0%, white), color-stop(15%, white), color-stop(100%, #fff));
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
-background: -moz-linear-gradient(top, white 0%, white 55%, #fff 130%); }
-
-
-  @media (max-width: 599px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: 7px;
-      height: 550px;
-      background-color: #c8e4fa; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 0.4em; } }
-  @media (min-width: 600px) and (max-width: 959px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: auto;
-      margin-top: 20px;
-                height: 550px; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 0.6em; } }
-  @media (min-width: 960px) and (max-width: 1279px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: auto;
-      margin-top: 20px;
-      height: 550px;
-      background-color: #fcddde; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 0.9em; } }
-  @media (min-width: 1280px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: 25px;
-      background-color: #F2FCE2; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 1.0em; } }
-.inputdemoIcons .inputIconDemo {
-    min-height: 48px; }
 
 .mic md-icon{
    width:18px;
   height:18px;
 }
 
-/*
-Login  whiteframe css
-*/
 
-.whiteframedemoBasicClassUsage .login {
-    background: #fff;
-    width:450px;
-    height: 300px;
-    margin:auto;
-    margin-top: 20px;
-  }
-
-
-    #inside{
-      margin:20px;
-    }
-
- md-input-container label {
-
-text-transform: uppercase;
-font-size: 9pt;
-}
 
 .error{
   text-align:right ;
@@ -1826,37 +1283,9 @@ font-size: 9pt;
 }
 
 
-.mytabs md-input-container input{
-  font-size:11pt;
-  font-family:sans-serif;
-  font-weight: normal;
-  color:#262626;
-}
 .mytabs md-input-container .md-errors-spacer{
   min-height: 0px;
   min-width: 0px;
-}
-
-.mytabs md-tabs md-ink-bar{
-  color:rgb(121,134,203);
-background-color:   rgb(121,134,203);
-}
-
-md-input-container.md-input-invalid [ng-message-exp] {
-    color: grey;
-    text-align: right;
-}
-
-.msg-error{
-  font-size:9pt;
-  color:grey;
-  text-align:right;
-}
-
-.label label{
-margin-left:8%;
-font-size:9pt;
-color:#737373;
 }
 
 md-input-container .textarea{
@@ -1894,7 +1323,6 @@ border-radius:7px;}
   font-style: italic;
 
 }
-
 
 
 /*ui-router css*/
@@ -1961,17 +1389,7 @@ width:18px;
   padding-top: 10px;
 }
 
-.outerDiv{
-  width: 550px;
-  margin: auto;
-  margin-top: 100px;
-  margin-bottom: 40px;
-}
 
-md-input-container label{
-  text-transform: uppercase;
-  font-size: 9pt;
-}
  md-dialog{
   min-width:50%;
  }
@@ -2232,183 +1650,13 @@ tr:nth-child(even){background-color: #f2f2f2}
 /* Pooja Style sheet*/
 
 
-.whiteframedemoBasicClassUsage {
-  /* For breakpoint `-xs` */
-  /* For breakpoint `-sm` */
-  /* For breakpoint `-md` */
-  /* For breakpoint `-gt-md` */ }
-.mytabs{
-  padding:0;
-  width:40%;
-  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-/* rounded corners */
--webkit-border-radius: 12px;
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
 
 
-/* gradients */
-background: -webkit-gradient(linear, left top, left bottom,
-color-stop(0%, white), color-stop(15%, white), color-stop(100%, #D7E9F5));
-background: -moz-linear-gradient(top, white 0%, white 55%, #009688 130%);
--moz-border-radius: 7px;
-border-radius: 7px;
-}
-
-.mytabs md-tabs.tabs.ng-isolate-scope.md-dynamic-height.flex{
-  padding:0;
-
-}
-#fp{
-  font-size:9pt;
-}
-.inputdemoIcons md-content{
-    width:100%;
-   height:100%;
-  overflow:hidden;
-
-}
-#cb{
-  color:#607D8B;
-  font-size:10pt;
-}
-.bottom{
-  margin-bottom:0;
-}
-
-.ar{
-  margin:0;
-  margin-top:5px;
-  text-align:center;
-}
-#sign{
-  font-size:12pt;
-}
-#reg{
-  background-color:#00695C;
-  width:80%
-}
-.bottom p{
-  color:#4E342E;
-    font-size:16pt;
-  font-weight:bold;
-  font-family:monospace;
-}
-.whiteframedemoBasicClassUsage .mic{
-  height:30px;
-}
-
-.whiteframedemoBasicClassUsage md-input-container .ng-pristine{
-  width:95%;
-}
-
-
-  .whiteframedemoBasicClassUsage md-whiteframe {
-    background: #fff;
-   width:450px;;
-
-    height: 600px;
-    margin:auto;
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-/* rounded corners */
--webkit-border-radius: 12px;
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
--moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-/* rounded corners */
--webkit-border-radius: 12px;
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
-background: -webkit-gradient(linear, left top, left bottom,
-color-stop(0%, white), color-stop(15%, white), color-stop(100%, #fff));
--moz-border-radius: 7px;
-border-radius: 7px;
-
-/* gradients */
-background: -moz-linear-gradient(top, white 0%, white 55%, #fff 130%); }
-
-
-  @media (max-width: 599px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: 7px;
-      height: 550px;
-      background-color: #c8e4fa; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 0.4em; } }
-  @media (min-width: 600px) and (max-width: 959px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: auto;
-      margin-top: 20px;
-                height: 550px; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 0.6em; } }
-  @media (min-width: 960px) and (max-width: 1279px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: auto;
-      margin-top: 20px;
-      height: 550px;
-      background-color: #fcddde; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 0.9em; } }
-  @media (min-width: 1280px) {
-    .whiteframedemoBasicClassUsage md-whiteframe {
-      margin: 25px;
-      background-color: #F2FCE2; }
-    .whiteframedemoBasicClassUsage md-whiteframe > span {
-      font-size: 1.0em; } }
-.inputdemoIcons .inputIconDemo {
-    min-height: 48px; }
-
-.mic md-icon{
-   width:18px;
-  height:18px;
-}
 
 /*
 Login  whiteframe css
 */
 
-.whiteframedemoBasicClassUsage .login {
-    background: #fff;
-    width:450px;
-    height: 300px;
-    margin:auto;
-    margin-top: 20px;
-  }
-
-
-    #inside{
-      margin:20px;
-    }
-
- md-input-container label {
-
-text-transform: uppercase;
-font-size: 9pt;
-}
 
 .error{
   text-align:right ;
@@ -2417,38 +1665,13 @@ font-size: 9pt;
 }
 
 
-.mytabs md-input-container input{
-  font-size:11pt;
-  font-family:sans-serif;
-  font-weight: normal;
-  color:#262626;
-}
+
 .mytabs md-input-container .md-errors-spacer{
   min-height: 0px;
   min-width: 0px;
 }
 
-.mytabs md-tabs md-ink-bar{
-  color:rgb(121,134,203);
-background-color:   rgb(121,134,203);
-}
 
-md-input-container.md-input-invalid [ng-message-exp] {
-    color: grey;
-    text-align: right;
-}
-
-.msg-error{
-  font-size:9pt;
-  color:grey;
-  text-align:right;
-}
-
-.label label{
-margin-left:8%;
-font-size:9pt;
-color:#737373;
-}
 
 md-input-container .textarea{
      border: 1px solid #eae9eb;
@@ -2620,18 +1843,13 @@ table#nameSpaceTable td {
 {
   padding-top: 10px;
 }
-.outerDiv{
-  width: 550px;
-  margin: auto;
-  margin-top: 100px;
-  margin-bottom: 40px;
-}
 
 
+/*
 md-input-container label{
   text-transform: uppercase;
   font-size: 9pt;
-}
+}*/
 
 
 /* search box*/
