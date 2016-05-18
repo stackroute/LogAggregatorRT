@@ -12,6 +12,7 @@
     "angular-material": "^1.0.7",
     "ng-letter-avatar": "ngletteravatar#^4.0.2",
     "angular-ui-ace": "bower",
-    "angular-material-data-table": "^0.10.9"
+    "angular-material-data-table": "^0.10.9",
+    "font-awesome": "^4.6.3"
   }
 }

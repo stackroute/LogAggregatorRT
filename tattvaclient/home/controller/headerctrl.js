@@ -61,5 +61,4 @@ angular.module('tattva')
 
     }
   ];
-
 });

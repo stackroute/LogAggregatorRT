@@ -1,6 +1,5 @@
 body {
   font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
-  font: 14px;
   font-size: auto;
   margin: auto;
 }
@@ -76,12 +75,14 @@ md-list-item a {
   width: 100%;
   background-color: #454848;
   padding-top: 30px;
+}
 
-
+i{
+  color: #00BCD4;
 }
 
 .footer{
-  padding-top: 0px;
+  bottom: 0%;
 }
 
 .navfooter{
@@ -97,12 +98,4 @@ md-list-item a {
   width: 100%;
   height: 100vh;
   position: relative;
-}
-
-
-/* publisherModel */
-
-.publisherModel{
-  width: 400px;
-  height: 400px;
 }

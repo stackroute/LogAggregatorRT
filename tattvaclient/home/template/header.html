@@ -2,7 +2,7 @@
   <md-toolbar class="main-bar">
     <div class="md-toolbar-tools" layout="row">
       <div class="" flex="5">
-        <ng-md-icon icon="menu" ng-show='isMember' ng-click="openLeftMenu()" style="fill: white" size="25"></ng-md-icon>
+        <ng-md-icon icon="menu" ng-hide='isMember' ng-click="openLeftMenu()" style="fill: white" size="25"></ng-md-icon>
       </div>
       <div class="" flex="85">
         <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">{{header}}</span></h2>
@@ -35,13 +35,13 @@
       </md-list-item>
     </md-list>
     <md-divider></md-divider>
-    <md-content flex="20">
+    <md-content flex="15">
       <md-list>
         <md-list-item>
           <h>Stackroute</h3>
           </md-list-item>
           <md-list-item>
-            <a href="#">Privacy</a> & <a href="#">Terms</a>
+            <a href="#">Privacy</a><pre> & </pre><a href="#">Terms</a>
           </md-list-item>
         </md-list>
       </md-content>
