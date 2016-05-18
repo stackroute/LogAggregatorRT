@@ -1,0 +1,27 @@
+<div flex flex-offset="20">
+  <div ng-controller="watchlistsdetailviewCtrl" class="content">
+    <table>
+      <tr>
+        <th colspan="2" style="text-align: center">
+          <h2>WatchList Details</h3>
+        </th>
+        </tr>
+        <tr>
+          <th>Namespace </th>
+          <td>{{filtereddata.namespace}}</td>
+        </tr>
+        <tr>
+          <th>WatchList Name </th>
+          <td>{{filtereddata.name}}</td>
+        </tr>
+        <!-- <tr>
+          <th></th>
+          <td>{{watchlistDetails.streamname}}</td>
+        </tr> -->
+        <tr>
+          <th>Description </th>
+          <td>{{filtereddata.description}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>

@@ -1,8 +1,18 @@
 <md-dialog aria-label="">
 <md-content class="md-padding">
-<form name="Form" ng-submit="saveData()">
- <md-input-container flex> <label>Enter Value</label> <input ng-model="watchlistdialogvalue"> </md-input-container>
- <div class="md-actions" layout="row">
+<form name="Form" ng-submit="savefunctiondata()">
+ <div layout layout-sm="column">
+ <md-input-container flex> <md-select ng-model="function">
+<label>Select Function</label>
+<md-option>Standard Deviation</md-option>
+<md-option>Max</md-option>
+<md-option>Min</md-option>
+<md-option>Avg</md-option>
+<md-option>Weighted Avg</md-option>
+</md-select> </md-input-container>
+ </div>
+ <md-input-container flex> <label>Parameter</label> <input ng-model="functionparam"> </md-input-container>
+ </form> </md-content> <div class="md-actions" layout="row">
  <span flex></span> <md-button ng-click="cancel()"> Cancel </md-button>
   <md-button type="submit" class="md-primary"> Save </md-button>
   </div>

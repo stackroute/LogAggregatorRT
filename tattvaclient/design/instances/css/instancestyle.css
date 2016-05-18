@@ -20,9 +20,9 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
     height:3em;
 }
 .detail button{
-  min-width:30px !important;
+  min-width:20px !important;
   min-height:10px !important;
-  border-radius: 99%;
+
 }
 .detail md-icon{
   width:10px !important;
@@ -157,4 +157,3 @@ margin:15px;
   font-family: 'Open Sans';
   font-size:9pt;
 }
-

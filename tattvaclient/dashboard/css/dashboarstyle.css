@@ -58,3 +58,12 @@ h1{
 {
   stroke-dasharray: 1, 2;
 }
+#vertical-container {
+  height: 522px;
+  width: 100%;
+  border: solid 1px grey;
+}
+.mytool
+{
+  padding-top: 60px;
+}

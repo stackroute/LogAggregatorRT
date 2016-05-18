@@ -7,93 +7,92 @@
 </div>
 </div> -->
 <md-dialog>
-<md-dialog-content>
-<div class="instanceMain" ng-cloak flex="90" ng-hide="success">
-<form name="createInstance" ng-submit="instanceSubmit()" flex-offset="10">
-  <div class="instanceDialog inputdemoIcons">
-    <h4 class="md-subhead" flex-offset="25">CREATE NEW DATA SOURCE</h4>      
-        <md-input-container class="md-block">
-        <label>Select a namespace</label>
-         <md-icon md-svg-icon="image/svg/data-analytics-flow-chart-symbol.svg"></md-icon>
-        <md-select ng-model="dInstance.namespace" >
-          <md-option  ng-repeat="namespace in namespaceSelect track by $index" value="{{namespace.name}}">{{namespace.name}}</md-option>
-        </md-select>
-      </md-input-container>
+  <md-dialog-content>
+    <div class="instanceMain" ng-cloak flex="90" ng-hide="success">
+      <form name="createInstance" novalidate ng-submit="instanceSubmit()" flex-offset="10">
+        <div class="instanceDialog inputdemoIcons">
+          <h4 class="md-subhead" flex-offset="25">CREATE NEW DATA SOURCE</h4>
+          <md-input-container class="md-block">
+            <label>Select a namespace</label>
+            <md-icon md-svg-icon="image/svg/data-analytics-flow-chart-symbol.svg"></md-icon>
+            <md-select ng-model="dInstance.namespace" >
+              <md-option  ng-repeat="namespace in namespaceSelect track by $index" value="{{namespace.name}}">{{namespace.name}}</md-option>
+            </md-select>
+          </md-input-container>
 
-    <md-input-container class="md-block" >
-     
-      <label>Name of Instance</label>
-      <md-icon md-svg-icon="image/svg/add-label-button.svg"></md-icon>
-      <input type="text" ng-model="dInstance.name" ng-required="true" >
+          <md-input-container class="md-block" >
 
-    </md-input-container>
-  <div layout="row">
-    <div flex="55">
-    <md-input-container class="md-block">
-      <label>IP Address</label>
-      <md-icon md-svg-icon="image/svg/ip.svg"></md-icon>
-       <div layout="column">
-      <div flex>
-      <input type="text" name="ip" ng-model="dInstance.ipAddress" ng-required="true" ng-pattern="/^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/">
-      </div>
-      <div flex layout-align="right" ng-messages="createInstance.ip.$error" class="error" id="myerr" role="alert">
-                <div ng-message-exp="['pattern']">
-                Invalid IP
+            <label>Name of Instance</label>
+            <md-icon md-svg-icon="image/svg/add-label-button.svg"></md-icon>
+            <input type="text" ng-model="dInstance.name" ng-required="true" >
+
+          </md-input-container>
+          <div layout="row">
+            <div flex="55">
+              <md-input-container class="md-block">
+                <label>IP Address</label>
+                <md-icon md-svg-icon="image/svg/ip.svg"></md-icon>
+                <div layout="column">
+                  <div flex>
+                    <input type="text" name="ip" ng-model="dInstance.ipAddress" ng-required="true" ng-pattern="/^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/">
+                  </div>
+                  <div flex layout-align="right" ng-messages="createInstance.ip.$error" class="error" id="myerr" role="alert">
+                    <div ng-message-exp="['pattern']">
+                      Invalid IP
+                    </div>
+                  </div>
                 </div>
-
+              </md-input-container>
             </div>
-            </div>
+            <div flex="10"></div>
+            <div flex="35">
+              <md-input-container class="md-block">
+                <label>Port</label>
+                <md-icon md-svg-icon="image/svg/universal-port-sign.svg"></md-icon>
+                <div layout="column">
+                  <div flex>
+                    <input type="text" ng-model="dInstance.port" name="port" maxlength="4" ng-required="true" ng-pattern="/^\d{4}$/">
+                  </div>
+                  <div flex layout-align="right" ng-messages="createInstance.port.$error" class="error" id="myerr" role="alert">
+                    <div ng-message-exp="['pattern']">
+                      Invalid port
+                    </div>
 
-    </md-input-container>
-    </div>
-    <div flex="10"></div>
-    <div flex="35">
-      <md-input-container class="md-block">
-      <label>Port</label>
-      <md-icon md-svg-icon="image/svg/universal-port-sign.svg"></md-icon>
-        <div layout="column">
-      <div flex>
-      <input type="text" ng-model="dInstance.port" name="port" maxlength="4" ng-required="true" ng-pattern="/^\d{4}$/">
-      </div>
-      <div flex layout-align="right" ng-messages="createInstance.port.$error" class="error" id="myerr" role="alert">
-                <div ng-message-exp="['pattern']">
-                Invalid port
+                  </div>
                 </div>
-
+              </md-input-container>
             </div>
+          </div>
+          <md-input-container class="md-block">
+            <label>Description</label>
+            <md-icon md-svg-icon="image/svg/sort-button-with-three-lines.svg"></md-icon>
+            <input type="text" ng-model="dInstance.description" ng-required="true">
+          </md-input-container>
+          <md-input-container class="md-block" ng-required="true">
+            <label>Location</label>
+            <md-icon md-svg-icon="image/svg/location-pin.svg"></md-icon>
+            <input type="text" ng-model="dInstance.location">
+          </md-input-container>
+          <div layout="row">
+            <div flex-offset="20">
+              <md-button type="submit" ng-disabled="createInstance.$invalid" class="md-raised md-primary">CREATE</md-button>
             </div>
-    </md-input-container>
+
+            <div flex-offset="5">
+              <md-button  class="md-raised md-primary" type="button" ng-click="cancel()">CANCEL</md-button>
+            </div>
+
+          </div>
+        </div>
+
+      </form>
     </div>
-    </div>
-    <md-input-container class="md-block">
-      <label>Description</label>
-      <md-icon md-svg-icon="image/svg/sort-button-with-three-lines.svg"></md-icon>
-      <input type="text" ng-model="dInstance.description" ng-required="true">
-    </md-input-container>
-    <md-input-container class="md-block" ng-required="true">
-      <label>Location</label>
-      <md-icon md-svg-icon="image/svg/location.svg"></md-icon>
-      <input type="text" ng-model="dInstance.location">
-    </md-input-container>
-    <div layout="row">
-    <div flex-offset="20">
-      <md-button type="submit" class="md-raised md-primary">CREATE</md-button>
-      </div>
-      <div flex-offset="5">
-      <md-button class="md-raised md-primary" ng-click="cancel()">CANCEL</md-button>
-      </div>
 
-    </div>
-  </div>
-
-</form> 
-</div>
-
-<md-content class="instanceMain" ng-show="success">
-  <h2>{{createMsg}}</h2>
-  <md-button class="md-raised" ng-click="cancel()" ng-show="success">Ok</md-button>
-</md-content>
+    <md-content class="instanceMain" ng-show="success">
+      <h2>{{createMsg}}</h2>
+      <md-button class="md-raised" ng-click="cancel()" ng-show="success">Ok</md-button>
+    </md-content>
 
 
-</md-dialog-content>
+  </md-dialog-content>
 </md-dialog>

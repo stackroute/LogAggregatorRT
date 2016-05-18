@@ -5,6 +5,7 @@
     'ui.router',
     'ui.ace',
     'ngLetterAvatar',
-    'angular.filter'
+    'angular.filter',
+    'ngMdIcons'
   ]);
 })();

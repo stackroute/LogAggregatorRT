@@ -8,6 +8,7 @@
 	<!-- <link rel="stylesheet" href="malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" type="text/css"/> -->
 	<link rel="stylesheet" href="angular-material-data-table/dist/md-data-table.min.css">
 
+<link rel="stylesheet" href="/design/watchlists/stylewatchlist/watchliststyle.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="/design/instances/css/instancestyle.css">
 	<link rel="stylesheet" href="/home/css/homestyle.css">
 	<link rel="stylesheet" href="/css/style.css">
@@ -22,9 +23,12 @@
 <body ng-app='tattva' ng-controller="AppRouteCtrl" ng-cloak>
 	<div layout="column" ng-clock>
 		<div ui-view="header"></div>
-		<div ui-view="content"></div>
-		<div ui-view="footer"></div>
+		<div ui-view="content" ></div>
+       <div ui-view="footer" ></div>
 	</div>
+
+
+
 
 	<script src="/angular/angular.js" charset="utf-8"></script>
 	<script src="ng-letter-avatar/dist/ngletteravatar.min.js"></script>
@@ -34,7 +38,7 @@
 	<script src="/angular-animate/angular-animate.min.js" charset="utf-8"></script>
 	<script src="/angular-aria/angular-aria.min.js" charset="utf-8"></script>
 	<script src="/angular-messages/angular-messages.min.js" charset="utf-8"></script>
-	<script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
+	<script src="/angular-material/angular-material.js" charset="utf-8"></script>
 	<script src="/angular-material-icons/angular-material-icons.min.js" charset="utf-8"></script>
 	<script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="/angular-material-data-table/dist/md-data-table.min.js"></script>
@@ -58,6 +62,7 @@
 	<script src="/organization/controllers/organization.controller.js"></script>
 	<!-- End of Organization module -->
 
+
 	<!-- function module -->
 	<script src="/design/functions/function.module.js"></script>
 	<script src="/design/functions/controller/function.contoller.js"></script>
@@ -78,6 +83,9 @@
 	<!--End of Streams module -->
 
 	<!-- Watchlists module -->
+<script src="/design/watchlists/controller/watchlistdetailviewCtrl.js" charset="utf-8"></script>
+<script src="/design/watchlists/controller/watchlistviewctrl.js" charset="utf-8"></script>
+<script src="/design/watchlists/controller/namespacebasedwatchlist.js" charset="utf-8"></script>
 	<script src="/design/watchlists/watchlists.module.js" charset="utf-8"></script>
 	<script src="/design/watchlists/service/wlstDataService.js" charset="utf-8"></script>
 	<script src="/design/watchlists/directive/donutchart_directive.js" charset="utf-8"></script>
@@ -96,11 +104,20 @@
 	<!-- Design Home module -->
 	<script src="/design/designhome/designhome.module.js" charset="utf-8"></script>
 	<!-- End of Design Home module -->
+	<!--namespace module-->
+<script src="design/namespaces/namespace.module.js" charset="utf-8"></script>
+<script src="design/namespaces/factory/namespace.factory.js" charset="utf-8"></script>
+<script src="design/namespaces/services/namespace.service.js" charset="utf-8"></script>
+<script src="design/namespaces/controllers/namespace.controller.js" charset="utf-8"></script>
+<!--end of namespace module-->
 
 	<!--  dashboard module-->
 	<script src="/dashboard/dashboard.module.js" charset="utf-8"></script>
 	<script src="/dashboard/controller/publisherctrl.js" charset="utf-8"></script>
 	<script src="/dashboard/controller/dashboardcontroller.js" charset="utf-8"></script>
+	<script src="/dashboard/factory/slidefactory.js" charset="utf-8"></script>
+	<script src="/dashboard/factory/searchfactory.js" charset="utf-8"></script>
+
 	<!--dashboard end  -->
 
 	<!-- Home Module -->
