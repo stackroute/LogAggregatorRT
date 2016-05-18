@@ -1,153 +1,139 @@
-<div  >
-<md-content layout="column" layout-padding="" layout-wrap="" layout-fill="" style="padding-bottom: 32px;" ng-cloak="" class="mytabs inputdemoIcons whiteframedemoBasicClassUsage tabsdemoDynamicHeight" ng-app="MyApp">
-    <md-tabs flex md-stretch-tabs="always" md-dynamic-height="" md-border-bottom="" class="tabs"  md-selected="selectedIndex">
-      <md-tab label="SIGN-IN">
-  <md-whiteframe class="md-whiteframe-1dp login" flex=90 layout="" layout-align="center center">
-     <md-content class="layout-padding" layout-align="center" id="inside">
-    <form ng-submit="authenticate()" name="loginForm">
-    <md-input-container class="mic md-icon-float md-block">
-      <!-- Use floating placeholder instead of label -->
-      <md-icon  md-svg-src="image/svg/letter.svg" id="email"></md-icon>
-      <div layout="column">
-      <div flex>
-      <input ng-model="user.email" type="email" name="email" placeholder="Email" ng-required="true" minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/">
-    </div>
-     <div flex layout-align="right" ng-messages="loginForm.email.$error" class="error" role="alert">
-                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">Invalid Email</div>
-            </div>
-            </div>
-    </md-input-container>
-    
-    <md-input-container class=" mic md-icon-float md-block">
-      <label>Password</label>
-      <md-icon md-svg-src="image/svg/lock_new.svg" class="password"></md-icon>
-      <div layout="column">
-      <div flex>
-      <input ng-model="user.pwd" type="password" name="password"  ng-required="true" minlength="8" maxlength="30" ng-pattern="/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^*()_+])[A-Za-z\d][A-Za-z\d!@#$%^*()_+]{7,19}$/">
-      </div>
-     <div flex layout-align="right" ng-messages="loginForm.password.$error" class="error" id="myerr" role="alert">
-                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                Should be 8-20 characters
-                <!-- Should be 8-20 characters, contain at least 1 digit, 1 letter and 1 special character -->
+
+  <md-card flex="45" flex-offset="30" class="content loginsignin">
+  <md-content layout="column" layout-padding="" layout-wrap="" layout-fill=""  ng-cloak="" class="mytabs inputdemoIcons tabsdemoDynamicHeight">
+    <md-tabs flex md-stretch-tabs="always" md-dynamic-height="" md-border-bottom="" class="tabs" md-selected="selectedIndex" >
+      <md-tab label="Sign-in">
+
+        <md-content class="layout-padding" flex  layout-align="center">
+          <form ng-submit="authenticate()" name="loginForm">
+            <md-input-container class="mic md-icon-float md-block">
+              <!-- Use floating placeholder instead of label -->
+              <md-icon  md-svg-src="images/svg/letter.svg"></md-icon>
+              <div layout="column">
+                <div flex>
+                  <input ng-model="user.email" type="email" name="email" placeholder="Email" ng-required="true" minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/">
                 </div>
+                <div flex layout-align="right" ng-messages="loginForm.email.$error" class="error" role="alert">
+                  <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">Invalid Email</div>
+                </div>
+              </div>
+            </md-input-container>
 
-            </div>
-            </div>
+            <md-input-container class=" mic md-icon-float md-block">
+              <label>Password</label>
+              <md-icon md-svg-src="images/svg/lock_new.svg" class="password"></md-icon>
+              <div layout="column">
+                <div flex>
+                  <input ng-model="user.pwd" type="password" name="password"  ng-required="true" minlength="8" maxlength="30" ng-pattern="/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^*()_+])[A-Za-z\d][A-Za-z\d!@#$%^*()_+]{7,19}$/">
+                </div>
+                <div flex layout-align="right" ng-messages="loginForm.password.$error" class="error" role="alert">
+                  <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">Invalid Password</div>
+                </div>
+              </div>
+            </md-input-container>
+            <md-input-container class="bottom" layout="column" layout-align="center">
+              <div layout="row" layout-align="right" >
+                <md-button class="md-primary md-hue-1" flex=80 flex-offset="10"><div class="md-caption">forgot password?</div></md-button>
+              </div>
+              <div layout="row" layout-align="center center">
+                <md-button class="md-raised md-primary"  ng-click="login()" flex=80>LOGIN</md-button>
+              </div>
+              <div id="sign" layout="row" layout-align="center center">
+                <md-button flex=80 class="md-primary"  ng-click="signUp()" target="_blank">CREATE A NEW ACCOUNT</md-button>
+              </div>
+            </md-input-container>
+          </form>
+        </md-content>
+      </md-tab>
+      <md-tab label="Sign-up">
+        <md-content class="layout-padding" flex layout-align="center" id="inside">
+          <form ng-submit="register()" name="registerForm">
+            <md-input-container class=" mic md-icon-float md-block">
+              <label>Site Name</label>
+              <md-icon md-svg-src="images/svg/social.svg" class="name"></md-icon>
+              <input ng-model="user.site" type="text">
+            </md-input-container>
 
-     </md-input-container>
-      
-   
-  <md-input-container class="bottom" layout="column" layout-align="center">
-    <div layout="row" layout-align="right" >
-    <md-button class="md-primary md-hue-1" id="fp" flex=100>forgot password?</md-button>
-    </div>
-    <div layout="row" layout-align="center center">
-    <md-button class="md-raised md-primary" flex=80 id="reg">LOGIN</md-button>
-    </div>
-    <div id="sign" layout="row" layout-align="center center">
-    <md-button flex=80 class="md-primary"  ng-click="signUp()" target="_blank">CREATE A NEW ACCOUNT</md-button>
-    </div>
-    </md-input-container>
-    </form>
+            <md-input-container class="mic md-icon-float md-block">
+              <label>Organisation Name</label>
+              <md-icon md-svg-src="images/svg/social.svg" class="name"></md-icon>
+              <input ng-model="user.orgn" type="text">
+            </md-input-container>
+
+            <md-input-container class=" mic md-icon-float md-block">
+              <md-icon md-svg-src="images/svg/location.svg" class="location"></md-icon>
+              <input ng-model="user.location" type="text" placeholder="Location">
+            </md-input-container>
+
+            <md-input-container class="mic md-icon-float md-block">
+              <label>Client Name</label>
+              <md-icon md-svg-src="images/svg/shape.svg" class="name"></md-icon>
+              <input ng-model="user.name" type="text">
+            </md-input-container>
+
+            <md-input-container class="mic md-icon-float md-block">
+              <!-- Use floating placeholder instead of label -->
+              <md-icon md-svg-src="images/svg/letter.svg" class="email"></md-icon>
+              <div layout="column">
+                <div flex>
+                  <input ng-model="user.email" type="email" name="email" placeholder="Email" ng-required="true" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+                </div>
+                <div flex layout-align="right" ng-messages="registerForm.email.$error" class="error" role="alert">
+                  <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">Invalid Email</div>
+                </div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class=" mic md-icon-float md-block">
+              <label>Password</label>
+              <md-icon md-svg-src="images/svg/lock_new.svg" class="password"></md-icon>
+              <div layout="column">
+                <div flex>
+                  <input ng-model="user.pwd" type="password" name="password"  ng-required="true" minlength="8" maxlength="30" ng-pattern="/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^*()_+])[A-Za-z\d][A-Za-z\d!@#$%^*()_+]{7,19}$/">
+                </div>
+                <div flex layout-align="right" ng-messages="registerForm.password.$error" class="error"  role="alert">
+                  <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">Password should be 8-20 characters </div>
+
+                </div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="mic md-icon-float md-block" >
+              <label>Confirm Password</label>
+              <md-icon md-svg-src="images/svg/lock_new.svg" class="password"></md-icon>
+              <div layout="column">
+                <div flex>
+                  <input ng-model="user.cfpwd" type="password" name="cfpassword"
+                  valid-password-c="user.pwd" required >
+                </div>
+                <div flex layout-align="right" ng-messages="registerForm.cfpassword.$error" class="error"  role="alert">
+                  <div ng-message-exp="required">This is required </div>
+                  <div class="msg-error" ng-show="registerForm.cfpassword.$error.noMatch">
+                    passwords do not match</div>
+                  </div>
+
+                </div>
+              </md-input-container>
+
+
+
+
+
+              <md-input-container class="bottom" layout="column" layout-align="center">
+                <div layout="row" layout-align="center center">
+                  <md-button class="md-raised md-primary" flex=80 ng-click="register()" ng-href="#/register">Register</md-button>
+                </div>
+                <div layout="row" layout-align="center center">
+                  <p class="md-title" flex="80" flex-offset="30">Already Register?</p>
+                </div>
+                <div  layout="row" layout-align="center center">
+                  <md-button flex=80 class="md-primary "  ng-click="signIn()" target="_blank">Sign-in now</md-button>
+                </div>
+              </md-input-container>
+            </form>
+          </md-content>
+
+        </md-tab>
+      </md-tabs>
     </md-content>
-       </md-whiteframe>
-    </md-tab>
-        <md-tab label="Sign-up">
-           <md-whiteframe class="md-whiteframe-1dp" flex=90 layout="" layout-align="center center">
-     <md-content class="layout-padding" layout-align="center" id="inside">
-     <form ng-submit="register()" name="registerForm">
-    <md-input-container class=" mic md-icon-float md-block">
-      <label>Site Name</label>
-      <md-icon md-svg-src="image/svg/social.svg" class="name"></md-icon>
-      <input ng-model="user.site" type="text">
-     </md-input-container>
-    
-    <md-input-container class="mic md-icon-float md-block">
-      <label>Organisation Name</label>
-      <md-icon md-svg-src="image/svg/social.svg" class="name"></md-icon>
-      <input ng-model="user.orgn" type="text">
-     </md-input-container>
-    
-    <md-input-container class=" mic md-icon-float md-block">
-      <md-icon md-svg-src="image/svg/location.svg" class="location"></md-icon>
-      <input ng-model="user.location" type="text" placeholder="Location">
-    </md-input-container>
-  
-    <md-input-container class="mic md-icon-float md-block">
-      <label>Client Name</label>
-      <md-icon md-svg-src="image/svg/shape.svg" class="name"></md-icon>
-      <input ng-model="user.name" type="text">
-     </md-input-container>
-    
-    <md-input-container class="mic md-icon-float md-block">
-      <!-- Use floating placeholder instead of label -->
-      <md-icon md-svg-src="image/svg/letter.svg" class="email"></md-icon>
-     <div layout="column">
-      <div flex>
-      <input ng-model="user.email" type="email" name="email" placeholder="Email" ng-required="true" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
-    </div>
-     <div flex layout-align="right" ng-messages="registerForm.email.$error" class="error" role="alert">
-                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">Invalid Email</div>
-            </div>
-            </div>
-    </md-input-container>
-    
-    <md-input-container class=" mic md-icon-float md-block">
-      <label>Password</label>
-      <md-icon md-svg-src="image/svg/lock_new.svg" class="password"></md-icon>
-      <div layout="column">
-      <div flex>
-       <input ng-model="user.pwd" type="password" name="password"  ng-required="true" minlength="8" maxlength="30" ng-pattern="/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^*()_+])[A-Za-z\d][A-Za-z\d!@#$%^*()_+]{7,19}$/">
-      </div>
-     <div flex layout-align="right" ng-messages="registerForm.password.$error" class="error"  role="alert">
-                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                Should be 8-20 characters
-                <!-- 
-                Password should be 8-20 characters and should contain atleast 1 digit,1 letter and 1 special character --></div>
-
-            </div>
-            </div>
-     </md-input-container>
-       
-     <md-input-container class="mic md-icon-float md-block" >
-      <label>Confirm Password</label>
-      <md-icon md-svg-src="image/svg/lock_new.svg" class="password"></md-icon>
-      <div layout="column">
-      <div flex>
-       <input ng-model="user.cfpwd" type="password" name="cfpassword" 
-        valid-password-c="user.pwd" required >
-      </div>
-     <div flex layout-align="right" ng-messages="registerForm.cfpassword.$error" class="error"  role="alert">
-                <div ng-message-exp="required">This is required </div>
-       <div class="msg-error" ng-show="registerForm.cfpassword.$error.noMatch">
-    passwords do not match</div>
-            </div>
-            </div>
-     </md-input-container>
-     
-
-  
-  <md-input-container class="bottom" layout="column" layout-align="center">
-    <div layout="row" layout-align="center center">
-    <md-button class="md-raised md-primary" flex=80 id="reg" ng-click="register()" ng-href="#/register">Register</md-button>
-    </div>
-    <div layout="row" layout-align="center center">
-    <p class="ar" flex="80">Already Register?</p>
-    </div>
-    <div id="sign" layout="row" layout-align="center center">
-    <md-button flex=80 class="md-primary"  ng-click="signIn()" target="_blank">Sign-in now</md-button>
-    </div>
-    </md-input-container>
-    </form>
-    </md-content>
-       </md-whiteframe>
-          </md-tab>
-  </md-tabs> 
-  </md-content>
-</div>
-
-
-<!--
-Copyright 2016 Google Inc. All Rights Reserved. 
-Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
--->
+  </md-card>

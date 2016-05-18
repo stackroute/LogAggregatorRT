@@ -11,8 +11,8 @@ var fs=require("fs");
 var jsonParser=bodyParser.json();
 
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+ var routes = require('./routes/index');
+ var users = require('./routes/users');
 
 var app = express();
 
@@ -176,9 +176,18 @@ app.post('/createNamespacePost',jsonParser,function (request, response) {
   alert("reached")
 });
 
+app.post('/sendslidedata',function (request, response) {
+  console.log("helo");
+  var body1=request.body;
+  console.log("body1 = "+body1);
+});
 // app.use('/', routes);
 // app.use('/users', users);
 
+// mongo search query for particular username or slidename
+// app.get('/user/:username/slides/:slidename', function(req, res){
+// mongo.search();
+// });
 
 app.get('/viewNamespace', function(req, res){
 res.sendFile(path.join(__dirname,'/public/json/namespace.json'));

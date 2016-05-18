@@ -2,7 +2,10 @@ angular.module("tattva").config(['$stateProvider','$urlRouterProvider', function
   $stateProvider
   .state('user',
   {
-    url: "/dashboard",
+    url: "/dashboard/:slidename",
+    params: {
+      slidename: null
+    },
     views: {
       "header" : {
         templateUrl: "/home/template/header.html",
