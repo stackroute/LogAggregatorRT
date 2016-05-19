@@ -14,10 +14,9 @@ $scope.flag=true;
   			"value": "200"
   		}]
     }
-}]);
-
 $scope.editFlag = function(){
 
 	$scope.flag=false;
 
 };
+}]);
