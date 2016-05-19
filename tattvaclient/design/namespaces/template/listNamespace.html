@@ -7,8 +7,8 @@
 </div>
 
 <div ng-init="$scope.nameSpaceListdata = namespaceFactory.getNameSpace()" ng-if="nameSpaceListdata.length">
-  <div>
-    <md-toolbar >
+  <div  layout flex class="listInstance">
+    <!-- <md-toolbar >
       <div class="md-toolbar-tools">
         <h2>
           <span>Namespaces</span>
@@ -16,13 +16,37 @@
         <span flex=""></span>
         <md-button class="md-fab md-mini" aria-label="Favorite" ui-sref="design.createNamespace">+</md-button>
       </div>
-    </md-toolbar>
+    </md-toolbar> -->
+
+    <md-subheader md-no-sticky class="md-primary">
+      <h2>Namespaces</h2>
+      <!-- <span flex></span> -->
+    </md-subheader>
+    <span flex></span>
+    <!-- <md-subheader flex> -->
+
+      <md-input-container flex="20" ng-if="showSearch">
+        <label>Search Namespace</label>
+        <input type="text" ng-model="searchNamespace" ng-click="search()">
+      </md-input-container>
+    <!-- </md-subheader> -->
+    <md-subheader md-no-sticky class="md-primary">
+      <md-button class="md-fab md-mini md-primary" aria-label="Favorite" ng-click="showSearchBox()"><md-icon md-font-icon="fa fa-search"></md-icon></md-button>
+      <!-- <md-button class="md-fab md-mini" aria-label="Favorite" ng-click="showSearchBox()"><i class="fa fa-search" aria-hidden="true"></i></md-button> -->
+    </md-subheader>
+    <md-subheader md-no-sticky class="md-primary">
+      <!-- <h2>Namespaces</h2> -->
+      <md-button class="md-fab md-mini md-primary" aria-label="Favorite" ui-sref="design.createNamespace"><md-icon md-font-icon="fa fa-plus"></md-icon></md-button>
+      <!-- <span flex></span> -->
+    </md-subheader>
+
+    <!-- "md-warn"  -->
   </div>
 
-  <md-content flex>
-    <div layout-padding layout-margin flex>
-      <div layout-padding layout-margin ng-init="loadData()">
-        <md-grid-list md-cols="6" md-row-height="180px" md-gutter="12px" >
+  <md-content>
+    <div layout-margin layout-padding>
+      <div  ng-init="loadData()">
+        <md-grid-list md-cols="6" md-row-height="4:3" md-gutter="12px" >
           <md-grid-tile ng-repeat="object in nameSpaceListdata" layout layout-padding layout-margin flex>
             <md-card>
               <a ui-sref="design.editNamespace({editNamespaceData: '{{object.name}}'})">

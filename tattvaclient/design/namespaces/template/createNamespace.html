@@ -41,12 +41,11 @@
               <md-radio-button value="measure">Measure (measurable field)</md-radio-button>
             </md-radio-group>
           </md-input-container>
-          <md-input-container flex-offset="5">
-            <md-button class="md-fab md-primary md-mini" ng-click="deleteDataFormat($index)">-</md-button>
-          </md-input-container>
+          <md-subheader md-no-sticky class="md-primary" flex-offset="5">
+            <md-button class="md-fab  md-mini" ng-click="deleteDataFormat($index)"><i class="fa fa-minus" aria-hidden="true"></i></md-button>
+          </md-subheader>      
         </div><!--ng repeat div-->
         <div>
-
           <md-button  ng-click="addDataFormat()"  class="md-raised md-primary">Add</md-button>
         </div>
 

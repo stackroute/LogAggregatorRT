@@ -35,15 +35,25 @@ angular.module('tattva')
         params: {"name" : namespaceName }
       }
        return $http.get('/namespace',config)
-      .then(function(response) {
-        console.log(response.data);
-        data =  response.data;
-        console.log('data=',data);
-        return data;
-      });
+       .then(function(response) {
+         console.log(response.data);
+         data =  response.data;
+         console.log('data=',data);
+         return data;
+       });
     },
-    setNamespaceDetails : function(data){
-      console.log(data);
+
+    setNamespaceDetails : function(data, namespaceName){
+      console.log("data to be updated from factory = ",data);
+      var config = {
+        params: {"name" : namespaceName }
+      }
+      return $http.put('/namespace/', data, config)
+      .then(
+       function(response){
+         return false;
+       }
+      );
     }
   }//end of factory definition
   return factory;

@@ -9,7 +9,7 @@ angular.module('tattva')
     },
     {
       "menu" : "Design",
-      "link" : "design",
+      "link" : "design.summary",
       "icon" : "playlist_add",
       "children" : [
         {

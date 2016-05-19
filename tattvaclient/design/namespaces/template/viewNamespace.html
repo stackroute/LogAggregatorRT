@@ -31,11 +31,15 @@
               <md-radio-button value="measure" ng-disabled="editNamespaceFlag">Measure (measurable field)</md-radio-button>
             </md-radio-group>
           </md-input-container>
-          <div>
-            <md-button class="md-fab md-primary md-mini" ng-click="delete($index)" ng-disabled="false" ng-if="!editNamespaceFlag">-</md-button>
-          </div>
+          <md-subheader md-no-sticky class="md-primary">
+            <md-button class="md-fab md-mini" ng-click="delete($index)" ng-disabled="editNamespaceFlag" ng-if="!editNamespaceFlag"><i class="fa fa-minus" aria-hidden="true"></i></md-button>
+          </md-subheader>
         </div><!--ng repeat div-->
+        <div>
+          <md-button  ng-click="addDataFormat()"  class="md-raised md-primary" ng-disabled="editNamespaceFlag" ng-if="!editNamespaceFlag">Add</md-button>
+        </div>
       </md-whiteframe>
+
       <div layout layout-align="center center" ng-if="!editNamespaceFlag" >
         <md-button class="md-raised md-primary" ng-click="saveNamespace()" >Save</md-button>
         <md-button class="md-raised md-primary" ng-click="saveNamespace()" ui-sref="design.namespace">Cancel</md-button>
