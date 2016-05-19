@@ -1,24 +1,54 @@
-<md-content class="content">
-  <div class="flexcontainer" ng-controller="dashboardcontroller">
-    <div class="flex-item" ng-repeat="item in itemcollection">
-      <dashboardlayout result="item"  data="logdata">
-      </dashboardlayout>
-    </div>
-    <md-button class="md-primary md-raised" ng-click="UI_Publish($event)">
-      UI Publish
-    </md-button>
-  </div>
+<!-- <md-content class="content">
+  <div ng-controller="menucontroller">
+    <md-toolbar class="main-bar md-accent">
+      <div class="md-toolbar-tools" layout="row">
+        <div class="" flex="95">
+          {{currentSlide.slideName}}
+        </div>
+        <div class="" flex="5">
+          <ng-md-icon icon="menu" ng-click="slidemenu()" style="fill: white" size="25"></ng-md-icon>
+        </div>
+      </div>
+    </md-toolbar>
+    <md-sidenav md-component-id="right" class="md-sidenav-right" layout="column">
+      <md-list>
+        <md-list-item ng-repeat="item in value2">
+          <a ui-sref="user({ slidename: '{{item.slideName}}' })">{{item.slideName}}</a>
+          <ng-md-icon icon="settings" ng-click="slidemenu()" style="fill: grey" size="25"></ng-md-icon>
+        </md-list-item>
+        <md-list>
+        </md-list>
+      </md-list>
+    </md-sidenav>
+  </div> -->
+
+
+<div ng-controller="dashboardcontroller">
+<md-subheader>Viewing slide: {{currentSlide.slideName}}</md-subheader>
+    <md-select ng-model="selectedSlide" ng-change="goToSlide()" >
+      <md-select-header>
+        <span>Select slide</span>
+      </md-select-header>
+      <md-option ng-repeat="slide in userSlides" ng-value="slide.slideName">
+        {{slide.slideName}}
+      </md-option>
+    </md-select>
+  <div class="flexcontainer mytool">
+      <dashboardlayout class="flex-item" result="x" ng-repeat="x in wlist" data="logdata">
+    </dashboardlayout>
+</div>
+</div>
 </md-content>
 
 
 <!-- <md-content class="content">
-  <div class="flexcontainer" ng-controller="dashboardcontroller">
-    <div ng-repeat="item in itemcollection">
-      <dashboardlayout  flex="{{item.size}}" result="item"  data="logdata">
-      </dashboardlayout>
-    </div>
-    <md-button class="md-primary md-raised" ng-click="UI_Publish($event)">
-      UI Publish
-    </md-button>
-  </div>
+<div class="flexcontainer" ng-controller="dashboardcontroller">
+<div ng-repeat="item in itemcollection">
+<dashboardlayout  flex="{{item.size}}" result="item"  data="logdata">
+</dashboardlayout>
+</div>
+<md-button class="md-primary md-raised" ng-click="UI_Publish($event)">
+UI Publish
+</md-button>
+</div>
 </md-content> -->

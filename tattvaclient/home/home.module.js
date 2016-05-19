@@ -1,5 +1,5 @@
 angular.module('tattva')
-.config(["$mdThemingProvider", function($mdThemingProvider) {
+.config(["$mdThemingProvider","$mdIconProvider", function($mdThemingProvider,$mdIconProvider) {
   $mdThemingProvider.definePalette('cyanTheme',{
     '500' : '00BCD4',
     '50'  : 'E0F7FA',
@@ -24,6 +24,11 @@ angular.module('tattva')
   .primaryPalette('cyanTheme') //500
   .accentPalette('cyan') //600
 }]);
+
+angular.module('tattva')
+.config(function($mdIconProvider){
+  $mdIconProvider.fontSet('md', 'font-awesome');
+});
 
 angular.module('tattva')
 .config(['$stateProvider','$urlRouterProvider',

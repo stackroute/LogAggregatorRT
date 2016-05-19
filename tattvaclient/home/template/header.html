@@ -5,7 +5,8 @@
         <ng-md-icon icon="menu" ng-hide='isMember' ng-click="openLeftMenu()" style="fill: white" size="25"></ng-md-icon>
       </div>
       <div class="" flex="85">
-        <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">{{header}}</span></h2>
+        <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">{{header}}</md-icon></span></h2>
+
       </div>
       <div class="" flex="10" ng-show='signOut'>
         <a ui-sref="guest"><md-button ng-click="signout()">Sign Out</md-button></a>
