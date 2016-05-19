@@ -49,7 +49,6 @@ app.get('/viewwatchlist', function(req, res){
 
 app.post('/createNamespacePost',jsonParser,function (request, response) {
   var body1=request.body;
-  /*console.log("body1 = "+body1);*/
   alert("reached")
 });
 
@@ -71,11 +70,8 @@ res.sendFile(path.join(__dirname, '/public/json/data.json'));
 
 app.post('/filewrite', JSONparser, function(req, res){
 var data= req.body;
-/*console.log(data);*/
 });
-// app.get('/viewNamespace', function(req, res){
-// res.sendFile(path.join(__dirname, '/public/json/namespace.json'));
-// });
+
 
 app.post('/publisherData', JSONparser, function(req, res){
 var data= req.body;

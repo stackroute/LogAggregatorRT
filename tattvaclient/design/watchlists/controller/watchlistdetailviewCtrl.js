@@ -1,5 +1,5 @@
-
-tattva.controller('watchlistsdetailviewCtrl',['$scope', '$http', '$stateParams','wlstDataService', function($scope, $http, $stateParams,wlstDataService){
+angular.module('tattva')
+.controller('watchlistsdetailviewCtrl',['$scope', '$http', '$stateParams','wlstDataService', function($scope, $http, $stateParams,wlstDataService){
 var watchlistobject=$stateParams.watchlistobject;
 wlstDataService.getData().success(function(data)
 {
