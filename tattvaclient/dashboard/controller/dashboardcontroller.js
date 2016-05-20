@@ -37,15 +37,34 @@ for(i=0;i<$scope.wldata.length;i++)
     }
   }
 
+  $scope.publisherData = {"WatchListName": "My first watch list"};
   // console.log("current slide is : ", $scope.currentSlide);
-  $scope.UI_Publish = function(ev) {
+  $scope.showUIPublisherDialog = function(ev) {
     $mdDialog.show({
-      targetEvent: ev,
+      controller: "publisherCtrl",
       templateUrl: "/dashboard/template/publisherSetting.html",
       parent: angular.element(document.body),
-      clickOutsideToClose: true,
-    }
-  );
+      targetEvent: ev,
+      clickOutsideToClose: false,
+      escapeToClose : false,
+      locals: { "data": $scope.publisherData }
+    }).then(function(response) {
+      console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
+    }, function(response) {
+      console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+    }).finally(function() {
+      console.log("finally gone..!");
+    });
+
+  //   .then(function(publisherData) {
+  //   $scope.publisherData = publisherData;
+  //   console.log("Publisher data after return is: ", $scope.publisherData);
+  // }, function(){
+  //   console.log("User cancelled publisher dialog ..! ");
+  //   console.log("Publisher data after cancel is: ", $scope.publisherData);
+  // }).finally(function() {
+  //   //console.log("Finally i was also called..!");
+  // });
 };
 
 $scope.itemcollection=[

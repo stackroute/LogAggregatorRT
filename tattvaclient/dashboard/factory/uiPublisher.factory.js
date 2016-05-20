@@ -8,10 +8,22 @@ tattva.factory('publisherSettingFactory',['$http', function($http){
         url:'/publisherData',
         data : publisherData
       }).then(function(response){
-          return response.data;
+        return response.data;
         console.log("Data");
       });
+      return publisherData;
     }
   }
   return uiPublisherFactory;
-}])
+}]);
+
+tattva.factory('dialoguefordemofactory',['$mdDialog',function ($mdDialog) {
+  return function(dialoguefordemoobject)
+  {
+    var confirm=$mdDialog.show({
+      template: '<md-dialog>' + '  <md-dialog-content>'+'<input type="text" value="dialoguefordemoobject.name"> </md-dialogue>' ,
+      parent: angular.element(document.body),
+      clickOutsideToClose: true
+    });
+  }
+}]);
