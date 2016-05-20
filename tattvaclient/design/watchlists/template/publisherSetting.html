@@ -1,4 +1,4 @@
-<md-dialog style="width:600px;"  ng-controller="publisherCtrl">
+<!-- <md-dialog style="width:600px;"  ng-controller="publisherCtrl">
   <md-toolbar>
     <div class="md-toolbar-tools">
       <h2>Watchlist - UI Publish</h2>
@@ -66,4 +66,24 @@
 
     </form>
   </div>
+</md-dialog> -->
+
+
+<md-dialog style="width:600px;" style="padding: '30px';">
+  <md-dialog-content>
+    <form layout-padding>
+    {{publisherData | json }}
+    <div>
+    <md-input-container>
+      <label>Widget Size</label>
+      <input type="text" ng-model="publisherData.widgetSize">
+    </md-input-container>
+  </form>
+</div>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+    <span flex></span>
+    <md-button class="md-raised md-primary" ng-click="updateBackPublisher()">Ok</md-button>
+    <md-button class="md-raised md-primary" ng-click="cancel()">Cancel</md-button>
+  </md-dialog-actions>
 </md-dialog>

@@ -47,7 +47,6 @@ angular.module("tattva")
         $scope.showAdd = function(ev) {
           $mdDialog.show({
             controller:'DialogControllerwatchlist',
-            //@TODO
             templateUrl:'design/watchlists/template/watchlistdialogueentervalue.html',
             targetEvent: ev,
           });
@@ -58,7 +57,6 @@ angular.module("tattva")
         $scope.showAdd = function(ev) {
           $mdDialog.show({
             controller:'DialogControllerwatchlist',
-            //@TODO
             templateUrl:'/design/watchlists/template/watchlistdialogueconstants.html',
             targetEvent: ev,
           });

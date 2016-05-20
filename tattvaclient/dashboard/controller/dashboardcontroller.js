@@ -37,16 +37,6 @@ for(i=0;i<$scope.wldata.length;i++)
     }
   }
 
-  // console.log("current slide is : ", $scope.currentSlide);
-  $scope.UI_Publish = function(ev) {
-    $mdDialog.show({
-      targetEvent: ev,
-      templateUrl: "/dashboard/template/publisherSetting.html",
-      parent: angular.element(document.body),
-      clickOutsideToClose: true,
-    }
-  );
-};
 
 $scope.itemcollection=[
   {
