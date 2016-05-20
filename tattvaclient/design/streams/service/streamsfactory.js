@@ -2,8 +2,7 @@ angular.module('tattva')
 .factory('streamFactory',function(){
   var streamData={
     sendStream : function(sendData){
-      console.log("from factory=",sendData);
-
+    
       var result = [{
         "namespace": "apacheTomcat",
         "instance": "ap_instance",
