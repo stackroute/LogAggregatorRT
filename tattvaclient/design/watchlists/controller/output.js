@@ -29,7 +29,7 @@ angular.module("tattva")
     $log.info('Item changed to ' + JSON.stringify(item));
   }
   function loadAll() {
-    var allStates = 'Stream1, Stream2, Stream3';
+    var allStates = 'UI Publisher, Save to Database, Output to Output Stream, External Source';
     return allStates.split(/, +/g).map( function (state) {
       return {
         value: state.toLowerCase(),
