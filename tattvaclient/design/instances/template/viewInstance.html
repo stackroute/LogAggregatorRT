@@ -68,7 +68,7 @@
       </md-item-content>
     </md-button>
 
-<<<<<<< HEAD
+
   <md-divider></md-divider>
   <md-button flex="50"  ng-class="{'selected-item': ($index+1) == selectedInstanceIndex }" ng-click="selectInstanceIndex($index+1)">
   <md-item-content layout="row" >
@@ -76,8 +76,7 @@
    <ng-letter-avatar  data={{instance[$index+1].name}} avatarcustombgcolor="#2e2eb8" size=12px shape="round"></ng-letter-avatar>
   </div>
   <div flex="80" class="detail" layout="row">
-    <div flex="70" class="eachinst md-list-item-text" layout="column" ng-if="instance.lengt
-    h > $index+1" >
+    <div flex="70" class="eachinst md-list-item-text" layout="column" ng-if="instance.length > $index+1" >
       <h3>{{instance[$index+1].name}}</h3>
       <div layout="row">
         <md-icon flex="10" md-svg-src="image/svg/ip.svg"></md-icon>

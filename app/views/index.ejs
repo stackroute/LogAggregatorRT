@@ -19,7 +19,7 @@
 	<div layout="column" ng-clock>
 		<div ui-view="header"></div>
 		<div ui-view="content" ></div>
-       <div ui-view="footer" ></div>
+  	<div ui-view="footer" ></div>
 	</div>
 
 	<script src="/angular/angular.min.js" charset="utf-8"></script>
@@ -88,11 +88,13 @@
 
 	<!-- Watchlists module -->
 	<script src="/design/watchlists/controller/watchlistdetailviewCtrl.js" charset="utf-8"></script>
+	<script src="/design/watchlists/controller/publisherctrl.js" charset="utf-8"></script>
 	<script src="/design/watchlists/controller/actionButtonCtrl.js" charset="utf-8"></script>
 	<script src="/design/watchlists/controller/watchlistviewctrl.js" charset="utf-8"></script>
 	<script src="/design/watchlists/controller/namespacebasedwatchlist.js" charset="utf-8"></script>
 	<script src="/design/watchlists/watchlists.module.js" charset="utf-8"></script>
 	<script src="/design/watchlists/service/wlstDataService.js" charset="utf-8"></script>
+	<script src="/design/watchlists/service/uiPublisher.factory.js" charset="utf-8"></script>
 	<script src="/design/watchlists/directive/donutchart_directive.js" charset="utf-8"></script>
 	<script src="/design/watchlists/directive/linechart_directive.js" charset="utf-8"></script>
 	<script src="/design/watchlists/directive/dashboardlayout.js" charset="utf-8"></script>
@@ -113,8 +115,6 @@
 
 	<!--  dashboard module-->
 	<script src="/dashboard/dashboard.module.js" charset="utf-8"></script>
-	<script src="/dashboard/factory/uiPublisher.factory.js" charset="utf-8"></script>
-	<script src="/dashboard/controller/publisherctrl.js" charset="utf-8"></script>
 	<script src="/dashboard/controller/dashboardcontroller.js" charset="utf-8"></script>
 	<script src="/dashboard/factory/slidefactory.js" charset="utf-8"></script>
 	<script src="/dashboard/factory/searchfactory.js" charset="utf-8"></script>

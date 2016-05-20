@@ -56,10 +56,10 @@ function($scope,$mdDialog,publisherSettingFactory, data){
     };
     console.log(publisherData);
     $scope.publisherData = publisherSettingFactory.publisherFactoryMthd(publisherData);
-      var dialoguefordemoobject={};
+    var dialoguefordemoobject={};
     $scope.dialoguefordemo()=function(dialoguefordemoobject) {
       dialoguefordemofactory(dialoguefordemoobject).then(function(){
-          console.log(dialoguefordemoobject);
+        console.log(dialoguefordemoobject);
       })
     }
   }
