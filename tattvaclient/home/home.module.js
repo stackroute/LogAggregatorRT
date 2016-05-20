@@ -22,7 +22,7 @@ angular.module('tattva')
 
   $mdThemingProvider.theme('default')
   .primaryPalette('cyanTheme') //500
-  .accentPalette('cyan') //600
+  .accentPalette('grey') //600
 }]);
 
 angular.module('tattva')

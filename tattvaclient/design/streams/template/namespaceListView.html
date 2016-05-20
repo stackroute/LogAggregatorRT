@@ -1,22 +1,24 @@
 <div ng-controller="routerCtrl">
 
   <div>
-    <md-toolbar class="md-accent" >
-      <div layout="row" flex>
-        <div flex="30">
-          <h2>
-            <span>Streams</span>
-          </h2>
+    <md-subheader>
+      <md-toolbar class="md-accent" >
+        <div layout="row" flex>
+          <div flex="30">
+            <h2>
+              <span>Streams</span>
+            </h2>
+          </div>
+          <div flex="66">
+          </div>
+          <div flex="4">
+            <md-button class="md-fab md-mini md-3-hue" aria-label="Favorite" ui-sref="design.create">
+              <i class="material-icons">add</i>
+            </md-button>
+          </div>
         </div>
-        <div flex="66">
-        </div>
-        <div flex="4">
-          <md-button class="md-fab md-mini md-3-hue" aria-label="Favorite" ui-sref="design.create">
-            <i class="material-icons">add</i>
-          </md-button>
-        </div>
-      </div>
-    </md-toolbar>
+      </md-toolbar>
+    </md-subheader>
   </div>
 
   <div layout="row" ng-init="loadData()">

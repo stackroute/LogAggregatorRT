@@ -77,8 +77,12 @@
             </div>
             <div layout="row">
               <div flex></div>
-              <md-button class="md-fab md-mini md-accent" ng-if="showStreamQuery" ng-click="toggle()" flex-offset="5">+</md-button>
-              <md-button class="md-fab md-mini md-accent" ng-click="streamsData.and()" ng-if="!showStreamQuery">and</md-button>
+              <md-subheader>
+                <md-button class="md-fab md-mini md-accent" ng-if="showStreamQuery" ng-click="toggle()" flex-offset="5">+</md-button>
+              </md-subheader>
+              <md-subheader>
+                <md-button class="md-fab md-mini md-accent" ng-click="streamsData.and()" ng-if="!showStreamQuery">and</md-button>
+              </md-subheader>
             </div>
           </md-content>
         </div>
