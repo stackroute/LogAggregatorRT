@@ -2,7 +2,7 @@
 <md-content class="md-padding">
 <form name="Form" ng-submit="savefunctiondata()">
  <div layout layout-sm="column">
- <md-input-container flex> <md-select ng-model="rfieldfunction">
+ <md-input-container flex> <md-select ng-model="dialogueData2.rfieldfunction">
 <label>Select Function</label>
 <md-option>Standard Deviation</md-option>
 <md-option>Max</md-option>
@@ -11,9 +11,9 @@
 <md-option>Weighted Avg</md-option>
 </md-select> </md-input-container>
  </div>
- <md-input-container flex> <label>Parameter</label> <input ng-model="rfieldfunctionparam"> </md-input-container>
+ <md-input-container flex> <label>Parameter</label> <input ng-model="dialogueData2.rfieldfunctionparam"> </md-input-container>
  </form> </md-content> <div class="md-actions" layout="row">
  <span flex></span> <md-button ng-click="cancel()"> Cancel </md-button>
-  <md-button type="submit" class="md-primary"> Save </md-button>
+  <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> Save </md-button>
   </div>
  </md-dialog>

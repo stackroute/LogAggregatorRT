@@ -9,10 +9,11 @@
 	<link rel="stylesheet" href="/design/watchlists/stylewatchlist/watchliststyle.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="/design/instances/css/instancestyle.css">
 	<link rel="stylesheet" href="/home/css/homestyle.css">
-	<link rel="stylesheet" href="/css/style.css">
+	<!-- <link rel="stylesheet" href="/css/style.css"> -->
 	<link rel="stylesheet" href="/organization/css/organisationstyle.css">
 	<link rel="stylesheet" href="/design/functions/css/function.style.css">
 	<link rel="stylesheet" href="/dashboard/css/dashboarstyle.css">
+	<link rel="stylesheet" href="/design/designhome/css/designsummerystyle.css">
 	<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 </head>
 <body ng-app='tattva' ng-controller="AppRouteCtrl" ng-cloak>
@@ -54,6 +55,11 @@
 	<script src="/organization/controllers/organization.controller.js"></script>
 	<!-- End of Organization module -->
 
+<!-- designhome -->
+<script src="/design/designhome/controller/summerycontroller.js" charset="utf-8"></script>
+<script src="/design/designhome/service/designhomefactory.js" charset="utf-8"></script>
+<!-- End of designhome -->
+
 	<!--namespace module-->
 <script src="design/namespaces/namespace.module.js" charset="utf-8"></script>
 <script src="design/namespaces/factory/namespace.factory.js" charset="utf-8"></script>
@@ -87,25 +93,27 @@
 	<!--End of Streams module -->
 
 	<!-- Watchlists module -->
-	<script src="/design/watchlists/controller/watchlistdetailviewCtrl.js" charset="utf-8"></script>
-	<script src="/design/watchlists/controller/publisherctrl.js" charset="utf-8"></script>
-	<script src="/design/watchlists/controller/actionButtonCtrl.js" charset="utf-8"></script>
-	<script src="/design/watchlists/controller/watchlistviewctrl.js" charset="utf-8"></script>
-	<script src="/design/watchlists/controller/namespacebasedwatchlist.js" charset="utf-8"></script>
-	<script src="/design/watchlists/watchlists.module.js" charset="utf-8"></script>
-	<script src="/design/watchlists/service/wlstDataService.js" charset="utf-8"></script>
-	<script src="/design/watchlists/service/uiPublisher.factory.js" charset="utf-8"></script>
-	<script src="/design/watchlists/directive/donutchart_directive.js" charset="utf-8"></script>
-	<script src="/design/watchlists/directive/linechart_directive.js" charset="utf-8"></script>
-	<script src="/design/watchlists/directive/dashboardlayout.js" charset="utf-8"></script>
-	<script src="/design/watchlists/controller/operator.js" charset="utf-8"></script>
-	<script src="/design/watchlists/controller/rfield.js" charset="utf-8"></script>
-	<script src="/design/watchlists/controller/lfield.js" charset="utf-8"></script>
-	<script src="/design/watchlists/controller/output.js" charset="utf-8"></script>
-	<script src="/design/watchlists/controller/DialogControllerwatchlist.js" charset="utf-8"></script>
-	<script src="/design/watchlists/controller/streamCtrl.js" charset="utf-8"></script>
-	<script src="/design/watchlists/controller/watchlistctrl.js" charset="utf-8"></script>
-	<script src="/design/watchlists/controller/linechartcontroller.js" charset="utf-8"></script>
+	<script src="/design/watchlists/controller/namespacectrl.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/watchlistdetailviewCtrl.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/publisherctrl.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/actionButtonCtrl.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/watchlistviewctrl.js" charset="utf-8"></script>
+		<script src="/design/watchlists/service/wlstDataService.js" charset="utf-8"></script>
+		<script src="/design/watchlists/service/uiPublisher.factory.js" charset="utf-8"></script>
+		<script src="/design/watchlists/directive/donutchart_directive.js" charset="utf-8"></script>
+		<script src="/design/watchlists/directive/linechart_directive.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/namespacebasedwatchlist.js" charset="utf-8"></script>
+		<script src="/design/watchlists/watchlists.module.js" charset="utf-8"></script>
+		<script src="/design/watchlists/directive/dashboardlayout.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/operator.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/rfield.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/lfield.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/output.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/DialogControllerwatchlist.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/streamCtrl.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/watchlistctrl.js" charset="utf-8"></script>
+		<script src="/design/watchlists/controller/linechartcontroller.js" charset="utf-8"></script>
+
 	<!-- End of Watchlists module -->
 
 	<!-- Design Home module -->

@@ -1,0 +1,25 @@
+.h1{
+font-size: 50px;
+font-family: monospace;
+text-align: center;
+}
+.h4{
+text-align: center;
+}
+.cardHeader{
+text-align: center;
+font-size: 20px;
+}
+.toolbarHead{
+width: 100%;
+}
+.lastcard{
+padding-right: 10px;
+}
+.headerName{
+background-color: #E6E6FA;
+width: 100%;
+}
+.card{
+border-radius: 7px;
+}

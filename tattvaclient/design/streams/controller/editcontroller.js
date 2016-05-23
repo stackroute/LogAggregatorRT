@@ -1,5 +1,6 @@
 angular.module('tattva')
-.controller('editController', ['$scope', '$http','namespaceService', 'instanceService', function($scope, $http, namespaceService, instanceService){
+.controller('editController', ['$scope', '$http','namespaceService', 'instanceService',
+function($scope, $http, namespaceService, instanceService){
   $scope.operator=[">", ">=", "<", "<=", "==", "!=" ]
   namespaceService.getData().success(function(data){
     $scope.namespace_collection=data;

@@ -74,21 +74,27 @@
                 </div>
 
               </md-input-container>
-              <md-button class="md-fab md-mini md-primary" ng-if="!showStreamQuery" ng-click="delete($index)" flex-offset="5">-</md-button>
+              <md-subheader>
+                <md-button class="md-fab md-mini md-primary" ng-if="!showStreamQuery" ng-click="delete($index)" flex-offset="5">-</md-button>
+              </md-subheader>
             </div>
             <div layout="row">
               <div flex></div>
-              <md-button class="md-fab md-mini md-primary" ng-if="showStreamQuery" ng-click="toggle()" flex-offset="5">+</md-button>
-              <md-button class="md-fab md-mini md-primary" ng-click="streamsData.and()" ng-if="!showStreamQuery">and</md-button>
+              <md-subheader>
+                <md-button class="md-fab md-mini md-primary" ng-if="showStreamQuery" ng-click="toggle()" flex-offset="5">+</md-button>
+              </md-subheader>
+              <md-subheader>
+                <md-button class="md-fab md-mini md-primary" ng-click="streamsData.and()">and</md-button>
+              </md-subheader>
             </div>
           </md-content>
         </div>
-{{streamsData}}
+        {{streamsData}}
         <md-divider></md-divider>
 
         <div layout="row" flex-offset="40">
-          <md-button class="md-raised md-warn" ng-click="save()" ng-disabled="projectForm.$invalid" ui-sref="design.streams.viewStreams">Save</md-button>
-          <md-button class="md-raised md-warn" ng-click="cancel()" ui-sref="design.streams.viewStreams">Cancel</md-button>
+          <md-button class="md-raised md-accent" ng-click="save()" ng-disabled="projectForm.$invalid" ui-sref="design.streams.viewStreams">Save</md-button>
+          <md-button class="md-raised md-accent" ng-click="cancel()" ui-sref="design.streams.viewStreams">Cancel</md-button>
         </div>
 
       </div>

@@ -1,6 +1,6 @@
 angular.module("tattva")
-.controller('Streamctrl',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log', function($scope,$rootScope,$mdDialog,$timeout, $q, $log) {
-var self = this;
+.controller('namespacectrl',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log', function($scope,$rootScope,$mdDialog,$timeout, $q, $log) {
+  var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
   self.states        = loadAll();
@@ -28,18 +28,18 @@ var self = this;
   }
   function selectedItemChange(item) {
     $log.info('Item changed to ' + JSON.stringify(item));
-if(item!=undefined)
-{
-$scope.wlstdef.stream=item.value;
-}
-else {
-$scope.wlstdef.stream=undefined;
-}
+    if(item!=undefined)
+    {
+      $scope.wlstdef.namespace=item.value;
+    }
+    else {
+      $scope.wlstdef.namespace=undefined;
+    }
   }
 
 
   function loadAll() {
-    var allStates = 'Stream1, Stream2, Stream3';
+    var allStates = 'Namespace1, Namespace2, Namespace3';
     return allStates.split(/, +/g).map( function (state) {
       return {
         value: state.toLowerCase(),
