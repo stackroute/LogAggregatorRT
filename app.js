@@ -175,6 +175,11 @@ app.post('/createNamespacePost',jsonParser,function (request, response) {
   alert("reached")
 });
 
+app.post('/savewatchlist',jsonParser,function(request,response){
+var body2=request.body;
+console.log(body2);
+
+})
 app.post('/sendslidedata',function (request, response) {
   console.log("helo");
   var body1=request.body;

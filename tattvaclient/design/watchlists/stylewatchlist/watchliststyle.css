@@ -32,3 +32,7 @@
   transform: rotate(90deg);
   padding-bottom: 0px;
 }
+.last
+{
+display: none;
+}

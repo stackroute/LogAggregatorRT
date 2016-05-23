@@ -1,5 +1,5 @@
 angular.module("tattva")
-.controller('output',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log', function($scope,$rootScope,$mdDialog,$timeout, $q, $log) {
+.controller('namespacectrl',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log', function($scope,$rootScope,$mdDialog,$timeout, $q, $log) {
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
@@ -22,6 +22,7 @@ angular.module("tattva")
       return results;
     }
   }
+
   function searchTextChange(text) {
     $log.info('Text changed to ' + text);
   }
@@ -29,15 +30,16 @@ angular.module("tattva")
     $log.info('Item changed to ' + JSON.stringify(item));
     if(item!=undefined)
     {
-      $scope.wlstdef.output=item.value;
+      $scope.wlstdef.namespace=item.value;
     }
     else {
-      $scope.wlstdef.output=undefined;
+      $scope.wlstdef.namespace=undefined;
     }
-
   }
+
+
   function loadAll() {
-    var allStates = 'UI Publisher, Save to Database, Output to Output Stream, External Source';
+    var allStates = 'Namespace1, Namespace2, Namespace3';
     return allStates.split(/, +/g).map( function (state) {
       return {
         value: state.toLowerCase(),

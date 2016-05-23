@@ -533,10 +533,10 @@ text-align: center;
 
 /*.listmenu{
 overflow-x:hidden;
-<<<<<<< HEAD
+
 max-height: 500px !important;
 }*/
-=======
+
 max-height: 393px !important;
 }
 
@@ -826,8 +826,6 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 .instanceList{
 margin:15px;
 }
->>>>>>> 749d1cbc49944052483e44cc094f1f679b95ec9d
-
 .body-tab{
 background-color: #00bfa5;
 }
