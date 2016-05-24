@@ -2,9 +2,9 @@ angular.module('tattva')
 .factory('streamFactory',function(){
   var streamData={
     sendStream : function(sendData){
-      console.log("from factory=",sendData);
 
-      var result = [{
+      var result = [
+      {
         "namespace": "apacheTomcat",
         "instance": "ap_instance",
         "streamname": "stream-1a",
@@ -14,7 +14,8 @@ angular.module('tattva')
           "operator": "==",
           "value": "200"
         }]
-      }, {
+      },
+      {
         "namespace": "ngnix",
         "instance": "nx_instance",
         "streamname": "stream-2",
@@ -25,6 +26,7 @@ angular.module('tattva')
           "value": "300"
         }]
       }];
+
       return result;
     }
   }

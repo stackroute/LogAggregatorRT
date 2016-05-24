@@ -1,0 +1,69 @@
+.fix
+{
+  height: 250px;
+}
+.shad:hover
+{
+    box-shadow:  0px 0px 30px 0px #737373;
+}
+.shad
+{
+    height:455px;
+      border:1px solid #cfcfd6;
+}
+.pray
+{
+  background-color:#eaeaed;
+  height: 60px;
+  font-size: 24px;
+  padding-left: 10px;
+}
+button{
+    cursor: pointer;
+    float: right;
+}
+.flexcontainer {
+	display: -webkit-flex;
+		display: flex;
+ -webkit-flex-direction: row;
+ flex-direction: row;
+ -webkit-flex-wrap:wrap;
+ flex-wrap: wrap;
+ background-color:  #f8f8f9;
+}
+.flex-item
+{
+width:47%;
+ padding: 15px;
+}
+
+.axis path,
+.axis line{
+  fill: none;
+  stroke:black;
+  shape-rendering:crispEdge;
+}
+
+.axis text{
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+h1{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+.tick
+{
+  stroke-dasharray: 1, 2;
+}
+#vertical-container {
+  height: 522px;
+  width: 100%;
+  border: solid 1px grey;
+}
+.mytool
+{
+  padding-top: 30px;
+}

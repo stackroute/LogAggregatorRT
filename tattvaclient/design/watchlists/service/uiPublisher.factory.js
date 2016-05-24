@@ -8,10 +8,11 @@ tattva.factory('publisherSettingFactory',['$http', function($http){
         url:'/publisherData',
         data : publisherData
       }).then(function(response){
-          return response.data;
+        return response.data;
         console.log("Data");
       });
+      return publisherData;
     }
   }
   return uiPublisherFactory;
-}])
+}]);

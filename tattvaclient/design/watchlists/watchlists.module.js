@@ -13,7 +13,7 @@ angular.module('tattva')
       templateUrl: "design/watchlists/template/watchlistView.html",
       controller: 'watchlistviewctrl'
     })
-    .state('design.watchlist.viewdata',
+    .state('design.viewdata',
     {
       url:'detailview/:watchlistobject',
       templateUrl: "design/watchlists/template/watchlistsdetailview.html",

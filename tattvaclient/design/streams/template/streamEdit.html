@@ -1,0 +1,103 @@
+<div flex>
+  <md-whiteframe class="md-whiteframe-1dp" layout="row" flex="70" flex-offset="15">
+    <form name="projectForm" flex layout="row" >
+      <div layout="column" flex>
+
+        <div layout="row" flex>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Select Namespace</label>
+            <md-select ng-model="user_namespace">
+              <md-option ng-repeat="namespace in namespace_collection" ng-value="namespace">
+                {{namespace.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Select Instance</label>
+            <md-select ng-model="user_instance">
+              <md-option ng-repeat="instance in user_namespace.instance" ng-value="instance">
+                {{instance.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+
+        <div layout="row">
+          <md-input-container class="md-block" flex="50" >
+            <label>Name of Stream</label>
+            <input required name="streamName" ng-model="streamsData.user_streamName">
+            <div ng-messages="projectForm.streamName.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+
+
+        <div layout="row" flex>
+          <md-input-container flex="100" >
+            <textarea class="textarea" ng-model="streamsData.stringDescription" type="textarea" placeholder="Description"></textarea>
+          </md-input-container>
+        </div>
+
+        <h3 style="text-align: center">Query Criteria - Build Your Query Here</h3>
+
+        <div class="content">
+          <md-content layout-padding>
+            <div layout="row" flex ng-if="!showStreamQuery" ng-repeat="stmt in streamsData.queryBuilder">
+              <!--===========================DropDown(Fields)==============================-->
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Select field</label>
+                <md-select ng-model="stmt.user_fields">
+                  <md-option ng-repeat="namespace_field in user_namespace.dataformat" value="{{namespace_field.fieldName}}">
+                    <!-- <ng-letter-avatar data={{namespace_field.fieldType}} shape="round" size="10px" avatarcustombgcolor="#339933" charCount=1 ></ng-letter-avatar> -->
+                    {{namespace_field.fieldName}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <!--==========================DropDown(Operator)=============================-->
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Operators</label>
+                <md-select ng-model="stmt.user_operator">
+                  <md-option ng-repeat="operators in operator" value="{{operators}}">
+                    <!-- {{operator.fieldType}} -->{{operators}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <!--===========================TextBox(Value)================================-->
+              <md-input-container class="md-block" flex="30">
+                <label>Value</label>
+                <input required name="value" ng-model="stmt.user_value">
+                <div ng-messages="projectForm.value.$error">
+                  <div ng-message="required">This is required.</div>
+                </div>
+
+              </md-input-container>
+              <md-subheader>
+                <md-button class="md-fab md-mini md-primary" ng-if="!showStreamQuery" ng-click="delete($index)" flex-offset="5">-</md-button>
+              </md-subheader>
+            </div>
+            <div layout="row">
+              <div flex></div>
+              <md-subheader>
+                <md-button class="md-fab md-mini md-primary" ng-if="showStreamQuery" ng-click="toggle()" flex-offset="5">+</md-button>
+              </md-subheader>
+              <md-subheader>
+                <md-button class="md-fab md-mini md-primary" ng-click="streamsData.and()">and</md-button>
+              </md-subheader>
+            </div>
+          </md-content>
+        </div>
+        {{streamsData}}
+        <md-divider></md-divider>
+
+        <div layout="row" flex-offset="40">
+          <md-button class="md-raised md-accent" ng-click="save()" ng-disabled="projectForm.$invalid" ui-sref="design.streams.viewStreams">Save</md-button>
+          <md-button class="md-raised md-accent" ng-click="cancel()" ui-sref="design.streams.viewStreams">Cancel</md-button>
+        </div>
+
+      </div>
+    </form>
+  </md-whiteframe>
+</div>
