@@ -22,13 +22,20 @@ angular.module('tattva')
 
   $mdThemingProvider.theme('default')
   .primaryPalette('cyanTheme') //500
-  .accentPalette('grey') //600
+  .accentPalette('cyanTheme',{
+    'default' : '100'
+  }) //600
 }]);
 
 angular.module('tattva')
 .config(function($mdIconProvider){
   $mdIconProvider.fontSet('md', 'font-awesome');
 });
+
+// angular.module('tattva')
+// .config(function($mdIconProvider){
+//   $mdIconProvider.fontSet('md', 'material-icons');
+// });
 
 angular.module('tattva')
 .config(['$stateProvider','$urlRouterProvider',
