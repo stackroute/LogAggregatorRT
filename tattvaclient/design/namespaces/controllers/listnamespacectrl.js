@@ -4,7 +4,18 @@ angular.module('tattva')
   namespaceFactory.getNameSpace().then(function(response){
     $scope.nameSpaceListdata = response;
   });
-  // console.log('namespaceList',namespaceFactory.getNameSpace());
-  // console.log('namespaceList',$scope.nameSpaceListdata);
 
-}])
+  $scope.showSearchBox = function(){
+    if($scope.showSearch){
+      $scope.showSearch= false;
+    }
+    else{
+      $scope.showSearch = true;
+    }
+  }
+
+  // $scope.search = function(){
+  //   alert("clicked")
+  // }
+
+}]);
