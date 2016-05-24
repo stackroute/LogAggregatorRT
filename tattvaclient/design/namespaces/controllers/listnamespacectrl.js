@@ -13,9 +13,9 @@ angular.module('tattva')
       $scope.showSearch = true;
     }
   }
-  
+
   // $scope.search = function(){
   //   alert("clicked")
   // }
 
-}])
+}]);

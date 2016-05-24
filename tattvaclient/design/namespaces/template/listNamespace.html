@@ -47,7 +47,7 @@
     <div layout-margin layout-padding>
       <div  ng-init="loadData()">
         <md-grid-list md-cols="6" md-row-height="4:3" md-gutter="12px" >
-          <md-grid-tile ng-repeat="object in nameSpaceListdata" layout layout-padding layout-margin flex>
+          <md-grid-tile ng-repeat="object in nameSpaceListdata" layout  flex>
             <md-card>
               <a ui-sref="design.editNamespace({editNamespaceData: '{{object.name}}'})">
               <md-card-title layout-padding>

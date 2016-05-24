@@ -54,7 +54,27 @@ angular.module('tattva')
          return false;
        }
       );
+    },
+
+    getJSONObject : function (inputJSONObj){
+      inputJSONObj = JSON.parse(inputJSONObj)
+      console.log("inputJSONObj = ",inputJSONObj);
+      var dataObj = inputJSONObj[0];
+      var outputData = [];
+      var type;
+      for ( var i in dataObj){
+          if (isNaN(dataObj[i])){
+            type = "dimension"
+          }
+          else{
+            type = "measure"
+          }
+          outputData.push({"alias": i, "name": i, "type": type  });
+      }
+      console.log("outputData= ",outputData);
+      return outputData;
     }
+
   }//end of factory definition
   return factory;
 }]);
