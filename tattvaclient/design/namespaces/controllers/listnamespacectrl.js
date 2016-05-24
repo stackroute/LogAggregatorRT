@@ -1,6 +1,9 @@
 angular.module('tattva')
 .controller('listNamespaceCtrl',['$scope','namespaceFactory',function($scope,namespaceFactory){
 
+  $scope.tabTitle ="Namespaces";
+  $scope.stateChange="design.createNamespace"
+
   namespaceFactory.getNameSpace().then(function(response){
     $scope.nameSpaceListdata = response;
   });

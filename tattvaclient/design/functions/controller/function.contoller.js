@@ -1,6 +1,8 @@
 angular.module('tattva')
 .controller('functionlistCtrl', ['$scope', '$http','$mdDialog',
 function($scope, $http, $mdDialog) {
+  $scope.tabTitle ="Function List";
+  $scope.stateChange="design.addfunction"
   $scope.loadData = function() {
     $http.get('/func_link').then(function(response){ $scope.data = response.data; });
   }

@@ -7,41 +7,8 @@
 </div>
 
 <div ng-init="$scope.nameSpaceListdata = namespaceFactory.getNameSpace()" ng-if="nameSpaceListdata.length">
-  <div  layout flex class="listInstance">
-    <!-- <md-toolbar >
-      <div class="md-toolbar-tools">
-        <h2>
-          <span>Namespaces</span>
-        </h2>
-        <span flex=""></span>
-        <md-button class="md-fab md-mini" aria-label="Favorite" ui-sref="design.createNamespace">+</md-button>
-      </div>
-    </md-toolbar> -->
 
-    <md-subheader md-no-sticky class="md-primary">
-      <h2>Namespaces</h2>
-      <!-- <span flex></span> -->
-    </md-subheader>
-    <span flex></span>
-    <!-- <md-subheader flex> -->
-
-      <md-input-container flex="20" ng-if="showSearch">
-        <label>Search Namespace</label>
-        <input type="text" ng-model="searchNamespace" ng-click="search()">
-      </md-input-container>
-    <!-- </md-subheader> -->
-    <md-subheader md-no-sticky class="md-primary">
-      <md-button class="md-fab md-mini md-primary" aria-label="Favorite" ng-click="showSearchBox()"><md-icon md-font-icon="fa fa-search"></md-icon></md-button>
-      <!-- <md-button class="md-fab md-mini" aria-label="Favorite" ng-click="showSearchBox()"><i class="fa fa-search" aria-hidden="true"></i></md-button> -->
-    </md-subheader>
-    <md-subheader md-no-sticky class="md-primary">
-      <!-- <h2>Namespaces</h2> -->
-      <md-button class="md-fab md-mini md-primary" aria-label="Favorite" ui-sref="design.createNamespace"><md-icon md-font-icon="fa fa-plus"></md-icon></md-button>
-      <!-- <span flex></span> -->
-    </md-subheader>
-
-    <!-- "md-warn"  -->
-  </div>
+  <div ng-include src="'/design/designhome/template/subTitleTab.html'"></div>
 
   <md-content>
     <div layout-margin layout-padding>
@@ -50,15 +17,15 @@
           <md-grid-tile ng-repeat="object in nameSpaceListdata" layout  flex>
             <md-card>
               <a ui-sref="design.editNamespace({editNamespaceData: '{{object.name}}'})">
-              <md-card-title layout-padding>
-                <md-card-title-media><ng-letter-avatar data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar></md-card-title-media>
-                <md-card-title-text><h3>{{object.name}}</h3></md-card-title-text>
-              </md-card-title></a>
-              <md-card-content><p> Number of datafields: {{object.dataformat.length}}</p></md-card-content>
-            </md-card>
-          </md-grid-tile>
-        </md-grid-list>
+                <md-card-title layout-padding>
+                  <md-card-title-media><ng-letter-avatar data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar></md-card-title-media>
+                  <md-card-title-text><h3>{{object.name}}</h3></md-card-title-text>
+                </md-card-title></a>
+                <md-card-content><p> Number of datafields: {{object.dataformat.length}}</p></md-card-content>
+              </md-card>
+            </md-grid-tile>
+          </md-grid-list>
+        </div>
       </div>
-    </div>
-  </md-content>
-</div>
+    </md-content>
+  </div>

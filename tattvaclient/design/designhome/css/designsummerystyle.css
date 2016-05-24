@@ -23,3 +23,8 @@ width: 100%;
 .card{
 border-radius: 7px;
 }
+
+.tabHeading{
+  padding-left: 20px;
+  color: #00BCD4;
+}
