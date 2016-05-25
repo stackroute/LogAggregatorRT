@@ -37,6 +37,41 @@
 display: none;
 }
 #previewexpression
+.watchlistlayout {
+  margin: 0px 100px 0px 100px;
+}
+#watchlistpadding {
+  margin-top: 3% !important;
+}
+#watchListnamespace {
+  margin-top: 1% !important;
+}
+#lfieldwatchlist {
+  margin-top: 1% !important;
+}
+#operatorwatchlist {
+  margin-top: 2% !important;
+}
+#rfieldwatchlist {
+  margin-top: 2% !important;
+  margin-bottom: 2% !important;
+}
+#watchlistcheckbox {
+  margin-left: 20px;
+}
+.actionButton{
+  margin-top: 15px;
+  margin-right: 73.5%;
+}
+.vertical-divider {
+  padding-top: 70px;
+  position: absolute;
+  width: 100px;
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+  padding-bottom: 0px;
+}
+.last
 {
 border-radius: 20px !important;
 height: 40px !important;

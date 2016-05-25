@@ -9,20 +9,8 @@ padding-left: 20px;
 </style>
 
 <div ng-controller="namespacebasedwatchlist">
-
-<div class="listInstance">
-  <md-toolbar >
-    <div class="md-toolbar-tools">
-      <h2>
-        <span>Watchlist</span>
-      </h2>
-      <span flex=""></span>
-      <md-button class="md-fab md-mini" aria-label="Favorite" ui-sref="design.createwatchlist">
-        <md-icon md-svg-icon="images/add-plus-button.svg">Add</md-icon>
-      </md-button>
-    </div>
-  </md-toolbar>
-</div>
+<div ng-include src="'/design/designhome/template/subTitleTab.html'"></div>
+  <div class=""></div>
  <div layout="row" ng-init="loadData()">
   <div layout="row" flex="30">
     <md-content flex>

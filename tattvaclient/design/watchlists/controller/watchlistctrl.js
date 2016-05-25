@@ -93,24 +93,24 @@ $scope.index = index+1;
 
 
 <!---modify to save to mongo-->
-// $scope.savewatchlist=function()
-// {
-//   $http({
-//     method : 'post',
-//     url : '/savewatchlist',
-//     data : $scope.wlstdef
-//   }).success(function(data){
-//     if(data.errors){
-//       $scope.errorName = data.errors.name;
-//       $scope.errorUserName = data.errors.username;
-//       $scope.errorEmail = data.errors.email;
-//     }
-//     else{
-//       $scope.message=data.message;
-//     }
-//   });
-// $state.go("user");
-// }
+$scope.savewatchlist=function()
+{
+  $http({
+    method : 'post',
+    url : '/savewatchlist',
+    data : $scope.wlstdef
+  }).success(function(data){
+    if(data.errors){
+      $scope.errorName = data.errors.name;
+      $scope.errorUserName = data.errors.username;
+      $scope.errorEmail = data.errors.email;
+    }
+    else{
+      $scope.message=data.message;
+    }
+  });
+$state.go("user");
+}
 $scope.wlstdefView={
   "expressions": [
     {

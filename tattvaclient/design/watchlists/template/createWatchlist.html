@@ -2,11 +2,11 @@
   <div layout="row"  layout-sm="column" layout-xs="column" layout-align="space-around center" flex-offset="5">
     <md-input-container flex="50">
       <label>Watch List Name</label>
-      <input flex="90" type="text" ng-model="wlstdef.name">
+      <input ng-required="true" flex="90" type="text" ng-model="wlstdef.name">
     </md-input-container>
     <md-input-container flex="50" >
       <label>Purpose</label>
-      <textarea flex="90" ng-model="wlstdef.description"></textarea>
+      <textarea ng-required="true" flex="90" ng-model="wlstdef.description"></textarea>
     </md-input-container>
   </div>
 
@@ -187,7 +187,7 @@
 </div>
 </div>
 <div class="watchlistlayout">
-  <md-button flex="5" flex-offset="90" class="md-raised md-primary" ng-click="wlstdef.savewatchlist();">Save</md-button>
+  <md-button class="md-raised md-primary">Save</md-button>
   <h3>
     Object Structure:
   </h3>

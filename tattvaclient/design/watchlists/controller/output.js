@@ -27,14 +27,50 @@ angular.module("tattva")
   }
   function selectedItemChange(item) {
     $log.info('Item changed to ' + JSON.stringify(item));
-    if(item!=undefined)
+
+    if(JSON.stringify(item)!=undefined)
     {
       $scope.wlstdef.output=item.value;
-    }
-    else {
-      $scope.wlstdef.output=undefined;
-    }
+      console.log(JSON.stringify(item.display));
+      if(item.display=="UI Publisher")
+      {
+        console.log("in publisher");
+        $scope.publisherData = {"WatchListName": "My first watch list"};
+        // console.log("current slide is : ", $scope.currentSlide);
+        $scope.showUIPublisherDialog = function(ev) {
+          console.log("hi");
+          $mdDialog.show({
+            controller: "publisherCtrl",
+            templateUrl: "/design/watchlists/template/publisherSetting.html",
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: false,
+            escapeToClose : false,
+            locals: { "data": $scope.publisherData }
+          }).then(function(response) {
+            console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
+          }, function(response) {
+            console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+          }).finally(function() {
+            console.log("finally gone..!");
+          });
+          //   .then(function(publisherData) {
+          //   $scope.publisherData = publisherData;
+          //   console.log("Publisher data after return is: ", $scope.publisherData);
+          // }, function(){
+          //   console.log("User cancelled publisher dialog ..! ");
+          //   console.log("Publisher data after cancel is: ", $scope.publisherData);
+          // }).finally(function() {
+          //   //console.log("Finally i was also called..!");
+          // });
+        };
+        $scope.showUIPublisherDialog();
+      }
+      else if (true) {
 
+          $scope.wlstdef.output=undefined;
+      }
+    }
   }
   function loadAll() {
     var allStates = 'UI Publisher, Save to Database, Output to Output Stream, External Source';

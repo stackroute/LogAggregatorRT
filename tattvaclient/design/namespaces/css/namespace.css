@@ -1,10 +1,4 @@
 
-
- /*.noSubscriber{
-   background:#e1e1e1;
-   text-align: center;
- }*/
-
  div.noSubscriber{
    background:#F6F6F6;
    text-align: center;
@@ -28,3 +22,13 @@
    color:#868686 !important;
    font-size: 13px;
  }
+
+ .uploadJSON{
+    color: #BDBDBD;
+    font-size: 9pt;
+}
+ .uploadJSONFormat{
+    height:200px !important;
+    width:98%;
+    border:1px solid #BDBDBD;
+}

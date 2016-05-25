@@ -1,25 +1,41 @@
-.h1{
-font-size: 50px;
-font-family: monospace;
-text-align: center;
+.h1 {
+  font-size: 50px;
+  font-family: monospace;
+  text-align: center;
 }
-.h4{
-text-align: center;
+
+.h4 {
+  text-align: center;
 }
-.cardHeader{
-text-align: center;
-font-size: 20px;
+
+.cardHeader {
+  text-align: center;
+  font-size: 20px;
 }
-.toolbarHead{
-width: 100%;
+
+.toolbarHead {
+  width: 100%;
 }
+
 .lastcard{
-padding-right: 10px;
+  padding-right: 10px;
 }
-.headerName{
-background-color: #E6E6FA;
-width: 100%;
+
+.headerName {
+  background-color: #E6E6FA;
+  width: 100%;
 }
+
 .card{
-border-radius: 7px;
+  border-radius: 7px;
+}
+
+.tabHeading {
+  padding-left: 20px;
+  -webkit-filter: invert(100%);
+}
+
+.subtitle {
+  background-color: #B2EBF2;
+  padding: 0px;
 }

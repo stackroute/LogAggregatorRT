@@ -2,6 +2,9 @@ angular.module('tattva')
 .controller("instCtrl",["$scope","$state","$http","$stateParams","$mdDialog","$mdMedia",
   function($scope,$state,$http,$stateParams,$mdDialog,$mdMedia){
 
+    $scope.tabTitle ="Recent Data Sources";
+    $scope.stateChange="design.createwatchlist"
+
   $scope.selectedIndex = 1;
   $scope.submitInstance=function()
   {

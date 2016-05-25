@@ -1,33 +1,28 @@
 angular.module('tattva')
 .controller('dashboardcontroller', ['$scope','$mdDialog','$state', "$stateParams", 'slideFactory','searchFactory',
 function($scope,$mdDialog,$state, $stateParams, slideFactory,searchFactory) {
-  $scope.username="jasjeet";
-  // $scope.slidename="jkl";
+  $scope.username="prarthana";
+  $scope.orgname="wipro";
   $scope.selectedSlide = null;
-
   if($stateParams.slidename !== null)  {
-    //  console.log("Fetching slide: ", $stateParams.slidename);
     $scope.currentSlide = slideFactory.getSlide($scope.username, $stateParams.slidename);
-    console.log( "jldjdlsd"+$scope.currentSlide);
   } else {
-    //  console.log("Fetching default slide");
     $scope.currentSlide = slideFactory.getDefaultSlide($scope.username);
-    console.log("kkkkk"+ $scope.currentSlide);
   }
-
-// $scope.slidename="pqr6";
+  // $scope.org=slideFactory.getArrayUser($scope.orgname);
+  // console.log($scope.org);
   $scope.userSlides=slideFactory.getAllSlides($scope.username);
-  $scope.wldata=slideFactory.getwldata($scope.username,$scope.currentSlide.slideName);
-  console.log($scope.wldata);
-  $scope.wlist=[];
-for(i=0;i<$scope.wldata.length;i++)
-{
-  $scope.list=searchFactory.getWlObj($scope.wldata[i].id);
-  $scope.wlist.push($scope.list);
-  console.log($scope.wlist+"  i");
-}
 
-  console.log($scope.wlist);
+  $scope.wldata=slideFactory.getwldata($scope.username, $scope.currentSlide.slideName);
+  // console.log($scope.currentSlide.slideName);
+  // console.log($scope.wldata);
+  $scope.wlist=[];
+  for(i=0;i<$scope.wldata.length;i++)
+  {
+    $scope.list=searchFactory.getWlObj($scope.wldata[i].id);
+    $scope.wlist.push($scope.list);
+    // console.log($scope.wlist+"  i");
+  }
 
   $scope.goToSlide = function() {
     console.log("I am asked to go to a slide ", $scope.selectedSlide)

@@ -1,27 +1,8 @@
 <div ng-controller="routerCtrl">
 
-  <div>
-    <md-subheader>
-      <md-toolbar class="md-accent" >
-        <div layout="row" flex>
-          <div flex="30">
-            <h2>
-              <span>Streams</span>
-            </h2>
-          </div>
-          <div flex="66">
-          </div>
-          <div flex="4">
-            <md-button class="md-fab md-mini md-3-hue" aria-label="Favorite" ui-sref="design.create">
-              <i class="material-icons">add</i>
-            </md-button>
-          </div>
-        </div>
-      </md-toolbar>
-    </md-subheader>
-  </div>
+  <div ng-include src="'/design/designhome/template/subTitleTab.html'"></div>
 
-  <div layout="row" ng-init="loadData()">
+  <div layout="row" ng-init="loadData()" style="height:1000px;">
     <div layout="row" flex="30">
       <md-content flex>
         <md-list flex="">
