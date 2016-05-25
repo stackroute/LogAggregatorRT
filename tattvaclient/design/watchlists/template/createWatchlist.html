@@ -179,9 +179,11 @@
 </div>
 </div>
 <div class="watchlistlayout">
+  <md-button class="md-raised md-primary">Cancel</md-button>
   <md-button class="md-raised md-primary">Save</md-button>
   <h3>
-    Object Structure:
+    Object Structure
+    <md-checkbox ng-model="checked"></md-checkbox>
   </h3>
-  <pre>{{wlstdef | json }}</pre>
+  <pre ng-show="checked">{{wlstdef | json }}</pre>
 </div>
