@@ -1,9 +1,23 @@
-<md-dialog aria-label="">
-<md-content class="md-padding">
-<form name="Form" ng-submit="saveData()">
- <md-input-container flex> <label>Enter Value</label> <input ng-model="fieldData.watchlistdialogvalue"> </md-input-container>
- <div class="md-actions" layout="row">
- <span flex></span> <md-button ng-click="cancel()"> Cancel </md-button>
-  <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> Save </md-button>
-  </div>
- </md-dialog>
+<md-dialog class="watchlistDialog">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Input Value</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content class="md-padding">
+    <form name="Form" ng-submit="saveData()">
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>Enter Value</label>
+          <input ng-model="fieldData.watchlistdialogvalue">
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <br><br><br><br><br><br>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> OK </md-button>
+      <md-button ng-click="cancel()"> Cancel </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

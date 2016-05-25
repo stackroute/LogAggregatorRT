@@ -1,19 +1,35 @@
-<md-dialog aria-label="">
-<md-content class="md-padding">
-<form name="Form" ng-submit="savefunctiondata()">
- <div layout layout-sm="column">
- <md-input-container flex> <md-select ng-model="fieldData.function">
-<label>Select Function</label>
-<md-option>Standard Deviation</md-option>
-<md-option>Max</md-option>
-<md-option>Min</md-option>
-<md-option>Avg</md-option>
-<md-option>Weighted Avg</md-option>
-</md-select> </md-input-container>
- </div>
- <md-input-container flex> <label>Parameter</label> <input ng-model="fieldData.functionparam"> </md-input-container>
- </form> </md-content> <div class="md-actions" layout="row">
- <span flex></span> <md-button ng-click="cancel()"> Cancel </md-button>
-  <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> Save </md-button>
-  </div>
- </md-dialog>
+<md-dialog class="watchlistDialog">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Function</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content class="md-padding">
+    <form name="Form" ng-submit="saveData()">
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <md-select ng-model="fieldData.function">
+            <label>Select Functions</label>
+            <md-option>Standard Deviation</md-option>
+            <md-option>Max</md-option>
+            <md-option>Min</md-option>
+            <md-option>Avg</md-option>
+            <md-option>Weighted Avg</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>Parameter</label>
+          <input ng-model="fieldData.functionparam">
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <br><br><br>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> OK </md-button>
+      <md-button ng-click="cancel()"> Cancel </md-button>
+    </form>
+  </md-dialog-actions>
+</md-dialog>

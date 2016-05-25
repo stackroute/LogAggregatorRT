@@ -11,6 +11,26 @@
   </div>
 
   <div layout="row" layout-sm="column" layout-xs="column">
+    <div id="watchListnamespace"  ng-controller="namespacectrl as ctrl" flex="40" flex-offset="5">
+      <md-autocomplete flex-offset="20" flex="100"
+      ng-disabled="ctrl.isDisabled"
+      md-no-cache="ctrl.noCache"
+      md-selected-item="ctrl.selectedItem"
+      md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+      md-search-text="ctrl.searchText"
+      md-selected-item-change="ctrl.selectedItemChange(item)"
+      md-items="item in ctrl.querySearch(ctrl.searchText)"
+      md-item-text="item"
+      md-min-length="0"
+      placeholder="Select Namespace">
+      <md-item-template>
+        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
+      </md-item-template>
+      <md-not-found>
+        No namespace matching "{{ctrl.searchText}}" were found.
+      </md-not-found>
+    </md-autocomplete>
+  </div>
     <div id="watchListnamespace"  ng-controller="Streamctrl as ctrl1" flex="40" flex-offset="5">
       <md-autocomplete flex-offset="10" flex="80"
       ng-disabled="ctrl1.isDisabled"
@@ -22,7 +42,7 @@
       md-items="item in ctrl1.querySearch(ctrl.searchText)"
       md-item-text="item"
       md-min-length="0"
-      placeholder="Select Data Source">
+      placeholder="Select Data Stream">
       <md-item-template>
         <span md-highlight-text="ctrl1.searchText" md-highlight-flags="^i">{{item}}</span>
       </md-item-template>
@@ -31,26 +51,6 @@
       </md-not-found>
     </md-autocomplete>
   </div>
-  <div id="watchListnamespace"  ng-controller="namespacectrl as ctrl" flex="40" flex-offset="5">
-    <md-autocomplete flex-offset="20" flex="100"
-    ng-disabled="ctrl.isDisabled"
-    md-no-cache="ctrl.noCache"
-    md-selected-item="ctrl.selectedItem"
-    md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-    md-search-text="ctrl.searchText"
-    md-selected-item-change="ctrl.selectedItemChange(item)"
-    md-items="item in ctrl.querySearch(ctrl.searchText)"
-    md-item-text="item"
-    md-min-length="0"
-    placeholder="Select Namespace">
-    <md-item-template>
-      <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
-    </md-item-template>
-    <md-not-found>
-      No namespace matching "{{ctrl.searchText}}" were found.
-          </md-not-found>
-  </md-autocomplete>
-</div>
 </div>
 
 <div></div>
@@ -121,30 +121,22 @@
       No namespace matching "{{ctrl.searchText}}" were found.
     </md-not-found>
   </md-autocomplete>
-
-
-<md-card id="previewexpression">
-<md-content >
-<span>{{wlstdef.expressions[$index].watch.lfield.exprAsText}}</span>
-<span>{{wlstdef.expressions[$index].watch.operator}}</span>
-<span>{{wlstdef.expressions[$index].watch.rfield.exprAsText}}</span>
-<!-- <span><span>{{wlstdef.expressions[$index].watch.rfield.exprAsText}}</span> -->
-</span>
-</md-content>
-</md-card>
+  <p>
+    <span>{{wlstdef.expressions[$index].watch.lfield.exprAsText}}</span>
+    <span>{{wlstdef.expressions[$index].watch.operator}}</span>
+    <span>{{wlstdef.expressions[$index].watch.rfield.exprAsText}}</span>
+  </p>
 </div></div>
 </md-whiteframe>
 <!--- ========================== END OF LOOPING EXPRESSIONS ========================================= -->
-
-
 </div> <!-- end of ng repeat start for "stmt in wlstdef.statements -->
 <div ng-repeat-end>
   <md-button class="md-raised md-mini" ng-click="wlstdef.removeExpression($index);" aria-label="">Remove</md-button>
   <md-button class="md-raised md-mini" ng-show="wlstdef.expressions.length>1 && !$last" ng-click="wlstdef.addNewExpression($index);" aria-label="">ADD</md-button>
 
 
-<md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
-<md-menu ng-controller="actionButtonCtrl as ctrl" ng-class="{'last':$last}">
+  <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
+  <md-menu ng-controller="actionButtonCtrl as ctrl" ng-class="{'last':$last}">
     <md-button class="md-fab md-mini md-primary actionButton" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
       <md-icon md-font-icon="fa fa-paw fa-2x"></md-icon>
     </md-button>

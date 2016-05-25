@@ -1,20 +1,39 @@
-<md-dialog aria-label="">
-  <md-content class="md-padding"> <form name="Form" ng-submit="saveData()">
-    <div layout layout-sm="column">
-      <md-input-container id="watchlistcheckbox" flex="20"> <md-select ng-model="fieldData.accumulatecriteria">
-        <label>Select criteria</label>
-        <md-option>Count</md-option>
-        <md-option>Time</md-option>
-      </md-select> </md-input-container>
-      <md-input-container id="watchlistcheckbox" flex> <label>Value</label> <input ng-model="fieldData.accumulatorvalue"> </md-input-container>
-      <md-input-container id="watchlistcheckbox"  flex> <label>Condition</label> <input ng-model="fieldData.accumulatecondition"></md-input-container>
-
-    </form> </md-content> </div>
-    <div layout="row">
-      <md-input-container flex="md-block"> <label>Function to be executed at the end of accumulation</label> <input ng-model="fieldData.accumulatorfunctionend"> </md-input-container>
+<md-dialog class="watchlistDialog">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Accumulate</h2>
     </div>
-    <div class="md-actions" layout="row">
-      <span flex></span> <md-button ng-click="cancel()"> Cancel </md-button>
-      <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> Save </md-button>
-    </div>
-  </md-dialog>
+  </md-toolbar>
+  <md-dialog-content class="md-padding">
+    <form name="Form" ng-submit="saveData()">
+      <div layout layout-sm="column">
+        <md-input-container id="watchlistcheckbox" flex>
+          <md-select ng-model="fieldData.accumulatecriteria">
+            <label>Select criteria</label>
+            <md-option>Count</md-option>
+            <md-option>Time</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container id="watchlistcheckbox" flex>
+          <label>Value</label>
+          <input ng-model="fieldData.accumulatorvalue">
+        </md-input-container>
+        <md-input-container id="watchlistcheckbox"  flex>
+          <label>Condition</label>
+          <input ng-model="fieldData.accumulatecondition">
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex="md-block">
+          <label>Function to be executed at the end of accumulation</label>
+          <input ng-model="fieldData.accumulatorfunctionend">
+        </md-input-container>
+      </div>
+    </form>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+    <span flex></span>
+    <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> OK </md-button>
+    <md-button ng-click="cancel()"> Cancel </md-button>
+  </md-dialog-actions>
+</md-dialog>
