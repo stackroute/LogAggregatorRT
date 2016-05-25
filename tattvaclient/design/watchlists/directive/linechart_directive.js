@@ -54,7 +54,7 @@ angular.module('tattva').directive('linearChart', function($parse, $window){
         svg.append("svg:path")
         .attr({
           d: lineFun(salesDataToPlot),
-          "stroke": "blue",
+          "stroke": "#00BCD4",
           "stroke-width": 2,
           "fill": "none",
           "class": pathClass
