@@ -9,31 +9,20 @@
     <md-tab label="Watchlist" ui-sref=".watchlist"></md-tab>
   </md-tabs>
 </md-content> -->
-<md-toolbar>
-  <div class="instancetoolbar md-toolbar-tools">
-    <!--       <md-button aria-label="Go Back">
-    Go Back
-  </md-button> -->
-  <h2>
-    <span>Recent Data Sources</span>
-  </h2>
-  <span flex=""></span>
-  <div class="searchbox">
-    <md-input-container md-theme="input" ng-show="showSearch" >
-      <input ng-model="search.who" placeholder="Search here...">
-    </md-input-container >
-    <md-button aria-label="Search" ng-click="showSearch = !showSearch">
-      <md-icon md-svg-icon="image/svg/musica-searcher.svg"></md-icon>
+<div class='subtitle' layout="row" flex>
+  <div flex="30">
+    <h3 class="tabHeading">
+      Recent Data Sources
+    </h3>
+  </div>
+  <div flex="66">
+  </div>
+  <div flex="4">
+    <md-button class="md-fab md-mini md-primary" aria-label="Favorite" ng-click="addInstance($event)">
+      <md-icon md-font-icon="fa fa-plus fa-2x"></md-icon>
     </md-button>
   </div>
-
-  <md-button class="md-fab md-mini" aria-label="Favorite" ng-click="addInstance($event)">
-    <md-icon md-svg-icon="image/svg/add-plus-button.svg"></md-icon>
-  </md-button>
-
-
 </div>
-</md-toolbar>
 
 <div layout="row" class="listdemoBasicUsage">
   <div layout="row" flex="25">
