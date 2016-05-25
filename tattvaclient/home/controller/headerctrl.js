@@ -6,16 +6,6 @@ angular.module('tattva')
       "menu" : "Dashboard",
       "link" : "user",
       "icon" : "dashboard",
-      "children" : [
-        {
-          "menu" : "Slide A",
-          "link" : "SlideA"
-        },
-        {
-          "menu" : "Slide B",
-          "link" : "SlideB"
-        }
-      ]
     },
     {
       "menu" : "Design",
