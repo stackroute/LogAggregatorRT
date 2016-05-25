@@ -1,23 +1,20 @@
 .watchlistlayout {
   margin: 0px 100px 0px 100px;
 }
-#watchlistpadding {
-  margin-top: 3% !important;
-}
-#watchListnamespace {
+.watchListnamespace {
   margin-top: 1% !important;
 }
-#lfieldwatchlist {
+.lfieldwatchlist {
   margin-top: 1% !important;
 }
-#operatorwatchlist {
+.operatorwatchlist {
   margin-top: 2% !important;
 }
-#rfieldwatchlist {
+.rfieldwatchlist {
   margin-top: 2% !important;
   margin-bottom: 2% !important;
 }
-#watchlistcheckbox {
+.watchlistcheckbox {
   margin-left: 20px;
 }
 .actionButton{
@@ -36,28 +33,12 @@
 {
 display: none;
 }
-#previewexpression
+.previewexpression
 .watchlistlayout {
   margin: 0px 100px 0px 100px;
 }
-#watchlistpadding {
+.watchlistpadding {
   margin-top: 3% !important;
-}
-#watchListnamespace {
-  margin-top: 1% !important;
-}
-#lfieldwatchlist {
-  margin-top: 1% !important;
-}
-#operatorwatchlist {
-  margin-top: 2% !important;
-}
-#rfieldwatchlist {
-  margin-top: 2% !important;
-  margin-bottom: 2% !important;
-}
-#watchlistcheckbox {
-  margin-left: 20px;
 }
 .actionButton{
   margin-top: 15px;
