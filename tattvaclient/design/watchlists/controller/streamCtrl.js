@@ -3,16 +3,12 @@ angular.module("tattva")
 var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
-  self.states        = loadAll();
+  self.stream        = loadAll();
   self.querySearch   = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
-  self.newState = newState;
-  function newState(state) {
-    alert("Sorry! You'll need to create a Constituion for " + state + " first!");
-  }
   function querySearch (query) {
-    var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
+    var results = query ? self.stream.filter( createFilterFor(query) ) : self.stream,
     deferred;
     if (self.simulateQuery) {
       deferred = $q.defer();
@@ -30,7 +26,7 @@ var self = this;
     $log.info('Item changed to ' + JSON.stringify(item));
 if(item!=undefined)
 {
-$scope.wlstdef.stream=item.value;
+$scope.wlstdef.stream=item;
 }
 else {
 $scope.wlstdef.stream=undefined;
@@ -39,18 +35,13 @@ $scope.wlstdef.stream=undefined;
 
 
   function loadAll() {
-    var allStates = 'Stream1, Stream2, Stream3';
-    return allStates.split(/, +/g).map( function (state) {
-      return {
-        value: state.toLowerCase(),
-        display: state
-      };
-    });
+    var streams = ['Stream1', 'Stream2', 'Stream3'];
+    return streams;
   }
   function createFilterFor(query) {
     var lowercaseQuery = angular.lowercase(query);
-    return function filterFn(state) {
-      return (state.value.indexOf(lowercaseQuery) === 0);
+    return function filterFn(streams) {
+      return (streams.indexOf(lowercaseQuery) === 0);
     };
   }
 }]);

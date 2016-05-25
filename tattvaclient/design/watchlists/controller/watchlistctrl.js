@@ -42,61 +42,103 @@ $scope.datastreams = [{
   "namespace": "apache"
 }];
 
-//     removestatement:function(){
-//     //  console.log($scope.wlstdef.statements);
-//     var lastItem = $scope.wlstdef.statements.length-1;
-//     console.log(lastItem);
-//   //  $scope.statements.splice(lastItem);
-// };
-
-$scope.savewatchlist=function(){
-}
-addExpression=function(){
-
-}
-
-
-
 $scope.wlstdef = {
   expressions: [],
-  addNewExpression:function() {
+  addNewExpression:function(index) {
+$scope.index = 0;
+if(isNaN(index)){
+console.log("reached");
+$scope.index = this.expressions.length;
+}
+else{
+console.log("index= ", index);
+$scope.index = index+1;
+}
     var newExpr = {
       "tag": ("tag::" + (this.expressions.length + 1)),
       "joinWith": "",
       "joinBy": "",
       "inputStream" : "",
       "watch": {
-        "lfield": {},
-        "operator": {},
-        "rfield": {}
+        "lfield": {
+                       "fieldType":"",
+                  },
+        "rfield": {
+          "fieldType":"",
+                  }
       },
       "outputStream": {}
     };
-    this.expressions.push(newExpr);
+    console.log(index);
+    this.expressions.splice($scope.index,0,newExpr);
   },
 
-  removeExpression:function() {
-    var lastItem = $scope.wlstdef.expressions.length-1;
-    this.expressions.splice(lastItem);
+  removeExpression:function(index) {
+    this.expressions.splice(index,1);
   }
 };
-$scope.savewatchlist=function()
-{
-  $http({
-    method : 'post',
-    url : '/savewatchlist',
-    data : $scope.wlstdef
-  }).success(function(data){
-    if(data.errors){
-      $scope.errorName = data.errors.name;
-      $scope.errorUserName = data.errors.username;
-      $scope.errorEmail = data.errors.email;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---modify to save to mongo-->
+// $scope.savewatchlist=function()
+// {
+//   $http({
+//     method : 'post',
+//     url : '/savewatchlist',
+//     data : $scope.wlstdef
+//   }).success(function(data){
+//     if(data.errors){
+//       $scope.errorName = data.errors.name;
+//       $scope.errorUserName = data.errors.username;
+//       $scope.errorEmail = data.errors.email;
+//     }
+//     else{
+//       $scope.message=data.message;
+//     }
+//   });
+// $state.go("user");
+// }
+$scope.wlstdefView={
+  "expressions": [
+    {
+      "tag": "tag::1",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": "inputvalue",
+          "watchlistdialogvalue": "213",
+          "exprAsText": "Value: 213"
+        },
+        "rfield": {
+          "fieldType": "inputvalue",
+          "watchlistdialogvalue": "223",
+          "exprAsText": "Value: 223"
+        },
+        "operator": "+"
+      },
+      "outputStream": {}
     }
-    else{
-      $scope.message=data.message;
-    }
-  });
-$state.go("user");
+  ],
+  "name": "surya",
+  "description": "demo",
+  "stream": "Stream1",
+  "namespace": "Namespace2",
+  "output": "ui publisher"
 }
 }
 ]);

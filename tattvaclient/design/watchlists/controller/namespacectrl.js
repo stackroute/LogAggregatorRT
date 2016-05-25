@@ -3,16 +3,12 @@ angular.module("tattva")
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
-  self.states        = loadAll();
+  self.namespaceOption        = loadAll();
   self.querySearch   = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
-  self.newState = newState;
-  function newState(state) {
-    alert("Sorry! You'll need to create a Constituion for " + state + " first!");
-  }
-  function querySearch (query) {
-    var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
+    function querySearch (query) {
+    var results = query ? self.namespaceOption.filter( createFilterFor(query) ) : self.namespaceOption,
     deferred;
     if (self.simulateQuery) {
       deferred = $q.defer();
@@ -30,7 +26,7 @@ angular.module("tattva")
     $log.info('Item changed to ' + JSON.stringify(item));
     if(item!=undefined)
     {
-      $scope.wlstdef.namespace=item.value;
+      $scope.wlstdef.namespace=item;
     }
     else {
       $scope.wlstdef.namespace=undefined;
@@ -39,18 +35,13 @@ angular.module("tattva")
 
 
   function loadAll() {
-    var allStates = 'Namespace1, Namespace2, Namespace3';
-    return allStates.split(/, +/g).map( function (state) {
-      return {
-        value: state.toLowerCase(),
-        display: state
-      };
-    });
+    var namespaceOption = ['Namespace1', 'Namespace2', 'Namespace3'];
+    return namespaceOption;
   }
   function createFilterFor(query) {
     var lowercaseQuery = angular.lowercase(query);
-    return function filterFn(state) {
-      return (state.value.indexOf(lowercaseQuery) === 0);
+    return function filterFn(namespaceOption) {
+      return (namespaceOption.indexOf(lowercaseQuery) === 0);
     };
   }
 }]);

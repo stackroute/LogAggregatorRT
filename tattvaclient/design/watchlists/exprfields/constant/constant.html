@@ -1,0 +1,14 @@
+<md-dialog aria-label="">
+<md-content class="md-padding"> <form name="Form" ng-submit="saveData()">
+ <div layout layout-sm="column">
+ <md-input-container flex> <md-select ng-model="fieldData.Constants">
+<label>Select Constants</label>
+<md-option>PI</md-option>
+<md-option>Lamda</md-option>
+<md-option>Infinity</md-option>
+</md-select>
+<div class="md-actions" layout="row">
+<span flex></span> <md-button ng-click="cancel()"> Cancel </md-button>
+<md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> Save </md-button>
+</div>
+ </md-dialog>

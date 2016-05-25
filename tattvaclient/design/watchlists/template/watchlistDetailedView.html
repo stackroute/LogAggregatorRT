@@ -1,16 +1,16 @@
-<div layout="column" layout-padding class="watchlistlayout">
-  <div layout="row" layout-align="space-around center" flex-offset="5">
+<div layout="column" layout-sm="column" layout-xs="column" layout-padding class="watchlistlayout">
+  <div layout="row"  layout-sm="column" layout-xs="column" layout-align="space-around center" flex-offset="5">
     <md-input-container flex="50">
       <label>Watch List Name</label>
-      <input flex="90" type="text" ng-model="wlstdef.name">
+      <input flex="90" type="text" ng-model="wlstdefView.name">
     </md-input-container>
     <md-input-container flex="50" >
       <label>Purpose</label>
-      <textarea flex="90" ng-model="wlstdef.description"></textarea>
+      <textarea flex="90" ng-model="wlstdefView.description"></textarea>
     </md-input-container>
   </div>
 
-  <div layout="row">
+  <div layout="row" layout-sm="column" layout-xs="column">
     <div id="watchListnamespace"  ng-controller="Streamctrl as ctrl1" flex="40" flex-offset="5">
       <md-autocomplete flex-offset="10" flex="80"
       ng-disabled="ctrl1.isDisabled"
@@ -20,15 +20,14 @@
       md-search-text="ctrl1.searchText"
       md-selected-item-change="ctrl1.selectedItemChange(item)"
       md-items="item in ctrl1.querySearch(ctrl.searchText)"
-      md-item-text="item.display"
+      md-item-text="item"
       md-min-length="0"
       placeholder="Select Data Source">
       <md-item-template>
-        <span md-highlight-text="ctrl1.searchText" md-highlight-flags="^i">{{item.display}}</span>
+        <span md-highlight-text="ctrl1.searchText" md-highlight-flags="^i">{{item}}</span>
       </md-item-template>
       <md-not-found>
-        No namespace matching "{{ctrl1.searchText}}" were found.
-        <a ng-click="ctrl.newStream(ctrl1.searchText)">Create a new one!</a>
+        No matching "{{ctrl1.searchText}}" was found.
       </md-not-found>
     </md-autocomplete>
   </div>
@@ -41,11 +40,11 @@
     md-search-text="ctrl.searchText"
     md-selected-item-change="ctrl.selectedItemChange(item)"
     md-items="item in ctrl.querySearch(ctrl.searchText)"
-    md-item-text="item.display"
+    md-item-text="item"
     md-min-length="0"
     placeholder="Select Namespace">
     <md-item-template>
-      <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+      <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
     </md-item-template>
     <md-not-found>
       No namespace matching "{{ctrl.searchText}}" were found.
@@ -57,10 +56,9 @@
 <div></div>
 
 <!-- =============================== STARTING TO LOOP ==================================== --->
-<div id="watchListnamespace" ng-repeat-start="expr in wlstdef.expressions">
+<div id="watchListnamespace" ng-repeat-start="expr in wlstdefView.expressions">
   <md-whiteframe class="md-whiteframe-3dp" layout layout-align="center center">
     <div class="flex container">
-
       <div id="lfieldwatchlist" ng-controller="lfield as ctrl">
         <md-autocomplete flex-offset="5" flex="40"
         ng-disabled="ctrl.isDisabled"
@@ -123,16 +121,28 @@
       No namespace matching "{{ctrl.searchText}}" were found.
     </md-not-found>
   </md-autocomplete>
-</div>
-</div>
+
+
+<md-card id="previewexpression">
+<md-content >
+<span>{{wlstdefView.expressions[$index].watch.lfield.exprAsText}}</span>
+<span>{{wlstdefView.expressions[$index].watch.operator}}</span>
+<span>{{wlstdefView.expressions[$index].watch.rfield.exprAsText}}</span>
+<!-- <span><span>{{wlstdefView.expressions[$index].watch.rfield.exprAsText}}</span> -->
+</span>
+</md-content>
+</md-card>
+</div></div>
 </md-whiteframe>
 <!--- ========================== END OF LOOPING EXPRESSIONS ========================================= -->
 
 
-</div> <!-- end of ng repeat start for "stmt in wlstdef.statements -->
+</div> <!-- end of ng repeat start for "stmt in wlstdefView.statements -->
 <div ng-repeat-end>
-  <md-button class="md-raised md-mini" ng-click="wlstdef.removeExpression();" aria-label="">Remove</md-button>
-  <md-button class="md-raised md-mini" ng-show="wlstdef.expressions.length>1 && !$last" ng-click="wlstdef.addNewExpression('AND');" aria-label="">ADD</md-button>
+  <md-button class="md-raised md-mini" ng-click="wlstdefView.removeExpression();" aria-label="">Remove</md-button>
+  <md-button class="md-raised md-mini" ng-show="wlstdefView.expressions.length>1 && !$last" ng-click="wlstdefView.addNewExpression('AND');" aria-label="">ADD</md-button>
+
+
 <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
 <md-menu ng-controller="actionButtonCtrl as ctrl" ng-class="{'last':$last}">
     <md-button class="md-fab md-mini md-primary actionButton" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
@@ -148,11 +158,11 @@
     </md-menu-content>
   </md-menu>
 </div>
-<md-button id="watchlistpadding" class="md-raised" aria-label=""  ng-click="wlstdef.addNewExpression()">Add Expression</md-button>
+<md-button id="watchlistpadding" class="md-raised" aria-label=""  ng-click="wlstdefView.addNewExpression()">Add Expression</md-button>
 </div>
 <div layout="row" class="watchlistlayout" flex-offset="15">
   <div flex="10">
-    <h3 class="heading">Output To</h3>
+    <h3 class="heading" hide-xs hide-sm hide-md>Output To</h3>
   </div>
   <div id="watchListnamespace"  ng-controller="output as ctrl1" flex="40">
     <md-autocomplete flex-offset="5" flex="80"
@@ -176,18 +186,3 @@
   </md-autocomplete>
 </div>
 </div>
-<!-- <div flex="10" flex-offset="20">
-  <h3 class="heading">Publish</h3>
-</div>
-<md-select flex="20" ng-model="wlstdef.publish" aria-label="" placeholder="Publish">
-  <md-option ng-repeat="field in namespaces">{{ field.dataFields[0].name }}</md-option>
-</md-select>
-</div> -->
-<div class="watchlistlayout">
-  <md-button flex="5" flex-offset="90" class="md-raised md-primary" ng-click="savewatchlist();">Save</md-button>
-  <h3>
-    Object Structure:
-  </h3>
-  <b>{{wlstdef}}</b>
-</div>
-<!-- {{problem.name}} -->

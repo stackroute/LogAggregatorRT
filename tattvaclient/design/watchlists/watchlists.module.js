@@ -5,24 +5,24 @@ angular.module('tattva')
     .state('design.watchlist',
     {
       url:'/displayWatchList',
-      templateUrl: "/design/watchlists/template/namespacebasedwatchlist.html"
+      templateUrl: "/design/watchlists/template/watchlistNamespaceBasedView.html"
     })
     .state('design.watchlist.viewwatchlist',
     {
       url:'/:namespaceobject',
-      templateUrl: "design/watchlists/template/watchlistView.html",
+      templateUrl: "design/watchlists/template/viewwatchlist.html",
       controller: 'watchlistviewctrl'
     })
     .state('design.viewdata',
     {
       url:'detailview/:watchlistobject',
-      templateUrl: "design/watchlists/template/watchlistsdetailview.html",
-      controller: 'watchlistsdetailviewCtrl'
+      templateUrl: "design/watchlists/template/watchlistDetailedView.html",
+      controller: 'WatchListCtrl'
     })
     .state('design.createwatchlist',
     {
       url: '/createwatchlist',
-      templateUrl: "design/watchlists/template/newwatchlist.html",
+      templateUrl: "design/watchlists/template/createWatchlist.html",
       controller: 'WatchListCtrl'
   })
 }]);
