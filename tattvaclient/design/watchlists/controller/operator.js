@@ -3,16 +3,12 @@ angular.module("tattva")
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
-  self.states        = loadAll();
+  self.options       = loadAll();
   self.querySearch   = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
-  self.newState = newState;
-  function newState(state) {
-    alert("Sorry! You'll need to create a Constituion for " + state + " first!");
-  }
   function querySearch (query) {
-    var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
+    var results = query ? self.options.filter( createFilterFor(query) ) : self.options,
     deferred;
     if (self.simulateQuery) {
       deferred = $q.defer();
@@ -25,22 +21,18 @@ angular.module("tattva")
   function searchTextChange(text) {
     $log.info('Text changed to ' + text);
   }
-  function selectedItemChange(item) {
-    $log.info('Item changed to ' + JSON.stringify(item));
+  function selectedItemChange(item, expr) {
+    console.log("Operator item: " , item);
+    expr.watch.operator = item;
   }
   function loadAll() {
-    var allStates = '+, -, /, *, %, ^, ==, !=, >, >=, <, <=, Concat, Like, Not Like, true, false';
-    return allStates.split(/, +/g).map( function (state) {
-      return {
-        value: state.toLowerCase(),
-        display: state
-      };
-    });
+    var operator = ['+', '-', '/', '*', '%', '^', '==', '!=', '>', '>=', '<', '<=', 'Concat', 'Like', 'Not Like', 'true', 'false'];
+    return operator;
   }
   function createFilterFor(query) {
     var lowercaseQuery = angular.lowercase(query);
-    return function filterFn(state) {
-      return (state.value.indexOf(lowercaseQuery) === 0);
+    return function filterFn(operator) {
+      return (operator.indexOf(lowercaseQuery) === 0);
     };
   }
 }]);

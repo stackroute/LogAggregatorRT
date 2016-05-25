@@ -1,0 +1,39 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine-html.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/boot.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-mocks.js"></script>
+<script>
+angular.module('app',[])
+.controller('sampleController', function($scope) {
+$scope.name = "foo";
+});
+</script>
+<!-- <script src="../controllers/listnamespacectrl.js" charset="utf-8"></script>-->
+<!-- <script>
+describe('calculator', function () {
+  beforeEach(angular.mock.module('app'));
+  var $controller;
+  beforeEach(angular.mock.inject(function(_$controller_) {
+    $controller = _$controller_;
+  }));
+  describe('name check',function() {
+    it('should check the name', function() {
+      var $scope = {};
+      var controller =  $controller('sampleController',{$scope:$scope});
+      expect($scope.name).toBe('foo');
+    });
+  });
+});
+
+</script> -->
+
+<script src="../controllers/namespaceCtrl_test.js" charset="utf-8"></script> -->
+
+</head>
+<body>
+</body>
+</html>

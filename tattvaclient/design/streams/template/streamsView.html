@@ -1,24 +1,7 @@
-<!-- <md-grid-list flex md-cols="12" md-row-height="40px" md-gutter="12px" layout-padding layout-margin>
- <md-grid-tile md-rowspan="2" md-colspan="6">
-   <div layout="row" class="md-list-item-text md-tile-left inset">
-     <div>
-      <ng-letter-avatar data={{avatar}} shape="round" size="20px"></ng-letter-avatar>
-      {{params}}
-      <a ui-sref="mainstream.streams.viewdata({name: '{{objectJson}}'})"> -->
-  <!--   <md-card-actions layout-align="end center"> -->
-      <!-- <md-icon md-svg-src="images/editing.svg" alt="edit" ></md-icon> -->
-  <!--   </md-card-actions> -->
-      <!-- </a>
-    </div>
-  </div>
- </md-grid-tile>
-</md-grid-list> -->
-
-
 <div layout-padding layout-margin ng-init="getStreamData(objectJson)">
   <md-grid-list md-cols="4" md-row-height="180px" md-gutter="12px" >
     <md-grid-tile flex ng-repeat="stream in streamResultData">
-      <md-button ui-sref="design.streams.viewdata( { streamobject: '{{stream}}' })" layout="row" flex>
+      <md-button ui-sref="design.streams.viewdata( { streamNameList: '{{stream.streamname}}' })" layout="row" flex>
         <ng-letter-avatar data={{stream.instance}} shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar>
         <md-card-title-text flex><h3>{{stream.streamname}}</h3></md-card-title-text>
       </md-button>

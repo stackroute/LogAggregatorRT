@@ -1,82 +1,84 @@
-<div class="watchlist content">
-  <div layout="column" class='envelop'>
-    <md-input-container>
+<div layout="column" layout-padding class="watchlistlayout">
+  <div layout="row" layout-align="space-around center" flex-offset="5">
+    <md-input-container flex="50">
       <label>Watch List Name</label>
-      <input flex="30" type="text" ng-model="wlstdef.name">
+      <input flex="90" type="text" ng-model="wlstdef.name">
     </md-input-container>
-    <div></div>
-    <md-input-container>
-      <label>Description</label>
-      <textarea flex="30" ng-model="wlstdef.description"></textarea>
+    <md-input-container flex="50" >
+      <label>Purpose</label>
+      <textarea flex="90" ng-model="wlstdef.description"></textarea>
     </md-input-container>
-    <div layout="row">
-      <div id="watchListnamespace"  ng-controller="Streamctrl as ctrl1" flex="40">
-        <md-autocomplete flex-offset="10" flex="80"
-        ng-disabled="ctrl1.isDisabled"
-        md-no-cache="ctrl1.noCache"
-        md-selected-item="ctrl1.selectedItem"
-        md-search-text-change="ctrl1.searchTextChange(ctrl.searchText)"
-        md-search-text="ctrl1.searchText"
-        md-selected-item-change="ctrl1.selectedItemChange(item)"
-        md-items="item in ctrl1.querySearch(ctrl.searchText)"
-        md-item-text="item.display"
-        md-min-length="0"
-        placeholder="Select Input Stream">
-        <md-item-template>
-          <span md-highlight-text="ctrl1.searchText" md-highlight-flags="^i">{{item.display}}</span>
-        </md-item-template>
-        <md-not-found>
-          No namespace matching "{{ctrl1.searchText}}" were found.
-          <a ng-click="ctrl.newStream(ctrl1.searchText)">Create a new one!</a>
-        </md-not-found>
-      </md-autocomplete>
-    </div>
-    <div id="watchListnamespace"  ng-controller="WatchListCtrl as ctrl" flex="40">
-      <md-autocomplete flex-offset="20" flex="100"
-      ng-disabled="ctrl.isDisabled"
-      md-no-cache="ctrl.noCache"
-      md-selected-item="ctrl.selectedItem"
-      md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-      md-search-text="ctrl.searchText"
-      md-selected-item-change="ctrl.selectedItemChange(item)"
-      md-items="item in ctrl.querySearch(ctrl.searchText)"
+  </div>
+
+  <div layout="row">
+    <div id="watchListnamespace"  ng-controller="Streamctrl as ctrl1" flex="40" flex-offset="5">
+      <md-autocomplete flex-offset="10" flex="80"
+      ng-disabled="ctrl1.isDisabled"
+      md-no-cache="ctrl1.noCache"
+      md-selected-item="ctrl1.selectedItem"
+      md-search-text-change="ctrl1.searchTextChange(ctrl.searchText)"
+      md-search-text="ctrl1.searchText"
+      md-selected-item-change="ctrl1.selectedItemChange(item)"
+      md-items="item in ctrl1.querySearch(ctrl.searchText)"
       md-item-text="item.display"
       md-min-length="0"
-      placeholder="Select Namespace">
+      placeholder="Select Data Source">
       <md-item-template>
-        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+        <span md-highlight-text="ctrl1.searchText" md-highlight-flags="^i">{{item.display}}</span>
       </md-item-template>
       <md-not-found>
-        No namespace matching "{{ctrl.searchText}}" were found.
-        <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+        No namespace matching "{{ctrl1.searchText}}" were found.
+        <a ng-click="ctrl.newStream(ctrl1.searchText)">Create a new one!</a>
       </md-not-found>
     </md-autocomplete>
-
-
   </div>
+  <div id="watchListnamespace"  ng-controller="namespacectrl as ctrl" flex="40" flex-offset="5">
+    <md-autocomplete flex-offset="20" flex="100"
+    ng-disabled="ctrl.isDisabled"
+    md-no-cache="ctrl.noCache"
+    md-selected-item="ctrl.selectedItem"
+    md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+    md-search-text="ctrl.searchText"
+    md-selected-item-change="ctrl.selectedItemChange(item)"
+    md-items="item in ctrl.querySearch(ctrl.searchText)"
+    md-item-text="item.display"
+    md-min-length="0"
+    placeholder="Select Namespace">
+    <md-item-template>
+      <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+    </md-item-template>
+    <md-not-found>
+      No namespace matching "{{ctrl.searchText}}" were found.
+          </md-not-found>
+  </md-autocomplete>
 </div>
+</div>
+
 <div></div>
-<div id="watchListnamespace" ng-repeat-start="stmt in wlstdef.statements">
-  <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+
+<!-- =============================== STARTING TO LOOP ==================================== --->
+<div id="watchListnamespace" ng-repeat-start="expr in wlstdef.expressions">
+  <md-whiteframe class="md-whiteframe-3dp" layout layout-align="center center">
     <div class="flex container">
+
       <div id="lfieldwatchlist" ng-controller="lfield as ctrl">
-        <md-autocomplete flex-offset="20" flex="50"
+        <md-autocomplete flex-offset="5" flex="40"
         ng-disabled="ctrl.isDisabled"
         md-no-cache="ctrl.noCache"
         md-selected-item="ctrl.selectedItem"
         md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
         md-search-text="ctrl.searchText"
-        md-selected-item-change="ctrl.selectedItemChange(item)"
+        md-selected-item-change="ctrl.selectedItemChange(item, expr)"
         md-items="item in ctrl.querySearch(ctrl.searchText)"
-        md-item-text="item.display"
+        md-item-text="item.name"
         md-min-length="0"
         placeholder="Select LField">
         <md-item-template>
-          <span  md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+          <span  md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
         </md-item-template>
         <md-not-found>
-          No namespace matching "{{ctrl.searchText}}" were found.
-          <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+          No LField option matching "{{ctrl.searchText}}" were found.
+          <!-- <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a> -->
         </md-not-found>
       </md-autocomplete>
     </div>
@@ -88,57 +90,72 @@
       md-selected-item="ctrl.selectedItem"
       md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
       md-search-text="ctrl.searchText"
-      md-selected-item-change="ctrl.selectedItemChange(item)"
+      md-selected-item-change="ctrl.selectedItemChange(item,expr)"
       md-items="item in ctrl.querySearch(ctrl.searchText)"
-      md-item-text="item.display"
+      md-item-text="item"
       md-min-length="0"
       placeholder="Operator">
       <md-item-template>
-        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
       </md-item-template>
       <md-not-found>
         No namespace matching "{{ctrl.searchText}}" were found.
-        <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
       </md-not-found>
     </md-autocomplete>
   </div>
 
   <div id="rfieldwatchlist" ng-controller="rfield as ctrl">
-    <md-autocomplete flex-offset="20" flex="50"
+    <md-autocomplete flex-offset="55" flex="40"
     ng-disabled="ctrl.isDisabled"
     md-no-cache="ctrl.noCache"
     md-selected-item="ctrl.selectedItem"
     md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
     md-search-text="ctrl.searchText"
-    md-selected-item-change="ctrl.selectedItemChange(item)"
+    md-selected-item-change="ctrl.selectedItemChange(item,expr)"
     md-items="item in ctrl.querySearch(ctrl.searchText)"
-    md-item-text="item.display"
+    md-item-text="item.name"
     md-min-length="0"
     placeholder="RField">
     <md-item-template>
-      <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+      <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
     </md-item-template>
     <md-not-found>
       No namespace matching "{{ctrl.searchText}}" were found.
-      <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
     </md-not-found>
   </md-autocomplete>
 </div>
 </div>
 </md-whiteframe>
+<!--- ========================== END OF LOOPING EXPRESSIONS ========================================= -->
+
+
 </div> <!-- end of ng repeat start for "stmt in wlstdef.statements -->
 <div ng-repeat-end>
-  <md-button class="md-raised md-mini" ng-click="wlstdef.removestatement();" aria-label="">Remove</md-button>
-  <md-button class="md-raised md-mini" ng-show="!showmesecound" ng-click="wlstdef.addNewStatement('AND');" aria-label="">ADD</md-button>
+  <md-button class="md-raised md-mini" ng-click="wlstdef.removeExpression();" aria-label="">Remove</md-button>
+  <md-button class="md-raised md-mini" ng-show="wlstdef.expressions.length>1 && !$last" ng-click="wlstdef.addNewExpression('AND');" aria-label="">ADD</md-button>
+<md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
+<md-menu ng-controller="actionButtonCtrl as ctrl" ng-class="{'last':$last}">
+    <md-button class="md-fab md-mini md-primary actionButton" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
+      <md-icon md-font-icon="fa fa-paw fa-2x"></md-icon>
+    </md-button>
+    <md-menu-content width="4">
+      <md-menu-item>
+        <md-button>Pipe</md-button>
+      </md-menu-item>
+      <md-menu-item>
+        <md-button>Filter</md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
 </div>
-<md-button id="watchlistpadding" class="md-raised" aria-label="" ng-show="showmesecound" ng-click="wlstdef.addNewStatement()">Add Expression</md-button>
+<md-button id="watchlistpadding" class="md-raised" aria-label=""  ng-click="wlstdef.addNewExpression()">Add Expression</md-button>
 </div>
-<div layout="row">
+<div layout="row" class="watchlistlayout" flex-offset="15">
   <div flex="10">
     <h3 class="heading">Output To</h3>
   </div>
   <div id="watchListnamespace"  ng-controller="output as ctrl1" flex="40">
-    <md-autocomplete flex-offset="10" flex="80"
+    <md-autocomplete flex-offset="5" flex="80"
     ng-disabled="ctrl1.isDisabled"
     md-no-cache="ctrl1.noCache"
     md-selected-item="ctrl1.selectedItem"
@@ -158,17 +175,19 @@
     </md-not-found>
   </md-autocomplete>
 </div>
-<div flex="10" flex-offset="20">
+</div>
+<!-- <div flex="10" flex-offset="20">
   <h3 class="heading">Publish</h3>
 </div>
 <md-select flex="20" ng-model="wlstdef.publish" aria-label="" placeholder="Publish">
   <md-option ng-repeat="field in namespaces">{{ field.dataFields[0].name }}</md-option>
 </md-select>
+</div> -->
+<div class="watchlistlayout">
+  <md-button flex="5" flex-offset="90" class="md-raised md-primary" ng-click="savewatchlist();">Save</md-button>
+  <h3>
+    Object Structure:
+  </h3>
+  <b>{{wlstdef}}</b>
 </div>
-<md-button flex="5" flex-offset="90" class="md-raised md-primary" ng-click="savewatchlist();">Save</md-button>
-<h3>
-  Object Structure:
-</h3>
-<b>{{wlstdef}}</b>
-
-</div>
+<!-- {{problem.name}} -->

@@ -1,18 +1,15 @@
 angular.module("tattva")
 .controller('rfield',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log', function($scope,$rootScope,$mdDialog,$timeout, $q, $log) {
+  $scope.dialogueData2={};
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
-  self.states        = loadAll();
+  self.options       = loadAll();
   self.querySearch   = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
-  self.newState = newState;
-  function newState(state) {
-    alert("Sorry! You'll need to create a Constituion for " + state + " first!");
-  }
   function querySearch (query) {
-    var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
+    var results = query ? self.options.filter( createFilterFor(query) ) : self.options,
     deferred;
     if (self.simulateQuery) {
       deferred = $q.defer();
@@ -25,83 +22,59 @@ angular.module("tattva")
   function searchTextChange(text) {
     $log.info('Text changed to ' + text);
   }
-  function selectedItemChange(item) {
-    $log.info('Item changed to ' + JSON.stringify(item));
-    if(JSON.stringify(item)!=undefined)
-    {
-      console.log(item.value);
-      if(item.value==="accumulate")
-      {
-        $log.info("hi inside dialogue");
-        $scope.showAdd = function(ev) {
-          $mdDialog.show({
-            controller:'DialogControllerwatchlist',
-            //@TODO convert as templateUrl
-            templateUrl:'design/watchlists/template/rfieldaccumulate.html',
-            targetEvent: ev,
-          });
-        }
-        $scope.showAdd();
-      }
-      else if (item.value=="input your own value") {
-        $scope.showAdd = function(ev) {
-          $mdDialog.show({
-            controller:'DialogControllerwatchlist',
-            //@TODO
-            templateUrl:'design/watchlists/template/rfieldwatchlistdialogueentervalue.html',
-            targetEvent: ev,
-          });
-        }
-        $scope.showAdd();
-      }
-      else if (item.value=="constants") {
-        $scope.showAdd = function(ev) {
-          $mdDialog.show({
-            controller:'DialogControllerwatchlist',
-            //@TODO
-            templateUrl:'/design/watchlists/template/rfieldwatchlistdialogueconstants.html',
-            targetEvent: ev,
-          });
-        }
-        $scope.showAdd();
-      }
-      else if (item.value=="function") {
-        $scope.showAdd = function(ev) {
-          $mdDialog.show({
-            controller:'DialogControllerwatchlist',
-            //@TODO
-            templateUrl:'/design/watchlists/template/rfieldwatchlistdialoguefunction.html',
-            targetEvent: ev,
-          });
-        }
-        $scope.showAdd();
-      }
-      else if (item.value=="historic data") {
-        $scope.showAdd = function(ev) {
-          $mdDialog.show({
-            controller:'DialogControllerwatchlist',
-            //@TODO
-            templateUrl:'/design/watchlists/template/rfieldwatchlistdialoguehistoricdata.html',
-            targetEvent: ev,
-          });
-        }
-        $scope.showAdd();
-      }
+
+  function selectedItemChange(item, expr) {
+
+    if(item === undefined) return;
+
+    var dialogTemplate = '/design/watchlists/template/' + item.template;
+
+    if(expr.watch.rfield.fieldType !== undefined) {
+      expr.watch.rfield.fieldType = item.type;
+    } else if(expr.watch.rfield.fieldType != item.type) {
+      // expr.watch.lfield = { fieldType : item.type };
+      expr.watch.rfield=null;
+
     }
+
+    $scope.showDialog = function(ev) {
+      $mdDialog.show({
+        controller:'DialogControllerwatchlist',
+        templateUrl: dialogTemplate,
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: false,
+        escapeToClose : false,
+        locals: { "dialogueData": expr.watch.rfield }
+      }).then(function(response) {
+        expr.watch.rfield = response;
+        console.log("RESOLVED with response: ", response, " data in autocomplete ctrl: ", expr.watch.rfield);
+      }, function(response) {
+        console.log("** REJECTED ** with response: ", response, " data in autocomplete ctrl: ", expr.watch.rfield);
+      }).finally(function() {
+      });
+    };
+    $scope.showDialog();
   }
+
   function loadAll() {
-    var allStates = 'Data field from namespace, Input your own Value, Constants, Function, Accumulate, Historic Data';
-    return allStates.split(/, +/g).map( function (state) {
-      return {
-        value: state.toLowerCase(),
-        display: state
-      };
-    });
+    var fieldOptions = [
+      {name: "Data field from namespace", template: 'accumulate.html',type:'Data field from namespace'},
+      {name: "Input your own Value", template: 'watchlistdialogueentervalue.html',type:'Input your own Value'},
+      {name: "Constants", template: 'watchlistdialogueconstants.html',type:'Constants'},
+      {name: "Function", template: 'watchlistdialoguefunction.html',type:'Function'},
+      {name: "Accumulate", template: 'accumulate.html',type:'Accumulate'},
+      {name: "Historic Data", template: 'historic data.html',type:'Historic Data'}
+    ];
+
+    return fieldOptions;
   }
+
   function createFilterFor(query) {
     var lowercaseQuery = angular.lowercase(query);
-    return function filterFn(state) {
-      return (state.value.indexOf(lowercaseQuery) === 0);
+    return function filterFn(fieldOptions) {
+      return (fieldOptions.name.indexOf(lowercaseQuery) === 0);
     };
   }
+
 }]);

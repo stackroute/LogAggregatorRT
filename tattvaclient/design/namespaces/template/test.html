@@ -1,0 +1,99 @@
+<!-- <html>
+<head>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine-html.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/boot.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-mocks.js"></script>
+<script>
+angular.module('app',[])
+.controller('sampleController', function($scope) {
+$scope.name = "foo";
+});
+</script>
+<script src="../controllers/listnamespacectrl.js" charset="utf-8"></script>
+<script src="../controllers/namespaceCtrl_test.js" charset="utf-8"></script>
+</head>
+<body>
+</body>
+</html> -->
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine-html.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/boot.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-mocks.js"></script>
+  <!-- Tattva app -->
+  <script src="../../../tattva.module.js" charset="utf-8"></script>
+  <!-- End Tattva app -->
+
+  <!-- Login module -->
+  <script src="../../../auth/auth.module.js" charset="utf-8"></script>
+  <script src="../../../auth/controller/loginctrl.js" charset="utf-8"></script>
+  <!-- End of Login module -->
+
+  <!-- Organization module -->
+  <script src="../../../organization/organization.module.js"></script>
+  <script src="../../../organization/controllers/organization.controller.js"></script>
+  <!-- End of Organization module -->
+
+  <!--namespace module-->
+  <script src="../../../design/namespaces/namespace.module.js" charset="utf-8"></script>
+  <script src="../../../design/namespaces/factory/namespace.factory.js" charset="utf-8"></script>
+  <script src="../../../design/namespaces/controllers/createnamespacectrl.js" charset="utf-8"></script>
+  <script src="../../../design/namespaces/controllers/editnamespacectrl.js" charset="utf-8"></script>
+  <!-- <script src="../../../design/namespaces/controllers/listnamespacectrl.js" charset="utf-8"></script> -->
+  <!--end of namespace module-->
+
+  <script>
+  angular.module('tattva',[])
+  .controller('listNamespaceCtrl',['$scope',function($scope){
+
+
+    $scope.showSearchBox = function(){
+      if($scope.showSearch){
+        $scope.showSearch= false;
+      }
+      else{
+        $scope.showSearch = true;
+      }
+    }
+
+    // $scope.search = function(){
+    //   alert("clicked")
+    // }
+
+  }]);
+  </script>
+
+  <!-- <script>
+  angular.module('tattva')
+  .controller('listNamespaceCtrl',['$scope',function($scope){
+
+
+}]);
+</script> -->
+</head>
+<body>
+</body>
+<script type="text/javascript">
+describe('calculator', function () {
+  beforeEach(angular.mock.module('tattva'));
+  var $controller;
+  beforeEach(angular.mock.inject(function(_$controller_) {
+    $controller = _$controller_;
+  }));
+  describe('name check',function() {
+    it('should check the name', function(){
+      var $scope = {};
+      var controller =  $controller('listNamespaceCtrl',{$scope:$scope});
+      // expect($scope.name).toBe('bar');
+      // console.log("done")
+    });
+  });
+});
+</script>
+</html>

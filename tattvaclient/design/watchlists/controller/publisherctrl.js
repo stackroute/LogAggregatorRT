@@ -1,6 +1,16 @@
 angular.module('tattva')
-.controller('publisherCtrl', ['$scope','$state','$http','$mdDialog','publisherSettingFactory',
-function($scope,$state,$http,$mdDialog,publisherSettingFactory){
+.controller('publisherCtrl', ['$scope','$mdDialog','publisherSettingFactory', "data",
+function($scope,$mdDialog,publisherSettingFactory, data){
+  $scope.publisherData = data;
+  console.log("Publisher data within publisherCtrl is : ", $scope.publisherData);
+
+  $scope.hide = function() {
+    $mdDialog.hide();
+  };
+
+  $scope.updateBackPublisher = function() {
+    $mdDialog.hide();
+  };
 
   $scope.cancel = function() {
     $mdDialog.cancel();
@@ -30,15 +40,13 @@ function($scope,$state,$http,$mdDialog,publisherSettingFactory){
     ]
   };
 
-
-
   $scope.save=function(data){
     $scope.tabs=[];
     angular.forEach($scope.uiPublisherConfig.widgetTabs, function(tab){
       if(tab.selected){
         $scope.tabs.push(tab.name);
       }
-    })
+    });
 
     var publisherData = {
       uiPublisher_widgetSize : $scope.uiPublisher_widgetSize,
@@ -46,8 +54,14 @@ function($scope,$state,$http,$mdDialog,publisherSettingFactory){
       uiPublisher_graphTypes : $scope.uiPublisher_graphTypes,
       uiPublisher_logDataDisplayType : $scope.uiPublisher_logDataDisplayType
     };
-
     console.log(publisherData);
     $scope.publisherData = publisherSettingFactory.publisherFactoryMthd(publisherData);
+    var dialoguefordemoobject={};
+    $scope.dialoguefordemo()=function(dialoguefordemoobject) {
+      dialoguefordemofactory(dialoguefordemoobject).then(function(){
+        console.log(dialoguefordemoobject);
+      })
+    }
   }
+
 }]);

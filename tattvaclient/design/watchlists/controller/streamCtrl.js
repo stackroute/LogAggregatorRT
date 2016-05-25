@@ -1,6 +1,6 @@
 angular.module("tattva")
 .controller('Streamctrl',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log', function($scope,$rootScope,$mdDialog,$timeout, $q, $log) {
-  var self = this;
+var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
   self.states        = loadAll();
@@ -22,12 +22,22 @@ angular.module("tattva")
       return results;
     }
   }
+
   function searchTextChange(text) {
     $log.info('Text changed to ' + text);
   }
   function selectedItemChange(item) {
     $log.info('Item changed to ' + JSON.stringify(item));
+if(item!=undefined)
+{
+$scope.wlstdef.stream=item.value;
+}
+else {
+$scope.wlstdef.stream=undefined;
+}
   }
+
+
   function loadAll() {
     var allStates = 'Stream1, Stream2, Stream3';
     return allStates.split(/, +/g).map( function (state) {

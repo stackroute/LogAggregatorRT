@@ -1,452 +1,562 @@
 [
-  {"name":"apache",
-   "description":"This is the data format for namespace apache",
-   "dataformat":[
-                  {"fieldAlias":"method",
-                   "fieldName":"Method name",
-                   "fieldType":"dimension"
-                  },
-                  {"fieldAlias":"code",
-                   "fieldName":"response code",
-                   "fieldType":"dimension"
-                  },
-                  {"fieldAlias":"hitsPerSecond",
-                   "fieldName":"Number of hits per second",
-                   "fieldType":"measure"
-                  }
-                ]
-
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
   },
-  {"name":"NGINX",
-   "description":"This is the data format for namespace NGINX",
-   "dataformat":[
-                  {"fieldAlias":"method",
-                   "fieldName":"Method name",
-                   "fieldType":"dimension"
-                  },
-                  {"fieldAlias":"code",
-                   "fieldName":"response code",
-                   "fieldType":"dimension"
-                  },
-                  {"fieldAlias":"hitsPerSecond",
-                   "fieldName":"Number of hits per second",
-                   "fieldType":"measure"
-                  }
-                ]
-
-},
-{"name":"BOA",
- "description":"This is the data format for namespace BOA",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace IOT",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-},
-{"name":"IOT",
- "description":"This is the data format for namespace NGINX",
- "dataformat":[
-                {"fieldAlias":"method",
-                 "fieldName":"Method name",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"code",
-                 "fieldName":"response code",
-                 "fieldType":"dimension"
-                },
-                {"fieldAlias":"hitsPerSecond",
-                 "fieldName":"Number of hits per second",
-                 "fieldType":"measure"
-                }
-              ]
-
-}
+  {
+    "name":"nginx",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace nginx",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"IOT",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace IOT",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"BOA",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace BOA",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  },
+  {
+    "name":"apache",
+    "tag":"namespace1",
+    "description":"This is the data format for namespace apache",
+    "organisation":"Wipro",
+    "createdBy":"Rahul",
+    "createdOn": "16:07 23-05-2016",
+    "editedBy":"user123",
+    "editedOn": "16:07 23-05-2016" ,
+    "status":"active",
+    "dataSchema":[
+      {
+        "alias":"method",
+        "name":"methodName",
+        "type":"dimension"
+      },
+      {
+        "alias":"code",
+        "name":"responseCode",
+        "type":"dimension"
+      },
+      {
+        "alias":"Number of hits per second",
+        "name":"hitsPerSecond",
+        "type":"measure"
+      }
+    ]
+  }
 ]

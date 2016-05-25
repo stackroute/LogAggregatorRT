@@ -47,6 +47,10 @@ app.post('/namespaces',jsonParser,function (request, response) {
   var body1=request.body;
   console.log(body1);//in body1 we have the data to be stored in the database
 });
+app.put('/namespace/',jsonParser,function (request, response) {
+  var body1=request.body;
+  console.log("body1 put" , body1);//in body1 we have the data to be stored in the database
+});
 
 app.get('/namespace/', function(req, res){
   console.log("namespace name from server",req.query.name);
@@ -140,27 +144,32 @@ app.get('/namespace/', function(req, res){
     },
   ];
 
-  var result =  {
-    "name":"IotApache",
-    "description":"This is the data format for namespace apache",
-    "dataformat":[
-      {
-        "fieldAlias":"method",
-        "fieldName":"Method name",
-        "fieldType":"dimension"
-      },
-      {
-        "fieldAlias":"code",
-        "fieldName":"response code",
-        "fieldType":"dimension"
-      },
-      {
-        "fieldAlias":"hitsPerSecond",
-        "fieldName":"Number of hits per second",
-        "fieldType":"measure"
-      }
-    ]
-  };
+  var result =    {"_id":0,
+      "name":"apache",
+     "description":"This is the data format for namespace apache",
+     "organisation":"Wipro",
+     "createdBy":"Rahul",
+     "editedBy":"user123",
+     "archived":"false",
+     "dataformat":[
+                    {"_id":0,
+                      "fieldAlias":"method",
+                     "fieldName":"methodName",
+                     "fieldType":"dimension"
+                    },
+                    {"_id":1,
+                      "fieldAlias":"code",
+                     "fieldName":"responseCode",
+                     "fieldType":"dimension"
+                    },
+                    {"_id":2,
+                     "fieldAlias":"Number of hits per second",
+                     "fieldName":"hitsPerSecond",
+                     "fieldType":"measure"
+                    }
+                  ]
+
+    };
 
   res.send(result);
 });
@@ -172,10 +181,14 @@ app.get('/viewwatchlist', function(req, res){
 
 app.post('/createNamespacePost',jsonParser,function (request, response) {
   var body1=request.body;
-  /*console.log("body1 = "+body1);*/
   alert("reached")
 });
 
+app.post('/savewatchlist',jsonParser,function(request,response){
+var body2=request.body;
+console.log(body2);
+
+})
 app.post('/sendslidedata',function (request, response) {
   console.log("helo");
   var body1=request.body;
@@ -203,11 +216,8 @@ res.sendFile(path.join(__dirname, '/public/json/data.json'));
 
 app.post('/filewrite', JSONparser, function(req, res){
 var data= req.body;
-/*console.log(data);*/
 });
-// app.get('/viewNamespace', function(req, res){
-// res.sendFile(path.join(__dirname, '/public/json/namespace.json'));
-// });
+
 
 app.post('/publisherData', JSONparser, function(req, res){
 var data= req.body;
