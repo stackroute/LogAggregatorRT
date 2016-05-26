@@ -1,6 +1,6 @@
 angular.module('tattva')
 .controller('HeaderCtrl',function($scope,$http){
-  $scope.header="TATTVA - CEP";
+  $scope.header="TATTVA - Complex Event Processor";
   $scope.items= [
     {
       "menu" : "Dashboard",

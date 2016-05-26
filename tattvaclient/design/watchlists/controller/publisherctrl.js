@@ -8,7 +8,14 @@ function($scope,$mdDialog,publisherSettingFactory, data){
     $mdDialog.hide();
   };
 
-  $scope.updateBackPublisher = function() {
+  $scope.updateBackPublisher = function(Data) {
+    $scope.tabs=[];
+    angular.forEach($scope.uiPublisherConfig.widgetTabs, function(tab){
+      if(tab.selected){
+        $scope.tabs.push(tab.name);
+      }
+$scope.publisherData.publish.widgetTabs=$scope.tabs;
+});
     $mdDialog.hide();
   };
 
@@ -45,9 +52,7 @@ function($scope,$mdDialog,publisherSettingFactory, data){
     angular.forEach($scope.uiPublisherConfig.widgetTabs, function(tab){
       if(tab.selected){
         $scope.tabs.push(tab.name);
-console.log(tab.name);
       }
-$scope.publisherData.publisher.graphTypes=$scope.tabs;
     });
 
     var publisherData = {
@@ -58,12 +63,12 @@ $scope.publisherData.publisher.graphTypes=$scope.tabs;
     };
     console.log(publisherData);
     $scope.publisherData = publisherSettingFactory.publisherFactoryMthd(publisherData);
-    // var dialoguefordemoobject={};
-    // $scope.dialoguefordemo()=function(dialoguefordemoobject) {
-    //   dialoguefordemofactory(dialoguefordemoobject).then(function(){
-    //     console.log(dialoguefordemoobject);
-    //   })
-    // }
+    var dialoguefordemoobject={};
+    $scope.dialoguefordemo()=function(dialoguefordemoobject) {
+      dialoguefordemofactory(dialoguefordemoobject).then(function(){
+        console.log(dialoguefordemoobject);
+      })
+    }
   }
 
 }]);

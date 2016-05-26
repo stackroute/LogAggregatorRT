@@ -21,11 +21,15 @@ angular.module("tattva")
   function searchTextChange(text) {
     $log.info('Text changed to ' + text);
   }
+
   function selectedItemChange(item) {
+  if(JSON.stringify(item)!=undefined)
+    {
     $log.info('Item changed to ' + JSON.stringify(item));
 
-    if(JSON.stringify(item)!=undefined)
-    {
+    var dialogTemplate = '/design/watchlists/template/'+item.template +'/'+ item.template +'.html';
+
+
       $scope.wlstdef.publisher.publisherType=item;
         console.log(item);
       if(item==="UI Publisher")
@@ -50,15 +54,6 @@ angular.module("tattva")
           }).finally(function() {
             console.log("finally gone..!");
           });
-          //   .then(function(publisherData) {
-          //   $scope.publisherData = publisherData;
-          //   console.log("Publisher data after return is: ", $scope.publisherData);
-          // }, function(){
-          //   console.log("User cancelled publisher dialog ..! ");
-          //   console.log("Publisher data after cancel is: ", $scope.publisherData);
-          // }).finally(function() {
-          //   //console.log("Finally i was also called..!");
-          // });
         };
         $scope.showUIPublisherDialog();
       }
