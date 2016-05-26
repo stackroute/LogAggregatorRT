@@ -16,14 +16,14 @@ angular.module("tattva")
 $scope.wlstdef = {
   expressions: [],
   addNewExpression:function(index) {
-$scope.index = 0;
-if(isNaN(index)){
-$scope.index = this.expressions.length;
-}
-else{
-console.log("index= ", index);
-$scope.index = index+1;
-}
+    $scope.index = 0;
+    if(isNaN(index)){
+      $scope.index = this.expressions.length;
+    }
+    else{
+      console.log("index= ", index);
+      $scope.index = index+1;
+    }
     var newExpr = {
       "tag": ("tag::" + (this.expressions.length + 1)),
       "joinWith": "",
@@ -31,70 +31,28 @@ $scope.index = index+1;
       "inputStream" : "",
       "watch": {
         "lfield": {
-                       "fieldType":"",
-                  },
+          "fieldType":"",
+        },
         "rfield": {
           "fieldType":"",
-                  }
+        }
       },
-      "outputStream": {}
     };
+
     this.expressions.splice($scope.index,0,newExpr);
   },
-
+  "publisher": {
+              "publisherType":"",
+              },
   removeExpression:function(index) {
     this.expressions.splice(index,1);
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!---modify to save to mongo-->
 $scope.savewatchlist=function()
 {
-console.log("hi");
+  console.log("hi");
 
-}
-$scope.wlstdefView={
-  "expressions": [
-    {
-      "tag": "tag::1",
-      "joinWith": "",
-      "joinBy": "",
-      "inputStream": "",
-      "watch": {
-        "lfield": {
-          "fieldType": "inputvalue",
-          "watchlistdialogvalue": "213",
-          "exprAsText": "Value: 213"
-        },
-        "rfield": {
-          "fieldType": "inputvalue",
-          "watchlistdialogvalue": "223",
-          "exprAsText": "Value: 223"
-        },
-        "operator": "+"
-      },
-      "outputStream": {}
-    }
-  ],
-  "name": "surya",
-  "description": "demo",
-  "stream": "Stream1",
-  "namespace": "Namespace2",
-  "output": "ui publisher"
 }
 }
 ]);

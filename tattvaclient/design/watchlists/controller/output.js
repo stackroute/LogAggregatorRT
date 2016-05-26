@@ -26,7 +26,7 @@ angular.module("tattva")
 
     if(JSON.stringify(item)!=undefined)
     {
-      $scope.wlstdef.output=item;
+      $scope.wlstdef.publisher.publisherType=item;
         console.log(item);
       if(item==="UI Publisher")
       {
@@ -42,7 +42,7 @@ angular.module("tattva")
             targetEvent: ev,
             clickOutsideToClose: false,
             escapeToClose : false,
-            locals: { "data": $scope.publisherData }
+            locals: { "data": $scope.wlstdef }
           }).then(function(response) {
             console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
           }, function(response) {

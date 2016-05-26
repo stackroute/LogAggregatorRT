@@ -10,7 +10,7 @@
 
         <div layout="row" layout-wrap flex >
           <label flex="30"><md-subheader>Watch Display Size</md-subheader></label>
-          <md-radio-group ng-model="uiPublisher_widgetSize" flex="70">
+          <md-radio-group ng-model="publisherData.publisher.widgetSize" flex="70">
             <div layout="row">
               <md-radio-button ng-repeat="widgetSize in uiPublisherConfig.widgetSizes" value="{{widgetSize.value}}" class="md-primary" flex="35">
                 <i class="{{widgetSize.icon}}" aria-hidden="true"></i>
@@ -24,7 +24,7 @@
         <div layout="row" layout-wrap flex >
           <label flex="20"><md-subheader>Watch Tabs</md-subheader></label>
           <div layout="row" flex="80" layout-wrap>
-            <md-checkbox ng-repeat="tab in uiPublisherConfig.widgetTabs" ng-model="tab.selected" value="{{tab.name}}" layout="row">
+            <md-checkbox ng-repeat="tab in uiPublisherConfig.widgetTabs" ng-model="tab.selected" ng-value="{{tab.name}}" layout="row">
               {{ tab.name }}
             </md-checkbox>
           </div>
@@ -34,7 +34,7 @@
 
         <div layout="row" layout-wrap flex >
           <label flex="30"><md-subheader>Watch Graph type</md-subheader></label>
-          <md-radio-group ng-model="uiPublisher_graphTypes" flex="70">
+          <md-radio-group ng-model="publisherData.publisher.graphTypes" flex="70">
             <div layout="row">
               <md-radio-button ng-repeat="graphTypes in uiPublisherConfig.graphTypes" value="{{graphTypes.value}}" class="md-primary" flex="50">
                 <i class="{{graphTypes.icon}}" aria-hidden="true"></i>
@@ -47,7 +47,7 @@
 
         <div layout="row" layout-wrap flex >
           <label flex="50"><md-subheader>Watch Log Data Display Type</md-subheader></label>
-          <md-radio-group ng-model="uiPublisher_logDataDisplayType" flex="50">
+          <md-radio-group ng-model="publisherData.publisher.logDataDisplayType" flex="50">
             <div layout="row" layout-wrap>
               <md-radio-button ng-repeat="displayTypes in uiPublisherConfig.logDataDisplayType" value="{{displayTypes.value}}" class="md-primary" flex="50">
                 {{displayTypes.name}}
