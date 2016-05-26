@@ -1,37 +1,15 @@
 angular.module("tattva")
-.controller('DialogControllerwatchlist',['$scope','$mdDialog','fieldData',function($scope,$mdDialog,fieldData)
-{
-console.log("hieeeeeeeee",$scope.fieldData);
-  $scope.fieldData=fieldData;
-  // console.log("dialogueData data within publisherCtrl is : ",fieldData);
-  $scope.hide = function() {
-    $mdDialog.hide();
-  };
-
-  $scope.updateBackPublisher = function() {
-    $scope.fieldData.exprAsText = $scope.getExprAsText();
-    $mdDialog.hide($scope.fieldData);
-  };
-
-  $scope.cancel = function() {
-    $mdDialog.cancel();
-  };
-
-  $scope.getExprAsText=function() {
-    // logic for converting the data to human redable easy format of the expression
-  }
-
-}]);
-
-
-<!--end of DialogControllerwatchlist ctrl-->
-
-angular.module("tattva")
 .controller('AccumulateCtrl',['$scope','$mdDialog','fieldData','loadExprData',function($scope,$mdDialog,fieldData,loadExprData)
 {
-$scope.function=loadExprData.getFunction();
+var functionOption=loadExprData.getFunction().then(function(response){var data=response.data;return data}).then(function(data){
+   $scope.functioName=[];
+    for(i in data)
+    {
+      $scope.functioName.push(data[i].fun_name)
+    }
+    ;}
+  );
   $scope.fieldData=fieldData;
-  console.log("dialogueData data within publisherCtrl is : ", $scope.fieldData);
   $scope.hide = function() {
     $mdDialog.hide();
   };
@@ -46,18 +24,16 @@ $scope.function=loadExprData.getFunction();
   };
 
   $scope.getExprAsText=function(){
-    return "Accumulate(By "+$scope.fieldData.accumulatecriteria+" for "+$scope.fieldData.accumulatorvalue+" Where "+$scope.fieldData.accumulatecondition  + " and Execute "+$scope.fieldData.accumulatorfunctionend+" after Accumulating)";
+    return "Accumulate(@"+$scope.fieldData.AccumulateOn+"("+$scope.fieldData.AccumulateTill+").then("+$scope.fieldData.FunctionenPostAccumulation+"("+$scope.fieldData.FunctionenPostAccumulationParam+"))" ;
   }
 
 }]);
 
-
 <!--end of accumulator ctrl-->
 angular.module("tattva")
-.controller('DataFieldsCtrl',['$scope','$mdDialog','fieldData',function($scope,$mdDialog,fieldData)
+.controller('DataFieldsCtrl',['$scope','$mdDialog','fieldData','fieldData2','loadExprData',function($scope,$mdDialog,fieldData,fieldData2,loadExprData)
 {
   $scope.fieldData=fieldData;
-  console.log("dialogueData data within publisherCtrl is : ", $scope.fieldData);
   $scope.hide = function() {
     $mdDialog.hide();
   };
@@ -72,8 +48,16 @@ angular.module("tattva")
   };
 //@Todo
   $scope.getExprAsText=function() {
-    return "DataField";
+    return $scope.fieldData.DataField;
   }
+
+  $scope.DataField=[];
+  loadExprData.getDataFields(fieldData2.namespace).then(function(response){var data=response.data;
+  return data
+  }).then(function(data){
+  for(i in data.dataformat)
+  $scope.DataField.push(data.dataformat[i].fieldName);
+  })
 
 }]);
 
@@ -85,7 +69,7 @@ angular.module("tattva")
 $scope.constantOption=loadExprData.getConstants();
 console.log($scope.constantOption);
   $scope.getExprAsText =function(){
-  return "Constant:"+$scope.fieldData.Constants;  // logic for converting the data to human redable easy format of the expression
+  return ""+$scope.fieldData.Constants;  // logic for converting the data to human redable easy format of the expression
   }
   $scope.fieldData=fieldData;
   console.log("dialogueData data within publisherCtrl is : ", $scope.fieldData);
@@ -109,10 +93,16 @@ console.log($scope.constantOption);
 angular.module("tattva")
 .controller('FunctionCtrl',['$scope','$mdDialog','fieldData','loadExprData',function($scope,$mdDialog,fieldData,loadExprData)
 {
-  $scope.function=loadExprData.getFunction();
+  $scope.function=loadExprData.getFunction().then(function(response){var data=response.data;return data}).then(function(data){
+       $scope.functioName=[];
+      for(i in data)
+      {
+        $scope.functioName.push(data[i].fun_name)
+      }
+      ;}
+    );
   $scope.getExprAsText =function(){
   return $scope.fieldData.function+"("+$scope.fieldData.functionparam+")";
-
   }
   $scope.fieldData=fieldData;
   console.log("dialogueData data within publisherCtrl is : ", $scope.fieldData);
@@ -176,30 +166,7 @@ angular.module("tattva")
   };
 
   $scope.getExprAsText =function(){
- return "Value: "+$scope.fieldData.watchlistdialogvalue;
+ return $scope.fieldData.inputvalue;
   }
 
 }]);
-
-
-// <!--end of HistoricDataCtrl ctrl-->
-//
-// angular.module("tattva")
-// .controller('DialogControllerwatchlist2',['$scope','$mdDialog','fieldData',function($scope,$mdDialog,fieldData)
-// {
-//   console.log("dialogueData data within publisherCtrl is : ", $scope.dialogueData2);
-//   $scope.fieldData=fieldData;
-//
-//   $scope.hide = function() {
-//     $mdDialog.hide();
-//   };
-//
-//   $scope.updateBackPublisher = function() {
-//     $mdDialog.hide($scope.fieldData);
-//   };
-//
-//   $scope.cancel = function() {
-//     $mdDialog.cancel();
-//   };
-//
-// }]);

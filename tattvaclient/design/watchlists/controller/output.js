@@ -1,18 +1,14 @@
 angular.module("tattva")
 .controller('output',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log', function($scope,$rootScope,$mdDialog,$timeout, $q, $log) {
   var self = this;
-  self.simulateQuery = false;
-  self.isDisabled    = false;
-  self.states        = loadAll();
-  self.querySearch   = querySearch;
-  self.selectedItemChange = selectedItemChange;
-  self.searchTextChange   = searchTextChange;
-  self.newState = newState;
-  function newState(state) {
-    alert("Sorry! You'll need to create a Constituion for " + state + " first!");
-  }
+    self.simulateQuery = false;
+    self.isDisabled    = false;
+    self.output        = loadAll();
+    self.querySearch   = querySearch;
+    self.selectedItemChange = selectedItemChange;
+    self.searchTextChange   = searchTextChange;
   function querySearch (query) {
-    var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
+    var results = query ? self.output.filter( createFilterFor(query) ) : self.output,
     deferred;
     if (self.simulateQuery) {
       deferred = $q.defer();
@@ -30,9 +26,9 @@ angular.module("tattva")
 
     if(JSON.stringify(item)!=undefined)
     {
-      $scope.wlstdef.output=item.value;
-      console.log(JSON.stringify(item.display));
-      if(item.display=="UI Publisher")
+      $scope.wlstdef.output=item;
+        console.log(item);
+      if(item==="UI Publisher")
       {
         console.log("in publisher");
         $scope.publisherData = {"WatchListName": "My first watch list"};
@@ -73,18 +69,13 @@ angular.module("tattva")
     }
   }
   function loadAll() {
-    var allStates = 'UI Publisher, Save to Database, Output to Output Stream, External Source';
-    return allStates.split(/, +/g).map( function (state) {
-      return {
-        value: state.toLowerCase(),
-        display: state
-      };
-    });
+    var output = ['UI Publisher', 'Save to Database', 'Output to Output Stream', 'External Source'];
+    return output;
   }
   function createFilterFor(query) {
     var lowercaseQuery = angular.lowercase(query);
-    return function filterFn(state) {
-      return (state.value.indexOf(lowercaseQuery) === 0);
+    return function filterFn(output) {
+      return (output.indexOf(lowercaseQuery) === 0);
     };
   }
 }]);

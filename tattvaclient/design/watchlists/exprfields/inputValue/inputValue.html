@@ -5,18 +5,21 @@
     </div>
   </md-toolbar>
   <md-dialog-content class="md-padding">
-    <form name="Form" ng-submit="saveData()">
+    <form name="Form" ng-submit="updateBackPublisher()">
       <div layout layout-sm="column">
         <md-input-container flex>
           <label>Provide Your Own Value</label>
-          <input ng-model="fieldData.watchlistdialogvalue">
+          <input name="inputvalue" ng-model="fieldData.inputvalue" required>
+          <div ng-messages="Form.inputvalue.$error">
+              <div ng-message="required">This is required!</div>
+            </div>
         </md-input-container>
       </div>
     </md-dialog-content>
     <br><br><br><br><br><br>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> OK </md-button>
+      <md-button type="submit" class="md-primary"> OK </md-button>
       <md-button ng-click="cancel()"> Cancel </md-button>
     </md-dialog-actions>
   </form>

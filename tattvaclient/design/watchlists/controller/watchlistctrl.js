@@ -13,43 +13,11 @@ angular.module("tattva")
   );
 };
 
-
-$scope.operator=['>','<']
-$scope.showmesecound=true;
-$scope.showmefirst=true;
-$scope.namespaces = [{
-  "name": "ngnix",
-  "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
-}, {
-  "name": "apache",
-  "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
-}, {
-  "name": "iot-sound",
-  "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
-}, {
-  "name": "iot-temprature",
-  "dataFields": [{"name": "request method", "field": "method", "type": "dimension"}]
-}];
-$scope.datastreams = [{
-  "name": "ngnix-stream-GET",
-  "namespace": "ngnix"
-}, {
-  "name": "ngnix-stream-POST",
-  "namespace": "ngnix"
-}, {
-  "name": "apache-stream-GET",
-  "namespace": "apache"
-}, {
-  "name": "apache-stream-POST",
-  "namespace": "apache"
-}];
-
 $scope.wlstdef = {
   expressions: [],
   addNewExpression:function(index) {
 $scope.index = 0;
 if(isNaN(index)){
-console.log("reached");
 $scope.index = this.expressions.length;
 }
 else{
@@ -71,7 +39,6 @@ $scope.index = index+1;
       },
       "outputStream": {}
     };
-    console.log(index);
     this.expressions.splice($scope.index,0,newExpr);
   },
 
@@ -98,21 +65,7 @@ $scope.index = index+1;
 $scope.savewatchlist=function()
 {
 console.log("hi");
-//   $http({
-//     method : 'post',
-//     url : '/savewatchlist',
-//     data : $scope.wlstdef
-//   }).success(function(data){
-//     if(data.errors){
-//       $scope.errorName = data.errors.name;
-//       $scope.errorUserName = data.errors.username;
-//       $scope.errorEmail = data.errors.email;
-//     }
-//     else{
-//       $scope.message=data.message;
-//     }
-//   });
-// $state.go("user");
+
 }
 $scope.wlstdefView={
   "expressions": [

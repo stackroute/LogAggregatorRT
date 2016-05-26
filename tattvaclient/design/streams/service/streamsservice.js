@@ -15,6 +15,6 @@ angular.module('tattva')
 angular.module('tattva')
 .service('streamService',['$http',function($http){
   this.getData=function(){
-    return $http.get('/viewStream')
+    return $http.get('/viewStreams')
   }
 }]);

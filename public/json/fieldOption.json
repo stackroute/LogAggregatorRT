@@ -1,0 +1,38 @@
+ [
+    {
+  "type": "DataFields",
+  "name": "Data fields from namespace",
+  "controller": "DataFieldsCtrl",
+  "template": "DataFields"
+},
+{
+  "name": "Input Value",
+  "controller": "InputValueCtrl",
+  "template": "inputValue",
+  "type": "inputvalue"
+},
+{
+  "type": "constant",
+  "name": "Constants",
+  "controller": "ConstantCtrl",
+  "template": "constant"
+},
+{
+  "type": "Function",
+  "name": "Function",
+  "controller": "FunctionCtrl",
+  "template": "function"
+},
+{
+  "type": "Accumulate",
+  "name": "Accumulate",
+  "controller": "AccumulateCtrl",
+  "template": "accumulate"
+},
+{
+  "type": "historicData",
+  "name": "Historic Data",
+  "controller": "HistoricDataCtrl",
+  "template": "historicData"
+}
+]

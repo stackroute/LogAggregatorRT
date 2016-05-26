@@ -24,7 +24,6 @@ angular.module('tattva')
       return $http.get('/namespaces').then(function(response) {
         // console.log(response.data);
         data =  response.data;
-        console.log('data=',data);
         return data;
       });
     },
@@ -36,9 +35,7 @@ angular.module('tattva')
       }
        return $http.get('/namespace',config)
        .then(function(response) {
-         console.log(response.data);
          data =  response.data;
-         console.log('data=',data);
          return data;
        });
     },

@@ -5,21 +5,24 @@
     </div>
   </md-toolbar>
   <md-dialog-content class="md-padding">
-    <form name="Form" ng-submit="saveData()">
+    <form name="frmConstant" ng-submit="updateBackPublisher()">
       <div layout layout-sm="column">
         <md-input-container flex>
-          <md-select ng-model="fieldData.Constants">
+          <md-select name="Constants" ng-model="fieldData.Constants" required>
             <label>Select Constants</label>
             <md-option ng-value= "object.Name" ng-repeat="object in constantOption"> {{object.Name}} : {{object.Value}}</md-option>
           </md-select>
+<div ng-messages="frmConstant.Constants.$error">
+<div ng-message="required">This is required!</div>
+</div>
         </md-input-container>
       </div>
     </md-dialog-content>
     <br><br><br><br><br><br><br>
-    </form>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> OK </md-button>
+      <md-button type="submit" class="md-primary"> OK </md-button>
       <md-button ng-click="cancel()"> Cancel </md-button>
+    </form>
   </md-dialog-actions>
 </md-dialog>

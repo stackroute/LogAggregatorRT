@@ -5,26 +5,32 @@
     </div>
   </md-toolbar>
   <md-dialog-content class="md-padding">
-    <form name="Form" ng-submit="saveData()">
+    <form name="Formfnctn" ng-submit="updateBackPublisher()()">
       <div layout layout-sm="column">
         <md-input-container flex>
-          <md-select ng-model="fieldData.function">
+          <md-select name="function" ng-model="fieldData.function" required>
             <label>Function Name</label>
-            <md-option ng-repeat="object in function">{{object.fun_name}}</md-option>
+            <md-option ng-repeat="object in functioName">{{object}}</md-option>
             </md-select>
+            <div ng-messages="Formfnctn.function.$error">
+                <div ng-message="required">This is required!</div>
+              </div>
         </md-input-container>
       </div>
       <div layout layout-sm="column">
         <md-input-container flex>
           <label>Specify Parameter as Comma Seperated Values</label>
-          <input ng-model="fieldData.functionparam">
+          <input name="functionparam" ng-model="fieldData.functionparam" required>
+          <div ng-messages="Formfnctn.functionparam.$error">
+              <div ng-message="required">This is required!</div>
+            </div>
         </md-input-container>
       </div>
     </md-dialog-content>
     <br><br><br>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> OK </md-button>
+      <md-button type="submit" class="md-primary"> OK </md-button>
       <md-button ng-click="cancel()"> Cancel </md-button>
     </form>
   </md-dialog-actions>

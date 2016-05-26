@@ -1,5 +1,5 @@
 angular.module("tattva")
-.controller('namespacectrl',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','namespaceFactory' ,function($scope,$rootScope,$mdDialog,$timeout, $q, $log,namespaceFactory) {
+.controller('namespacectrl',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData','$http' ,function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData,$http) {
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
@@ -7,8 +7,8 @@ angular.module("tattva")
   self.querySearch   = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
-    function querySearch (query) {
-    var results = query ? self.namespaceOption.filter( createFilterFor(query) ) : self.namespaceOption,
+  function querySearch (query) {
+    var results = query ? "self.namespaceOption.filter( createFilterFor(query) )" : self.namespaceOption,
     deferred;
     if (self.simulateQuery) {
       deferred = $q.defer();
@@ -35,25 +35,13 @@ angular.module("tattva")
 
 
   function loadAll() {
-// var namespace;
-// namespaceFactory.getNameSpace().then(function(response){
-//   namespace = response;
-// console.log("1st",namespace)
-// }).then(function(){
-// for(i in namespace)
-// {
-// $scope.namespaceOption=amespace[i].name);
-// }
-// });
-
-
-    var namespaceOption = ['Namespace1', 'Namespace2', 'Namespace3'];
-    return namespaceOption;
+    return loadExprData.getNameSpacenames();
   }
+
   function createFilterFor(query) {
     var lowercaseQuery = angular.lowercase(query);
     return function filterFn(namespaceOption) {
-      return (namespaceOption.indexOf(lowercaseQuery) === 0);
+      return (namespaceOption.name.indexOf(lowercaseQuery) === 0);
     };
   }
 }]);

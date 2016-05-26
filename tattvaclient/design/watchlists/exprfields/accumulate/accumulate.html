@@ -5,42 +5,49 @@
  </div>
   </md-toolbar>
   <md-dialog-content class="md-padding">
- <form name="Form" ng-submit="saveData()">
+ <form name="AccumulatFrm" ng-submit="updateBackPublisher()">
 <div layout="column" layout-sm="column">
 
   <md-input-container class="watchlistcheckbox" flex="50">
- <md-select ng-model="fieldData.accumulatecriteria">
+ <md-select name="AccumulateOn" ng-model="fieldData.AccumulateOn" required>
  <label>Accumulate On</label>
-<md-option>Record Count</md-option>
+<md-option>Record</md-option>
 <md-option>Time</md-option>
  </md-select>
+ <div ng-messages="AccumulatFrm.AccumulateOn.$error">
+     <div ng-message="required">This is required!</div>
+   </div>
   </md-input-container>
 
   <md-input-container class="watchlistcheckbox" flex="50">
  <label>Accumulate Till</label>
- <input ng-model="fieldData.accumulatorvalue">
+ <input name="AccumulateTill" ng-model="fieldData.AccumulateTill" required>
+ <div ng-messages="AccumulatFrm.AccumulateTill.$error">
+     <div ng-message="required">This is required!</div>
+   </div>
   </md-input-container>
-  <!-- <md-input-container class="watchlistcheckbox"  flex>
- <label>Condition</label>
- <input ng-model="fieldData.accumulatecondition">
-  </md-input-container> -->
-
 
   <md-input-container class="watchlistcheckbox" flex>
-      <md-select ng-model="fieldData.FunctionenPostAccumulation">
+      <md-select name="FunctionenPostAccumulation" ng-model="fieldData.FunctionenPostAccumulation" required>
           <label>Function post Accumulation</label>
-        <md-option ng-repeat="object in function">{{object.fun_name}}</md-option>
+        <md-option ng-repeat="object in functioName">{{object}}</md-option>
       </md-select>
+      <div ng-messages="AccumulatFrm.FunctionenPostAccumulation.$error">
+          <div ng-message="required">This is required!</div>
+        </div>
  </md-input-container>
         <md-input-container class="watchlistcheckbox" flex>
             <label>Specify Parameters</label>
-              <input ng-model="fieldData.FunctionenPostAccumulationParam">
+              <input name="FunctionenPostAccumulationParam" ng-model="fieldData.FunctionenPostAccumulationParam" required>
+              <div ng-messages="AccumulatFrm.FunctionenPostAccumulationParam.$error">
+                  <div ng-message="required">This is required!</div>
+                </div>
         </md-input-container>
 </div>
- </form>
   </md-dialog-content>
   <md-dialog-actions layout="row">
- <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> OK </md-button>
+ <md-button type="submit" class="md-primary"> OK </md-button>
  <md-button ng-click="cancel()"> Cancel </md-button>
+ </form>
   </md-dialog-actions>
 </md-dialog>

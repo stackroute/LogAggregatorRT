@@ -40,17 +40,17 @@
     "dataSchema":[
       {
         "alias":"method",
-        "name":"methodName",
+        "name":"methodName for nginx",
         "type":"dimension"
       },
       {
         "alias":"code",
-        "name":"responseCode",
+        "name":"responseCode for nginx",
         "type":"dimension"
       },
       {
         "alias":"Number of hits per second",
-        "name":"hitsPerSecond",
+        "name":"hitsPerSecond for nginx",
         "type":"measure"
       }
     ]

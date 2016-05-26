@@ -1,5 +1,5 @@
 angular.module("tattva")
-.controller('rfield',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log', function($scope,$rootScope,$mdDialog,$timeout, $q, $log) {
+.controller('rfield',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData) {
   $scope.fieldData={};
   var self = this;
   self.simulateQuery = false;
@@ -9,7 +9,7 @@ angular.module("tattva")
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
   function querySearch (query) {
-    var results = query ? self.options.filter( createFilterFor(query) ) : self.options,
+    var results = query ? "self.options.filter( createFilterFor(query) )" : self.options,
     deferred;
     if (self.simulateQuery) {
       deferred = $q.defer();
@@ -44,7 +44,7 @@ angular.module("tattva")
         targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
-        locals: { "fieldData": expr.watch.rfield }
+        locals: { "fieldData": expr.watch.rfield,"fieldData2":$scope.wlstdef}
       }).then(function(response) {
         expr.watch.rfield = response;
         console.log("RESOLVED with response: ", response, " data in autocomplete ctrl: ", expr.watch.rfield);
@@ -57,45 +57,7 @@ angular.module("tattva")
   }
 
   function loadAll() {
-var fieldOptions = [
-    {
-      type: "Accumulate",
-      name: "Data fields from namespace",
-      controller: "DataFieldsCtrl",
-      template: "accumulate"
-    },
-    {
-      name: "Input Value",
-      controller: "InputValueCtrl",
-      template: "inputValue",
-      type: "inputvalue",
-    },
-    {
-      type: "constant",
-      name: "Constants",
-      controller: "ConstantCtrl",
-      template: "constant"
-    },
-    {
-      type: "Function",
-      name: "Function",
-      controller: "FunctionCtrl",
-      template: "function"
-    },
-    {
-      type: "Accumulate",
-      name: "Accumulate",
-      controller: "AccumulateCtrl",
-      template: "accumulate"
-    },
-    {
-      type: "historicData",
-      name: "Historic Data",
-      controller: "HistoricDataCtrl",
-      template: "historicData"
-    }
-
-    ];
+var fieldOptions=loadExprData.getfieldOption();
 
     return fieldOptions;
   }

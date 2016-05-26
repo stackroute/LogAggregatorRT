@@ -99,9 +99,9 @@
         <md-item-template>
           <span  md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
         </md-item-template>
-        <div ng-messages="watchlistcreate.atoCmpLfield.$error" ng-if="watchlistcreate.atoCmpLfield.$touched">
+        <!-- <div ng-messages="watchlistcreate.atoCmpLfield.$error" ng-if="watchlistcreate.atoCmpLfield.$touched">
               <div ng-message="required">This field is required</div>
-            </div>
+            </div> -->
         <md-not-found>
           No LField option matching "{{ctrl.searchText}}" were found.
           <!-- <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a> -->
@@ -131,9 +131,9 @@
       <md-item-template>
         <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
       </md-item-template>
-      <div ng-messages="watchlistcreate.atoCmpOperator.$error" ng-if="watchlistcreate.atoCmpOperator.$touched">
+      <!-- <div ng-messages="watchlistcreate.atoCmpOperator.$error" ng-if="watchlistcreate.atoCmpOperator.$touched">
             <p ng-message="required">This field is required</p>
-          </div>
+          </div>-->
       <md-not-found>
         No operator matching "{{ctrl.searchText}}" were found.
       </md-not-found>
@@ -156,9 +156,9 @@
     <md-item-template>
       <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
     </md-item-template>
-    <div ng-messages="watchlistcreate.atoCmpRfield.$error" ng-if="watchlistcreate.atoCmpRfield.$touched">
+    <!-- <div ng-messages="watchlistcreate.atoCmpRfield.$error" ng-if="watchlistcreate.atoCmpRfield.$touched">
           <p ng-message="required">This field is required</p>
-        </div>
+        </div> -->
     <md-not-found>
       No namespace matching "{{ctrl.searchText}}" were found.
     </md-not-found>
@@ -196,44 +196,45 @@
 
 </div>
 <md-button id="watchlistpadding" class="md-raised" aria-label=""  ng-click="wlstdef.addNewExpression()">Add Expression</md-button>
-
 </div>
 
 <div layout="row" class="watchlistlayout" flex-offset="15">
   <div flex="10">
     <h3 class="heading" hide-xs hide-sm hide-md>Output To</h3>
   </div>
-
   <div id="watchListnamespace"  ng-controller="output as ctrl1" flex="40">
     <md-autocomplete flex-offset="5" flex="80"
+    required md-input-name="atoCmpOutput"
     ng-disabled="ctrl1.isDisabled"
-    required="true"
     md-no-cache="ctrl1.noCache"
     md-selected-item="ctrl1.selectedItem"
     md-search-text-change="ctrl1.searchTextChange(ctrl.searchText)"
     md-search-text="ctrl1.searchText"
     md-selected-item-change="ctrl1.selectedItemChange(item)"
-    md-items="item in tctrl1.querySearch(ctrl.searchText)"
-    md-item-text="item.display"
+    md-items="item in ctrl1.querySearch(ctrl.searchText)"
+    md-item-text="item"
     md-min-length="0"
-    placeholder="Select Output Stream">
+    md-floating-label="Select Output Stream">
     <md-item-template>
-      <span md-highlight-text="ctrl1.searchText" md-highlight-flags="^i">{{item.display}}</span>
+      <span md-highlight-text="ctrl1.searchText" md-highlight-flags="^i">{{item}}</span>
     </md-item-template>
+    <div ng-messages="watchlistcreate.atoCmpOutput.$error" ng-if="watchlistcreate.atoCmpOutput.$touched">
+          <div ng-message="required">This field is required</div>
+        </div>
     <md-not-found>
       No namespace matching "{{ctrl1.searchText}}" were found.
-      <a ng-click="ctrl.newStream(ctrl1.searchText)">Create a new one!</a>
-    </md-not-found>
+          </md-not-found>
   </md-autocomplete>
 </div>
-
 </div>
 
 <div class="watchlistlayout">
+  <md-button class="md-raised md-primary">Cancel</md-button>
   <md-button type="submit" class="md-raised md-primary">Save</md-button>
 </form>
-<h3>
-  Object Structure:
-</h3>
-<pre>{{wlstdef | json }}</pre>
+  <h3>
+    <md-checkbox ng-model="checked"></md-checkbox>
+    View as JSON Structure
+  </h3>
+  <pre ng-show="checked">{{wlstdef | json }}</pre>
 </div>

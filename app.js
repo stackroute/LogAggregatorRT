@@ -179,6 +179,10 @@ app.get('/viewwatchlist', function(req, res){
   res.sendFile(path.join(__dirname, 'public/json/watchlist.json'));
 });
 
+app.get('/function',function(req,res){
+res.sendFile(path.join(__dirname, 'public/jsonData/functiondatadisplay.json'))
+})
+
 app.post('/createNamespacePost',jsonParser,function (request, response) {
   var body1=request.body;
   alert("reached")
@@ -201,10 +205,16 @@ app.post('/sendslidedata',function (request, response) {
 // app.get('/user/:username/slides/:slidename', function(req, res){
 // mongo.search();
 // });
-
 app.get('/viewNamespace', function(req, res){
 res.sendFile(path.join(__dirname,'/public/json/namespace.json'));
 });
+app.get('/fieldOption',function(req,res){
+res.sendFile(path.join(__dirname,'/public/json/fieldOption.json'));
+});
+app.get('/operatorOption',function(req,res)
+{
+res.sendFile(path.join(__dirname,'/public/json/operatorOption.json'))
+})
 
 app.get('/viewInstance', function(req, res){
 res.sendFile(path.join(__dirname, '/public/json/instance.json'));

@@ -1,5 +1,5 @@
 angular.module("tattva")
-.controller('operator',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log', function($scope,$rootScope,$mdDialog,$timeout, $q, $log) {
+.controller('operator',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData) {
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
@@ -8,7 +8,7 @@ angular.module("tattva")
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
   function querySearch (query) {
-    var results = query ? self.options.filter( createFilterFor(query) ) : self.options,
+    var results = query ? "self.options.filter( createFilterFor(query) )" : self.options,
     deferred;
     if (self.simulateQuery) {
       deferred = $q.defer();
@@ -26,7 +26,7 @@ angular.module("tattva")
     expr.watch.operator = item;
   }
   function loadAll() {
-    var operator = ['+', '-', '/', '*', '%', '^', '==', '!=', '>', '>=', '<', '<=', 'Concat', 'Like', 'Not Like', 'true', 'false'];
+    var operator = loadExprData.getoperatorOption();
     return operator;
   }
   function createFilterFor(query) {
