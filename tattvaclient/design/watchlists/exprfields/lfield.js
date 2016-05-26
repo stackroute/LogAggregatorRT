@@ -61,10 +61,10 @@ console.log($scope.dialogueData)
       // {name: "Data field from namespace", expressionType: "accumulate", template: 'accumulate',type:'Accumulate'},
       // {name: "Input your own Value", expressionType: "inputValue", template: 'inputValue',type:'input Value'},
     {
-      type: "Accumulate",
+      type: "DataFields",
       name: "Data fields from namespace",
       controller: "DataFieldsCtrl",
-      template: "accumulate"
+      template: "DataFields"
     },
     {
       name: "Input Value",

@@ -12,6 +12,8 @@ angular.module("tattva")
     }
   );
 };
+
+
 $scope.operator=['>','<']
 $scope.showmesecound=true;
 $scope.showmefirst=true;

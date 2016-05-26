@@ -1,5 +1,5 @@
 angular.module("tattva")
-.controller('namespacectrl',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log', function($scope,$rootScope,$mdDialog,$timeout, $q, $log) {
+.controller('namespacectrl',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','namespaceFactory' ,function($scope,$rootScope,$mdDialog,$timeout, $q, $log,namespaceFactory) {
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
@@ -35,6 +35,18 @@ angular.module("tattva")
 
 
   function loadAll() {
+// var namespace;
+// namespaceFactory.getNameSpace().then(function(response){
+//   namespace = response;
+// console.log("1st",namespace)
+// }).then(function(){
+// for(i in namespace)
+// {
+// $scope.namespaceOption=amespace[i].name);
+// }
+// });
+
+
     var namespaceOption = ['Namespace1', 'Namespace2', 'Namespace3'];
     return namespaceOption;
   }

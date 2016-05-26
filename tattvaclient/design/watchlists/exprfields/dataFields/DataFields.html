@@ -1,15 +1,16 @@
 <md-dialog class="watchlistDialog">
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <h2> Constants</h2>
+      <h2> DataFields From Namespace</h2>
     </div>
   </md-toolbar>
+
   <md-dialog-content class="md-padding">
     <form name="Form" ng-submit="saveData()">
       <div layout layout-sm="column">
         <md-input-container flex>
           <md-select ng-model="fieldData.Constants">
-            <label>Select Constants</label>
+            <label>Select DataFields</label>
             <md-option ng-value= "object.Name" ng-repeat="object in constantOption"> {{object.Name}} : {{object.Value}}</md-option>
           </md-select>
         </md-input-container>

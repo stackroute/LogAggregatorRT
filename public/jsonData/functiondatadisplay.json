@@ -1,7 +1,7 @@
 [{
 		"fun_name": "Sum",
 		"Descr": "This is an invalid function",
-		"var": "Number x,Number y",
+		"var": [{"Number x"},{"Number y"}],
 		"fun": "int Sum(int x,char y){ return x+y};"
 	}
 ]

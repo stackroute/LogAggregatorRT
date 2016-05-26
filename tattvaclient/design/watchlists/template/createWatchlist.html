@@ -24,41 +24,35 @@
         </div>
       </md-input-container>
     </div>
-
-    <div layout="row" layout-sm="column" layout-xs="column">
-
-      <div class="watchListnamespace"  ng-controller="namespacectrl as ctrl" flex="40" flex-offset="5">
-        <md-autocomplete flex-offset="20" flex="100"
-        ng-required="true"
-        ng-disabled="ctrl.isDisabled"
-        md-input-name="autocompleteForNamespace"
-        md-no-cache="ctrl.noCache"
-        md-selected-item="ctrl.selectedItem"
-        md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-        md-search-text="ctrl.searchText"
-        md-selected-item-change="ctrl.selectedItemChange(item)"
-        md-items="item in ctrl.querySearch(ctrl.searchText)"
-        md-item-text="item"
-        md-min-length="0"
-        placeholder="Select Namespace">
-        <md-item-template>
-          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
-        </md-item-template>
-        <md-not-found>
-          No namespace matching "{{ctrl.searchText}}" were found.
-        </md-not-found>
-      </md-autocomplete>
-      <div flex layout-align="right" ng-messages="watchlistcreate.autocompleteForNamespace.$error" ng-if="watchlistcreate.autocompleteForNamespace.$touched" class="error" id="myerr" role="alert">
-        <div ng-message-exp="['required']">
-          *required
-        </div>
-      </div>
-    </div>
-
-    <div class="watchListnamespace"  ng-controller="Streamctrl as ctrl1" flex="40" flex-offset="5">
+  <div layout="row" layout-sm="column" layout-xs="column">
+    <div id="watchListnamespace"  ng-controller="namespacectrl as ctrl" flex="40" flex-offset="5">
+      <md-autocomplete flex-offset="20" flex="100"
+      required md-input-name="atoCmpNmsp"
+      md-input-minlength="1"
+      ng-disabled="ctrl.isDisabled"
+      md-no-cache="ctrl.noCache"
+      md-selected-item="ctrl.selectedItem"
+      md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+      md-search-text="ctrl.searchText"
+      md-selected-item-change="ctrl.selectedItemChange(item)"
+      md-items="item in ctrl.querySearch(ctrl.searchText)"
+      md-item-text="item"
+      md-min-length="0"
+      md-floating-label="Select Namespace">
+      <md-item-template>
+        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
+      </md-item-template>
+      <div ng-messages="watchlistcreate.atoCmpNmsp.$error" ng-if="watchlistcreate.atoCmpNmsp.$touched">
+            <div ng-message="required">This field is required</div>
+          </div>
+      <md-not-found>
+        No namespace matching "{{ctrl.searchText}}" were found.
+      </md-not-found>
+    </md-autocomplete>
+  </div>
+    <div id="watchListnamespace"  ng-controller="Streamctrl as ctrl1" flex="40" flex-offset="5">
       <md-autocomplete flex-offset="10" flex="80"
-      ng-required="true"
-      md-input-name="autocompleteForStreamCtrl"
+      required md-input-name="atoCmpStream"
       ng-disabled="ctrl1.isDisabled"
       md-no-cache="ctrl1.noCache"
       md-selected-item="ctrl1.selectedItem"
@@ -68,25 +62,18 @@
       md-items="item in ctrl1.querySearch(ctrl.searchText)"
       md-item-text="item"
       md-min-length="0"
-      placeholder="Select Data Source">
+      md-floating-label="Select Data Stream">
       <md-item-template>
         <span md-highlight-text="ctrl1.searchText" md-highlight-flags="^i">{{item}}</span>
       </md-item-template>
+      <div ng-messages="watchlistcreate.atoCmpStream.$error" ng-if="watchlistcreate.atoCmpStream.$touched">
+            <div ng-message="required">This field is required</div>
+          </div>
       <md-not-found>
         No matching "{{ctrl1.searchText}}" was found.
       </md-not-found>
     </md-autocomplete>
-    <div flex layout-align="right" ng-messages="watchlistcreate.autocompleteForStreamCtrl.$error" ng-if="watchlistcreate.autocompleteForStreamCtrl.$touched" class="error" id="myerr" role="alert">
-      <div ng-message-exp="['required']">
-        *required
-      </div>
-    </div>
   </div>
-
-
-  <!--end of purpose,name,namespace,stream-->
-
-
 </div>
 
 <div></div>
@@ -97,8 +84,8 @@
     <div class="flex container">
       <div class="lfieldwatchlist" ng-controller="lfield as ctrl">
         <md-autocomplete flex-offset="5" flex="40"
+        required md-input-name="atoCmpLfield"
         ng-disabled="ctrl.isDisabled"
-        ng-required="true"
         md-input-name="autocompleteForlfieldwatchlist"
         md-no-cache="ctrl.noCache"
         md-selected-item="ctrl.selectedItem"
@@ -108,10 +95,13 @@
         md-items="item in ctrl.querySearch(ctrl.searchText)"
         md-item-text="item.name"
         md-min-length="0"
-        placeholder="Select LField">
+        md-floating-label="Select LField">
         <md-item-template>
           <span  md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
         </md-item-template>
+        <div ng-messages="watchlistcreate.atoCmpLfield.$error" ng-if="watchlistcreate.atoCmpLfield.$touched">
+              <div ng-message="required">This field is required</div>
+            </div>
         <md-not-found>
           No LField option matching "{{ctrl.searchText}}" were found.
           <!-- <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a> -->
@@ -127,10 +117,8 @@
 
     <div class="operatorwatchlist" ng-controller="operator as ctrl">
       <md-autocomplete flex-offset="35" flex="20"
-      ng-required="true"
+      required md-input-name="atoCmpOperator"
       ng-disabled="ctrl.isDisabled"
-      ng-required="true"
-      md-input-name="autocompleteForoperatorwatchlist"
       md-no-cache="ctrl.noCache"
       md-selected-item="ctrl.selectedItem"
       md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
@@ -139,24 +127,21 @@
       md-items="item in ctrl.querySearch(ctrl.searchText)"
       md-item-text="item"
       md-min-length="0"
-      placeholder="Operator">
+      md-floating-label="Operator">
       <md-item-template>
         <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
       </md-item-template>
+      <div ng-messages="watchlistcreate.atoCmpOperator.$error" ng-if="watchlistcreate.atoCmpOperator.$touched">
+            <p ng-message="required">This field is required</p>
+          </div>
       <md-not-found>
-        No namespace matching "{{ctrl.searchText}}" were found.
+        No operator matching "{{ctrl.searchText}}" were found.
       </md-not-found>
     </md-autocomplete>
-    <div flex layout-align="right" ng-messages="watchlistcreate.autocompleteForoperatorwatchlist.$error" ng-if="watchlistcreate.autocompleteForoperatorwatchlist.$touched" class="error" id="myerr" role="alert">
-      <div ng-message-exp="['required']">
-        *required
-      </div>
-    </div>
   </div>
-
   <div class="rfieldwatchlist" ng-controller="rfield as ctrl">
     <md-autocomplete flex-offset="55" flex="40"
-    ng-required="true"
+    required md-input-name="atoCmpRfield"
     ng-disabled="ctrl.isDisabled"
     md-input-name="autocompleteForrfieldwatchlist"
     md-no-cache="ctrl.noCache"
@@ -167,28 +152,26 @@
     md-items="item in ctrl.querySearch(ctrl.searchText)"
     md-item-text="item.name"
     md-min-length="0"
-    placeholder="RField">
+    md-floating-label="RField">
     <md-item-template>
       <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
     </md-item-template>
+    <div ng-messages="watchlistcreate.atoCmpRfield.$error" ng-if="watchlistcreate.atoCmpRfield.$touched">
+          <p ng-message="required">This field is required</p>
+        </div>
     <md-not-found>
       No namespace matching "{{ctrl.searchText}}" were found.
     </md-not-found>
   </md-autocomplete>
 
-  <md-card class="previewexpression">
-    <md-content >
-      <span>{{wlstdef.expressions[$index].watch.lfield.exprAsText}}</span>
-      <span>{{wlstdef.expressions[$index].watch.operator}}</span>
-      <span>{{wlstdef.expressions[$index].watch.rfield.exprAsText}}</span>
-    </span>
-  </md-content>
-</md-card>
+  <p>
+    <span>{{wlstdef.expressions[$index].watch.lfield.exprAsText}}</span>
+    <span>{{wlstdef.expressions[$index].watch.operator}}</span>
+    <span>{{wlstdef.expressions[$index].watch.rfield.exprAsText}}</span>
+  </p>
 </div></div>
 </md-whiteframe>
 <!--- ========================== END OF LOOPING EXPRESSIONS ========================================= -->
-
-
 </div> <!-- end of ng repeat start for "stmt in wlstdef.statements -->
 <div ng-repeat-end>
   <md-button class="md-raised md-mini" ng-click="wlstdef.removeExpression($index);" aria-label="">Remove</md-button>
@@ -224,7 +207,7 @@
   <div id="watchListnamespace"  ng-controller="output as ctrl1" flex="40">
     <md-autocomplete flex-offset="5" flex="80"
     ng-disabled="ctrl1.isDisabled"
-    ng-required="true"
+    required="true"
     md-no-cache="ctrl1.noCache"
     md-selected-item="ctrl1.selectedItem"
     md-search-text-change="ctrl1.searchTextChange(ctrl.searchText)"

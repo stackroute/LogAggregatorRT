@@ -7,6 +7,7 @@ var self = this;
   self.querySearch   = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
+
   function querySearch (query) {
     var results = query ? self.stream.filter( createFilterFor(query) ) : self.stream,
     deferred;

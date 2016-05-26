@@ -1,18 +1,32 @@
-<md-dialog aria-label="">
-<md-content class="md-padding">
-<form name="Form" ng-submit="savefunctiondata()">
- <div layout layout-sm="column">
- <md-input-container flex> <md-select ng-model="fieldData.historicfunction">
-<label>Select Function</label>
-<md-option>Historic Function1</md-option>
-<md-option>Historic Function2</md-option>
-<md-option>Historic Function3</md-option>
-<md-option>Historic Function4</md-option>
-</md-select> </md-input-container>
- </div>
- <md-input-container flex> <label>Parameter</label> <input ng-model="fieldData.historicfunctionparam"> </md-input-container>
- </form> </md-content> <div class="md-actions" layout="row">
- <span flex></span> <md-button ng-click="cancel()"> Cancel </md-button>
-  <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> Save </md-button>
-  </div>
- </md-dialog>
+<md-dialog class="watchlistDialog">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Historic Data</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content class="md-padding">
+    <form name="Form" ng-submit="saveData()">
+      <div layout layout-sm="column">
+        <md-input-container flex> <md-select ng-model="fieldData.historicfunction">
+          <label>Select Function</label>
+          <md-option>Historic Function1</md-option>
+          <md-option>Historic Function2</md-option>
+          <md-option>Historic Function3</md-option>
+          <md-option>Historic Function4</md-option>
+        </md-select> </md-input-container>
+      </div>
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>Parameter</label>
+          <input ng-model="fieldData.historicfunctionparam">
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <br><br><br>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button type="submit" class="md-primary" ng-click="updateBackPublisher()"> OK </md-button>
+      <md-button ng-click="cancel()"> Cancel </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

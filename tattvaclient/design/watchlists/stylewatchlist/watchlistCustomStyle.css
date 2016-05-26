@@ -59,3 +59,11 @@ height: 40px !important;
 margin-top: 20px;
 padding-top: 10px;
 }
+.watchlistDialog {
+  width: 550px;
+  height: 350px;
+}
+.padding
+{
+padding-left: 15px;
+}

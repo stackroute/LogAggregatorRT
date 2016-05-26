@@ -27,8 +27,9 @@ console.log("hieeeeeeeee",$scope.fieldData);
 <!--end of DialogControllerwatchlist ctrl-->
 
 angular.module("tattva")
-.controller('AccumulateCtrl',['$scope','$mdDialog','fieldData',function($scope,$mdDialog,fieldData)
+.controller('AccumulateCtrl',['$scope','$mdDialog','fieldData','loadExprData',function($scope,$mdDialog,fieldData,loadExprData)
 {
+$scope.function=loadExprData.getFunction();
   $scope.fieldData=fieldData;
   console.log("dialogueData data within publisherCtrl is : ", $scope.fieldData);
   $scope.hide = function() {
@@ -79,8 +80,10 @@ angular.module("tattva")
 <!--end of DataFieldsCtrl ctrl-->
 
 angular.module("tattva")
-.controller('ConstantCtrl',['$scope','$mdDialog','fieldData',function($scope,$mdDialog,fieldData)
+.controller('ConstantCtrl',['$scope','$mdDialog','fieldData','loadExprData',function($scope,$mdDialog,fieldData,loadExprData)
 {
+$scope.constantOption=loadExprData.getConstants();
+console.log($scope.constantOption);
   $scope.getExprAsText =function(){
   return "Constant:"+$scope.fieldData.Constants;  // logic for converting the data to human redable easy format of the expression
   }
@@ -104,9 +107,9 @@ angular.module("tattva")
 
 <!--end of ConstantCtrl ctrl-->
 angular.module("tattva")
-.controller('FunctionCtrl',['$scope','$mdDialog','fieldData',function($scope,$mdDialog,fieldData)
+.controller('FunctionCtrl',['$scope','$mdDialog','fieldData','loadExprData',function($scope,$mdDialog,fieldData,loadExprData)
 {
-
+  $scope.function=loadExprData.getFunction();
   $scope.getExprAsText =function(){
   return $scope.fieldData.function+"("+$scope.fieldData.functionparam+")";
 
