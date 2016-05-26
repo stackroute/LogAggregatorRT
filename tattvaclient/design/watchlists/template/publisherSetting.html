@@ -1,4 +1,4 @@
-<md-dialog style="width:600px;">
+<md-dialog style="width:800px;">
   <md-toolbar>
     <div class="md-toolbar-tools">
       <h2>Watchlist - UI Publish</h2>
@@ -6,11 +6,11 @@
   </md-toolbar>
   <md-dialog-content>
     <div class="md-dialog-content">
-      <form layout-padding ng-submit="save(data)">
+      <form layout-padding ng-submit="updateBackPublisher()">
 
         <div layout="row" layout-wrap flex >
           <label flex="30"><md-subheader>Watch Display Size</md-subheader></label>
-          <md-radio-group ng-model="uiPublisher_widgetSize" flex="70">
+          <md-radio-group ng-model="publisherData.widgetSize" flex="70">
             <div layout="row">
               <md-radio-button ng-repeat="widgetSize in uiPublisherConfig.widgetSizes" value="{{widgetSize.value}}" class="md-primary" flex="35">
                 <i class="{{widgetSize.icon}}" aria-hidden="true"></i>
@@ -24,17 +24,19 @@
         <div layout="row" layout-wrap flex >
           <label flex="20"><md-subheader>Watch Tabs</md-subheader></label>
           <div layout="row" flex="80" layout-wrap>
-            <md-checkbox ng-repeat="tab in uiPublisherConfig.widgetTabs" ng-model="tab.selected" value="{{tab.name}}" layout="row">
-              {{ tab.name }}
-            </md-checkbox>
+            <div ng-repeat="tab in uiPublisherConfig.widgetTabs" flex-offset="5">
+              <md-checkbox ng-model="publisherData.tab" value="{{tab.name}}" layout="row" >
+                {{ tab.name }}
+              </md-checkbox>
+            </div>
           </div>
         </div>
 
         <md-divider></md-divider>
 
-        <div layout="row" layout-wrap flex >
+        <div layout="row" layout-wrap flex>
           <label flex="30"><md-subheader>Watch Graph type</md-subheader></label>
-          <md-radio-group ng-model="uiPublisher_graphTypes" flex="70">
+          <md-radio-group ng-model="publisherData.graphTypes" flex="70">
             <div layout="row">
               <md-radio-button ng-repeat="graphTypes in uiPublisherConfig.graphTypes" value="{{graphTypes.value}}" class="md-primary" flex="50">
                 <i class="{{graphTypes.icon}}" aria-hidden="true"></i>
@@ -47,7 +49,7 @@
 
         <div layout="row" layout-wrap flex >
           <label flex="50"><md-subheader>Watch Log Data Display Type</md-subheader></label>
-          <md-radio-group ng-model="uiPublisher_logDataDisplayType" flex="50">
+          <md-radio-group ng-model="publisherData.logDataDisplayType" flex="50">
             <div layout="row" layout-wrap>
               <md-radio-button ng-repeat="displayTypes in uiPublisherConfig.logDataDisplayType" value="{{displayTypes.value}}" class="md-primary" flex="50">
                 {{displayTypes.name}}
@@ -70,6 +72,11 @@
 
 
 <!-- <md-dialog style="width:600px;" style="padding: '30px';">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Watchlist - UI Publish</h2>
+    </div>
+  </md-toolbar>
   <md-dialog-content>
     <form layout-padding>
     {{publisherData | json }}

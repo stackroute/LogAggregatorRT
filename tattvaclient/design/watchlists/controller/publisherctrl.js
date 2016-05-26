@@ -40,28 +40,28 @@ function($scope,$mdDialog,publisherSettingFactory, data){
     ]
   };
 
-  $scope.save=function(data){
-    $scope.tabs=[];
-    angular.forEach($scope.uiPublisherConfig.widgetTabs, function(tab){
-      if(tab.selected){
-        $scope.tabs.push(tab.name);
-      }
-    });
-
-    var publisherData = {
-      uiPublisher_widgetSize : $scope.uiPublisher_widgetSize,
-      tabs : $scope.tabs,
-      uiPublisher_graphTypes : $scope.uiPublisher_graphTypes,
-      uiPublisher_logDataDisplayType : $scope.uiPublisher_logDataDisplayType
-    };
-    console.log(publisherData);
-    $scope.publisherData = publisherSettingFactory.publisherFactoryMthd(publisherData);
-    var dialoguefordemoobject={};
-    $scope.dialoguefordemo()=function(dialoguefordemoobject) {
-      dialoguefordemofactory(dialoguefordemoobject).then(function(){
-        console.log(dialoguefordemoobject);
-      })
-    }
-  }
+  // $scope.save=function(data){
+  //   $scope.tabs=[];
+  //   angular.forEach($scope.uiPublisherConfig.widgetTabs, function(tab){
+  //     if(tab.selected){
+  //       $scope.tabs.push(tab.name);
+  //     }
+  //   });
+  //
+  //   var publisherData = {
+  //     uiPublisher_widgetSize : $scope.uiPublisher_widgetSize,
+  //     tabs : $scope.tabs,
+  //     uiPublisher_graphTypes : $scope.uiPublisher_graphTypes,
+  //     uiPublisher_logDataDisplayType : $scope.uiPublisher_logDataDisplayType
+  //   };
+  //   console.log(publisherData);
+  //   $scope.publisherData = publisherSettingFactory.publisherFactoryMthd(publisherData);
+  //   var dialoguefordemoobject={};
+  //   $scope.dialoguefordemo()=function(dialoguefordemoobject) {
+  //     dialoguefordemofactory(dialoguefordemoobject).then(function(){
+  //       console.log(dialoguefordemoobject);
+  //     })
+  //   }
+  // }
 
 }]);

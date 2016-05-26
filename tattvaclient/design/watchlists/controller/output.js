@@ -25,10 +25,14 @@ angular.module("tattva")
   function searchTextChange(text) {
     $log.info('Text changed to ' + text);
   }
+
   function selectedItemChange(item) {
     $log.info('Item changed to ' + JSON.stringify(item));
 
-    if(JSON.stringify(item)!=undefined)
+    var dialogTemplate = '/design/watchlists/template/'+item.template +'/'+ item.template +'.html';
+
+
+  if(JSON.stringify(item)!=undefined)
     {
       $scope.wlstdef.output=item.value;
       console.log(JSON.stringify(item.display));
