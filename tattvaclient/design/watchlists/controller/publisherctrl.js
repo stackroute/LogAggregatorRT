@@ -14,10 +14,19 @@ function($scope,$mdDialog,publisherSettingFactory, data){
       if(tab.selected){
         $scope.tabs.push(tab.name);
       }
-$scope.publisherData.publish.widgetTabs=$scope.tabs;
 });
+
+var publisherData=[];
+var publisherExp={
+graphTypes:$scope.graphTypes,
+tabsType:$scope.tabs,
+widgetSizes:$scope.widgetSize,
+logDataDisplayType:$scope.logDataDisplayType,
+}
+publisherData.push(publisherExp);
+$scope.publisherData.publisher=publisherData;
     $mdDialog.hide();
-  };
+};
 
   $scope.cancel = function() {
     $mdDialog.cancel();

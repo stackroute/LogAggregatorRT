@@ -1,17 +1,28 @@
+.publishlayout
+{
+margin-top: 2%;
+}
+.preview
+{
+background-color:#404040;
+border-radius:1px sold;
+padding-top:2%;
+}
+
 .watchlistlayout {
-  margin: 0px 100px 0px 100px;
+  margin: 2% 10% 0% 10%;
 }
 .watchListnamespace {
   margin-top: 1% !important;
 }
 .lfieldwatchlist {
-  margin-top: 1% !important;
+  margin-top: 3% !important;
 }
 .operatorwatchlist {
-  margin-top: 2% !important;
+  margin-top: 3% !important;
 }
 .rfieldwatchlist {
-  margin-top: 2% !important;
+  margin-top: 3% !important;
   margin-bottom: 2% !important;
 }
 .watchlistcheckbox {
@@ -34,9 +45,7 @@
 display: none;
 }
 .previewexpression
-.watchlistlayout {
-  margin: 0px 100px 0px 100px;
-}
+
 .watchlistpadding {
   margin-top: 3% !important;
 }
@@ -45,9 +54,8 @@ display: none;
   margin-right: 73.5%;
 }
 .vertical-divider {
-  padding-top: 70px;
-  position: absolute;
-  width: 100px;
+  padding-top: 4.6%;
+  width: 6%;
   -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
   transform: rotate(90deg);
   padding-bottom: 0px;
@@ -66,4 +74,30 @@ padding-top: 10px;
 .padding
 {
 padding-left: 15px;
+}
+.jsonStructure
+{
+margin-left: 6%;
+margin-top: 5%;
+}
+.jsonStructureExpression
+{
+margin-left: 6%;
+}
+.autocomplete-custom-template li {
+  border-bottom: 1px solid #ccc;
+  height: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  white-space: normal;
+}
+
+.autocomplete-custom-template li:last-child {
+  border-bottom-width: 0; }
+
+.item-title,
+.item-metadata,
+.item-metastat {
+  display: block;
+  line-height: 2;
 }
