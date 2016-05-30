@@ -10,7 +10,7 @@ angular.module("tattva")
       ;}
     );
   $scope.getExprAsText =function(){
-  return $scope.fieldData.function+"<"+$scope.fieldData.functionparam+">";
+  return $scope.fieldData.function+"("+$scope.fieldData.functionparam+")";
   }
   $scope.fieldData=fieldData;
   console.log("dialogueData data within publisherCtrl is : ", $scope.fieldData);

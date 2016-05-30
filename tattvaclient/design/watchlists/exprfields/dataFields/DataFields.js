@@ -17,7 +17,7 @@ $scope.$watch('myvar',function(){console.log($scope.myvar)});
   };
 //@Todo
   $scope.getExprAsText=function() {
-    return "DataField<"+$scope.fieldData.DataField+">";
+    return "DataField("+$scope.fieldData.DataField+")";
   }
 
   $scope.DataField=[];
