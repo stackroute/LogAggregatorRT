@@ -74,6 +74,19 @@
 </div>
 <div></div>
 
+
+<!--================================Watchlist d3 Mindmap================================= --->
+
+<div >
+<md-whiteframe class="md-whiteframe-2dp" layout="column" >
+  <!-- <div watchlist-map watch="wlstdef" flex style="display:block"></div> -->
+  <!-- <span watchmap="wlstdef"></span> -->
+ <md-subheader class="watchmapheader md-title">Watchlist Flow Map</md-subheader>
+  <watchlistmap watch="wlstdef" style="display:block"></watchlistmap>
+</md-whiteframe>
+</div>
+
+
 <!-- =============================== STARTING TO LOOP ==================================== --->
 <div class="watchListnamespace" ng-repeat-start="expr in wlstdef.expressions">
   <md-whiteframe class="md-whiteframe-3dp" layout flex="100">
