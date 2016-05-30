@@ -18,7 +18,7 @@ angular.module("tattva")
   };
 
   $scope.getExprAsText =function(){
- return $scope.fieldData.historicfunction+"<"+$scope.fieldData.historicfunctionparam+">";
+ return $scope.fieldData.historicfunction+"("+$scope.fieldData.historicfunctionparam+")";
   }
 
 }]);
