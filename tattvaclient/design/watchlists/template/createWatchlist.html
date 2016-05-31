@@ -78,12 +78,12 @@
 <!--================================Watchlist d3 Mindmap================================= --->
 
 <div >
-  <md-whiteframe class="md-whiteframe-2dp" layout="column" >
-    <!-- <div watchlist-map watch="wlstdef" flex style="display:block"></div> -->
-    <!-- <span watchmap="wlstdef"></span> -->
-    <md-subheader class="watchmapheader md-title">Watchlist Flow Map</md-subheader>
-    <watchlistmap watch="wlstdef" style="display:block"></watchlistmap>
-  </md-whiteframe>
+<md-whiteframe class="md-whiteframe-2dp" layout="column" >
+  <!-- <div watchlist-map watch="wlstdef" flex style="display:block"></div> -->
+  <!-- <span watchmap="wlstdef"></span> -->
+ <md-subheader class="watchmapheader"><span class="md-body-1" flex-offset="40">Watchlist Flow Map</span></md-subheader>
+  <watchlistmap watch="wlstdef" flex></watchlistmap>
+</md-whiteframe>
 </div>
 
 
@@ -199,7 +199,6 @@
 <div ng-repeat-end>
   <md-button class="md-raised md-mini" ng-click="removeExpression($index);" aria-label="">Remove</md-button>
   <md-button class="md-raised md-mini" ng-show="wlstdef.expressions.length>1 && !$last" ng-click="addNewExpression($index);" aria-label="">ADD</md-button>
-
   <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
   <div  layout="row" layout-align="start center" flex>
     <md-button style="text-align:left" class="md-raised">Join With {{expr.tag}}</md-button>

@@ -45,8 +45,7 @@ angular.module("tattva")
       });
     };
     $scope.showUIPublisherDialog();
-  }
-
+    }
   // function selectedItemChange(item) {
   // if(JSON.stringify(item)!=undefined)
   //   {

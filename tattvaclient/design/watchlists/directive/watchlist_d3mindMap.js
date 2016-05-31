@@ -25,7 +25,7 @@ angular.module('tattva').directive('watchlistmap', function() {
                     i = 0,
                     root;
                 width = 700;
-                height = 200;
+                height = 150;
 
                 //specify type of d3
                 var tree = d3.layout.tree().size([height, width]);
@@ -39,7 +39,7 @@ angular.module('tattva').directive('watchlistmap', function() {
                     .attr("width", width + margin[1] + margin[3])
                     .attr("height", height + margin[0] + margin[2])
                     .append("svg:g")
-                    .attr("transform", "translate(" + 2 * margin[3] + "," + margin[0] + ")");
+                    .attr("transform", "translate(" + 1.5 * margin[3] + "," + margin[0] + ")");
 
 
                 // Toggle children.
@@ -66,6 +66,7 @@ angular.module('tattva').directive('watchlistmap', function() {
                 function drawmap() {
 
                     var mainroot = {};
+                    //color code array for namespace,streams and expressions
                     var colorcode = [{
                         name: "namespace",
                         color: "#009999"
@@ -90,6 +91,9 @@ angular.module('tattva').directive('watchlistmap', function() {
                             "children": []
                         });
                         var expressions = watchdata.expressions;
+                        var parent;
+                        parent=mainroot.children[0];
+                        console.log(mainroot.children[0]);
                         for (var i = 0; i < expressions.length; i++) {
                             // if(expressions[i].inputStream!=="" && expressions[i].inputStream!==mainroot.children[0].name){
                             //   (mainroot.children).push({"name":expressions[i].inputStream, "color":colorcode[1].color, "children":[]});
@@ -97,20 +101,23 @@ angular.module('tattva').directive('watchlistmap', function() {
                             // else{
                             //  expressions[i].inputStream=mainroot.children[0].name;
                             // }
-                            for (var j = 0; j < (mainroot.children).length; j++) {
+                          //  for (var j = 0; j < (mainroot.children).length; j++) {
                                 // if(mainroot.children[j].name === expressions[i].inputStream)
                                 // {
                                 //  if(expressions[i].joinWith==="")  //joinwith task left
-                                // {
-                                (mainroot.children[j].children).push({
+                                //
+
+                                (parent.children).push({
                                     "name": expressions[i].tag,
                                     "color": colorcode[2].color,
                                     "children": []
                                 });
+                                parent=parent.children[0];
+
                                 //  }
 
                                 // }
-                            }
+
                         }
 
 
@@ -123,8 +130,6 @@ angular.module('tattva').directive('watchlistmap', function() {
                     }
 
                 }
-
-
 
 
                 // animation for each node as it updates
@@ -262,8 +267,8 @@ angular.module('tattva').directive('watchlistmap', function() {
                         .attr("y", -8)
                         .attr("width", width / 8)
                         .attr("height", 25)
-                        .attr("rx", 6)
-                        .attr("ry", 6)
+                        .attr("rx", 4)
+                        .attr("ry", 4)
                         .style("fill", function(d) {
                             return d._children ? "lightsteelblue" : "#fff";
                         })
@@ -291,7 +296,7 @@ angular.module('tattva').directive('watchlistmap', function() {
 
                     //to fill each node with specified color
                     nodeEnter.append("path")
-                        .attr("d", leftRoundedRect(-4, -8, 12, 25, 6))
+                        .attr("d", leftRoundedRect(-4, -8, 12, 25, 4))
                         .style("fill", function(d) {
                             return d._children ? "lightsteelblue" : d.color;
                         })
@@ -303,15 +308,9 @@ angular.module('tattva').directive('watchlistmap', function() {
 
                     //text for each associated node
                     nodeEnter.append("svg:text")
-                        .attr("x", function(d) {
-                            return d.children || d._children ? -8 : 10;
-                        })
-                        .attr("dy", function(d) {
-                            return d.children || d._children ? -10 : ".35em";
-                        })
-                        .attr("text-anchor", function(d) {
-                            return d.children || d._children ? "end" : "start";
-                        })
+                        .attr("x", 15)
+                        .attr("dy", ".60em")
+                        .attr("text-anchor", "start")
                         .text(function(d) {
                             return d.name;
                         })
