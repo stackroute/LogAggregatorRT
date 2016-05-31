@@ -14,15 +14,16 @@ function($scope,$mdDialog,publisherSettingFactory, data){
       if(tab.selected){
         $scope.tabs.push(tab.name);
       }
-});
+    });
 
 var publisherData=[];
 var publisherExp={
-graphTypes:$scope.graphTypes,
-tabsType:$scope.tabs,
-widgetSizes:$scope.widgetSize,
-logDataDisplayType:$scope.logDataDisplayType,
+  graphTypes:$scope.graphTypes,
+  tabsType:$scope.tabs,
+  widgetSizes:$scope.widgetSize,
+  logDataDisplayType:$scope.logDataDisplayType,
 }
+console.log(publisherExp);
 publisherData.push(publisherExp);
 $scope.publisherData.publisher=publisherData;
     $mdDialog.hide();
@@ -39,10 +40,10 @@ $scope.publisherData.publisher=publisherData;
       {"name":"Wide","value":"70","icon":"fa fa-square fa-3x"}
     ],
     "widgetTabs": [
-      {"name":"Summary","value":"summary", "hasOptions": false},
-      {"name":"Graph","value":"graph", "hasOptions": true, "options": "graphTypes"},
-      {"name":"LogDataViewer","value":"log", "hasOptions": true, "options": "logDataDisplayType"},
-      {"name":"ExecutionFlow","value":"flow", "hasOptions": false}
+      {"name":"Summary","value":"summary"},
+      {"name":"Graph","value":"graph"},
+      {"name":"LogDataViewer"},
+      {"name":"ExecutionFlow","value":"flow"}
     ],
     "graphTypes": [
       {"name":"Line","value":"line","icon":"fa fa-line-chart fa-3x"},
@@ -55,29 +56,4 @@ $scope.publisherData.publisher=publisherData;
       {"name":"Table","value":"table"}
     ]
   };
-
-  $scope.save=function(data){
-    $scope.tabs=[];
-    angular.forEach($scope.uiPublisherConfig.widgetTabs, function(tab){
-      if(tab.selected){
-        $scope.tabs.push(tab.name);
-      }
-    });
-
-    var publisherData = {
-      uiPublisher_widgetSize : $scope.uiPublisher_widgetSize,
-      tabs : $scope.tabs,
-      uiPublisher_graphTypes : $scope.uiPublisher_graphTypes,
-      uiPublisher_logDataDisplayType : $scope.uiPublisher_logDataDisplayType
-    };
-    console.log(publisherData);
-    $scope.publisherData = publisherSettingFactory.publisherFactoryMthd(publisherData);
-    var dialoguefordemoobject={};
-    $scope.dialoguefordemo()=function(dialoguefordemoobject) {
-      dialoguefordemofactory(dialoguefordemoobject).then(function(){
-        console.log(dialoguefordemoobject);
-      })
-    }
-  }
-
 }]);

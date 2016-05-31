@@ -5,8 +5,9 @@ margin-top: 2%;
 .preview
 {
 background-color:#404040;
-border-radius:1px sold;
+border-radius: 10px;
 margin:8px;
+padding: 20px;
 }
 
 .watchlistlayout {
@@ -28,17 +29,12 @@ margin:8px;
 .watchlistcheckbox {
   margin-left: 20px;
 }
+.autocom{
+  margin-left: 8px;
+}
 .actionButton{
   margin-top: 15px;
   margin-right: 76.9%;
-}
-.vertical-divider {
-  padding-top: 70px;
-  position: absolute;
-  width: 100px;
-  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
-  transform: rotate(90deg);
-  padding-bottom: 0px;
 }
 .last
 {

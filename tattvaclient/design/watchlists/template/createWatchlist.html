@@ -93,7 +93,7 @@
     <!-- <div class="flex container" layout="row" > -->
     <div layout="column" flex="50">
       <div class="lfieldwatchlist watchlistAutoComplete" ng-controller="lfield as ctrl">
-        <md-autocomplete flex-offset="5" flex="90"
+        <md-autocomplete class="autocom" flex="90"
         required md-input-name="atoCmpLfield"
         ng-disabled="ctrl.isDisabled"
         md-input-name="autocompleteForlfieldwatchlist"
@@ -128,7 +128,7 @@
     </div>
     <div class="operatorwatchlist" ng-controller="operator as ctrl">
       <md-autocomplete
-      flex-offset="5" flex="5"
+      class="autocom" flex="5"
       required md-input-name="atoCmpOperator"
       ng-disabled="ctrl.isDisabled"
       md-no-cache="ctrl.noCache"
@@ -150,7 +150,7 @@
   </div>
   <div class="rfieldwatchlist" ng-controller="rfield as ctrl">
     <md-autocomplete
-    flex-offset="5" flex="90"
+    class="autocom" flex="90"
     required md-input-name="atoCmpRfield"
     ng-disabled="ctrl.isDisabled"
     md-input-name="autocompleteForrfieldwatchlist"
