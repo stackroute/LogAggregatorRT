@@ -78,12 +78,12 @@
 <!--================================Watchlist d3 Mindmap================================= --->
 
 <div >
-<md-whiteframe class="md-whiteframe-2dp" layout="column" >
-  <!-- <div watchlist-map watch="wlstdef" flex style="display:block"></div> -->
-  <!-- <span watchmap="wlstdef"></span> -->
- <md-subheader class="watchmapheader md-title">Watchlist Flow Map</md-subheader>
-  <watchlistmap watch="wlstdef" style="display:block"></watchlistmap>
-</md-whiteframe>
+  <md-whiteframe class="md-whiteframe-2dp" layout="column" >
+    <!-- <div watchlist-map watch="wlstdef" flex style="display:block"></div> -->
+    <!-- <span watchmap="wlstdef"></span> -->
+    <md-subheader class="watchmapheader md-title">Watchlist Flow Map</md-subheader>
+    <watchlistmap watch="wlstdef" style="display:block"></watchlistmap>
+  </md-whiteframe>
 </div>
 
 
@@ -91,78 +91,78 @@
 <div class="watchListnamespace" ng-repeat-start="expr in wlstdef.expressions">
   <md-whiteframe class="md-whiteframe-3dp" layout flex="100">
     <!-- <div class="flex container" layout="row" > -->
-<div layout="column" flex="50">
-    <div class="lfieldwatchlist watchlistAutoComplete" ng-controller="lfield as ctrl">
-      <md-autocomplete flex-offset="5" flex="90"
-      required md-input-name="atoCmpLfield"
+    <div layout="column" flex="50">
+      <div class="lfieldwatchlist watchlistAutoComplete" ng-controller="lfield as ctrl">
+        <md-autocomplete flex-offset="5" flex="90"
+        required md-input-name="atoCmpLfield"
+        ng-disabled="ctrl.isDisabled"
+        md-input-name="autocompleteForlfieldwatchlist"
+        md-no-cache="ctrl.noCache"
+        md-selected-item="ctrl.selectedItem"
+        md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+        md-search-text="ctrl.searchText"
+        md-selected-item-change="ctrl.selectedItemChange(item, expr)"
+        md-items="item in ctrl.querySearch(ctrl.searchText)"
+        md-item-text="item.name"
+        md-min-length="0"
+        placeholder="Select LField"
+        md-menu-class="autocomplete-custom-template">
+        <md-item-template>
+          <span class="item-title">
+            <md-icon class="material-icons">{{item.icon}}</md-icon>
+            <span> {{item.name}} </span>
+          </span>
+          <span class="item-metadata">
+            <span class="item-metastat">
+              FORMULA : <strong>{{item.shortexpr}}</strong>
+            </span>
+            <span class="item-metastat">
+              {{item.tip}}
+            </span>
+          </span>
+        </md-item-template>
+        <md-not-found>
+          No LField option matching "{{ctrl.searchText}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+    </div>
+    <div class="operatorwatchlist" ng-controller="operator as ctrl">
+      <md-autocomplete
+      flex-offset="5" flex="5"
+      required md-input-name="atoCmpOperator"
       ng-disabled="ctrl.isDisabled"
-      md-input-name="autocompleteForlfieldwatchlist"
       md-no-cache="ctrl.noCache"
       md-selected-item="ctrl.selectedItem"
       md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
       md-search-text="ctrl.searchText"
-      md-selected-item-change="ctrl.selectedItemChange(item, expr)"
+      md-selected-item-change="ctrl.selectedItemChange(item,expr)"
       md-items="item in ctrl.querySearch(ctrl.searchText)"
-      md-item-text="item.name"
+      md-item-text="item"
       md-min-length="0"
-      placeholder="Select LField"
-      md-menu-class="autocomplete-custom-template">
+      placeholder="Operator">
       <md-item-template>
-        <span class="item-title">
-          <md-icon class="material-icons">{{item.icon}}</md-icon>
-          <span> {{item.name}} </span>
-        </span>
-        <span class="item-metadata">
-          <span class="item-metastat">
-            FORMULA : <strong>{{item.shortexpr}}</strong>
-          </span>
-          <span class="item-metastat">
-            {{item.tip}}
-          </span>
-        </span>
+        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
       </md-item-template>
-    <md-not-found>
-      No LField option matching "{{ctrl.searchText}}" were found.
-    </md-not-found>
-  </md-autocomplete>
-</div>
-<div class="operatorwatchlist" ng-controller="operator as ctrl">
-  <md-autocomplete
-  flex-offset="5" flex="5"
-  required md-input-name="atoCmpOperator"
-  ng-disabled="ctrl.isDisabled"
-  md-no-cache="ctrl.noCache"
-  md-selected-item="ctrl.selectedItem"
-  md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-  md-search-text="ctrl.searchText"
-  md-selected-item-change="ctrl.selectedItemChange(item,expr)"
-  md-items="item in ctrl.querySearch(ctrl.searchText)"
-  md-item-text="item"
-  md-min-length="0"
-  placeholder="Operator">
-  <md-item-template>
-    <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
-  </md-item-template>
-<md-not-found>
-  No operator matching "{{ctrl.searchText}}" were found.
-</md-not-found>
-</md-autocomplete>
-</div>
-<div class="rfieldwatchlist" ng-controller="rfield as ctrl">
-  <md-autocomplete
-        flex-offset="5" flex="90"
-  required md-input-name="atoCmpRfield"
-  ng-disabled="ctrl.isDisabled"
-  md-input-name="autocompleteForrfieldwatchlist"
-  md-no-cache="ctrl.noCache"
-  md-selected-item="ctrl.selectedItem"
-  md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-  md-search-text="ctrl.searchText"
-  md-selected-item-change="ctrl.selectedItemChange(item,expr)"
-  md-items="item in ctrl.querySearch(ctrl.searchText)"
-  md-item-text="item.name"
-  md-min-length="0"
-  placeholder="RField"  md-menu-class="autocomplete-custom-template">
+      <md-not-found>
+        No operator matching "{{ctrl.searchText}}" were found.
+      </md-not-found>
+    </md-autocomplete>
+  </div>
+  <div class="rfieldwatchlist" ng-controller="rfield as ctrl">
+    <md-autocomplete
+    flex-offset="5" flex="90"
+    required md-input-name="atoCmpRfield"
+    ng-disabled="ctrl.isDisabled"
+    md-input-name="autocompleteForrfieldwatchlist"
+    md-no-cache="ctrl.noCache"
+    md-selected-item="ctrl.selectedItem"
+    md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+    md-search-text="ctrl.searchText"
+    md-selected-item-change="ctrl.selectedItemChange(item,expr)"
+    md-items="item in ctrl.querySearch(ctrl.searchText)"
+    md-item-text="item.name"
+    md-min-length="0"
+    placeholder="RField"  md-menu-class="autocomplete-custom-template">
     <md-item-template>
       <span class="item-title">
         <md-icon class="material-icons">{{item.icon}}</md-icon>
@@ -177,21 +177,21 @@
         </span>
       </span>
     </md-item-template>
-  <md-item-template>
-    <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
-  </md-item-template>
-<md-not-found>
-  No namespace matching "{{ctrl.searchText}}" were found.
-</md-not-found>
-</md-autocomplete>
+    <md-item-template>
+      <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
+    </md-item-template>
+    <md-not-found>
+      No namespace matching "{{ctrl.searchText}}" were found.
+    </md-not-found>
+  </md-autocomplete>
 </div>
 </div>
 <div layout="column" flex="50">
-<div flex="80" class="preview" spellcheck="false">
-  <span style="color:#A6E22E">{{expr.watch.lfield.exprAsText}}</span>
-  <span style="color:red">{{expr.watch.operator}}</span>
-  <span style="color:rgb(0, 255, 255)">{{expr.watch.rfield.exprAsText}}</span>
-</div>
+  <div flex="80" class="preview" spellcheck="false">
+    <span style="color:#A6E22E">{{expr.watch.lfield.exprAsText}}</span>
+    <span style="color:red">{{expr.watch.operator}}</span>
+    <span style="color:rgb(0, 255, 255)">{{expr.watch.rfield.exprAsText}}</span>
+  </div>
 </div>
 </md-whiteframe>
 <!--- ========================== END OF LOOPING EXPRESSIONS ========================================= -->
@@ -202,36 +202,55 @@
 
   <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
   <div  layout="row" layout-align="start center" flex>
-<md-button style="text-align:left" class="md-raised">Join With {{expr.tag}}</md-button>
+    <md-button style="text-align:left" class="md-raised">Join With {{expr.tag}}</md-button>
     <span  flex></span>
   </div>
 </div>
 
 
-  <!-- <md-menu ng-controller="actionButtonCtrl as ctrl" ng-class="{'last':$last}">
-    <md-button class="md-fab md-mini md-primary actionButton" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
-      <md-icon md-font-icon="fa fa-cog fa-spin fa-2x"></md-icon>
-    </md-button>
-    <md-menu-content width="4">
-      <md-menu-item>
-        <md-button>Pipe</md-button>
-      </md-menu-item>
-      <md-menu-item>
-        <md-button>Filter</md-button>
-      </md-menu-item>
-    </md-menu-content>
-  </md-menu> -->
+<!-- <md-menu ng-controller="actionButtonCtrl as ctrl" ng-class="{'last':$last}">
+<md-button class="md-fab md-mini md-primary actionButton" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
+<md-icon md-font-icon="fa fa-cog fa-spin fa-2x"></md-icon>
+</md-button>
+<md-menu-content width="4">
+<md-menu-item>
+<md-button>Pipe</md-button>
+</md-menu-item>
+<md-menu-item>
+<md-button>Filter</md-button>
+</md-menu-item>
+</md-menu-content>
+</md-menu> -->
 
 <md-button id="watchlistpadding" class="md-raised" aria-label=""  ng-click="addNewExpression()">Add Expression</md-button>
 </div>
 
 <div layout="row" class="publishlayout" flex-offset="10">
-  <div flex="10" hide-xs hide-sm hide-md>
+  <div flex="20" hide-xs hide-sm hide-md>
     <md-subheader>Manage output publishing</md-subheader>
   </div>
 
-  <div id="watchListnamespace"  ng-controller="output as ctrl1" flex="40">
-    <md-autocomplete flex-offset="5" flex="80"
+  <div id="watchListnamespace"  ng-controller="output" flex="40">
+    <div layout="row">
+      <md-checkbox ng-model="saveToDB" aria-label="save To DB" flex="45">
+        Save to Database
+      </md-checkbox>
+      <md-icon ng-if="saveToDB" ng-click="opneSaveToDBDialogWindow()" class="md-primary material-icons">settings</md-icon>
+    </div>
+    <div layout="row">
+      <md-checkbox ng-model="outputStream" aria-label="save To DB" flex="45">
+        Output to Output Stream
+      </md-checkbox>
+      <md-icon ng-if="outputStream" ng-click="opneOutputStreamDialog()" class="md-primary material-icons">settings</md-icon>
+    </div>
+    <div layout="row">
+      <md-checkbox ng-model="publishToDashboard" aria-label="save To DB" flex="45">
+        Publish to Dashboard
+      </md-checkbox>
+      <md-icon ng-if="publishToDashboard" ng-click="opnePublisherDialogWindow()" class="md-primary material-icons">settings</md-icon>
+    </div>
+
+    <!-- <md-autocomplete flex-offset="5" flex="80"
     required md-input-name="atoCmpOutput"
     ng-disabled="ctrl1.isDisabled"
     md-no-cache="ctrl1.noCache"
@@ -251,12 +270,12 @@
     <md-not-found>
       No namespace matching "{{ctrl1.searchText}}" were found.
     </md-not-found>
-  </md-autocomplete>
+  </md-autocomplete> -->
 </div>
 </div>
 
 <div class="watchlistlayout">
-  <md-button type="submit" class="md-raised md-primary">Save</md-button>
+  <md-button type="submit" class="md-raised md-primary">OK</md-button>
   <md-button class="md-raised">Cancel</md-button>
 </div>
 </form>

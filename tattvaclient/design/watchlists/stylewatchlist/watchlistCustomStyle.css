@@ -6,7 +6,7 @@ margin-top: 2%;
 {
 background-color:#404040;
 border-radius:1px sold;
-padding-top:2%;
+margin:8px;
 }
 
 .watchlistlayout {
@@ -23,7 +23,7 @@ padding-top:2%;
 }
 .rfieldwatchlist {
   margin-top: 3% !important;
-  margin-bottom: 2% !important;
+  margin-bottom: 3% !important;
 }
 .watchlistcheckbox {
   margin-left: 20px;
@@ -69,7 +69,7 @@ padding-top: 10px;
 }
 .watchlistDialog {
   width: 550px;
-  height: 350px;
+  height: 500px;
 }
 .padding
 {
