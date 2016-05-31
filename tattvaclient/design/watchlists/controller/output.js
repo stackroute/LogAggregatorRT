@@ -64,7 +64,7 @@ angular.module("tattva")
     }
   }
   function loadAll() {
-    var output = ['UI Publisher', 'Save to Database', 'Output to Output Stream', 'External Source'];
+    var output = ['UI Publisher', 'Save to Database', 'Output to Output Stream'];
     return output;
   }
   function createFilterFor(query) {
