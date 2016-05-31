@@ -25,7 +25,7 @@ angular.module('tattva').directive('watchlistmap', function() {
                     i = 0,
                     root;
                 width = 700;
-                height = 200;
+                height = 150;
 
                 //specify type of d3
                 var tree = d3.layout.tree().size([height, width]);
@@ -267,8 +267,8 @@ angular.module('tattva').directive('watchlistmap', function() {
                         .attr("y", -8)
                         .attr("width", width / 8)
                         .attr("height", 25)
-                        .attr("rx", 6)
-                        .attr("ry", 6)
+                        .attr("rx", 4)
+                        .attr("ry", 4)
                         .style("fill", function(d) {
                             return d._children ? "lightsteelblue" : "#fff";
                         })
@@ -296,7 +296,7 @@ angular.module('tattva').directive('watchlistmap', function() {
 
                     //to fill each node with specified color
                     nodeEnter.append("path")
-                        .attr("d", leftRoundedRect(-4, -8, 12, 25, 6))
+                        .attr("d", leftRoundedRect(-4, -8, 12, 25, 4))
                         .style("fill", function(d) {
                             return d._children ? "lightsteelblue" : d.color;
                         })
@@ -308,8 +308,8 @@ angular.module('tattva').directive('watchlistmap', function() {
 
                     //text for each associated node
                     nodeEnter.append("svg:text")
-                        .attr("x", 10)
-                        .attr("dy", ".35em")
+                        .attr("x", 15)
+                        .attr("dy", ".60em")
                         .attr("text-anchor", "start")
                         .text(function(d) {
                             return d.name;
