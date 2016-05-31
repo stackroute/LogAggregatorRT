@@ -8,37 +8,43 @@ $scope.wlstdef = {
   $scope.removeExpression=function(index) {
     $scope.wlstdef.expressions.splice(index,1);
   }
-
-  $scope.addNewExpression=function(index) {
-      $scope.index = 0;
-      console.log(index);
-
-      if(isNaN(index)){
+  $scope.addNewExpression=function(index,expr) {
+    var newExpr = {
+      "tag": ("tag::" + ($scope.wlstdef.expressions.length + 1)),
+      "joinWith":"",
+      "joinBy": "",
+      "inputStream" : "",
+      "watch": {
+        "lfield": {
+          "fieldType":"",
+        },
+        "rfield": {
+          "fieldType":"",
+        }
+      },
+    };
+    $scope.index = 0;
+    var z;
+    if(isNaN(index)){
         $scope.index = $scope.wlstdef.expressions.length;
-      }
+          console.log($scope.index);
+                  if($scope.index!=0)
+                {
+              console.log("This is the expressions",$scope.wlstdef.expressions[$scope.index-1]);
+                      $scope.wlstdef.expressions[$scope.index-1].joinWith="tag::"+($scope.index+1);
+                }
+            }
       else{
-        console.log("index= ", index);
+          var current=newExpr;
+              current.joinWith=expr.joinWith;
+                expr.joinWith=current.tag;
+              console.log(expr.joinWith);
+          console.log("currentttt",current);
         $scope.index = index+1;
       }
-      console.log('  $scope.index = ',   $scope.index );
-
-      var newExpr = {
-        "tag": ("tag::" + ($scope.wlstdef.expressions.length + 1)),
-        "joinWith": "",
-        "joinBy": "",
-        "inputStream" : "",
-        "watch": {
-          "lfield": {
-            "fieldType":"",
-          },
-          "rfield": {
-            "fieldType":"",
-          }
-        },
-      };
       $scope.wlstdef.expressions.splice($scope.index,0,newExpr);
-      $scope.wlstdef.expressions.joinwith = $scope.index;
-    }
+    },
+
 $scope.savewatchlist=function()
 {
   console.log("hi");

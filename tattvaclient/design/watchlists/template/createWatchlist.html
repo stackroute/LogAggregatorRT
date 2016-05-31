@@ -77,10 +77,8 @@
 
 <!--================================Watchlist d3 Mindmap================================= --->
 
-<div >
+<div>
 <md-whiteframe class="md-whiteframe-2dp" layout="column" >
-  <!-- <div watchlist-map watch="wlstdef" flex style="display:block"></div> -->
-  <!-- <span watchmap="wlstdef"></span> -->
  <md-subheader class="watchmapheader"><span class="md-title" flex-offset="35">Watchlist Flow Map</span></md-subheader>
   <watchlistmap watch="wlstdef" flex></watchlistmap>
 </md-whiteframe>
@@ -198,30 +196,14 @@
 </div> <!-- end of ng repeat start for "stmt in wlstdef.statements -->
 <div ng-repeat-end>
   <md-button class="md-raised md-mini" ng-click="removeExpression($index);" aria-label="">Remove</md-button>
-  <md-button class="md-raised md-mini" ng-show="wlstdef.expressions.length>1 && !$last" ng-click="addNewExpression($index);" aria-label="">ADD</md-button>
+  <md-button class="md-raised md-mini" ng-show="wlstdef.expressions.length>1 && !$last" ng-click="addNewExpression($index,expr);" aria-label="">ADD</md-button>
   <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
   <div  layout="row" layout-align="start center" flex>
-<md-button style="text-align:left" class="md-raised">And With {{expr.joinWit}}</md-button>
+<md-button style="text-align:left" ng-class="{'last':$last}" class="md-raised">Join With {{expr.joinWith}}</md-button>
 <!-- <md-button style="text-align:left" class="md-raised">And With {{expr.joinWith}}</md-button> -->
     <span  flex></span>
   </div>
 </div>
-
-
-  <!-- <md-menu ng-controller="actionButtonCtrl as ctrl" ng-class="{'last':$last}">
-    <md-button class="md-fab md-mini md-primary actionButton" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
-      <md-icon md-font-icon="fa fa-cog fa-spin fa-2x"></md-icon>
-    </md-button>
-    <md-menu-content width="4">
-      <md-menu-item>
-        <md-button>Pipe</md-button>
-      </md-menu-item>
-      <md-menu-item>
-        <md-button>Filter</md-button>
-      </md-menu-item>
-    </md-menu-content>
-  </md-menu> -->
-
 <md-button id="watchlistpadding" class="md-raised" aria-label=""  ng-click="addNewExpression()">Add Expression</md-button>
 </div>
 
