@@ -186,10 +186,10 @@
 <div ng-repeat-end>
   <md-button class="md-raised md-mini" ng-click="removeExpression($index);" aria-label="">Remove</md-button>
   <md-button class="md-raised md-mini" ng-show="wlstdef.expressions.length>1 && !$last" ng-click="addNewExpression($index);" aria-label="">ADD</md-button>
-
   <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
   <div  layout="row" layout-align="start center" flex>
-<md-button style="text-align:left" class="md-raised">Join With {{expr.tag}}</md-button>
+<md-button style="text-align:left" class="md-raised">And With {{expr.joinWit}}</md-button>
+<!-- <md-button style="text-align:left" class="md-raised">And With {{expr.joinWith}}</md-button> -->
     <span  flex></span>
   </div>
 </div>
@@ -212,7 +212,7 @@
 <md-button id="watchlistpadding" class="md-raised" aria-label=""  ng-click="addNewExpression()">Add Expression</md-button>
 </div>
 
-<div layout="row" class="publishlayout" flex-offset="10">
+<div layout="row" class="publishlayout" flex-offset="15">
   <div flex="10" hide-xs hide-sm hide-md>
     <md-subheader>Manage output publishing</md-subheader>
   </div>
