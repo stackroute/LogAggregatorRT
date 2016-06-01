@@ -23,13 +23,25 @@
         <div layout="row" layout-wrap flex >
           <label flex="20"><md-subheader>Watch Tabs</md-subheader></label>
           <div layout="row" flex="80" layout-wrap>
-            <md-checkbox ng-repeat="tab in uiPublisherConfig.widgetTabs" ng-model="tab.selected" value="{{tab.name}}" layout="row">
-              {{ tab.name }}
-            </md-checkbox>
+            <div ng-repeat="tab in uiPublisherConfig.widgetTabs">
+              <md-checkbox ng-model="tab.selected" value="{{tab.value}}" layout="row">
+                {{ tab.name }}
+              </md-checkbox>
+              <div layout="row" layout-wrap flex ng-if="tab.selected">
+                <label flex="30"><md-subheader>Watch Graph type</md-subheader></label>
+                <md-radio-group ng-model="graphTypes" flex="70">
+                  <div layout="row">
+                    <md-radio-button ng-repeat="graphTypes in uiPublisherConfig.graphTypes" value="{{graphTypes.value}}" class="md-primary" flex="50">
+                      <i class="{{graphTypes.icon}}" aria-hidden="true"></i>
+                    </md-radio-button>
+                  </div>
+                </md-radio-group>
+              </div>
+            </div>
           </div>
         </div>
 
-        <md-divider></md-divider>
+        <!-- <md-divider></md-divider>
 
         <div layout="row" layout-wrap flex >
           <label flex="30"><md-subheader>Watch Graph type</md-subheader></label>
@@ -40,7 +52,7 @@
               </md-radio-button>
             </div>
           </md-radio-group>
-        </div>
+        </div> -->
 
         <md-divider></md-divider>
 
@@ -59,8 +71,8 @@
 
       <md-dialog-actions layout="row">
         <span flex></span>
-        <md-button type="submit" class="md-raised md-primary">Save</md-button>
-        <md-button class="md-raised md-primary" ng-click="cancel()">Cancel</md-button>
+        <md-button ng-click="cancel()">Cancel</md-button>
+        <md-button type="submit" class="md-raised md-primary">OK</md-button>
       </md-dialog-actions>
 
     </form>

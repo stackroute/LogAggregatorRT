@@ -5,8 +5,9 @@ margin-top: 2%;
 .preview
 {
 background-color:#404040;
-border-radius:1px sold;
-padding-top:2%;
+border-radius: 10px;
+margin:8px;
+padding: 20px;
 }
 
 .watchlistlayout {
@@ -23,22 +24,17 @@ padding-top:2%;
 }
 .rfieldwatchlist {
   margin-top: 3% !important;
-  margin-bottom: 2% !important;
+  margin-bottom: 3% !important;
 }
 .watchlistcheckbox {
   margin-left: 20px;
 }
+.autocom{
+  margin-left: 8px;
+}
 .actionButton{
   margin-top: 15px;
   margin-right: 76.9%;
-}
-.vertical-divider {
-  padding-top: 70px;
-  position: absolute;
-  width: 100px;
-  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
-  transform: rotate(90deg);
-  padding-bottom: 0px;
 }
 .last
 {
@@ -69,7 +65,7 @@ padding-top: 10px;
 }
 .watchlistDialog {
   width: 550px;
-  height: 350px;
+  height: 500px;
 }
 .padding
 {
