@@ -9,9 +9,7 @@ angular.module('tattva').directive('watchlistmap', function() {
 
                 //watch for data updation from form on DOM
                 scope.$watch('watchdata', function(nv, ov) {
-                  console.log(nv.namespace,"--------",ov.namespace);
-                if(nv.namespace!==ov.namespace || nv.stream1==ov.stream ||nv.expressions.length!=ov.expressions.length)
-                    watchdata = scope.watchdata;
+              watchdata=scope.watchdata;
                     drawmap();
                 }, true);
 
@@ -82,23 +80,28 @@ angular.module('tattva').directive('watchlistmap', function() {
                         name: "output",
                         color: "#00cc00"
                     }];
-                    // if((watchdata.expressions).length!==0)
-                    if (watchdata.expressions.length !== 0) {
+
+                    if (watchdata.namespace !== "") {
                         mainroot = {
                             "name": "",
                             "color": colorcode[0].color,
                             "children": []
                         };
                         mainroot.name = watchdata.namespace;
+                        //streams node
+                        if(watchdata.stream !== "")
+                        {
                         (mainroot.children).push({
                             "name": watchdata.stream,
                             "color": colorcode[1].color,
                             "children": []
                         });
+                      }
                         var expressions = watchdata.expressions;
                         var parent;
                         parent=mainroot.children[0];
                         console.log(mainroot.children[0]);
+                        //expressions node
                         for (var i = 0; i < expressions.length; i++) {
                             // if(expressions[i].inputStream!=="" && expressions[i].inputStream!==mainroot.children[0].name){
                             //   (mainroot.children).push({"name":expressions[i].inputStream, "color":colorcode[1].color, "children":[]});
@@ -119,12 +122,13 @@ angular.module('tattva').directive('watchlistmap', function() {
                                 });
                                 parent=parent.children[0];
 
-                                //  }
-
-                                // }
-
                         }
-                        parent.children[0]={ "name": watchdata.output, "color":colorcode[3].color,"children":[] }
+                        //publishers node
+                        if(watchdata.publisher.length != 0)
+                        {
+                          for(var k=0; k < watchdata.publisher.length ; k++)
+                          parent.children[k]={ "name": watchdata.publisher[k], "color":colorcode[3].color,"children":[] }
+                        }
 
 
                         root = mainroot;
