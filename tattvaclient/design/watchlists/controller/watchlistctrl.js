@@ -2,8 +2,8 @@ angular.module("tattva")
 .controller('WatchListCtrl', ['$scope','$http', '$rootScope','$mdDialog','$timeout', '$q', '$log',"$state",
 function( $scope,$http,$rootScope,$mdDialog,$timeout, $q, $log,$state) {
 $scope.wlstdef = {
-  namespace:{},
-  stream:{},
+  namespace:"",
+  stream:"",
   expressions: [],
   publisher:[]
 };

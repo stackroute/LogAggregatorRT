@@ -9,6 +9,8 @@ angular.module('tattva').directive('watchlistmap', function() {
 
                 //watch for data updation from form on DOM
                 scope.$watch('watchdata', function(nv, ov) {
+                  console.log(nv.namespace,"--------",ov.namespace);
+                if(nv.namespace!==ov.namespace || nv.stream1==ov.stream ||nv.expressions.length!=ov.expressions.length)
                     watchdata = scope.watchdata;
                     drawmap();
                 }, true);
@@ -25,7 +27,7 @@ angular.module('tattva').directive('watchlistmap', function() {
                     i = 0,
                     root;
                 width = 700;
-                height = 150;
+                height = 100;
 
                 //specify type of d3
                 var tree = d3.layout.tree().size([height, width]);
