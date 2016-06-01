@@ -50,7 +50,6 @@ app.put('/namespace/',jsonParser,function (request, response) {
   var body1=request.body;
   console.log("body1 put" , body1);//in body1 we have the data to be stored in the database
 });
-
 app.get('/namespace/', function(req, res){
   console.log("namespace name from server",req.query.name);
   // return req.params.name;
@@ -196,6 +195,10 @@ app.post('/sendslidedata',function (request, response) {
   console.log("helo");
   var body1=request.body;
   console.log("body1 = "+body1);
+});
+app.get('/OutcomeOptions',function(req,res)
+{
+res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/outcomeOption.json'));
 });
 // app.use('/', routes);
 // app.use('/users', users);

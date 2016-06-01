@@ -1,7 +1,9 @@
 angular.module("tattva")
-.controller('WatchListCtrl', ['$scope','$http', '$rootScope','$mdDialog','$timeout', '$q', '$log',"$state",
-function( $scope,$http,$rootScope,$mdDialog,$timeout, $q, $log,$state) {
+.controller('WatchListCtrl', ['$scope','$http', '$rootScope','$mdDialog','$timeout', '$q', '$log',"$state",'loadExprData',
+function( $scope,$http,$rootScope,$mdDialog,$timeout, $q, $log,$state,loadExprData) {
 $scope.wlstdef = {
+  namespace:{},
+  stream:{},
   expressions: [],
   publisher:[]
 };
@@ -24,7 +26,10 @@ $scope.wlstdef = {
       },
     };
     $scope.index = 0;
-    var z;
+    loadExprData.getOutcomeOptions().then(function(response){
+      $scope.getOutcomeOptions=response;
+        console.log($scope.getOutcomeOptions);
+});
     if(isNaN(index)){
         $scope.index = $scope.wlstdef.expressions.length;
           console.log($scope.index);
@@ -43,9 +48,8 @@ $scope.wlstdef = {
         $scope.index = index+1;
       }
       $scope.wlstdef.expressions.splice($scope.index,0,newExpr);
-    },
-
-$scope.savewatchlist=function()
+    }
+  $scope.savewatchlist=function()
 {
   console.log("hi");
 

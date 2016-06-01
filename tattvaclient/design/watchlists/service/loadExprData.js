@@ -47,9 +47,7 @@ return response.data
 }
 
 this.getoperatorOption=function(){
-  return $http.get('/operatorOption').then(function(response){
-    return response.data
-});
+  return $http.get('/operatorOption');
 }
 
 
@@ -59,4 +57,12 @@ this.getDataFields=function(namespaceName){
     }
  return $http.get('/namespace',config);
 }
+
+this.getOutcomeOptions=function(){
+return $http.get('/OutcomeOptions').then(function(response){
+return response.data;
+});
+}
+
+
 }]);
