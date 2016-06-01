@@ -224,53 +224,37 @@
 <md-button id="watchlistpadding" class="md-raised" aria-label=""  ng-click="addNewExpression()">Add Expression</md-button>
 </div>
 
-<div layout="row" class="publishlayout" flex-offset="10">
-  <div flex="20" hide-xs hide-sm hide-md>
-    <md-subheader>Manage output publishing</md-subheader>
-  </div>
+<div layout="row" hide-xs hide-sm hide-md layout-align="center center">
+  <md-subheader>Manage output publishing</md-subheader>
+</div>
 
-  <div id="watchListnamespace"  ng-controller="output" flex="40">
-    <div layout="row">
-      <md-checkbox ng-model="saveToDB" aria-label="save To DB" flex="45">
+<div class="publishlayout" flex-offset="10">
+  <div id="watchListnamespace" layout="row" ng-controller="output" >
+    <div flex="32">
+      <md-checkbox ng-model="saveToDB" ng-class="{'active': isActive}" ng-change="actionButton()" aria-label="save To DB">
         Save to Database
       </md-checkbox>
-      <md-icon ng-if="saveToDB" ng-click="opneSaveToDBDialogWindow()" class="md-primary material-icons">settings</md-icon>
+        <md-icon flex-offset="10" ng-click="(saveToDB)?opneSaveToDBDialogWindow():''" class="md-primary material-icons">
+          settings
+        </md-icon>
     </div>
-    <div layout="row">
-      <md-checkbox ng-model="outputStream" aria-label="save To DB" flex="45">
+    <div flex="32">
+      <md-checkbox ng-change="actionButton();" ng-model="outputStream" ng-class="{'active': isActive}" aria-label="save To DB">
         Output to Output Stream
       </md-checkbox>
-      <md-icon ng-if="outputStream" ng-click="opneOutputStreamDialog()" class="md-primary material-icons">settings</md-icon>
+        <md-icon flex-offset="10" ng-click="(outputStream)?opneOutputStreamDialog():''" class="md-primary material-icons">
+          settings
+        </md-icon>
     </div>
-    <div layout="row">
-      <md-checkbox ng-model="publishToDashboard" aria-label="save To DB" flex="45">
+    <div flex="32">
+      <md-checkbox ng-change="actionButton()" ng-model="publishToDashboard" ng-class="{'active': isActive}" aria-label="save To DB">
         Publish to Dashboard
       </md-checkbox>
-      <md-icon ng-if="publishToDashboard" ng-click="opnePublisherDialogWindow()" class="md-primary material-icons">settings</md-icon>
+        <md-icon flex-offset="10" ng-click="(publishToDashboard)?opnePublisherDialogWindow():''" class="material-icons">
+          settings
+        </md-icon>
     </div>
-
-    <!-- <md-autocomplete flex-offset="5" flex="80"
-    required md-input-name="atoCmpOutput"
-    ng-disabled="ctrl1.isDisabled"
-    md-no-cache="ctrl1.noCache"
-    md-selected-item="ctrl1.selectedItem"
-    md-search-text-change="ctrl1.searchTextChange(ctrl.searchText)"
-    md-search-text="ctrl1.searchText"
-    md-selected-item-change="ctrl1.selectedItemChange(item)"
-    md-items="item in ctrl1.querySearch(ctrl.searchText)"
-    md-item-text="item"
-    md-min-length="0">
-    <md-item-template>
-      <span md-highlight-text="ctrl1.searchText" md-highlight-flags="^i">{{item}}</span>
-    </md-item-template>
-    <div ng-messages="watchlistcreate.atoCmpOutput.$error" ng-if="watchlistcreate.atoCmpOutput.$touched">
-      <div ng-message="required">This field is required</div>
-    </div>
-    <md-not-found>
-      No namespace matching "{{ctrl1.searchText}}" were found.
-    </md-not-found>
-  </md-autocomplete> -->
-</div>
+  </div>
 </div>
 
 <div class="watchlistlayout">
