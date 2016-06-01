@@ -79,7 +79,7 @@
 
 <div>
 <md-whiteframe class="md-whiteframe-2dp" layout="column" >
- <md-subheader class="watchmapheader"><span class="md-body-1" flex-offset="40">Watchlist Flow Map</span></md-subheader>
+ <md-subheader class="watchmapheader subtitle"><span class="md-body-1" flex-offset="40">Watchlist Flow Map</span></md-subheader>
   <watchlistmap watch="wlstdef" flex></watchlistmap>
 </md-whiteframe>
 </div>
@@ -195,7 +195,7 @@
              </md-option>
            </md-select>
          </md-input-container>
-        <div class="label" flex-offset="30" flex="90">
+        <div class="label" flex-offset="30" flex="90" flex-offset-md="10" flex-offset-sm="10">
          <md-checkbox ng-model="expr.labelData">Label Data</md-checkbox>
             </div>
 </div>
@@ -223,31 +223,38 @@
 </div>
 <md-button flex="100" id="watchlistpadding" class="md-raised" aria-label=""  ng-click="addNewExpression()">Add Expression</md-button>
 </div>
-<div layout="row" class="publishlayout" flex-offset="10">
-  <div flex="20" hide-xs hide-sm hide-md>
-    <md-subheader>Manage output publishing</md-subheader>
-  </div>
 
-  <div id="watchListnamespace"  ng-controller="output" flex="40">
-    <div layout="row">
-      <md-checkbox ng-model="saveToDB" aria-label="save To DB" flex="45">
+<div layout="row" hide-xs hide-sm hide-md layout-align="center center">
+  <md-subheader>Manage output publishing</md-subheader>
+</div>
+
+<div class="publishlayout" flex-offset="10">
+  <div id="watchListnamespace" layout="row" ng-controller="output" >
+    <div flex="32">
+      <md-checkbox ng-model="saveToDB" ng-class="{'active': isActive}" ng-change="actionButton()" aria-label="save To DB">
         Save to Database
       </md-checkbox>
-      <md-icon ng-if="saveToDB" ng-click="opneSaveToDBDialogWindow()" class="md-primary material-icons">settings</md-icon>
+        <md-icon flex-offset="10" ng-click="(saveToDB)?opneSaveToDBDialogWindow():''" class="md-primary material-icons">
+          settings
+        </md-icon>
     </div>
-    <div layout="row">
-      <md-checkbox ng-model="outputStream" aria-label="save To DB" flex="45">
+    <div flex="32">
+      <md-checkbox ng-change="actionButton();" ng-model="outputStream" ng-class="{'active': isActive}" aria-label="save To DB">
         Output to Output Stream
       </md-checkbox>
-      <md-icon ng-if="outputStream" ng-click="opneOutputStreamDialog()" class="md-primary material-icons">settings</md-icon>
+        <md-icon flex-offset="10" ng-click="(outputStream)?opneOutputStreamDialog():''" class="md-primary material-icons">
+          settings
+        </md-icon>
     </div>
-    <div layout="row">
-      <md-checkbox ng-model="publishToDashboard" aria-label="save To DB" flex="45">
+    <div flex="32">
+      <md-checkbox ng-change="actionButton()" ng-model="publishToDashboard" ng-class="{'active': isActive}" aria-label="save To DB">
         Publish to Dashboard
       </md-checkbox>
-      <md-icon ng-if="publishToDashboard" ng-click="opnePublisherDialogWindow()" class="md-primary material-icons">settings</md-icon>
+        <md-icon flex-offset="10" ng-click="(publishToDashboard)?opnePublisherDialogWindow():''" class="material-icons">
+          settings
+        </md-icon>
     </div>
-</div>
+  </div>
 </div>
 <div class="watchlistlayout">
   <md-button type="submit" class="md-raised md-primary">OK</md-button>

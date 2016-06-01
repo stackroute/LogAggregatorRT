@@ -97,8 +97,6 @@ g:hover > .function-btn{
 .function-bg{
   cursor: pointer;
 }
-
-.watchmapheader
-{
-  background-color: #d9e5f2;
-}
+ .watchmapheader span.md-subheader-content{
+   height:8px;
+ }

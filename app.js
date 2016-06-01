@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var mongoose=require('mongoose');
 var fs=require("fs");
 
 var jsonParser=bodyParser.json();
@@ -72,7 +72,7 @@ app.get('/namespace/', function(req, res){
         },
         {
           "fieldAlias":"hitsPerSecond",
-          "fieldName":"Number of hits per second",
+          "fieldName":" second",
           "fieldType":"measure"
         }
       ]
@@ -152,7 +152,7 @@ app.get('/namespace/', function(req, res){
   "dataformat":[
     {"_id":0,
     "fieldAlias":"method",
-    "fieldName":"methodName",
+    "fieldName":"Name",
     "fieldType":"dimension"
   },
   {"_id":1,
