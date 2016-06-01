@@ -1,7 +1,7 @@
 angular.module('tattva').directive('watchlistmap', function() {
     return {
         scope: {
-            watchdata: "=watch"
+            watchdata: "<watch"
         },
         link: function(scope, element, attrs) {
 
@@ -78,6 +78,9 @@ angular.module('tattva').directive('watchlistmap', function() {
                     }, {
                         name: "expressions",
                         color: "#871287"
+                    }, {
+                        name: "output",
+                        color: "#00cc00"
                     }];
                     // if((watchdata.expressions).length!==0)
                     if (watchdata.expressions.length !== 0) {
@@ -121,6 +124,7 @@ angular.module('tattva').directive('watchlistmap', function() {
                                 // }
 
                         }
+                        parent.children[0]={ "name": watchdata.output, "color":colorcode[3].color,"children":[] }
 
 
                         root = mainroot;
