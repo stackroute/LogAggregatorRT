@@ -73,7 +73,7 @@ app.get('/namespace/', function(req, res){
         },
         {
           "fieldAlias":"hitsPerSecond",
-          "fieldName":"Number of hits per second",
+          "fieldName":" second",
           "fieldType":"measure"
         }
       ]
@@ -153,7 +153,7 @@ app.get('/namespace/', function(req, res){
   "dataformat":[
     {"_id":0,
     "fieldAlias":"method",
-    "fieldName":"methodName",
+    "fieldName":"Name",
     "fieldType":"dimension"
   },
   {"_id":1,
