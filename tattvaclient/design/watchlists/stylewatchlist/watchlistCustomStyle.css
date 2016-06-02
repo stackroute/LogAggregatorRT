@@ -6,7 +6,7 @@ margin-top: 2%;
 {
 background-color:#404040;
 border-radius: 4px;
-margin:8px;
+margin:1%;
 padding: 20px;
 color:#A6E22E;
 }
@@ -15,8 +15,8 @@ color:#A6E22E;
 {
 background-color:#404040;
 border-radius: 4px;
-margin:8px;
-padding: 20px;
+margin:1%;
+padding: 1%;
 color:#A6E22E;
 width:80%;
 }
@@ -56,10 +56,6 @@ display: none;
 .watchlistpadding {
   margin-top: 3% !important;
 }
-.actionButton{
-  margin-top: 15px;
-  margin-right: 73.5%;
-}
 .vertical-divider {
   padding-top: 4.6%;
   width: 6%;
@@ -80,6 +76,10 @@ padding-top: 10px;
 .watchlistDialog {
   width: 550px;
   height: 500px;
+}
+.outputDialog{
+  width: 45%;
+  height: 100%;
 }
 .padding
 {
