@@ -51,8 +51,8 @@ $scope.wlstdef = {
     }
   $scope.savewatchlist=function()
 {
-// console.log($scope.wlstdef);
-saveToDB.savewatchlistdata(watchlistData);
+saveToDB.savewatchlistdata($scope.wlstdef);
+$state.go("design.watchlist");
 }
 }
 ]);

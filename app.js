@@ -24,6 +24,7 @@ var jsonParser = bodyParser.json();
 var mongoose = require( 'mongoose' );
 var dbURI = 'mongodb://localhost/wipro';
 // var dbURI = 'mongodb://172.23.238.253:32769/wipro';
+var watchlist_router = require(path.join(__dirname,'/tattvaserver/design/watchlists/watchlist_routes.js'));
 mongoose.connect(dbURI);
 mongoose.connection.on('connected', function () {  console.log('Mongoose connected to ' + dbURI); });
 mongoose.connection.on('error',function (err) {  console.log('Mongoose connection error: ' + err); });
@@ -35,7 +36,6 @@ process.exit(0);
  });
  });
 
-var watchlist_router = require('./tattvaserver/design/watchlists/watchlist_routes.js');
 app.use('/watchlist', watchlist_router);
 //end of connection
 
