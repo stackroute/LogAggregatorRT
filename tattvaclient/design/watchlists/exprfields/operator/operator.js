@@ -26,7 +26,7 @@ angular.module("tattva")
     expr.watch.operator = item;
   }
   function loadAll() {
-    var operator = loadExprData.getoperatorOption();
+    var operator = loadExprData.getoperatorOption().then(function(response){return response.data});
     return operator;
   }
   function createFilterFor(query) {

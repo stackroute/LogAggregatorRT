@@ -19,6 +19,25 @@ var JSONparser = bodyParser.json();
 
 var jsonParser = bodyParser.json();
 
+//mongoose connection
+//Mongoose connection
+var mongoose = require( 'mongoose' );
+var dbURI = 'mongodb://localhost/wipro';
+// var dbURI = 'mongodb://172.23.238.253:32769/wipro';
+mongoose.connect(dbURI);
+mongoose.connection.on('connected', function () {  console.log('Mongoose connected to ' + dbURI); });
+mongoose.connection.on('error',function (err) {  console.log('Mongoose connection error: ' + err); });
+mongoose.connection.on('disconnected', function () {  console.log('Mongoose disconnected'); });
+process.on('SIGINT', function() {
+mongoose.connection.close(function () {
+console.log('Mongoose disconnected through app termination');
+process.exit(0);
+ });
+ });
+
+var watchlist_router = require('./tattvaserver/design/watchlists/watchlist_routes.js');
+app.use('/watchlist', watchlist_router);
+//end of connection
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
@@ -33,6 +52,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_modules')));
 app.use(express.static(path.join(__dirname, 'tattvaclient')));
+app.use(express.static(path.join(__dirname, 'tattvaserver')));
 
 app.use('/', routes);
 app.use('/users', users);
@@ -52,8 +72,6 @@ app.put('/namespace/',jsonParser,function (request, response) {
 });
 app.get('/namespace/', function(req, res){
   console.log("namespace name from server",req.query.name);
-  // return req.params.name;
-  // res.sendFile(path.join(__dirname, 'public/json/listnamespace.json'));
 
   var data=[
     {
@@ -216,7 +234,7 @@ res.sendFile(path.join(__dirname,'/public/json/fieldOption.json'));
 app.get('/operatorOption',function(req,res)
 {
 res.sendFile(path.join(__dirname,'/public/json/operatorOption.json'))
-})
+});
 
 app.get('/viewInstance', function(req, res){
   res.sendFile(path.join(__dirname, '/public/json/instance.json'));

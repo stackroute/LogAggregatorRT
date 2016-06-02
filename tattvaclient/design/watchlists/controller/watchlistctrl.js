@@ -1,6 +1,6 @@
 angular.module("tattva")
-.controller('WatchListCtrl', ['$scope','$http', '$rootScope','$mdDialog','$timeout', '$q', '$log',"$state",'loadExprData',
-function( $scope,$http,$rootScope,$mdDialog,$timeout, $q, $log,$state,loadExprData) {
+.controller('WatchListCtrl', ['$scope','$http', '$rootScope','$mdDialog','$timeout', '$q', '$log',"$state",'loadExprData','saveToDB',
+function( $scope,$http,$rootScope,$mdDialog,$timeout, $q, $log,$state,loadExprData,saveToDB) {
 $scope.wlstdef = {
   namespace:"",
   stream:"",
@@ -51,8 +51,8 @@ $scope.wlstdef = {
     }
   $scope.savewatchlist=function()
 {
-  console.log("hi");
-
+// console.log($scope.wlstdef);
+saveToDB.savewatchlistdata(watchlistData);
 }
 }
 ]);

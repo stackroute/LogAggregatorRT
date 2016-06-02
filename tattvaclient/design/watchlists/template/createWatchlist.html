@@ -196,7 +196,7 @@
            </md-select>
          </md-input-container>
         <div class="label" flex-offset="30" flex="90" flex-offset-md="10" flex-offset-sm="10">
-         <md-checkbox ng-model="expr.labelData">Label Data</md-checkbox>
+         <md-checkbox ng-model="expr.labelData">Highlight Matches</md-checkbox>
             </div>
 </div>
 </md-whiteframe>
@@ -225,7 +225,7 @@
 </div>
 
 <div layout="row" hide-xs hide-sm hide-md layout-align="center center">
-  <md-subheader>Manage output publishing</md-subheader>
+  <md-subheader><strong>Manage output publishing</strong></md-subheader>
 </div>
 
 <div class="publishlayout" flex-offset="10">
@@ -239,7 +239,7 @@
         </md-icon>
     </div>
     <div flex="32">
-      <md-checkbox ng-change="actionButton();" ng-model="outputStream" ng-class="{'active': isActive}" aria-label="save To DB">
+      <md-chec kbox ng-change="actionButton();" ng-model="outputStream" ng-class="{'active': isActive}" aria-label="save To DB">
         Output to Output Stream
       </md-checkbox>
         <md-icon flex-offset="10" ng-click="(outputStream)?opneOutputStreamDialog():''" class="md-primary material-icons">
