@@ -4,15 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var fs=require("fs");
-
 var jsonParser=bodyParser.json();
-
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var watchlistslide_router=require('./tattvaserver/dashboard/watchlistroutes');
 var app = express();
 
 var JSONparser = bodyParser.json();
@@ -34,11 +30,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_modules')));
 app.use(express.static(path.join(__dirname, 'tattvaclient')));
 
+
 app.use('/', routes);
 app.use('/users', users);
+app.use('/watchlistslide',watchlistslide_router);
 
 var data1=[];
-
+//Mongoose connection
+var mongoose = require( 'mongoose' );
+var dbURI = 'mongodb://localhost/wipro';
+// var dbURI = 'mongodb://172.23.238.253:32769/wipro';
+mongoose.connect(dbURI);
+mongoose.connection.on('connected', function () {  console.log('Mongoose connected to ' + dbURI); });
+mongoose.connection.on('error',function (err) {  console.log('Mongoose connection error: ' + err); });
+mongoose.connection.on('disconnected', function () {  console.log('Mongoose disconnected'); });
+process.on('SIGINT', function() {  mongoose.connection.close(function () {    console.log('Mongoose disconnected through app termination');    process.exit(0);  }); });
+//connection
 app.get('/namespaces', function(req, res){
   res.sendFile(path.join(__dirname, 'public/json/listnamespace.json'));
 });
@@ -311,11 +318,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-
-
-
-/*ui-router*/
 
 
 app.get('/submitInstance',function(req,res){
