@@ -78,21 +78,21 @@
 <!--================================Watchlist d3 Mindmap================================= --->
 
 <div>
-<md-whiteframe class="md-whiteframe-2dp" layout="column" >
- <md-subheader class="watchmapheader subtitle"><span class="md-body-1" flex-offset="40">Watchlist Flow Map</span></md-subheader>
-  <watchlistmap watch="wlstdef" flex></watchlistmap>
-</md-whiteframe>
+  <md-whiteframe class="md-whiteframe-2dp" layout="column" >
+    <md-subheader class="watchmapheader subtitle"><span class="md-body-1" flex-offset="40">Watchlist Flow Map</span></md-subheader>
+    <watchlistmap watch="wlstdef" flex></watchlistmap>
+  </md-whiteframe>
 </div>
 
 
 <!-- =============================== STARTING TO LOOP ==================================== --->
-<div class="watchListnamespace" ng-repeat-start="expr in wlstdef.expressions">
-<md-subheader flex class="subtitle">
-<span><strong>{{expr.tag}}</strong></span>
-</md-subheader>
+<div class="watchListnamespace" ng-repeat-start="expr in wlstdef.expressions" layout-sm="column" layout-xs="column" >
   <md-whiteframe class="md-whiteframe-3dp" layout flex="100">
     <!-- <div class="flex container" layout="row" > -->
     <div layout="column" flex="50">
+      <div class="exprHeading">
+        <label>{{expr.tag}}</label>
+      </div>
       <div class="lfieldwatchlist watchlistAutoComplete" ng-controller="lfield as ctrl">
         <md-autocomplete class="autocom" flex="90"
         required md-input-name="atoCmpLfield"
@@ -106,7 +106,7 @@
         md-items="item in ctrl.querySearch(ctrl.searchText)"
         md-item-text="item.name"
         md-min-length="0"
-        placeholder="Select LField"
+        placeholder="Left Hand Expression"
         md-menu-class="autocomplete-custom-template">
         <md-item-template>
           <span class="item-title">
@@ -163,7 +163,7 @@
     md-items="item in ctrl.querySearch(ctrl.searchText)"
     md-item-text="item.name"
     md-min-length="0"
-    placeholder="RField"  md-menu-class="autocomplete-custom-template">
+    placeholder="Right Hand Expression"  md-menu-class="autocomplete-custom-template">
     <md-item-template>
       <span class="item-title">
         <md-icon class="material-icons">{{item.icon}}</md-icon>
@@ -186,26 +186,28 @@
     </md-not-found>
   </md-autocomplete>
 </div>
-<br/>
-<div layout="row" flex>
-<md-input-container flex="50">
-           <label>Outcome Forwarding</label>
-           <md-select ng-model="expr.outcomeForwarding">
-             <md-option ng-repeat="object in getOutcomeOptions">{{object}}
-             </md-option>
-           </md-select>
-         </md-input-container>
-        <div class="label" flex-offset="30" flex="90" flex-offset-md="10" flex-offset-sm="10">
-         <md-checkbox ng-model="expr.labelData">Highlight Matches</md-checkbox>
-            </div>
-</div>
 </md-whiteframe>
 </div>
 <div layout="column" flex="50">
-  <div flex="80" class="preview" spellcheck="false">
+  <div class="exprHeading">
+    <label>Formula</label>
+  </div>
+  <div class="preview" flex="50" spellcheck="false">
     <span style="color:#A6E22E">{{expr.watch.lfield.exprAsText}}</span>
     <span style="color:red">{{expr.watch.operator}}</span>
     <span style="color:rgb(0, 255, 255)">{{expr.watch.rfield.exprAsText}}</span>
+  </div>
+  <div layout="row">
+    <md-input-container>
+      <label>Outcome Forwarding</label>
+      <md-select ng-model="expr.outcomeForwarding">
+        <md-option ng-repeat="object in getOutcomeOptions">{{object}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+    <div class="label" flex-offset="10" flex="90" flex-offset-md="10" flex-offset-sm="10">
+      <md-checkbox ng-model="expr.labelData">Highlight Matches</md-checkbox>
+    </div>
   </div>
 </div>
 
@@ -216,8 +218,8 @@
   <md-button class="md-raised md-mini" ng-show="wlstdef.expressions.length>1 && !$last" ng-click="addNewExpression($index,expr);" aria-label="">ADD</md-button>
   <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
   <div  layout="row" layout-align="start center" flex>
-<md-button style="text-align:left" ng-class="{'last':$last}" class="md-raised">Join With {{expr.joinWith}}</md-button>
-<!-- <md-button style="text-align:left" class="md-raised">And With {{expr.joinWith}}</md-button> -->
+    <md-button style="text-align:left" ng-class="{'last':$last}" class="md-raised">Join With {{expr.joinWith}}</md-button>
+    <!-- <md-button style="text-align:left" class="md-raised">And With {{expr.joinWith}}</md-button> -->
     <span  flex></span>
   </div>
 </div>
@@ -229,30 +231,30 @@
 </div>
 
 <div class="publishlayout" flex-offset="10">
-  <div id="watchListnamespace" layout="row" ng-controller="output" >
+  <div id="watchListnamespace" layout="row" ng-controller="WatchListCtrl" >
     <div flex="32">
-      <md-checkbox ng-model="saveToDB" ng-class="{'active': isActive}" ng-change="actionButton()" aria-label="save To DB">
+      <md-checkbox ng-model="saveToDB" ng-change="actionButton()">
         Save to Database
       </md-checkbox>
-        <md-icon flex-offset="10" ng-click="(saveToDB)?opneSaveToDBDialogWindow():''" class="md-primary material-icons">
-          settings
-        </md-icon>
+      <md-icon ng-show="saveToDB" flex-offset="10" ng-click="(saveToDB)?opneSaveToDBDialogWindow():''" class="function-bg md-primary material-icons">
+        settings
+      </md-icon>
     </div>
     <div flex="32">
-      <md-chec kbox ng-change="actionButton();" ng-model="outputStream" ng-class="{'active': isActive}" aria-label="save To DB">
+      <md-checkbox ng-change="actionButton()" ng-model="outputStream">
         Output to Output Stream
       </md-checkbox>
-        <md-icon flex-offset="10" ng-click="(outputStream)?opneOutputStreamDialog():''" class="md-primary material-icons">
-          settings
-        </md-icon>
+      <md-icon ng-show="outputStream" flex-offset="10" ng-click="(outputStream)?opneOutputStreamDialog():''" class="function-bg md-primary material-icons">
+        settings
+      </md-icon>
     </div>
     <div flex="32">
-      <md-checkbox ng-change="actionButton()" ng-model="publishToDashboard" ng-class="{'active': isActive}" aria-label="save To DB">
+      <md-checkbox ng-change="actionButton()" ng-model="publishToDashboard">
         Publish to Dashboard
       </md-checkbox>
-        <md-icon flex-offset="10" ng-click="(publishToDashboard)?opnePublisherDialogWindow():''" class="material-icons">
-          settings
-        </md-icon>
+      <md-icon ng-show="publishToDashboard" flex-offset="10" ng-click="(publishToDashboard)?opnePublisherDialogWindow():''" class="function-bg md-primary material-icons">
+        settings
+      </md-icon>
     </div>
   </div>
 </div>

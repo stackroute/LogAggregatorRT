@@ -46,8 +46,6 @@ body{
 mind-map{
   display:block;
 }
-
-
 .svgsize{
   background: #fff;
 }
@@ -99,4 +97,7 @@ g:hover > .function-btn{
 }
  .watchmapheader span.md-subheader-content{
    height:8px;
+ }
+ .exprHeading{
+   margin: 1% 0% 0% 1%;
  }
