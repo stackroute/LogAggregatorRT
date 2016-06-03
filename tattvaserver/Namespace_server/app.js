@@ -9,17 +9,16 @@ var fs=require("fs");
 var jsonParser=bodyParser.json();
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var function_router = require('./tattvaserver/functions/functions_routes.js');
 var app = express();
 var JSONparser = bodyParser.json();
 var jsonParser = bodyParser.json();
-var sideNav_router = require('./tattvaserver/Home/home_routes.js');
-var watchlist_router = require('./tattvaserver/watchlists/watchlist_routes.js');
-var namespace_router = require('./tattvaserver/namespace/namespaces_routes.js');
+var namespace_router = require('/tattvaserver/namespace/namespaces_routes.js');
+var function_router = require('/tattvaserver/functions/functions_routes.js');
+var watchlist_router = require(path.join(__dirname,'/tattvaserver/watchlists/watchlist_routes.js'));
 
+//Mongoose connection
 var mongoose = require( 'mongoose' );
 var dbURI = 'mongodb://localhost/wipro';
-var watchlist_router = require(path.join(__dirname,'/tattvaserver/watchlists/watchlist_routes.js'));
 mongoose.connect(dbURI);
 mongoose.connection.on('connected', function () {  console.log('Mongoose connected to ' + dbURI); });
 mongoose.connection.on('error',function (err) {  console.log('Mongoose connection error: ' + err); });
@@ -31,10 +30,13 @@ process.exit(0);
  });
  });
 
+
 app.use('/watchlist', watchlist_router);
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');
 
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,12 +44,26 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_modules')));
 app.use(express.static(path.join(__dirname, 'tattvaclient')));
+
 app.use('/', routes);
 app.use('/users', users);
+app.use('/namespaces', namespace_router);
+app.get('/viewwatchlist', function(req, res){
+  res.sendFile(path.join(__dirname, 'public/json/watchlist.json'));
+});
+
+app.get('/function',function(req,res){
+res.sendFile(path.join(__dirname, 'public/jsonData/functiondatadisplay.json'))
+})
 app.use('/function', function_router);
+var sideNav_router = require('./tattvaserver/Home/home_routes.js');
 app.use('/sideNav', sideNav_router);
+
+var watchlist_router = require('./tattvaserver/watchlists/watchlist_routes.js');
 app.use('/watchlist', watchlist_router);
-app.use('/namespaces',namespace_router);
+
+var mongoose = require( 'mongoose' );
+var dbURI = 'mongodb://localhost/wipro';
 // var dbURI = 'mongodb://172.23.238.253:32769/wipro';
 app.post('/createNamespacePost',jsonParser,function (request, response) {
   var body1=request.body;
@@ -153,6 +169,12 @@ app.post('/createdialogInstance',jsonParser,function(req,res){
   });
 });
 
+
+// app.get('/func_link_data', function(req, res){
+//   res.sendFile(path.join(__dirname, 'public/data/function_data_display.json'));
+// });/*functions*/
+
+// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -201,6 +223,10 @@ app.post('/createdialogInstance',jsonParser,function(req,res){
 
 });
 
+// error handlers
+
+// development error handler
+// will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -211,6 +237,8 @@ if (app.get('env') === 'development') {
   });
 }
 
+// production error handler
+// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
