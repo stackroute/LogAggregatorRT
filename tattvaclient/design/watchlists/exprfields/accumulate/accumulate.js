@@ -1,14 +1,20 @@
 angular.module("tattva")
 .controller('AccumulateCtrl',['$scope','$mdDialog','fieldData','loadExprData',function($scope,$mdDialog,fieldData,loadExprData)
 {
-var functionOption=loadExprData.getFunction().then(function(response){var data=response.data;return data}).then(function(data){
-   $scope.functioName=[];
-    for(i in data)
-    {
-      $scope.functioName.push(data[i].fun_name)
-    }
-    ;}
-  );
+  $scope.function=[];
+  loadExprData.getFunction().then(function(result){
+  var data=result.data;
+  console.log(data);
+  return data;
+  }).then(function(data)
+  {
+  for(i in data)
+  {
+  $scope.function.push(data[i].name);
+  }
+  console.log($scope.function);
+  });
+
   $scope.fieldData=fieldData;
   $scope.hide = function() {
     $mdDialog.hide();
