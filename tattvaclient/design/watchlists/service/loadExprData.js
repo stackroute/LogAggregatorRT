@@ -7,7 +7,7 @@ return [{"Name":"PI","Value":"3.14"},{"Name":"e","Value":"2.74"},{"Name":"φ","V
 }
 
 this.getFunction=function(){
-return $http.get("/function")
+return $http.get("/function");
 }
 
 
