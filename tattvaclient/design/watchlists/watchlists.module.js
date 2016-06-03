@@ -17,7 +17,7 @@ angular.module('tattva')
     {
       url:'detailview/:watchlistobject',
       templateUrl: "design/watchlists/template/watchlistDetailedView.html",
-      controller: 'WatchListCtrl'
+      controller: 'editWatchlistCtrl'
     })
     .state('design.createwatchlist',
     {
