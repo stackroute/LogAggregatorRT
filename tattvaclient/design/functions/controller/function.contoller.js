@@ -4,7 +4,9 @@ function($scope, $http, $mdDialog) {
   $scope.tabTitle ="Function List";
   $scope.stateChange="design.addfunction"
   $scope.loadData = function() {
-    $http.get('/func_link').then(function(response){ $scope.data = response.data; });
+    $http.get('/function').then(function(response){
+      $scope.data = response.data;
+    });
   }
   $scope.loadData();
   $scope.selectedUserIndex = undefined;
@@ -50,7 +52,6 @@ function($scope, $http, $mdDialog,$stateParams) {
         if($scope.data[i].fun_name===name){
           $scope.function=$scope.data[i];
         }
-
       }
     });
   }
