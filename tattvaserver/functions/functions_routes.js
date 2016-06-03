@@ -4,9 +4,8 @@ var function_router = express.Router();
 var functions = require('./functions.js');
 
 function_router.use(function(req, res, next) {
-    console.log("we reached in the middleware-----------------------------------------------");
-    var func = [
-      {
+    console.log("we reached in the middleware-----------function------------------------------------");
+    var func = [{
         "_id" : "function:1",
         "name" : "Sum",
         "description": "This is an invalid function",
@@ -20,7 +19,7 @@ function_router.use(function(req, res, next) {
           "value": true
         }],
         "variables":"Number x,Number y",
-        "code" : "int Aggr(int x,char y){ return x+y/2};",
+        "code" : "int Aggr(int x,char y){ return x+y};",
         "createdBy":"Jasjeet",
         "editedBy":"Pooja"
       },
@@ -113,16 +112,18 @@ function_router.use(function(req, res, next) {
         "code" : "int Aggr(int x,char y){ return x+y/2};",
         "createdBy":"Jasjeet",
         "editedBy":"Pooja"
-      },
+      }
     ];
 
-    functions.collection.insert('func',onInsert);
+    functions.collection.insert(func,onInsert);
 
     function onInsert(err, docs) {
+
+      console.log("in functions");
         if (err) {
             // console.log(err);
         } else {
-            console.info('%d Sidenav is successfully stored.', docs.length);
+            console.log('%d Sidenav is successfully stored.', docs);
         }
       }
     // var fun1= new functions({
@@ -157,7 +158,7 @@ function_router.use(function(req, res, next) {
 //     res.send('hello ' + req.params.name + '!');
 // });
 function_router.get('/', function(req, res) {
-console.log("we reached in the route-------------------------------------------------------------------------------");
+console.log("we reached in the route------get-------------------------------------------------------------------------");
   functions.find({},{name:1,description:1},function (err, functionData) {
     res.send(functionData);
   })

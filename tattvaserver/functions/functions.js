@@ -1,8 +1,8 @@
 var mongoose = require( 'mongoose' );
 
 var functionSchema = new mongoose.Schema({
-  "name":{type: String, required : true, unique:true,min:2, max:20},
-  "tag":{type: String, required : true, unique: true},
+  "_id" :{type:String},
+  "name":{type: String, required:true, unique:true, min:2, max:20},
   "description":{type: String},
   "fnvartype":[
     {
