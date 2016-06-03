@@ -51,6 +51,10 @@ app.use('/function', function_router);
 
 var sideNav_router = require('./tattvaserver/Home/home_routes.js');
 app.use('/sideNav', sideNav_router);
+
+var watchlist_router = require('./tattvaserver/watchlists/watchlist_routes.js');
+app.use('/watchlist', watchlist_router);
+
 var mongoose = require( 'mongoose' );
 var dbURI = 'mongodb://localhost/wipro';
 // var dbURI = 'mongodb://172.23.238.253:32769/wipro';
