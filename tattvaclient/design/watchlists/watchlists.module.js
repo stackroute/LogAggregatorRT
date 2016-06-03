@@ -4,7 +4,7 @@ angular.module('tattva')
     $stateProvider
     .state('design.watchlist',
     {
-      url:'/displayWatchList',
+      url:'/watchlist',
       templateUrl: "/design/watchlists/template/watchlistNamespaceBasedView.html"
     })
     .state('design.watchlist.viewwatchlist',

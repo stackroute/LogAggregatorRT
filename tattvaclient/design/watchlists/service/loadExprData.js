@@ -6,23 +6,22 @@ this.getConstants=function(){
 return [{"Name":"PI","Value":"3.14"},{"Name":"e","Value":"2.74"},{"Name":"φ","Value":"1.618033988749894848204586"}]
 }
 
-
 this.getFunction=function(){
-return $http.get("/function")
+return $http.get("/function");
 }
 
 
 this.getNameSpacenames=function(){
-return namespaceFactory.getNameSpace().then(function(data){
-    var namespacename=[];
-    for(i in data)
-    {
-      namespacename.push(data[i].name)
-    }
-    return namespacename
-    ;}
-  );
+var z=namespaceFactory.getNameSpace().then(function(data){
+var z=[];
+for(i in data)
+{
+z.push(data[i].name);
 }
+return z;
+});
+return z;
+};
 
 
 this.getStreamname=function(){

@@ -3,16 +3,15 @@ var watchListSchema=new mongoose.Schema({
   "name": {type: String, required : true,index:true,min:"1"},
   "description": {type: String, required : true,min:"2"},
   "namespace":{type: String, required : true,ref:"namespace"},
-  "stream": {type: String, required : true,ref:"stream"},
+  "stream": {type: String, required : true},
   "status":{type:String,required:true},
   "expressions": [
     {
-      "tag": {type: String, required : true, unique:true},
-      "joinWith":{type: String, required : true, unique:true},
-      "joinBy":{type: String, required : true},
-      "inputStream":{type: String, required : true},
-      "output_forward":{},
-      "isHighlight":{},
+      "tag": {type: String, required : true},
+      "joinWith":{type: String},
+      "joinBy":{type: String},
+      "outcomeForwarding":{type: String},
+      "labelData":{type: String},
       "watch": {
         "lfield": {
           "fieldType": {type: String, required : true},

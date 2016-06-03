@@ -10,7 +10,7 @@
         <md-input-container flex>
           <md-select name="function" ng-model="fieldData.function" required>
             <label>Function Name</label>
-            <md-option ng-repeat="object in functioName">{{object}}</md-option>
+            <md-option ng-repeat="object in function">{{object}}</md-option>
             </md-select>
             <div ng-messages="Formfnctn.function.$error">
                 <div ng-message="required">This is required!</div>
