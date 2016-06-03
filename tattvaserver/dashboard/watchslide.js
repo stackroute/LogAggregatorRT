@@ -10,7 +10,8 @@ defaultSlide:{type:String},
 mySlides:[{
   slideName:{type:String},
   watchlists:{
-    watch_id:{type:Number}
+    watch_id:{type:Number}  
+
   }
 }]
 });

@@ -1,7 +1,7 @@
 angular.module('tattva').directive('watchlistmap', function() {
     return {
         scope: {
-            watchdata: "=watch"
+            watchdata: "<watch"
         },
         link: function(scope, element, attrs) {
 
@@ -9,8 +9,6 @@ angular.module('tattva').directive('watchlistmap', function() {
 
                 //watch for data updation from form on DOM
                 scope.$watch('watchdata', function(nv, ov) {
-                  console.log(nv.namespace,"--------",ov.namespace);
-                if(nv.namespace!==ov.namespace || nv.stream1==ov.stream ||nv.expressions.length!=ov.expressions.length)
                     watchdata = scope.watchdata;
                     drawmap();
                 }, true);
@@ -27,7 +25,7 @@ angular.module('tattva').directive('watchlistmap', function() {
                     i = 0,
                     root;
                 width = 700;
-                height = 100;
+                height = 80;
 
                 //specify type of d3
                 var tree = d3.layout.tree().size([height, width]);
@@ -63,8 +61,8 @@ angular.module('tattva').directive('watchlistmap', function() {
                 }
 
 
-                //watch to update the graph, as the json is updated
-
+                //function which is called when watch data is updated.
+                //It updates the graph, as the watclist data object is updated.
                 function drawmap() {
 
                     var mainroot = {};
@@ -78,24 +76,31 @@ angular.module('tattva').directive('watchlistmap', function() {
                     }, {
                         name: "expressions",
                         color: "#871287"
+                    }, {
+                        name: "output",
+                        color: "#00cc00"
                     }];
-                    // if((watchdata.expressions).length!==0)
-                    if (watchdata.expressions.length !== 0) {
+
+                    if (watchdata.namespace !== "") {
                         mainroot = {
                             "name": "",
                             "color": colorcode[0].color,
                             "children": []
                         };
                         mainroot.name = watchdata.namespace;
-                        (mainroot.children).push({
-                            "name": watchdata.stream,
-                            "color": colorcode[1].color,
-                            "children": []
-                        });
+                        //streams node
+                        if (watchdata.stream !== "") {
+                            (mainroot.children).push({
+                                "name": watchdata.stream,
+                                "color": colorcode[1].color,
+                                "children": []
+                            });
+                        }
                         var expressions = watchdata.expressions;
                         var parent;
-                        parent=mainroot.children[0];
+                        parent = mainroot.children[0];
                         console.log(mainroot.children[0]);
+                        //expressions node
                         for (var i = 0; i < expressions.length; i++) {
                             // if(expressions[i].inputStream!=="" && expressions[i].inputStream!==mainroot.children[0].name){
                             //   (mainroot.children).push({"name":expressions[i].inputStream, "color":colorcode[1].color, "children":[]});
@@ -103,23 +108,28 @@ angular.module('tattva').directive('watchlistmap', function() {
                             // else{
                             //  expressions[i].inputStream=mainroot.children[0].name;
                             // }
-                          //  for (var j = 0; j < (mainroot.children).length; j++) {
-                                // if(mainroot.children[j].name === expressions[i].inputStream)
-                                // {
-                                //  if(expressions[i].joinWith==="")  //joinwith task left
-                                //
+                            //  for (var j = 0; j < (mainroot.children).length; j++) {
+                            // if(mainroot.children[j].name === expressions[i].inputStream)
+                            // {
+                            //  if(expressions[i].joinWith==="")  //joinwith task left
+                            //
 
-                                (parent.children).push({
-                                    "name": expressions[i].tag,
-                                    "color": colorcode[2].color,
+                            (parent.children).push({
+                                "name": expressions[i].tag,
+                                "color": colorcode[2].color,
+                                "children": []
+                            });
+                            parent = parent.children[0];
+
+                        }
+                        //publishers node
+                        if ( watchdata.expressions.length !=0 && watchdata.publisher.length != 0) {
+                            for (var k = 0; k < watchdata.publisher.length; k++)
+                                parent.children[k] = {
+                                    "name": watchdata.publisher[k],
+                                    "color": colorcode[3].color,
                                     "children": []
-                                });
-                                parent=parent.children[0];
-
-                                //  }
-
-                                // }
-
+                                }
                         }
 
 
@@ -318,9 +328,7 @@ angular.module('tattva').directive('watchlistmap', function() {
                         })
                         .style("fill-opacity", 1e-6);
 
-
-
-                    //append Buttons under each node on hover when edit Mode is true
+                    //append Buttons under each node on hover when edit Mode is true ****pending tasks
 
                 }
             } //end of link function

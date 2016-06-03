@@ -15,19 +15,19 @@ mySlides:{
   }
 }
 });
-router.use(function(req,res,next)
-{
-  slide2.save(function (err,slide) {
-    console.log("inside save funciton");
-    if (err) {
-      console.log(err);
-    }
-    console.log("slide is saved");
-  });
-  console.log("before next");
-  next();
-});
-router.get('/', function(req, res){
+// router.use(function(req,res,next)
+// {
+//   slide2.save(function (err,slide) {
+//     console.log("inside save funciton");
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log("slide is saved");
+//   });
+//   console.log("before next");
+//   next();
+// });
+router.post('/', function(req, res){
   console.log("heleleoooo");
   res.send("This is your specific slide");
   // next();
