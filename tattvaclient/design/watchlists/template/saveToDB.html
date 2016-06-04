@@ -5,8 +5,15 @@
     </div>
   </md-toolbar>
   <md-dialog-content>
+    <div layout="row" layout-sm="column" layout-xs="column" layout-padding>
+      <div>
+        <label>Name of the watchlist</label>
+      </div>
+      <div>
+        <input ng-required="true" name="wNameforoutput" type="text" readonly="true">
+      </div>
+    </div>
   </md-dialog-content>
-
   <md-dialog-actions layout="row">
     <span flex></span>
     <md-button ng-click="cancel()">Cancel</md-button>

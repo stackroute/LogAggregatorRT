@@ -93,8 +93,9 @@ wldata:[],
       },
 
       //@TODO metdata can be a array having all other required details about the new slide being created
-      createNewSlide: function(username, slideName, slideMetaData) {
-
+      createNewSlide: function(username, slideName) {
+       console.log(slideName);
+$http.post('/createslide',slideName);
       },
 
       renameSlide: function(username, currentName, newName) {
