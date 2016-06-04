@@ -1,7 +1,7 @@
 angular.module("tattva")
 .controller('lfield',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData) {
   $scope.dialogueData={};
-console.log($scope.wlstdef.namespace);
+// console.log($scope.wlstdef.namespace);
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
@@ -9,6 +9,11 @@ console.log($scope.wlstdef.namespace);
   self.querySearch   = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
+
+  // if ( $scope.$parent.wlstdefView !== undefined) {
+  //   self.selectedItem =   $scope.$parent.wlstdefView.namespace;
+  //   console.log("Namespace name from namespace ctrl", $scope.$parent.wlstdefView.namespace);
+  // }
 // @todo Implement filter for loading data
   function querySearch (query) {
     var results = query ? "aa": self.options,

@@ -18,3 +18,22 @@ angular.module('tattva')
     return $http.get('/viewStreams')
   }
 }]);
+angular.module('tattva')
+.service('streamsservice',['$http',function($http){
+  this.saveStream=function(streamsData){
+    $http({
+      method : 'post',
+      url : '/datastream',
+      data : streamsData
+    }).success(function(data){
+      if(data.errors){
+        $scope.errorName = data.errors.name;
+        $scope.errorUserName = data.errors.username;
+        $scope.errorEmail = data.errors.email;
+      }
+      else{
+        $scope.message=data.message;
+      }
+    });
+  }
+}]);

@@ -47,11 +47,11 @@ var watchListSchema=new mongoose.Schema({
       }
     }
   ],
-    "publisher": [
-     {"publishToDashboard":{type: String}},
-     {"outputStream":{type: String}},
-     {"saveToDB":{type: String}}
-      ],
-    });
+  "publisher": [
+    {"publishToDashboard":{type: String}},
+    {"outputStream":{type: String}},
+    {"saveToDB":{type: String}}
+  ],
+});
 var watchlist = mongoose.model('watchlist', watchListSchema);
 module.exports = watchlist;

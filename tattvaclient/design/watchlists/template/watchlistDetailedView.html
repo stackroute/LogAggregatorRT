@@ -1,56 +1,59 @@
-<div layout="column" layout-sm="column" layout-xs="column" layout-padding class="watchlistlayout">
-  <div layout="row"  layout-sm="column" layout-xs="column" layout-align="space-around center" flex-offset="5">
-    <md-input-container flex="50">
-      <label>Watch List Name</label>
-      <input flex="90" type="text" ng-model="wlstdefView.name">
-    </md-input-container>
-    <md-input-container flex="50" >
-      <label>Purpose</label>
-      <textarea flex="90" ng-model="wlstdefView.description"></textarea>
-    </md-input-container>
-  </div>
+<div ng-controller="editWatchlistCtrl">
 
-  <div layout="row" layout-sm="column" layout-xs="column">
-    <div id="watchListnamespace"  ng-controller="Streamctrl as ctrl1" flex="40" flex-offset="5">
-      <md-autocomplete flex-offset="10" flex="80"
-      ng-disabled="ctrl1.isDisabled"
-      md-no-cache="ctrl1.noCache"
-      md-selected-item="ctrl1.selectedItem"
-      md-search-text-change="ctrl1.searchTextChange(ctrl.searchText)"
-      md-search-text="ctrl1.searchText"
-      md-selected-item-change="ctrl1.selectedItemChange(item)"
-      md-items="item in ctrl1.querySearch(ctrl.searchText)"
+  <div layout="column" layout-sm="column" layout-xs="column" layout-padding class="watchlistlayout">
+
+    <div layout="row"  layout-sm="column" layout-xs="column" layout-align="space-around center" flex-offset="5">
+      <md-input-container flex="50">
+        <label>Watch List Name</label>
+        <input flex="90" type="text" ng-model="wlstdefView.name">
+      </md-input-container>
+      <md-input-container flex="50" >
+        <label>Purpose</label>
+        <textarea flex="90" ng-model="wlstdefView.description"></textarea>
+      </md-input-container>
+    </div>
+
+    <div layout="row" layout-sm="column" layout-xs="column">
+      <div id="watchListnamespace"  ng-controller="Streamctrl as ctrl1" flex="40" flex-offset="5">
+        <md-autocomplete flex-offset="10" flex="80"
+        ng-disabled="ctrl1.isDisabled"
+        md-no-cache="ctrl1.noCache"
+        md-selected-item="ctrl1.selectedItem"
+        md-search-text-change="ctrl1.searchTextChange(ctrl.searchText)"
+        md-search-text="ctrl1.searchText"
+        md-selected-item-change="ctrl1.selectedItemChange(item)"
+        md-items="item in ctrl1.querySearch(ctrl.searchText)"
+        md-item-text="item"
+        md-min-length="0"
+        placeholder="Select Data Source">
+        <md-item-template>
+          <span md-highlight-text="ctrl1.searchText" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+          No matching "{{ctrl1.searchText}}" was found.
+        </md-not-found>
+      </md-autocomplete>
+    </div>
+    <div id="watchListnamespace"  ng-controller="namespacectrl as ctrl" flex="40" flex-offset="5">
+      <md-autocomplete flex-offset="20" flex="100"
+      ng-disabled="ctrl.isDisabled"
+      md-no-cache="ctrl.noCache"
+      md-selected-item="ctrl.selectedItem"
+      md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+      md-search-text="ctrl.searchText"
+      md-selected-item-change="ctrl.selectedItemChange(item)"
+      md-items="item in ctrl.querySearch(ctrl.searchText)"
       md-item-text="item"
       md-min-length="0"
-      placeholder="Select Data Source">
+      placeholder="Select Namespace">
       <md-item-template>
-        <span md-highlight-text="ctrl1.searchText" md-highlight-flags="^i">{{item}}</span>
+        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
       </md-item-template>
       <md-not-found>
-        No matching "{{ctrl1.searchText}}" was found.
+        No namespace matching "{{ctrl.searchText}}" were found.
       </md-not-found>
     </md-autocomplete>
   </div>
-  <div id="watchListnamespace"  ng-controller="namespacectrl as ctrl" flex="40" flex-offset="5">
-    <md-autocomplete flex-offset="20" flex="100"
-    ng-disabled="ctrl.isDisabled"
-    md-no-cache="ctrl.noCache"
-    md-selected-item="ctrl.selectedItem"
-    md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-    md-search-text="ctrl.searchText"
-    md-selected-item-change="ctrl.selectedItemChange(item)"
-    md-items="item in ctrl.querySearch(ctrl.searchText)"
-    md-item-text="item"
-    md-min-length="0"
-    placeholder="Select Namespace">
-    <md-item-template>
-      <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
-    </md-item-template>
-    <md-not-found>
-      No namespace matching "{{ctrl.searchText}}" were found.
-          </md-not-found>
-  </md-autocomplete>
-</div>
 </div>
 
 <div></div>
@@ -63,7 +66,7 @@
         <md-autocomplete flex-offset="5" flex="40"
         ng-disabled="ctrl.isDisabled"
         md-no-cache="ctrl.noCache"
-        md-selected-item="ctrl.selectedItem"
+        md-selected-item="expr.watch.lfield.fieldType"
         md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
         md-search-text="ctrl.searchText"
         md-selected-item-change="ctrl.selectedItemChange(item, expr)"
@@ -85,7 +88,7 @@
       <md-autocomplete flex-offset="35" flex="20"
       ng-disabled="ctrl.isDisabled"
       md-no-cache="ctrl.noCache"
-      md-selected-item="ctrl.selectedItem"
+      md-selected-item="expr.watch.operator"
       md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
       md-search-text="ctrl.searchText"
       md-selected-item-change="ctrl.selectedItemChange(item,expr)"
@@ -106,7 +109,7 @@
     <md-autocomplete flex-offset="55" flex="40"
     ng-disabled="ctrl.isDisabled"
     md-no-cache="ctrl.noCache"
-    md-selected-item="ctrl.selectedItem"
+    md-selected-item="expr.watch.rfield.fieldType"
     md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
     md-search-text="ctrl.searchText"
     md-selected-item-change="ctrl.selectedItemChange(item,expr)"
@@ -122,29 +125,28 @@
     </md-not-found>
   </md-autocomplete>
 
-
-<md-card id="previewexpression">
-<md-content >
-<span>{{wlstdefView.expressions[$index].watch.lfield.exprAsText}}</span>
-<span>{{wlstdefView.expressions[$index].watch.operator}}</span>
-<span>{{wlstdefView.expressions[$index].watch.rfield.exprAsText}}</span>
-<!-- <span><span>{{wlstdefView.expressions[$index].watch.rfield.exprAsText}}</span> -->
-</span>
-</md-content>
+  <md-card id="previewexpression">
+    <md-content >
+      <span>{{wlstdefView.expressions[$index].watch.lfield.exprAsText}}</span>
+      <span>{{wlstdefView.expressions[$index].watch.operator}}</span>
+      <span>{{wlstdefView.expressions[$index].watch.rfield.exprAsText}}</span>
+      <!-- <span><span>{{wlstdefView.expressions[$index].watch.rfield.exprAsText}}</span> -->
+    </span>
+  </md-content>
 </md-card>
 </div></div>
 </md-whiteframe>
 <!--- ========================== END OF LOOPING EXPRESSIONS ========================================= -->
 
 
-</div> <!-- end of ng repeat start for "stmt in wlstdefView.statements -->
+</div> <!-- end of ng repeat start for "stmt in wlstdefView.statements-->
 <div ng-repeat-end>
-  <md-button class="md-raised md-mini" ng-click="wlstdefView.removeExpression();" aria-label="">Remove</md-button>
+  <md-button class="md-raised md-mini" ng-click="wlstdefView.removeExpression($index);" aria-label="">Remove</md-button>
   <md-button class="md-raised md-mini" ng-show="wlstdefView.expressions.length>1 && !$last" ng-click="wlstdefView.addNewExpression('AND');" aria-label="">ADD</md-button>
 
 
-<md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
-<md-menu ng-controller="actionButtonCtrl as ctrl" ng-class="{'last':$last}">
+  <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
+  <md-menu ng-controller="actionButtonCtrl as ctrl" ng-class="{'last':$last}">
     <md-button class="md-fab md-mini md-primary actionButton" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
       <md-icon md-font-icon="fa fa-paw fa-2x"></md-icon>
     </md-button>
@@ -184,5 +186,6 @@
       <a ng-click="ctrl.newStream(ctrl1.searchText)">Create a new one!</a>
     </md-not-found>
   </md-autocomplete>
+</div>
 </div>
 </div>

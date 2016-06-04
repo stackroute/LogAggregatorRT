@@ -1,20 +1,66 @@
 angular.module("tattva")
-.controller('editWatchlistCtrl', ['$scope','$http', '$rootScope','$mdDialog','$timeout', '$q', '$log',"$state",'loadExprData','saveToDB',
-function( $scope,$http,$rootScope,$mdDialog,$timeout, $q, $log,$state,loadExprData,saveToDB) {
-  $scope.wlstdef = {
-    namespace:"",
-    stream:"",
-    expressions: [],
-    publisher:[
-    ]
- };
+.controller('editWatchlistCtrl', ['$scope','$http','$mdDialog', '$log',"$state",'loadExprData','saveToDB',
+function( $scope,$http,$mdDialog, $log,$state,loadExprData,saveToDB) {
+
+  $scope.wlstdefView = {
+        "namespace" : "apache",
+        "stream" : "stream-1a",
+        "name" : "Name",
+        "description" : "Purpose",
+        "status" : "active",
+        "publisher" : [ ],
+        "expressions" : [
+                {
+                        "tag" : "tag::1",
+                        "joinWith" : "",
+                        "joinBy" : "",
+                        "outcomeForwarding" : "Only non Matches",
+                        "labelData" : "true",
+                        "watch" : {
+                                "operator" : "-",
+                                "rfield" : {
+                                        "fieldType" : "inputvalue",
+                                        "inputvalue" : 23243,
+                                        "exprAsText" : "23243"
+                                },
+                                "lfield" : {
+                                        "fieldType" : "constant",
+                                        "Constants" : "e",
+                                        "exprAsText" : "Constant(e)"
+                                }
+                        }
+                },
+                {
+                        "tag" : "tag::2",
+                        "joinWith" : "",
+                        "joinBy" : "",
+                        "outcomeForwarding" : "Only non Matches",
+                        "labelData" : "true",
+                        "watch" : {
+                                "operator" : "-",
+                                "rfield" : {
+                                        "fieldType" : "inputvalue",
+                                        "inputvalue" : 23243,
+                                        "exprAsText" : "23243"
+                                },
+                                "lfield" : {
+                                        "fieldType" : "constant",
+                                        "Constants" : "e",
+                                        "exprAsText" : "Constant(e)"
+                                }
+                        }
+                }
+        ]
+}
+;
 
   $scope.removeExpression=function(index) {
-    $scope.wlstdef.expressions.splice(index,1);
+    console.log("index = ", index);
+    $scope.wlstdefView.expressions.splice(index,1);
   }
   $scope.addNewExpression=function(index,expr) {
     var newExpr = {
-      "tag": ("tag::" + ($scope.wlstdef.expressions.length + 1)),
+      "tag": ("tag::" + ($scope.wlstdefView.expressions.length + 1)),
       "joinWith":"",
       "joinBy": "",
       "inputStream" : "",
@@ -33,12 +79,12 @@ function( $scope,$http,$rootScope,$mdDialog,$timeout, $q, $log,$state,loadExprDa
       console.log($scope.getOutcomeOptions);
     });
     if(isNaN(index)){
-      $scope.index = $scope.wlstdef.expressions.length;
+      $scope.index = $scope.wlstdefView.expressions.length;
       console.log($scope.index);
       if($scope.index!=0)
       {
-        console.log("This is the expressions",$scope.wlstdef.expressions[$scope.index-1]);
-        $scope.wlstdef.expressions[$scope.index-1].joinWith="tag::"+($scope.index+1);
+        console.log("This is the expressions",$scope.wlstdefView.expressions[$scope.index-1]);
+        $scope.wlstdefView.expressions[$scope.index-1].joinWith="tag::"+($scope.index+1);
       }
     }
     else{
@@ -49,11 +95,11 @@ function( $scope,$http,$rootScope,$mdDialog,$timeout, $q, $log,$state,loadExprDa
       console.log("currentttt",current);
       $scope.index = index+1;
     }
-    $scope.wlstdef.expressions.splice($scope.index,0,newExpr);
+    $scope.wlstdefView.expressions.splice($scope.index,0,newExpr);
   }
   $scope.savewatchlist=function()
   {
-  saveToDB.savewatchlistdata($scope.wlstdef);
+  saveToDB.savewatchlistdata($scope.wlstdefView);
   $state.go("design.watchlist");
   }
   $scope.actionButton=function(){

@@ -16,7 +16,7 @@ var jsonParser = bodyParser.json();
 var sideNav_router = require('./tattvaserver/Home/home_routes.js');
 var watchlist_router = require('./tattvaserver/watchlists/watchlist_routes.js');
 var namespace_router = require('./tattvaserver/namespace/namespaces_routes.js');
-
+var stream_router=require('./tattvaserver/datastream/stream_routes.js')
 var mongoose = require( 'mongoose' );
 var dbURI = 'mongodb://localhost/wipro';
 var watchlist_router = require(path.join(__dirname,'/tattvaserver/watchlists/watchlist_routes.js'));
@@ -39,15 +39,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_modules')));
 app.use(express.static(path.join(__dirname, 'tattvaclient')));
-app.use('/', routes);
+app.use('/',routes);
+app.use('/datastream', routes);
 app.use('/users', users);
 app.use('/function', function_router);
 app.use('/sideNav', sideNav_router);
 app.use('/watchlist', watchlist_router);
 app.use('/namespaces',namespace_router);
+app.use('/datastream',stream_router)
 // var dbURI = 'mongodb://172.23.238.253:32769/wipro';
 app.post('/createNamespacePost',jsonParser,function (request, response) {
   var body1=request.body;
@@ -55,7 +57,7 @@ app.post('/createNamespacePost',jsonParser,function (request, response) {
 });
 
 app.get('/viewwatchlist', function(req, res){
-  res.sendFile(path.join(__dirname, 'public/json/watchlist.json'));
+  res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/watchlist.json'));
 });
 app.post('/savewatchlist',jsonParser,function(request,response){
   var body2=request.body;
@@ -72,22 +74,22 @@ app.get('/OutcomeOptions',function(req,res)
 res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/outcomeOption.json'));
 });
 app.get('/viewNamespace', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/json/namespace.json'));
+  res.sendFile(path.join(__dirname,'tattvaclient/design/watchlists/json/namespace.json'));
 });
 app.get('/fieldOption',function(req,res){
-res.sendFile(path.join(__dirname,'/public/json/fieldOption.json'));
+res.sendFile(path.join(__dirname,'tattvaclient/design/watchlists/json/fieldOption.json'));
 });
 app.get('/operatorOption',function(req,res)
 {
-res.sendFile(path.join(__dirname,'/public/json/operatorOption.json'))
+res.sendFile(path.join(__dirname,'tattvaclient/design/watchlists/json/operatorOption.json'))
 });
 
 app.get('/viewInstance', function(req, res){
-  res.sendFile(path.join(__dirname, '/public/json/instance.json'));
+  res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/instance.json'));
 });
 
 app.get('/viewStreams', function(req, res){
-  res.sendFile(path.join(__dirname, '/public/json/data.json'));
+  res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/data.json'));
 });
 
 app.post('/filewrite', JSONparser, function(req, res){
