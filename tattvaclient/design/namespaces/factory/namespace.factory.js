@@ -29,11 +29,11 @@ angular.module('tattva')
     },
 
     getNamespaceDetails: function(namespaceName){
-      console.log(namespaceName);
+      console.log("In the get namespace factory method",namespaceName);
        return $http.get('/namespaces/'+namespaceName)
        .then(function(response) {
          data =  response.data;
-          console.log(data);
+          // console.log(data);
          return data;
        });
     },

@@ -21,8 +21,13 @@ $scope.$watch('myvar',function(){console.log($scope.myvar)});
   }
 
   $scope.DataField=[];
-console.log("name",fieldData2.namespace);
+  console.log("name",fieldData2.namespace);
   namespaceFactory.getNamespaceDetails(fieldData2.namespace).then(function(data){
-  console.log("data",data);
+  console.log(data);
+  for (i in data.dataSchema){
+  $scope.DataField.push(data.dataSchema[i].name)
+
+  }
+  // console.log($scope.DataField);
   })
 }]);

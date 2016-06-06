@@ -10,5 +10,6 @@ function($scope, $http, $stateParams, streamFactory, namespaceService){
 
   $scope.getStreamData=function(objectJson){
     $scope.streamResultData = streamFactory.sendStream(objectJson);
+    console.log($scope.streamResultData);
   }
 }])

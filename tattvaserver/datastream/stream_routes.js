@@ -16,6 +16,17 @@ stream_router.get('/', function(req, res, next) {
   next();
 });
 
+stream_router.get('/:streamname', function(req, res, next) {
+  // console.log('router use invoked');
+  stream.find({namespace : req.params.streamname} , function(err, data){
+    if(err){
+      console.error(err);
+    }
+    res.send(data);
+  })
+  // next();
+});
+
 
 
 stream_router.post('/',jsonParser,function (request, response) {

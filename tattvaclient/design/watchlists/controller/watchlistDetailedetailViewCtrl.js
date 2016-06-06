@@ -5,7 +5,7 @@ angular.module('tattva')
   {
     $scope.data=data;
     var z=$scope.data;
-
+    console.log("detailview",$scope.data);
     for(i in z)
     {
       if(z[i].name==watchlistobject)

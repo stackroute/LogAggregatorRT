@@ -30,12 +30,9 @@ this.getStreamname=function(selectednamespace){
 var config = {
   params: {"namespace" : "name" }
 }
-$http.get('/watchlist');
- // .then(function(response) {
- //   data =  response.data;
- //   return data;
- // });
 }
+
+
 
 this.getfieldOption=function(){
 return $http.get('/fieldOption').then(function(response){
@@ -48,6 +45,8 @@ this.getoperatorOption=function(){
 }
 
 
+
+
 this.getDataFields=function(namespaceName){
     var config = {
       params: {"name" : namespaceName }
@@ -55,11 +54,22 @@ this.getDataFields=function(namespaceName){
  return $http.get('/namespaces',config);
 }
 
+
 this.getOutcomeOptions=function(){
 return $http.get('/OutcomeOptions').then(function(response){
 return response.data;
 });
 }
 
+
+      this.getNamespaceDetails= function(namespaceName){
+        console.log("In the get namespace factory method",namespaceName);
+         return $http.get('/watchlist/'+namespaceName)
+         .then(function(response) {
+           data =  response.data;
+            // console.log(data);
+           return data;
+         });
+      }
 
 }]);
