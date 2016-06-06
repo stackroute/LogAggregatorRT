@@ -1,5 +1,7 @@
 angular.module('tattva')
+
 .controller('createController', ['$scope', '$http','namespaceFactory', 'instanceService','streamsservice', function($scope, $http, namespaceFactory, instanceService,streamsservice){
+
   $scope.operator=[">", ">=", "<", "<=", "==", "!=" ]
 
   // namespaceService.getData().success(function(data){
@@ -30,7 +32,7 @@ angular.module('tattva')
   }
 
   $scope.save=function(){
-    var streamData={namespace : $scope.user_namespace.name , instance : $scope.user_instance.name , streamname : $scope.streamsData.user_streamName, description : $scope.streamsData.stringDescription , query : $scope.streamsData.queryBuilder };
+    var streamData={namespace : $scope.user_namespace.name , instance : $scope.user_instance.name , streamname : $scope.user_streamName, description : $scope.stringDescription , query : $scope.streamsData.queryBuilder };
     console.log(streamData);
     streamsservice.saveStream(streamData);
   }

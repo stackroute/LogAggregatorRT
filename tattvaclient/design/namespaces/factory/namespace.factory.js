@@ -29,35 +29,35 @@ angular.module('tattva')
     },
 
     getNamespaceDetails: function(namespaceName){
+
       console.log("In the get namespace factory method",namespaceName);
-       return $http.get('/namespaces/'+namespaceName)
-       .then(function(response) {
-         data =  response.data;
-          // console.log(data);
-         return data;
-       });
-    },
+      return $http.get('/namespaces/'+namespaceName)
+      .then(function(response) {
+        data =  response.data;
+        return data;
+        });
+      },
 
-    setNamespaceDetails : function(data, namespaceName){
-      console.log("data to be updated from factory = ",data);
-      var config = {
-        params: {"name" : namespaceName }
-      }
-      return $http.put('/namespaces/', data, config)
-      .then(
-       function(response){
-         return false;
-       }
-      );
-    },
+      setNamespaceDetails : function(data, namespaceName){
+        console.log("data to be updated from factory = ",data);
+        var config = {
+          params: {"name" : namespaceName }
+        }
+        return $http.put('/namespaces/', data, config)
+        .then(
+          function(response){
+            return false;
+          }
+        );
+      },
 
-    getJSONObject : function (inputJSONObj){
-      inputJSONObj = JSON.parse(inputJSONObj)
-      console.log("inputJSONObj = ",inputJSONObj);
-      var dataObj = inputJSONObj[0];
-      var outputData = [];
-      var type;
-      for ( var i in dataObj){
+      getJSONObject : function (inputJSONObj){
+        inputJSONObj = JSON.parse(inputJSONObj)
+        console.log("inputJSONObj = ",inputJSONObj);
+        var dataObj = inputJSONObj[0];
+        var outputData = [];
+        var type;
+        for ( var i in dataObj){
           if (isNaN(dataObj[i])){
             type = "dimension"
           }
@@ -65,11 +65,11 @@ angular.module('tattva')
             type = "measure"
           }
           outputData.push({"alias": i, "name": i, "type": type  });
+        }
+        console.log("outputData= ",outputData);
+        return outputData;
       }
-      console.log("outputData= ",outputData);
-      return outputData;
-    }
 
-  }//end of factory definition
-  return factory;
-}]);
+    }//end of factory definition
+    return factory;
+  }]);

@@ -47,12 +47,12 @@ namespace_router.put('/',  function (request, response) {
 });
 
 namespace_router.get('/:name', function(req, res){
-console.log("descriptor",req.params.name);
+
   Namespace.findOne({name:req.params.name}, function(err, namespaceData){
     if(err){
       console.error(err);
      }
-console.log(namespaceData);
+
     res.send(namespaceData)
   })
 });
