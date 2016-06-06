@@ -6,6 +6,7 @@ this.getConstants=function(){
 return [{"Name":"PI","Value":"3.14"},{"Name":"e","Value":"2.74"},{"Name":"φ","Value":"1.618033988749894848204586"}]
 }
 
+
 this.getFunction=function(){
 return $http.get("/function");
 }

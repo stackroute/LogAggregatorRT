@@ -5,10 +5,9 @@ watchlist_router.use(bodyParser.json());
 watchlist_router.use(bodyParser.urlencoded({ extended: false }));
 var watchlist = require('./watchlists.js');
 
-
-
 watchlist_router.use('/', function(req, res, next) {
     console.log('router use invoked');
+    res.send("hi");
     next();
 });
 watchlist_router.get('/', function(req, res, next) {

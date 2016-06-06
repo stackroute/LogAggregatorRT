@@ -1,10 +1,10 @@
 angular.module('tattva')
-.controller('dashboardcontroller', ['$scope','$mdDialog','$state', "$stateParams", 'slideFactory','searchFactory',
+.controller('dashboardcontroller', ['$scope','$mdDialog','$state', "$stateParams" ,'slideFactory','searchFactory',
 function($scope,$mdDialog,$state, $stateParams, slideFactory,searchFactory) {
   $scope.username="prarthana";
   $scope.orgname="wipro";
   $scope.selectedSlide = null;
-  if($stateParams.slidename !== null)  {
+  if($stateParams.slidename !== null){
     $scope.currentSlide = slideFactory.getSlide($scope.username, $stateParams.slidename);
   } else {
     $scope.currentSlide = slideFactory.getDefaultSlide($scope.username);
@@ -21,9 +21,7 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,searchFactory) {
   {
     $scope.list=searchFactory.getWlObj($scope.wldata[i].id);
     $scope.wlist.push($scope.list);
-    // console.log($scope.wlist+"  i");
   }
-
   $scope.goToSlide = function() {
     console.log("I am asked to go to a slide ", $scope.selectedSlide)
     if($scope.selectedSlide !== undefined && $scope.selectedSlide != '' && $scope.selectedSlide !== null ) {
@@ -32,6 +30,26 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,searchFactory) {
     }
   }
 
+  $scope.slidecreate = function($event) {
+     // Appending dialog to document.body to cover sidenav in docs app
+     $mdDialog.show({
+      targetEvent: $event,
+      controller: "DialogController",
+       templateUrl: "dashboard/template/createslidedialog.html",
+       clickOutsideToClose:true,
+       parent: angular.element(document.body),
+       locals:{watchslidename:$scope.watchslidename}
+       }).then(function(response) {
+         watchslidename = response;
+         console.log("watchslidename is: ", response);
+         slideFactory.createNewSlide("prarthana",response);
+       },
+        function(response) {
+         console.log("**REJECTED** with response: ", response);
+       }).finally(function() {
+       });
+   };
+// console.log($scope.watchslidename);
 
 $scope.itemcollection=[
   {
