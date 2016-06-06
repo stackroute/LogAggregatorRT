@@ -1,0 +1,308 @@
+[
+  {"name":"none",
+   "description":"",
+   "dataformat":[
+                  {"fieldAlias":"",
+                   "fieldName":"",
+                   "fieldType":""
+                  },
+                  {"fieldAlias":"",
+                   "fieldName":"",
+                   "fieldType":""
+                  },
+                  {"fieldAlias":"",
+                   "fieldName":"",
+                   "fieldType":""
+                  }
+                ]
+  },
+
+
+  {"name":"apache",
+   "description":"This is the data format for namespace apache",
+   "dataformat":[
+                  {"fieldAlias":"method",
+                   "fieldName":"Method name",
+                   "fieldType":"dimension"
+                  },
+                  {"fieldAlias":"code",
+                   "fieldName":"response code",
+                   "fieldType":"dimension"
+                  },
+                  {"fieldAlias":"hitsPerSecond",
+                   "fieldName":"Number of hits per second",
+                   "fieldType":"measure"
+                  }
+                ],
+    "instance" : [
+                  {
+                    "name":"Aserver1",
+                    "ip": "server1-ip",
+                    "port":"3001",
+                    "description": "des1",
+                    "location": "block-III,Tower-8",
+                    "namespace": "apache",
+                    "security": {
+                                  "authToken": "dsafdsafsadfsa",
+                                  "authmethod": "ssh"
+                                }
+                  },
+
+                  {
+              			"name":"Aserver2",
+              			"ip": "server2-ip",
+                    "port":"3002",
+              			"description": "des2",
+              			"location": "block-I,tower-6",
+              			"namespace": "apache",
+              			"security": {
+              	                 "authToken": "dsafdsafsadfsa",
+                                 "authmethod": "ssh"
+                                }
+              		  },
+
+                    {
+                			"name":"Aserver2",
+                			"ip": "server2-ip",
+                      "port":"3002",
+                			"description": "des2",
+                			"location": "block-I,tower-6",
+                			"namespace": "apache",
+                			"security": {
+                	                 "authToken": "dsafdsafsadfsa",
+                                   "authmethod": "ssh"
+                                  }
+                    }
+                ]
+  },
+
+
+  {"name":"boa",
+   "description":"This is the data format for namespace apache",
+   "dataformat":[
+                  {"fieldAlias":"method",
+                   "fieldName":"Method name",
+                   "fieldType":"dimension"
+                  },
+                  {"fieldAlias":"code",
+                   "fieldName":"response code",
+                   "fieldType":"dimension"
+                  },
+                  {"fieldAlias":"hitsPerSecond",
+                   "fieldName":"Number of hits per second",
+                   "fieldType":"measure"
+                  }
+                ],
+    "instance" : [
+                  {
+                    "name":"Bserver1",
+                    "ip": "server1-ip",
+                    "port":"3001",
+                    "description": "des1",
+                    "location": "block-III,Tower-8",
+                    "namespace": "apache",
+                    "security": {
+                                "authToken": "dsafdsafsadfsa",
+                                "authmethod": "ssh"
+                                }
+                  },
+
+                  {
+                    "name":"Bserver2",
+                    "ip": "server2-ip",
+                    "port":"3002",
+                    "description": "des2",
+                    "location": "block-I,tower-6",
+                    "namespace": "apache",
+                    "security": {
+                                 "authToken": "dsafdsafsadfsa",
+                                 "authmethod": "ssh"
+                                }
+                    },
+
+                    {
+                      "name":"Bserver2",
+                      "ip": "server2-ip",
+                      "port":"3002",
+                      "description": "des2",
+                      "location": "block-I,tower-6",
+                      "namespace": "apache",
+                      "security": {
+                                   "authToken": "dsafdsafsadfsa",
+                                   "authmethod": "ssh"
+                                  }
+                    }
+                ]
+  },
+  {"name":"wipro",
+   "description":"This is the data format for namespace apache",
+   "dataformat":[
+                  {"fieldAlias":"method",
+                   "fieldName":"Method name",
+                   "fieldType":"dimension"
+                  },
+                  {"fieldAlias":"code",
+                   "fieldName":"response code",
+                   "fieldType":"dimension"
+                  },
+                  {"fieldAlias":"hitsPerSecond",
+                   "fieldName":"Number of hits per second",
+                   "fieldType":"measure"
+                  }
+                ],
+    "instance" : [
+                  {
+                    "name":"Wserver1",
+                    "ip": "server1-ip",
+                    "port":"3001",
+                    "description": "des1",
+                    "location": "block-III,Tower-8",
+                    "namespace": "apache",
+                    "security": {
+                                "authToken": "dsafdsafsadfsa",
+                                "authmethod": "ssh"
+                                }
+                  },
+
+                  {
+                    "name":"Wserver2",
+                    "ip": "server2-ip",
+                    "port":"3002",
+                    "description": "des2",
+                    "location": "block-I,tower-6",
+                    "namespace": "apache",
+                    "security": {
+                                 "authToken": "dsafdsafsadfsa",
+                                 "authmethod": "ssh"
+                                }
+                    },
+
+                    {
+                      "name":"Wserver2",
+                      "ip": "server2-ip",
+                      "port":"3002",
+                      "description": "des2",
+                      "location": "block-I,tower-6",
+                      "namespace": "apache",
+                      "security": {
+                                   "authToken": "dsafdsafsadfsa",
+                                   "authmethod": "ssh"
+                                  }
+                    }
+                ]
+  },
+  {"name":"hfs",
+   "description":"This is the data format for namespace apache",
+   "dataformat":[
+                  {"fieldAlias":"method",
+                   "fieldName":"Method name",
+                   "fieldType":"dimension"
+                  },
+                  {"fieldAlias":"code",
+                   "fieldName":"response code",
+                   "fieldType":"dimension"
+                  },
+                  {"fieldAlias":"hitsPerSecond",
+                   "fieldName":"Number of hits per second",
+                   "fieldType":"measure"
+                  }
+                ],
+    "instance" : [
+                  {
+                    "name":"Hserver1",
+                    "ip": "server1-ip",
+                    "port":"3001",
+                    "description": "des1",
+                    "location": "block-III,Tower-8",
+                    "namespace": "apache",
+                    "security": {
+                                "authToken": "dsafdsafsadfsa",
+                                "authmethod": "ssh"
+                                }
+                  },
+
+                  {
+                    "name":"Hserver2",
+                    "ip": "server2-ip",
+                    "port":"3002",
+                    "description": "des2",
+                    "location": "block-I,tower-6",
+                    "namespace": "apache",
+                    "security": {
+                                 "authToken": "dsafdsafsadfsa",
+                                 "authmethod": "ssh"
+                                }
+                    },
+
+                    {
+                      "name":"Hserver2",
+                      "ip": "server2-ip",
+                      "port":"3002",
+                      "description": "des2",
+                      "location": "block-I,tower-6",
+                      "namespace": "apache",
+                      "security": {
+                                   "authToken": "dsafdsafsadfsa",
+                                   "authmethod": "ssh"
+                                  }
+                    }
+                ]
+  },
+  {"name":"nginx",
+   "description":"This is the data format for namespace apache",
+   "dataformat":[
+                  {"fieldAlias":"method",
+                   "fieldName":"Method name",
+                   "fieldType":"dimension"
+                  },
+                  {"fieldAlias":"code",
+                   "fieldName":"response code",
+                   "fieldType":"dimension"
+                  },
+                  {"fieldAlias":"hitsPerSecond",
+                   "fieldName":"Number of hits per second",
+                   "fieldType":"measure"
+                  }
+                ],
+    "instance" : [
+                  {
+                    "name":"Nserver1",
+                    "ip": "server1-ip",
+                    "port":"3001",
+                    "description": "des1",
+                    "location": "block-III,Tower-8",
+                    "namespace": "apache",
+                    "security": {
+                                "authToken": "dsafdsafsadfsa",
+                                "authmethod": "ssh"
+                                }
+                  },
+
+                  {
+                    "name":"Nserver2",
+                    "ip": "server2-ip",
+                    "port":"3002",
+                    "description": "des2",
+                    "location": "block-I,tower-6",
+                    "namespace": "apache",
+                    "security": {
+                                 "authToken": "dsafdsafsadfsa",
+                                 "authmethod": "ssh"
+                                }
+                    },
+
+                    {
+                      "name":"Nserver2",
+                      "ip": "server2-ip",
+                      "port":"3002",
+                      "description": "des2",
+                      "location": "block-I,tower-6",
+                      "namespace": "apache",
+                      "security": {
+                                   "authToken": "dsafdsafsadfsa",
+                                   "authmethod": "ssh"
+                                  }
+                    }
+                ]
+  }
+]

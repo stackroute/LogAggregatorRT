@@ -42,6 +42,7 @@ namespace_router.put('/',  function (request, response) {
 });
 
 namespace_router.get('/:name', function(req, res){
+  console.log("reached in the get name mod");
   Namespace.findOne({name:req.params.name}, function(err, namespaceData){
     if(err){
       Object.keys(err.errors).forEach(function(key) {
@@ -49,6 +50,7 @@ namespace_router.get('/:name', function(req, res){
         console.log('Validation error for "%s": %s', key, message);
       });
      }
+     console.log(namespaceData);
     res.send(namespaceData)
   })
 });

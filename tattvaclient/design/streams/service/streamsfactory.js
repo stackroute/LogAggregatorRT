@@ -35,7 +35,7 @@ angular.module('tattva')
       $http({
       method : 'post',
       url : '/datastream',
-      data : streamDataSave
+      data : streamDataToSave
       }).then(function(response)
             {
               if (response.data.errors) {
@@ -46,7 +46,7 @@ angular.module('tattva')
               }
             });
     }
-    return saveStream;
+    // return saveStream;
   }
   return streamData;
 });

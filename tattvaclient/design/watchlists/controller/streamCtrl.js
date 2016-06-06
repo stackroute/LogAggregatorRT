@@ -7,6 +7,10 @@ angular.module("tattva")
   self.querySearch   = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
+  if ( $scope.$parent.wlstdefView !== undefined) {
+    self.selectedItem =   $scope.$parent.wlstdefView.stream;
+    console.log("stream name from stream ctrl", $scope.$parent.wlstdefView.stream);
+  }
 
   function querySearch (query) {
     var results = query ? "self.stream.filter( createFilterFor(query) )" : self.stream,
