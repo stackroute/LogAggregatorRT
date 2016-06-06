@@ -30,7 +30,7 @@
   <md-input-container class="watchlistcheckbox" flex>
       <md-select name="FunctionenPostAccumulation" ng-model="fieldData.FunctionenPostAccumulation" required>
           <label>Function post Accumulation</label>
-        <md-option ng-repeat="object in functioName">{{object}}</md-option>
+        <md-option ng-repeat="object in function">{{object}}</md-option>
       </md-select>
       <div ng-messages="AccumulatFrm.FunctionenPostAccumulation.$error">
           <div ng-message="required">This is required!</div>

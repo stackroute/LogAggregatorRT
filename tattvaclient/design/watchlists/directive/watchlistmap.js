@@ -7,7 +7,8 @@ angular.module('tattva').directive('watchlistmap', function() {
 
                 var watchdata = null;
 
-                //watches for data updation from form on DOM
+                //watch for data updation from form on DOM
+
                 scope.$watch('watchdata', function(nv, ov) {
                     watchdata = scope.watchdata;
                     drawmap();
@@ -55,7 +56,9 @@ angular.module('tattva').directive('watchlistmap', function() {
                     .attr("width", width + margin[1] + margin[3])
                     .attr("height", height + margin[0] + margin[2])
                     .append("svg:g")
+
                     .attr("transform", "translate(" +  margin[3] + "," + margin[0] + ")");
+
 
 
                 // Toggle children.
@@ -148,7 +151,7 @@ angular.module('tattva').directive('watchlistmap', function() {
                                 }
                         }
 
-console.log(mainroot);
+
                         root = mainroot;
                         root.x0 = height / 2;
                         root.y0 = 0;
@@ -171,7 +174,7 @@ console.log(mainroot);
                     // Compute the new tree layout.
 
                     var nodes = tree.nodes(root).reverse();
-                    console.log(nodes);
+
 
                     // Normalize for fixed-depth.
                     var deepest = 0,
@@ -179,19 +182,19 @@ console.log(mainroot);
                     nodes.forEach(function(d) {
                         if (deepest < d.depth) {
                             deepest = d.depth;
-
                         }
                     });
                     generationGutter = Math.floor(width / (deepest + 1));
                     nodes.forEach(function(d) {
                         d.y = d.depth * generationGutter;
-                        console.log(d.y,"----------d.y")
+
                     });
 
                     // Update the nodes…
                     var node = vis.selectAll("g.node")
                         .data(nodes, function(d) {
                             return d.id || (d.id  = ++i);
+
                         });
 
                     // Enter any new nodes at the parent's previous position.

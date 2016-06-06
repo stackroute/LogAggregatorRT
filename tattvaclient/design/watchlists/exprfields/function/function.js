@@ -1,14 +1,28 @@
 angular.module("tattva")
 .controller('FunctionCtrl',['$scope','$mdDialog','fieldData','loadExprData',function($scope,$mdDialog,fieldData,loadExprData)
 {
-  $scope.function=loadExprData.getFunction().then(function(response){var data=response.data;return data}).then(function(data){
-       $scope.functioName=[];
-      for(i in data)
-      {
-        $scope.functioName.push(data[i].fun_name)
-      }
-      ;}
-    );
+$scope.function=[];
+loadExprData.getFunction().then(function(result){
+var data=result.data;
+console.log(data);
+return data;
+}).then(function(data)
+{
+for(i in data)
+{
+$scope.function.push(data[i].name);
+}
+console.log($scope.function);
+});
+
+// .then(function(data){
+//        $scope.functioName=[];
+//       for(i in data)
+//       {
+//         $scope.functioName.push(data[i].fun_name)
+//       }
+//       ;}
+//     );
   $scope.getExprAsText =function(){
   return $scope.fieldData.function+"("+$scope.fieldData.functionparam+")";
   }

@@ -25,7 +25,7 @@ angular.module('tattva')
         "CountryCode": "PAK"
       },
       "value":[15, 30, 27],
-      "size" : "50",
+      "size" : "70",
       "slideone":"B",
       "slidetwo":"A"
     },

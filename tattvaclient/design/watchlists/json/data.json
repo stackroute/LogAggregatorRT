@@ -1,0 +1,71 @@
+[{
+	"namespace": "apacheTomcat",
+	"instance": "ap_instance",
+	"streamname": "stream-1a",
+	"description": "This is apache stream",
+  "query": [{
+			"field": "response code",
+			"operator": "==",
+			"value": "200"
+		}]
+}, {
+	"namespace": "ngnix",
+	"instance": "nx_instance",
+	"streamname": "stream-2",
+	"description": "This is ngnix stream",
+	"query": [{
+			"field": "response code",
+			"operator": ">",
+			"value": "300"
+		}]
+}, {
+	"namespace": "apacheTomcat",
+	"instance": "ap_instance2",
+	"streamname": "stream-1b",
+	"description": "This is apache stream",
+	"query": [{
+			"field": "response code",
+			"operator": "<=",
+			"value": "500"
+		}]
+}, {
+	"namespace": "Boa",
+	"instance": "boa_instance",
+	"streamname": "stream-3",
+	"description": "This is Boa stream",
+	"query": [{
+			"field": "response code",
+			"operator": "==",
+			"value": "404"
+		}]
+}, {
+	"namespace": "HFS",
+	"instance": "hfs_instance",
+	"streamname": "stream-4",
+	"description": "This is HFS stream",
+	"query": [{
+			"field": "response code",
+			"operator": "!=",
+			"value": "502"
+		}]
+}, {
+	"namespace": "wipro",
+	"instance": "Wserver2",
+	"streamname": "StreamWipro",
+		"description": "This is secured for wipro",
+		"query": [{
+			"field": "response code",
+			"operator": "<",
+			"value": "100"
+		}]
+}, {
+	"namespace": "nginx",
+	"instance": "Nserver2",
+	"streamname": "ngnixStream",
+		"description": "This is a ngnix server",
+		"query": [{
+			"field": "response code",
+			"operator": "<=",
+			"value": "500"
+		}]
+}]

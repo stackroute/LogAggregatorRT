@@ -1,0 +1,60 @@
+ [
+  {
+    "menu" : "Dashboard",
+    "link" : "user",
+    "icon" : "dashboard",
+    "children" : [
+      {
+        "menu" : "Slide A",
+        "link" : "slidea"
+      },
+      {
+        "menu" : "Slide B",
+        "link" : "slideb"
+      }
+    ]
+  },
+  {
+    "menu" : "Design",
+    "link" : "design",
+    "icon" : "playlist_add",
+    "children" : [
+      {
+        "menu" : "Namespace",
+        "link" : "design.namespaces"
+      },
+      {
+        "menu" : "Instance",
+        "link" : "design.instance"
+      },
+      {
+        "menu" : "MainStreams",
+        "link" : "design.streams"
+      },
+      {
+        "menu" : "Functions",
+        "link" : "design.function"
+      },
+      {
+        "menu" : "Watchlist",
+        "link" : "design.watchlist"
+      }
+    ]
+  },
+  {
+    "menu" : "Organisation",
+    "link" : "organisation",
+    "icon" : "group"
+  },
+  {
+    "menu" : "Action",
+    "link" : "action",
+    "icon" : "gavel"
+  },
+  {
+    "menu" : "Notification",
+    "link" : "notification",
+    "icon" :  "notifications"
+
+  }
+]

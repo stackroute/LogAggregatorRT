@@ -1,10 +1,13 @@
 angular.module('tattva')
-.controller('createController', ['$scope', '$http','namespaceService', 'instanceService', function($scope, $http, namespaceService, instanceService){
+
+.controller('createController', ['$scope', '$http','namespaceService', 'instanceService','streamsservice', function($scope, $http, namespaceService, instanceService,streamsservice){
+
   $scope.operator=[">", ">=", "<", "<=", "==", "!=" ]
 
   namespaceService.getData().success(function(data){
     $scope.namespace_collection=data;
   });
+
   instanceService.getData().success(function(data){
     $scope.instance_collection=data;
   });
@@ -24,21 +27,9 @@ angular.module('tattva')
   }
 
   $scope.save=function(){
-    var streamData={namespace : $scope.user_namespace.name , instance : $scope.user_instance.name , streamname : $scope.user_streamName , description : $scope.stringDescription , query : $scope.streamsData.queryBuilder };
-    $http({
-      method : 'post',
-      url : '/filewrite',
-      data : $scope.streamData
-    }).success(function(data){
-      if(data.errors){
-        $scope.errorName = data.errors.name;
-        $scope.errorUserName = data.errors.username;
-        $scope.errorEmail = data.errors.email;
-      }
-      else{
-        $scope.message=data.message;
-      }
-    });
+    var streamData={namespace : $scope.user_namespace.name , instance : $scope.user_instance.name , streamname : $scope.user_streamName, description : $scope.stringDescription , query : $scope.streamsData.queryBuilder };
+    console.log(streamData);
+    streamsservice.saveStream(streamData);
   }
 
   $scope.cancel=function(){

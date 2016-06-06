@@ -25,7 +25,7 @@
 
 <div ng-controller="dashboardcontroller">
 <md-subheader>Viewing slide: {{currentSlide.slideName}}</md-subheader>
-    <md-select ng-model="selectedSlide" ng-change="goToSlide()" >
+    <md-select ng-model="selectedSlide" ng-change="goToSlide()" placeholder="select a slide" >
       <md-select-header>
         <span>Select slide</span>
       </md-select-header>
@@ -33,10 +33,11 @@
         {{slide.slideName}}
       </md-option>
     </md-select>
-
+    <md-button class="md-fab md-mini md-primary" aria-label="Favorite" ng-click="slidecreate($event)">
+      <md-icon md-font-icon="fa fa-plus fa-2x"></md-icon>
+    </md-button>
   <div class="flexcontainer mytool">
       <dashboardlayout class="flex-item" result="x" ng-repeat="x in wlist" data="logdata" watchlistdata="watchlistdata[x.wlid-1]">
-
     </dashboardlayout>
 </div>
 </div>
