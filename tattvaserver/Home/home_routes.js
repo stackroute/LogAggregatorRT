@@ -8,7 +8,7 @@ sideNav_router.use(function(req, res, next) {
     var items = [{
       "_id" : "item1",
       "menu" : "Dashboard",
-      "link" : "user",
+      "link" : "home",
       "icon" : "dashboard",
     },
     {
@@ -77,7 +77,7 @@ sideNav_router.use(function(req, res, next) {
       // {
       //   "_id" : "item1",
       //   "menu" : "Dashboard",
-      //   "link" : "user",
+      //   "link" : "home",
       //   "icon" : "dashboard",
       // },
       // {

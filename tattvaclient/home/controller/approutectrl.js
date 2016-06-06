@@ -6,26 +6,27 @@ angular.module('tattva')
   "$anchorScroll",
   "$location",
   function($scope, $state, $mdSidenav, $anchorScroll, $location) {
-    $state.go('guest');
+    $state.go('tattva');
 
     $scope.openLeftMenu = function() {
       $mdSidenav('left').toggle();
     };
 
     $scope.isMember=true;
+    $scope.login=true;
 
-    $scope.login = function() {
+    $scope.signin = function() {
       $scope.isMember=false;
       $scope.signOut=true;
       $scope.login=false;
-      $state.go('user');
+      $state.go('home');
     };
 
     $scope.signout = function(){
       $scope.isMember=true;
       $scope.signOut=false;
       $scope.login=true;
-      $state.go('guest');
+      $state.go('tattva');
     }
 
     $scope.gotoSlide1 = function(){

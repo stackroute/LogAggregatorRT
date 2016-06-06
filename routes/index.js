@@ -6,15 +6,4 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-// router.get('/usrmn/:usrstate', function(req, res, next) {
-//   var usrState = 'guest'; //req.getParam();
-//   var usrMenuActions = {};
-//
-//   if(usrState == 'member') {
-//     usrMenuActions = {};
-//   } else if (usrState == 'guest'){
-//     usrMenuActions = {};
-//   }
-//   res.send(usrMenuActions);
-// });
 module.exports = router;

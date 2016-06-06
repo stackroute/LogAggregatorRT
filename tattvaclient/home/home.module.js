@@ -41,7 +41,7 @@ angular.module('tattva')
 .config(['$stateProvider','$urlRouterProvider',
 function($stateProvider) {
   $stateProvider
-  .state('guest', {
+  .state('tattva', {
     url:"/tattva",
     views: {
       "header" : {
@@ -54,6 +54,6 @@ function($stateProvider) {
       "footer" : {
         templateUrl: "/home/template/footer.html"
       }
-    }//end of views of state guest
+    }//end of views of state tattva
   });
 }]);

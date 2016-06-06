@@ -28,7 +28,7 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,searchFactory) {
     console.log("I am asked to go to a slide ", $scope.selectedSlide)
     if($scope.selectedSlide !== undefined && $scope.selectedSlide != '' && $scope.selectedSlide !== null ) {
       console.log("Changing to slide: ", $scope.selectedSlide)
-      $state.go("user", { slidename: $scope.selectedSlide } );
+      $state.go("home", { slidename: $scope.selectedSlide } );
     }
   }
 

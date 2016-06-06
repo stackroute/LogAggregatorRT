@@ -1,6 +1,6 @@
 angular.module("tattva").config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   $stateProvider
-  .state('user',
+  .state('home',
   {
     url: "/dashboard/:slidename",
     params: {
