@@ -1,5 +1,6 @@
 angular.module("tattva")
 .controller('Streamctrl',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData) {
+console.log($scope.$parent.wlstdef.namespace);
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
@@ -38,10 +39,10 @@ angular.module("tattva")
     }
   }
 
-
-  function loadAll() {
-    return loadExprData.getStreamname();
-      }
+function loadAll() {
+  loadExprData.getStreamname($scope.$parent.wlstdef.namespace);
+return ["a","b","c","d"];
+    }
 
 
       function createFilterFor(query) {

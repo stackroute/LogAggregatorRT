@@ -25,19 +25,16 @@ return z;
 };
 
 
-this.getStreamname=function(){
-  return streamService.getData()
-  .then(function(response)
-  {
-    var data=response.data;return data})
-    .then(function(data){
-      var streamname=[];
-      for(i in data)
-      {
-        streamname.push(data[i].streamname)
-      }
-      return streamname
-      ;})
+this.getStreamname=function(selectednamespace){
+
+var config = {
+  params: {"namespace" : "name" }
+}
+$http.get('/watchlist');
+ // .then(function(response) {
+ //   data =  response.data;
+ //   return data;
+ // });
 }
 
 this.getfieldOption=function(){
@@ -55,7 +52,7 @@ this.getDataFields=function(namespaceName){
     var config = {
       params: {"name" : namespaceName }
     }
- return $http.get('/namespace',config);
+ return $http.get('/namespaces',config);
 }
 
 this.getOutcomeOptions=function(){

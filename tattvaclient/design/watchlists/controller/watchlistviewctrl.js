@@ -2,6 +2,7 @@ angular.module('tattva')
 .controller('watchlistviewctrl',['$scope', '$http' , '$stateParams','wlstDataService',
 function($scope, $http, $stateParams, wlstDataService){
   $scope.objectJson=$stateParams.namespaceobject;
+console.log($stateParams.namespaceobject);
   $scope.watchlistalldata=[];
 
   $scope.getwatchlistdata=function(objectJson){

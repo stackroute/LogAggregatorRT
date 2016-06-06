@@ -30,12 +30,10 @@ angular.module('tattva')
 
     getNamespaceDetails: function(namespaceName){
       console.log(namespaceName);
-      var config = {
-        params: {"name" : namespaceName }
-      }
-       return $http.get('/namespace',config)
+       return $http.get('/namespaces/'+namespaceName)
        .then(function(response) {
          data =  response.data;
+          console.log(data);
          return data;
        });
     },
@@ -45,7 +43,7 @@ angular.module('tattva')
       var config = {
         params: {"name" : namespaceName }
       }
-      return $http.put('/namespace/', data, config)
+      return $http.put('/namespaces/', data, config)
       .then(
        function(response){
          return false;

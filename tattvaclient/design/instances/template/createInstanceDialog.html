@@ -7,7 +7,7 @@
           <h4 class="md-subhead" flex-offset="25">CREATE NEW DATA SOURCE</h4>
           <md-input-container class="md-block">
             <label>Select a namespace</label>
-            <md-icon md-svg-icon="image/svg/data-analytics-flow-chart-symbol.svg"></md-icon>
+            <md-icon md-svg-icon="images/svg/data-analytics-flow-chart-symbol.svg"></md-icon>
             <md-select ng-model="dInstance.namespace" >
               <md-option  ng-repeat="namespace in namespaceSelect track by $index" value="{{namespace.name}}">{{namespace.name}}</md-option>
             </md-select>
@@ -16,7 +16,7 @@
           <md-input-container class="md-block" >
 
             <label>Name of Instance</label>
-            <md-icon md-svg-icon="image/svg/add-label-button.svg"></md-icon>
+            <md-icon md-svg-icon="images/svg/add-label-button.svg"></md-icon>
             <input type="text" ng-model="dInstance.name" ng-required="true" >
 
           </md-input-container>
@@ -24,7 +24,7 @@
             <div flex="55">
               <md-input-container class="md-block">
                 <label>IP Address</label>
-                <md-icon md-svg-icon="image/svg/ip.svg"></md-icon>
+                <md-icon md-svg-icon="images/svg/ip.svg"></md-icon>
                 <div layout="column">
                   <div flex>
                     <input type="text" name="ip" ng-model="dInstance.ipAddress" ng-required="true" ng-pattern="/^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/">
@@ -44,7 +44,7 @@
             <div flex="35">
               <md-input-container class="md-block">
                 <label>Port</label>
-                <md-icon md-svg-icon="image/svg/universal-port-sign.svg"></md-icon>
+                <md-icon md-svg-icon="images/svg/universal-port-sign.svg"></md-icon>
                 <div layout="column">
                   <div flex>
                     <input type="text" ng-model="dInstance.port" name="port" maxlength="4" ng-required="true" ng-pattern="/^\d{4}$/">
@@ -61,12 +61,12 @@
           </div>
           <md-input-container class="md-block">
             <label>Description</label>
-            <md-icon md-svg-icon="image/svg/sort-button-with-three-lines.svg"></md-icon>
+            <md-icon md-svg-icon="images/svg/sort-button-with-three-lines.svg"></md-icon>
             <input type="text" ng-model="dInstance.description" ng-required="true">
           </md-input-container>
           <md-input-container class="md-block" ng-required="true">
             <label>Location</label>
-            <md-icon md-svg-icon="image/svg/location-pin.svg"></md-icon>
+            <md-icon md-svg-icon="images/svg/location-pin.svg"></md-icon>
             <input type="text" ng-model="dInstance.location">
           </md-input-container>
           <div layout="row">

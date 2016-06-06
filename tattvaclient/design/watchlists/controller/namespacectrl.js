@@ -8,10 +8,6 @@ angular.module("tattva")
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
 
-  if ( $scope.$parent.wlstdefView !== undefined) {
-    self.selectedItem =   $scope.$parent.wlstdefView.namespace;
-    console.log("Namespace name from namespace ctrl", $scope.$parent.wlstdefView.namespace);
-  }
 
   function querySearch (query) {
     var results = query ? "self.namespaceOption.filter( createFilterFor(query) )" : self.namespaceOption,

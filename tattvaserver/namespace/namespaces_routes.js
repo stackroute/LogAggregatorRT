@@ -42,6 +42,7 @@ namespace_router.put('/',  function (request, response) {
 });
 
 namespace_router.get('/:name', function(req, res){
+console.log("descriptor",name);
   Namespace.findOne({name:req.params.name}, function(err, namespaceData){
     if(err){
       Object.keys(err.errors).forEach(function(key) {
