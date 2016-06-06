@@ -35,7 +35,8 @@
     </md-select>
 
   <div class="flexcontainer mytool">
-      <dashboardlayout class="flex-item" result="x" ng-repeat="x in wlist" data="logdata">
+      <dashboardlayout class="flex-item" result="x" ng-repeat="x in wlist" data="logdata" watchlistdata="watchlistdata[x.wlid-1]">
+
     </dashboardlayout>
 </div>
 </div>

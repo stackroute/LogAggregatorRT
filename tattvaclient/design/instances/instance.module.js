@@ -6,13 +6,12 @@ config(['$stateProvider','$urlRouterProvider', function($stateProvider){
         templateUrl: "design/instances/template/instance.html",
         controller: "instCtrl"
   })
-  .state('design.instance.addInstance',{
-    url:"/addInstance",
+  .state('design.instance.viewInstance.addInstance',{
+    url:"/new",
     controller:"instCtrl"
   })
-   .state('design.instance.addInstance.created',{
+   .state('design.instance.viewInstance.addInstance.created',{
     url:"/createdInstance",
-    templateUrl:"design/instances/template/status.html",
     controller:"instCtrl"
    /*views:{
     "@":{
@@ -23,5 +22,9 @@ config(['$stateProvider','$urlRouterProvider', function($stateProvider){
     url: "/:name",
     templateUrl:"design/instances/template/viewInstance.html",
     controller:"viewinstCtrl"
+  })
+  .state('design.instance.viewInstance.edit',{
+    url:'/edit'
+
   })
 }]);

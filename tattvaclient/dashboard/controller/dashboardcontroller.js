@@ -130,4 +130,257 @@ $scope.logdata=[
   }
 ];
 
+$scope.watchlistdata=[{
+  "namespace": "apache",
+  "stream": "stream-1a",
+  "expressions": [
+    {
+      "tag": "tag::1",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      }
+    },
+    {
+      "tag": "tag::2",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      }
+    }
+  ],
+  "publisher": [
+    "outputStream",
+    "saveToDB"
+  ],
+  "name": "demo",
+  "description": "mydemo"
+},
+{
+  "namespace": "IOT",
+  "stream": "stream-1b",
+  "expressions": [
+    {
+      "tag": "tag::1",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      }
+    }
+  ],
+  "publisher": [
+    "saveToDB"
+  ],
+  "name": "demo",
+  "description": "mydemo"
+},
+{
+  "namespace": "BOA",
+  "stream": "stream-3",
+  "expressions": [
+    {
+      "tag": "tag::1",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      }
+    }
+  ],
+  "publisher": [
+    "saveToDB",
+    "publishToDashboard"
+  ],
+  "name": "demo3",
+  "description": "mydemo3"
+},
+{
+  "namespace": "nginx",
+  "stream": "stream-1b",
+  "expressions": [
+    {
+      "tag": "tag::1",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      }
+    },
+    {
+      "tag": "tag::2",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      }
+    }
+  ],
+  "publisher": [
+    "saveToDB",
+    "publishToDashboard",
+    "outputStream"
+  ],
+  "name": "demo4",
+  "description": "mydemo4"
+},
+{
+  "namespace": "IOT",
+  "stream": "stream-1b",
+  "expressions": [
+    {
+      "tag": "tag::1",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      }
+    }
+  ],
+  "publisher": [
+    "saveToDB"
+  ],
+  "name": "demo4",
+  "description": "mydemo4"
+},
+{
+  "namespace": "apache",
+  "stream": "stream-1b",
+  "expressions": [
+    {
+      "tag": "tag::1",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      }
+    },
+    {
+      "tag": "tag::2",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      }
+    },
+    {
+      "tag": "tag::3",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      }
+    },
+    {
+      "tag": "tag::4",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      }
+    }
+  ],
+  "publisher": [
+    "saveToDB",
+    "publishToDashboard"
+  ],
+  "name": "demo4",
+  "description": "mydemo4"
+},
+{
+  "namespace": "BOA",
+  "stream": "stream-3",
+  "expressions": [
+    {
+      "tag": "tag::1",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      }
+    }
+  ],
+  "publisher": [
+    "saveToDB",
+    "publishToDashboard"
+  ],
+  "name": "demo3",
+  "description": "mydemo3"
+}
+]
+
 }]);
