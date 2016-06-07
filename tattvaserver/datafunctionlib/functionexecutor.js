@@ -1,11 +1,14 @@
+var tattva=require('./functionlib.js');
 var calledfn=function()
 {
   this.evaluate=function(func,data)
-  {
-    console.log(func);
+ {
+  //  var result=tattva.sum(data);
+  //  console.log(result);
+
   var fn=require("./primitives/"+func+".js");
-  var reqfn=new fn();
-  reqfn.evaluate(data);
+ return fn(data);
+
   }
 }
 

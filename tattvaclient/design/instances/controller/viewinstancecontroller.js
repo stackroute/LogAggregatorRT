@@ -2,7 +2,7 @@ angular.module('tattva')
 .controller("viewinstCtrl",["$scope","$state","$http","$stateParams","$mdDialog","$mdMedia","loaddatasources",
 function($scope,$state,$http,$stateParams,$mdDialog,$mdMedia, loaddatasources){
   $scope.nspname=$stateParams.name;
-  $scope.instance =loaddatasources.getdatasources($scope.nspname).then(function(response){$scope.instance=response.data;});
+  loaddatasources.getdatasources($scope.nspname).then(function(response){$scope.instance=response.data;});
   console.log(($scope.instance) );
   // $scope.loadData = function() {
   //   $http.get("/instance/"+ $scope.nspname).then(function(response){ $scope.instance = response.data;});

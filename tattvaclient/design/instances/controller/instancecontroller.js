@@ -1,6 +1,6 @@
 angular.module('tattva')
-    .controller("instCtrl", ["$scope", "$state", "$http", "$stateParams", "$mdDialog", "$mdMedia",
-        function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia) {
+    .controller("instCtrl", ["$scope", "$state", "$http", "$stateParams", "$mdDialog", "$mdMedia","namespaceFactory",
+        function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFactory) {
 
             $scope.tabTitle = "Recent Data Sources";
             $scope.stateChange = "design.createwatchlist"
@@ -10,12 +10,17 @@ angular.module('tattva')
                 $state.go('instance.submitInstance');
 
             }
-            $scope.loadData = function() {
-                $http.get('/instance').then(function(response) {
-                    $scope.data = response.data;
-                });
-            }
-            $scope.loadData();
+
+            namespaceFactory.getNameSpace().then(function(response){$scope.data=response;});
+
+console.log($scope.data);
+
+            // $scope.loadData = function() {
+            //     $http.get('/instance').then(function(response) {
+            //         $scope.data = response.data;
+            //     });
+            // }
+            // $scope.loadData();
 
             $scope.status = '';
             $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
@@ -43,9 +48,8 @@ angular.module('tattva')
                 function DialogController($scope, $state, $mdDialog, $http) {
 
 
-                    $http.get('/instance').then(function(response) {
-                        $scope.namespaceSelect = response.data;
-                    });
+                    namespaceFactory.getNameSpace().then(function(response){  $scope.namespaceSelect=response;});
+                  
                    $scope.formtype="CREATE";
                     $scope.success = false;
                     /*console.log($scope.nspname);*/

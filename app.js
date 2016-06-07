@@ -73,14 +73,9 @@ app.use('/instance', datasourcesrouter);
 
 //end of mongoose
 
-
 app.get('/viewwatchlist', function(req, res) {
     res.sendFile(path.join(__dirname, 'public/json/watchlist.json'));
 });
-
-app.get('/function', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/jsonData/functiondatadisplay.json'))
-})
 
 app.use('/', routes);
 app.use('/users', users);
@@ -90,11 +85,6 @@ app.use('/watchlist', watchlist_router);
 app.use('/namespaces',namespace_router);
 app.use('/datastream',stream_router)
 app.use('/createslide',watchlistslide_router);
-
-app.post('/createNamespacePost', jsonParser, function(request, response) {
-    var body1 = request.body;
-    alert("reached")
-});
 
 app.post('/savewatchlist', jsonParser, function(request, response) {
     var body2 = request.body;
@@ -114,9 +104,6 @@ app.post('/sendslidedata', function(request, response) {
     console.log("body1 = " + body1);
 });
 
-app.get('/viewNamespace', function(req, res) {
-    res.sendFile(path.join(__dirname, '/public/json/namespace.json'));
-});
 app.get('/fieldOption', function(req, res) {
     res.sendFile(path.join(__dirname, '/public/json/fieldOption.json'));
 });
@@ -135,9 +122,7 @@ app.get('/OutcomeOptions',function(req,res)
 {
 res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/outcomeOption.json'));
 });
-app.get('/viewNamespace', function(req, res){
-  res.sendFile(path.join(__dirname,'tattvaclient/design/watchlists/json/namespace.json'));
-});
+
 app.get('/fieldOption',function(req,res){
 res.sendFile(path.join(__dirname,'tattvaclient/design/watchlists/json/fieldOption.json'));
 });
@@ -176,33 +161,6 @@ app.post('/login_reg1',jsonParser,function (request, response) {
 app.get('/login_reg', function(req, res) {
     res.sendFile(path.join(__dirname, 'public/data.json'));
 });
-
-
-app.get('/functionlist', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/data/functionlist.json'));
-});
-
-// app.get('/submitInstance', function(req, res) {
-//     res.sendFile(path.join(__dirname, 'public/data/namespace.json'));
-//
-// app.get('/submitInstance',function(req,res){
-//   res.sendFile(path.join(__dirname, 'public/data/namespace.json'));
-// });
-
-
-
-
-
-/*functions*/
-app.get('/func_link', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/data/function_data.json'));
-});
-
-app.get('/func_link_data', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/data/function_data_display.json'));
-}); /*functions*/
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

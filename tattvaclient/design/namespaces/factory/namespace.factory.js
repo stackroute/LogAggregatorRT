@@ -22,7 +22,7 @@ angular.module('tattva')
       console.log("in factory namespace list`");
 
       return $http.get('/namespaces').then(function(response) {
-        // console.log(response.data);
+      // console.log(response.data);
         data =  response.data;
         return data;
       });
