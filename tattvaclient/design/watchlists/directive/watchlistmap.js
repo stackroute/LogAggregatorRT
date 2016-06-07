@@ -8,10 +8,27 @@ angular.module('tattva').directive('watchlistmap', function() {
                 var watchdata = null;
 
                 //watch for data updation from form on DOM
+
                 scope.$watch('watchdata', function(nv, ov) {
                     watchdata = scope.watchdata;
                     drawmap();
                 }, true);
+                // scope.$watch('watchdata.namespace', function(nv, ov) {
+                //     watchdata = scope.watchdata;
+                //     drawmap();
+                // }, true);
+                // scope.$watch('watchdata.stream', function(nv, ov) {
+                //     watchdata = scope.watchdata;
+                //     drawmap();
+                // }, true);
+                // scope.$watch('watchdata.expressions.length', function(nv, ov) {
+                //     watchdata = scope.watchdata;
+                //     drawmap();
+                // }, true);
+                // scope.$watch('watchdata.publisher', function(nv, ov) {
+                //     watchdata = scope.watchdata;
+                //     drawmap();
+                // }, true);
 
                 //get the width and height of screen
                 var screenwidth = element[0].clientWidth;
@@ -39,7 +56,9 @@ angular.module('tattva').directive('watchlistmap', function() {
                     .attr("width", width + margin[1] + margin[3])
                     .attr("height", height + margin[0] + margin[2])
                     .append("svg:g")
-                    .attr("transform", "translate(" + 1.5 * margin[3] + "," + margin[0] + ")");
+
+                    .attr("transform", "translate(" +  margin[3] + "," + margin[0] + ")");
+
 
 
                 // Toggle children.
@@ -151,10 +170,11 @@ angular.module('tattva').directive('watchlistmap', function() {
                         return;
                     }
 
-                    //
+
                     // Compute the new tree layout.
 
                     var nodes = tree.nodes(root).reverse();
+
 
                     // Normalize for fixed-depth.
                     var deepest = 0,
@@ -167,13 +187,14 @@ angular.module('tattva').directive('watchlistmap', function() {
                     generationGutter = Math.floor(width / (deepest + 1));
                     nodes.forEach(function(d) {
                         d.y = d.depth * generationGutter;
+
                     });
 
                     // Update the nodes…
                     var node = vis.selectAll("g.node")
                         .data(nodes, function(d) {
-                            console.log("nodes data");
-                            return d.id || (d.id = ++i);
+                            return d.id || (d.id  = ++i);
+
                         });
 
                     // Enter any new nodes at the parent's previous position.

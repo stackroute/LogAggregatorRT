@@ -6,11 +6,11 @@
 .listmenu{
 overflow: scroll;
 overflow-x:hidden;
-max-height: 453px !important;
+/*max-height: 453px !important;
 
 -webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 -moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);*/
 }
 
 .viewInst .md-button{
@@ -365,9 +365,9 @@ table#nameSpaceTable td {
 }
 
 
-.listmain{
+/*.listmain{
 box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
-}
+}*/
 .listmain md-list{
   padding:0;
 }
@@ -375,11 +375,11 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 .listmenu{
 overflow: scroll;
 overflow-x:hidden;
-max-height: 453px !important;
+/*max-height: 453px !important;
 
 -webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 -moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);*/
 }
 .eachnamespc{
   margin-left:5%;
@@ -767,10 +767,10 @@ margin-top: 2px;
   margin-right: 5px;
 }
 
-
+/*
 .listmain{
 box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
-}
+}*/
 .listmain md-list{
   padding:0;
 }
@@ -778,11 +778,11 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 .listmenu{
 overflow: scroll;
 overflow-x:hidden;
-max-height: 453px !important;
+/*max-height: 453px !important;
 
 -webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 -moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);*/
 }
 .eachnamespc{
   margin-left:5%;
@@ -1209,9 +1209,7 @@ width:18px;
 }
 
 
-.listmain{
-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
-}
+
 .listmain md-list{
   padding:0;
 }
@@ -1219,11 +1217,11 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 .listmenu{
 overflow: scroll;
 overflow-x:hidden;
-max-height: 530px !important;
+/*max-height: 530px !important;
 
 -webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 -moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);*/
 }
 .listmenuView{
 max-height: none;
@@ -1586,10 +1584,10 @@ md-input-container label{
   margin-right: 5px;
 }
 
-
+/*
 .listmain{
 box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
-}
+}*/
 .listmain md-list{
   padding:0;
 }

@@ -11,7 +11,8 @@ angular.module('tattva').directive('dashboardlayout', function() {
   // };
   directive.scope = {
     myresult: '=result',
-    mylog:'=data'
+    mylog:'=data',
+    watchdata:'=watchlistdata'
   }
 
   return directive;
