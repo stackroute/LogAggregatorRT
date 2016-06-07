@@ -9,26 +9,26 @@ angular.module('tattva').directive('watchlistmap', function() {
 
                 //watch for data updation from form on DOM
 
-                scope.$watch('watchdata', function(nv, ov) {
+                // scope.$watch('watchdata', function(nv, ov) {
+                //     watchdata = scope.watchdata;
+                //     drawmap();
+                // }, true);
+                scope.$watch('watchdata.namespace', function(nv, ov) {
                     watchdata = scope.watchdata;
                     drawmap();
                 }, true);
-                // scope.$watch('watchdata.namespace', function(nv, ov) {
-                //     watchdata = scope.watchdata;
-                //     drawmap();
-                // }, true);
-                // scope.$watch('watchdata.stream', function(nv, ov) {
-                //     watchdata = scope.watchdata;
-                //     drawmap();
-                // }, true);
-                // scope.$watch('watchdata.expressions.length', function(nv, ov) {
-                //     watchdata = scope.watchdata;
-                //     drawmap();
-                // }, true);
-                // scope.$watch('watchdata.publisher', function(nv, ov) {
-                //     watchdata = scope.watchdata;
-                //     drawmap();
-                // }, true);
+                scope.$watch('watchdata.stream', function(nv, ov) {
+                    watchdata = scope.watchdata;
+                    drawmap();
+                }, true);
+                scope.$watch('watchdata.expressions.length', function(nv, ov) {
+                    watchdata = scope.watchdata;
+                    drawmap();
+                }, true);
+                scope.$watch('watchdata.publisher', function(nv, ov) {
+                    watchdata = scope.watchdata;
+                    drawmap();
+                }, true);
 
                 //get the width and height of screen
                 var screenwidth = element[0].clientWidth;

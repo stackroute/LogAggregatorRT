@@ -13,7 +13,7 @@
     <md-sidenav md-component-id="right" class="md-sidenav-right" layout="column">
       <md-list>
         <md-list-item ng-repeat="item in value2">
-          <a ui-sref="user({ slidename: '{{item.slideName}}' })">{{item.slideName}}</a>
+          <a ui-sref="home({ slidename: '{{item.slideName}}' })">{{item.slideName}}</a>
           <ng-md-icon icon="settings" ng-click="slidemenu()" style="fill: grey" size="25"></ng-md-icon>
         </md-list-item>
         <md-list>

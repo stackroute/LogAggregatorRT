@@ -2,9 +2,9 @@ angular.module("tattva")
 .config(['$stateProvider','$urlRouterProvider',
 function($stateProvider) {
   $stateProvider
-  .state('login',
+  .state('signin',
   {
-    url: "/login",
+    url: "/signin",
     views: {
       "header" : {
         templateUrl: "/home/template/header.html",

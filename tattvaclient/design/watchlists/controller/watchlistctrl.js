@@ -54,12 +54,45 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
 
   $scope.savewatchlist=function()
   {
-    saveToDB.savewatchlistdata($scope.wlstdef);
+    saveToDB.savewatchlistdata($scope.wlstdef).then(function(data){console.log("hello")});
+    // saveToDB.savewatchexecutor($scope.wlstdef);
     $state.go("design.watchlist");
   }
 
-  $scope.actionButton=function(){
+  $scope.toggleOutputToStream=function(){
+    console.log("outputToStreams");
+    console.log("hi")
+    for(i in $scope.wlstdef.publisher)
+    {
+      if($scope.wlstdef.publisher[i].publishType=="outputToStreams")
+      {
+        $scope.wlstdef.publisher.splice(i,1);
+      }
+    }
+  }
+
+
+  $scope.toggleSavetoDB=function(){
     console.log("hi");
+    var flag;
+    for(i in $scope.wlstdef.publisher)
+    {
+      if($scope.wlstdef.publisher[i].publishType=="saveToDB")
+      {
+        $scope.wlstdef.publisher.splice(i,1);
+      }
+    }
+  }
+
+  $scope.togglePublishToDashboard=function(){
+    console.log("hi")
+    for(i in $scope.wlstdef.publisher)
+    {
+      if($scope.wlstdef.publisher[i].publishType=="publishToDashboard")
+      {
+        $scope.wlstdef.publisher.splice(i,1);
+      }
+    }
   }
 
   $scope.opnePublisherDialogWindow = function () {
@@ -74,7 +107,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
         targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
-        locals: { "data": $scope.wlstdef}
+        locals: {"data": $scope.wlstdef}
       }).then(function(response) {
         console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
       }, function(response) {
@@ -89,7 +122,6 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
   $scope.opneOutputStreamDialog = function (){
     console.log("to stream");
     $scope.showOutputToStreamDialog = function(ev) {
-      console.log("hi");
       $mdDialog.show({
         controller: "outputToStreams",
         templateUrl: "/design/watchlists/template/outputToStreams.html",
@@ -97,8 +129,14 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
         targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
-        // locals: { "data": $scope.wlstdef }
-      })
+        locals: { "data": $scope.wlstdef }
+      }).then(function(response) {
+        console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }, function(response) {
+        console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }).finally(function() {
+        console.log("finally gone..!");
+      });
     };
     $scope.showOutputToStreamDialog();
   }
@@ -114,8 +152,14 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
         targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
-        // locals: { "data": $scope.wlstdef }
-      })
+        locals: { "data": $scope.wlstdef }
+      }).then(function(response) {
+        console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }, function(response) {
+        console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }).finally(function() {
+        console.log("finally gone..!");
+      });
     };
     $scope.showOutputToStreamDialog();
   }

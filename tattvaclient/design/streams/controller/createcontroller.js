@@ -48,10 +48,12 @@ console.log($scope.user_namespace);
   }
 
   $scope.save=function(){
+
     var streamData={namespace : $scope.user_namespace.name , instance : $scope.user_instance.name , streamname : $scope.streamsData.user_streamName, description : $scope.streamsData.stringDescription , query : $scope.streamsData.queryBuilder };
-    console.log(streamData);
-    streamsservice.saveStream(streamData);
+   console.log(streamData);
+  streamsservice.saveStream(streamData);
   }
+
 
   $scope.cancel=function(){
     console.log("Cancelled");

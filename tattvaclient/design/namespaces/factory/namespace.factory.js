@@ -18,18 +18,18 @@ angular.module('tattva')
         }
       });
     },
+
     getNameSpace: function() {
       console.log("in factory namespace list`");
 
       return $http.get('/namespaces').then(function(response) {
-        // console.log(response.data);
+      // console.log(response.data);
         data =  response.data;
         return data;
       });
     },
 
     getNamespaceDetails: function(namespaceName){
-
       console.log("In the get namespace factory method",namespaceName);
       return $http.get('/namespaces/'+namespaceName)
       .then(function(response) {
@@ -37,6 +37,7 @@ angular.module('tattva')
         return data;
         });
       },
+
 
       setNamespaceDetails : function(data, namespaceName){
         console.log("data to be updated from factory = ",data);

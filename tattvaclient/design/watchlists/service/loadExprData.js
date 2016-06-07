@@ -1,6 +1,19 @@
 angular.module("tattva")
 .service('loadExprData', ['$http','namespaceFactory','streamService', function($http,namespaceFactory,streamService){
 
+  this.getwatchlistdata=function(namespaceName){
+    console.log("In the get namespace factory method",namespaceName);
+    var a=[];
+    return $http.get('/watchlist/'+namespaceName).then(function(response) {
+      data =  response.data;
+      for(i in data)
+      {
+        a.push(data[i].name);
+      }
+      return a;
+    });
+  }
+
 
 this.getConstants=function(){
 return [{"Name":"PI","Value":"3.14"},{"Name":"e","Value":"2.74"},{"Name":"φ","Value":"1.618033988749894848204586"}]
@@ -10,7 +23,6 @@ return [{"Name":"PI","Value":"3.14"},{"Name":"e","Value":"2.74"},{"Name":"φ","V
 this.getFunction=function(){
 return $http.get("/function");
 }
-
 
 this.getNameSpacenames=function(){
 var z=namespaceFactory.getNameSpace().then(function(data){
@@ -24,13 +36,6 @@ return z;
 return z;
 };
 
-
-this.getStreamname=function(selectednamespace){
-
-var config = {
-  params: {"namespace" : "name" }
-}
-}
 
 
 

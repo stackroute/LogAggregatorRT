@@ -27,7 +27,7 @@
                 <div flex="80" class="eachinst md-list-item-text" layout="column" ng-hide="editEnable">
                   <h3>{{instance[$index].name}}</h3>
                   <div layout="row">
-                <!-- <md-icon flex="10" md-svg-src="image/svg/ip.svg"></md-icon> -->
+
                     <p flex>{{instance[$index].ipaddr}}</p>
                   </div>
                   <div layout="row">
@@ -96,6 +96,7 @@
    </div>
    <div flex="30" ng-show="$index+1 == selectedInstanceIndex" layout="column" >
     <md-icon  ui-sref="design.instance.viewInstance.edit" ng-click="edit(instance[$index+1].name)" md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
+
  </div>
   </div>
 
