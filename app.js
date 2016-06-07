@@ -95,127 +95,127 @@ app.use('/instance', datasourcesrouter);
 
 var data1 = [];
 
-app.get('/namespaces', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/json/listnamespace.json'));
-});
-app.post('/namespaces', jsonParser, function(request, response) {
-    var body1 = request.body;
-    console.log(body1); //in body1 we have the data to be stored in the database
-});
-app.put('/namespace/', jsonParser, function(request, response) {
-    var body1 = request.body;
-    console.log("body1 put", body1); //in body1 we have the data to be stored in the database
-});
-
-app.get('/namespace/', function(req, res) {
-    console.log("namespace name from server", req.query.name);
-    // return req.params.name;
-    // res.sendFile(path.join(__dirname, 'public/json/listnamespace.json'));
-
-    var data = [{
-        "name": "apache",
-        "description": "This is the data format for namespace apache",
-        "dataformat": [{
-            "fieldAlias": "method",
-            "fieldName": "Method name",
-            "fieldType": "dimension"
-        }, {
-            "fieldAlias": "code",
-            "fieldName": "response code",
-            "fieldType": "dimension"
-        }, {
-            "fieldAlias": "hitsPerSecond",
-            "fieldName": " second",
-            "fieldType": "measure"
-        }]
-    }, {
-        "name": "NGINX",
-        "description": "This is the data format for namespace NGINX",
-        "dataformat": [{
-            "fieldAlias": "method",
-            "fieldName": "Method name",
-            "fieldType": "dimension"
-        }, {
-            "fieldAlias": "code",
-            "fieldName": "response code",
-            "fieldType": "dimension"
-        }, {
-            "fieldAlias": "hitsPerSecond",
-            "fieldName": "Number of hits per second",
-            "fieldType": "measure"
-        }]
-    }, {
-        "name": "BOA",
-        "description": "This is the data format for namespace BOA",
-        "dataformat": [{
-            "fieldAlias": "method",
-            "fieldName": "Method name",
-            "fieldType": "dimension"
-        }, {
-            "fieldAlias": "code",
-            "fieldName": "response code",
-            "fieldType": "dimension"
-        }, {
-            "fieldAlias": "hitsPerSecond",
-            "fieldName": "Number of hits per second",
-            "fieldType": "measure"
-        }]
-    }, {
-        "name": "IOT",
-        "description": "This is the data format for namespace IOT",
-        "dataformat": [{
-            "fieldAlias": "method",
-            "fieldName": "Method name",
-            "fieldType": "dimension"
-        }, {
-            "fieldAlias": "code",
-            "fieldName": "response code",
-            "fieldType": "dimension"
-        }, {
-            "fieldAlias": "hitsPerSecond",
-            "fieldName": "Number of hits per second",
-            "fieldType": "measure"
-        }]
-    }, ];
-
-    var result = {
-        "_id": 0,
-        "name": "apache",
-        "description": "This is the data format for namespace apache",
-        "organisation": "Wipro",
-        "createdBy": "Rahul",
-        "editedBy": "user123",
-        "archived": "false",
-        "dataformat": [{
-            "_id": 0,
-            "fieldAlias": "method",
-            "fieldName": "Name",
-            "fieldType": "dimension"
-        }, {
-            "_id": 1,
-            "fieldAlias": "code",
-            "fieldName": "responseCode",
-            "fieldType": "dimension"
-        }, {
-            "_id": 2,
-            "fieldAlias": "Number of hits per second",
-            "fieldName": "hitsPerSecond",
-            "fieldType": "measure"
-        }]
-
-    };
-
-    res.send(result);
-});
+// app.get('/namespaces', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'public/json/listnamespace.json'));
+// });
+// app.post('/namespaces', jsonParser, function(request, response) {
+//     var body1 = request.body;
+//     console.log(body1); //in body1 we have the data to be stored in the database
+// });
+// app.put('/namespace/', jsonParser, function(request, response) {
+//     var body1 = request.body;
+//     console.log("body1 put", body1); //in body1 we have the data to be stored in the database
+// });
+//
+// app.get('/namespace/', function(req, res) {
+//     console.log("namespace name from server", req.query.name);
+//     // return req.params.name;
+//     // res.sendFile(path.join(__dirname, 'public/json/listnamespace.json'));
+//
+//     var data = [{
+//         "name": "apache",
+//         "description": "This is the data format for namespace apache",
+//         "dataformat": [{
+//             "fieldAlias": "method",
+//             "fieldName": "Method name",
+//             "fieldType": "dimension"
+//         }, {
+//             "fieldAlias": "code",
+//             "fieldName": "response code",
+//             "fieldType": "dimension"
+//         }, {
+//             "fieldAlias": "hitsPerSecond",
+//             "fieldName": " second",
+//             "fieldType": "measure"
+//         }]
+//     }, {
+//         "name": "NGINX",
+//         "description": "This is the data format for namespace NGINX",
+//         "dataformat": [{
+//             "fieldAlias": "method",
+//             "fieldName": "Method name",
+//             "fieldType": "dimension"
+//         }, {
+//             "fieldAlias": "code",
+//             "fieldName": "response code",
+//             "fieldType": "dimension"
+//         }, {
+//             "fieldAlias": "hitsPerSecond",
+//             "fieldName": "Number of hits per second",
+//             "fieldType": "measure"
+//         }]
+//     }, {
+//         "name": "BOA",
+//         "description": "This is the data format for namespace BOA",
+//         "dataformat": [{
+//             "fieldAlias": "method",
+//             "fieldName": "Method name",
+//             "fieldType": "dimension"
+//         }, {
+//             "fieldAlias": "code",
+//             "fieldName": "response code",
+//             "fieldType": "dimension"
+//         }, {
+//             "fieldAlias": "hitsPerSecond",
+//             "fieldName": "Number of hits per second",
+//             "fieldType": "measure"
+//         }]
+//     }, {
+//         "name": "IOT",
+//         "description": "This is the data format for namespace IOT",
+//         "dataformat": [{
+//             "fieldAlias": "method",
+//             "fieldName": "Method name",
+//             "fieldType": "dimension"
+//         }, {
+//             "fieldAlias": "code",
+//             "fieldName": "response code",
+//             "fieldType": "dimension"
+//         }, {
+//             "fieldAlias": "hitsPerSecond",
+//             "fieldName": "Number of hits per second",
+//             "fieldType": "measure"
+//         }]
+//     }, ];
+//
+//     var result = {
+//         "_id": 0,
+//         "name": "apache",
+//         "description": "This is the data format for namespace apache",
+//         "organisation": "Wipro",
+//         "createdBy": "Rahul",
+//         "editedBy": "user123",
+//         "archived": "false",
+//         "dataformat": [{
+//             "_id": 0,
+//             "fieldAlias": "method",
+//             "fieldName": "Name",
+//             "fieldType": "dimension"
+//         }, {
+//             "_id": 1,
+//             "fieldAlias": "code",
+//             "fieldName": "responseCode",
+//             "fieldType": "dimension"
+//         }, {
+//             "_id": 2,
+//             "fieldAlias": "Number of hits per second",
+//             "fieldName": "hitsPerSecond",
+//             "fieldType": "measure"
+//         }]
+//
+//     };
+//
+//     res.send(result);
+// });
 
 
 app.get('/viewwatchlist', function(req, res) {
     res.sendFile(path.join(__dirname, 'public/json/watchlist.json'));
 });
-
-app.get('/function', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/jsonData/functiondatadisplay.json'))
-})
+// 
+// app.get('/function', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'public/jsonData/functiondatadisplay.json'))
+// })
 
 app.use('/', routes);
 app.use('/users', users);
@@ -226,10 +226,10 @@ app.use('/namespaces',namespace_router);
 app.use('/datastream',stream_router)
 app.use('/createslide',watchlistslide_router);
 
-app.post('/createNamespacePost', jsonParser, function(request, response) {
-    var body1 = request.body;
-    alert("reached")
-});
+// app.post('/createNamespacePost', jsonParser, function(request, response) {
+//     var body1 = request.body;
+//     alert("reached")
+// });
 
 app.post('/savewatchlist', jsonParser, function(request, response) {
     var body2 = request.body;
@@ -249,9 +249,9 @@ app.post('/sendslidedata', function(request, response) {
     console.log("body1 = " + body1);
 });
 
-app.get('/viewNamespace', function(req, res) {
-    res.sendFile(path.join(__dirname, '/public/json/namespace.json'));
-});
+// app.get('/viewNamespace', function(req, res) {
+//     res.sendFile(path.join(__dirname, '/public/json/namespace.json'));
+// });
 app.get('/fieldOption', function(req, res) {
     res.sendFile(path.join(__dirname, '/public/json/fieldOption.json'));
 });
@@ -270,9 +270,9 @@ app.get('/OutcomeOptions',function(req,res)
 {
 res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/outcomeOption.json'));
 });
-app.get('/viewNamespace', function(req, res){
-  res.sendFile(path.join(__dirname,'tattvaclient/design/watchlists/json/namespace.json'));
-});
+// app.get('/viewNamespace', function(req, res){
+//   res.sendFile(path.join(__dirname,'tattvaclient/design/watchlists/json/namespace.json'));
+// });
 app.get('/fieldOption',function(req,res){
 res.sendFile(path.join(__dirname,'tattvaclient/design/watchlists/json/fieldOption.json'));
 });
@@ -313,9 +313,9 @@ app.get('/login_reg', function(req, res) {
 });
 
 
-app.get('/functionlist', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/data/functionlist.json'));
-});
+// app.get('/functionlist', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'public/data/functionlist.json'));
+// });
 
 // app.get('/submitInstance', function(req, res) {
 //     res.sendFile(path.join(__dirname, 'public/data/namespace.json'));
@@ -329,13 +329,13 @@ app.get('/functionlist', function(req, res) {
 
 
 /*functions*/
-app.get('/func_link', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/data/function_data.json'));
-});
-
-app.get('/func_link_data', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/data/function_data_display.json'));
-}); /*functions*/
+// app.get('/func_link', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'public/data/function_data.json'));
+// });
+//
+// app.get('/func_link_data', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'public/data/function_data_display.json'));
+// }); /*functions*/
 
 
 

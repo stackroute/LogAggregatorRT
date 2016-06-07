@@ -1,6 +1,5 @@
-var max=function()
+var evaluate=function(data)
 {
-this.evaluate=function(data){
   var max=0;
 for(var i=0;i< data.length; i++)
 {
@@ -8,11 +7,9 @@ for(var i=0;i< data.length; i++)
    max=data[i];
 
 }
-console.log(max);
+return max;
 }
 
 
-}
 
-
-module.exports=max;
+module.exports=evaluate;
