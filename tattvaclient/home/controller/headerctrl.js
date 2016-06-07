@@ -1,12 +1,7 @@
 angular.module('tattva')
-.controller('HeaderCtrl',["$scope","$http",function($scope,$http){
+.controller('HeaderCtrl',["$scope","$http","sideNavItemsFactory",function($scope,$http, sideNavItemsFactory){
   $scope.header="TATTVA - Complex Event Processor";
-  $scope.loadData= function(){
-    $http.get('/sideNav').then(function(response){
-      $scope.items=response.data;
-      console.log($scope.data);
-    })
-  };
-  $scope.loadData();
+    sideNavItemsFactory.getSideNavItems().then(function(response){
+      $scope.items = response;
+    });
 }]);
- 

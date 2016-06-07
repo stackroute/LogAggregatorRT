@@ -9,27 +9,27 @@ function($scope,$mdDialog,publisherSettingFactory, data){
   };
 
   $scope.updateBackPublisher = function(Data) {
-console.log(Data);
+    console.log(Data);
     $scope.tabs=[];
     angular.forEach($scope.uiPublisherConfig.widgetTabs, function(tab){
       if(tab.selected){
         $scope.tabs.push(tab.name);
       }
     });
-$scope.name="publishToDashboard";
-var publisherData=[];
-var publisherExp={
-  publishType:$scope.name,
-  graphTypes:$scope.graphTypes,
-  tabsType:$scope.tabs,
-  widgetSizes:$scope.widgetSize,
-  logDataDisplayType:$scope.logDataDisplayType,
-}
-console.log(publisherExp);
-publisherData.push(publisherExp);
-$scope.publisherData.publisher=publisherData;
+    $scope.name="publishToDashboard";
+    var publisherData=[];
+    var publisherExp={
+      publishType:$scope.name,
+      graphTypes:$scope.graphTypes,
+      tabsType:$scope.tabs,
+      widgetSizes:$scope.widgetSize,
+      logDataDisplayType:$scope.logDataDisplayType,
+    }
+    console.log(publisherExp);
+    publisherData.push(publisherExp);
+    $scope.publisherData.publisher=publisherData;
     $mdDialog.hide();
-};
+  };
 
   $scope.cancel = function() {
     $mdDialog.cancel();
