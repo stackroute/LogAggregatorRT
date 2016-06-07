@@ -1,12 +1,20 @@
 
 angular.module("tattva")
-.controller('namespacebasedwatchlist',['$scope','$http','$mdDialog','wlstDataService',function($scope,$http,$mdDialog,wlstDataService)
+.controller('namespacebasedwatchlist',['$scope','$http','$mdDialog','wlstDataService','loadExprData',function($scope,$http,$mdDialog,wlstDataService,loadExprData)
 {
+  $scope.data=[];
   $scope.tabTitle ="Watchlist";
   $scope.stateChange="design.createwatchlist"
   $scope.loadData=function()
+  {
+    loadExprData.getNameSpacenames().then(function(result)
     {
-      wlstDataService.getData().then(function(response) {$scope.data = response.data;} );
-    };
-    $scope.loadData();
+      console.log(result);
+      for(i in result)
+      {
+        $scope.data.push(result[i]);
+      }
+    });
+  };
+  $scope.loadData();
 }]);

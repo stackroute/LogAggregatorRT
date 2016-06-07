@@ -2,6 +2,18 @@ var watchlist_router = require('express').Router();
 var watchlist = require('./watchlists.js');
 
 
+
+watchlist_router.get('/:namespaceName', function(req, res){
+console.log(req.params.namespaceName);
+  watchlist.find({namespace:req.params.namespaceName}, function(err, watchlistalldata){
+    if(err) console.error(err);
+
+    console.log(watchlistalldata);
+    res.send(watchlistalldata);
+  });
+});
+
+
 watchlist_router.get('/stream',function(req,res,next){
 console.log(req.param('namespace'));
   res.send('respond with a resource');

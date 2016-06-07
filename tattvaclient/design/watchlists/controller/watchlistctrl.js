@@ -54,12 +54,45 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
 
   $scope.savewatchlist=function()
   {
-    saveToDB.savewatchlistdata($scope.wlstdef);
+    saveToDB.savewatchlistdata($scope.wlstdef).then(function(){console.log("hello")});
+    // saveToDB.savewatchexecutor($scope.wlstdef);
     $state.go("design.watchlist");
   }
 
-  $scope.actionButton=function(){
-    console.log("hi");
+  $scope.toggleOutputToStream=function(){
+    console.log("outputToStreams");
+    console.log("hi")
+    for(i in $scope.wlstdef.publisher)
+    {
+    if($scope.wlstdef.publisher[i].publishType=="outputToStreams")
+    {
+    $scope.wlstdef.publisher.splice(i,1);
+    }
+    }
+  }
+
+
+  $scope.toggleSavetoDB=function(){
+  console.log("hi");
+  var flag;
+  for(i in $scope.wlstdef.publisher)
+  {
+  if($scope.wlstdef.publisher[i].publishType=="saveToDB")
+  {
+  $scope.wlstdef.publisher.splice(i,1);
+  }
+  }
+  }
+
+  $scope.togglePublishToDashboard=function(){
+    console.log("hi")
+    for(i in $scope.wlstdef.publisher)
+    {
+    if($scope.wlstdef.publisher[i].publishType=="publishToDashboard")
+    {
+    $scope.wlstdef.publisher.splice(i,1);
+    }
+    }
   }
 
   $scope.opnePublisherDialogWindow = function () {
@@ -97,7 +130,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
         targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
-        // locals: { "data": $scope.wlstdef }
+        locals: { "data": $scope.wlstdef }
       })
     };
     $scope.showOutputToStreamDialog();
@@ -114,7 +147,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
         targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
-        // locals: { "data": $scope.wlstdef }
+        locals: { "data": $scope.wlstdef }
       })
     };
     $scope.showOutputToStreamDialog();

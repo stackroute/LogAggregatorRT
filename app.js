@@ -48,15 +48,15 @@ app.use('/sideNav', sideNav_router);
 app.use('/namespaces',namespace_router);
 app.use('/datastream',stream_router)
 app.use('/createslide',watchlistslide_router);
-
-//Mongoose connection
-app.get('/namespaces', function(req, res){
-  res.sendFile(path.join(__dirname, 'public/json/listnamespace.json'));
-});
-app.post('/namespaces',jsonParser,function (request, response) {
-  var body1=request.body;
-  console.log(body1);//in body1 we have the data to be stored in the database
-});
+//
+// //Mongoose connection
+// app.get('/namespaces', function(req, res){
+//   res.sendFile(path.join(__dirname, 'public/json/listnamespace.json'));
+// });
+// app.post('/namespaces',jsonParser,function (request, response) {
+//   var body1=request.body;
+//   console.log(body1);//in body1 we have the data to be stored in the database
+// });
 
 app.get('/viewwatchlist', function(req, res){
   res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/watchlist.json'));

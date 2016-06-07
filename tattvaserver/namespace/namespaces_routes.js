@@ -1,6 +1,11 @@
 var namespace_router = require('express').Router();
 var Namespace = require('./namespaces.js');
 
+// namespace_router.use(function(req, res, next){
+//   console.log("in the namespace_router middleware ", req);
+//   next();
+// })
+
 namespace_router.get('/', function(req, res){
   Namespace.find({},{name:1, dataSchema:1}, function(err, namespaceData){
     if(err){
@@ -42,14 +47,12 @@ namespace_router.put('/',  function (request, response) {
 });
 
 namespace_router.get('/:name', function(req, res){
-console.log("descriptor",name);
+console.log("descriptor",req.params.name);
   Namespace.findOne({name:req.params.name}, function(err, namespaceData){
     if(err){
-      Object.keys(err.errors).forEach(function(key) {
-        var message = err.errors[key].message;
-        console.log('Validation error for "%s": %s', key, message);
-      });
+      console.error(err);
      }
+console.log(namespaceData);
     res.send(namespaceData)
   })
 });

@@ -17,7 +17,6 @@ console.log(Data);
       }
     });
 $scope.name="publishToDashboard";
-var publisherData=[];
 var publisherExp={
   publishType:$scope.name,
   graphTypes:$scope.graphTypes,
@@ -26,8 +25,7 @@ var publisherExp={
   logDataDisplayType:$scope.logDataDisplayType,
 }
 console.log(publisherExp);
-publisherData.push(publisherExp);
-$scope.publisherData.publisher=publisherData;
+$scope.publisherData.publisher.push(publisherExp);
     $mdDialog.hide();
 };
 

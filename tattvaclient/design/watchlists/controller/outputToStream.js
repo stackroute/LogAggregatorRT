@@ -1,11 +1,13 @@
 angular.module("tattva")
-.controller("outputToStreams",["loadExprData","$scope","$mdDialog", function(loadExprData,$scope,$mdDialog){
+.controller("outputToStreams",["loadExprData","$scope","$mdDialog","data", function(loadExprData,$scope,$mdDialog,data){
+$scope.publisherData = data;
   $scope.cancel = function() {
     $mdDialog.cancel();
   };
   $scope.hide = function() {
     $mdDialog.hide();
   };
+
   $scope.streams=[];
   loadExprData.getStreamname().then(function(data)
   {
@@ -15,6 +17,16 @@ angular.module("tattva")
     }
     console.log($scope.streams);
   });
-  // $scope.streams=loadExprData.getStreamname();
-  // console.log($scope.streams);
+
+  $scope.updateBackPublisher=function () {
+    $scope.name="outputToStreams";
+    var publisherData=[];
+    var publisherExp={
+      publishType:$scope.name,
+      streamName:$scope.streamName
+    }
+    publisherData.push(publisherExp);
+    $scope.publisherData.publisher=publisherData;
+  $mdDialog.hide();
+  }
 }])

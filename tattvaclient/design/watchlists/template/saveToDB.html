@@ -1,3 +1,4 @@
+    <form layout-padding ng-submit="updateBackPublisher(Data)">
 <md-dialog style="width:600px;">
   <md-toolbar>
     <div class="md-toolbar-tools">
@@ -10,7 +11,7 @@
         <label>Name of the watchlist</label>
       </div>
       <div>
-        <input ng-required="true" name="wNameforoutput" type="text" readonly="true">
+        <input ng-required="true" type="text" value="{{dbName}}" readonly="true">
       </div>
     </div>
   </md-dialog-content>
@@ -20,3 +21,4 @@
     <md-button type="submit" class="md-raised md-primary">OK</md-button>
   </md-dialog-actions>
 </md-dialog>
+</form>
