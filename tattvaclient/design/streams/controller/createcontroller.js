@@ -1,10 +1,13 @@
 angular.module('tattva')
+
 .controller('createController', ['$scope', '$http','namespaceService', 'instanceService','streamsservice', function($scope, $http, namespaceService, instanceService,streamsservice){
+
   $scope.operator=[">", ">=", "<", "<=", "==", "!=" ]
 
   namespaceService.getData().success(function(data){
     $scope.namespace_collection=data;
   });
+
   instanceService.getData().success(function(data){
     $scope.instance_collection=data;
   });

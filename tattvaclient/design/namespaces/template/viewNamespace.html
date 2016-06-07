@@ -16,20 +16,20 @@
         <md-input-container flex layout>
           <label><b>Data schema for NameSpace</b></label>
         </md-input-container><br><br>
-        <div layout="row" flex layout-padding layout-margin ng-repeat="dataFormatObj in editNameSpace.dataformat">
+        <div layout="row" flex layout-padding layout-margin ng-repeat="dataFormatObj in editNameSpace.dataSchema">
           <md-input-container>
             <label>{{editNameSpace.dataformat.indexOf(dataFormatObj)+1}}.</label>
           </md-input-container>
           <md-input-container flex="20" >
             <label>Name</label>
-            <input type="text" ng-model="dataFormatObj.fieldAlias" ng-disabled="editNamespaceFlag" required>
+            <input type="text" ng-model="dataFormatObj.alias" ng-disabled="editNamespaceFlag" required>
           </md-input-container>
           <md-input-container flex-offset="5" flex="20" >
             <label>Field Name</label>
-            <input type="text" ng-model="dataFormatObj.fieldName" ng-disabled="editNamespaceFlag" required>
+            <input type="text" ng-model="dataFormatObj.name" ng-disabled="editNamespaceFlag" required>
           </md-input-container>
           <md-input-container flex-offset="5" flex="8" >
-            <md-radio-group ng-model="dataFormatObj.fieldType" class="md-primary" ng-disabled="editNamespaceFlag" required>
+            <md-radio-group ng-model="dataFormatObj.type" class="md-primary" ng-disabled="editNamespaceFlag" required>
               <md-radio-button value="dimension" ng-disabled="editNamespaceFlag">Dimension (differentiates data)</md-radio-button>
               <md-radio-button value="measure" ng-disabled="editNamespaceFlag">Measure (measurable field)</md-radio-button>
             </md-radio-group>

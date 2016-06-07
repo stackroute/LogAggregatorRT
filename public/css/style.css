@@ -1,0 +1,1710 @@
+.md-subheader .md-subheader-inner{
+  background-color: red;
+}
+
+
+.listmenu{
+overflow: scroll;
+overflow-x:hidden;
+/*max-height: 453px !important;
+
+-webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+-moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);*/
+}
+
+.viewInst .md-button{
+  text-transform: none;
+}
+.listInst{
+ max-height: 453px !important;
+}
+
+.instance md-input-container,.instanceDialog md-input-container{
+
+    height:3em;
+}
+.detail button{
+  min-width:20px !important;
+  min-height:10px !important;
+
+}
+.detail md-icon{
+  width:10px !important;
+   height:10px !important;
+
+}
+
+.viewInst md-list md-list-item.md-3-line .md-list-item-text h3{
+ font-family: 'Open Sans';
+    font-size: 12pt;
+    font-weight:bold;
+  }
+.viewInst md-list md-list-item.md-3-line .md-list-item-text p{
+  font-family: 'Open Sans';
+  font-size:9pt;
+}
+
+
+.envelop {
+    margin: 10px;
+    padding: 10px;
+}
+#plus
+{
+  float: right;
+}
+.heading
+{
+  padding-left: 20px;
+  font-weight: bold;
+  padding-top: 15px;
+}
+
+/*begin -- This Style sheet used in the public/partials/login_reg.html by surya sah*/
+
+.listdemoListControls md-divider {
+  margin-top: 0;
+  margin-bottom: 0; }
+.listdemoListControls md-list {
+  padding-top: 0; }
+.listdemoListControls md-list-item > p,
+.listdemoListControls md-list-item > ._md-list-item-inner > p,
+.listdemoListControls md-list-item ._md-list-item-inner > p,
+.listdemoListControls md-list-item ._md-list-item-inner > ._md-list-item-inner > p {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */ }
+
+
+
+
+.usrListContainer{
+  padding:50px;
+  margin: 180px;
+  border: 1px solid blue;
+}
+.user-avatar {
+  border-radius: 99%;
+}
+
+#edit1 {
+  text-decoration: none;
+}
+.editable-click, a.editable-click {
+     text-decoration: none;
+     color: #000000;
+     border-bottom: none;
+}
+
+
+/*Style sheet is ended of  public/partials/login_reg.html by surya sah*/
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
+  font: 14px;
+  font-size: auto;
+  margin: auto;
+}
+
+/* Pooja Style sheet*/
+/*
+.inputdemoIcons md-content{
+    width:100%;
+   height:100%;
+  overflow:hidden;
+
+}*/
+#cb{
+  color:#607D8B;
+  font-size:10pt;
+}
+.bottom{
+  margin-bottom:0;
+}
+
+.ar{
+  margin:0;
+  margin-top:5px;
+  text-align:center;
+}
+/*#sign{
+  font-size:12pt;
+}*/
+
+
+
+.error{
+  text-align:right ;
+  padding-right:8px;
+
+}
+
+
+
+.mytabs md-input-container .md-errors-spacer{
+  min-height: 0px;
+  min-width: 0px;
+}
+
+
+md-input-container .textarea{
+     border: 1px solid #eae9eb;
+    box-sizing: border-box;
+  border-radius:3px;
+
+}
+
+.funcCheck md-checkbox{
+  font-size:10pt;
+  font-color:#1e222f;
+}
+
+
+.ace_editor
+{ height: 350px;
+width:92%;
+margin-left:50px;
+margin-top:10px;
+margin-right:30px;
+border:2px #00cccc solid;
+border-radius:7px;}
+
+#save{
+  background-color: #008080;
+ width:40%;
+ margin-left:35%;
+}
+
+.code{
+  font-size: 14pt;
+  margin-left:7%;
+  font-family: cursive;
+  font-style: italic;
+
+}
+
+
+
+/*ui-router css*/
+
+.designbody {
+  /*padding: 50px;*/
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.designbody md-content {
+  background-color: transparent !important;
+ }
+.designbody md-content md-tabs {
+
+    border: 1px solid #e1e1e1; }
+
+ .designbody md-content md-tabs md-tabs-wrapper {
+      background-color:teal;}
+ .designbody md-tabs .md-tab{
+  color:white;
+}
+
+
+
+.loginsignin md-tab-content {
+  padding: 25px;
+  padding-top:15px;
+}
+
+#createNameSpaceInputBtn{
+  margin-left: 25%;
+}
+#createNameSpaceInputBtn button{
+  background-color: teal;
+}
+/*#createNamespaceTable{
+  border:1px solid grey;
+}*/
+
+/*md-content md-tabs md-tabs-wrapper {
+  background-color:teal;
+}
+md-tabs .md-tab{
+  color:white;
+}*/
+
+#tabView{
+  /*background-color: #D4E8BE;*/
+  border:1px solid #e1e1e1;
+  /*height:300px;*/
+}
+
+
+#noSubscriber{
+  background:#e1e1e1;
+  text-align: center;
+  height: 600px;
+}
+
+a {
+  color: #FFFFF;
+  text-decoration: none;
+}
+#add{
+  color:white!important;
+}
+#namespace{
+margin-top: 2px;
+}
+  .designbody md-tabs .md-tab.md-active{
+   color: #d1d1d1;
+   /*border:1px solid #e1e1e1; */
+ }
+ #tabView{
+   /*background-color: #D4E8BE;*/
+   border:1px solid #e1e1e1;
+   /*height:300px;*/
+ }
+
+
+ #noSubscriber{
+   background:#e1e1e1;
+   text-align: center;
+ }
+
+
+.viewDiv{
+  height:300px;
+}
+
+
+#fieldType{
+  padding-top:12px;
+}
+.createNameSpaceTable{
+  background-color:teal;
+}
+
+#nameSpaceTable{
+  /*display:none;*/
+  border:1px solid grey;
+}
+
+
+/*table {
+  border: 1px solid #D0D3DA;
+  margin: auto;
+  width:10%;
+}*/
+
+table#nameSpaceTable th {
+  text-transform: uppercase;
+  text-align:center;
+}
+
+table#nameSpaceTable tr {
+  text-align:center;
+}
+
+table#nameSpaceTable td {
+  text-transform: capitalize;
+  text-align:center;}
+
+
+
+#output{
+  margin-top: 7em;
+
+}
+
+#on
+{
+  padding-top: 10px;
+}
+/*.outerDiv{
+  width: 550px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 40px;
+}*/
+
+
+/*md-input-container label{
+  text-transform: uppercase;
+  font-size: 9pt;
+}*/
+
+
+/* search box*/
+.searchbox .md-button{
+  min-width:50px;
+}
+.searchbox md-input-container input{
+  font-size: 11pt;
+}
+.searchbox md-input-container .md-errors-spacer {
+    min-height: 0;
+}
+
+.instance{
+  padding-top:5%;
+  margin-left:30%;
+}
+
+#av{
+  margin-right: 5px;
+}
+
+
+/*.listmain{
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+}*/
+.listmain md-list{
+  padding:0;
+}
+
+.listmenu{
+overflow: scroll;
+overflow-x:hidden;
+/*max-height: 453px !important;
+
+-webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+-moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);*/
+}
+.eachnamespc{
+  margin-left:5%;
+}
+
+.eachnamespc p.ng-binding, .eachnamespc h3.ng-binding{
+    font-family: 'Open Sans';
+    margin:0;
+
+}
+.eachnamespc h3.ng-binding
+{
+  font-size:12pt;
+
+}
+.eachnamespc p.ng-binding{
+  font-size: 9pt;
+  line-height: 26px;
+}
+.viewInst{
+  width:100%;
+  height:100%
+
+
+}
+.instancetoolbar{
+  background-color: #f2f2f2;
+  font-family:'Open Sans';
+  color:black;
+
+}
+
+.viewInst .md-button{
+  text-transform: none;
+}
+.listInst{
+ max-height: 453px !important;
+
+}
+.eachinst{
+  text-align:left;
+}
+
+.eachinst p{
+
+  font-weight: bold;
+  font-size: 9pt;
+
+}
+.instanceList{
+margin:15px;
+}
+
+.instanceList a.md-button.md-ink-ripple {
+    width: 100%;
+}
+
+.instance md-input-container,.instanceDialog md-input-container {
+    margin-bottom: 0;
+}
+
+.viewInst md-list md-list-item.md-3-line .md-list-item-text h3{
+ font-family: 'Open Sans';
+    font-size: 12pt;
+    font-weight:bold;
+  }
+.viewInst md-list md-list-item.md-3-line .md-list-item-text p{
+  font-family: 'Open Sans';
+  font-size:9pt;
+}
+
+
+
+
+.envelop {
+    margin: 10px;
+    padding: 10px;
+}
+#plus
+{
+  float: right;
+}
+.heading
+{
+  padding-left: 20px;
+  font-weight: bold;
+  padding-top: 15px;
+}
+
+#createNameSpaceInputBtn{
+  margin-left: 25%;
+}
+#createNameSpaceInputBtn button{
+  background-color: teal;
+}
+
+
+#tabView{
+  /*background-color: #D4E8BE;*/
+  border:1px solid #e1e1e1;
+  /*height:300px;*/
+}
+
+
+#noSubscriber{
+  background:#e1e1e1;
+  text-align: center;
+  height: 600px;
+}
+
+.viewDiv{
+  height:300px;
+}
+
+#fieldType{
+  padding-top:12px;
+}
+.createNameSpaceTable{
+  background-color:teal;
+  width:50%;
+}
+
+#nameSpaceTable{
+  /*display:none;*/
+  border:1px solid grey;
+  width:100%;
+}
+
+/*
+table #nameSpaceTable {
+  border: 1px solid #D0D3DA;
+  margin: auto;
+  width:100%;
+}*/
+body {
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #2E2E2E;
+  text-decoration: none;
+}
+
+.head-tab{
+background-color: teal;
+}
+
+
+
+
+.header{
+text-align: center;
+}
+
+/*.listmenu{
+overflow-x:hidden;
+
+max-height: 500px !important;
+}*/
+
+max-height: 393px !important;
+}
+
+.body-tab{
+background-color: #00bfa5;
+}
+
+.lnButton {
+  background-color: #16B3A4;
+  border-radius: 4px;
+  border-color: #01A797;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.lnButton:hover {
+  background-color: #19736B;
+}
+
+.lnButton a {
+  color: #fff;
+}
+/*begin -- This Style sheet used in the public/partials/login_reg.html by surya sah*/
+
+.listdemoListControls md-divider {
+  margin-top: 0;
+  margin-bottom: 0; }
+.listdemoListControls md-list {
+  padding-top: 0; }
+.listdemoListControls md-list-item > p,
+.listdemoListControls md-list-item > ._md-list-item-inner > p,
+.listdemoListControls md-list-item ._md-list-item-inner > p,
+.listdemoListControls md-list-item ._md-list-item-inner > ._md-list-item-inner > p {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */ }
+
+.usrListContainer{
+  padding:50px;
+  margin: 180px;
+  border: 1px solid blue;
+}
+.user-avatar {
+  border-radius: 99%;
+}
+
+#edit1 {
+  text-decoration: none;
+}
+
+
+.editable-click, a.editable-click {
+     text-decoration: none;
+     color: #000000;
+     border-bottom: none;
+}
+
+
+/*Style sheet is ended of  public/partials/login_reg.html by surya sah*/
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+
+/* Pooja Style sheet*/
+
+.mytabs md-tabs.tabs.ng-isolate-scope.md-dynamic-height.flex{
+  padding:0;
+
+}
+
+
+#cb{
+  color:#607D8B;
+  font-size:10pt;
+}
+.bottom{
+  margin-bottom:0;
+}
+
+.ar{
+  margin:0;
+  margin-top:5px;
+  text-align:center;
+}
+/*#sign{
+  font-size:12pt;
+}*/
+
+
+
+.mytabs md-input-container .md-errors-spacer{
+  min-height: 0px;
+  min-width: 0px;
+}
+md-input-container .textarea{
+     border: 1px solid #eae9eb;
+    box-sizing: border-box;
+  border-radius:3px;
+
+}
+
+.funcCheck md-checkbox{
+  font-size:10pt;
+  font-color:#1e222f;
+}
+
+
+.ace_editor
+{ height: 350px;
+width:92%;
+margin-left:50px;
+margin-top:10px;
+margin-right:30px;
+border:2px #00cccc solid;
+border-radius:7px;
+}
+
+#save{
+  background-color: #008080;
+ width:40%;
+ margin-left:35%;
+}
+
+.code{
+  font-size: 14pt;
+  margin-left:7%;
+  font-family: cursive;
+  font-style: italic;
+
+}
+
+
+
+/*ui-router css*/
+
+.designbody {
+  /*padding: 50px;*/
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.designbody md-content {
+  background-color: transparent !important;
+ }
+.designbody md-content md-tabs {
+
+    border: 1px solid #e1e1e1; }
+
+ .designbody md-content md-tabs md-tabs-wrapper {
+      background-color:teal;}
+ .designbody md-tabs .md-tab{
+  color:white;
+}
+
+a {
+  color: #FFFFF;
+  text-decoration: none;
+}
+#add{
+  color:white!important;
+}
+#namespace{
+margin-top: 2px;
+}
+  .designbody md-tabs .md-tab.md-active{
+   color: #d1d1d1;
+   /*border:1px solid #e1e1e1; */
+ }*/
+ #tabView{
+   /*background-color: #D4E8BE;*/
+   border:1px solid #e1e1e1;
+   /*height:300px;*/
+ }
+
+
+ #noSubscriber{
+   background:#e1e1e1;
+   text-align: center;
+ }
+
+.viewDiv{
+  height:300px;
+}
+
+
+
+#output{
+  margin-top: 7em;
+}
+
+#on
+{
+  padding-top: 10px;
+}
+
+
+
+
+/* search box*/
+.searchbox .md-button{
+  min-width:50px;
+}
+.searchbox md-input-container input{
+  font-size: 11pt;
+}
+.searchbox md-input-container .md-errors-spacer {
+    min-height: 0;
+}
+
+.instance{
+  padding-top:5%;
+  margin-left:30%;
+}
+
+#av{
+  margin-right: 5px;
+}
+
+/*
+.listmain{
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+}*/
+.listmain md-list{
+  padding:0;
+}
+
+.listmenu{
+overflow: scroll;
+overflow-x:hidden;
+/*max-height: 453px !important;
+
+-webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+-moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);*/
+}
+.eachnamespc{
+  margin-left:5%;
+}
+
+.eachnamespc p.ng-binding, .eachnamespc h3.ng-binding{
+    font-family: 'Open Sans';
+    margin:0;
+
+}
+.eachnamespc h3.ng-binding
+{
+  font-size:12pt;
+
+}
+.eachnamespc p.ng-binding{
+  font-size: 9pt;
+  line-height: 26px;
+}
+.viewInst{
+  width:100%;
+  height:100%
+
+
+}
+
+
+.viewInst .md-button{
+  text-transform: none;
+}
+.listInst{
+ max-height: 453px !important;
+
+}
+.eachinst{
+  text-align:left;
+}
+
+.eachinst p{
+
+  font-weight: bold;
+  font-size: 9pt;
+
+}
+.instanceList{
+margin:15px;
+}
+.body-tab{
+background-color: #00bfa5;
+}
+
+.lnButton {
+  background-color: #16B3A4;
+  border-radius: 4px;
+  border-color: #01A797;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.lnButton:hover {
+  background-color: #19736B;
+}
+
+.lnButton a {
+  color: #fff;
+}
+/*begin -- This Style sheet used in the public/partials/login_reg.html by surya sah*/
+
+.listdemoListControls md-divider {
+  margin-top: 0;
+  margin-bottom: 0; }
+.listdemoListControls md-list {
+  padding-top: 0; }
+.listdemoListControls md-list-item > p,
+.listdemoListControls md-list-item > ._md-list-item-inner > p,
+.listdemoListControls md-list-item ._md-list-item-inner > p,
+.listdemoListControls md-list-item ._md-list-item-inner > ._md-list-item-inner > p {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */ }
+
+.imgbg1 {
+  height: 100px;
+  width: 100px;
+  padding-top: -10px;
+  position: absolute;
+}
+
+.imgbg {
+  height: 85px;
+  width: 85px;
+  position: absolute;
+}
+
+.set1{
+  padding-top: 30px;
+}
+
+.usrListContainer{
+  padding:50px;
+  margin: 180px;
+  border: 1px solid blue;
+}
+.user-avatar {
+  border-radius: 99%;
+}
+
+#edit1 {
+  text-decoration: none;
+}
+
+md-input-container .textarea{
+     border: 1px solid #eae9eb;
+    box-sizing: border-box;
+  border-radius:3px;
+}
+
+.funcCheck md-checkbox{
+  font-size:10pt;
+  font-color:#1e222f;
+}
+
+
+.ace_editor
+{ height: 350px;
+width:92%;
+margin-left:50px;
+margin-top:10px;
+margin-right:30px;
+border:2px #00cccc solid;
+border-radius:7px;}
+
+#save{
+  background-color: #008080;
+ width:40%;
+ margin-left:35%
+}
+
+.code{
+  font-size: 14pt;
+  margin-left:7%;
+  font-family: cursive;
+  font-style: italic;
+
+}
+
+.editable-click, a.editable-click {
+     text-decoration: none;
+     color: #000000;
+     border-bottom: none;
+}
+
+
+/*Style sheet is ended of  public/partials/login_reg.html by surya sah*/
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+.nav {
+    position: absolute;
+    bottom: 12%;
+    right: 50%;
+    font-size: 18px;
+}
+
+
+.md-info md-toolbar.md-default-theme:not(.md-menu-toolbar),.md-info md-toolbar:not(.md-menu-toolbar){
+  /*background-color: #0CD4D4;*/
+  position:fixed;
+  color: black;
+}
+
+/*#hero{
+  background-color: #FDFDFD;
+}
+
+.navlast {
+    position: absolute;
+    bottom: 3%;
+    right: 50%;
+    font-size: 18px;
+}
+
+#slide2Content{
+  padding-top: 80px;
+  margin-bottom: 40px;
+}
+
+.card{
+  width: 33%;
+  background-color: #F8F9F9;
+}
+
+/*.content{
+  padding-top: 60px;
+}*/
+
+a{
+  text-decoration: none;
+  color:#E0F2F1;
+}
+
+md-list-item a {
+  color: #868686;
+}
+
+.mainImg{
+  width: 85%;
+  margin: auto;
+}
+
+.person{
+  width: 70%;
+  height: 90%;
+  border-radius: 50%;
+  box-shadow: -1px 0px 20px 1px #0A6969;
+}
+
+/*.footer_part1{
+  height: 200px;
+  width: 100%;
+  background-color: #454848;
+  padding-top: 30px;
+}
+
+.footer{
+  padding-top: 0px;
+}*/
+
+.navfooter{
+  float: right;
+  padding-right: 30px;
+}
+
+.copyright{
+  margin-top: 75px;
+}
+
+.full_width{
+  /*padding-top: 40px;*/
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}*/
+
+
+/* Pooja Style sheet*/
+
+#cb{
+  color:#607D8B;
+  font-size:10pt;
+}
+.bottom{
+  margin-bottom:0;
+}
+
+.ar{
+  margin:0;
+  margin-top:5px;
+  text-align:center;
+}
+/*#sign{
+  font-size:12pt;
+}*/
+
+
+.inputdemoIcons md-icon{
+  size:16px;
+}
+
+
+
+.mic md-icon{
+   width:18px;
+  height:18px;
+}
+
+
+
+.error{
+  text-align:right ;
+  padding-right:8px;
+
+}
+
+
+.mytabs md-input-container .md-errors-spacer{
+  min-height: 0px;
+  min-width: 0px;
+}
+
+md-input-container .textarea{
+     border: 1px solid #eae9eb;
+    box-sizing: border-box;
+  border-radius:3px;
+
+}
+
+.funcCheck md-checkbox{
+  font-size:10pt;
+  font-color:#1e222f;
+}
+
+
+.ace_editor
+{ height: 350px;
+width:92%;
+margin-left:50px;
+margin-top:10px;
+margin-right:30px;
+border:2px #00cccc solid;
+border-radius:7px;}
+
+#save{
+  background-color: #008080;
+ width:40%;
+ margin-left:35%;
+}
+
+.code{
+  font-size: 14pt;
+  margin-left:7%;
+  font-family: cursive;
+  font-style: italic;
+
+}
+
+
+/*ui-router css*/
+
+.designbody {
+  /*padding: 50px;*/
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.designbody md-content {
+  background-color: transparent !important;
+ }
+.designbody md-content md-tabs {
+
+    border: 1px solid #e1e1e1; }
+
+ .designbody md-content md-tabs md-tabs-wrapper {
+      background-color:teal;}
+ .designbody md-tabs .md-tab{
+  color:white;
+}
+
+a {
+  color: #FFFFF;
+  text-decoration: none;
+}
+#add{
+  color:white!important;
+}
+#namespace{
+margin-top: 2px;
+}
+  .designbody md-tabs .md-tab.md-active{
+   color: #d1d1d1;
+   /*border:1px solid #e1e1e1; */
+ }*/
+ #tabView{
+   /*background-color: #D4E8BE;*/
+   border:1px solid #e1e1e1;
+   /*height:300px;*/
+ }
+
+
+ #noSubscriber{
+   background:#e1e1e1;
+   text-align: center;
+ }
+
+.viewDiv{
+  height:300px;
+}
+
+md-icon{
+height:18px;
+width:18px;
+}
+
+#output{
+  margin-top: 7em;
+}
+
+#on
+{
+  padding-top: 10px;
+}
+
+
+ md-dialog{
+  min-width:50%;
+ }
+
+/* search box*/
+.searchbox .md-button{
+  min-width:50px;
+}
+.searchbox md-input-container input{
+  font-size: 11pt;
+}
+.searchbox md-input-container .md-errors-spacer {
+    min-height: 0;
+}
+
+.instance{
+  padding-top:5%;
+  margin-left:30%;
+}
+
+#av{
+  margin-right: 5px;
+}
+
+
+
+.listmain md-list{
+  padding:0;
+}
+
+.listmenu{
+overflow: scroll;
+overflow-x:hidden;
+/*max-height: 530px !important;
+
+-webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+-moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);*/
+}
+.listmenuView{
+max-height: none;
+}
+.eachnamespc{
+  margin-left:5%;
+}
+
+.eachnamespc p.ng-binding, .eachnamespc h3.ng-binding{
+    font-family: 'Open Sans';
+    margin:0;
+
+}
+.eachnamespc h3.ng-binding
+{
+  font-size:12pt;
+
+}
+.eachnamespc p.ng-binding{
+  font-size: 9pt;
+  line-height: 26px;
+}
+.viewInst{
+  width:100%;
+  height:100%
+
+
+}
+.listInstance md-toolbar{
+  background-color: #f2f2f2;
+  font-family:'Open Sans';
+  color:black;
+
+}
+.viewInst .md-button{
+  text-transform: none;
+  padding-left: 40px;
+}
+.listInst{
+ max-height: 453px !important;
+
+}
+.eachinst{
+  text-align:left;
+}
+
+.eachinst p{
+
+  font-weight: bold;
+  font-size: 9pt;
+
+}
+.instanceList{
+margin:15px;
+}
+
+.instanceList a.md-button.md-ink-ripple {
+    width: 100%;
+}
+
+.instance md-input-container,.instanceDialog md-input-container {
+    margin-bottom: 0;
+}
+
+.viewInst md-list md-list-item.md-3-line .md-list-item-text h3{
+ font-family: 'Open Sans';
+    font-size: 12pt;
+    font-weight:bold;
+  }
+.viewInst md-list md-list-item.md-3-line .md-list-item-text p{
+  font-family: 'Open Sans';
+  font-size:9pt;
+}
+
+.envelop {
+    margin: 10px;
+    padding: 10px;
+}
+#plus
+{
+  float: right;
+}
+.heading
+{
+  padding-left: 20px;
+  font-weight: bold;
+  padding-top: 15px;
+}
+
+begin -- This Style sheet used in the public/partials/login_reg.html by surya sah*/
+
+.listdemoListControls md-divider {
+  margin-top: 0;
+  margin-bottom: 0; }
+.listdemoListControls md-list {
+  padding-top: 0; }
+.listdemoListControls md-list-item > p,
+.listdemoListControls md-list-item > ._md-list-item-inner > p,
+.listdemoListControls md-list-item ._md-list-item-inner > p,
+.listdemoListControls md-list-item ._md-list-item-inner > ._md-list-item-inner > p {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */ }
+
+.usrListContainer{
+  padding:50px;
+  margin: 180px;
+  border: 1px solid blue;
+}
+.user-avatar {
+  border-radius: 99%;
+}
+
+#edit1 {
+  text-decoration: none;
+}
+
+.editable-click, a.editable-click {
+     text-decoration: none;
+     color: #000000;
+     border-bottom: none;
+}
+
+
+/*Style sheet is ended of  public/partials/login_reg.html by surya sah*/
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+/* Pooja Style sheet*/
+.whiteframedemoBasicClassUsage {
+  /* For breakpoint `-xs` */
+  /* For breakpoint `-sm` */
+  /* For breakpoint `-md` */
+  /* For breakpoint `-gt-md` */ }
+.mytabs{
+  padding:0;}
+
+
+
+.error{
+  text-align:right ;
+  padding-right:8px;
+
+}
+
+
+
+.mytabs md-input-container .md-errors-spacer{
+  min-height: 0px;
+  min-width: 0px;
+}
+
+
+
+md-input-container .textarea{
+     border: 1px solid #eae9eb;
+    box-sizing: border-box;
+  border-radius:3px;
+
+}
+
+.funcCheck md-checkbox{
+  font-size:10pt;
+  font-color:#1e222f;
+}
+
+
+.ace_editor
+{ height: 350px;
+width:92%;
+margin-left:50px;
+margin-top:10px;
+margin-right:30px;
+border:2px #00cccc solid;
+border-radius:7px;}
+
+#save{
+  background-color: #008080;
+ width:40%;
+ margin-left:35%;
+}
+
+.code{
+  font-size: 14pt;
+  margin-left:7%;
+  font-family: cursive;
+  font-style: italic;
+
+}
+
+
+
+/*ui-router css*/
+
+.designbody {
+  /*padding: 50px;*/
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.designbody md-content {
+  background-color: transparent !important;
+ }
+.designbody md-content md-tabs {
+
+    border: 1px solid #e1e1e1; }
+
+ .designbody md-content md-tabs md-tabs-wrapper {
+      background-color:teal;}
+ .designbody md-tabs .md-tab{
+  color:white;
+}
+
+
+
+md-tab-content {
+  padding: 25px;
+}
+md-tabs.md-accent > md-tabs-wrapper{
+  background-color: #00BFFF;
+}
+md-tab-content:nth-child(1) {
+  background-color: white;
+}
+md-tab-content:nth-child(2) {
+  background-color:	white;
+}
+md-tab-content:nth-child(3) {
+  background-color:	white;
+}
+#createNameSpaceInputBtn{
+  margin-left: 25%;
+}
+#createNameSpaceInputBtn button{
+  background-color: teal;
+}
+
+#tabView{
+  /*background-color: #D4E8BE;*/
+  border:1px solid #e1e1e1;
+  /*height:300px;*/
+}
+
+
+#noSubscriber{
+  background:#e1e1e1;
+  text-align: center;
+  height: 600px;
+}
+
+a {
+  color: #FFFFF;
+  text-decoration: none;
+}
+#add{
+  color:white!important;
+}
+#namespace{
+margin-top: 2px;
+}
+  .designbody md-tabs .md-tab.md-active{
+   color: #d1d1d1;
+   /*border:1px solid #e1e1e1; */
+ }
+ #tabView{
+   /*background-color: #D4E8BE;*/
+   border:1px solid #e1e1e1;
+   /*height:300px;*/
+ }
+
+
+ #noSubscriber{
+   background:#e1e1e1;
+   text-align: center;
+ }
+
+
+.viewDiv{
+  height:300px;
+}
+
+
+#fieldType{
+  padding-top:12px;
+}
+.createNameSpaceTable{
+  background-color:teal;
+}
+
+#nameSpaceTable{
+  /*display:none;*/
+  border:1px solid grey;
+}
+
+
+/*table {
+  border: 1px solid #D0D3DA;
+  margin: auto;
+  width:10%;
+}*/
+
+table#nameSpaceTable th {
+  text-transform: uppercase;
+  text-align:center;
+}
+
+table#nameSpaceTable tr {
+  text-align:center;
+}
+
+table#nameSpaceTable td {
+  text-transform: capitalize;
+  text-align:center;}
+
+
+
+#output{
+  margin-top: 7em;
+
+}
+
+#on
+{
+  padding-top: 10px;
+}
+
+
+/*
+md-input-container label{
+  text-transform: uppercase;
+  font-size: 9pt;
+}*/
+
+
+/* search box*/
+.searchbox .md-button{
+  min-width:50px;
+}
+.searchbox md-input-container input{
+  font-size: 11pt;
+}
+.searchbox md-input-container .md-errors-spacer {
+    min-height: 0;
+}
+
+.instance{
+  padding-top:5%;
+  margin-left:30%;
+}
+
+#av{
+  margin-right: 5px;
+}
+
+/*
+.listmain{
+box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
+}*/
+.listmain md-list{
+  padding:0;
+}
+
+
+.eachnamespc{
+  margin-left:5%;
+}
+
+.eachnamespc p.ng-binding, .eachnamespc h3.ng-binding{
+    font-family: 'Open Sans';
+    margin:0;
+
+}
+.eachnamespc h3.ng-binding
+{
+  font-size:12pt;
+
+}
+.eachnamespc p.ng-binding{
+  font-size: 9pt;
+  line-height: 26px;
+}
+.viewInst{
+  width:100%;
+  height:100%
+
+
+}
+.viewInst .md-button{
+  text-transform: none;
+}
+.listInst{
+ max-height: 453px !important;
+
+}
+.eachinst{
+  text-align:left;
+}
+
+.eachinst p{
+
+  font-weight: bold;
+  font-size: 9pt;
+
+}
+.instanceList{
+margin:15px;
+}
+
+.instanceList a.md-button.md-ink-ripple {
+    width: 100%;
+}
+
+.instance md-input-container,.instanceDialog md-input-container {
+    margin-bottom: 0;
+}
+
+.viewInst md-list md-list-item.md-3-line .md-list-item-text h3{
+ font-family: 'Open Sans';
+    font-size: 12pt;
+    font-weight:bold;
+  }
+.viewInst md-list md-list-item.md-3-line .md-list-item-text p{
+  font-family: 'Open Sans';
+  font-size:9pt;
+}
+.envelop {
+    margin: 10px;
+    padding: 10px;
+}
+#plus
+{
+  float: right;
+}
+.heading
+{
+  padding-left: 20px;
+  font-weight: bold;
+  padding-top: 15px;
+}
+
+#createNameSpaceInputBtn{
+  margin-left: 25%;
+}
+#createNameSpaceInputBtn button{
+  background-color: teal;
+}
+
+
+#tabView{
+  /*background-color: #D4E8BE;*/
+  border:1px solid #e1e1e1;
+  /*height:300px;*/
+}
+
+
+#noSubscriber{
+  background:#e1e1e1;
+  text-align: center;
+  height: 600px;
+}
+
+.viewDiv{
+  height:300px;
+}
+
+#fieldType{
+  padding-top:12px;
+}
+.createNameSpaceTable{
+  background-color:teal;
+  width:50%;
+}
+
+#nameSpaceTable{
+  /*display:none;*/
+  border:1px solid grey;
+  width:100%;
+}

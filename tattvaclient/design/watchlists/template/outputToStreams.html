@@ -4,21 +4,25 @@
       <h2>Output To Output Stream</h2>
     </div>
   </md-toolbar>
-  <md-dialog-content>
-    <div layout-padding>
-      <md-input-container class="md-block" flex-gt-sm>
-        <label>Select output Stream</label>
-        <md-select ng-model="streams">
-          <md-option ng-repeat="obj in streams">
-            {{obj}}
-          </md-option>
-        </md-select>
-      </md-input-container>
-    </div>
-  </md-dialog-content>
-  <md-dialog-actions layout="row">
-    <span flex></span>
-    <md-button ng-click="cancel()">Cancel</md-button>
-    <md-button type="submit" class="md-raised md-primary">OK</md-button>
-  </md-dialog-actions>
+  <div>
+     <form ng-submit="updateBackPublisher(Data)">
+      <md-dialog-content>
+        <div layout-padding>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Select output Stream</label>
+            <md-select ng-model="streamName">
+              <md-option ng-repeat="obj in streams">
+                {{obj}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+      </md-dialog-content>
+      <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()">Cancel</md-button>
+        <md-button type="submit" class="md-raised md-primary">OK</md-button>
+      </md-dialog-actions>
+    </form>
+  </div>
 </md-dialog>

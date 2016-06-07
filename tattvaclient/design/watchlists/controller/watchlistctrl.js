@@ -107,7 +107,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
         targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
-        locals: { "data": $scope.wlstdef}
+        locals: {"data": $scope.wlstdef}
       }).then(function(response) {
         console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
       }, function(response) {
@@ -122,7 +122,6 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
   $scope.opneOutputStreamDialog = function (){
     console.log("to stream");
     $scope.showOutputToStreamDialog = function(ev) {
-      console.log("hi");
       $mdDialog.show({
         controller: "outputToStreams",
         templateUrl: "/design/watchlists/template/outputToStreams.html",
@@ -131,7 +130,13 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
         clickOutsideToClose: false,
         escapeToClose : false,
         locals: { "data": $scope.wlstdef }
-      })
+      }).then(function(response) {
+        console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }, function(response) {
+        console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }).finally(function() {
+        console.log("finally gone..!");
+      });
     };
     $scope.showOutputToStreamDialog();
   }
@@ -148,7 +153,13 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
         clickOutsideToClose: false,
         escapeToClose : false,
         locals: { "data": $scope.wlstdef }
-      })
+      }).then(function(response) {
+        console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }, function(response) {
+        console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }).finally(function() {
+        console.log("finally gone..!");
+      });
     };
     $scope.showOutputToStreamDialog();
   }

@@ -15,14 +15,6 @@ $scope.function.push(data[i].name);
 console.log($scope.function);
 });
 
-// .then(function(data){
-//        $scope.functioName=[];
-//       for(i in data)
-//       {
-//         $scope.functioName.push(data[i].fun_name)
-//       }
-//       ;}
-//     );
   $scope.getExprAsText =function(){
   return $scope.fieldData.function+"("+$scope.fieldData.functionparam+")";
   }

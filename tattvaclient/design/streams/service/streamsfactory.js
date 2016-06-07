@@ -28,7 +28,25 @@ angular.module('tattva')
       }];
 
       return result;
+    },
+    saveStream:function(streamData)
+    {
+      var streamDataToSave=streamData;
+      $http({
+      method : 'post',
+      url : '/datastream',
+      data : streamDataToSave
+      }).then(function(response)
+            {
+              if (response.data.errors) {
+                // Showing errors.
+                $scope.errorName = response.data.errors.name;
+              } else {
+                $scope.message = response.data.message;
+              }
+            });
     }
+    // return saveStream;
   }
   return streamData;
 });

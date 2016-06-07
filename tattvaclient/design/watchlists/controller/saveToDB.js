@@ -3,19 +3,19 @@ angular.module("tattva")
   $scope.cancel = function() {
     $mdDialog.cancel();
   };
-$scope.dbName=data.name;
-$scope.parentpublisherdata=data;
-$scope.updateBackPublisher = function(Data) {
-console.log(Data);
-$scope.name="saveToDB";
-var publisherExp2={
-"publishType":$scope.name,
-"publisherDb":$scope.dbName
-}
-console.log(publisherExp2);
-$scope.parentpublisherdata.publisher.push(publisherExp2);
-$mdDialog.hide();
-}
+  $scope.dbName=data.name;
+  $scope.parentpublisherdata=data;
+  $scope.updateBackPublisher = function(Data) {
+    console.log(Data);
+    $scope.name="saveToDB";
+    var publisherExp2={
+      "publishType":$scope.name,
+      "publisherDb":$scope.dbName
+    }
+    console.log(publisherExp2);
+    $scope.parentpublisherdata.publisher.push(publisherExp2);
+    $mdDialog.hide();
+  }
 
   $scope.hide = function() {
     $mdDialog.hide();

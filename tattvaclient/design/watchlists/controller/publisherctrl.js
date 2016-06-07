@@ -9,7 +9,7 @@ function($scope,$mdDialog,publisherSettingFactory, data){
   };
 
   $scope.updateBackPublisher = function(Data) {
-console.log(Data);
+    console.log(Data);
     $scope.tabs=[];
     angular.forEach($scope.uiPublisherConfig.widgetTabs, function(tab){
       if(tab.selected){
@@ -27,7 +27,7 @@ var publisherExp={
 console.log(publisherExp);
 $scope.publisherData.publisher.push(publisherExp);
     $mdDialog.hide();
-};
+  };
 
   $scope.cancel = function() {
     $mdDialog.cancel();

@@ -9,7 +9,7 @@
 </div>
 
 <div class="viewInst listdemoBasicUsage buttondemoBasicUsage" ng-if="instance.length!=0">
-  <md-subheader class="md-primary" flex-offset="5"><h2>{{nspname}}</h2></md-subheader>
+  <md-subheader class="md-primary md-title" flex-offset="5">Data sources from {{nspname}}</md-subheader>
   <md-divider></md-divider>
 
   <div layout="row">
@@ -27,20 +27,22 @@
                 <div flex="80" class="eachinst md-list-item-text" layout="column" ng-hide="editEnable">
                   <h3>{{instance[$index].name}}</h3>
                   <div layout="row">
-                    <md-icon flex="10" md-svg-src="images/svg/ip.svg"></md-icon>
-                    <p flex="90">{{instance[$index].ip}}</p>
+
+                    <!-- <md-icon flex="10" md-svg-src="image/svg/ip.svg"></md-icon> -->
+                    <p flex>{{instance[$index].ipaddr}}</p>
                   </div>
                   <div layout="row">
-                    <md-icon flex="10" md-svg-src="images/svg/universal-port-sign.svg"></md-icon>
-                    <p flex="90">{{instance[$index].port}}</p>
+                    <!-- <md-icon flex="10" md-svg-src="image/svg/universal-port-sign.svg"></md-icon> -->
+                    <p flex>{{instance[$index].port}}</p>
                   </div>
                   <div layout="row">
-                    <md-icon flex="10" md-svg-src="images/svg/location-pin.svg"></md-icon>
-                    <p flex="90">{{instance[$index].location}}</p>
+                    <!-- <md-icon flex="10" md-svg-src="image/svg/location-pin.svg"></md-icon> -->
+                    <p flex>{{instance[$index].location}}</p>
                   </div>
                   <div ng-show="$index == selectedInstanceIndex"  layout="row">
-                    <md-icon flex="10" md-svg-src="images/svg/sort-button-with-three-lines.svg"></md-icon>
-                    <p flex="90">{{instance[$index].description}}</h5>
+                    <!-- <md-icon flex="10" md-svg-src="image/svg/sort-button-with-three-lines.svg"></md-icon> -->
+                    <p flex>{{instance[$index].description}}</h5>
+
                     </div>
                   </div>
                   <!-- <div flex="90" class="eachinst md-list-item-text" layout="column" ng-show="editEnable">
@@ -54,9 +56,8 @@
                 </div>
               </div> -->
               <div flex="30" ng-show="$index == selectedInstanceIndex" layout="column" >
-                <md-button ui-sref="/datasource/edit" >
-                  <md-icon md-svg-src="images/svg/pencil-edit-button.svg"></md-icon>
-                </md-button>
+
+                  <md-icon ui-sref="design.instance.viewInstance.edit"  ng-click=edit(instance[$index].name) md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
               </div>
               <!-- <div flex="10" layout="column" ng-if="showDetail">
               <md-button ng-click>
@@ -78,26 +79,26 @@
     <div flex="70" class="eachinst md-list-item-text" layout="column" ng-if="instance.length > $index+1" >
       <h3>{{instance[$index+1].name}}</h3>
       <div layout="row">
-        <md-icon flex="10" md-svg-src="images/svg/ip.svg"></md-icon>
-      <p flex="90">{{instance[$index+1].ip}}</p>
+
+        <!-- <md-icon flex="10" md-svg-src="image/svg/ip.svg"></md-icon> -->
+      <p flex>{{instance[$index+1].ipaddr}}</p>
     </div>
     <div layout="row">
-     <md-icon flex="10" md-svg-src="images/svg/universal-port-sign.svg"></md-icon>
-      <p flex="90">{{instance[$index+1].port}}</p>
+     <!-- <md-icon flex="10" md-svg-src="image/svg/universal-port-sign.svg"></md-icon> -->
+      <p flex>{{instance[$index+1].port}}</p>
     </div>
     <div layout="row">
-           <md-icon flex="10" md-svg-src="images/svg/location-pin.svg"></md-icon>
-      <p flex="90">{{instance[$index+1].location}}</p>
+           <!-- <md-icon flex="10" md-svg-src="image/svg/location-pin.svg"></md-icon> -->
+      <p flex>{{instance[$index+1].location}}</p>
     </div>
       <div ng-show="($index+1) == selectedInstanceIndex" layout="row">
-      <md-icon flex="10" md-svg-src="images/svg/sort-button-with-three-lines.svg"></md-icon>
-       <p flex="90">{{instance[$index+1].description}}</h5>
+      <!-- <md-icon flex="10" md-svg-src="image/svg/sort-button-with-three-lines.svg"></md-icon> -->
+       <p flex>{{instance[$index+1].description}}</h5>
      </div>
    </div>
    <div flex="30" ng-show="$index+1 == selectedInstanceIndex" layout="column" >
-    <md-button >
-    <md-icon md-svg-src="images/svg/pencil-edit-button.svg"></md-icon>
-  </md-button>
+    <md-icon  ui-sref="design.instance.viewInstance.edit" ng-click="edit(instance[$index+1].name)" md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
+
  </div>
   </div>
 
