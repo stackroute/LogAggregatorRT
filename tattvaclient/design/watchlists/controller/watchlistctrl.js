@@ -54,7 +54,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
 
   $scope.savewatchlist=function()
   {
-    saveToDB.savewatchlistdata($scope.wlstdef).then(function(){console.log("hello")});
+    saveToDB.savewatchlistdata($scope.wlstdef).then(function(data){console.log("hello")});
     // saveToDB.savewatchexecutor($scope.wlstdef);
     $state.go("design.watchlist");
   }
@@ -64,34 +64,34 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
     console.log("hi")
     for(i in $scope.wlstdef.publisher)
     {
-    if($scope.wlstdef.publisher[i].publishType=="outputToStreams")
-    {
-    $scope.wlstdef.publisher.splice(i,1);
-    }
+      if($scope.wlstdef.publisher[i].publishType=="outputToStreams")
+      {
+        $scope.wlstdef.publisher.splice(i,1);
+      }
     }
   }
 
 
   $scope.toggleSavetoDB=function(){
-  console.log("hi");
-  var flag;
-  for(i in $scope.wlstdef.publisher)
-  {
-  if($scope.wlstdef.publisher[i].publishType=="saveToDB")
-  {
-  $scope.wlstdef.publisher.splice(i,1);
-  }
-  }
+    console.log("hi");
+    var flag;
+    for(i in $scope.wlstdef.publisher)
+    {
+      if($scope.wlstdef.publisher[i].publishType=="saveToDB")
+      {
+        $scope.wlstdef.publisher.splice(i,1);
+      }
+    }
   }
 
   $scope.togglePublishToDashboard=function(){
     console.log("hi")
     for(i in $scope.wlstdef.publisher)
     {
-    if($scope.wlstdef.publisher[i].publishType=="publishToDashboard")
-    {
-    $scope.wlstdef.publisher.splice(i,1);
-    }
+      if($scope.wlstdef.publisher[i].publishType=="publishToDashboard")
+      {
+        $scope.wlstdef.publisher.splice(i,1);
+      }
     }
   }
 
