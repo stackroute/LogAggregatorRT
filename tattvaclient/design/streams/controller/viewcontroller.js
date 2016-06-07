@@ -1,17 +1,11 @@
 angular.module('tattva')
-.controller('viewController',['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
+.controller('viewController',['$scope', '$http', '$stateParams','streamFactory', function($scope, $http, $stateParams,streamFactory){
   $scope.flag=true;
-  $scope.editStream = {
-    "namespace": "apacheTomcat",
-    "instance": "ap_instance",
-    "streamname": "stream-1a",
-    "description": "This is apache stream",
-    "query": [{
-      "field": "response code",
-      "operator": "==",
-      "value": "200"
-    }]
-  }
+console.log("$stateParams.streamNameList =", $stateParams.streamNameList);
+  streamFactory.sendStream($stateParams.streamNameList).then(function(response){
+  $scope.editStream=response;
+console.log("Data: ", response);
+  });
   $scope.editFlag = function(){
     $scope.flag=false;
   };

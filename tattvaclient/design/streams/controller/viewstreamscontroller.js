@@ -9,7 +9,9 @@ function($scope, $http, $stateParams, streamFactory, namespaceService){
   });
 
   $scope.getStreamData=function(objectJson){
-    $scope.streamResultData = streamFactory.sendStream(objectJson);
+    streamFactory.sendStream(objectJson).then(function(res){
+    $scope.streamResultData = res;
     console.log($scope.streamResultData);
+  });
   }
 }])

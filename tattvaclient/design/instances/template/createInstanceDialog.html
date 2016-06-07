@@ -1,13 +1,19 @@
 
 <md-dialog>
+  <md-toolbar ng-hide="success" >
+    <div class="md-toolbar-tools" flex-offset="10">
+    <h2>Create new Data Source</h2>
+  </div>
+  </md-toolbar>
   <md-dialog-content>
-    <div class="instanceMain" ng-cloak flex="90" ng-hide="success">
+    <div class="instanceMain" flex="90" ng-cloak  ng-hide="success">
       <form name="createInstance" novalidate ng-submit="instanceSubmit()" flex-offset="10">
         <div class="instanceDialog inputdemoIcons">
-          <h4 class="md-subhead" flex-offset="25">CREATE NEW DATA SOURCE</h4>
+
           <md-input-container class="md-block">
             <label>Select a namespace</label>
-            <md-icon md-svg-icon="images/svg/data-analytics-flow-chart-symbol.svg"></md-icon>
+            <md-icon class="md-primary material-icons">folder</md-icon>
+
             <md-select ng-model="dInstance.namespace" >
               <md-option  ng-repeat="namespace in namespaceSelect track by $index" value="{{namespace.name}}">{{namespace.name}}</md-option>
             </md-select>
@@ -16,15 +22,22 @@
           <md-input-container class="md-block" >
 
             <label>Name of Instance</label>
-            <md-icon md-svg-icon="images/svg/add-label-button.svg"></md-icon>
+            <md-icon class="md-primary material-icons">label</md-icon>
+
             <input type="text" ng-model="dInstance.name" ng-required="true" >
+            <div flex layout-align="right" ng-messages="createInstance.ip.$error" class="error" id="myerr" role="alert">
+              <div ng-message-exp="['required']">
+                *required
+              </div>
+            </div>
 
           </md-input-container>
           <div layout="row">
             <div flex="55">
               <md-input-container class="md-block">
                 <label>IP Address</label>
-                <md-icon md-svg-icon="images/svg/ip.svg"></md-icon>
+                <md-icon class="md-primary material-icons">public</md-icon>
+
                 <div layout="column">
                   <div flex>
                     <input type="text" name="ip" ng-model="dInstance.ipAddress" ng-required="true" ng-pattern="/^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/">
@@ -44,7 +57,9 @@
             <div flex="35">
               <md-input-container class="md-block">
                 <label>Port</label>
-                <md-icon md-svg-icon="images/svg/universal-port-sign.svg"></md-icon>
+
+                <md-icon class="md-primary material-icons">usb</md-icon>
+
                 <div layout="column">
                   <div flex>
                     <input type="text" ng-model="dInstance.port" name="port" maxlength="4" ng-required="true" ng-pattern="/^\d{4}$/">
@@ -53,7 +68,9 @@
                     <div ng-message-exp="['pattern']">
                       Invalid port
                     </div>
-
+                    <div ng-message-exp="['required']">
+                      *required
+                    </div>
                   </div>
                 </div>
               </md-input-container>
@@ -61,21 +78,31 @@
           </div>
           <md-input-container class="md-block">
             <label>Description</label>
-            <md-icon md-svg-icon="images/svg/sort-button-with-three-lines.svg"></md-icon>
+
+
+            <md-icon class="md-primary material-icons">description</md-icon>
+
             <input type="text" ng-model="dInstance.description" ng-required="true">
           </md-input-container>
+
           <md-input-container class="md-block" ng-required="true">
             <label>Location</label>
-            <md-icon md-svg-icon="images/svg/location-pin.svg"></md-icon>
-            <input type="text" ng-model="dInstance.location">
+
+            <md-icon class="md-primary material-icons">place</md-icon>
+            <input type="text" ng-model="dInstance.location" ng-required="true" name="location">
+            <div flex layout-align="right" ng-messages="createInstance.location.$error" class="error" id="myerr" role="alert">
+              <div ng-message-exp="['required']">
+                *required
+              </div>
+            </div>
+
           </md-input-container>
           <div layout="row">
             <div flex-offset="20">
-              <md-button type="submit" ng-disabled="createInstance.$invalid" class="md-raised md-primary">CREATE</md-button>
+              <md-button  class="md-raised " type="button" ng-click="cancel()">CANCEL</md-button>
             </div>
-
             <div flex-offset="5">
-              <md-button  class="md-raised md-primary" type="button" ng-click="cancel()">CANCEL</md-button>
+              <md-button type="submit" ng-disabled="createInstance.$invalid" class="md-raised md-primary">{{formtype}}</md-button>
             </div>
 
           </div>
@@ -84,9 +111,16 @@
       </form>
     </div>
 
-    <md-content class="instanceMain" ng-show="success">
-      <h2>{{createMsg}}</h2>
-      <md-button class="md-raised" ng-click="cancel()" ng-show="success">Ok</md-button>
+    <md-content class="successmsg" ng-show="success">
+      <div layout="column" class="inside">
+      <div flex="20">
+      </div>
+      <div flex="30">
+      <span flex-offset="10" class="md-title">{{createMsg}}</span>
+    </div>
+       <div flex="50">
+      <md-button class="md-raised md-primary"  flex="40" flex-offset="65" ng-click="ok()" ng-show="success">OK</md-button>
+      <div>
     </md-content>
 
 

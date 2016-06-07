@@ -17,7 +17,7 @@
           <md-input-container class="md-block" flex-gt-sm>
             <label>Select Instance</label>
             <md-select ng-model="user_instance">
-              <md-option ng-repeat="instance in user_namespace.instance" ng-value="instance">
+              <md-option ng-repeat="instance in instance_collection" ng-value="instance">
                 {{instance.name}}
               </md-option>
             </md-select>

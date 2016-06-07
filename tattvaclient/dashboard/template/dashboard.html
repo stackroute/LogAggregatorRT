@@ -37,7 +37,7 @@
       <md-icon md-font-icon="fa fa-plus fa-2x"></md-icon>
     </md-button>
   <div class="flexcontainer mytool">
-      <dashboardlayout flex="result.size" flex-offset="5" result="x" ng-repeat="x in wlist" data="logdata">
+      <dashboardlayout class="flex-item" result="x" ng-repeat="x in wlist" data="logdata" watchlistdata="watchlistdata[x.wlid-1]">
     </dashboardlayout>
 </div>
 </div>

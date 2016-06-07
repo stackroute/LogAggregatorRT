@@ -5,10 +5,21 @@ angular.module('tattva')
       return $http.get('/datastream/'+sendData)
       .then(function(response){
         data=response.data;
+    console.log("inside factory data =", data);
         return data;
       });
+},
 
-    },
+    // sendStreamdata : function(namespace,streamname){
+    //   return $http.get('/datastream/'+namespace+'/'+streamname)
+    //   .then(function(response){
+    //     data=response.data;
+    // console.log("inside factory data 2 =", data);
+    //     return data;
+    //   });
+    //
+    // },
+
     saveStream:function(streamData)
     {
       var streamDataToSave=streamData;
