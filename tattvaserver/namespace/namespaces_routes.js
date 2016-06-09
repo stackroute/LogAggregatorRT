@@ -53,9 +53,8 @@ namespace_router.get('/:name', function(req, res){
     if(err){
       console.error(err);
      }
-    res.send(namespaceData);
-  });
-
+    res.send(namespaceData)
+  })
 });
 
 module.exports = namespace_router;

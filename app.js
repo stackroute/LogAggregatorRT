@@ -64,6 +64,8 @@ var datasourcesrouter = require('./tattvaserver/datasources/datasources_routes.j
 var mongoose = require( 'mongoose' );
 var stream_router=require('./tattvaserver/datastream/stream_routes.js');
 var summary_router=require('./tattvaserver/designsummary/summary_routes.js')
+var watchloop_router=require('./tattvaserver/watchloop/watchloop_routes.js')
+
 mongoose.connect(dbURI);
 mongoose.connection.on('connected', function () {  console.log('Mongoose connected to ' + dbURI); });
 mongoose.connection.on('error',function (err) {  console.log('Mongoose connection error: ' + err); });
@@ -169,7 +171,8 @@ app.use('/datastream',stream_router);
 app.use('/createslide',watchlistslide_router);
 app.use('/appsummary',summary_router);
 
-// app.use('/watchloop',watchloop_router);
+app.use('/watchloop',watchloop_router);
+
 
 app.post('/savewatchlist', jsonParser, function(request, response) {
     var body2 = request.body;
@@ -182,6 +185,7 @@ app.post('/savewatchlist',jsonParser,function(request,response){
   var body2=request.body;
   console.log(body2);
 });
+
 app.post('/sendslidedata', function(request, response) {
     console.log("helo");
     var body1 = request.body;
@@ -243,7 +247,6 @@ app.post('/login_reg1',jsonParser,function (request, response) {
 app.get('/login_reg', function(req, res) {
     res.sendFile(path.join(__dirname, 'public/data.json'));
 });
-
 
 
 

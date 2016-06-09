@@ -5,7 +5,6 @@ angular.module('tattva')
             LoadDataSources.getdatasources($scope.nspname).then(function(response) {
                 $scope.instance = response.data;
             });
-            console.log(($scope.instance));
 
             $scope.show = "false";
 

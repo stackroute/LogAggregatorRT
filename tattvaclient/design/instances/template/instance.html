@@ -17,15 +17,14 @@
   </div>
   <div flex="66">
   </div>
-  <div flex="4">
-    <!--ui-sref="design.instance.viewInstance.addInstance"-->
+  <div flex="4"> <!--ui-sref="design.instance.viewInstance.addInstance"-->
     <md-button class="md-fab md-mini md-primary" aria-label="Favorite"  ng-click="addInstance($event)">
       <md-icon md-font-icon="fa fa-plus fa-2x"></md-icon>
     </md-button>
   </div>
 </div>
 
-<div layout="row" class="listdemoBasicUsage">
+<div layout="row">
   <div layout="row" flex="25">
     <md-content class="listmain" flex >
       <md-list>
@@ -33,11 +32,11 @@
 
           <md-list-item ng-repeat="object in data" ui-sref="design.instance.viewInstance({name: '{{object.name}}' })" class="md-2-line"  ng-click="null" ng-show="data.length" >
             <md-item-content layout="row" flex>
-              <div class="md-list-item-text md-tile-left inset" flex="30">
-                <ng-letter-avatar data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
+              <div class="md-list-item-text md-tile-left inset" flex="30" >
+                <ng-letter-avatar fontSize="20" data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
               </div>
-              <div flex-offset="5" flex class="eachnamespc md-tile-content" flex="60">
-                <h3 >{{object.name}}</h3>
+              <div flex class="md-tile-content" flex="70">
+                <h4>{{object.name}}</h4>
               </div>
             </md-item-content>
             <md-divider></md-divider>
@@ -60,7 +59,6 @@
 
 <div ng-if="data.length==0">
   <md-content md-padding>
-
     <div ui-view></div>
   </md-content>
   <div layout="row" flex id="noSubscriber" layout-align="center center">

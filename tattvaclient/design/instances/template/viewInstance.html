@@ -54,7 +54,8 @@
                 </div>
               </div> -->
               <div flex="30" ng-show="$index == selectedInstanceIndex" layout="column" >
-                  <md-icon ui-sref="design.instance.viewInstance.edit"  ng-click=edit(instance[$index].name) md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
+                <!--ui-sref="design.instance.viewInstance.edit"-->
+                  <md-icon  ng-click=edit(instance[$index].name) md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
               </div>
               <!-- <div flex="10" layout="column" ng-if="showDetail">
               <md-button ng-click>

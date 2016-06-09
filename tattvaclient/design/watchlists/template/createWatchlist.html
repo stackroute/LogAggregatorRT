@@ -21,7 +21,7 @@
         </div>
       </md-input-container>
     </div>
-    <div layout="row">
+    <div layout="row" layout-sm="column" layout-xs="column">
       <div id="watchListnamespace" ng-controller="namespacectrl as ctrl" flex="20">
         <md-autocomplete
         required
@@ -48,7 +48,7 @@
         </md-not-found>
       </md-autocomplete>
     </div>
-    <div id="watchListnamespace" ng-controller="Streamctrl as ctrl1" flex-offset="60" flex="20">
+    <div id="watchListnamespace" ng-controller="Streamctrl as ctrl1" flex-offset="5" flex="20">
       <md-autocomplete
       required md-input-name="atoCmpStream"
       ng-disabled="ctrl1.isDisabled"
@@ -118,6 +118,9 @@
             <span class="item-metastat">
               FORMULA : <strong>{{item.shortexpr}}</strong>
             </span>
+            <span class="item-metastat">
+              {{item.tip}}
+            </span>
           </span>
         </md-item-template>
         <md-not-found>
@@ -170,6 +173,9 @@
       <span class="item-metadata">
         <span class="item-metastat">
           FORMULA : <strong>{{item.shortexpr}}</strong>
+        </span>
+        <span class="item-metastat">
+          {{item.tip}}
         </span>
       </span>
     </md-item-template>

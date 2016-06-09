@@ -9,7 +9,7 @@
           <!-- <form name="loginForm" ng-submit="login_auth()" > -->
             <md-input-container class="mic md-icon-float md-block">
               <!-- Use floating placeholder instead of label -->
-              <md-icon  md-svg-src="images/svg/letter.svg"></md-icon>
+              <md-icon class="material-icons">email</md-icon>
               <div layout="column">
                 <div flex>
                   <input ng-model="user.email" type="email" name="email" placeholder="Email" ng-required="true" minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/">
@@ -22,7 +22,7 @@
 
             <md-input-container class=" mic md-icon-float md-block">
               <label>Password</label>
-              <md-icon md-svg-src="images/svg/lock_new.svg" class="password"></md-icon>
+            <md-icon class="material-icons">lock</md-icon>
               <div layout="column">
                 <div flex>
                   <input ng-model="user.password" type="password" name="password"  ng-required="true" minlength="8" maxlength="30" ng-pattern="/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^*()_+])[A-Za-z\d][A-Za-z\d!@#$%^*()_+]{7,19}$/">

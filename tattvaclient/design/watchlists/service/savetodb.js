@@ -1,8 +1,49 @@
 angular.module("tattva")
 .service('saveToDB', ['$http',function($http){
+  this.savewatchloopdata=function(watchlistData1){
+    console.log(watchlistData1);
+    var watchloopdata={watchid:"",watchname:watchlistData1.name,execstatus:"active",execstartedon:"",execstoppedon:"",watcherrors:""};
+    $http({
+      method : 'post',
+      url : '/watchloop',
+      data : watchloopdata
+    }).then(function(response)
+    {
+      if (response.data.errors) {
+        // Showing errors.
+        $scope.errorName = response.data.errors.name;
+      } else {
+        $scope.message = response.data.message;
+      }
+    },function(err){
+      console.log(err);
+    });
+  };
+
+  this.editwatchloopdata=function(watchlistData1){
+    var watchlistData=watchlistData1;
+    console.log("editwatchlistData = ", watchlistData);
+    $http({
+      method : 'put',
+      url : '/watchloop/'+watchlistData.name,
+      data : watchlistData
+    }).then(function(response)
+    {
+      console.log(response);
+      if (response.data.errors) {
+        // Showing errors.
+        console.log(response.data.errors);
+        // $scope.errorName = response.data.errors.name;
+      }
+      response.send("Data Saved successfully");
+    });
+  };
+
+
+
   this.savewatchlistdata=function(watchlistData1){
     var watchlistData=watchlistData1;
-    console.log("watchlistData = ", watchlistData);
+    console.log("watchlistData =", watchlistData);
     $http({
       method : 'post',
       url : '/watchlist',
@@ -15,6 +56,8 @@ angular.module("tattva")
       } else {
         $scope.message = response.data.message;
       }
+    },function(err){
+      console.log(err);
     });
   };
 
@@ -29,13 +72,14 @@ angular.module("tattva")
     {
       console.log(response);
       if (response.data.errors) {
-        // Showing errors.
         console.log(response.data.errors);
-        // $scope.errorName = response.data.errors.name;
       }
-      response.send("Data Saved successfully");
+    },function(err)
+    {
+      console.log(err);
     });
   };
+
 
   this.getwatchlistdata=function()
   {
@@ -43,36 +87,4 @@ angular.module("tattva")
     {
     });
   };
-
-  // this.savewatchexecutor=function(watchexecutorData){
-  // var time=Date.now();
-  // var status="active";
-  // var watches= [
-  //     {
-  //       "watchid": watchexecutorData._id,
-  //       "watchname":watchexecutorData.name,
-  //       "status":status,
-  //       "execstartedon":time,
-  //       "execstoppedon":{type: String},
-  //       "errors":[
-  //         "timestamp":,
-  //         "error":{type:String}
-  //                 ]
-  //             }
-  //               ]
-  // $http({
-  //   method : 'post',
-  //   url : '/watchlist',
-  //   data : watchlistData
-  //   }).then(function(response)
-  //         {
-  //           if (response.data.errors) {
-  //             // Showing errors.
-  //             $scope.errorName = response.data.errors.name;
-  //           } else {
-  //             $scope.message = response.data.message;
-  //           }
-  //         });
-  //   };
-
 }]);

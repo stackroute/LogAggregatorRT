@@ -2,10 +2,10 @@ var mongoose = require( 'mongoose' );
 var Schema=mongoose.Schema;
 
 var watchLoopSchema= new Schema({
-      "watchid": {type:String,required : true},
+      "watchid": {type:Schema.Types.ObjectId,ref: 'watchlists'},
       "watchname":{type:String,required:true},
-      "execstatus":{type:String,required:true},
-      "execstartedon":{type:String,required:true},
+      "execstatus":{type:String,required:true,default:"active"},
+      "execstartedon":{type:String,default:Date.now},
       "execstoppedon":{type:String},
       "watcherrors": [
         {

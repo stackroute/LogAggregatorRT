@@ -1,4 +1,4 @@
-angular.module('tattva')
+ angular.module('tattva')
     .controller("InstanceCtrl", ["$scope", "$state", "$http", "$stateParams", "$mdDialog", "$mdMedia","namespaceFactory",
         function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFactory) {
 
