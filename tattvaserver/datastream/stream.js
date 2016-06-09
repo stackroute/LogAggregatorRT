@@ -1,15 +1,15 @@
 var mongoose = require( 'mongoose' );
 
 var streamSchema=new mongoose.Schema({
-  "streamname": {type: String},
+  "streamname": {type: String, required:"true"},
   "description": {type: String},
-  "namespace":{type: String,ref:"namespace"},
+  "namespace":{type: String},
+  "instance":{type:String},
   "createdBy":{type:String},
   "createdOn":{type:Date},
   "editedBy":{type:String},
   "editedOn":{type:Date},
-  "instance":{type:String},
-  "status":{type:String,required:true},
+  "status":{type:String, required:true},
   "query": [
     {
       "_id":{type:String},

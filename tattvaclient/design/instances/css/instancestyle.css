@@ -84,13 +84,12 @@ overflow-x:hidden;
 -moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);*/
 }
-.eachnamespc{
+/*.eachnamespc{
   margin-left:5%;
-}
+}*/
 
 .eachnamespc p.ng-binding, .eachnamespc h3.ng-binding{
     font-family: 'Open Sans';
-    margin:0;
 
 }
 .eachnamespc h3.ng-binding

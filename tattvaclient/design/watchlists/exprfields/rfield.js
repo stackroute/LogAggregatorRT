@@ -8,6 +8,9 @@ angular.module("tattva")
   self.querySearch   = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
+  if ( $scope.$parent.editNamespace) {
+    self.selectedItem =   $scope.expr.watch.rfield.fieldType;
+  }
   function querySearch (query) {
     var results = query ? "self.options.filter( createFilterFor(query) )" : self.options,
     deferred;

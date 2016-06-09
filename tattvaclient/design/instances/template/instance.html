@@ -1,4 +1,4 @@
-<div ng-if="data.length!=0">
+ <div ng-if="data.length!=0">
   <div class="listInstance dialogdemoBasicUsage" id="popupContainer">
     <!-- <md-content md-padding>
     <md-tabs md-stretch-tabs="never" md-selected="selectedIndex" md-swipe-content="true" md-border-bottom >
@@ -18,7 +18,8 @@
   <div flex="66">
   </div>
   <div flex="4">
-    <md-button class="md-fab md-mini md-primary" aria-label="Favorite" ui-sref="design.instance.viewInstance.addInstance" ng-click="addInstance($event)">
+    <!--ui-sref="design.instance.viewInstance.addInstance"-->
+    <md-button class="md-fab md-mini md-primary" aria-label="Favorite"  ng-click="addInstance($event)">
       <md-icon md-font-icon="fa fa-plus fa-2x"></md-icon>
     </md-button>
   </div>
@@ -32,11 +33,11 @@
 
           <md-list-item ng-repeat="object in data" ui-sref="design.instance.viewInstance({name: '{{object.name}}' })" class="md-2-line"  ng-click="null" ng-show="data.length" >
             <md-item-content layout="row" flex>
-              <div class="md-list-item-text md-tile-left inset" flex="30" >
+              <div class="md-list-item-text md-tile-left inset" flex="30">
                 <ng-letter-avatar data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
               </div>
-              <div flex class="eachnamespc md-tile-content" flex="70">
-                <h3>{{object.name}}</h3>
+              <div flex-offset="5" flex class="eachnamespc md-tile-content" flex="60">
+                <h3 >{{object.name}}</h3>
               </div>
             </md-item-content>
             <md-divider></md-divider>
@@ -59,13 +60,7 @@
 
 <div ng-if="data.length==0">
   <md-content md-padding>
-    <md-tabs md-stretch-tabs="never" md-selected="selectedIndex" md-swipe-content="true" md-border-bottom >
-      <md-tab label="Namespace" ui-sref=".namespace"></md-tab>
-      <md-tab label="Instance" ui-sref=".instance"></md-tab>
-      <md-tab label="Streams" ui-sref=".stream"></md-tab>
-      <md-tab label="Functions" ui-sref=".function"></md-tab>
-      <md-tab label="Watchlist" ui-sref=".watchlist"></md-tab>
-    </md-tabs>
+
     <div ui-view></div>
   </md-content>
   <div layout="row" flex id="noSubscriber" layout-align="center center">

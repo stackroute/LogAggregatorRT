@@ -1,63 +1,69 @@
-<md-content ng-controller="summeryController">
+
+<md-content>
   <div flex="100" layout="row">
     <md-card flex="30" flex-offset="5" class="card">
-      <div class="headerName card">
+      <div class="headerName">
         <h3 class="cardHeader">NAMESPACE</h3>
       </div>
-      <md-card-content>
+      <md-card-content >
         <h4 class="h4">Total number of namespaces</h4>
-        <h1 class="h1">{{summaryValue.namespace}}</h1>
+        <h1 class="h1">{{summary.data[0].value}}</h1>
       </md-card-content>
     </md-card>
+
     <md-card flex="30" flex-offset="5" class="card">
-      <div class="headerName card">
+      <div class="headerName">
         <h3 class="cardHeader">INSTANCE</h3>
       </div>
       <md-card-content>
         <h4 class="h4">Number of instances</h4>
-        <h1 class="h1">{{summaryValue.instance}}</h1>
+        <h1 class="h1">{{summary.data[1].value}}</h1>
       </md-card-content>
     </md-card>
+
     <md-card flex="30" flex-offset="5" class="card">
-      <div class="headerName card">
+      <div class="headerName">
         <h3 class="cardHeader">STREAMS</h3>
       </div>
       <md-card-content>
         <h4 class="h4">Number of streams</h4>
-        <h1 class="h1">{{summaryValue.streams}}</h1>
+        <h1 class="h1">{{summary.data[2].value}}</h1>
       </md-card-content>
     </md-card>
+
     <div flex-offset="5"></div>
   </div>
   <div flex="100" layout="row">
     <md-card flex="50" flex-offset="5" class="card">
-      <div class="headerName card">
+      <div class="headerName">
         <h3 class="cardHeader">Available Watchlists</h3>
       </div>
       <md-card-content>
         <h4 class="h4">Number of watchlists available in this website</h4>
-        <h1 class="h1">{{summaryValue.avlwatchlist}}</h1>
+        <h1 class="h1">{{summary.data[3].value}}</h1>
       </md-card-content>
     </md-card>
+
     <md-card flex="50" flex-offset="5" class="card">
-      <div class="headerName card">
+      <div class="headerName">
         <h3 class="cardHeader">Running Watchlists</h3>
       </div>
       <md-card-content>
         <h4 class="h4">Currently running watchlists</h4>
-        <h1 class="h1">{{summaryValue.actvwatchlist}}</h1>
+        <h1 class="h1">{{summary.actvwatchlist}}</h1>
       </md-card-content>
     </md-card>
+
     <div flex-offset="5"></div>
   </div>
   <div flex="100" layout="row">
     <md-card flex="80" flex-offset="5" class="card">
-      <div class="headerName card">
+      <div class="headerName">
         <h3 class="cardHeader">People</h3>
       </div>
       <md-card-content>
         <h4 class="h4">Number of users currently logged in</h4>
-        <h1 class="h1">{{summaryValue.users}}</h1>
+        <h1 class="h1">{{summary.users}}</h1>
       </md-card-content>
     </md-card>
     <div flex-offset="5"></div>

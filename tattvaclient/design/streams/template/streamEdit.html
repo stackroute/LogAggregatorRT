@@ -1,4 +1,4 @@
-<div flex>
+<div flex class="formpad">
   <md-whiteframe class="md-whiteframe-1dp" layout="row" flex="70" flex-offset="15">
     <form name="projectForm" flex layout="row" >
       <div layout="column" flex>
@@ -84,7 +84,7 @@
                 <md-button class="md-fab md-mini md-primary" ng-if="showStreamQuery" ng-click="toggle()" flex-offset="5">+</md-button>
               </md-subheader>
               <md-subheader>
-                <md-button class="md-fab md-mini md-primary" ng-click="streamsData.and()">and</md-button>
+                <md-button class="md-fab md-mini md-accent" ng-click="streamsData.and()">and</md-button>
               </md-subheader>
             </div>
           </md-content>
@@ -93,8 +93,8 @@
         <md-divider></md-divider>
 
         <div layout="row" flex-offset="40">
+          <md-button class="md-raised" ng-click="cancel()" ui-sref="design.streams.viewStreams">Cancel</md-button>
           <md-button class="md-raised md-accent" ng-click="save()" ng-disabled="projectForm.$invalid" ui-sref="design.streams.viewStreams">Save</md-button>
-          <md-button class="md-raised md-accent" ng-click="cancel()" ui-sref="design.streams.viewStreams">Cancel</md-button>
         </div>
 
       </div>

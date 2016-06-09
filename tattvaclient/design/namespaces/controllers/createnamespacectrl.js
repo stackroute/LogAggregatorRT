@@ -7,7 +7,6 @@ function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory){
   $scope.uploadJSONFlag = false;
 
   $scope.deleteDataFormat = function(index){
-    console.log($scope.nameSpace.dataSchema);
     $scope.nameSpace.dataSchema.splice(index,1);
   }
 
@@ -17,7 +16,6 @@ function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory){
   }
 
   $scope.createNamespaceSubmit = function(){
-    console.log($scope.nameSpace.dataSchema);
     var timestamp = Date.now()
     $scope.nameSpace.createdOn =timestamp;
     $scope.nameSpace.editedOn = timestamp;
@@ -26,8 +24,13 @@ function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory){
     $scope.nameSpace.organisation = "Wipro";
     $scope.nameSpace.status = "active";
     $scope.nameSpace.tag = $scope.nameSpace.name+"123";
-    namespaceFactory.saveNameSpace($scope.nameSpace);
-    $state.go("design.namespace");
+    if (!$scope.nameSpace.dataSchema.length){
+      $scope.nameSpace.dataSchema.push({type:"dimension"});
+    }
+    if ($scope.createNameSpace.$valid){
+      namespaceFactory.saveNameSpace($scope.nameSpace);
+      $state.go("design.namespace");
+    }
   }
 
   $scope.createNamespaceCancel = function(){

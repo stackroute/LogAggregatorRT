@@ -18,5 +18,20 @@ function($stateProvider) {
         templateUrl: "/home/template/footer.html"
       }
     }
+  }).state('signout',{
+    url: "/signout",
+    // controller:"SignoutCtrl"
+    views: {
+      "header" : {
+        templateUrl: "/home/template/header.html",
+        controller: "HeaderCtrl"
+      },
+      "content@" : {
+        controller:"SignoutCtrl"
+      },
+      "footer" : {
+        templateUrl: "/home/template/footer.html"
+      }
+    }
   })//end of login state definition
 }]);

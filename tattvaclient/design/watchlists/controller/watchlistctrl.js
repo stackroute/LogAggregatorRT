@@ -1,14 +1,25 @@
 angular.module("tattva")
-.controller('WatchListCtrl', ['$scope','$mdDialog', '$log',"$state",'loadExprData','saveToDB',
-function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
+.controller('WatchListCtrl', ['$scope','$mdDialog', '$log',"$state",'loadExprData','saveToDB','$stateParams','selectedWlstdef',
+function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, selectedWlstdef) {
 
-  $scope.wlstdef = {
-    namespace:"",
-    stream:"",
-    expressions: [],
-    publisher:[
-    ]
-  };
+  $scope.loadWatchlistData = function(){
+    $scope.wlstdef = {
+      namespace:"",
+      stream:"",
+      expressions: [],
+      publisher:[
+      ]
+    };
+
+    $scope.editFlag = false;
+    if ( $stateParams.watchlistName) {
+      $scope.editNamespace = $stateParams.watchlistName;
+      if(selectedWlstdef)
+        $scope.wlstdef = selectedWlstdef;
+      console.log($scope.wlstdef);
+      $scope.editFlag = true;
+    }
+  }
 
   $scope.removeExpression=function(index) {
     $scope.wlstdef.expressions.splice(index,1);
@@ -54,9 +65,34 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
 
   $scope.savewatchlist=function()
   {
-    saveToDB.savewatchlistdata($scope.wlstdef).then(function(data){console.log("hello")});
+
+    if ($scope.editNamespace) {
+      saveToDB.editwatchlistdata($scope.wlstdef);
+    }
+    else{
+      saveToDB.savewatchlistdata($scope.wlstdef);
+    }
+    $scope.showUIPublisherDialog = function(ev) {
+      $mdDialog.show({
+        controller: "watchlistManagerCtrl",
+        templateUrl: "/design/watchlists/template/watchlistManager.html",
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: false,
+        escapeToClose : false,
+        locals: {"data": $scope.wlstdef}
+      }).then(function(response) {
+        console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }, function(response) {
+        console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }).finally(function() {
+        console.log("finally gone..!");
+      });
+    };
+    $scope.showUIPublisherDialog();
+    // saveToDB.savewatchlistdata($scope.wlstdef).then(function(data){console.log("hello")});
     // saveToDB.savewatchexecutor($scope.wlstdef);
-    $state.go("design.watchlist");
+    // $state.go("design.watchlist");
   }
 
   $scope.toggleOutputToStream=function(){
@@ -163,4 +199,13 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB) {
     };
     $scope.showOutputToStreamDialog();
   }
+
+  $scope.watchlistCancel = function(){
+    $state.go('design.watchlist.viewwatchlist');
+  }
+
+  $scope.editWatchlist = function(){
+    $scope.editFlag = false;
+  }
+
 }]);

@@ -1,12 +1,10 @@
 angular.module('tattva')
-.controller('listNamespaceCtrl',['$scope','namespaceFactory',function($scope,namespaceFactory){
+.controller('listNamespaceCtrl',['$scope','namespaceFactory','getListOfNamespace',function($scope,namespaceFactory,getListOfNamespace){
 
   $scope.tabTitle ="Namespaces";
   $scope.stateChange="design.createNamespace"
 
-  namespaceFactory.getNameSpace().then(function(response){
-    $scope.nameSpaceListdata = response;
-  });
+  $scope.nameSpaceListdata = getListOfNamespace;
 
   $scope.showSearchBox = function(){
     if($scope.showSearch){
@@ -16,9 +14,4 @@ angular.module('tattva')
       $scope.showSearch = true;
     }
   }
-
-  // $scope.search = function(){
-  //   alert("clicked")
-  // }
-
 }]);

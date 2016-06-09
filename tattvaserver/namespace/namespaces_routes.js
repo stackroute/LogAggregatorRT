@@ -13,24 +13,25 @@ namespace_router.get('/', function(req, res){
         var message = err.errors[key].message;
         console.log('Validation error for "%s": %s', key, message);
       });
-     }
+    }
     res.send(namespaceData);
   });
+  console.log("Namespace list requested /n/n/n\n\n\n\n\n response successfully sent./n/n/n\n\n\n\n\n");
 });
 
 namespace_router.post('/', function (request, response) {
   var namespaceObj = request.body;
-    namespaceObj.tag = namespaceObj.name + namespaceObj.createdOn;//logic to obtain unique tag name
-    var namespace1 = new Namespace(namespaceObj);
-    namespace1.save(function(err, savedNamespace){
-      if(err){
-        // Object.keys(err.errors).forEach(function(key) {
-        //   var message = err.errors[key].message;
-        //   console.log('Validation error for "%s": %s', key, message);
-        console.error(err);
-        // });
-       }
-    });
+  namespaceObj.tag = namespaceObj.name + namespaceObj.createdOn;//logic to obtain unique tag name
+  var namespace1 = new Namespace(namespaceObj);
+  namespace1.save(function(err, savedNamespace){
+    if(err){
+      // Object.keys(err.errors).forEach(function(key) {
+      //   var message = err.errors[key].message;
+      //   console.log('Validation error for "%s": %s', key, message);
+      console.error(err);
+      // });
+    }
+  });
 });
 
 //Consider if we can use PATCH, or whichever is best
@@ -41,20 +42,20 @@ namespace_router.put('/',  function (request, response) {
         var message = err.errors[key].message;
         console.log('Validation error for "%s": %s', key, message);
       });
-     }
+    }
     console.log('Updated Doc = ' , updatedObj);
   });
 });
 
 namespace_router.get('/:name', function(req, res){
-console.log("descriptor",req.params.name);
 
   Namespace.findOne({name:req.params.name}, function(err, namespaceData){
     if(err){
       console.error(err);
      }
-    res.send(namespaceData)
-  })
+    res.send(namespaceData);
+  });
+
 });
 
 module.exports = namespace_router;

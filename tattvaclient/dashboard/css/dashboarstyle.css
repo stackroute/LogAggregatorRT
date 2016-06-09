@@ -4,37 +4,43 @@
 }
 .shad:hover
 {
-    box-shadow:  0px 0px 30px 0px #737373;
+  box-shadow:  5px 5px 5px #737373;
 }
 .shad
 {
-    height:455px;
-      border:1px solid #cfcfd6;
+  height:404px;
+  border:1px solid #cfcfd6;
+  border-radius: 1%;
 }
 .pray
 {
-  background-color:#eaeaed;
-  height: 60px;
+  background-color: #D2EFF3;
   font-size: 24px;
-  padding-left: 10px;
+  padding: 10px;
 }
 button{
-    cursor: pointer;
-    float: right;
+  cursor: pointer;
+  float: right;
 }
 .flexcontainer {
-	display: -webkit-flex;
-		display: flex;
- -webkit-flex-direction: row;
- flex-direction: row;
- -webkit-flex-wrap:wrap;
- flex-wrap: wrap;
- background-color:  #f8f8f9;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap:wrap;
+  flex-wrap: wrap;
+  background-color: #FDFDFD;
 }
+
+md-icon:focus {
+    outline: none;
+    border: 0;
+ }
 .flex-item
 {
-width:47%;
- padding: 15px;
+  /*width:47%;*/
+  border-radius: 1%;
+  padding: 15px;
 }
 
 .axis path,
@@ -50,9 +56,9 @@ width:47%;
 }
 
 /*h1{
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 16px;
+font-family: sans-serif;
+font-weight: bold;
+font-size: 16px;
 }*/
 .tick
 {
@@ -66,4 +72,25 @@ width:47%;
 .mytool
 {
   padding-top: 30px;
+}
+.design
+{
+  /*position: absolute;
+  top:100px;
+  left:100px;*/
+  width: 400px;
+  height: :300px;
+  background-color: red;
+  /*display: none;*/
+}
+.design:hover
+{
+  display: none;
+}
+.editbtn{
+  float: right;
+  cursor: pointer;
+}
+.currSlideDropdown{
+  margin: 0px;
 }

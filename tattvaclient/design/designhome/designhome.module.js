@@ -19,6 +19,6 @@ angular.module("tattva")
   .state('design.summary',{
     url: "/summary",
     templateUrl: "/design/designhome/template/designsummary.html",
-    controller: "summeryController"
+    controller: "summaryController"
   })
 }]);

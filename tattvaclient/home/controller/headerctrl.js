@@ -1,7 +1,12 @@
 angular.module('tattva')
-.controller('HeaderCtrl',["$scope","$http","sideNavItemsFactory",function($scope,$http, sideNavItemsFactory){
-  $scope.header="TATTVA - Complex Event Processor";
-    sideNavItemsFactory.getSideNavItems().then(function(response){
-      $scope.items = response;
-    });
-}]);
+.controller('HeaderCtrl',function($scope,$http,AuthService){
+
+  $scope.userNavItems = AuthService.getUserNavItem();
+  console.log($scope.userNavItems.sideNav);
+  $scope.user = AuthService.getCurrentUser();
+
+  $scope.header="TATTVA - CEP";
+
+  $scope.items=$scope.userNavItems.sideNav;
+  console.log($scope.items);
+});

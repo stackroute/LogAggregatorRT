@@ -1,52 +1,42 @@
 angular.module('tattva')
-.factory('streamFactory',function(){
+.factory('streamFactory',['$http',function($http){
   var streamData={
     sendStream : function(sendData){
-
-      var result = [
-      {
-        "namespace": "apacheTomcat",
-        "instance": "ap_instance",
-        "streamname": "stream-1a",
-        "description": "This is apache stream",
-        "query": [{
-          "field": "response code",
-          "operator": "==",
-          "value": "200"
-        }]
-      },
-      {
-        "namespace": "ngnix",
-        "instance": "nx_instance",
-        "streamname": "stream-2",
-        "description": "This is ngnix stream",
-        "query": [{
-          "field": "response code",
-          "operator": ">",
-          "value": "300"
-        }]
-      }];
-
-      return result;
+      return $http.get('/datastream/'+sendData)
+      .then(function(response){
+        data=response.data;
+        console.log("inside factory data =", data);
+        return data;
+      });
     },
+
+    sendStreamdata : function(streamname){
+      return $http.get('/datastream/details/'+streamname)
+      .then(function(response){
+        data=response.data;
+        console.log("inside factory data 2 =", data);
+        return data;
+      });
+    },
+
     saveStream:function(streamData)
     {
       var streamDataToSave=streamData;
       $http({
-      method : 'post',
-      url : '/datastream',
-      data : streamDataToSave
+        method : 'post',
+        url : '/datastream',
+        data : streamDataToSave
       }).then(function(response)
-            {
-              if (response.data.errors) {
-                // Showing errors.
-                $scope.errorName = response.data.errors.name;
-              } else {
-                $scope.message = response.data.message;
-              }
-            });
+      {
+        if (response.data.errors) {
+          // Showing errors.
+          $scope.errorName = response.data.errors.name;
+        } else {
+          $scope.message = response.data.message;
+        }
+      });
     }
     // return saveStream;
   }
   return streamData;
-});
+}]);

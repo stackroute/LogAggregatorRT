@@ -1,6 +1,6 @@
 angular.module("tattva")
-.controller('Streamctrl',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData) {
-console.log($scope.$parent.wlstdef.namespace);
+.controller('Streamctrl',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData','streamFactory', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData,streamFactory) {
+// console.log($scope.$parent.wlstdef.namespace);
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
@@ -8,10 +8,12 @@ console.log($scope.$parent.wlstdef.namespace);
   self.querySearch   = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
-  if ( $scope.$parent.wlstdefView !== undefined) {
-    self.selectedItem =   $scope.$parent.wlstdefView.stream;
-    console.log("stream name from stream ctrl", $scope.$parent.wlstdefView.stream);
+
+  if ( $scope.$parent.editNamespace) {
+    self.selectedItem =   $scope.$parent.wlstdef.stream;
+    console.log("stream name from stream ctrl", $scope.$parent.wlstdef.stream);
   }
+
 
   function querySearch (query) {
     var results = query ? "self.stream.filter( createFilterFor(query) )" : self.stream,
@@ -39,10 +41,27 @@ console.log($scope.$parent.wlstdef.namespace);
     }
   }
 
-function loadAll() {
-  loadExprData.getStreamname($scope.$parent.wlstdef.namespace);
-return ["a","b","c","d"];
+  function loadAll() {
+    var streamData=[];
+    $scope.$watch('wlstdef.namespace',function(){
+        if(streamData.length!=0)
+          {
+            streamData.splice(0,streamData.length);
+          }
+      console.log('self.selectedItem changed =', "wdqedeq");
+      if(typeof($scope.$parent.wlstdef.namespace)=="undefined") return;
+      console.log("for display",$scope.$parent.wlstdef.namespace);
+      streamFactory.sendStream($scope.$parent.wlstdef.namespace).then(function(data)
+      {
+        for(i in data)
+        {
+          streamData.push(data[i].streamname);
+        }
+      })
     }
+  );
+  return streamData;
+}
 
 
       function createFilterFor(query) {

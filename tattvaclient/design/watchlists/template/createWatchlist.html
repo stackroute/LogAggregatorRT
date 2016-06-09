@@ -1,4 +1,5 @@
-<form name="watchlistcreate" ng-submit="savewatchlist()">
+<form name="watchlistcreate" ng-submit="savewatchlist()" ng-init="loadWatchlistData()">
+    <fieldset ng-disabled="editFlag" class="fieldset">
   <div layout="column" layout-sm="column" layout-xs="column" layout-padding class="watchlistlayout">
     <div layout="row" layout-sm="column" layout-xs="column">
       <md-input-container flex="50">
@@ -20,7 +21,7 @@
         </div>
       </md-input-container>
     </div>
-    <div layout="row" layout-sm="column" layout-xs="column">
+    <div layout="row">
       <div id="watchListnamespace" ng-controller="namespacectrl as ctrl" flex="20">
         <md-autocomplete
         required
@@ -47,7 +48,7 @@
         </md-not-found>
       </md-autocomplete>
     </div>
-    <div id="watchListnamespace" ng-controller="Streamctrl as ctrl1" flex-offset="5" flex="20">
+    <div id="watchListnamespace" ng-controller="Streamctrl as ctrl1" flex-offset="60" flex="20">
       <md-autocomplete
       required md-input-name="atoCmpStream"
       ng-disabled="ctrl1.isDisabled"
@@ -117,9 +118,6 @@
             <span class="item-metastat">
               FORMULA : <strong>{{item.shortexpr}}</strong>
             </span>
-            <span class="item-metastat">
-              {{item.tip}}
-            </span>
           </span>
         </md-item-template>
         <md-not-found>
@@ -172,9 +170,6 @@
       <span class="item-metadata">
         <span class="item-metastat">
           FORMULA : <strong>{{item.shortexpr}}</strong>
-        </span>
-        <span class="item-metastat">
-          {{item.tip}}
         </span>
       </span>
     </md-item-template>
@@ -233,7 +228,7 @@
 <div class="publishlayout" flex-offset="10">
   <div id="watchListnamespace" layout="row">
     <div flex="32">
-      <md-checkbox ng-model="saveToDB" ng-change="toggleSavetoDB()">
+      <md-checkbox ng-model="saveToDB" ng-change="toggleSavetoDB()" ng-disabled="editFlag">
         Save to Database
       </md-checkbox>
       <md-icon ng-show="saveToDB" flex-offset="10" ng-click="(saveToDB)?opneSaveToDBDialogWindow():''" class="function-bg md-primary material-icons">
@@ -241,7 +236,7 @@
       </md-icon>
     </div>
     <div flex="32">
-      <md-checkbox ng-change="toggleOutputToStream()" ng-model="outputStream">
+      <md-checkbox ng-change="toggleOutputToStream()" ng-model="outputStream" ng-disabled="editFlag">
         Output to Output Stream
       </md-checkbox>
       <md-icon ng-show="outputStream" flex-offset="10" ng-click="(outputStream)?opneOutputStreamDialog():''" class="function-bg md-primary material-icons">
@@ -249,7 +244,7 @@
       </md-icon>
     </div>
     <div flex="32">
-      <md-checkbox ng-change="togglePublishToDashboard()" ng-model="publishToDashboard">
+      <md-checkbox ng-change="togglePublishToDashboard()" ng-model="publishToDashboard" ng-disabled="editFlag">
         Publish to Dashboard
       </md-checkbox>
       <md-icon ng-show="publishToDashboard" flex-offset="10" ng-click="(publishToDashboard)?opnePublisherDialogWindow():''" class="function-bg md-primary material-icons">
@@ -258,9 +253,11 @@
     </div>
   </div>
 </div>
+</fieldset>
 <div class="watchlistlayout">
-  <md-button type="submit" class="md-raised md-primary">OK</md-button>
-  <md-button class="md-raised">Cancel</md-button>
+  <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag">save</md-button>
+  <md-button class="md-raised md-primary" ng-click='editWatchlist()' ng-if="editFlag">Edit</md-button>
+  <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
 </div>
 </form>
 <div class="jsonStructure">

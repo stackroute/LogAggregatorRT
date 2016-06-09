@@ -2,7 +2,7 @@ angular.module("tattva")
 .service('saveToDB', ['$http',function($http){
   this.savewatchlistdata=function(watchlistData1){
     var watchlistData=watchlistData1;
-    console.log("hi");
+    console.log("watchlistData = ", watchlistData);
     $http({
       method : 'post',
       url : '/watchlist',
@@ -15,6 +15,25 @@ angular.module("tattva")
       } else {
         $scope.message = response.data.message;
       }
+    });
+  };
+
+  this.editwatchlistdata=function(watchlistData1){
+    var watchlistData=watchlistData1;
+    console.log("editwatchlistData = ", watchlistData);
+    $http({
+      method : 'put',
+      url : '/watchlist/'+watchlistData.name,
+      data : watchlistData
+    }).then(function(response)
+    {
+      console.log(response);
+      if (response.data.errors) {
+        // Showing errors.
+        console.log(response.data.errors);
+        // $scope.errorName = response.data.errors.name;
+      }
+      response.send("Data Saved successfully");
     });
   };
 
@@ -55,6 +74,5 @@ angular.module("tattva")
   //           }
   //         });
   //   };
-
 
 }]);

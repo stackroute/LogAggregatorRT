@@ -73,7 +73,7 @@ angular.module('tattva')
   "CountryCode": "JP"
 },
 "value":[28, 32, 17],
-"size" : "30",
+"size" : "70",
 "slideone":"B",
 "slidetwo":"A"
 }

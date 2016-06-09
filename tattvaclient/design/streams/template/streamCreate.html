@@ -1,5 +1,4 @@
-<div flex>
-  <md-whiteframe class="md-whiteframe-1dp" layout="row" flex="70" flex-offset="15">
+  <md-whiteframe class="md-whiteframe-1dp" layout="row">
     <form name="projectForm" flex layout="row" >
       <div layout="column" flex>
 
@@ -17,7 +16,7 @@
           <md-input-container class="md-block" flex-gt-sm>
             <label>Select Instance</label>
             <md-select ng-model="user_instance">
-              <md-option ng-repeat="instance in user_namespace.instance" ng-value="instance">
+              <md-option ng-repeat="instance in instance_collection" ng-value="instance">
                 {{instance.name}}
               </md-option>
             </md-select>
@@ -50,8 +49,8 @@
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Select field</label>
                 <md-select ng-model="stmt.user_fields">
-                  <md-option ng-repeat="namespace_field in user_namespace.dataformat" value="{{namespace_field.fieldName}}">
-                    {{namespace_field.fieldName}}
+                  <md-option ng-repeat="namespace_field in user_namespace.dataSchema" value="{{namespace_field.name}}">
+                    {{namespace_field.name}}
                   </md-option>
                 </md-select>
               </md-input-container>
@@ -71,7 +70,6 @@
                 <div ng-messages="projectForm.value.$error">
                   <div ng-message="required">This is required.</div>
                 </div>
-
               </md-input-container>
               <md-button class="md-fab md-mini md-accent" ng-if="!showStreamQuery" ng-click="delete($index)" flex-offset="5">-</md-button>
             </div>
@@ -90,11 +88,10 @@
         <md-divider></md-divider>
 
         <div layout="row" flex-offset="40">
+          <md-button class="md-raised" ng-click="cancel()" ui-sref="design.streams.viewStreams">Cancel</md-button>
           <md-button class="md-raised md-accent" ng-click="save()" ng-disabled="projectForm.$invalid" ui-sref="design.streams.viewStreams">Create</md-button>
-          <md-button class="md-raised md-accent" ng-click="cancel()" ui-sref="design.streams.viewStreams">Cancel</md-button>
         </div>
 
       </div>
     </form>
   </md-whiteframe>
-</div>

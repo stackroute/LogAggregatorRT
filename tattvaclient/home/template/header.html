@@ -1,26 +1,22 @@
 <div  ng-controller="HeaderCtrl" >
   <md-toolbar class="main-bar">
     <div class="md-toolbar-tools" layout="row">
-      <div class="" flex="5">
-        <ng-md-icon icon="menu" ng-hide='isMember' ng-click="openLeftMenu()" style="fill: white" size="25"></ng-md-icon>
+      <div class="" flex="5" ng-if="userNavItems.sideNav.length">
+        <ng-md-icon icon="menu" ng-click="openLeftMenu()" style="fill: white" size="25"></ng-md-icon>
       </div>
       <div class="" flex="85">
-        <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="tattva" class="header">{{header}}</a></h2>
-
+        <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">{{user.orgsite}}</span></h2>
       </div>
-      <div class="" flex="10" ng-show='signOut'>
-        <a ui-sref="tattva"><md-button ng-click="signout()">Sign Out</md-button></a>
-      </div>
-      <div class="" flex="10" ng-show='login'>
-        <a ui-sref="signin"><md-button ng-click="hideSignIn()">Sign IN</md-button></a>
+      <div ng-repeat="topNavItem in userNavItems.topNav">
+        <a ui-sref="{{topNavItem.link}}"><md-button>{{topNavItem.menu}}</md-button></a>
       </div>
     </div>
   </md-toolbar>
   <md-sidenav md-component-id="left" class="md-sidenav-left" layout="column">
-    <md-content layout="row" class="snvhead" flex="15">
+    <div layout="row" class="snvhead" flex="15">
       <span flex="30"><img ng-src="/images/LogoWipro.jpg"/></span>
-      <span flex="70"><h3>WIPRO</h3></span>
-    </md-content>
+      <span flex="70"><h3>{{user.orgsite}}</h3></span>
+    </div>
     <md-divider></md-divider>
     <md-list flex="70">
       <md-list-item ng-repeat="item in items" >
@@ -36,7 +32,7 @@
       </md-list-item>
     </md-list>
     <md-divider></md-divider>
-    <md-content flex="15">
+    <div flex="15">
       <md-list>
         <md-list-item>
           <h>Stackroute</h3>
@@ -45,6 +41,6 @@
             <a href="#">Privacy</a><pre> & </pre><a href="#">Terms</a>
           </md-list-item>
         </md-list>
-      </md-content>
+      </div>
     </md-sidenav>
   </div>
