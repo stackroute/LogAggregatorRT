@@ -1,27 +1,31 @@
 angular.module('tattva')
-.controller('LoginCtrl', ['$scope', '$http', '$state',
-function($scope, $http, $state) {
-  $scope.loadData = function() {
-    var tabs = [
-      { title: 'Login'},
-      { title: 'Register'}
-    ],
-    selected = null,
-    previous = null;
-    $scope.tabs = tabs;
+.controller('LoginCtrl', ['$scope', '$http', '$state','AuthService',
+function($scope, $http, $state,AuthService) {
+  $scope.signUp=function(){
+    $scope.selectedIndex = 1;
+  }
+
+  $scope.signIn=function(){
     $scope.selectedIndex = 0;
-    $scope.$watch('selectedIndex', function(current, old){
-      previous = selected;
-      selected = tabs[current];
-      $scope.user = {
-        site:'',
-        orgn:'',
-        location:'',
-        name:'',
-        email:'',
-        pwd:'',
-        cfpwd:''
-      }
+  }
+  $scope.success="true";
+  $scope.login = function() {
+    $scope.error = "";
+    AuthService.signIn($scope.user).then(function(user) {
+      $state.go("home");
+    }, function(err) {
+      $scope.error = err.message;
+    });
+  }
+
+  $scope.register=function() {
+    console.log("Trying to register the user ");
+    AuthService.signUp($scope.user).then(function(user) {
+      console.log("signup successful, navigating to dashboard ", user);
+      $state.go("home");
+    }, function(err) {
+      console.log("Failed to signup..., redirecting back to login..!", err);
+      $scope.error = err.message;
     });
   }
 }]);

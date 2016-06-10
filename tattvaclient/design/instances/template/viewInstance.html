@@ -3,7 +3,7 @@
     <div id="noSubscriber" flex layout-padding layout-margin >
       <h1>No available Instances</h1>
       <p>Click on the below button to create an instance.</p>
-      <md-button class="md-raised md-primary" ui-sref="design.createInstance">Create</md-button>
+      <md-button class="md-raised md-primary" ui-sref="design.instance.viewInstance.addInstance" ng-click="addInstance($event)">Create</md-button>
     </div>
   </div>
 </div>
@@ -27,7 +27,6 @@
                 <div flex="80" class="eachinst md-list-item-text" layout="column" ng-hide="editEnable">
                   <h3>{{instance[$index].name}}</h3>
                   <div layout="row">
-
                     <!-- <md-icon flex="10" md-svg-src="image/svg/ip.svg"></md-icon> -->
                     <p flex>{{instance[$index].ipaddr}}</p>
                   </div>
@@ -42,7 +41,6 @@
                   <div ng-show="$index == selectedInstanceIndex"  layout="row">
                     <!-- <md-icon flex="10" md-svg-src="image/svg/sort-button-with-three-lines.svg"></md-icon> -->
                     <p flex>{{instance[$index].description}}</h5>
-
                     </div>
                   </div>
                   <!-- <div flex="90" class="eachinst md-list-item-text" layout="column" ng-show="editEnable">
@@ -56,12 +54,12 @@
                 </div>
               </div> -->
               <div flex="30" ng-show="$index == selectedInstanceIndex" layout="column" >
-
-                  <md-icon ui-sref="design.instance.viewInstance.edit"  ng-click=edit(instance[$index].name) md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
+                <!--ui-sref="design.instance.viewInstance.edit"-->
+                  <md-icon  ng-click=edit(instance[$index].name) md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
               </div>
               <!-- <div flex="10" layout="column" ng-if="showDetail">
               <md-button ng-click>
-              <md-icon md-svg-src="images/svg/pencil-edit-button.svg"></md-icon>
+              <md-icon md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
             </md-button>
           </div> -->
         </div>
@@ -79,7 +77,6 @@
     <div flex="70" class="eachinst md-list-item-text" layout="column" ng-if="instance.length > $index+1" >
       <h3>{{instance[$index+1].name}}</h3>
       <div layout="row">
-
         <!-- <md-icon flex="10" md-svg-src="image/svg/ip.svg"></md-icon> -->
       <p flex>{{instance[$index+1].ipaddr}}</p>
     </div>
@@ -98,7 +95,6 @@
    </div>
    <div flex="30" ng-show="$index+1 == selectedInstanceIndex" layout="column" >
     <md-icon  ui-sref="design.instance.viewInstance.edit" ng-click="edit(instance[$index+1].name)" md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
-
  </div>
   </div>
 

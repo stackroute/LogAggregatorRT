@@ -3,16 +3,16 @@ angular.module("tattva")
   $scope.cancel = function() {
     $mdDialog.cancel();
   };
-$scope.watchlistName=data.name;
+  $scope.watchlistName=data.name;
 
-$scope.updateBackPublisher=function(){
+  $scope.updateBackPublisher=function(){
     saveToDB.savewatchloopdata(data);
     $state.go('home');
-  $mdDialog.hide();
-}
+    $mdDialog.hide();
+  }
 
-$scope.hide = function() {
-  $mdDialog.hide();
-};
+  $scope.hide = function() {
+    $mdDialog.hide();
+  };
 
 }])

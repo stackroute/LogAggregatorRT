@@ -1,13 +1,26 @@
 angular.module('tattva')
 .controller('orgCtrl', function($scope, $mdDialog, $http) {
   //Your controller code goes here
+  // $scope.loadData = function() {
+  //   $http.get('/organisations').then(function(response){ $scope.data = response.data; });
+  // }
+  // $scope.loadData();
   $scope.loadData = function() {
     $http.get('/org_admin').then(function(response){ $scope.data = response.data; });
   }
   $scope.loadData();
+  $scope.item = undefined;
+  // $scope.icon="fa fa-angle-double-left fa-2x";
+  $scope.increase = function(index) {
+    if($scope.item !== index) {
+      $scope.item = index;
+      // $scope.icon="fa fa-angle-double-right fa-2x"
+    }
+    else {
+      $scope.item = undefined;
+    }
 
-
-
+  }
   $scope.selectedUserIndex = undefined;
   $scope.selectUserIndex = function (index) {
     if ($scope.selectedUserIndex !== index) {

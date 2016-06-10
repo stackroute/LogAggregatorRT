@@ -24,8 +24,13 @@ function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory){
     $scope.nameSpace.organisation = "Wipro";
     $scope.nameSpace.status = "active";
     $scope.nameSpace.tag = $scope.nameSpace.name+"123";
-    namespaceFactory.saveNameSpace($scope.nameSpace);
-    $state.go("design.namespace");
+    if (!$scope.nameSpace.dataSchema.length){
+      $scope.nameSpace.dataSchema.push({type:"dimension"});
+    }
+    if ($scope.createNameSpace.$valid){
+      namespaceFactory.saveNameSpace($scope.nameSpace);
+      $state.go("design.namespace");
+    }
   }
 
   $scope.createNamespaceCancel = function(){
@@ -46,6 +51,20 @@ function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory){
     else
     $scope.uploadJSONFlag = true;
   }
+  $scope.showConfirm = function(ev) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+            .title('Are you sure you want to cancel it')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('Yes')
+            .cancel('No');
+      $mdDialog.show(confirm).then(function() {
+        $state.go("design.namespace")
+      }, function() {
+        $state.go("design.createNamespace")
+      });
+    };
 
 
 }]);

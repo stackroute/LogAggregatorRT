@@ -21,8 +21,8 @@
 <body ng-app='tattva' ng-controller="AppRouteCtrl" ng-cloak>
 	<div layout="column" ng-clock>
 		<div ui-view="header"></div>
-		<div ui-view="content" ></div>
-		<div ui-view="footer" ></div>
+		<div ui-view="content"></div>
+		<div ui-view="footer"></div>
 	</div>
 
 	<script src="/angular/angular.min.js" charset="utf-8"></script>
@@ -47,16 +47,19 @@
 
 	<!-- Login module -->
 	<script src="/auth/auth.module.js" charset="utf-8"></script>
+	<script src="/auth/service/authfactory.js" charset="utf-8"></script>
 	<script src="/auth/controller/loginctrl.js" charset="utf-8"></script>
+	<script src="/auth/controller/signoutctrl.js" charset="utf-8"></script>
 	<!-- End of Login module -->
 
 	<!-- Organization module -->
 	<script src="/organization/organization.module.js"></script>
 	<script src="/organization/controllers/organization.controller.js"></script>
+	<script src="/organization/controllers/organizatioEdit.controller.js"></script>
 	<!-- End of Organization module -->
 
 	<!-- designhome -->
-	<script src="/design/designhome/controller/summerycontroller.js" charset="utf-8"></script>
+	<script src="/design/designhome/controller/summarycontroller.js" charset="utf-8"></script>
 	<script src="/design/designhome/service/designhomefactory.js" charset="utf-8"></script>
 	<!-- End of designhome -->
 
@@ -76,26 +79,26 @@
 
 	<!--instance module scripts-->
 	<script src="/design/instances/instance.module.js" charset="utf-8"></script>
-	<script src="/design/instances/controller/instancecontroller.js" charset="utf-8"></script>
-	<script src="/design/instances/controller/viewinstancecontroller.js" charset="utf-8"></script>
+	<script src="/design/instances/controller/instancectrl.js" charset="utf-8"></script>
+	<script src="/design/instances/controller/viewinstancectrl.js" charset="utf-8"></script>
 	<script src="/design/instances/services/loaddatasources.js" charset="utf-8"></script>
 	<!--instance scripts end-->
 
 	<!-- Streams module -->
 	<script src="/design/streams/streams.module.js" charset="utf-8"></script>
-		<script src="/design/streams/service/streamsfactory.js" charset="utf-8"></script>
-		<script src="/design/streams/service/streamsservice.js" charset="utf-8"></script>
-		<script src="/design/streams/directive/createquery.js" charset="utf-8"></script>
-		<script src="/design/streams/controller/namespacelistctrl.js" charset="utf-8"></script>
-		<script src="/design/streams/controller/streamcreatectrl.js" charset="utf-8"></script>
-		<script src="/design/streams/controller/streameditctrl.js" charset="utf-8"></script>
-		<script src="/design/streams/controller/streamsdatactrl.js" charset="utf-8"></script>
-		<script src="/design/streams/controller/viewstreamsctrl.js" charset="utf-8"></script>
-	<!--End of Streams module -->
+	<script src="/design/streams/service/streamsfactory.js" charset="utf-8"></script>
+	<script src="/design/streams/service/streamsservice.js" charset="utf-8"></script>
+	<script src="/design/streams/directive/createquery.js" charset="utf-8"></script>
+	<script src="/design/streams/controller/namespacelistctrl.js" charset="utf-8"></script>
+	<script src="/design/streams/controller/streamcreatectrl.js" charset="utf-8"></script>
+	<script src="/design/streams/controller/streameditctrl.js" charset="utf-8"></script>
+	<script src="/design/streams/controller/streamsdatactrl.js" charset="utf-8"></script>
+	<script src="/design/streams/controller/viewstreamsctrl.js" charset="utf-8"></script>	<!--End of Streams module -->
 
 	<!-- Watchlists module -->
 	<!-- <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script> -->
 	<script src="/design/watchlists/controller/namespacectrl.js" charset="utf-8"></script>
+<script src="design/watchlists/controller/watchlistManagerCtrl.js"></script>
 	<script src="/design/watchlists/service/loadExprData.js" charset="utf-8"></script>
 	<script src="/design/watchlists/service/savetodb.js" charset="utf-8"></script>
 	<script src="/design/watchlists/controller/watchlistDetailedetailViewCtrl.js" charset="utf-8"></script>

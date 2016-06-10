@@ -1,12 +1,13 @@
 angular.module('tattva')
-.controller('streamCreateCtrl', ['$scope', '$http','namespaceFactory', 'loaddatasources','streamsservice', function($scope, $http, namespaceFactory, loaddatasources,streamsservice){
+
+.controller('streamCreateCtrl', ['$scope','$state', '$http','$mdDialog','namespaceFactory', 'LoadDataSources','streamsservice', function($scope,$state, $http,$mdDialog, namespaceFactory, LoadDataSources,streamsservice){
 
   $scope.operator=[">", ">=", "<", "<=", "==", "!=","Like","Not Like"];
 
   $scope.$watch('user_namespace',function(){
     console.log($scope.user_namespace);
     if($scope.user_namespace){
-      loaddatasources.getdatasources($scope.user_namespace.name).then(function(res){
+      LoadDataSources.getdatasources($scope.user_namespace.name).then(function(res){
         console.log("instance_collection ",res.data);
         $scope.instance_collection=res.data;
       });
@@ -20,16 +21,6 @@ angular.module('tattva')
     if($scope.user_namespace==undefined) return;
     console.log($scope.user_namespace.name);
   });
-
-  // if($scope.user_namespace){
-  // loaddatasources.getdatasources($scope.user_namespace.name).success(function(data){
-  //   console.log("instance_collection ",data);
-  //   $scope.instance_collection=data;
-  // });
-  // }
-  // instanceService.getData().success(function(data){
-  //   $scope.instance_collection=data;
-  // });
 
   $scope.streamsData={
     queryBuilder : [],
@@ -54,4 +45,18 @@ angular.module('tattva')
   $scope.cancel=function(){
     console.log("Cancelled");
   }
+$scope.showConfirm = function(ev) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+            .title('Are you sure you want to cancel it')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('Yes')
+            .cancel('No');
+      $mdDialog.show(confirm).then(function() {
+        $state.go("design.streams")
+      }, function() {
+        $state.go("design.create")
+      });
+    };
 }])

@@ -1,44 +1,27 @@
-<!-- <md-content class="content">
-  <div ng-controller="menucontroller">
-    <md-toolbar class="main-bar md-accent">
-      <div class="md-toolbar-tools" layout="row">
-        <div class="" flex="95">
-          {{currentSlide.slideName}}
-        </div>
-        <div class="" flex="5">
-          <ng-md-icon icon="menu" ng-click="slidemenu()" style="fill: white" size="25"></ng-md-icon>
-        </div>
+<md-content class="content">
+  <div ng-controller="dashboardcontroller">
+    <div layout="row" style="padding-top:10px;">
+      <div flex="30" class="leftpadding">
+        <md-select class="currSlideDropdown" md-selected-text="getSelectedText()" ng-model="selectedSlide" ng-change="goToSlide()" placeholder="{{currentSlide.slideName}}" width="4">
+          <md-option ng-repeat="slide in userSlides" ng-value="slide.slideName">
+            {{slide.slideName}}
+          </md-option>
+        </md-select>
       </div>
-    </md-toolbar>
-    <md-sidenav md-component-id="right" class="md-sidenav-right" layout="column">
-      <md-list>
-        <md-list-item ng-repeat="item in value2">
-          <a ui-sref="home({ slidename: '{{item.slideName}}' })">{{item.slideName}}</a>
-          <ng-md-icon icon="settings" ng-click="slidemenu()" style="fill: grey" size="25"></ng-md-icon>
-        </md-list-item>
-        <md-list>
-        </md-list>
-      </md-list>
-    </md-sidenav>
-  </div> -->
-
-
-<div ng-controller="dashboardcontroller">
-<md-subheader>Viewing slide: {{currentSlide.slideName}}</md-subheader>
-    <md-select ng-model="selectedSlide" ng-change="goToSlide()" placeholder="select a slide" >
-      <md-select-header>
-        <span>Select slide</span>
-      </md-select-header>
-      <md-option ng-repeat="slide in userSlides" ng-value="slide.slideName">
-        {{slide.slideName}}
-      </md-option>
-    </md-select>
-    <md-button class="md-fab md-mini md-primary" aria-label="Favorite" ng-click="slidecreate($event)">
-      <md-icon md-font-icon="fa fa-plus fa-2x"></md-icon>
-    </md-button>
-  <div class="flexcontainer mytool">
-      <dashboardlayout class="flex-item" result="x" ng-repeat="x in wlist" data="logdata" watchlistdata="watchlistdata[x.wlid-1]">
-    </dashboardlayout>
-</div>
-</div>
+      <div flex="10">
+        <md-button class="currSlideDropdown md-raised md-accent" aria-label="Favorite" ng-click="slidecreate($event)">Add Slide
+        </md-button>
+      </div>
+      <span  flex></span>
+      <div flex="20">
+        <md-button class="md-fab md-mini md-primary" aria-label="Favorite">
+          <md-icon class="material-icons">add</md-icon>
+        </md-button>
+      </div>
+    </div>
+    <div class="flexcontainer">
+      <dashboardlayout class="flex-item" flex={{x.size}} result="x" ng-repeat="x in wlist" data="logdata" watchlistdata="watchlistdata[x.wlid-1]">
+      </dashboardlayout>
+    </div>
+  </div>
 </md-content>

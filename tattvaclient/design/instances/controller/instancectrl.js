@@ -1,5 +1,5 @@
-angular.module('tattva')
-    .controller("instCtrl", ["$scope", "$state", "$http", "$stateParams", "$mdDialog", "$mdMedia","namespaceFactory",
+ angular.module('tattva')
+    .controller("InstanceCtrl", ["$scope", "$state", "$http", "$stateParams", "$mdDialog", "$mdMedia","namespaceFactory",
         function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFactory) {
 
             $scope.tabTitle = "Recent Data Sources";
@@ -13,7 +13,6 @@ angular.module('tattva')
 
             namespaceFactory.getNameSpace().then(function(response){$scope.data=response;});
 
-console.log($scope.data);
 
             // $scope.loadData = function() {
             //     $http.get('/instance').then(function(response) {
@@ -49,7 +48,7 @@ console.log($scope.data);
 
 
                     namespaceFactory.getNameSpace().then(function(response){  $scope.namespaceSelect=response;});
-                  
+
                    $scope.formtype="CREATE";
                     $scope.success = false;
                     /*console.log($scope.nspname);*/
@@ -79,7 +78,7 @@ console.log($scope.data);
                             //     $scope.errorEmail = data.errors.email;
                             // } else {
                                 $scope.updatedInstance = response.data;
-                                  $state.go("design.instance.viewInstance.addInstance.created");
+                                  // $state.go("design.instance.viewInstance.addInstance.created");
 
                                     // if(Object.is($scope.updatedInstance,$scope.dInstance))
                                     // {
@@ -99,8 +98,8 @@ console.log($scope.data);
 
                                 /*if($scope.nspname===null)
                                   $state.go("design.instance");
-                                else
-                                $state.go("design.instance.viewInstance({name: '"+$scope.nspname+"' })");*/
+                                else*/
+                                // $state.go("design.instance.viewInstance.addInstance({name: '"+$scope.dInstance.namespace+"' })");
 
                         });
                     }

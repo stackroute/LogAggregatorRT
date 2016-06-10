@@ -4,27 +4,28 @@ config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   .state('design.instance', {
     url: "/instance",
         templateUrl: "design/instances/template/instance.html",
-        controller: "instCtrl"
+        controller: "InstanceCtrl"
   })
-  .state('design.instance.viewInstance.addInstance',{
-    url:"/new",
-    controller:"instCtrl"
-  })
-   .state('design.instance.viewInstance.addInstance.created',{
-    url:"/createdInstance",
-    controller:"instCtrl"
-   /*views:{
-    "@":{
-   templateUrl:"partials/status.html",
-    controller:"instCtrl"
-   }}*/})
+  // .state('design.instance.addInstance',{
+  //   url:"/new",
+  //   controller:"InstanceCtrl"
+  // })
   .state('design.instance.viewInstance', {
     url: "/:name",
     templateUrl:"design/instances/template/viewInstance.html",
-    controller:"viewinstCtrl"
+    controller:"ViewInstanceCtrl"
   })
-  .state('design.instance.viewInstance.edit',{
-    url:'/edit'
-
-  })
+  // .state('design.instance.viewInstance.addInstance',{
+  //   url:"/new",
+  //   controller:"InstanceCtrl"
+  // })
+  //  .state('design.instance.viewInstance.addInstance.created',{
+  //   url:"/createdInstance",
+  //   controller:"InstanceCtrl"
+  //   })
+  //
+  // .state('design.instance.viewInstance.edit',{
+  //   url:'/edit'
+  //
+  // })
 }]);

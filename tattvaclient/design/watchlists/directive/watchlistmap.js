@@ -118,7 +118,6 @@ angular.module('tattva').directive('watchlistmap', function() {
                         var expressions = watchdata.expressions;
                         var parent;
                         parent = mainroot.children[0];
-                        console.log(mainroot.children[0]);
                         //expressions node
                         for (var i = 0; i < expressions.length; i++) {
                             // if(expressions[i].inputStream!=="" && expressions[i].inputStream!==mainroot.children[0].name){

@@ -3,16 +3,12 @@ var mongoose = require( 'mongoose' );
 var watchloop = require('./watchloop.js');
 var watchlist = require('../watchlists/watchlists.js');
 var ObjectId = mongoose.Types.ObjectId;
-
-
 watchloop_router.get('/',function (request, response) {
-
 console.log("watchloop get request");
 });
 
 watchloop_router.post('/',function (request, response) {
   var watchloopObj = request.body;
-console.log(watchloopObj);
 var o_id;
   watchlist.find({name:watchloopObj.name},{}, function(err, watchloopId){
     console.log("watchlist id to be looped",watchloopId);

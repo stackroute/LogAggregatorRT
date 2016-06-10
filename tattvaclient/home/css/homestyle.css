@@ -66,6 +66,7 @@ md-list-item a {
   height: 90%;
   border-radius: 50%;
   box-shadow: -1px 0px 20px 1px #0A6969;
+  padding: 10px;
 }
 
 .footer_part1{
@@ -90,4 +91,13 @@ i{
 
 .full_width{
   position: relative;
+}
+.pad
+{
+  padding-left: 10px;
+}
+.logo
+{
+  padding-top: 10px;
+  padding-left: 20px;
 }

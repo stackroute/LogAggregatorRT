@@ -3,12 +3,21 @@ angular.module('tattva')
 function($scope,$mdDialog,$state, $stateParams, slideFactory,searchFactory) {
   $scope.username="prarthana";
   $scope.orgname="wipro";
+
   $scope.selectedSlide = null;
   if($stateParams.slidename !== null){
     $scope.currentSlide = slideFactory.getSlide($scope.username, $stateParams.slidename);
   } else {
     $scope.currentSlide = slideFactory.getDefaultSlide($scope.username);
   }
+
+  $scope.getSelectedText = function() {
+    if ($scope.selectedSlide !== undefined) {
+      return "Displaying Watches from Slide: <b>" + $scope.currentSlide.slideName + "</b>";
+    } else {
+      return "Please select an Silde";
+    }
+  };
   // $scope.org=slideFactory.getArrayUser($scope.orgname);
   // console.log($scope.org);
   $scope.userSlides=slideFactory.getAllSlides($scope.username);
