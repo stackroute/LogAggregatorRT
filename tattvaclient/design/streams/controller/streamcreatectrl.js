@@ -1,5 +1,5 @@
 angular.module('tattva')
-.controller('streamCreateCtrl', ['$scope', '$http','namespaceFactory', 'LoadDataSources','streamsservice', function($scope, $http, namespaceFactory, LoadDataSources,streamsservice){
+.controller('streamCreateCtrl', ['$scope','$state', '$http','$mdDialog','namespaceFactory', 'LoadDataSources','streamsservice', function($scope,$state, $http,$mdDialog, namespaceFactory, LoadDataSources,streamsservice){
 
   $scope.operator=[">", ">=", "<", "<=", "==", "!=","Like","Not Like"];
 
@@ -54,4 +54,19 @@ angular.module('tattva')
   $scope.cancel=function(){
     console.log("Cancelled");
   }
+  $scope.showConfirm = function(ev) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+            .title('Are you sure you want to cancel it')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('Yes')
+            .cancel('No');
+      $mdDialog.show(confirm).then(function() {
+        $state.go("design.streams")
+      }, function() {
+        $state.go("design.create")
+      });
+    };
+
 }])

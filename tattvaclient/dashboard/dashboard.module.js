@@ -19,4 +19,34 @@ angular.module("tattva").config(['$stateProvider','$urlRouterProvider', function
       }
     }
   })
+  .state('action', {
+    url:"/action",
+    views: {
+      "header" : {
+        templateUrl: "/home/template/header.html",
+        controller: "HeaderCtrl"
+      },
+      "content" : {
+        templateUrl: "/home/template/action.html"
+      },
+      "footer" : {
+        templateUrl: "/home/template/footer.html"
+      }
+    }//end of views of state tattva
+  })
+  .state('notification', {
+    url:"/notification",
+    views: {
+      "header" : {
+        templateUrl: "/home/template/header.html",
+        controller: "HeaderCtrl"
+      },
+      "content" : {
+        templateUrl: "/home/template/notification.html"
+      },
+      "footer" : {
+        templateUrl: "/home/template/footer.html"
+      }
+    }//end of views of state tattva
+  });
 }]);

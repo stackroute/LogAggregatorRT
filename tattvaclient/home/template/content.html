@@ -6,21 +6,33 @@
 
   <div class="full_width" id="slide1">
     <!-- <ng-md-icon id="start" class="nav" ng-click="gotoSlide2()" icon="arrow_drop_down_circle" style="fill: #0CD4D4" size="40"></ng-md-icon> -->
-    <h1 class="md-primary">How it Works</h1>
+    <h1 class="md-primary pad">How it Works</h1>
     <div layout="row" layout-xs="column" layout-wrap>
       <div flex="32">
         <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Data processing</span>
+            </md-card-title-text>
+          </md-card-title>
           <img src="/images/eg1Img.png" class="md-card-images" alt="Washed Out">
           <md-card-content>
             <p>
               By observing the credit card access pattern of a specific user and by comparing each access with his
               historic access pattern, flag the access as fraudulent or normal, before the transaction is complete or settled.
+              by continuously calculating the average price of a specific stock's
+              price against the competitors stock price.
             </p>
           </md-card-content>
         </md-card>
       </div>
       <div flex="32">
         <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Execution</span>
+            </md-card-title-text>
+          </md-card-title>
           <img src="/images/eg2Img.png" class="md-card-images" alt="Washed Out">
           <md-card-content>
             <p>
@@ -34,20 +46,21 @@
       </div>
       <div flex="32">
         <md-card>
-          <img src="/images/content1.png" class="md-card-images" alt="Washed Out">
           <md-card-title>
             <md-card-title-text>
               <span class="md-headline">Action buttons</span>
             </md-card-title-text>
           </md-card-title>
+          <img src="/images/content1.png" class="md-card-images" alt="Washed Out">
           <md-card-content>
             <p>
               The titles of Washed Out's breakthrough song and the first single from Paracosm share the
               two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-            </p>
-            <p>
+              <br>
               The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-              two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+              two most important words in Ernest Greene's musical language: feel it.
+              It's a simple request, as well...<br> 
+              flag the access as fraudulent or normal, before the transaction is complete.
             </p>
           </md-card-content>
         </md-card>
@@ -56,7 +69,7 @@
   </div>
 
   <div class="full_width" layout="column" id="slide2">
-    <h1>Our Team</h1>
+    <h1 class="pad">Our Team</h1>
     <!-- <ng-md-icon id="start" class="navlast" ng-click="gotoSlide3()" icon="arrow_drop_down_circle" style="fill: #0CD4D4" size="40"></ng-md-icon> -->
     <div id="slide2Content" autoscroll='false'>
       <md-grid-list md-cols="4" md-cols-sm="8" md-row-height="60px" md-gutter="40px">

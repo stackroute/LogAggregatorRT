@@ -91,3 +91,12 @@ i{
 .full_width{
   position: relative;
 }
+.pad
+{
+  padding-left: 10px;
+}
+.logo
+{
+  padding-top: 10px;
+  padding-left: 20px;
+}

@@ -51,6 +51,20 @@ function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory){
     else
     $scope.uploadJSONFlag = true;
   }
+  $scope.showConfirm = function(ev) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+            .title('Are you sure you want to cancel it')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('Yes')
+            .cancel('No');
+      $mdDialog.show(confirm).then(function() {
+        $state.go("design.namespace")
+      }, function() {
+        $state.go("design.createNamespace")
+      });
+    };
 
 
 }]);
