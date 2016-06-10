@@ -1,12 +1,16 @@
 <div  ng-controller="HeaderCtrl" >
   <md-toolbar class="main-bar">
     <div class="md-toolbar-tools" layout="row">
-      <div class="" flex="5" ng-if="userNavItems.sideNav.length">
-        <ng-md-icon icon="menu" ng-click="openLeftMenu()" style="fill: white" size="25"></ng-md-icon>
+      <div ng-if="userNavItems.sideNav.length">
+        <md-icon class=" editbtn material-icons" ng-click="openLeftMenu()">menu</md-icon>
       </div>
-      <div class="" flex="85">
+      <div ng-if="userNavItems.sideNav.length <= 0">
+        <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">TATTVA - Complex Event Processor</span></h2>
+      </div>
+      <div ng-if="userNavItems.sideNav.length" class="leftpadding">
         <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">{{user.orgsite}}</span></h2>
       </div>
+      <span flex></span>
       <div ng-repeat="topNavItem in userNavItems.topNav">
         <a ui-sref="{{topNavItem.link}}"><md-button>{{topNavItem.menu}}</md-button></a>
       </div>
@@ -21,9 +25,9 @@
     <md-list flex="70">
       <md-list-item ng-repeat="item in items" >
         <div ng-mouseover="sublist=true" ng-mouseleave="sublist=false">
-          <ng-md-icon icon="{{item.icon}}" style="fill: #00BCD4" size="20"></ng-md-icon>
+          <md-icon class="material-icons">{{item.icon}}</md-icon>
           <a ui-sref="{{item.link}}">{{item.menu}}</a>
-          <md-list ng-if="item.children.length > 0" >
+          <md-list ng-if="item.children.length > 0">
             <md-list-item  ng-show="sublist" ng-repeat="child in item.children">
               <a ui-sref="{{child.link}}">{{child.menu}}</a>
             </md-list-item>

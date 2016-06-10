@@ -11,27 +11,31 @@
           <md-select name="function" ng-model="fieldData.function" required>
             <label>Function Name</label>
             <md-option ng-repeat="object in function">{{object}}</md-option>
-            </md-select>
-            <div ng-messages="Formfnctn.function.$error">
-                <div ng-message="required">This is required!</div>
-              </div>
+          </md-select>
+          <div ng-messages="Formfnctn.function.$error">
+            <div ng-message="required">This is required!</div>
+          </div>
         </md-input-container>
       </div>
       <div layout layout-sm="column">
         <md-input-container flex>
-          <label>Specify Parameter as Comma Seperated Values</label>
-          <input name="functionparam" ng-model="fieldData.functionparam" required>
-          <div ng-messages="Formfnctn.functionparam.$error">
-              <div ng-message="required">This is required!</div>
-            </div>
-        </md-input-container>
-      </div>
-    </md-dialog-content>
-    <br><br><br><br><br><br><br><br><br>
-    <md-dialog-actions layout="row">
-      <span flex></span>
-      <md-button ng-click="cancel()"> Cancel </md-button>
-      <md-button type="submit" class="md-primary md-raised"> OK </md-button>
-    </form>
-  </md-dialog-actions>
+          <label>Params</label>
+          <md-select ng-model="fieldData.functionparam"
+          md-on-close="clearSearchTerm()"
+          data-md-container-class="selectdemoSelectHeader"
+          multiple required>
+          <md-optgroup label="functionparam">
+            <md-option ng-value="params" ng-repeat="params in funParam">{{params}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+    </div>
+  </md-dialog-content>
+  <br><br><br><br><br><br><br><br><br>
+  <md-dialog-actions layout="row">
+    <span flex></span>
+    <md-button ng-click="cancel()"> Cancel </md-button>
+    <md-button type="submit" class="md-primary md-raised"> OK </md-button>
+  </form>
+</md-dialog-actions>
 </md-dialog>
