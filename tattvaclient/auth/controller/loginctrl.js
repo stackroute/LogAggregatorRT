@@ -10,7 +10,7 @@ function($scope, $http, $state,AuthService) {
   }
   $scope.success="true";
   $scope.login = function() {
-
+    $scope.error = "";
     AuthService.signIn($scope.user).then(function(user) {
       $state.go("home");
     }, function(err) {

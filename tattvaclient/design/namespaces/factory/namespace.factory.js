@@ -17,8 +17,6 @@ angular.module('tattva')
         }
       });
     },
-
-
     getNameSpace: function() {
       return $http.get('/namespaces').then(function(response) {
       // console.log(response.data);
