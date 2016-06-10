@@ -9,6 +9,7 @@ angular.module("tattva")
   {
     loadExprData.getNameSpacenames().then(function(result)
     {
+      console.log("namespace \n requested \n now");
       console.log(result);
       for(i in result)
       {
@@ -16,5 +17,4 @@ angular.module("tattva")
       }
     });
   };
-  $scope.loadData();
 }]);

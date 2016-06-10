@@ -10,10 +10,10 @@ angular.module("tattva")
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
 
-  // if ( $scope.$parent.wlstdefView !== undefined) {
-  //   self.selectedItem =   $scope.$parent.wlstdefView.namespace;
-  //   console.log("Namespace name from namespace ctrl", $scope.$parent.wlstdefView.namespace);
-  // }
+  if ( $scope.$parent.editNamespace) {
+    self.selectedItem =   $scope.expr.watch.lfield.fieldType;
+    console.log("Namespace name from namespace ctrl", $scope.$parent.wlstdef.namespace);
+  }
 // @todo Implement filter for loading data
   function querySearch (query) {
     var results = query ? "aa": self.options,

@@ -32,6 +32,5 @@ function($scope,$stateParams,$state,namespaceFactory){
   $scope.addDataFormat = function(){
     var id = $scope.editNameSpace.dataformat.length;
     $scope.editNameSpace.dataformat.push({_id:id, fieldType:"dimension",fieldAlias:"",fieldName:"" });
-    console.log($scope.editNameSpace);
   }
 }]);

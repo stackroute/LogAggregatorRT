@@ -7,7 +7,6 @@ function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory){
   $scope.uploadJSONFlag = false;
 
   $scope.deleteDataFormat = function(index){
-    console.log($scope.nameSpace.dataSchema);
     $scope.nameSpace.dataSchema.splice(index,1);
   }
 
@@ -17,7 +16,6 @@ function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory){
   }
 
   $scope.createNamespaceSubmit = function(){
-    console.log($scope.nameSpace.dataSchema);
     var timestamp = Date.now()
     $scope.nameSpace.createdOn =timestamp;
     $scope.nameSpace.editedOn = timestamp;

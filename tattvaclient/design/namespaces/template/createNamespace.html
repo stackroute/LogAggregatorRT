@@ -26,7 +26,7 @@
             <label><b>Define dataSchema for NameSpace  /</b></label>
           </md-input-container>
           <md-input-container>
-            <md-button class="uploadJSON" target="_blank" ng-click="uploadJSONFlagToggle()"><sup>Upload JSON Format</sup></md-button>
+            <md-button class="uploadJSON" ng-click="uploadJSONFlagToggle()">Upload JSON Format</md-button>
           </md-input-container>
         </div>
 
@@ -67,19 +67,19 @@
                 <md-radio-button value="measure">Measure (measurable field)</md-radio-button>
               </md-radio-group>
             </md-input-container>
-            <md-subheader md-no-sticky class="md-primary" flex-offset="5">
-              <md-button class="md-fab md-primary md-mini" ng-click="deleteDataFormat($index)" aria-label="delete format"><md-icon md-font-icon="fa fa-minus"></md-icon></md-button>
+            <md-subheader md-no-sticky flex-offset="5">
+              <md-button class="md-fab md-mini" ng-click="deleteDataFormat($index)" aria-label="delete format"><md-icon md-font-icon="fa fa-minus"></md-icon></md-button>
             </md-subheader>
           </div><!--ng repeat div-->
           <div>
-            <md-button  ng-click="addDataFormat()"  class="md-raised md-primary">Add</md-button>
+            <md-button  ng-click="addDataFormat()"  class="md-raised">Add</md-button>
           </div>
         </div>
 
       </md-whiteframe>
       <div layout layout-align="center center">
+        <md-button class="md-raised" ng-click="createNamespaceCancel()">Cancel</md-button>
         <md-button type="submit" class="md-raised md-primary" ng-click="createNamespaceSubmit()">Create</md-button>
-        <md-button class="md-raised md-primary" ng-click="createNamespaceCancel()">Cancel</md-button>
       </div>
     </div>
   </form>

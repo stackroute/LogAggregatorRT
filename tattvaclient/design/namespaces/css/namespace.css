@@ -24,11 +24,19 @@
  }
 
  .uploadJSON{
-    color: #BDBDBD;
+    color: #868686;
     font-size: 9pt;
 }
  .uploadJSONFormat{
     height:200px !important;
     width:98%;
     border:1px solid #BDBDBD;
+}
+
+.NamespaceListCardHeader{
+  cursor:pointer;
+}
+
+md-card.NamespaceCard{
+  background-color:#F6F6F6;
 }

@@ -1,69 +1,69 @@
-  <div flex>
-    <md-whiteframe class="md-whiteframe-1dp" layout="row" flex="70" flex-offset="15">
-      <form name="projectForm" flex layout="row" ng-controller="viewController">
+  <div flex class="formpad">
+    <!-- <md-whiteframe class="md-whiteframe-1dp" layout-padding layout="row" flex="70" flex-offset="15"> -->
+      <form name="projectForm" flex layout="row">
         <div layout="column" flex>
 
           <div layout="row" flex>
-
-              <md-input-container class="md-block" flex="50" >
-                <label>Namespace</label>
-                <input required name="namespace" ng-model="editStream.namespace" ng-disabled="flag">
+              <md-input-container class="md-block" flex="33" >
+                <label class="inputLabel">Namespace</label>
+                <input style="color:black;" class="inputField" required name="namespace" ng-model="editStream.namespace" ng-disabled="flag">
                 <div ng-messages="projectForm.namespace.$error">
                   <div ng-message="required">This is required.</div>
                 </div>
               </md-input-container>
 
-              <md-input-container class="md-block" flex="50" >
-                <label>Instance</label>
-                <input required name="instance" ng-model="editStream.instance" ng-disabled="flag">
+              <md-input-container class="md-block" flex="33" >
+                <label class="inputLabel">Instance</label>
+                <input style="color:black;" class="inputField" required name="instance" ng-model="editStream.instance" ng-disabled="flag">
                 <div ng-messages="projectForm.instance.$error">
                   <div ng-message="required">This is required.</div>
                 </div>
               </md-input-container>
-            </div>
 
           <div layout="row">
-            <md-input-container class="md-block" flex="50" >
-              <label>Name of Stream</label>
-              <input required name="streamName" ng-model="editStream.streamname" ng-disabled="flag">
+            <md-input-container class="md-block" flex="33" >
+              <label class="inputLabel">Name of Stream</label>
+              <input style="color:black;" class="inputField" required name="streamName" ng-model="editStream.streamname" ng-disabled="flag">
               <div ng-messages="projectForm.streamName.$error">
                 <div ng-message="required">This is required.</div>
               </div>
             </md-input-container>
           </div>
+        </div>
 
 
           <div layout="row" flex>
-            <md-input-container flex="100" >
-              <textarea class="textarea" ng-model="editStream.description" type="textarea" placeholder="Description" ng-disabled="flag"></textarea>
+            <md-input-container flex="100">
+            <label class="inputLabel">description</label>
+              <textarea style="color:black;" class="inputField" ng-model="editStream.description" type="textarea" ng-disabled="flag"></textarea>
             </md-input-container>
           </div>
 
-          <h3 style="text-align: center">Query Criteria - Build Your Query Here</h3>
+          <h3 class="query">--Query Criteria--</h3>
 
           <div class="content">
             <md-content layout-padding>
               <div layout="row" flex ng-repeat="stmt in editStream.query">
-
+                <!-- {{stmt}} -->
                 <md-input-container class="md-block" flex="50" >
-                  <label>Field</label>
-                  <input required name="field" ng-model="stmt.field" ng-disabled="flag">
+                  <label class="inputLabel">Field</label>
+                  <input style="color:black;" class="inputField" required name="field" ng-model="stmt.user_fields" ng-disabled="flag">
                   <div ng-messages="projectForm.field.$error">
                     <div ng-message="required">This is required.</div>
                   </div>
                 </md-input-container>
 
                 <md-input-container class="md-block" flex="50" >
-                  <label>operator</label>
-                  <input required name="operator" ng-model="stmt.operator" ng-disabled="flag">
+                  <label class="inputLabel">operator</label>
+                  <input style="color:black;" class="inputField" required name="operator" ng-model="stmt.user_operator" ng-disabled="flag">
                   <div ng-messages="projectForm.namespace.$error">
                     <div ng-message="required">This is required.</div>
                   </div>
                 </md-input-container>
 
                 <md-input-container class="md-block" flex="50" >
-                  <label>Value</label>
-                  <input required name="value" ng-model="stmt.value" ng-disabled="flag">
+                  <label class="inputLabel">Value</label>
+                  <input style="color:black;" class="inputField" required name="value" ng-model="stmt.user_value" ng-disabled="flag">
                   <div ng-messages="projectForm.value.$error">
                     <div ng-message="required">This is required.</div>
                   </div>
@@ -72,13 +72,14 @@
               </div>
             </md-content>
           </div>
-          <md-divider></md-divider>
-
+<!-- {{editStream.streamname}} -->
+<!-- {{nameOfStream}} -->
           <div layout="row" flex-offset="40">
-            <md-button flex-offset="5" class="md-raised md-primary" ng-click="editFlag()" ui-sref="design.edit">Edit</md-button>
+            <md-button class="md-raised md-accent" ng-click="cancel()" ui-sref="design.streams.viewStreams">Cancel</md-button>
+            <md-button class="md-raised md-primary" ng-click="editFlag()" ui-sref="design.edit">Edit</md-button>
           </div>
 
         </div>
       </form>
-    </md-whiteframe>
+    <!-- </md-whiteframe> -->
   </div>

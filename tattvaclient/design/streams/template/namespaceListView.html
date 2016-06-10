@@ -1,19 +1,17 @@
-<div ng-controller="routerCtrl">
-
+<div>
   <div ng-include src="'/design/designhome/template/subTitleTab.html'"></div>
-
   <div layout="row" ng-init="loadData()">
-    <div layout="row" flex="30">
-      <md-content flex>
-        <md-list flex="">
-          <md-content  class="listmenu" flex="80">
-            <md-list-item  class="md-2-line" ng-click="null" ng-show="data.length" ng-repeat="object in data">
-              <md-item-content ui-sref="design.streams.viewStreams({nsname : '{{object.namespace}}' })" layout="row">
+    <div layout="row" flex="25">
+      <md-content flex class="listmain">
+        <md-list>
+          <md-content class="listmenu">
+            <md-list-item class="md-2-line" ng-click="null" ng-show="data.length" ng-repeat="object in data" ui-sref="design.streams.viewStreams({nsname : '{{object.name}}' })">
+              <md-item-content layout="row" flex>
                 <div class="md-list-item-text md-tile-left inset" flex="30">
-                  <ng-letter-avatar data={{object.namespace}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
+                  <ng-letter-avatar data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
                 </div>
-                <div class="namespace" flex flex-offset="20" class="md-tile-content" layout-padding flex="70">
-                  <h4>{{object.namespace}}</h4>
+                <div class="md-tile-content eachnamespc" flex="70">
+                  <h3>{{object.name}}</h3>
                 </div>
               </md-item-content>
               <md-divider></md-divider>

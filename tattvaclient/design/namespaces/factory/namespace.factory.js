@@ -2,7 +2,6 @@ angular.module('tattva')
 .factory('namespaceFactory', ['$http', function($http){
   var factory = {
     saveNameSpace: function(createNamespaceFormData) {
-      console.log("Hello to save the config = ",createNamespaceFormData);
       $http({
         method  : 'post',
         url     : '/namespaces',
@@ -18,9 +17,8 @@ angular.module('tattva')
         }
       });
     },
-    getNameSpace: function() {
-      console.log("in factory namespace list`");
 
+    getNameSpace: function() {
       return $http.get('/namespaces').then(function(response) {
       // console.log(response.data);
         data =  response.data;
@@ -29,19 +27,14 @@ angular.module('tattva')
     },
 
     getNamespaceDetails: function(namespaceName){
-      // var config = {
-      //   params: {"name" : namespaceName }
-      // }
        return $http.get('/namespaces/'+namespaceName)
        .then(function(response) {
          data =  response.data;
-         console.log(data);
          return data;
        });
     },
 
     setNamespaceDetails : function(data, namespaceName){
-      console.log("data to be updated from factory = ",data);
       var config = {
         params: {"name" : namespaceName }
       }
@@ -52,14 +45,34 @@ angular.module('tattva')
        }
       );
     },
+      // console.log("In the get namespace factory method",namespaceName);
+      // return $http.get('/namespaces/'+namespaceName)
+      // .then(function(response) {
+      //   data =  response.data;
+      //   return data;
+      //   });
+      // },
 
-    getJSONObject : function (inputJSONObj){
-      inputJSONObj = JSON.parse(inputJSONObj)
-      console.log("inputJSONObj = ",inputJSONObj);
-      var dataObj = inputJSONObj[0];
-      var outputData = [];
-      var type;
-      for ( var i in dataObj){
+
+      setNamespaceDetails : function(data, namespaceName){
+        console.log("data to be updated from factory = ",data);
+        var config = {
+          params: {"name" : namespaceName }
+        }
+        return $http.put('/namespaces/', data, config)
+        .then(
+          function(response){
+            return false;
+          }
+        );
+      },
+      getJSONObject : function (inputJSONObj){
+        inputJSONObj = JSON.parse(inputJSONObj)
+        console.log("inputJSONObj = ",inputJSONObj);
+        var dataObj = inputJSONObj[0];
+        var outputData = [];
+        var type;
+        for ( var i in dataObj){
           if (isNaN(dataObj[i])){
             type = "dimension"
           }
@@ -67,11 +80,11 @@ angular.module('tattva')
             type = "measure"
           }
           outputData.push({"alias": i, "name": i, "type": type  });
+        }
+        console.log("outputData= ",outputData);
+        return outputData;
       }
-      console.log("outputData= ",outputData);
-      return outputData;
-    }
 
-  }//end of factory definition
-  return factory;
-}]);
+    }//end of factory definition
+    return factory;
+  }]);
