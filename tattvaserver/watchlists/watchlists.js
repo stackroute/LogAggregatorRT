@@ -47,22 +47,25 @@ var watchListSchema=new mongoose.Schema({
       }
     }
   ],
-  "publishers": {"logDataDisplayType":{type:String},
-                  "widgetSizes":{type:String},
-                  "tabsType":[
-                  {
-                  "Graph":{type:Boolean},
-                  "LogDataViewer":{type:Boolean},
-                  "ExecutionFlow":{type:Boolean}
-                  }
-                ]
-                },
-    'database' : {
-      "saveas": {type: String}
-    },
-    'outstream' : {
-      "streamname" : {type: String}
-    }
+  "publishers" :{
+    "dashboard": {"logDataDisplayType":{type:String},
+                    "widgetSizes":{type:String},
+                    "tabsType":[
+                    {
+                    "Graph":{type:Boolean},
+                    "LogDataViewer":{type:Boolean},
+                    "ExecutionFlow":{type:Boolean}
+                    }
+                  ]
+                  },
+      'database' : {
+        "saveas": {type: String}
+      },
+      'outstream' : {
+        "streamname" : {type: String}
+      }
+  }
+
   });
 var watchlist = mongoose.model('watchlist', watchListSchema);
 module.exports = watchlist;

@@ -48,7 +48,7 @@ angular.module("tattva")
         controller: item.controller,
         templateUrl: dialogTemplate,
         parent: angular.element(document.body),
-        targetEvent;: ev,
+        targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
         locals: { fieldData: expr.watch.lfield,fieldData2:$scope.wlstdef}

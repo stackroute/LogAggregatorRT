@@ -17,6 +17,7 @@ function($scope,$mdDialog,publisherSettingFactory, data){
       }
     });
     $scope.name="publishToDashboard";
+    $scope.publisherData.publishers
     var publisherExp={
       publishType:$scope.name,
       graphTypes:$scope.graphTypes,
@@ -35,9 +36,9 @@ function($scope,$mdDialog,publisherSettingFactory, data){
 
   $scope.uiPublisherConfig = {
     "widgetSizes": [
-      {"name":"Small","value":"30","icon":"fa fa-square fa-1g"},
-      {"name":"Standard","value":"50","icon":"fa fa-square fa-2x"},
-      {"name":"Wide","value":"70","icon":"fa fa-square fa-3x"}
+      {"name":"Small","value":"30"},
+      {"name":"Standard","value":"50"},
+      {"name":"Wide","value":"70"}
     ],
     "widgetTabs": [
       {"name":"Summary","value":"summary"},
