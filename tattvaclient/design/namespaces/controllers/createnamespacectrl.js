@@ -1,9 +1,15 @@
 angular.module('tattva')
-.controller("createNamespaceCtrl",["$scope","$state","$http","$mdDialog","$mdToast", "namespaceFactory",
-function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory){
+.controller("createNamespaceCtrl",["$scope","$state","$http","$mdDialog","$mdToast", "namespaceFactory","$stateParams",
+function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory, $stateParams){
   $scope.nameSpace = {
     dataSchema: [{type:"dimension"}]
   };
+  if($stateParams.editNamespaceData){
+    namespaceFactory.getNamespaceDetails($stateParams.editNamespaceData).then(function(response){
+      $scope.nameSpace = response;
+      console.log("$scope.nameSpace =  = = = =", $scope.nameSpace);
+    });
+  }
   $scope.uploadJSONFlag = false;
 
   $scope.deleteDataFormat = function(index){
@@ -51,6 +57,7 @@ function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory){
     else
     $scope.uploadJSONFlag = true;
   }
+
   $scope.showConfirm = function(ev) {
       // Appending dialog to document.body to cover sidenav in docs app
       var confirm = $mdDialog.confirm()
@@ -65,6 +72,5 @@ function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory){
         $state.go("design.createNamespace")
       });
     };
-
 
 }]);

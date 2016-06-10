@@ -207,5 +207,19 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
   $scope.editWatchlist = function(){
     $scope.editFlag = false;
   }
+  $scope.showConfirm = function(ev) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+            .title('Are you sure you want to cancel it')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('Yes')
+            .cancel('No');
+      $mdDialog.show(confirm).then(function() {
+        $state.go("design.watchlist")
+      }, function() {
+        $state.go("design.createwatchlist")
+      });
+    };
 
 }]);
