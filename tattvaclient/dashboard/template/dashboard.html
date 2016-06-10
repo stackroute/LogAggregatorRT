@@ -12,16 +12,16 @@
         <md-button class="currSlideDropdown md-raised md-accent" aria-label="Favorite" ng-click="slidecreate($event)">Add Slide
         </md-button>
       </div>
-      <span  flex></span>
-      <div flex="20">
+      <!-- <span  flex></span> -->
+      <!-- <div flex="20">
         <md-button class="md-fab md-mini md-primary" aria-label="Favorite">
           <md-icon class="material-icons">add</md-icon>
         </md-button>
-      </div>
+      </div> -->
     </div>
     <div class="flexcontainer">
-      <dashboardlayout class="flex-item" flex={{x.size}} result="x" ng-repeat="x in wlist" data="logdata" watchlistdata="watchlistdata[x.wlid-1]">
-      </dashboardlayout>
+      <watchlistresultwidget class="flex-item" flex={{x.size}} result="x" ng-repeat="x in wlist" data="logdata" watchlistdata="watchlistdata[x.wlid-1]">
+      </watchlistresultwidget>
     </div>
   </div>
 </md-content>
