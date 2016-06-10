@@ -1,0 +1,23 @@
+<md-dialog aria-label="Create Slide dialog"  ng-cloak ng-controller="dashboardcontroller">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add watchlist to the slide</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <!-- <div class="md-dialog-content" layout-padding>
+        <input ng-model="watchslidename.slidename" type="text" placeholder="Slide Name">
+      </div> -->
+      <md-select class="currSlideDropdown" ng-model="selectedSlide" placeholder="{{currentSlide.slideName}}" width="4">
+        <md-option ng-repeat="slide in userSlides" ng-value="slide.slideName">
+          {{slide.slideName}}
+        </md-option>
+      </md-select>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+      <md-button  class="md-raised md-primary" ng-click="savedata()">Save</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
