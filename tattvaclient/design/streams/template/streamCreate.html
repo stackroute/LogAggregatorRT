@@ -1,9 +1,7 @@
   <md-whiteframe class="md-whiteframe-1dp" layout="row">
     <form name="projectForm" flex layout="row" >
       <div layout="column" flex>
-
         <div layout="row" flex>
-
           <md-input-container class="md-block" flex-gt-sm>
             <label>Select Namespace</label>
             <md-select ng-model="user_namespace">
@@ -85,8 +83,6 @@
           </md-content>
         </div>
         {{streamsData}}
-        <md-divider></md-divider>
-
         <div layout="row" flex-offset="40">
           <md-button class="md-raised" ng-click="showConfirm($event)" ui-sref="design.streams.viewStreams">Cancel</md-button>
           <md-button class="md-raised md-accent" ng-click="save()" ng-disabled="projectForm.$invalid" ui-sref="design.streams.viewStreams">Create</md-button>

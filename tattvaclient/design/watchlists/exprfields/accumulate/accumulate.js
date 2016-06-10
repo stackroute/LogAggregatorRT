@@ -3,16 +3,30 @@ angular.module("tattva")
 {
   $scope.function=[];
   loadExprData.getFunction().then(function(result){
-  var data=result.data;
-  console.log(data);
-  return data;
+    var data=result.data;
+    console.log(data);
+    return data;
   }).then(function(data)
   {
-  for(i in data)
+    for(i in data)
+    {
+      $scope.function.push(data[i].name);
+    }
+    console.log($scope.function);
+  });
+
+
+  $scope.funParam=[];
+  loadExprData.getNameSpacenames().then(function(result)
   {
-  $scope.function.push(data[i].name);
-  }
-  console.log($scope.function);
+    console.log("namespace \n requested \n now");
+    console.log(result);
+    for(i in result)
+    {
+      console.log(result);
+      $scope.funParam.push(result[i]);
+    }
+    console.log($scope.funParam);
   });
 
   $scope.fieldData=fieldData;
@@ -22,7 +36,7 @@ angular.module("tattva")
 
   $scope.updateBackPublisher = function() {
     $scope.fieldData.exprAsText = $scope.getExprAsText();
-$scope.$watch('ExprAsText',function(){console.log(typeof($scope.fieldData.exprAsText))});
+    $scope.$watch('ExprAsText',function(){console.log(typeof($scope.fieldData.exprAsText))});
     $mdDialog.hide($scope.fieldData);
   };
 

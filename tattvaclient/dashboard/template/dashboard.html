@@ -1,7 +1,7 @@
 <md-content class="content">
   <div ng-controller="dashboardcontroller">
     <div layout="row" style="padding-top:10px;">
-      <div flex="30" flex-offset="5">
+      <div flex="30" class="leftpadding">
         <md-select class="currSlideDropdown" md-selected-text="getSelectedText()" ng-model="selectedSlide" ng-change="goToSlide()" placeholder="{{currentSlide.slideName}}" width="4">
           <md-option ng-repeat="slide in userSlides" ng-value="slide.slideName">
             {{slide.slideName}}

@@ -1,5 +1,5 @@
 <div class="shad">
-  <div class="pray">Watchlist Id is: {{myresult.wlid}}</div>
+  <div class="pray">{{myresult.wlid}}</div>
   <md-tabs md-dynamic-height md-border-bottom>
     <md-tab label="Graph">
       <!-- <mygraph type="myresult.charttype"></mygraph> -->
@@ -11,21 +11,12 @@
     </md-tab>
     <md-tab label="Execution Flow">
       <md-content class="md-padding fix">
-    <watchlistmap watch="watchdata" flex>
-    </watchlistmap>
+        <watchlistmap watch="watchdata" flex>
+        </watchlistmap>
       </md-content>
     </md-tab>
   </md-tabs>
   <md-divider></md-divider>
-  <!-- <div layout="column" flex="33" flex-sm="100" layout-align="right">
-  <md-menu md-offset="0 -4">
-  <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-  <ng-md-icon icon="more_horiz" ng-click="openMenu()" size="30"></ng-md-icon>
-</md-button>
-<md-menu-content width="3" ng-controller="gotoWatchlist">
-<md-button ng-click="">Add Slide</md-button>
-<md-button ng-click="edit_watchlist()">Edit WatchList</md-button>
-</md-menu-content>
-</md-menu>
-</div> -->
+  <!-- <label layout-padding class="editbtn">Add to slide</label> -->
+  <md-icon class="editbtn material-icons">add</md-icon>
 </div>
