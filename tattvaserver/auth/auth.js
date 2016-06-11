@@ -58,6 +58,7 @@ module.exports = function(app, passport) {
   app.post('/signup', function(req, res, next) {
     if (!req.body.orgname
       || !req.body.orgsite
+      || !req.body.orglogo
       || !req.body.orglocation
       || !req.body.name
       || !req.body.email
@@ -78,6 +79,7 @@ module.exports = function(app, passport) {
     var newOrg = new OrganisationsModel({
       "orgName": req.body.orgname,
       "orgSite": req.body.orgsite,
+      "orgLogo":req.body.orglogo,
       "orgLocation" : req.body.orglocation,
       "contactName" : req.body.name,
       "contactEmail": req.body.email
