@@ -1,11 +1,26 @@
 var passport = require('passport');
 var flash    = require('connect-flash');
 var LocalStrategy   = require('passport-local').Strategy;
-var User = require("../organisation/users");
-var Organisation = require("../organisation/organisations");
+var UserModel = require("../organisation/users");
+var OrganisationsModel = require("../organisation/organisations");
 var mongoose = require('mongoose');
 
 module.exports = function(app, passport) {
+  passport.serializeUser(function(user, done) {
+    done(null, user.email);
+  });
+
+  passport.deserializeUser(function(email, done) {
+    UserModel.findOne({email: email}, function(err,user) {
+      if(err) {
+        console.log("Error in finding user for deserialize ", err);
+      }
+      else {
+        console.log("current user is",user);
+        done(err, user);
+      }
+    });
+  });
 
   //Overriding the default passport's way of redirecting, instead sending back a JSON object with appropriate HTTP status cpde
   app.post('/signin', function(req, res, next) {
@@ -35,27 +50,9 @@ module.exports = function(app, passport) {
     })(req, res, next);
   });
 
-  app.get("/signout",function(req, res) {
+  app.get("/signout", function(req, res) {
     req.logout();
     res.status(200).json();
-  });
-
-  //When a Org Admin adds a new user
-  app.post("/orguser", function(req, res){
-    //Logic pending
-    //This does not do any authentication, only creates a new user object
-    var newUser = new User({
-      "name" : req.body.name,
-      "email" : req.body.email,
-      "password" : req.body.password,
-      "orgsite" : req.body.orgsite,
-      "role" : "User"
-    });
-    newUser.save(function(err,newUser){
-      if(err) {
-          return res.status(401).json(err);
-      }
-    });
   });
 
   app.post('/signup', function(req, res, next) {
@@ -78,7 +75,7 @@ module.exports = function(app, passport) {
     //Check if the user already exists? (email)
 
     //Create the Organisation
-    var newOrg = new Organisation({
+    var newOrg = new OrganisationsModel({
       "orgName": req.body.orgname,
       "orgSite": req.body.orgsite,
       "orgLocation" : req.body.orglocation,
@@ -89,11 +86,11 @@ module.exports = function(app, passport) {
     newOrg.save(function(err, orgObj) {
       if(err) {
         console.log("Error in new org creation:" , err);
-          return res.status(401).json(err);
+          return res.status(401).json({err:"Invalid Input....!"});
       }
 
       //Create the User and attach him to the organisation just created as a Admin
-      var newUser = new User({
+      var newUser = new UserModel({
         "name" : req.body.name,
         "email" : req.body.email,
         "password" : req.body.password,
@@ -127,33 +124,12 @@ module.exports = function(app, passport) {
     });
   });
 
-  function isAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
-    else {
-      res.redirect('/');
-    }
-  };
-
-  passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
-
-  passport.deserializeUser(function(id, done) {
-    User.findOne({_id: id}, function(err,user) {
-      if(err) {
-        console.log("Error in finding user for deserialize ", err);
-      }
-      done(err, user);
-    });
-  });
-
   passport.use('local-signin',
   new LocalStrategy({usernameField : 'email',passwordField : 'password',passReqToCallback : true },
   function(req, email, password,done) {
     console.log("Finding user by email: ", email);
-    User.findOne({ 'email' :  email }, function(err, user) {
+
+    UserModel.findOne({ 'email' :  email }, function(err, user) {
       if (err){
         console.log("Error in finding user: ", err, " User: ", email);
         return done(err);
@@ -166,8 +142,29 @@ module.exports = function(app, passport) {
         return done(null, false, {message: 'Invalid user credentials, please retry with valid credentials..!'});
       }
 
-      //IF SUCCESSFUL LOGIN, I.E., USER FOUND AND PASSWORD MATCHES
-      return done(null, user);
+      OrganisationsModel.findOne({ 'orgSite' :  user.orgsite }, function(err, org){
+        if (err){
+          console.log("Error in finding organisation of the user: ", err, " User: ", email, " org: ", user.orgsite);
+          return done(err);
+        }
+
+        if (!org){
+          return done(null, false, {message: 'Invalid user credentials, please retry with valid credentials..!'});
+        }
+
+        var sessionUser = {
+          "id": user._id,
+          "name" : user.name,
+          "email" : user.email,
+          "orgsite" : user.orgsite,
+          "role" : user.role,
+          "orgName": org.orgName,
+          "orgLocation" : org.orgLocation
+        };
+
+        //IF SUCCESSFUL LOGIN, I.E., USER FOUND AND PASSWORD MATCHES
+        return done(null, sessionUser);
+      });
     });
   }));
 

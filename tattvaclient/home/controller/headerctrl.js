@@ -5,6 +5,11 @@ angular.module('tattva')
   console.log($scope.userNavItems.sideNav);
   $scope.user = AuthService.getCurrentUser();
 
+  console.log("Organisation info",$scope.user);
+  // $scope.org=AuthService.getCurrentOrg();
+  // console.log("header organisation is ",$scope.org);
+
+
   $scope.header="TATTVA - CEP";
 
   $scope.items=$scope.userNavItems.sideNav;

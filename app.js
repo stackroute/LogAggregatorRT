@@ -78,71 +78,24 @@ app.set('view engine', 'ejs');
 
 require('./tattvaserver/auth/auth')(app, passport);
 
+function isAuthenticated(req, res, next) {
+  if(req.path ==='/') {
+    return next();
+  }
+  else {
+    res.redirect('/');
+  }
+};
+
 app.use('/', routes);
-
-app.get('/viewwatchlist', function(req, res){
-  res.sendFile(path.join(__dirname, 'public/json/watchlist.json'));
-});
-
-app.post('/createNamespacePost',jsonParser,function (request, response) {
-  var body1=request.body;
-  alert("reached")
-});
-
-app.post('/savewatchlist',jsonParser,function(request,response){
-  var body2=request.body;
-  console.log(body2);
-
-})
-app.post('/sendslidedata',function (request, response) {
-  console.log("helo");
-  var body1=request.body;
-  console.log("body1 = "+body1);
-});
-
-// mongo search query for particular username or slidename
-// app.get('/user/:username/slides/:slidename', function(req, res){
-// mongo.search();
+// app.post('/login_reg1',jsonParser,function (request, response) {
+//   var body1=request.body;
+//   // console.log(body1);
+//   //response.send("hi");
 // });
-
-app.get('/viewNamespace', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/json/namespace.json'));
-});
-
-app.get('/viewInstance', function(req, res){
-  res.sendFile(path.join(__dirname, '/public/json/instance.json'));
-});
-
-// app.get('/viewStreams', function(req, res){
-//   res.sendFile(path.join(__dirname, '/public/json/data.json'));
-// });
-
-app.post('/filewrite', JSONparser, function(req, res){
-  var data= req.body;
-});
-
-
-app.post('/publisherData', JSONparser, function(req, res){
-  var data= req.body;
-  console.log(data);
-});
-
-app.get('/org_admin', function(req, res){
-  res.sendFile(path.join(__dirname, 'public/json/admindata.json'));
-});
-app.post('/login_reg1',jsonParser,function (request, response) {
-  var body1=request.body;
-  // console.log(body1);
-  //response.send("hi");
-});
-
-app.get('/login_reg', function(req, res){
-  res.sendFile(path.join(__dirname, 'public/data.json'));
-});
-
-
-// app.get('/functionlist',function(req,res){
-//   res.sendFile(path.join(__dirname, 'public/data/functionlist.json'));
+//
+// app.get('/login_reg', function(req, res){
+//   res.sendFile(path.join(__dirname, 'public/data.json'));
 // });
 
 process.on('SIGINT', function() {
@@ -151,60 +104,19 @@ console.log('Mongoose disconnected through app termination');
 process.exit(0);
  });
  });
-//end of mongoose
-app.get('/viewwatchlist', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/json/watchlist.json'));
-});
-
-// app.get('/function', function(req, res) {
-//     res.sendFile(path.join(__dirname, 'public/jsonData/functiondatadisplay.json'));
-// });
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/instance', datasourcesrouter);
-app.use('/function', function_router);
-app.use('/sideNav', sideNav_router);
-app.use('/namespaces',namespace_router);
-app.use('/watchlist', watchlist_router);
-app.use('/datastream',stream_router);
-app.use('/createslide',watchlistslide_router);
-app.use('/appsummary',summary_router);
+app.use('/users', isAuthenticated, users);
+app.use('/instance', isAuthenticated, datasourcesrouter);
+app.use('/function', isAuthenticated, function_router);
+app.use('/sideNav', isAuthenticated, sideNav_router);
+app.use('/namespaces', isAuthenticated, namespace_router);
+app.use('/watchlist', isAuthenticated, watchlist_router);
+app.use('/datastream', isAuthenticated, stream_router);
+app.use('/createslide', isAuthenticated, watchlistslide_router);
+app.use('/appsummary',isAuthenticated, summary_router);
+app.use('/watchloop', isAuthenticated, watchloop_router);
 
-app.use('/watchloop',watchloop_router);
-
-
-app.post('/savewatchlist', jsonParser, function(request, response) {
-    var body2 = request.body;
-    console.log(body2);
-  });
-app.get('/viewwatchlist', function(req, res){
-  res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/watchlist.json'));
-});
-app.post('/savewatchlist',jsonParser,function(request,response){
-  var body2=request.body;
-  console.log(body2);
-});
-
-app.post('/sendslidedata', function(request, response) {
-    console.log("helo");
-    var body1 = request.body;
-    console.log("body1 = " + body1);
-});
-
-app.get('/viewNamespace', function(req, res) {
-    res.sendFile(path.join(__dirname, '/public/json/namespace.json'));
-});
-app.get('/fieldOption', function(req, res) {
-    res.sendFile(path.join(__dirname, '/public/json/fieldOption.json'));
-});
-app.get('/operatorOption', function(req, res) {
-    res.sendFile(path.join(__dirname, '/public/json/operatorOption.json'));
-});
-
-app.get('/viewStreams', function(req, res) {
-    res.sendFile(path.join(__dirname, '/public/json/data.json'));
-  });
 app.get('/OutcomeOptions',function(req,res)
 {
 res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/outcomeOption.json'));
@@ -218,40 +130,6 @@ app.get('/operatorOption',function(req,res)
 res.sendFile(path.join(__dirname,'tattvaclient/design/watchlists/json/operatorOption.json'));
 });
 
-app.get('/viewInstance', function(req, res){
-  res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/instance.json'));
-});
-
-app.get('/viewStreams', function(req, res){
-  res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/data.json'));
-});
-
-app.post('/filewrite', JSONparser, function(req, res) {
-    var data = req.body;
-});
-
-app.post('/publisherData', JSONparser, function(req, res) {
-    var data = req.body;
-    console.log(data);
-});
-
-app.get('/org_admin', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/json/admindata.json'));
-});
-
-app.post('/login_reg1',jsonParser,function (request, response) {
-  var body1=request.body;
-
-});
-
-app.get('/login_reg', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/data.json'));
-});
-
-
-
-// error handlers
-// catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
