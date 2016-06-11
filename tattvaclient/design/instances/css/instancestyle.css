@@ -154,6 +154,7 @@ margin:15px;
 
 .successmsg{
 color:rgb(0, 173, 212) !important;
+    overflow: hidden;
 }
 
 .successmsg .inside{

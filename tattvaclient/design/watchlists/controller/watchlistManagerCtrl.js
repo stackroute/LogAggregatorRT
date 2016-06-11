@@ -1,18 +1,19 @@
 angular.module("tattva")
-.controller("watchlistManagerCtrl",["$scope","$mdDialog","data",'saveToDB', function($scope,$mdDialog,data,saveToDB){
+.controller("watchlistManagerCtrl",["$scope","$mdDialog","data",'saveToDB',"$state", function($scope,$mdDialog,data,saveToDB,$state){
   $scope.cancel = function() {
+    $state.go('design.watchlist');
     $mdDialog.cancel();
   };
-$scope.watchlistName=data.name;
+  $scope.watchlistName=data.name;
 
-$scope.updateBackPublisher=function(){
+  $scope.updateBackPublisher=function(){
     saveToDB.savewatchloopdata(data);
-
-  $mdDialog.hide();
+    $state.go('home');
+    $mdDialog.hide();
 }
 
-$scope.hide = function() {
-  $mdDialog.hide();
-};
+  $scope.hide = function() {
+    $mdDialog.hide();
+  };
 
 }])

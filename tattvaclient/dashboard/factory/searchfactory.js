@@ -11,7 +11,7 @@ angular.module('tattva')
         "CountryCode": "IND"
       },
       "value":[8, 3, 7],
-      "size" : "30",
+      "size" : "50",
       "slideone":"B",
       "slidetwo":"A"
     },
@@ -25,7 +25,7 @@ angular.module('tattva')
         "CountryCode": "PAK"
       },
       "value":[15, 30, 27],
-      "size" : "70",
+      "size" : "50",
       "slideone":"B",
       "slidetwo":"A"
     },
@@ -37,7 +37,7 @@ angular.module('tattva')
   "CountryCode": "USA"
 },
 "value":[38, 13, 70],
-"size" : "70",
+"size" : "30",
 "slideone":"A",
 "slidetwo":"B"
 },
@@ -73,7 +73,7 @@ angular.module('tattva')
   "CountryCode": "JP"
 },
 "value":[28, 32, 17],
-"size" : "70",
+"size" : "100",
 "slideone":"B",
 "slidetwo":"A"
 }

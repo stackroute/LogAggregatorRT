@@ -87,10 +87,10 @@
             </div>
           </md-input-container>
           <div layout="row" ng-hide="success">
-            <div flex="50" layout-align="center">
+            <div flex="30" flex-offset="20" layout-align="center">
               <md-button  class="md-raised " type="button" ng-click="cancel()">CANCEL</md-button>
             </div>
-            <div flex-offset="5">
+            <div flex="50">
               <md-button type="submit" ng-disabled="createInstance.$invalid" class="md-raised md-primary">{{formtype}}</md-button>
             </div>
           </div>

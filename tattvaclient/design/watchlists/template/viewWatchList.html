@@ -1,3 +1,11 @@
+<div ng-if="watchlistalldata.length==0" flex class="noSubscriberinst listInst">
+    <div flex layout-padding layout-margin layout-align="start" >
+      <h1>No available Watchlists</h1>
+      <p>Click on the below button to create a watchlist.</p>
+      <md-button class="md-raised md-primary" ui-sref="design.createwatchlist">Create</md-button>
+  </div>
+</div>
+
 <div layout-padding layout-margin ng-init="getwatchlistdata(objectJson)">
   <md-grid-list md-cols="4" md-row-height="180px" md-gutter="12px" >
 

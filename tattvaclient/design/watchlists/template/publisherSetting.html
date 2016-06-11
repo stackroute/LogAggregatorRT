@@ -9,10 +9,10 @@
       <form layout-padding ng-submit="updateBackPublisher(Data)">
         <div layout="row" layout-wrap flex >
           <label flex="30"><md-subheader>Watch Display Size</md-subheader></label>
-          <md-radio-group ng-model="widgetSize" flex="70">
+          <md-radio-group ng-model="displaySize" flex="70">
             <div layout="row">
               <md-radio-button ng-repeat="widgetSize in uiPublisherConfig.widgetSizes" value="{{widgetSize.value}}" class="md-primary" flex="35">
-                <i class="{{widgetSize.icon}}" aria-hidden="true"></i>
+                {{widgetSize.name}}
               </md-radio-button>
             </div>
           </md-radio-group>
@@ -23,7 +23,7 @@
         <div layout="row" layout-wrap flex >
           <label flex="20"><md-subheader>Watch Tabs</md-subheader></label>
           <div layout="row" flex="80" layout-wrap>
-            <div ng-repeat="tab in uiPublisherConfig.widgetTabs">
+            <div class="leftpadding" ng-repeat="tab in uiPublisherConfig.widgetTabs">
               <md-checkbox ng-model="tab.selected" value="{{tab.value}}" layout="row">
                 {{ tab.name }}
               </md-checkbox>
@@ -35,7 +35,7 @@
 
         <div layout="row" layout-wrap flex >
           <label flex="30"><md-subheader>Watch Graph type</md-subheader></label>
-          <md-radio-group ng-model="graphTypes" flex="70">
+          <md-radio-group ng-model="graphType" flex="70">
             <div layout="row">
               <md-radio-button ng-repeat="graphTypes in uiPublisherConfig.graphTypes" value="{{graphTypes.value}}" class="md-primary" flex="50">
                 <i class="{{graphTypes.icon}}" aria-hidden="true"></i>
@@ -47,10 +47,10 @@
         <md-divider></md-divider>
 
         <div layout="row" layout-wrap flex >
-          <label flex="50"><md-subheader>Watch Log Data Display Type</md-subheader></label>
-          <md-radio-group ng-model="logDataDisplayType" flex="50">
+          <label flex="35"><md-subheader>Watch Log Data Display Type</md-subheader></label>
+          <md-radio-group ng-model="logDataDisplayType" flex="65">
             <div layout="row" layout-wrap>
-              <md-radio-button ng-repeat="displayTypes in uiPublisherConfig.logDataDisplayType" value="{{displayTypes.value}}" class="md-primary" flex="50">
+              <md-radio-button class="leftpadding" ng-repeat="displayTypes in uiPublisherConfig.logDataDisplayType" value="{{displayTypes.value}}" class="md-primary">
                 {{displayTypes.name}}
               </md-radio-button>
             </div>

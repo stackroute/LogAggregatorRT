@@ -37,3 +37,16 @@
     width:98%;
     border:1px solid #BDBDBD;
 }
+
+.NamespaceListCardHeader{
+  cursor:pointer;
+}
+
+md-card.NamespaceCard{
+  background-color:#F6F6F6;
+}
+
+.createNamespacePage{
+  padding-left: 100px;
+  padding-right: 100px;
+}

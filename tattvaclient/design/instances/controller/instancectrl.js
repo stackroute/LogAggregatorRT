@@ -119,7 +119,6 @@
 
                       }
                       $scope.ok=function(){
-                        $scope.dInstance=null;
                         $mdDialog.cancel();
                       }
 

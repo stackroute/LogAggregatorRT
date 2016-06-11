@@ -1,22 +1,20 @@
 var watchloop_router = require('express').Router();
 var mongoose = require( 'mongoose' );
 var watchloop = require('./watchloop.js');
-
+var watchlist = require('../watchlists/watchlists.js');
+var ObjectId = mongoose.Types.ObjectId;
 watchloop_router.get('/',function (request, response) {
-  console.log("inside watchloop_router");
-  var watchloopObj = request.body;
-  watchloopObj.status="active";
-  console.log("reached watchlistexecutor with body data");
-  watchloopObj.id = watchloopObj.name;
-  var watchloop1 = new watchloop(watchloopObj);
-  watchloop1.save(function(err, savewatchlistdata){
-    if(err) return console.error(err);
-  });
+console.log("watchloop get request");
 });
 
 watchloop_router.post('/',function (request, response) {
   var watchloopObj = request.body;
-  console.log("reached watchlist with body data");
+var o_id;
+  watchlist.find({name:watchloopObj.name},{}, function(err, watchloopId){
+    console.log("watchlist id to be looped",watchloopId);
+   o_id = ObjectId(watchloopId._id);
+  })
+  watchloopObj.watchid=o_id;
   var watchloop1 = new watchloop(watchloopObj);
   watchloop1.save(function(err, savewatchloopdata){
     if(err) return console.error(err);

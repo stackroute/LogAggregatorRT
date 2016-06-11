@@ -1,9 +1,9 @@
  <!-- @todo data coming from public/json/watchlist change it -->
 
-<div ng-controller="namespacebasedwatchlist" >
+<div ng-controller="namespacebasedwatchlist" ng-init="loadData()" >
 <div ng-if="data.length!=0">
 <div ng-include src="'/design/designhome/template/subTitleTab.html'"></div>
- <div  layout="row" ng-init="loadData()">
+ <div  layout="row" >
   <div layout="row" flex="25">
     <md-content class="listmain" flex>
       <md-list>
@@ -24,7 +24,7 @@
       </md-list>
     </md-content>
   </div>
-<div ui-view flex="70"></div>
+<div layout="row" ui-view flex="75"></div>
 </div>
 </div>
 <!-- No namespace available -->
@@ -40,4 +40,5 @@
       <md-button class="md-raised md-primary" ui-sref='design.createNamespace'>Create</md-button>
     </div>
   </div>
+</div>
 </div>

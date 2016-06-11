@@ -4,96 +4,96 @@
 
     <div layout="column" layout-padding flex>
       <!-- <md-whiteframe class="md-whiteframe-1dp" flex layout="column"> -->
-        <div  flex layout>
-          <md-input-container flex="45" >
-            <label>Name of NameSpace</label>
-            <input type="text" ng-model="nameSpace.name" name="name" ng-minlength="3" ng-maxlength="20" required>
-            <div ng-messages="createNameSpace.name.$error">
-              <p ng-message="required">This is required.</p>
-              <p ng-message="minlength">Namespace name is too short.</p>
-              <p ng-message="maxlength">Namespace name is too long.</p>
-            </div>
-          </md-input-container>
+      <div  flex layout>
+        <md-input-container flex="45" >
+          <label>Name of NameSpace</label>
+          <input type="text" ng-model="nameSpace.name" name="name" ng-minlength="3" ng-maxlength="20" required>
+          <div ng-messages="createNameSpace.name.$error">
+            <p ng-message="required">This is required.</p>
+            <p ng-message="minlength">Namespace name is too short.</p>
+            <p ng-message="maxlength">Namespace name is too long.</p>
+          </div>
+        </md-input-container>
         <!-- </div> -->
         <!-- <div  flex layout> -->
         <div flex></div>
-          <md-input-container flex="45">
-            <textarea class="textarea" ng-model="nameSpace.description" name="description" type="textarea" placeholder="Description" required></textarea>
-            <div ng-messages="createNameSpace.description.$error">
-              <p ng-message="required">This is required.</p>
-            </div>
-          </md-input-container>
-        </div>
-        <div layout>
-          <md-input-container layout flex="25">
-            <label><b>Define dataSchema for NameSpace</b></label>
-          </md-input-container>
-          <md-input-container>
-            <md-button class="md-raised uploadJSON" ng-click="uploadJSONFlagToggle()">Paste Sample Data</md-button>
-          </md-input-container>
-        </div>
 
-        <div ng-if="uploadJSONFlag" layout-align="center center" layout="column">
-          <textarea class="uploadJSONFormat" placeholder="Paste JSON format here" name="JSONFormat" ng-model="uploadJSONText" required></textarea>
-          <div ng-messages="createNameSpace.JSONFormat.$error">
+        <md-input-container flex="45">
+          <textarea class="textarea" ng-model="nameSpace.description" name="description" type="textarea" placeholder="Description" required></textarea>
+          <div ng-messages="createNameSpace.description.$error">
             <p ng-message="required">This is required.</p>
           </div>
+        </md-input-container>
+      </div>
+      <div layout>
+        <md-input-container layout flex="20">
+          <label><b>Define dataSchema for NameSpace</b></label>
+        </md-input-container>
+        <md-input-container>
+          <md-button class="md-raised uploadJSON" ng-click="uploadJSONFlagToggle()">Paste Sample Data</md-button>
+        </md-input-container>
+      </div>
+
+      <div ng-if="uploadJSONFlag" layout-align="center center" layout="column">
+        <textarea class="uploadJSONFormat" placeholder="Paste JSON format here" name="JSONFormat" ng-model="uploadJSONText" required></textarea>
+        <div ng-messages="createNameSpace.JSONFormat.$error">
+          <p ng-message="required">This is required.</p>
+        </div>
+        <md-input-container>
+          <md-button class="md-primary md-raised" ng-click="uploadJSON(uploadJSONText)">Save</md-button>
+        </md-input-container>
+      </div>
+
+
+      <div ng-if="!uploadJSONFlag">
+        <div layout="row" flex ng-repeat="dataFormatObj in nameSpace.dataSchema" >
+
           <md-input-container>
-            <md-button class="md-primary md-raised" ng-click="uploadJSON(uploadJSONText)">Save</md-button>
+            <label>{{nameSpace.dataSchema.indexOf(dataFormatObj)+1}}.</label>
           </md-input-container>
-        </div>
 
-
-        <div ng-if="!uploadJSONFlag">
-          <div layout="row" flex ng-repeat="dataFormatObj in nameSpace.dataSchema" >
-
-            <md-input-container>
-              <label>{{nameSpace.dataSchema.indexOf(dataFormatObj)+1}}.</label>
-            </md-input-container>
-
-            <md-input-container flex="15" flex-offset="5">
-              <label>Alias</label>
-              <input type="text" ng-model="dataFormatObj.alias" name="fieldAlias" required>
-              <div ng-messages="createNameSpace.fieldAlias.$error">
-                <div ng-message="required">This is required.</div>
-              </div>
-            </md-input-container>
-            <md-input-container flex-offset="5" flex="20">
-              <label>Data Field Name</label>
-              <input type="text" ng-model="dataFormatObj.name" name="fieldName" required>
-              <div ng-messages="createNameSpace.fieldName.$error">
-                <div ng-message="required">This is required.</div>
-              </div>
-            </md-input-container>
-            <md-input-container flex-offset="10" flex="8">
-              <md-radio-group ng-model="dataFormatObj.type" class="md-primary" required>
-                <md-radio-button value="dimension">Dimension (differentiates data)</md-radio-button>
-                <md-radio-button value="measure">Measure (measurable field)</md-radio-button>
-              </md-radio-group>
-            </md-input-container>
-            <div flex></div>
-            <div >
-              <!-- <md-subheader md-no-sticky > -->
-              <!-- <md-button class="md-fab md-mini" ng-click="deleteDataFormat($index)" aria-label="delete format"><md-icon md-font-icon="fa fa-minus"></md-icon></md-button> -->
-              <md-button class="md-raised" ng-click="deleteDataFormat($index)" aria-label="delete format" layout-align="center center">Remove</md-button>
-              <!-- </md-subheader> -->
-
+          <md-input-container flex="15" flex-offset="5">
+            <label>Alias</label>
+            <input type="text" ng-model="dataFormatObj.alias" name="fieldAlias" required>
+            <div ng-messages="createNameSpace.fieldAlias.$error">
+              <div ng-message="required">This is required.</div>
             </div>
-          </div><!--ng repeat div-->
-          <div flex>
-            <md-button  ng-click="addDataFormat()"  class="md-raised">Add</md-button>
+          </md-input-container>
+          <md-input-container flex-offset="5" flex="20">
+            <label>Data Field Name</label>
+            <input type="text" ng-model="dataFormatObj.name" name="fieldName" required>
+            <div ng-messages="createNameSpace.fieldName.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container flex-offset="10" flex="8">
+            <md-radio-group ng-model="dataFormatObj.type" class="md-primary" required>
+              <md-radio-button value="dimension">Dimension (differentiates data)</md-radio-button>
+              <md-radio-button value="measure">Measure (measurable field)</md-radio-button>
+            </md-radio-group>
+          </md-input-container>
+
+          <div flex></div>
+          <div >
+            <!-- <md-subheader md-no-sticky > -->
+            <!-- <md-button class="md-fab md-mini" ng-click="deleteDataFormat($index)" aria-label="delete format"><md-icon md-font-icon="fa fa-minus"></md-icon></md-button> -->
+            <md-button class="md-raised" ng-click="deleteDataFormat($index)" aria-label="delete format" layout-align="center center">Remove</md-button>
+            <!-- </md-subheader> -->
+
           </div>
+        </div><!--ng repeat div-->
+        <div flex>
+          <md-button  ng-click="addDataFormat()"  class="md-raised">Add</md-button>
         </div>
+      </div>
 
       </fieldset>
       <!-- </md-whiteframe> -->
-      <div layout layout-align="center center" >
-        <md-button class="md-raised" ng-click="createNamespaceCancel()" ng-if="editData && editNamespaceFlag">Cancel</md-button><!--view namespace-->
-        <md-button class="md-raised" ng-click="showConfirm($event)" ng-if="editData && !editNamespaceFlag">Cancel</md-button><!--edit namespace-->
-        <md-button class="md-raised" ng-click="showConfirm($event)" ng-if="!editData">Cancel</md-button>
-        <md-button type="submit" class="md-raised md-primary" ng-click="createNamespaceSubmit($event)" ng-if="!editData">Create</md-button>
-        <md-button class="md-raised md-primary" ng-click="editNamespacetoggle()" ng-if="editData && editNamespaceFlag" >Edit</md-button>
-        <md-button class="md-raised md-primary" ng-click="saveNamespace($event)"  ng-if="editData && !editNamespaceFlag">Save</md-button>
+
+      <div layout layout-align="center center">
+        <md-button class="md-raised" ng-click="showConfirm($event)">Cancel</md-button>
+        <md-button type="submit" class="md-raised md-primary" ng-click="createNamespaceSubmit()">Create</md-button>
+
       </div>
     </div>
   </form>
