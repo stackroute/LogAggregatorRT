@@ -1,14 +1,16 @@
 angular.module("tattva")
-.controller('WatchListCtrl', ['$scope','$mdDialog', '$log',"$state",'loadExprData','saveToDB','$stateParams','selectedWlstdef',
-function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, selectedWlstdef) {
-
+.controller('WatchListCtrl', ['$scope','$mdDialog', '$log',"$state",'loadExprData','saveToDB','$stateParams','selectedWlstdef','watchlistconfg',
+function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, selectedWlstdef,watchlistconfg) {
   $scope.loadWatchlistData = function(){
     $scope.wlstdef = {
       namespace:"",
       stream:"",
       expressions: [],
-      publisher:[
-      ]
+      publishers: {
+        "dashboard": {},
+        "database": {},
+        "outstream": {}
+      }
     };
 
     $scope.editFlag = false;
@@ -41,10 +43,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
       },
     };
     $scope.index = 0;
-    loadExprData.getOutcomeOptions().then(function(response){
-      $scope.getOutcomeOptions=response;
-      console.log($scope.getOutcomeOptions);
-    });
+    $scope.getOutcomeOptions=watchlistconfg.getOutcomeOptions();
     if(isNaN(index)){
       $scope.index = $scope.wlstdef.expressions.length;
       console.log($scope.index);
@@ -90,10 +89,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
       });
     };
     $scope.showUIPublisherDialog();
-    // saveToDB.savewatchlistdata($scope.wlstdef).then(function(data){console.log("hello")});
-    // saveToDB.savewatchexecutor($scope.wlstdef);
-    // $state.go("design.watchlist");
-  }
+    }
 
   $scope.toggleOutputToStream=function(){
     console.log("outputToStreams");
@@ -133,7 +129,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
 
   $scope.opnePublisherDialogWindow = function () {
     console.log("in save");
-    $scope.publisherData = {"WatchListName": "My first watch list"};
+    //$scope.publisherData = {"WatchListName": "My first watch list"};
     $scope.showUIPublisherDialog = function(ev) {
       console.log("hi");
       $mdDialog.show({
@@ -143,11 +139,12 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
         targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
-        locals: {"data": $scope.wlstdef}
-      }).then(function(response) {
-        console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
-      }, function(response) {
-        console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+        locals: {"publisherData": $scope.wlstdef.publishers.dashboard }
+      }).then(function(dlgRes) {
+        $scope.wlstdef.publishers.dashboard = dlgRes;
+        console.log("RESOLVED with response: ", dlgRes, " publisher in parent: ", $scope.wlstdef.publishers.dashboard);
+      }, function(dlgRes) {
+        console.log("** REJECTED ** with response: ", dlgRes, " publisher in parent: ", $scope.wlstdef.publishers.dashboard);
       }).finally(function() {
         console.log("finally gone..!");
       });

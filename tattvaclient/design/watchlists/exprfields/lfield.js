@@ -1,5 +1,5 @@
 angular.module("tattva")
-.controller('lfield',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData) {
+.controller('lfield',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData','watchlistconfg', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData,watchlistconfg) {
   $scope.dialogueData={};
 // console.log($scope.wlstdef.namespace);
   var self = this;
@@ -48,7 +48,7 @@ angular.module("tattva")
         controller: item.controller,
         templateUrl: dialogTemplate,
         parent: angular.element(document.body),
-        targetEvent;: ev,
+        targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
         locals: { fieldData: expr.watch.lfield,fieldData2:$scope.wlstdef}
@@ -64,7 +64,7 @@ angular.module("tattva")
   }
 
   function loadAll() {
-var fieldOptions=loadExprData.getfieldOption();
+var fieldOptions=watchlistconfg.getfieldOption();
     return fieldOptions;
   }
 

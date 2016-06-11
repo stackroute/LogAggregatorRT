@@ -1,5 +1,5 @@
 angular.module("tattva")
-.controller('rfield',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData) {
+.controller('rfield',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData','watchlistconfg', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData,watchlistconfg) {
   $scope.fieldData={};
   var self = this;
   self.simulateQuery = false;
@@ -60,8 +60,7 @@ angular.module("tattva")
   }
 
   function loadAll() {
-var fieldOptions=loadExprData.getfieldOption();
-
+var fieldOptions=watchlistconfg.getfieldOption();
     return fieldOptions;
   }
 
