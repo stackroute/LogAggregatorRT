@@ -48,13 +48,14 @@ var watchListSchema=new mongoose.Schema({
     }
   ],
   "publishers" :{
-    "dashboard": {"logDataDisplayType":{type:String},
-                    "widgetSizes":{type:String},
-                    "tabsType":[
+    "dashboard": {  "logFormat":{type:String},
+                    "displaySize":{type:String},
+                    "graphType":{type:String},
+                    "tabs":[
                     {
-                    "Graph":{type:Boolean},
-                    "LogDataViewer":{type:Boolean},
-                    "ExecutionFlow":{type:Boolean}
+                    "graph":{type:Boolean},
+                    "logData":{type:Boolean},
+                    "flowMap":{type:Boolean}
                     }
                   ]
                   },

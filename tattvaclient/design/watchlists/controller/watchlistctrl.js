@@ -7,8 +7,11 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
       namespace:"",
       stream:"",
       expressions: [],
-      publisher:[
-      ]
+      publishers: {
+        "dashboard": { tabs: []},
+        "database": {},
+        "outstream": {}
+      }
     };
 
     $scope.editFlag = false;
@@ -133,7 +136,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
 
   $scope.opnePublisherDialogWindow = function () {
     console.log("in save");
-    $scope.publisherData = {"WatchListName": "My first watch list"};
+    //$scope.publisherData = {"WatchListName": "My first watch list"};
     $scope.showUIPublisherDialog = function(ev) {
       console.log("hi");
       $mdDialog.show({
@@ -143,11 +146,12 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
         targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
-        locals: {"data": $scope.wlstdef}
-      }).then(function(response) {
-        console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
-      }, function(response) {
-        console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+        locals: {"publisherData": $scope.wlstdef.publishers.dashboard }
+      }).then(function(dlgRes) {
+        $scope.wlstdef.publishers.dashboard = dlgRes;
+        console.log("RESOLVED with response: ", dlgRes, " publisher in parent: ", $scope.wlstdef.publishers.dashboard);
+      }, function(dlgRes) {
+        console.log("** REJECTED ** with response: ", dlgRes, " publisher in parent: ", $scope.wlstdef.publishers.dashboard);
       }).finally(function() {
         console.log("finally gone..!");
       });
@@ -165,11 +169,13 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
         targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
-        locals: { "data": $scope.wlstdef }
+        locals: { "data": $scope.wlstdef.publishers.outstream,
+                  "publisherData" : $scope.wlstdef
+                }
       }).then(function(response) {
-        console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
+        console.log("RESOLVED with response: ", response, " publisher in parent: ");
       }, function(response) {
-        console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+        console.log("** REJECTED ** with response: ", response, " publisher in parent: ");
       }).finally(function() {
         console.log("finally gone..!");
       });
@@ -188,11 +194,13 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
         targetEvent: ev,
         clickOutsideToClose: false,
         escapeToClose : false,
-        locals: { "data": $scope.wlstdef }
+        locals: { "data": $scope.wlstdef,
+                  "publisherData" : $scope.wlstdef.publishers.database
+                }
       }).then(function(response) {
-        console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
+        console.log("RESOLVED with response: ", response, " publisher in parent: ");
       }, function(response) {
-        console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+        console.log("** REJECTED ** with response: ", response, " publisher in parent: ");
       }).finally(function() {
         console.log("finally gone..!");
       });

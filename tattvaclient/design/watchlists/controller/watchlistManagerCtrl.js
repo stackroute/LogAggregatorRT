@@ -1,6 +1,7 @@
 angular.module("tattva")
 .controller("watchlistManagerCtrl",["$scope","$mdDialog","data",'saveToDB',"$state", function($scope,$mdDialog,data,saveToDB,$state){
   $scope.cancel = function() {
+    $state.go('design.watchlist');
     $mdDialog.cancel();
   };
   $scope.watchlistName=data.name;
