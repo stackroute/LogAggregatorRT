@@ -29,6 +29,7 @@ stream_router.get('/:sendData', function(req, res, next) {
     if(err){
       console.error(err);
     }
+    console.log("data from the stream route containing list of streams for a particular namespace",data);
     res.send(data);
   });
 });
@@ -59,6 +60,16 @@ stream_router.post('/',function (request, response) {
   });
   // })
   // res.send(streamObj)
+});
+
+stream_router.put('/',function (request, response) {
+  var streamObj = request.body;
+  stream.update({_id:streamObj._id}, streamObj,{},function(err, updatedObj){
+    if(err){
+      console.error(err);
+    };
+    console.log("Stream "+updatedObj.streamname+" is updated." );
+  });
 });
 
 module.exports = stream_router;

@@ -40,14 +40,6 @@ function($scope,$mdDialog,publisherSettingFactory, publisherData){
         $scope.publisherData.tabs.push(tab.name);
       }
     });
-
-    // $scope.publisherData.displaySize=$scope.displaySize;
-    // $scope.publisherData.logFormat=$scope.logFormat;
-    // $scope.publisherData.graphType=$scope.graphType;
-
-    //$scope.publisherData.tabs=$scope.tabs;
-    //console.log($scope.publisherData);
-
     $mdDialog.hide($scope.publisherData);
   };
 

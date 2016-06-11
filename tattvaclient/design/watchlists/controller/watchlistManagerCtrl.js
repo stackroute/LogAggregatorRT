@@ -10,7 +10,7 @@ angular.module("tattva")
     saveToDB.savewatchloopdata(data);
     $state.go('home');
     $mdDialog.hide();
-  }
+}
 
   $scope.hide = function() {
     $mdDialog.hide();

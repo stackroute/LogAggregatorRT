@@ -16,7 +16,6 @@ namespace_router.get('/', function(req, res){
     }
     res.send(namespaceData);
   });
-  console.log("Namespace list requested /n/n/n\n\n\n\n\n response successfully sent./n/n/n\n\n\n\n\n");
 });
 
 namespace_router.post('/', function (request, response) {

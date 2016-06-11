@@ -1,7 +1,6 @@
 angular.module("tattva")
-.controller('WatchListCtrl', ['$scope','$mdDialog', '$log',"$state",'loadExprData','saveToDB','$stateParams','selectedWlstdef',
-function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, selectedWlstdef) {
-
+.controller('WatchListCtrl', ['$scope','$mdDialog', '$log',"$state",'loadExprData','saveToDB','$stateParams','selectedWlstdef','watchlistconfg',
+function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, selectedWlstdef,watchlistconfg) {
   $scope.loadWatchlistData = function(){
     $scope.wlstdef = {
       namespace:"",
@@ -44,10 +43,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
       },
     };
     $scope.index = 0;
-    loadExprData.getOutcomeOptions().then(function(response){
-      $scope.getOutcomeOptions=response;
-      console.log($scope.getOutcomeOptions);
-    });
+    $scope.getOutcomeOptions=watchlistconfg.getOutcomeOptions();
     if(isNaN(index)){
       $scope.index = $scope.wlstdef.expressions.length;
       console.log($scope.index);
@@ -93,10 +89,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
       });
     };
     $scope.showUIPublisherDialog();
-    // saveToDB.savewatchlistdata($scope.wlstdef).then(function(data){console.log("hello")});
-    // saveToDB.savewatchexecutor($scope.wlstdef);
-    // $state.go("design.watchlist");
-  }
+    }
 
   $scope.toggleOutputToStream=function(){
     console.log("outputToStreams");
@@ -215,5 +208,19 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
   $scope.editWatchlist = function(){
     $scope.editFlag = false;
   }
+  $scope.showConfirm = function(ev) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+            .title('Are you sure you want to cancel it')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('Yes')
+            .cancel('No');
+      $mdDialog.show(confirm).then(function() {
+        $state.go("design.watchlist")
+      }, function() {
+        $state.go("design.createwatchlist")
+      });
+    };
 
 }]);

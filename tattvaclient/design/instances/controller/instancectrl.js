@@ -31,7 +31,7 @@
                     controller: DialogController,
                     templateUrl: "design/instances/template/createInstanceDialog.html",
                     clickOutsideToClose: false,
-                    fullscreen: useFullScreen,
+                    // fullscreen: useFullScreen,
                     parent: angular.element(document.body),
                         /* scope:{success:'false'}*/
                 });
@@ -83,7 +83,7 @@
                                     // if(Object.is($scope.updatedInstance,$scope.dInstance))
                                     // {
                                 $scope.success = true;
-                                $scope.createMsg = "DataSource Saved Successfully...!";
+                                $scope.createMsg = "Instance Saved Successfully...!";
 
                               // }
 
@@ -117,6 +117,10 @@
                     $scope.cancel = function() {
                       $mdDialog.cancel();
 
+                      }
+                      $scope.ok=function(){
+                        $scope.dInstance=null;
+                        $mdDialog.cancel();
                       }
 
                 }

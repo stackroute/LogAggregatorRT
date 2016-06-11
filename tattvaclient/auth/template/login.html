@@ -54,30 +54,30 @@
           <form ng-submit="register()" name="registerForm">
             <md-input-container class=" mic md-icon-float md-block">
               <label>Site Name</label>
-              <md-icon md-svg-src="images/svg/social.svg" class="name"></md-icon>
+              <md-icon class="material-icons">people</md-icon>
               <input ng-model="user.orgsite" type="text">
             </md-input-container>
 
             <md-input-container class="mic md-icon-float md-block">
               <label>Organisation Name</label>
-              <md-icon md-svg-src="images/svg/social.svg" class="name"></md-icon>
+              <md-icon class="material-icons">people</md-icon>
               <input ng-model="user.orgname" type="text">
             </md-input-container>
 
             <md-input-container class=" mic md-icon-float md-block">
-              <md-icon md-svg-src="images/svg/location.svg" class="location"></md-icon>
+              <md-icon class="material-icons">place</md-icon>
               <input ng-model="user.orglocation" type="text" placeholder="Location">
             </md-input-container>
 
             <md-input-container class="mic md-icon-float md-block">
               <label>Contact Name</label>
-              <md-icon md-svg-src="images/svg/shape.svg" class="name"></md-icon>
+              <md-icon class="material-icons">person</md-icon>
               <input ng-model="user.name" type="text">
             </md-input-container>
 
             <md-input-container class="mic md-icon-float md-block">
               <!-- Use floating placeholder instead of label -->
-              <md-icon md-svg-src="images/svg/letter.svg" class="email"></md-icon>
+              <md-icon class="material-icons">email</md-icon>
               <div layout="column">
                 <div flex>
                   <input ng-model="user.email" type="email" name="email" placeholder="Contact of Email" ng-required="true" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
@@ -90,7 +90,7 @@
 
             <md-input-container class=" mic md-icon-float md-block">
               <label>Password</label>
-              <md-icon md-svg-src="images/svg/lock_new.svg" class="password"></md-icon>
+              <md-icon class="material-icons">lock</md-icon>
               <div layout="column">
                 <div flex>
                   <input ng-model="user.password" type="password" name="password"  ng-required="true" minlength="8" maxlength="30" ng-pattern="/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^*()_+])[A-Za-z\d][A-Za-z\d!@#$%^*()_+]{7,19}$/">
@@ -104,7 +104,7 @@
 
             <md-input-container class="mic md-icon-float md-block" >
               <label>Confirm Password</label>
-              <md-icon md-svg-src="images/svg/lock_new.svg" class="password"></md-icon>
+              <md-icon class="material-icons">lock</md-icon>
               <div layout="column">
                 <div flex>
                   <input ng-model="user.cfpwd" type="password" name="cfpassword"

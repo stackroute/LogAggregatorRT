@@ -1,4 +1,4 @@
-.listmenu{
+/*.listmenu{
 overflow: scroll;
 overflow-x:hidden;
 /*max-height: 453px !important;
@@ -6,7 +6,7 @@ overflow-x:hidden;
 -webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 -moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
-}
+}*/
 
 .viewInst .md-button{
   text-transform: none;
@@ -31,12 +31,10 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 }
 
 .viewInst md-list md-list-item.md-3-line .md-list-item-text h3{
- font-family: 'Open Sans';
     font-size: 12pt;
     font-weight:bold;
   }
 .viewInst md-list md-list-item.md-3-line .md-list-item-text p{
-  font-family: 'Open Sans';
   font-size:9pt;
 }
 
@@ -78,7 +76,8 @@ md-input-container label{
 .listmenu{
 overflow: scroll;
 overflow-x:hidden;
-/*max-height: 453px !important;
+height: 380px !important;
+/*
 
 -webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 -moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
@@ -88,10 +87,6 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);*/
   margin-left:5%;
 }*/
 
-.eachnamespc p.ng-binding, .eachnamespc h3.ng-binding{
-    font-family: 'Open Sans';
-
-}
 .eachnamespc h3.ng-binding
 {
   font-size:12pt;
@@ -109,7 +104,6 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);*/
 }
 .instancetoolbar{
   background-color: #f2f2f2;
-  font-family:'Open Sans';
   color:black;
 
 }
@@ -141,22 +135,16 @@ margin:15px;
 }
 
 .viewInst md-list md-list-item.md-3-line .md-list-item-text h3{
- font-family: 'Open Sans';
     font-size: 12pt;
     font-weight:bold;
   }
 .viewInst md-list md-list-item.md-3-line .md-list-item-text p{
-  font-family: 'Open Sans';
   font-size:9pt;
 }
 
 
 .successmsg{
-  height:150px;
-  width:400px;
-}
-.successmsg button{
-  float:none;
+color:rgb(0, 173, 212) !important;
 }
 
 .successmsg .inside{

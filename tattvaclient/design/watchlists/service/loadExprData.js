@@ -45,22 +45,6 @@ angular.module("tattva")
     return z;
   };
 
-
-
-
-  this.getfieldOption=function(){
-    return $http.get('/fieldOption').then(function(response){
-      return response.data
-    });
-  }
-
-  this.getoperatorOption=function(){
-    return $http.get('/operatorOption');
-  }
-
-
-
-
   this.getDataFields=function(namespaceName){
     var config = {
       params: {"name" : namespaceName }
@@ -69,19 +53,11 @@ angular.module("tattva")
   }
 
 
-  this.getOutcomeOptions=function(){
-    return $http.get('/OutcomeOptions').then(function(response){
-      return response.data;
-    });
-  }
-
-
   this.getNamespaceDetails= function(namespaceName){
     console.log("In the get namespace factory method",namespaceName);
     return $http.get('/watchlist/'+namespaceName)
     .then(function(response) {
       data =  response.data;
-      // console.log(data);
       return data;
     });
   }

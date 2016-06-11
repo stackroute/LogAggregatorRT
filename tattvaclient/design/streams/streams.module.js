@@ -7,18 +7,21 @@ angular.module('tattva')
     templateUrl: "/design/streams/template/namespaceListView.html",
     controller: 'namespaceListCtrl'
   })
+
   .state('design.streams.viewStreams',
   {
-    url:'/listStreams/:nsname',
+    url:'/:nsname',
     templateUrl: "/design/streams/template/streamsView.html",
     controller: 'viewStreamsCtrl'                       //< change this name > < changed >
   })
+
   .state('design.streams.viewdata',
   {
     url:'/viewStream/:streamName',                        //< url has to change > < changed >
     templateUrl: "/design/streams/template/streamsDataView.html",
     controller: 'streamsDataCtrl'
   })
+
   .state('design.create',
   {
     url: '/create',
@@ -27,15 +30,8 @@ angular.module('tattva')
   })
   .state('design.edit',
   {
-    url: '/editStream',
-    templateUrl: "/design/streams/template/streamEdit.html",
-    controller: 'streamEditCtrl'
+    url: '/editStream/:streamName',
+    templateUrl: "/design/streams/template/streamCreate.html",
+    controller: 'streamCreateCtrl'
   });
 }]);
-
-
-// URI
-// Route
-// url
-// state
-// view
