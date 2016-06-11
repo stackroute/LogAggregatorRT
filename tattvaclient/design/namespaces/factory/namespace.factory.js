@@ -2,25 +2,22 @@ angular.module('tattva')
 .factory('namespaceFactory', ['$http', function($http){
   var factory = {
     saveNameSpace: function(createNamespaceFormData) {
-      $http({
+      return $http({
         method  : 'post',
         url     : '/namespaces',
         data    : createNamespaceFormData
       })
       .then(function(response)
       {
-        return true;
-        // if (response.data.errors) {
-        //   // Showing errors.
-        //   $scope.errorName = response.data.errors.name;
-        // } else {
-        //   $scope.message = response.data.message;
-        // }
+        console.log(response);
+        return response;
       });
     },
+
     getNameSpace: function() {
       return $http.get('/namespaces').then(function(response) {
         data =  response.data;
+        console.log(data);
         return data;
       });
     },
@@ -44,15 +41,9 @@ angular.module('tattva')
         }
       );
     },
-    // return $http.get('/namespaces/'+namespaceName)
-    // .then(function(response) {
-    //   data =  response.data;
-    //   return data;
-    //   });
-    // },
-
 
     setNamespaceDetails : function(data, namespaceName){
+      console.log("data to be updated from factory = ",data);
       var config = {
         params: {"name" : namespaceName }
       }
@@ -65,6 +56,7 @@ angular.module('tattva')
     },
     getJSONObject : function (inputJSONObj){
       inputJSONObj = JSON.parse(inputJSONObj)
+      console.log("inputJSONObj = ",inputJSONObj);
       var dataObj = inputJSONObj[0];
       var outputData = [];
       var type;
@@ -77,6 +69,7 @@ angular.module('tattva')
         }
         outputData.push({"alias": i, "name": i, "type": type  });
       }
+      console.log("outputData= ",outputData);
       return outputData;
     }
 

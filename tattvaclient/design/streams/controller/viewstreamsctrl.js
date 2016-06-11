@@ -10,9 +10,11 @@ function($scope, $http, $stateParams, streamFactory, namespaceService){
   // });
 
   $scope.getStreamData=function(nsname){
-    streamFactory.sendStream(nsname).then(function(res){
-      $scope.streamResultData = res;
-      console.log($scope.streamResultData);
-    });
+    if(nsname){
+      streamFactory.sendStream(nsname).then(function(res){
+        $scope.streamResultData = res;
+        // console.log($scope.streamResultData);
+      });
+    }
   }
 }])

@@ -87,7 +87,7 @@
     </div>
     </fieldset>
     <div layout="row" flex-offset="40">
-      <md-button class="md-raised" ng-click="cancel()" ui-sref="design.streams.viewStreams">Cancel</md-button>
+      <md-button class="md-raised" ui-sref="design.streams.viewStreams">Cancel</md-button>
       <md-button class="md-raised md-primary" ng-click="save()" ng-disabled="projectForm.$invalid" ui-sref="design.streams.viewStreams" ng-if="!editStream && !editStreamFlag">Create</md-button>
       <md-button class="md-raised md-primary" ng-click="save()" ng-disabled="projectForm.$invalid" ui-sref="design.streams.viewStreams" ng-if="editStream && !editStreamFlag">Save</md-button>
       <md-button class="md-raised md-primary" ng-click="edit()" ng-if="editStreamFlag">Edit</md-button>

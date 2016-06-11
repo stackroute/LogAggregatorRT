@@ -9,9 +9,7 @@
 <div class="viewInst" ng-if="instance.length!=0">
   <md-subheader class="md-primary md-title" flex-offset="5">Data sources from {{nspname}}</md-subheader>
   <md-divider></md-divider>
-
   <div layout="row">
-
     <md-list class="listInst" flex>
       <md-content class="instanceList">
         <md-list-item class="md-3-line" ng-repeat="object in instance" ng-if="$index % 2 == 0" layout="row">

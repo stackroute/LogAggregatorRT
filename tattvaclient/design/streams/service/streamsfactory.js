@@ -5,8 +5,9 @@ angular.module('tattva')
       console.log("STREAM FACTORY NAMESPACE name",sendData);
       return $http.get('/datastream/'+sendData)
       .then(function(response){
+        console.log(response);
         data=response.data;
-        console.log("inside factory data =", data);
+        console.log( "inside factory data =", data);
         return data;
       });
     },

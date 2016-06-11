@@ -14,11 +14,13 @@ function($stateProvider){
       }
     }
   })
+
   .state('design.createNamespace', {
-    url: "/newnamespace",
+    url: "/namespace/new",
     templateUrl: "/design/namespaces/template/createNamespace.html",
     controller:"createNamespaceCtrl"
   })
+
   .state('design.editNamespace', {
     url: "/namespace/:editNamespaceData",
     templateUrl: "/design/namespaces/template/createNamespace.html",

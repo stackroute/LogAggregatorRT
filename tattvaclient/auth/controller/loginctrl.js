@@ -22,7 +22,7 @@ function($scope, $http, $state,AuthService) {
     AuthService.signUp($scope.user).then(function(user) {
       $state.go("home");
     }, function(err) {
-      $scope.error = err.message;
+      $scope.error = err.err;
     });
   }
 }]);

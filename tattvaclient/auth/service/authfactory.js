@@ -52,6 +52,23 @@ angular.module("tattva")
       return auth.getGuest();
     }
   };
+  //
+  // auth.getCurrentOrg = function() {
+  //
+  //   if(auth.isMember()) {
+  //     return $http.get("/OrgInfo").then(function(res){
+  //       console.log("the org info is",res.data);
+  //       return res.data;
+  //     }
+  //     ,function(err){
+  //       console.log("org error is",res.err);
+  //       return err;
+  //     })
+  //   }
+  //   else {
+  //     return auth.getGuest();
+  //   }
+  // }
 
   auth.getUserNavItem = function() {
     if(auth.isMember()) {

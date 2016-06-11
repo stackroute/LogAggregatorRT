@@ -6,5 +6,6 @@ angular.module('tattva')
 
   $scope.userNavItems = AuthService.getUserNavItem();
   $scope.user = AuthService.getCurrentUser();
+  console.log("org logo",$scope.user.orgLogo);
   $scope.items=$scope.userNavItems.sideNav;
 });

@@ -69,15 +69,14 @@ app.set('view engine', 'ejs');
 
 require('./tattvaserver/auth/auth')(app, passport);
 
-app.use('/', routes);
-
-app.get('/org_admin', function(req, res){
-  res.sendFile(path.join(__dirname, 'public/json/admindata.json'));
-});
-
-app.get('/login_reg', function(req, res){
-  res.sendFile(path.join(__dirname, 'public/data.json'));
-});
+function isAuthenticated(req, res, next) {
+    // if(req.path ==='/') {
+      return next();
+    // }
+    // else {
+    //   res.redirect('/');
+    // }
+};
 
 process.on('SIGINT', function() {
 mongoose.connection.close(function () {
@@ -85,19 +84,32 @@ mongoose.connection.close(function () {
 process.exit(0);
  });
  });
-app.use('/', routes);
-app.use('/users', users);
-app.use('/instance', datasourcesrouter);
-app.use('/function', function_router);
-app.use('/sideNav', sideNav_router);
-app.use('/namespaces',namespace_router);
-app.use('/watchlist', watchlist_router);
-app.use('/datastream',stream_router);
-app.use('/createslide',watchlistslide_router);
-app.use('/appsummary',summary_router);
 
-app.use('/watchloop',watchloop_router);
-    var err = new Error('Not Found');
+app.use('/', routes);
+app.use('/users', isAuthenticated, users);
+app.use('/instance', isAuthenticated, datasourcesrouter);
+app.use('/function', isAuthenticated, function_router);
+app.use('/sideNav', isAuthenticated, sideNav_router);
+app.use('/namespaces', isAuthenticated, namespace_router);
+app.use('/watchlist', isAuthenticated, watchlist_router);
+app.use('/datastream', isAuthenticated, stream_router);
+app.use('/createslide', isAuthenticated, watchlistslide_router);
+app.use('/appsummary',isAuthenticated, summary_router);
+app.use('/watchloop', isAuthenticated, watchloop_router);
+
+app.get('/OutcomeOptions',function(req,res)
+{
+res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/outcomeOption.json'));
+});
+
+app.get('/fieldOption',function(req,res){
+res.sendFile(path.join(__dirname,'tattvaclient/design/watchlists/json/fieldOption.json'));
+});
+app.get('/operatorOption',function(req,res)
+{
+res.sendFile(path.join(__dirname,'tattvaclient/design/watchlists/json/operatorOption.json'));
+});
+
 app.use(function(req, res, next) {
     err.status = 404;
     next(err);
