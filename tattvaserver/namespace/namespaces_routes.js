@@ -16,7 +16,6 @@ namespace_router.get('/', function(req, res){
     }
     res.send(namespaceData);
   });
-  console.log("Namespace list requested /n/n/n\n\n\n\n\n response successfully sent./n/n/n\n\n\n\n\n");
 });
 
 namespace_router.post('/', function (request, response) {
@@ -30,6 +29,9 @@ namespace_router.post('/', function (request, response) {
       //   console.log('Validation error for "%s": %s', key, message);
       console.error(err);
       // });
+    }
+    else{
+      return savedNamespace;
     }
   });
 });
@@ -53,8 +55,9 @@ namespace_router.get('/:name', function(req, res){
     if(err){
       console.error(err);
      }
-    res.send(namespaceData)
-  })
+    res.send(namespaceData);
+  });
+
 });
 
 module.exports = namespace_router;

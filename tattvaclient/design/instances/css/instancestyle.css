@@ -1,4 +1,4 @@
-.listmenu{
+/*.listmenu{
 overflow: scroll;
 overflow-x:hidden;
 /*max-height: 453px !important;
@@ -6,7 +6,7 @@ overflow-x:hidden;
 -webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 -moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
-}
+}*/
 
 .viewInst .md-button{
   text-transform: none;
@@ -78,7 +78,8 @@ md-input-container label{
 .listmenu{
 overflow: scroll;
 overflow-x:hidden;
-/*max-height: 453px !important;
+height: 380px !important;
+/*
 
 -webkit-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 -moz-box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
@@ -152,11 +153,7 @@ margin:15px;
 
 
 .successmsg{
-  height:150px;
-  width:400px;
-}
-.successmsg button{
-  float:none;
+color:rgb(0, 173, 212) !important;
 }
 
 .successmsg .inside{

@@ -1,5 +1,7 @@
 <div flex ng-controller="createNamespaceCtrl" ng-cloak id="popupContainerNamespace" layout-padding class="createNamespacePage">
   <form name="createNameSpace" ng-submit="createNamespaceSubmit()" novalidate>
+    <fieldset class="fieldsetNamespace" ng-disabled="editData && editNamespaceFlag">
+
     <div layout="column" layout-padding flex>
       <!-- <md-whiteframe class="md-whiteframe-1dp" flex layout="column"> -->
         <div  flex layout>
@@ -23,7 +25,7 @@
           </md-input-container>
         </div>
         <div layout>
-          <md-input-container layout flex="20">
+          <md-input-container layout flex="25">
             <label><b>Define dataSchema for NameSpace</b></label>
           </md-input-container>
           <md-input-container>
@@ -83,10 +85,15 @@
           </div>
         </div>
 
+      </fieldset>
       <!-- </md-whiteframe> -->
-      <div layout layout-align="center center">
-        <md-button class="md-raised" ng-click="showConfirm($event)">Cancel</md-button>
-        <md-button type="submit" class="md-raised md-primary" ng-click="createNamespaceSubmit()">Create</md-button>
+      <div layout layout-align="center center" >
+        <md-button class="md-raised" ng-click="createNamespaceCancel()" ng-if="editData && editNamespaceFlag">Cancel</md-button><!--view namespace-->
+        <md-button class="md-raised" ng-click="showConfirm($event)" ng-if="editData && !editNamespaceFlag">Cancel</md-button><!--edit namespace-->
+        <md-button class="md-raised" ng-click="showConfirm($event)" ng-if="!editData">Cancel</md-button>
+        <md-button type="submit" class="md-raised md-primary" ng-click="createNamespaceSubmit($event)" ng-if="!editData">Create</md-button>
+        <md-button class="md-raised md-primary" ng-click="editNamespacetoggle()" ng-if="editData && editNamespaceFlag" >Edit</md-button>
+        <md-button class="md-raised md-primary" ng-click="saveNamespace($event)"  ng-if="editData && !editNamespaceFlag">Save</md-button>
       </div>
     </div>
   </form>
