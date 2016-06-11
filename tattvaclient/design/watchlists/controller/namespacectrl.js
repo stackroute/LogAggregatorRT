@@ -9,7 +9,6 @@ angular.module("tattva")
   self.searchTextChange   = searchTextChange;
 
   if ( $scope.$parent.editNamespace) {
-    console.log("$scope.$parent.wlstdef.namespace = ",$scope.$parent.wlstdef.namespace);
     self.selectedItem =   $scope.$parent.wlstdef.namespace;
   }
 

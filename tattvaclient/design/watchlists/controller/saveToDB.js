@@ -4,12 +4,9 @@ angular.module("tattva")
     $mdDialog.cancel();
   };
   $scope.publisherData = publisherData;
-  console.log(data);
   $scope.dbName=data.name;
-  console.log($scope.dbName);
   $scope.updateBackPublisher = function(Data) {
     $scope.publisherData.saveas=$scope.dbName;
-    console.log($scope.publisherData.saveas);
     $mdDialog.hide($scope.publisherData);
   }
 

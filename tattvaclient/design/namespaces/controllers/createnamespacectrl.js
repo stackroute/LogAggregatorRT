@@ -4,14 +4,12 @@ function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory, $statePara
   $scope.nameSpace = {
     dataSchema: [{type:"dimension"}]
   };
-
-  $scope.editData=undefined;
-  $scope.editNamespaceFlag = true;
+  // $scope.editData=undefined;
+  // $scope.editNamespaceFlag = true;
   if($stateParams.editNamespaceData){
     $scope.editData = $stateParams.editNamespaceData;
     namespaceFactory.getNamespaceDetails($scope.editData).then(function(response){
       $scope.nameSpace = response;
-      console.log("$scope.nameSpace =  = = = =", $scope.nameSpace);
     });
   }
   $scope.uploadJSONFlag = false;
@@ -46,7 +44,6 @@ function($scope, $state, $http, $mdDialog,$mdToast, namespaceFactory, $statePara
       var result = false;
       var result = namespaceFactory.saveNameSpace($scope.nameSpace)
       if(result){
-        alert("dsfsd");
         $scope.showAlert(ev, "Namespace saved successfully!");
       }
     }

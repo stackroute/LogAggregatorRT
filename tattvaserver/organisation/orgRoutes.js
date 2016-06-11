@@ -5,7 +5,7 @@ var organisation_router = require('express').Router();
 //     res.send('hello ' + req.params.name + '!');
 // });
 organisation_router.get('/', function(req, res) {
-console.log("we reached in the route-------------------------------------------------");
+//console.log("we reached in the route-------------------------------------------------");
 });
 
 module.exports = organisation_router;

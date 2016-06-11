@@ -9,7 +9,6 @@ function($stateProvider){
     resolve:{
       getListOfNamespace:function(namespaceFactory){
         return namespaceFactory.getNameSpace().then(function(response){
-          console.log(response);
           return response;
         });
       }

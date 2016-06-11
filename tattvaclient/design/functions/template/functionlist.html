@@ -3,7 +3,7 @@
 <div>
   <md-list>
     <md-list-item class="md-3-line hover" ng-repeat="item in data">
-      <span class='md-avatar'><ng-letter-avatar data="{{ data[$index].name  }}" shape="round" avatarcustombgcolor="#ff944d"></ng-letter-avatar></span>
+      <span class='md-avatar'><ng-letter-avatar fontSize="20"  charCount=2 data="{{ data[$index].name  }}" shape="round" avatarcustombgcolor="#ff944d"></ng-letter-avatar></span>
       <!-- <ng-letter-avatar data="{{ data[$index].fun_name  }}" shape="round" avatarcustombgcolor="#ff944d"></ng-letter-avatar> -->
       <div class="md-list-item-text" layout="column">
         <h3>{{ item.name }}</h3>

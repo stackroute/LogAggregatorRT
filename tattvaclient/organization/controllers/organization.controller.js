@@ -85,7 +85,7 @@ function DialogController($scope, $mdDialog,$http) {
   $scope.saveData=function(){
     var data1={};
     data1={name:$scope.uName,email:$scope.uEmail,password:$scope.uPassword};
-    /*console.log(data1);*/
+    /*//console.log(data1);*/
 
     $http({
       method  : 'POST',

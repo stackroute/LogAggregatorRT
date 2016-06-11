@@ -36,13 +36,13 @@ summary_router.get('/',function(req, res, next){
     }
     //
     // StreamModel.count(function(err,count){
-    //   console.log("----------------------------------------------------------------",data);
+    //   //console.log("----------------------------------------------------------------",data);
     //   summaryStats.push({name:"namespace", value: count});
     // });
 
   ],
   function(err,summeryStats){
-    console.log("Hello",summeryStats);
+    //console.log("Hello",summeryStats);
     res.status(200).json(summeryStats);
   });
 });

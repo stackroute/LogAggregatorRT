@@ -2,7 +2,7 @@ angular.module("tattva")
 .controller('InputValueCtrl',['$scope','$mdDialog','fieldData',function($scope,$mdDialog,fieldData)
 {
   $scope.fieldData=fieldData;
-  console.log("dialogueData data within publisherCtrl is : ", $scope.fieldData);
+  //console.log("dialogueData data within publisherCtrl is : ", $scope.fieldData);
   $scope.hide = function() {
     $mdDialog.hide();
   };

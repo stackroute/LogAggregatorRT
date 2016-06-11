@@ -38,10 +38,10 @@ angular.module('tattva')
   }
 
   this.saveEditedStream=function(streamsData){
-console.log("streamsData = = = ",streamsData);
+  console.log("streamsData = ",streamsData);
     $http({
       method : 'put',
-      url : '/datastream',
+      url : '/datastream/'+streamsData.streamname,
       data : streamsData
     }).success(function(data){
       if(data.errors){

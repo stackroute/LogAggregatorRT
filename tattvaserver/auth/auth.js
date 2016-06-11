@@ -9,7 +9,7 @@ module.exports = function(app, passport) {
 
   //Overriding the default passport's way of redirecting, instead sending back a JSON object with appropriate HTTP status cpde
   app.post('/signin', function(req, res, next) {
-    console.log("request created  is",req.body);
+    //console.log("request created  is",req.body);
     if (!req.body.email || !req.body.password) {
       return res.status(400).json({
         message: 'Please retry with valid credentials input..!'
@@ -18,18 +18,18 @@ module.exports = function(app, passport) {
 
     //This way of calling will avoid redirection to a success and failure URLs separately
     passport.authenticate('local-signin', function(err, user, info) {
-      console.log("The user is ",user);
+      //console.log("The user is ",user);
       if (err) {
-        console.log("error is found ",err);
+        //console.log("error is found ",err);
         return res.status(500).json(err);
       }
 
       if (user) {
         //You can put your additional code if you want to do something here, like enhancing user object with more data etc.,
-        console.log("successful user is",user);
+        //console.log("successful user is",user);
         return res.status(200).json(user);
       } else {
-        console.log("the error info is",info);
+        //console.log("the error info is",info);
         return res.status(401).json(info);
       }
     })(req, res, next);
@@ -88,7 +88,7 @@ module.exports = function(app, passport) {
 
     newOrg.save(function(err, orgObj) {
       if(err) {
-        console.log("Error in new org creation:" , err);
+        //console.log("Error in new org creation:" , err);
           return res.status(401).json(err);
       }
 
@@ -103,23 +103,23 @@ module.exports = function(app, passport) {
 
       newUser.save(function(err, savedUser){
         if(err) {
-          console.log("Error in new org admin user creation:" , err);
+          //console.log("Error in new org admin user creation:" , err);
             return res.status(401).json(err);
         }
 
         //Now authenticate the user for login
         passport.authenticate('local-signin', function(err, user, info) {
           if (err) {
-            console.log("Error in user authenticate:" , err);
+            //console.log("Error in user authenticate:" , err);
             return res.status(500).json(err);
           }
 
           if (user) {
-            console.log("Successfully authenticated user: ", user);
+            //console.log("Successfully authenticated user: ", user);
             //You can put your additional code if you want to do something here, like enhancing user object with more data etc.,
             return res.status(200).json(user);
           } else {
-            console.log("unauthorized signin attempt \nerror:", err, "\nInfo:", info);
+            //console.log("unauthorized signin attempt \nerror:", err, "\nInfo:", info);
             return res.status(401).json(info);
           }
         })(req, res, next);
@@ -143,7 +143,7 @@ module.exports = function(app, passport) {
   passport.deserializeUser(function(id, done) {
     User.findOne({_id: id}, function(err,user) {
       if(err) {
-        console.log("Error in finding user for deserialize ", err);
+        //console.log("Error in finding user for deserialize ", err);
       }
       done(err, user);
     });
@@ -152,10 +152,10 @@ module.exports = function(app, passport) {
   passport.use('local-signin',
   new LocalStrategy({usernameField : 'email',passwordField : 'password',passReqToCallback : true },
   function(req, email, password,done) {
-    console.log("Finding user by email: ", email);
+    //console.log("Finding user by email: ", email);
     User.findOne({ 'email' :  email }, function(err, user) {
       if (err){
-        console.log("Error in finding user: ", err, " User: ", email);
+        //console.log("Error in finding user: ", err, " User: ", email);
         return done(err);
       }
       if (!user){

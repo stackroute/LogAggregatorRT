@@ -4,7 +4,7 @@ function($scope, $http, $mdDialog,$stateParams) {
 
   var name=$stateParams.userName;
 
-  console.log("specified name is",name);
+  //console.log("specified name is",name);
 
   $scope.loadData = function() {
     $http.get('/org_admin').then(function(response){ $scope.data = response.data;
@@ -16,10 +16,10 @@ function($scope, $http, $mdDialog,$stateParams) {
     });
   }
   $scope.loadData();
-  // console.log("outside"+$scope.data);
+  // //console.log("outside"+$scope.data);
   $scope.saveData=function(){
     var item={name:$scope.data[0].name,email:$scope.data[0].email,password:$scope.data[0].password};
-    /*console.log(item);
+    /*//console.log(item);
     */
     $http({
       method  : 'POST',

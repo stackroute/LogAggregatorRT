@@ -2,7 +2,7 @@ var namespace_router = require('express').Router();
 var Namespace = require('./namespaces.js');
 
 // namespace_router.use(function(req, res, next){
-//   console.log("in the namespace_router middleware ", req);
+//   //console.log("in the namespace_router middleware ", req);
 //   next();
 // })
 
@@ -11,7 +11,7 @@ namespace_router.get('/', function(req, res){
     if(err){
       Object.keys(err.errors).forEach(function(key) {
         var message = err.errors[key].message;
-        console.log('Validation error for "%s": %s', key, message);
+        //console.log('Validation error for "%s": %s', key, message);
       });
     }
     res.send(namespaceData);
@@ -26,9 +26,12 @@ namespace_router.post('/', function (request, response) {
     if(err){
       // Object.keys(err.errors).forEach(function(key) {
       //   var message = err.errors[key].message;
-      //   console.log('Validation error for "%s": %s', key, message);
+      //   //console.log('Validation error for "%s": %s', key, message);
       console.error(err);
       // });
+    }
+    else{
+      return savedNamespace;
     }
   });
 });
@@ -39,10 +42,10 @@ namespace_router.put('/',  function (request, response) {
     if(err){
       Object.keys(err.errors).forEach(function(key) {
         var message = err.errors[key].message;
-        console.log('Validation error for "%s": %s', key, message);
+        //console.log('Validation error for "%s": %s', key, message);
       });
     }
-    console.log('Updated Doc = ' , updatedObj);
+    //console.log('Updated Doc = ' , updatedObj);
   });
 });
 

@@ -19,12 +19,9 @@ function($scope, $http, $state,AuthService) {
   }
 
   $scope.register=function() {
-    console.log("Trying to register the user ");
     AuthService.signUp($scope.user).then(function(user) {
-      console.log("signup successful, navigating to dashboard ", user);
       $state.go("home");
     }, function(err) {
-      console.log("Failed to signup..., redirecting back to login..!", err);
       $scope.error = err.message;
     });
   }

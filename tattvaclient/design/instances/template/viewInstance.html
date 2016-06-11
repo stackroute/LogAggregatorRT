@@ -1,7 +1,7 @@
 <div ng-if="instance.length==0" flex class="noSubscriberinst listInst">
     <div flex layout-padding layout-margin layout-align="start" >
-      <h1>No available Instances</h1>
-      <p>Click on the below button to create an instance.</p>
+      <h2>You are yet to create an Instance of Data Source</h2>
+      <p>Instance is a logical representation of source of data</p>
       <md-button class="md-raised md-primary"  ng-click="addInstance($event)">Create</md-button>
   </div>
 </div>
@@ -15,7 +15,7 @@
     <md-list class="listInst" flex>
       <md-content class="instanceList">
         <md-list-item class="md-3-line" ng-repeat="object in instance" ng-if="$index % 2 == 0" layout="row">
-          <md-button flex="50"  ng-class="{'selected-item': $index == selectedInstanceIndex}" ng-click="selectInstanceIndex($index)">
+          <md-button flex="50" aria-label="Favorite" ng-class="{'selected-item': $index == selectedInstanceIndex}" ng-click="selectInstanceIndex($index)">
             <md-item-content layout="row">
               <div flex="20">
                 <ng-letter-avatar data={{instance[$index].name}} avatarcustombgcolor="#2e2eb8" charCount=2 size=16px shape="round"></ng-letter-avatar>
@@ -56,7 +56,7 @@
     </md-button>
 
   <md-divider></md-divider>
-  <md-button flex="50"  ng-class="{'selected-item': ($index+1) == selectedInstanceIndex }" ng-click="selectInstanceIndex($index+1)">
+  <md-button flex="50" aria-label="Favorite" ng-class="{'selected-item': ($index+1) == selectedInstanceIndex }" ng-click="selectInstanceIndex($index+1)">
   <md-item-content layout="row" >
   <div flex="20" ng-if="instance.length > $index+1">
    <ng-letter-avatar  data={{instance[$index+1].name}} charCount=2 avatarcustombgcolor="#2e2eb8" size=12px shape="round"></ng-letter-avatar>

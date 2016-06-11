@@ -798,7 +798,7 @@ _._isStreamRedirect = function (x) {
  */
 
 Stream.prototype._send = function (err, x) {
-    //console.log(['_send', this.id, err, x]);
+    ////console.log(['_send', this.id, err, x]);
     var token;
 
     if (this._consumers.length) {
@@ -898,7 +898,7 @@ Stream.prototype._onEnd = function _onEnd() {
  */
 
 Stream.prototype.pause = function () {
-    //console.log(['pause', this.id]);
+    ////console.log(['pause', this.id]);
     this.paused = true;
     if (!this._is_observer && this.source) {
         this.source._checkBackPressure();
@@ -930,7 +930,7 @@ Stream.prototype._checkBackPressure = function () {
  */
 
 Stream.prototype._readFromBuffer = function () {
-    //console.log(['_readFromBuffer', this.id, this.paused, this._incoming]);
+    ////console.log(['_readFromBuffer', this.id, this.paused, this._incoming]);
     var len = this._incoming.length;
     var i = 0;
     while (i < len && !this.paused) {
@@ -956,7 +956,7 @@ Stream.prototype._readFromBuffer = function () {
  */
 
 Stream.prototype._sendOutgoing = function () {
-    //console.log(['_sendOutgoing', this.id, this.paused, this._outgoing]);
+    ////console.log(['_sendOutgoing', this.id, this.paused, this._outgoing]);
     var len = this._outgoing.length;
     var i = 0;
     while (i < len && !this.paused) {
@@ -992,9 +992,9 @@ Stream.prototype._sendOutgoing = function () {
  */
 
 Stream.prototype.resume = function () {
-    //console.log(['resume', this.id]);
+    ////console.log(['resume', this.id]);
     if (this._resume_running || this._in_consume_cb) {
-        //console.log(['resume already processing _incoming buffer, ignore resume call']);
+        ////console.log(['resume already processing _incoming buffer, ignore resume call']);
         // already processing _incoming buffer, ignore resume call
         this._repeat_resume = true;
         return;
@@ -1015,12 +1015,12 @@ Stream.prototype.resume = function () {
         if (!this.paused && !this._is_observer) {
             // ask parent for more data
             if (this.source) {
-                //console.log(['ask parent for more data']);
+                ////console.log(['ask parent for more data']);
                 this.source._checkBackPressure();
             }
             // run _generator to fill up _incoming buffer
             else if (this._generator) {
-                //console.log(['run generator to fill up _incoming buffer']);
+                ////console.log(['run generator to fill up _incoming buffer']);
                 this._runGenerator();
             }
             else {
@@ -1133,7 +1133,7 @@ Stream.prototype.destroy = function () {
  */
 
 Stream.prototype._runGenerator = function () {
-    //console.log(['_runGenerator', this.id]);
+    ////console.log(['_runGenerator', this.id]);
     // if _generator already running, exit
     if (this._generator_running) {
         return;
@@ -1150,7 +1150,7 @@ Stream.prototype._runGenerator = function () {
  */
 
 Stream.prototype._redirect = function (to) {
-    //console.log(['_redirect', this.id, '=>', to.id]);
+    ////console.log(['_redirect', this.id, '=>', to.id]);
     // coerce to Stream
     to = _(to);
 
@@ -1278,7 +1278,7 @@ Stream.prototype.consume = function (f) {
     var s = new Stream();
     var _send = s._send;
     var push = function (err, x) {
-        //console.log(['push', err, x, s.paused]);
+        ////console.log(['push', err, x, s.paused]);
         if (s._nil_pushed) {
             throw new Error('Cannot write to stream after nil');
         }
@@ -1302,7 +1302,7 @@ Stream.prototype.consume = function (f) {
     var async;
     var next_called;
     var next = function (s2) {
-        //console.log(['next', async]);
+        ////console.log(['next', async]);
         if (s._nil_pushed) {
             throw new Error('Cannot call next after nil');
         }
@@ -1848,7 +1848,7 @@ exposeMethod('map');
  *     x.push(1);
  * });
  *
- * _([1, 2, 3]).doto(console.log)
+ * _([1, 2, 3]).doto(//console.log)
  * // 1
  * // 2
  * // 3
@@ -1872,7 +1872,7 @@ exposeMethod('doto');
  * @param {Function} f - the function to apply
  * @api public
  *
- * _([1, 2, 3]).tap(console.log)
+ * _([1, 2, 3]).tap(//console.log)
  */
 
 Stream.prototype.tap = Stream.prototype.doto;
@@ -3039,7 +3039,7 @@ exposeMethod('sort');
  *
  * // All errors will be propagated as Highland errors
  * _(['zz{"a": 1}']).through(jsonParser).errors(function (err) {
- *   console.log(err); // => SyntaxError: Unexpected token z
+ *   //console.log(err); // => SyntaxError: Unexpected token z
  * });
  */
 
@@ -4000,12 +4000,12 @@ Stream.prototype.mergeWithLimit = function (n){
             else {
                 processCount++;
                 push(err, x);
-                // console.log('start', x.id);
+                // //console.log('start', x.id);
                 x._destructors.push(function(){
                     processCount--;
-                    // console.log('end', x.id);
+                    // //console.log('end', x.id);
                     if (waiting) {
-                        // console.log('get more');
+                        // //console.log('get more');
                         waiting = false;
                         next();
                     }
@@ -4014,7 +4014,7 @@ Stream.prototype.mergeWithLimit = function (n){
                     next();
                 }
                 else {
-                    // console.log('wait till something ends');
+                    // //console.log('wait till something ends');
                     waiting = true;
                 }
             }
@@ -4415,7 +4415,7 @@ _.set = _.curry(function (prop, val, obj) {
 });
 
 /**
- * Logs values to the console, a simple wrapper around `console.log` that
+ * Logs values to the console, a simple wrapper around `//console.log` that
  * it suitable for passing to other functions by reference without having to
  * call `bind`.
  *
@@ -4430,7 +4430,7 @@ _.set = _.curry(function (prop, val, obj) {
  */
 
 _.log = function () {
-    console.log.apply(console, arguments);
+    //console.log.apply(console, arguments);
 };
 
 /**
@@ -7556,9 +7556,9 @@ function timestamp() {
 }
 
 
-// log is just a thin wrapper to console.log that prepends a timestamp
+// log is just a thin wrapper to //console.log that prepends a timestamp
 exports.log = function() {
-  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
+  //console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
 };
 
 

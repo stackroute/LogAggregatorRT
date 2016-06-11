@@ -1,7 +1,7 @@
 angular.module("tattva")
 .controller('lfield',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData','watchlistconfg', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData,watchlistconfg) {
   $scope.dialogueData={};
-// console.log($scope.wlstdef.namespace);
+// //console.log($scope.wlstdef.namespace);
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
@@ -12,7 +12,7 @@ angular.module("tattva")
 
   if ( $scope.$parent.editNamespace) {
     self.selectedItem =   $scope.expr.watch.lfield.fieldType;
-    console.log("Namespace name from namespace ctrl", $scope.$parent.wlstdef.namespace);
+    //console.log("Namespace name from namespace ctrl", $scope.$parent.wlstdef.namespace);
   }
 // @todo Implement filter for loading data
   function querySearch (query) {
@@ -54,9 +54,9 @@ angular.module("tattva")
         locals: { fieldData: expr.watch.lfield,fieldData2:$scope.wlstdef}
       }).then(function(response) {
         expr.watch.lfield = response;
-        console.log("RESOLVED with response: ", response, " data in autocomplete ctrl: ", expr.watch.lfield);
+        //console.log("RESOLVED with response: ", response, " data in autocomplete ctrl: ", expr.watch.lfield);
       }, function(response) {
-        console.log("** REJECTED ** with response: ", response, " data in autocomplete ctrl: ", expr.watch.lfield);
+        //console.log("** REJECTED ** with response: ", response, " data in autocomplete ctrl: ", expr.watch.lfield);
       }).finally(function() {
       })
     };

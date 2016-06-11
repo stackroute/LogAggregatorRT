@@ -264,9 +264,12 @@
 </fieldset>
 <div class="publishlayout" layout="column" layout-padding>
   <div>
-    <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag">save</md-button>
-    <md-button class="md-raised md-primary" ng-click='editWatchlist()' ng-if="editFlag">Edit</md-button>
-    <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
+    <span flex></span>
+    <div style="float:right;">
+      <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag">save</md-button>
+      <md-button class="md-raised md-primary" ng-click='editWatchlist()' ng-if="editFlag">Edit</md-button>
+      <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
+    </div>
   </div>
   </form>
   <div>

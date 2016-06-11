@@ -1,15 +1,23 @@
-<div class="viewInst" ng-if="instance.length!=0">
-  <md-subheader class="leftpadding md-primary md-title">Data streams from {{nsname}}</md-subheader>
-  <md-divider></md-divider>
-  <div ng-init="getStreamData(nsname)">
-    <md-grid-list md-cols="4" md-row-height="100px" md-gutter="12px" >
-      <md-grid-tile flex ng-repeat="stream in streamResultData">
-        <!-- {{stream}} -->
-        <md-button class="leftpadding" ui-sref="design.edit({ streamName: '{{stream.streamname}}' }) " layout="row" flex>
-          <ng-letter-avatar data={{stream.instance}} shape="round" avatarcustombgcolor="#2e2eb8" charCount="2"></ng-letter-avatar>
-          <h4 class="leftpadding">{{stream.streamname}}</h4>
-        </md-button>
-      </md-grid-tile>
-    </md-grid-list>
+<div ng-if="streamResultData.length==0" flex class="noSubscriberinst listInst">
+    <div flex layout-padding layout-margin layout-align="start" >
+      <h2>You are yet to create a Data Stream</h2>
+      <p>A Data Stream narrows down data before commencing expression analysis</p>
+      <md-button class="md-raised md-primary"  ui-sref="design.create">Create</md-button>
   </div>
+</div>
+
+<div class="viewInst" ng-if="streamResultData.length!=0">
+  <md-subheader class="md-primary md-title" flex-offset="5">Data streams from {{nsname}}</md-subheader>
+  <md-divider></md-divider>
+
+<div layout-padding layout-margin ng-init="getStreamData(nsname)">
+  <md-grid-list md-cols="4" md-row-height="180px" md-gutter="12px" >
+    <md-grid-tile flex ng-repeat="stream in streamResultData">
+      <md-button ui-sref="design.streams.viewdata( { streamName: '{{stream.streamname}}' })" layout="row" flex>
+        <ng-letter-avatar data={{stream.instance}} shape="round" avatarcustombgcolor="#2e2eb8" charCount="2"></ng-letter-avatar>
+        <md-card-title-text flex><h3>{{stream.streamname}}</h3></md-card-title-text>
+      </md-button>
+    </md-grid-tile>
+  </md-grid-list>
+</div>
 </div>

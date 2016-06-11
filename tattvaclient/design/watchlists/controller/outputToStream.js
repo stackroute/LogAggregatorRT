@@ -10,10 +10,8 @@ angular.module("tattva")
   $scope.streams=[];
   streamFactory.sendStream(publisherData.namespace).then(function(data)
   {
-    console.log(data);
     for(i in data)
     {
-      console.log(data[i])
       $scope.streams.push(data[i].streamname);
     }
   });

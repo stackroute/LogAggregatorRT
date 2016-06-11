@@ -14,13 +14,12 @@
 }
 .pray
 {
-  background-color: #D2EFF3;
+  background-color: #DEF7F5;
   font-size: 24px;
   padding: 10px;
 }
 button{
   cursor: pointer;
-  float: right;
 }
 .flexcontainer {
   display: -webkit-flex;

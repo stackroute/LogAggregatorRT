@@ -3,7 +3,6 @@ angular.module('tattva').directive('watchlistresultwidget', function() {
   directive.restrict = 'E';
   directive.templateUrl = "/design/watchlists/template/WatchListResultWidget.html";
   // directive.link = function(scope, elem, attr) {
-  //   console.log("From dashboardlayout link function: " , scope.myresult.charttype);
   //   elem.getElementById('graphTab').appendchild('<mygraph type=scope.myresult.charttype></mygraph>');
   // }
   // directive.controller = function($scope) {

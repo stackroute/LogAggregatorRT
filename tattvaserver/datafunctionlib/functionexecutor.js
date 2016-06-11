@@ -4,7 +4,7 @@ var calledfn=function()
   this.evaluate=function(func,data)
  {
   //  var result=tattva.sum(data);
-  //  console.log(result);
+  //  //console.log(result);
 
   var fn=require("./primitives/"+func+".js");
  return fn(data);

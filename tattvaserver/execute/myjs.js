@@ -38,26 +38,26 @@ function getExpressionPipeLine(wlstDef) {
                 logLineObj['lhs'] = logLineObj[expr.watch.lfield.DataField];
             } else {
                 logLineObj['lhs'] = undefined;
-                console.log("lfield: ", expr.watch.lfield);
+                //console.log("lfield: ", expr.watch.lfield);
             }
 
-            console.log("LHS: ", logLineObj['lhs']);
+            //console.log("LHS: ", logLineObj['lhs']);
 
             return logLineObj;
         }));
 
         myProcessors.push(highland.map(function(logLineObj) {
 
-            //console.log("in RHS processor: ", logLineObj);
+            ////console.log("in RHS processor: ", logLineObj);
 
             if (expr.watch.rfield.fieldType == "inputvalue") {
                 logLineObj['rhs'] = expr.watch.rfield.inputvalue;
             } else {
                 logLineObj['rhs'] = undefined;
-                console.log("rfield: ", expr.watch.rfield);
+                //console.log("rfield: ", expr.watch.rfield);
             }
 
-            console.log("RHS: ", logLineObj['rhs']);
+            //console.log("RHS: ", logLineObj['rhs']);
 
             return logLineObj;
         }));
@@ -65,7 +65,7 @@ function getExpressionPipeLine(wlstDef) {
         myProcessors.push(highland.map(function(logLineObj) {
             logLineObj['oprtr'] = expr.watch.operator;
 
-            console.log("OPRTR: ", logLineObj['oprtr']);
+            //console.log("OPRTR: ", logLineObj['oprtr']);
 
             return logLineObj;
         }));
@@ -82,7 +82,7 @@ function getExpressionPipeLine(wlstDef) {
                 }
             }
 
-            console.log("EXPR RESULT: ", logLineObj['expr_result']);
+            //console.log("EXPR RESULT: ", logLineObj['expr_result']);
 
             return logLineObj;
         }));
@@ -96,9 +96,9 @@ function getPublisherPipeline(wlstDef) {
 
     myProcessors.push(highland.map(function(logLineObj) {
         if (logLineObj['expr_result'] !== undefined) {
-            console.log("Result: ", logLineObj['expr_result']);
+            //console.log("Result: ", logLineObj['expr_result']);
         } else {
-            console.log("Result: FAILED");
+            //console.log("Result: FAILED");
         }
 
         return logLineObj;
@@ -252,7 +252,7 @@ function getWatchList() {
 // //     _.reduce(collectCategories)
 // // );
 // // function collectCategories(data){
-// // console.log("hi")
+// // //console.log("hi")
 // // }
 // //     // _.filter(isBlogpost),
 // //     // _.through(output)
@@ -264,11 +264,11 @@ function getWatchList() {
 // //
 // // for( i in doubled)
 // // {
-// // console.log(doubled[i]);
+// // //console.log(doubled[i]);
 // // }
 //
 //
-// // console.log(doubled);
+// // //console.log(doubled);
 // //
 // // var through2 = _.pipeline(function (s) {
 // //     return s.map(parseJSON).filter(isBlogpost); // etc.
@@ -279,12 +279,12 @@ function getWatchList() {
 // //success async nfcall([]).parellel
 // // _([
 // // function a(){
-// // console.log("hi");
+// // //console.log("hi");
 // // },  function b(){
-// // console.log("hello");
+// // //console.log("hello");
 // //   }
 // // ]).nfcall([]).parallel(2).toArray(function (xs) {
-// //   console.log(xs.length);
+// //   //console.log(xs.length);
 // // })
 //
 // //success  pipes to a output stream
@@ -300,7 +300,7 @@ function getWatchList() {
 // //         next();
 // //     };
 // // }();
-// // _(fibGenerator).take(20).each(console.log.bind(console));
+// // _(fibGenerator).take(20).each(//console.log.bind(console));
 //
 //
 // //failure
@@ -308,5 +308,5 @@ function getWatchList() {
 //
 // // var isBlogpost=function()
 // // {
-// // console.log("hi");
+// // //console.log("hi");
 // // }

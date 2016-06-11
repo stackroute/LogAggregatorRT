@@ -4,7 +4,7 @@ var sideNav_router = express.Router();
 var home = require('./home.js');
 
 sideNav_router.use(function(req, res, next) {
-    console.log("we reached in the middleware--- sideNav_router--------------------------------------------");
+    //console.log("we reached in the middleware--- sideNav_router--------------------------------------------");
     var items = [{
       "_id" : "item1",
       "menu" : "Dashboard",
@@ -68,7 +68,7 @@ sideNav_router.use(function(req, res, next) {
 
     function onInsert(err, docs) {
         if (err) {
-            // console.log(err);
+            // //console.log(err);
         } else {
             console.info('%d Sidenav is successfully stored.', docs.length);
         }
@@ -134,7 +134,7 @@ sideNav_router.use(function(req, res, next) {
       // });
     // item.save(function (err) {
     //   if (err) {
-    //     console.log(err);
+    //     //console.log(err);
     //     return handleError(err);
     //   }
     // });
@@ -142,7 +142,7 @@ sideNav_router.use(function(req, res, next) {
 });
 
 sideNav_router.get('/', function(req, res) {
-console.log("we reached in the route----------------sideNav_router---------------------------------------------------------------");
+//console.log("we reached in the route----------------sideNav_router---------------------------------------------------------------");
   home.find({},{menu:1,link:1,icon:1,children:1},function (err, sideNavItems) {
     res.send(sideNavItems);
   })

@@ -38,7 +38,7 @@
           <md-radio-group ng-model="publisherData.graphType" flex="70">
             <div layout="row">
               <md-radio-button ng-repeat="graphTypes in uiPublisherConfig.graphTypes" value="{{graphTypes.value}}" class="md-primary" flex="50">
-                <i class="{{graphTypes.icon}}" aria-hidden="true"></i>
+                <md-icon class="material-icons">{{graphTypes.icon}}</md-icon>
               </md-radio-button>
             </div>
           </md-radio-group>
@@ -50,21 +50,18 @@
           <label flex="35"><md-subheader>Watch Log Data Display Type</md-subheader></label>
           <md-radio-group ng-model="publisherData.logFormat" flex="65">
             <div layout="row" layout-wrap>
-              <md-radio-button class="leftpadding" ng-repeat="displayTypes in uiPublisherConfig.logDataDisplayType" value="{{displayTypes.value}}" class="md-primary">
+              <md-radio-button class="leftpadding md-primary" ng-repeat="displayTypes in uiPublisherConfig.logDataDisplayType" value="{{displayTypes.value}}" class="md-primary">
                 {{displayTypes.name}}
               </md-radio-button>
             </div>
           </md-radio-group>
         </div>
-
       </md-dialog-content>
-
       <md-dialog-actions layout="row">
         <span flex></span>
         <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
         <md-button type="submit" class="md-raised md-primary">OK</md-button>
       </md-dialog-actions>
-
     </form>
   </div>
 </md-dialog>

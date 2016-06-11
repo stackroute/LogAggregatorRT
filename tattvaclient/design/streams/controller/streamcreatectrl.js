@@ -16,14 +16,12 @@ angular.module('tattva')
   if($stateParams.streamName){
     $scope.editStreamFlag = true;
     streamFactory.sendStreamdata($stateParams.streamName).then(function(response){
-      $scope.editStream=response[0];
+      $scope.editStream=response;
       $scope.user_namespace = $scope.editStream.namespace;
       $scope.user_instance = $scope.editStream.instance;
-      // console.log($scope.user_instance);
       $scope.streamsData.user_streamName = $scope.editStream.streamname;
       $scope.streamsData.stringDescription = $scope.editStream.description;
       $scope.streamsData.queryBuilder = $scope.editStream.query;
-      // console.log("Data: ", $scope.editStream);
     });
   }
   $scope.operator=[">", ">=", "<", "<=", "==", "!=","Like","Not Like"];
@@ -34,10 +32,8 @@ angular.module('tattva')
     for (i in  response){
       $scope.namespace_collection.push(response[i].name)
     }
-    // console.log("namespace_collection from create stream", $scope.namespace_collection);
 
     if($scope.user_namespace==undefined) return;
-    // console.log($scope.user_namespace.name);
   });
   namespaceFactory.getNamespaceDetails($scope.user_namespace).then(function(response){
     $scope.namespaceFields = [];
@@ -58,22 +54,17 @@ angular.module('tattva')
     $scope.instance_collection=[];
     if($scope.user_namespace){
       LoadDataSources.getdatasources($scope.user_namespace).then(function(res){
-        // console.log("instance_collection ",res.data);
         for (i in res.data ){
-          // console.log(res.data[i]);
           $scope.instance_collection.push(res.data[i].name);
         }
       });
-      // console.log($scope.instance_collection);
     }
   });
 
 
   // $scope.$watch('user_namespace',function(){
-  //   console.log($scope.user_namespace);
   //   if($scope.user_namespace){
   //     LoadDataSources.getdatasources($scope.user_namespace.name).then(function(res){
-  //       console.log("instance_collection ",res.data);
   //       $scope.instance_collection=res.data;
   //     });
   //   }
@@ -81,15 +72,12 @@ angular.module('tattva')
   //
   // namespaceFactory.getNameSpace().then(function(response){
   //   $scope.namespace_collection=response;
-  //   console.log("namespace_collection", $scope.namespace_collection);
   //
   //   if($scope.user_namespace==undefined) return;
-  //   console.log($scope.user_namespace.name);
   // });
 
   // if($scope.user_namespace){
   // LoadDataSources.getdatasources($scope.user_namespace.name).success(function(data){
-  //   console.log("instance_collection ",data);
   //   $scope.instance_collection=data;
   // });
   // }
@@ -121,7 +109,6 @@ angular.module('tattva')
   }
 
   $scope.cancel=function(){
-    // console.log("Cancelled");
   }
   $scope.showConfirm = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app

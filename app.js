@@ -48,10 +48,20 @@ var summary_router=require('./tattvaserver/designsummary/summary_routes.js')
 var watchloop_router=require('./tattvaserver/watchloop/watchloop_routes.js')
 
 mongoose.connect(dbURI);
-mongoose.connection.on('connected', function () {  console.log('Mongoose connected to ' + dbURI); });
-mongoose.connection.on('error',function (err) {  console.log('Mongoose connection error: ' + err); });
-mongoose.connection.on('disconnected', function () {  console.log('Mongoose disconnected'); });
-process.on('SIGINT', function() {  mongoose.connection.close(function () {    console.log('Mongoose disconnected through app termination');    process.exit(0);  }); });
+mongoose.connection.on('connected', function () {
+  console.log('Mongoose connected to ' + dbURI);
+});
+mongoose.connection.on('error',function (err) {
+  console.log('Mongoose connection error: ' + err);
+});
+mongoose.connection.on('disconnected', function () {
+  console.log('Mongoose disconnected');
+});
+process.on('SIGINT', function() {  mongoose.connection.close(function () {
+  console.log('Mongoose disconnected through app termination');
+  process.exit(0);
+});
+});
 
 // app.use('/org_admin', organisation_router);
 app.set('views', path.join(__dirname, 'app/views'));
@@ -71,7 +81,7 @@ app.get('/login_reg', function(req, res){
 
 process.on('SIGINT', function() {
 mongoose.connection.close(function () {
-console.log('Mongoose disconnected through app termination');
+//console.log('Mongoose disconnected through app termination');
 process.exit(0);
  });
  });
