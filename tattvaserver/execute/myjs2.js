@@ -1,57 +1,29 @@
-var fs = require('fs');
+var fs = require("fs");
 var highland = require('highland');
 var websocket = require('websocket-stream');
+var wlstDef = getWatchList();
 var dataSource = {
     ipaddr: '172.23.238.253',
     port: '7070'
 };
-var wlstDef = require('./wlstdef.json');
-
 var exprPipeline = getExpressionPipeLine(wlstDef);
 var publisherPipeline = getPublisherPipeline(wlstDef);
 
-var wsstream = websocket('ws://' + dataSource.ipaddr + ':' + dataSource.port);
-//var srcstream = fs.createReadStream('./logdata2.json', 'utf-8');
-var srcstream = fs.createReadStream('./gitlogs.json', 'utf-8');
+var srcstream= websocket('ws://' + dataSource.ipaddr + ':' + dataSource.port);
+// var srcstream = fs.createReadStream('./logdata2.json', 'utf-8');
 
-var wsltresult = fs.createWriteStream('./wsltresult.json');
-
-//highland(wsstream)
 highland(srcstream)
     .map(function(data) {
-        console.log('inspecting data');
-
-        if (Array.isArray(data)) {
-            console.log('***** Data is ARRAY');
-            for (i = 0; i < data.length; i++) {
-                if ((typeof data[i]) === 'object') {
-                    console.log('***** Returning object');
-                    return data[i];
-                }
-            }
-        }
-
-        if ((typeof data) === 'string') {
-            console.log('***** Data is string');
-            data = JSON.parse(data);
-        } else if ((typeof data) === 'object') {
-            console.log('***** Data is object');
-            return data;
-        } else {
-            throw "Invalid data for processing...!";
-            //return {};
-        }
-    }).map(function(data) {
-        console.log(data.noOfFiles);
-        return data;
+        data = JSON.parse(data);
+        return data[2];
     })
-//.pipe(exprPipeline)
-//.pipe(publisherPipeline)
-//.end();
-// .map(function(data) {
-//     return JSON.stringify(data);
-// })
-.pipe(process.stdout);
+    .pipe(exprPipeline)
+    .pipe(publisherPipeline)
+    .map(function(data) {
+        //return JSON.stringify(data);
+        return "\n===> " + JSON.stringify(data) + "\n";
+    })
+    .pipe(process.stdout);
 
 
 function getExpressionPipeLine(wlstDef) {
@@ -60,11 +32,12 @@ function getExpressionPipeLine(wlstDef) {
     wlstDef.expressions.forEach(function(expr) {
 
         myProcessors.push(highland.map(function(logLineObj) {
-            console.log("lfield: ", expr.watch.lfield);
+
             if (expr.watch.lfield.fieldType == "DataFields") {
                 logLineObj['lhs'] = logLineObj[expr.watch.lfield.DataField];
             } else {
                 logLineObj['lhs'] = undefined;
+                console.log("lfield: ", expr.watch.lfield);
             }
 
             console.log("LHS: ", logLineObj['lhs']);
@@ -73,11 +46,14 @@ function getExpressionPipeLine(wlstDef) {
         }));
 
         myProcessors.push(highland.map(function(logLineObj) {
-            console.log("rfield: ", expr.watch.rfield);
+
+            //console.log("in RHS processor: ", logLineObj);
+
             if (expr.watch.rfield.fieldType == "inputvalue") {
-                logLineObj['rhs'] = logLineObj[expr.watch.rfield.inputvalue];
+                logLineObj['rhs'] = expr.watch.rfield.inputvalue;
             } else {
                 logLineObj['rhs'] = undefined;
+                console.log("rfield: ", expr.watch.rfield);
             }
 
             console.log("RHS: ", logLineObj['rhs']);
@@ -86,10 +62,7 @@ function getExpressionPipeLine(wlstDef) {
         }));
 
         myProcessors.push(highland.map(function(logLineObj) {
-            console.log("operator: ", expr.watch.operator);
-            console.log("oprtr: ", expr);
-
-            logLineObj['oprtr'] = logLineObj[expr.watch.operator];
+            logLineObj['oprtr'] = expr.watch.operator;
 
             console.log("OPRTR: ", logLineObj['oprtr']);
 
@@ -102,7 +75,7 @@ function getExpressionPipeLine(wlstDef) {
             var oprtr = logLineObj['oprtr'];
             var rhs = logLineObj['rhs'];
             var lhs = logLineObj['lhs'];
-            if (rhs !== undefined && lhs !== undefined) {
+            if (rhs !== undefined && lhs !== undefined && oprtr !== undefined) {
                 if (oprtr == '>') {
                     logLineObj['expr_result'] = (lhs > rhs);
                 }
@@ -115,4 +88,80 @@ function getExpressionPipeLine(wlstDef) {
     });
 
     return highland.pipeline.apply(null, myProcessors);
+}
+function getPublisherPipeline(wlstDef) {
+    var myProcessors = [];
+
+    myProcessors.push(highland.map(function(logLineObj) {
+        if (logLineObj['expr_result'] !== undefined) {
+            console.log("Result: ", logLineObj['expr_result']);
+        } else {
+            console.log("Result: FAILED");
+        }
+
+        return logLineObj;
+    }));
+    return highland.pipeline.apply(null, myProcessors);
+   }
+
+
+   function getWatchList() {
+       return {
+    "namespace": "Git Commit Log",
+    "stream": "Git Log Stream",
+    "expressions": [{
+        "tag": "tag::1",
+        "joinWith": "",
+        "joinBy": "",
+        "inputStream": "",
+        "watch": {
+            "lfield": {
+                "fieldType": "DataFields",
+                "DataField": "noOfFiles",
+                "exprAsText": "DataField(noOfFiles)"
+            },
+            "rfield": {
+                "fieldType": "inputvalue",
+                "inputvalue": "5",
+                "exprAsText": "5"
+            },
+            "operator": ">"
+        },
+        "labelData": true,
+        "outcomeForwarding": "All Data"
+    }, {
+        "tag": "tag::2",
+        "joinWith": "",
+        "joinBy": "",
+        "inputStream": "",
+        "watch": {
+            "lfield": {
+                "fieldType": "DataFields",
+                "DataField": "noOfFiles",
+                "exprAsText": "DataField(noOfFiles)"
+            },
+            "rfield": {
+                "fieldType": "inputvalue",
+                "inputvalue": "10",
+                "exprAsText": "10"
+            },
+            "operator": "<="
+        },
+        "labelData": true,
+        "outcomeForwarding": "All Data"
+    }],
+    "publisher": [{
+        "publishType": "publishToDashboard",
+        "graphTypes": "line",
+        "tabsType": [
+            "Graph",
+            "LogDataViewer",
+            "ExecutionFlow"
+        ],
+        "widgetSizes": "50",
+        "logDataDisplayType": "table"
+    }],
+    "name": "Git Log Watch",
+    "description": "Watch Git Commit Log for meaningful data"
+}
 }

@@ -48,7 +48,7 @@
 
         <div layout="row" layout-wrap flex >
           <label flex="35"><md-subheader>Watch Log Data Display Type</md-subheader></label>
-          <md-radio-group ng-model="logFormat" flex="65">
+          <md-radio-group ng-model="logDataDisplayType" flex="65">
             <div layout="row" layout-wrap>
               <md-radio-button class="leftpadding" ng-repeat="displayTypes in uiPublisherConfig.logDataDisplayType" value="{{displayTypes.value}}" class="md-primary">
                 {{displayTypes.name}}

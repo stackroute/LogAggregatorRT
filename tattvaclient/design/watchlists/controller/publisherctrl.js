@@ -17,12 +17,19 @@ function($scope,$mdDialog,publisherSettingFactory, publisherData){
         $scope.tabs.push(tab.name);
       }
     });
-    $scope.publisherData.displaySize=$scope.displaySize;
-    $scope.publisherData.logFormat=$scope.logFormat;
-    $scope.publisherData.graphType=$scope.graphType;
-    $scope.publisherData.tabs=$scope.tabs;
-    console.log($scope.publisherData);
-    $mdDialog.hide($scope.publisherData);
+
+    $scope.name="publishToDashboard";
+    $scope.publisherData.publishers
+    var publisherExp={
+      publishType:$scope.name,
+      graphTypes:$scope.graphTypes,
+      tabsType:$scope.tabs,
+      widgetSizes:$scope.widgetSize,
+      logDataDisplayType:$scope.logDataDisplayType,
+    }
+    console.log(publisherExp);
+    $scope.publisherData.publisher.push(publisherExp);
+    $mdDialog.hide();
   };
 
   $scope.cancel = function() {

@@ -1,45 +1,62 @@
-var wl=[{
-  "namespace": "Namespace 02",
-  "stream": "Stream01",
-  "expressions": [
-    {
-      "tag": "tag::1",
-      "joinWith": "",
-      "joinBy": "",
-      "inputStream": "",
-      "watch": {
-        "lfield": {
-          "fieldType": "Accumulate",
-          "AccumulateOn": "Time",
-          "AccumulateTill": "10min",
-          "FunctionenPostAccumulation": "Subtract",
-          "FunctionenPostAccumulationParam": "23,234",
-          "exprAsText": "Accumulate(@Time(10min).then(Subtract(23,234))"
-        },
-        "rfield": {
-          "fieldType": "constant",
-          "Constants": "e",
-          "exprAsText": "Constant(e)"
-        },
-        "operator": "*"
-      },
-      "outcomeForwarding": "Only Matches",
-      "labelData": true
-    }
-  ],
-  "publisher": [
-    {
-      "publishType": "publishToDashboard",
-      "graphTypes": "donut",
-      "tabsType": [
-        "LogDataViewer"
-      ],
-      "widgetSizes": "70",
-      "logDataDisplayType": "csv"
-    }
-  ],
-  "name": "WatchList01",
-  "description": "For Demo"
+exports.wlstdef=function(){
+var z=return {
+"namespace": "Git Commit Log",
+"stream": "Git Log Stream",
+"expressions": [{
+ "tag": "tag::1",
+ "joinWith": "",
+ "joinBy": "",
+ "inputStream": "",
+ "watch": {
+     "lfield": {
+         "fieldType": "DataFields",
+         "DataField": "noOfFiles",
+         "exprAsText": "DataField(noOfFiles)"
+     },
+     "rfield": {
+         "fieldType": "inputvalue",
+         "inputvalue": "5",
+         "exprAsText": "5"
+     },
+     "operator": ">"
+ },
+ "labelData": true,
+ "outcomeForwarding": "All Data"
+}, {
+ "tag": "tag::2",
+ "joinWith": "",
+ "joinBy": "",
+ "inputStream": "",
+ "watch": {
+     "lfield": {
+         "fieldType": "DataFields",
+         "DataField": "noOfFiles",
+         "exprAsText": "DataField(noOfFiles)"
+     },
+     "rfield": {
+         "fieldType": "inputvalue",
+         "inputvalue": "10",
+         "exprAsText": "10"
+     },
+     "operator": "<="
+ },
+ "labelData": true,
+ "outcomeForwarding": "All Data"
+}],
+"publisher": [{
+ "publishType": "publishToDashboard",
+ "graphTypes": "line",
+ "tabsType": [
+     "Graph",
+     "LogDataViewer",
+     "ExecutionFlow"
+ ],
+ "widgetSizes": "50",
+ "logDataDisplayType": "table"
+}],
+"name": "Git Log Watch",
+"description": "Watch Git Commit Log for meaningful data"
 }
-];
-module.exports=wl;
+
+return z;
+}

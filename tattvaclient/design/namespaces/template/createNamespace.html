@@ -15,9 +15,31 @@
         <!-- </div> -->
         <!-- <div  flex layout> -->
         <div flex></div>
+<<<<<<< HEAD
+          <md-input-container flex="45">
+            <textarea class="textarea" ng-model="nameSpace.description" name="description" type="textarea" placeholder="Description" required></textarea>
+            <div ng-messages="createNameSpace.description.$error">
+              <p ng-message="required">This is required.</p>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout>
+          <md-input-container layout flex="25">
+            <label><b>Define dataSchema for NameSpace</b></label>
+          </md-input-container>
+          <md-input-container>
+            <md-button class="md-raised uploadJSON" ng-click="uploadJSONFlagToggle()">Paste Sample Data</md-button>
+          </md-input-container>
+        </div>
+
+        <div ng-if="uploadJSONFlag" layout-align="center center" layout="column">
+          <textarea class="uploadJSONFormat" placeholder="Paste JSON format here" name="JSONFormat" ng-model="uploadJSONText" required></textarea>
+          <div ng-messages="createNameSpace.JSONFormat.$error">
+=======
         <md-input-container flex="45">
           <textarea class="textarea" ng-model="nameSpace.description" name="description" type="textarea" placeholder="Description" required></textarea>
           <div ng-messages="createNameSpace.description.$error">
+>>>>>>> e2e9b740cc42c176d5d89422151d9a113985066b
             <p ng-message="required">This is required.</p>
           </div>
         </md-input-container>
