@@ -18,7 +18,8 @@
   </md-toolbar>
   <md-sidenav md-component-id="left" class="md-sidenav-left" layout="column">
     <div layout="row" class="snvhead" flex="15">
-      <span flex="30"><img class="logo" ng-src="/images/LogoWipro.jpg"/></span>
+      <!--inline styling has to be removed later-->
+      <span flex="30"><img class="logo" style="height:35px; width:55px;" ng-src="{{user.orgLogo}}"/></span>
       <span flex="70"><h3>{{user.orgName}}</h3></span>
     </div>
     <md-divider></md-divider>

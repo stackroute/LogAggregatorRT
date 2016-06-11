@@ -7,6 +7,7 @@ angular.module('tattva')
   // }
   // $scope.loadData();
   // $scope.user=AuthService.getCurrentUser();
+  // console.log("organisation info",$scope.user);
   // $scope.showAdd = function(ev) {
   //   $mdDialog.show({
   //     controller: DialogController,

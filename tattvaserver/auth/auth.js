@@ -161,6 +161,7 @@ module.exports = function(app, passport) {
           "orgsite" : user.orgsite,
           "role" : user.role,
           "orgName": org.orgName,
+          "orgLogo":org.orgLogo,
           "orgLocation" : org.orgLocation
         };
 
