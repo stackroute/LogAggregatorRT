@@ -1,6 +1,7 @@
 angular.module('tattva')
-.controller('DialogController', ['$scope','$mdDialog',
+.controller('addwatchlistCtrl', ['$scope','$mdDialog',
 function($scope, $mdDialog, watchslidename) {
+  console.log("hello inside msa");
   $scope.watchslidename=watchslidename;
   console.log($scope.watchslidename);
   $scope.cancel=function()

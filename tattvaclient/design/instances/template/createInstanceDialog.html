@@ -1,13 +1,13 @@
 
 <md-dialog>
-  <md-toolbar ng-hide="success" >
-    <div class="md-toolbar-tools" flex-offset="10">
-    <h2>Create new Data Source</h2>
+  <md-toolbar>
+    <div class="md-toolbar-tools" flex-offset="5">
+    <h2>Create new Instance</h2>
   </div>
   </md-toolbar>
   <md-dialog-content>
-    <div class="instanceMain" flex="90" ng-cloak  ng-hide="success">
-      <form name="createInstance" novalidate ng-submit="instanceSubmit()" flex-offset="10">
+    <div class="instanceMain" flex ng-cloak>
+      <form name="createInstance" flex="80" novalidate ng-submit="instanceSubmit()" flex-offset="10">
         <div class="instanceDialog inputdemoIcons">
 
           <md-input-container class="md-block">
@@ -86,31 +86,29 @@
               </div>
             </div>
           </md-input-container>
-          <div layout="row">
-            <div flex-offset="20">
+          <div layout="row" ng-hide="success">
+            <div flex="30" flex-offset="20" layout-align="center">
               <md-button  class="md-raised " type="button" ng-click="cancel()">CANCEL</md-button>
             </div>
-            <div flex-offset="5">
+            <div flex="50">
               <md-button type="submit" ng-disabled="createInstance.$invalid" class="md-raised md-primary">{{formtype}}</md-button>
             </div>
-
           </div>
+          <md-content class="successmsg" ng-show="success">
+            <div layout="column">
+            <div>
+            <span flex-offset="10" class="md-primary">{{createMsg}}</span>
+          </div>
+             <div >
+            <md-button class="md-raised md-primary"  flex="40" flex-offset="65" ng-click="ok()" ng-show="success">OK</md-button>
+          </md-content>
+
         </div>
 
       </form>
     </div>
 
-    <md-content class="successmsg" ng-show="success">
-      <div layout="column" class="inside">
-      <div flex="20">
-      </div>
-      <div flex="30">
-      <span flex-offset="10" class="md-title">{{createMsg}}</span>
-    </div>
-       <div flex="50">
-      <md-button class="md-raised md-primary"  flex="40" flex-offset="65" ng-click="cancel()" ng-show="success">OK</md-button>
-      <div>
-    </md-content>
+
 
 
   </md-dialog-content>

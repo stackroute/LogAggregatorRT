@@ -2,7 +2,7 @@ angular.module("tattva")
 .service('saveToDB', ['$http',function($http){
   this.savewatchloopdata=function(watchlistData1){
     console.log(watchlistData1);
-    var watchloopdata={watchid:"",watchname:watchlistData1.name,execstatus:"active",execstartedon:"",execstoppedon:"",watcherrors:""};
+    var watchloopdata={watchname:watchlistData1.name,execstatus:"active",execstartedon:"",execstoppedon:"",watcherrors:""};
     $http({
       method : 'post',
       url : '/watchloop',

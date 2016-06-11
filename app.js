@@ -4,29 +4,20 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var passport = require('passport');
 var flash    = require('connect-flash');
 var session      = require('express-session');
 var MongoClient= require('mongodb').MongoClient;
 var assert=require('assert');
-// var organisation_router = require('./tattvaserver/design/organisation/organisations_routes.js');
 var routes = require('./routes/index');
-
 var MongoStore = require('connect-mongo')(session);
 var app = express();
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_modules')));
 app.use(express.static(path.join(__dirname, 'tattvaclient')));
-
 app.use(session({
     secret: 'TATTVA Auth',
     cookie: {
@@ -34,23 +25,14 @@ app.use(session({
     },
     resave: false,
     saveUninitialized: false
-  //   ,
-  // store: new MongoStore({
-  //     url: 'mongodb://localhost/wipro'
-  //     // collection : 'sessions'
-  //   })
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-
-//Mongoose connection
 var dbURI = 'mongodb://localhost/wipro';
-// var dbURI = 'mongodb://172.23.238.253:32769/wipro';
 var fs = require("fs");
 var JSONparser = bodyParser.json();
 var jsonParser=bodyParser.json();
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -60,7 +42,6 @@ var watchlist_router = require('./tattvaserver/watchlists/watchlist_routes.js');
 var watchlistslide_router=require('./tattvaserver/dashboard/watchlistroutes');
 var namespace_router = require('./tattvaserver/namespace/namespaces_routes.js');
 var datasourcesrouter = require('./tattvaserver/datasources/datasources_routes.js');
-// var datastream_router=require('./tattvaserver/datastream/stream_routes.js');
 var mongoose = require( 'mongoose' );
 var stream_router=require('./tattvaserver/datastream/stream_routes.js');
 var summary_router=require('./tattvaserver/designsummary/summary_routes.js')
@@ -86,17 +67,6 @@ function isAuthenticated(req, res, next) {
     res.redirect('/');
   }
 };
-
-app.use('/', routes);
-// app.post('/login_reg1',jsonParser,function (request, response) {
-//   var body1=request.body;
-//   // console.log(body1);
-//   //response.send("hi");
-// });
-//
-// app.get('/login_reg', function(req, res){
-//   res.sendFile(path.join(__dirname, 'public/data.json'));
-// });
 
 process.on('SIGINT', function() {
 mongoose.connection.close(function () {
@@ -131,13 +101,9 @@ res.sendFile(path.join(__dirname,'tattvaclient/design/watchlists/json/operatorOp
 });
 
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
-
-// development error handler
-// will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);

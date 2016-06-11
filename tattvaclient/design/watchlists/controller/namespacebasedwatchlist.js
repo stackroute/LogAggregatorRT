@@ -4,7 +4,8 @@ angular.module("tattva")
 {
   $scope.data=[];
   $scope.tabTitle ="Watchlist";
-  $scope.stateChange="design.createwatchlist"
+  $scope.stateChange="design.createwatchlist";
+
   $scope.loadData=function()
   {
     loadExprData.getNameSpacenames().then(function(result)

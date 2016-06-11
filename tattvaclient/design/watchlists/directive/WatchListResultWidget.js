@@ -1,7 +1,7 @@
-angular.module('tattva').directive('dashboardlayout', function() {
+angular.module('tattva').directive('watchlistresultwidget', function() {
   var directive = {};
   directive.restrict = 'E';
-  directive.templateUrl = "/design/watchlists/template/dashboardlayout.html";
+  directive.templateUrl = "/design/watchlists/template/WatchListResultWidget.html";
   // directive.link = function(scope, elem, attr) {
   //   console.log("From dashboardlayout link function: " , scope.myresult.charttype);
   //   elem.getElementById('graphTab').appendchild('<mygraph type=scope.myresult.charttype></mygraph>');

@@ -10,6 +10,5 @@ angular.module('tattva')
 
   namespaceFactory.getNameSpace().then(function(response){
     $scope.data=response;
-    console.log($scope.data);
   });
 }])

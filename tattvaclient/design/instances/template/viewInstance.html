@@ -1,14 +1,12 @@
-<div ng-if="instance.length==0" flex class="listInst">
-  <div layout="row" >
-    <div id="noSubscriber" flex layout-padding layout-margin >
+<div ng-if="instance.length==0" flex class="noSubscriberinst listInst">
+    <div flex layout-padding layout-margin layout-align="start" >
       <h1>No available Instances</h1>
       <p>Click on the below button to create an instance.</p>
-      <md-button class="md-raised md-primary" ui-sref="design.instance.viewInstance.addInstance" ng-click="addInstance($event)">Create</md-button>
-    </div>
+      <md-button class="md-raised md-primary"  ng-click="addInstance($event)">Create</md-button>
   </div>
 </div>
 
-<div class="viewInst listdemoBasicUsage buttondemoBasicUsage" ng-if="instance.length!=0">
+<div class="viewInst" ng-if="instance.length!=0">
   <md-subheader class="md-primary md-title" flex-offset="5">Data sources from {{nspname}}</md-subheader>
   <md-divider></md-divider>
 
@@ -20,7 +18,7 @@
           <md-button flex="50"  ng-class="{'selected-item': $index == selectedInstanceIndex}" ng-click="selectInstanceIndex($index)">
             <md-item-content layout="row">
               <div flex="20">
-                <ng-letter-avatar data={{instance[$index].name}} avatarcustombgcolor="#2e2eb8" size=16px shape="round"></ng-letter-avatar>
+                <ng-letter-avatar data={{instance[$index].name}} avatarcustombgcolor="#2e2eb8" charCount=2 size=16px shape="round"></ng-letter-avatar>
               </div>
 
               <div flex="80" class="detail" layout="row">
@@ -43,16 +41,6 @@
                     <p flex>{{instance[$index].description}}</h5>
                     </div>
                   </div>
-                  <!-- <div flex="90" class="eachinst md-list-item-text" layout="column" ng-show="editEnable">
-                  <h3 > {{instance[$index].name}}</h3>
-                  <p>{{instance[$index].ip}}</p>
-
-                  <p>{{instance[$index].location}}</p>
-                  <div ng-if="show==='true'"  layout="row">
-                  <p flex="30">Description :</p><h5 flex="70">{{instance[$index].description}}</h5>
-
-                </div>
-              </div> -->
               <div flex="30" ng-show="$index == selectedInstanceIndex" layout="column" >
                 <!--ui-sref="design.instance.viewInstance.edit"-->
                   <md-icon  ng-click=edit(instance[$index].name) md-svg-src="image/svg/pencil-edit-button.svg"></md-icon>
@@ -71,7 +59,7 @@
   <md-button flex="50"  ng-class="{'selected-item': ($index+1) == selectedInstanceIndex }" ng-click="selectInstanceIndex($index+1)">
   <md-item-content layout="row" >
   <div flex="20" ng-if="instance.length > $index+1">
-   <ng-letter-avatar  data={{instance[$index+1].name}} avatarcustombgcolor="#2e2eb8" size=12px shape="round"></ng-letter-avatar>
+   <ng-letter-avatar  data={{instance[$index+1].name}} charCount=2 avatarcustombgcolor="#2e2eb8" size=12px shape="round"></ng-letter-avatar>
   </div>
   <div flex="80" class="detail" layout="row">
     <div flex="70" class="eachinst md-list-item-text" layout="column" ng-if="instance.length > $index+1" >

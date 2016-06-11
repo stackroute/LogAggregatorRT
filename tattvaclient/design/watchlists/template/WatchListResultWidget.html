@@ -1,0 +1,22 @@
+<div class="shad">
+  <div class="pray">{{myresult.wlid}}</div>
+  <md-tabs md-dynamic-height md-border-bottom>
+    <md-tab label="Graph">
+      <!-- <mygraph type="myresult.charttype"></mygraph> -->
+      <!-- <div ng-include src="getChartTemplate()"></div> -->
+      <div ng-include src="'/design/watchlists/template/' + myresult.charttype + '.html'"></div>
+    </md-tab>
+    <md-tab label="log Data">
+      <div ng-include src="'/design/watchlists/template/' + myresult.datatype + '.html'"></div>
+    </md-tab>
+    <md-tab label="Flow map">
+      <md-content class="md-padding fix">
+        <watchlistmap watch="watchdata" flex>
+        </watchlistmap>
+      </md-content>
+    </md-tab>
+  </md-tabs>
+  <md-divider></md-divider>
+  <!-- <label layout-padding class="editbtn">Add to slide</label> -->
+  <div ng-controller="dashboardcontroller"><md-icon class="editbtn material-icons"ng-click="addwatchlist()">add</md-icon></div>
+</div>

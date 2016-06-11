@@ -46,7 +46,7 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,searchFactory) {
       controller: "DialogController",
        templateUrl: "dashboard/template/createslidedialog.html",
        clickOutsideToClose:true,
-       parent: angular.element(document.body),
+      //  parent: angular.element(document.body),
        locals:{watchslidename:$scope.watchslidename}
        }).then(function(response) {
          watchslidename = response;
@@ -58,6 +58,26 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,searchFactory) {
        }).finally(function() {
        });
    };
+
+   $scope.addwatchlist = function($event) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      $mdDialog.show({
+       targetEvent: $event,
+       controller: "addwatchlistCtrl",
+        templateUrl: "dashboard/template/addwatchlistdialog.html",
+        clickOutsideToClose:true,
+       //  parent: angular.element(document.body),
+        locals:{watchslidename:$scope.watchslidename}
+        }).then(function(response) {
+          watchslidename = response;
+          console.log("watchslidename is: ", response);
+          slideFactory.createNewSlide("prarthana",response);
+        },
+         function(response) {
+          console.log("**REJECTED** with response: ", response);
+        }).finally(function() {
+        });
+    };
 // console.log($scope.watchslidename);
 
 $scope.itemcollection=[

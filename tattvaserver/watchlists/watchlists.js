@@ -47,11 +47,26 @@ var watchListSchema=new mongoose.Schema({
       }
     }
   ],
-  "publisher": [
-    {"publishToDashboard":{type: String}},
-    {"outputStream":{type: String}},
-    {"saveToDB":{type: String}}
-  ],
-});
+  "publishers" :{
+    "dashboard": {  "logFormat":{type:String},
+                    "displaySize":{type:String},
+                    "graphType":{type:String},
+                    "tabs":[
+                    {
+                    "graph":{type:Boolean},
+                    "logData":{type:Boolean},
+                    "flowMap":{type:Boolean}
+                    }
+                  ]
+                  },
+      'database' : {
+        "saveas": {type: String}
+      },
+      'outstream' : {
+        "streamname" : {type: String}
+      }
+  }
+
+  });
 var watchlist = mongoose.model('watchlist', watchListSchema);
 module.exports = watchlist;

@@ -1,5 +1,5 @@
 angular.module("tattva")
-.controller('operator',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData) {
+.controller('operator',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData','watchlistconfg', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData,watchlistconfg) {
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
@@ -29,7 +29,7 @@ angular.module("tattva")
     expr.watch.operator = item;
   }
   function loadAll() {
-    var operator = loadExprData.getoperatorOption().then(function(response){return response.data});
+    var operator = watchlistconfg.getoperatorOption();
     return operator;
   }
   function createFilterFor(query) {

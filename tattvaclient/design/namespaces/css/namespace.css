@@ -4,6 +4,11 @@
    text-align: center;
    height: 600px;
  }
+ .noSubscriberinst
+ {
+   background:#F6F6F6;
+   text-align: center;
+ }
 
  div.editNamespace input{
    color:#868686 !important;
@@ -24,7 +29,7 @@
  }
 
  .uploadJSON{
-    color: #868686;
+    color: #BDBDBD;
     font-size: 9pt;
 }
  .uploadJSONFormat{

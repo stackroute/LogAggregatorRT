@@ -263,7 +263,7 @@
 <div class="watchlistlayout">
   <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag">save</md-button>
   <md-button class="md-raised md-primary" ng-click='editWatchlist()' ng-if="editFlag">Edit</md-button>
-  <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
+  <md-button class="md-raised" ng-click="showConfirm($event)">Cancel</md-button>
 </div>
 </form>
 <div class="jsonStructure">

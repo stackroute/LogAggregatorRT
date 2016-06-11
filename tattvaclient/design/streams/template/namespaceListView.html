@@ -1,4 +1,4 @@
-<div>
+<div ng-if="data.length!=0">
   <div ng-include src="'/design/designhome/template/subTitleTab.html'"></div>
   <div layout="row" ng-init="loadData()">
     <div layout="row" flex="25">
@@ -6,22 +6,36 @@
         <md-list>
           <md-content class="listmenu">
             <md-list-item class="md-2-line" ng-click="null" ng-show="data.length" ng-repeat="object in data" ui-sref="design.streams.viewStreams({nsname : '{{object.name}}' })">
+             <md-divider ng-if="data.length >= 1"></md-divider>
               <md-item-content layout="row" flex>
                 <div class="md-list-item-text md-tile-left inset" flex="30">
-                  <ng-letter-avatar data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
+                  <ng-letter-avatar fontSize="20"  data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
                 </div>
                 <div class="md-tile-content eachnamespc" flex="70">
-                  <h3>{{object.name}}</h3>
+                  <h4>{{object.name}}</h4>
                 </div>
               </md-item-content>
-              <md-divider></md-divider>
             </md-list-item>
           </md-content>
         </md-list>
       </md-content>
     </div>
 
-    <div ui-view flex="70"></div>
+    <div layout="row" ui-view flex="75"></div>
 
+  </div>
+</div>
+<!-- No namespace available -->
+
+<div ng-if="data.length==0">
+  <md-content md-padding>
+    <div ui-view></div>
+  </md-content>
+  <div layout="row" flex class="noSubscriber" layout-align="center center">
+    <div  flex layout-padding layout-margin layout-align="start">
+      <h2>Create Namespace</h2>
+      <p>Namespace list is empty. Click on the below button to create a namespace.</p>
+      <md-button class="md-raised md-primary" ui-sref='design.createNamespace'>Create</md-button>
+    </div>
   </div>
 </div>

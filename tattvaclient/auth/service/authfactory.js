@@ -54,7 +54,7 @@ angular.module("tattva")
       return auth.getGuest();
     }
   };
-  // 
+  //
   // auth.getCurrentOrg = function() {
   //
   //   if(auth.isMember()) {
@@ -97,11 +97,11 @@ angular.module("tattva")
                 "link" : "design.namespace"
               },
               {
-                "menu" : "Data Sources",
+                "menu" : "Instance",
                 "link" : "design.instance"
               },
               {
-                "menu" : "Data Streams",
+                "menu" : "Streams",
                 "link" : "design.streams"
               },
               {
@@ -109,7 +109,7 @@ angular.module("tattva")
                 "link" : "design.function"
               },
               {
-                "menu" : "Watch Lists",
+                "menu" : "Watchlists",
                 "link" : "design.watchlist"
               }
             ]
@@ -137,8 +137,7 @@ angular.module("tattva")
     else {
       navItems = {
         topNav: [{'link': 'signin',
-        'menu': 'Sign in',
-        'title' : 'TATTVA - CEP'
+        'menu': 'Sign in'
       }
     ],
     sideNav: []

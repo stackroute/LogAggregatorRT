@@ -1,7 +1,9 @@
 angular.module('tattva')
-.controller('publisherCtrl', ['$scope','$mdDialog','publisherSettingFactory', "data",
-function($scope,$mdDialog,publisherSettingFactory, data){
-  $scope.publisherData = data;
+.controller('publisherCtrl', ['$scope','$mdDialog','publisherSettingFactory', "publisherData",
+function($scope,$mdDialog,publisherSettingFactory, publisherData){
+  //Data for publishing configuration passed form Watchlist controllre (parent controller)
+  $scope.publisherData = publisherData;
+
   console.log("Publisher data within publisherCtrl is : ", $scope.publisherData);
 
   $scope.hide = function() {
@@ -9,23 +11,24 @@ function($scope,$mdDialog,publisherSettingFactory, data){
   };
 
   $scope.updateBackPublisher = function(Data) {
-    console.log(Data);
     $scope.tabs=[];
     angular.forEach($scope.uiPublisherConfig.widgetTabs, function(tab){
       if(tab.selected){
         $scope.tabs.push(tab.name);
       }
     });
-$scope.name="publishToDashboard";
-var publisherExp={
-  publishType:$scope.name,
-  graphTypes:$scope.graphTypes,
-  tabsType:$scope.tabs,
-  widgetSizes:$scope.widgetSize,
-  logDataDisplayType:$scope.logDataDisplayType,
-}
-console.log(publisherExp);
-$scope.publisherData.publisher.push(publisherExp);
+
+    $scope.name="publishToDashboard";
+    $scope.publisherData.publishers
+    var publisherExp={
+      publishType:$scope.name,
+      graphTypes:$scope.graphTypes,
+      tabsType:$scope.tabs,
+      widgetSizes:$scope.widgetSize,
+      logDataDisplayType:$scope.logDataDisplayType,
+    }
+    console.log(publisherExp);
+    $scope.publisherData.publisher.push(publisherExp);
     $mdDialog.hide();
   };
 
@@ -35,9 +38,9 @@ $scope.publisherData.publisher.push(publisherExp);
 
   $scope.uiPublisherConfig = {
     "widgetSizes": [
-      {"name":"Small","value":"30","icon":"fa fa-square fa-1g"},
-      {"name":"Standard","value":"50","icon":"fa fa-square fa-2x"},
-      {"name":"Wide","value":"70","icon":"fa fa-square fa-3x"}
+      {"name":"Small","value":"30"},
+      {"name":"Standard","value":"50"},
+      {"name":"Wide","value":"70"}
     ],
     "widgetTabs": [
       {"name":"Summary","value":"summary"},

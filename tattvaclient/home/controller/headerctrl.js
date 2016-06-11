@@ -1,17 +1,10 @@
 angular.module('tattva')
-.controller('HeaderCtrl',function($scope,$http,AuthService){
+.controller('HeaderCtrl',function($scope,$http,AuthService,$mdSidenav){
+  $scope.openLeftMenu = function() {
+    $mdSidenav('left').toggle();
+  };
 
   $scope.userNavItems = AuthService.getUserNavItem();
-  console.log($scope.userNavItems.sideNav);
   $scope.user = AuthService.getCurrentUser();
-
-  console.log("Organisation info",$scope.user);
-  // $scope.org=AuthService.getCurrentOrg();
-  // console.log("header organisation is ",$scope.org);
-
-
-  $scope.header="TATTVA - CEP";
-
   $scope.items=$scope.userNavItems.sideNav;
-  console.log($scope.items);
 });

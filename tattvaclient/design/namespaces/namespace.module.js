@@ -22,7 +22,7 @@ function($stateProvider){
   })
   .state('design.editNamespace', {
     url: "/namespace/:editNamespaceData",
-    templateUrl: "/design/namespaces/template/viewNamespace.html",
-    controller:"editNamespaceCtrl"
+    templateUrl: "/design/namespaces/template/createNamespace.html",
+    controller:"createNamespaceCtrl"
   })
 }]);

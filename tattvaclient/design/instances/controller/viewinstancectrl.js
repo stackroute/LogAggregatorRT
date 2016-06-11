@@ -92,6 +92,10 @@ angular.module('tattva')
                             $mdDialog.cancel();
 
                         }
+                        $scope.ok=function(){
+                          $mdDialog.cancel();
+                        
+                        }
 
                     }
                 });
