@@ -48,7 +48,7 @@ angular.module('tattva')
 
             $mdThemingProvider.theme('default')
                 .primaryPalette('LightCyan') //500
-            .accentPalette('LightCyan', {
+            .accentPalette('cyanTheme', {
                 'default': '100'
             })
 

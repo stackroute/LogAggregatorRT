@@ -36,5 +36,15 @@ angular.module('tattva')
             } else {
                 $state.go('home');
             }*/
+
+            $rootScope.$on('member-unauthorized', function() {
+                AuthService.signout().then(function(res) {
+                        $state.go("signin");
+                    },
+                    function(res) {
+                        console.log('Error in signing out ', res)
+                        $state.go("signin");
+                    });
+            });
         }
     ]);
