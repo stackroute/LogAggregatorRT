@@ -5,16 +5,15 @@
       <div layout="row">
         <div flex="10">
           <md-card-avatar>
-            <!-- <img class="md-user-avatar" src="/images/wipro_logo.jpg"> -->
-            <img class="logo" style="height:50px; width:70px;" ng-src="{{org.orgLogo}}"/>
+            <img class="md-user-avatar" src="/images/wipro_logo.jpg">
           </md-card-avatar>
         </div>
         <div flex="90" >
           <div layout="column"></div>
           <div layout="column">
-            <span class="md-title">{{org.orgName}}</span></div>
+            <span class="md-title">{{user.orgName}}</span></div>
             <div layout="column">
-              <span class="md-subhead">{{org.orgLocation}}</span>
+              <span class="md-subhead">{{user.orgLocation}}</span>
             </div>
           </div>
         </div>
@@ -43,11 +42,10 @@
           <!-- <h3 flex-offset="5">Recent users</h3> -->
           <md-list>
             <md-subheader><h4>Recent users</h4></md-subheader>
-            <md-list-item class="md-3-line hover" ng-repeat="person in user | filter:search">
-              <img alt="{{ user[$index].name }}" ng-src="http://www.hit4hit.org/img/login/user-icon-6.png" class="md-avatar"/>
-              <!-- <img alt="{{ user[$index].name }}" ng-src="{{ user[$index].img }}" class="md-avatar"/> -->
+            <md-list-item class="md-3-line hover" ng-repeat="person in user| filter:search">
+              <img alt="{{ user[$index].name }}" ng-src="{{ user[$index].img }}" class="md-avatar"/>
               <!-- <span class='md-avatar'><ng-letter-avatar data="{{ data[$index].fun_name  }}" shape="round" avatarcustombgcolor="#ff944d"></ng-letter-avatar></span> -->
-              <!-- <ng-letter-avatar data="{{ user[$index].name  }}" shape="round" avatarcustombgcolor="#ff944d" size="16px" font-size="20px"></ng-letter-avatar> -->
+              <!-- <ng-letter-avatar data="{{ data[$index].fun_name  }}" shape="round" avatarcustombgcolor="#ff944d"></ng-letter-avatar> -->
               <div class="md-list-item-text" layout="column">
                 <h3>{{ person.name }}</h3>
                 <p>{{  person.email}}</p>
@@ -55,7 +53,7 @@
               <!-- <md-icon md-font-icon="fa fa-trash"></md-icon> -->
               <md-subheader md-no-sticky >
               <md-button class="md-fab md-mini md-secondary" aria-label="Comment">
-                <ng-md-icon icon="mode_edit" ui-sref="organisation.organisationEdit({userName:'{{person.name}}'  })"></ng-md-icon>
+                <ng-md-icon icon="mode_edit" ui-sref="organisation.organisationEdit({userName: person.name })"></ng-md-icon>
               </md-button>
             </md-subheader>
               <md-divider ng-if="!$last" style="margin: 10px 0px 10px 0px;"></md-divider>

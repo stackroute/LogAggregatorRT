@@ -1,10 +1,10 @@
 angular.module('tattva')
-.factory('userservice', ['$http', function($http){
+.factory('OrgService', ['$http', function($http){
   var factory = {
-    saveUser: function(createUsermData) {
+    saveOrgUser: function(createUsermData) {
       $http({
         method  : 'post',
-        url     : '/organisation/user/'+createUsermData.name,
+        url     : '/organisation/user',
         data    : createUsermData
       })
       .then(function(response)
@@ -20,9 +20,10 @@ angular.module('tattva')
 
 
     getUserName: function() {
-      return $http.get('/organisation/user/userName').then(function(response) {
-        console.log("midddleware data is",response.data);
-        return response.data;
+      return $http.get('/userName').then(function(response) {
+      // console.log(response.data);
+        data =  response.data;
+        return data;
       });
     },
 
