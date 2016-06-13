@@ -40,6 +40,7 @@ app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'bower_modules')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'tattvaclient')));
 
 //Max age is 5 minutes

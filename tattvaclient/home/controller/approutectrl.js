@@ -30,7 +30,7 @@ angular.module('tattva')
                 }*/
             });
 
-            //When the app initially loads 
+            //When the app initially loads
             /*if (!AuthService.isMember()) {
                 $state.go('tattva');
             } else {

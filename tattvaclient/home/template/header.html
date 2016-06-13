@@ -5,10 +5,10 @@
         <md-icon class=" editbtn material-icons" ng-click="openLeftMenu()">menu</md-icon>
       </div>
       <div ng-if="userNavItems.sideNav.length <= 0">
-        <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">TATTVA - Complex Event Processor</span></h2>
+        <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="tattva">TATTVA - Complex Event Processor</a></h2>
       </div>
       <div ng-if="userNavItems.sideNav.length" class="leftpadding">
-        <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">{{user.orgName}}</span></h2>
+        <h2 class="md-display-1 md-flex" ng-model="header"><a>{{user.orgName}}</a></h2>
       </div>
       <span flex></span>
       <div ng-repeat="topNavItem in userNavItems.topNav">

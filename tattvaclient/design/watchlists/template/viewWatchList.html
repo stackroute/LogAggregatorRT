@@ -1,4 +1,18 @@
-<div ng-if="watchlistalldata.length==0" flex class="noSubscriberinst listInst">
+<div ng-show="watchlistalldata.length!=0" class="viewInst">
+  <md-subheader class="md-primary md-title" flex-offset="5">Watchlist from {{filternamespace}}</md-subheader>
+  <md-divider></md-divider>
+  <div layout-padding layout-margin ng-init="getwatchlistdata(objectJson)">
+    <md-grid-list md-cols="6" md-row-height="120px">
+      <md-grid-tile  flex ng-repeat="object in watchlistalldata track by $index">
+        <md-button layout-padding ui-sref="design.viewdata( { watchlistName: '{{object}}' })" layout="column" flex>
+          <ng-letter-avatar fontSize="20" data={{object}} shape="round" avatarcustombgcolor="orange" charCount="2"></ng-letter-avatar>
+          <md-card-title-text flex><label>{{object}}</label></md-card-title-text>
+        </md-button>
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
+</div>
+<div ng-show="watchlistalldata.length==0" flex class="noSubscriberinst listInst">
   <div layout-align="start" >
     <h2>You are yet to create a Watch or Watchlist</h2>
     <p>Watchlist constructs and applies series of expressions for analyzing data</p>
@@ -6,37 +20,20 @@
   </div>
 </div>
 
-<div class="viewInst" ng-if="watchlistalldata.length!=0">
-  <md-subheader class="md-primary md-title" flex-offset="5">Watchlist from {{nsname}}</md-subheader>
-  <md-divider></md-divider>
-
-
-<div layout-padding layout-margin ng-init="getwatchlistdata(objectJson)">
-  <md-grid-list md-cols="4" md-row-height="180px" md-gutter="12px" >
-    <md-grid-tile  flex ng-repeat="object in watchlistalldata track by $index">
-      <md-button ui-sref="design.viewdata( { watchlistName: '{{object}}' })" layout="column" flex>
-        <ng-letter-avatar data={{object}} shape="round" avatarcustombgcolor="orange" charCount="2"></ng-letter-avatar>
-        <md-card-title-text flex><h3>{{object}}</h3></md-card-title-text>
-      </md-button>
-    </md-grid-tile>
-  </md-grid-list>
-</div>
-</div>
-
 <!-- <div layout-padding layout-margin ng-init="getwatchlistdata(objectJson)">
-  <md-grid-list md-cols="4" md-row-height="180px" md-gutter="12px" > -->
+<md-grid-list md-cols="4" md-row-height="180px" md-gutter="12px" > -->
 
-    <!-- <md-grid-tile  flex ng-repeat="object in watchlistalldata track by $index"> -->
-    <!-- {{object | json}} -->
-    <!-- <md-button ui-sref="design.viewdata( {namespace:'{{object.namespace}}' ,  watchlistname: '{{object.name}}'})" layout="column" flex>
-    <ng-letter-avatar data={{object.name}} shape="round" avatarcustombgcolor="orange" charCount="2"></ng-letter-avatar>
-    <md-card-title-text flex><h3>{{object.name}}</h3></md-card-title-text> -->
+<!-- <md-grid-tile  flex ng-repeat="object in watchlistalldata track by $index"> -->
+<!-- {{object | json}} -->
+<!-- <md-button ui-sref="design.viewdata( {namespace:'{{object.namespace}}' ,  watchlistname: '{{object.name}}'})" layout="column" flex>
+<ng-letter-avatar fontSize="20" data={{object.name}} shape="round" avatarcustombgcolor="orange" charCount="2"></ng-letter-avatar>
+<md-card-title-text flex><h3>{{object.name}}</h3></md-card-title-text> -->
 
-    <!-- <md-grid-tile  flex ng-repeat="object in watchlistalldata track by $index">
-      <md-button ui-sref="design.viewdata( { watchlistName: '{{object}}' })" layout="column" flex>
-        <ng-letter-avatar data={{object}} shape="round" avatarcustombgcolor="orange" charCount="2"></ng-letter-avatar>
-        <md-card-title-text flex><h3>{{object}}</h3></md-card-title-text>
-      </md-button>
-    </md-grid-tile>
-  </md-grid-list>
+<!-- <md-grid-tile  flex ng-repeat="object in watchlistalldata track by $index">
+<md-button ui-sref="design.viewdata( { watchlistName: '{{object}}' })" layout="column" flex>
+<ng-letter-avatar fontSize="20" data={{object}} shape="round" avatarcustombgcolor="orange" charCount="2"></ng-letter-avatar>
+<md-card-title-text flex><h3>{{object}}</h3></md-card-title-text>
+</md-button>
+</md-grid-tile>
+</md-grid-list>
 </div> -->

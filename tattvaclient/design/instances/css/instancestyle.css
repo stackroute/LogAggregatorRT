@@ -11,9 +11,6 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 .viewInst .md-button{
   text-transform: none;
 }
-.listInst{
-  /*max-height: 453px !important;*/
-}
 
 .instance md-input-container,.instanceDialog md-input-container{
 
@@ -104,10 +101,6 @@ margin-left:5%;
   text-transform: none;
 }
 
-.listInst{
-  max-height: 453px !important;
-}
-
 .eachinst{
   text-align:left;
 }
@@ -115,10 +108,6 @@ margin-left:5%;
 .eachinst p{
   font-weight: bold;
   font-size: 9pt;
-}
-
-.instanceList{
-  margin:15px;
 }
 
 .instance md-input-container,.instanceDialog md-input-container {

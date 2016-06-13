@@ -10,7 +10,7 @@ function($scope,$mdDialog,publisherSettingFactory, publisherData){
 
 
   if($scope.publisherData.tabs){
-    console.log("Before: ", $scope.widgetTabs);
+    //console.log("Before: ", $scope.widgetTabs);
     $scope.publisherData.tabs.forEach(function(tabName){
       //iterate through this array to set the tabName to be selected
       angular.forEach($scope.widgetTabs, function(tab){
@@ -19,7 +19,7 @@ function($scope,$mdDialog,publisherSettingFactory, publisherData){
         }
       });
     });
-    console.log("After: ", $scope.widgetTabs);
+    //console.log("After: ", $scope.widgetTabs);
   }
 
   // $scope.displaySize = $scope.publisherData.displaySize;
@@ -33,7 +33,7 @@ function($scope,$mdDialog,publisherSettingFactory, publisherData){
 
   $scope.updateBackPublisher = function(Data) {
     //To
-    // $scope.tabs=[];
+    $scope.publisherData.tabs=[];
     angular.forEach($scope.widgetTabs, function(tab){
       if(tab.selected){
         $scope.publisherData.tabs.push(tab.name);
@@ -49,9 +49,9 @@ function($scope,$mdDialog,publisherSettingFactory, publisherData){
   function getConfigData() {
     return {
       "widgetSizes": [
-        {"name":"Small","value":"30"},
-        {"name":"Standard","value":"50"},
-        {"name":"Wide","value":"70"}
+        {"name":"Small","value":"small"},
+        {"name":"Standard","value":"standard"},
+        {"name":"Wide","value":"wide"}
       ],
       "widgetTabs": [
         {"name":"Graph","value":"graph"},

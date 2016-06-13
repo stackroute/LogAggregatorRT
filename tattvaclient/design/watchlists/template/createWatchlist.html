@@ -236,7 +236,7 @@
 <div class="publishlayout">
   <div id="watchListnamespace" layout="row">
     <div flex="32">
-      <md-checkbox ng-model="saveToDB" ng-change="toggleSavetoDB()" ng-disabled="editFlag">
+      <md-checkbox ng-model="saveToDB" ng-change="toggleSavetoDB()" ng-true-value="'checkedBox'" ng-disabled="editFlag">
         Save to Database
       </md-checkbox>
       <md-icon ng-show="saveToDB" flex-offset="10" ng-click="(saveToDB)?opneSaveToDBDialogWindow():''" class="function-bg md-primary material-icons">
