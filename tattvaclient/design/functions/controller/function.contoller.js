@@ -56,8 +56,11 @@ function($scope, $http, $mdDialog,$stateParams) {
     });
   }
   $scope.loadData();
+  // console.log("outside"+$scope.data);
   $scope.saveData=function(){
     var item={fun_name:$scope.data[0].fun_name,Descr:$scope.data[0].Descr,var:$scope.data[0].var,fun:$scope.data[0].fun};
+    /*console.log(item);
+    */
     $http({
       method  : 'POST',
       url     : '/func_send_data',

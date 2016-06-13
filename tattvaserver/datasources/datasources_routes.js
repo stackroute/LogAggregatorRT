@@ -8,7 +8,7 @@ var namespace = require('./namespaces.js');
 
 //middleware and routes
 datasourcesroutes.use(function(req, res, next) {
-    //console.log("instances");
+    console.log("instances");
 
     next();
 });
@@ -18,13 +18,13 @@ datasourcesroutes.use(function(req, res, next) {
 
 datasourcesroutes.get('/edit/:dsourcename', function(req, res) {
     var dsourcename = req.params.dsourcename;
-    //console.log(dsourcename);
+    console.log(dsourcename);
     var dsdata
     datasource.findOne({
         name: dsourcename
     }, function(err, datasourcedata) {
         var id = datasourcedata.nsid;
-        //console.log(datasourcedata._id);
+        console.log(datasourcedata._id);
         namespace.findOne({
             _id: id
         }, function(err, namespacedata) {
@@ -44,11 +44,11 @@ datasourcesroutes.get('/edit/:dsourcename', function(req, res) {
 
 
 datasourcesroutes.put('/editdialogInstance', function(req, res) {
-    //console.log("req.body =    = ", req.body  );
+    console.log("req.body =    = ", req.body  );
     namespace.findOne({
         name: req.body.namespace
     }, function(err, namespacedata) {
-      //console.log(namespacedata);
+      console.log(namespacedata);
         var id = namespacedata._id;
         datasource.findOne({
           nsid:id,
@@ -58,7 +58,7 @@ datasourcesroutes.put('/editdialogInstance', function(req, res) {
             location: req.body.location,
             description: req.body.description
         }, function(err, datasourcedata) {
-            //console.log("datasourcedata = ",datasourcedata);
+            console.log("datasourcedata = ",datasourcedata);
             if (datasourcedata !== null) {
                 res.send("No Changes");
             } else {
@@ -80,7 +80,7 @@ datasourcesroutes.put('/editdialogInstance', function(req, res) {
                                     if (err) {
                                         console.error(err);
                                     }
-                                    //console.log('Updated Doc = ', updatedObj);
+                                    console.log('Updated Doc = ', updatedObj);
                                     res.send(updatedObj);
                                 });
 
@@ -114,9 +114,9 @@ datasourcesroutes.post('/createdialogInstance', JSONparser, function(req, res) {
         };
         datasource.create(obj, function(err, ddata) {
             if (err) {
-                //console.log(err);
+                console.log(err);
             } else {
-                //console.log(ddata);
+                console.log(ddata);
             res.send(ddata);
             }
 
@@ -128,13 +128,13 @@ datasourcesroutes.post('/createdialogInstance', JSONparser, function(req, res) {
 
 datasourcesroutes.get('/:param', function(req, res) {
     var nsp = req.params.param;
-    //console.log("--------" + nsp);
+    console.log("--------" + nsp);
     namespace.findOne({
         name: nsp
     }, function(err, namespacedata) {
         var refid = namespacedata._id;
 
-        //console.log(namespacedata, "----------", namespacedata._id);
+        console.log(namespacedata, "----------", namespacedata._id);
         datasource.find({
             nsid: refid
         }, function(err, datasourcedata) {
@@ -146,7 +146,7 @@ datasourcesroutes.get('/:param', function(req, res) {
 
 
 datasourcesroutes.get('/', function(req, res) {
-    //console.log("get");
+    console.log("get");
     namespace.find({}, {
         name: 1
     }, function(err, namespacedata) {
@@ -155,7 +155,7 @@ datasourcesroutes.get('/', function(req, res) {
 
 
     // namespace.findOne({name:"lighttpd"}).then(function(nsp){
-    //     //console.log(nsp._id);
+    //     console.log(nsp._id);
     //
     //
     //
@@ -174,7 +174,7 @@ datasourcesroutes.get('/', function(req, res) {
     //
     //     feed.save(function (err) {
     //       if (err){
-    //     //console.log(err);
+    //     console.log(err);
     //          return handleError(err)
     //       }
     //     });

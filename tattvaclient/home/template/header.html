@@ -5,32 +5,32 @@
         <md-icon class=" editbtn material-icons" ng-click="openLeftMenu()">menu</md-icon>
       </div>
       <div ng-if="userNavItems.sideNav.length <= 0">
-        <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="tattva">TATTVA - Complex Event Processor</a></h2>
+        <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">TATTVA - Complex Event Processor</span></h2>
       </div>
       <div ng-if="userNavItems.sideNav.length" class="leftpadding">
-        <h2 class="md-display-1 md-flex" ng-model="header"><a>{{user.orgName}}</a></h2>
+        <h2 class="md-display-1 md-flex" ng-model="header"><span class="header">{{user.orgName}}</span></h2>
       </div>
       <span flex></span>
       <div ng-repeat="topNavItem in userNavItems.topNav">
-        <a class="linkClr" ui-sref="{{topNavItem.link}}"><md-button>{{topNavItem.menu}}</md-button></a>
+        <a ui-sref="{{topNavItem.link}}"><md-button>{{topNavItem.menu}}</md-button></a>
       </div>
     </div>
   </md-toolbar>
-  <md-sidenav md-component-id="left" class="md-sidenav-left" layout="column" style="background-color:#0F423E">
+  <md-sidenav md-component-id="left" class="md-sidenav-left" layout="column">
     <div layout="row" class="snvhead" flex="15">
       <!--inline styling has to be removed later-->
       <span flex="30"><img class="logo" style="height:35px; width:55px;" ng-src="{{user.orgLogo}}"/></span>
-      <span flex="70"><h3 class="linkClr">{{user.orgName}}</h3></span>
+      <span flex="70"><h3>{{user.orgName}}</h3></span>
     </div>
     <md-divider></md-divider>
     <md-list flex="70">
       <md-list-item ng-repeat="item in items" >
         <div ng-mouseover="sublist=true" ng-mouseleave="sublist=false">
-          <md-icon class="material-icons" style="color:#DEF7F5;">{{item.icon}}</md-icon>
-          <a class="linkClr" ui-sref="{{item.link}}">{{item.menu}}</a>
+          <md-icon class="material-icons">{{item.icon}}</md-icon>
+          <a ui-sref="{{item.link}}">{{item.menu}}</a>
           <md-list ng-if="item.children.length > 0">
             <md-list-item  ng-show="sublist" ng-repeat="child in item.children">
-              <a class="linkClr" ui-sref="{{child.link}}">{{child.menu}}</a>
+              <a ui-sref="{{child.link}}">{{child.menu}}</a>
             </md-list-item>
           </md-list>
         </div>
@@ -40,10 +40,10 @@
     <div flex="15">
       <md-list>
         <md-list-item>
-          <a class="linkClr" href="https://en.wikipedia.org/wiki/Complex_event_processing">About us</a>
+          <a href="https://en.wikipedia.org/wiki/Complex_event_processing">About us</a>
           </md-list-item>
           <md-list-item>
-            <a class="linkClr" href="#">Privacy</a><pre> & </pre><a class="linkClr" href="#">Terms</a>
+            <a href="#">Privacy</a><pre> & </pre><a href="#">Terms</a>
           </md-list-item>
         </md-list>
       </div>

@@ -1,6 +1,7 @@
 html,
 body{
   min-height: 100%;
+  font-family: "Open Sans";
 }
 
 .menu{

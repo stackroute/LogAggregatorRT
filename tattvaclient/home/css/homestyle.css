@@ -12,8 +12,23 @@ body {
   position: fixed;
 }
 
-md-backdrop.md-opaque {
-    opacity: .1;
+.nav-start{
+  position: absolute;
+  bottom: 0%;
+  right: 50%;
+  font-size: 18px;
+}
+
+.nav {
+    position: absolute;
+    bottom: -7%;
+    right: 50%;
+}
+
+.navlast {
+    position: absolute;
+    bottom: 3%;
+    right: 50%;
 }
 
 #hero{
@@ -61,6 +76,15 @@ md-list-item a {
   padding-top: 30px;
 }
 
+i{
+  color: #00BCD4;
+}
+
+.navfooter{
+  float: right;
+  padding-right: 30px;
+}
+
 .copyright{
   margin-top: 75px;
 }
@@ -76,8 +100,4 @@ md-list-item a {
 {
   padding-top: 10px;
   padding-left: 20px;
-}
-
-.linkClr{
-  color:#DEF7F5;
 }

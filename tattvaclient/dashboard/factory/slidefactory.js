@@ -18,7 +18,7 @@ angular.module('tattva')
 
     // wldata:[],
     arruser:[],
-    wldata:[],
+wldata:[],
     getArrayUser: function(orgname) {
       for(i = 0; i < factory.userColln.length; i++){
         var userObj = factory.userColln[i];
@@ -34,6 +34,7 @@ angular.module('tattva')
       for(i = 0; i < factory.userColln.length; i++) {
         var userObj = factory.userColln[i];
         if (userObj.username == username) {
+          // console.log(userObj);
           return userObj;
         }
       }
@@ -41,6 +42,7 @@ angular.module('tattva')
 
     getSlide: function(username, slideName) {
       var userObj = factory.getUserObj(username);
+      console.log("userobj");
       for (i = 0; i < userObj.myslides.length; i++) {
         if (userObj.myslides[i].slideName == slideName) {
           return userObj.myslides[i];
@@ -50,6 +52,7 @@ angular.module('tattva')
 
     getwldata: function(username, slideName) {
       var userObj = factory.getUserObj(username);
+      console.log("Fetching slides for : ", slideName);
       if(slideName == "org") {
         //@TODO watchlistFactory.getOrgWatchlists(userObj.organization);
         return [{"id":"1"},{"id" : "2"},{"id" : "3"},{"id" : "4"},{"id" : "5"},{"id" : "6"}];
@@ -62,42 +65,43 @@ angular.module('tattva')
       }
     },
 
-    getDefaultSlide: function(username) {
-      var userObj = factory.getUserObj(username);
+      getDefaultSlide: function(username) {
+        var userObj = factory.getUserObj(username);
 
-      return factory.getSlide(username, userObj.defaultSlide);
-    },
+        return factory.getSlide(username, userObj.defaultSlide);
+      },
 
-    //@TODO check if really organisation has to be parameter,
-    //becouse server should automatically detect the organisation of the user and fetch its slides or watchlists
-    getOrganisationSlide: function(username, organisation) {
+      //@TODO check if really organisation has to be parameter,
+      //becouse server should automatically detect the organisation of the user and fetch its slides or watchlists
+      getOrganisationSlide: function(username, organisation) {
 
-    },
+      },
 
-    //@TODO we may have to get slides in a paginated way later on
-    //getAllSlides: function(username, currentPage, slidesPerPage) {
-    getAllSlides: function(username) {
-      var userObj = factory.getUserObj(username);
-      return userObj.myslides;
-    },
+      //@TODO we may have to get slides in a paginated way later on
+      //getAllSlides: function(username, currentPage, slidesPerPage) {
+      getAllSlides: function(username) {
+        var userObj = factory.getUserObj(username);
+        return userObj.myslides;
+      },
 
-    addWatchListsToSlide: function(username, whichSlide, whichWatchList) {
+      addWatchListsToSlide: function(username, whichSlide, whichWatchList) {
 
-    },
+      },
 
-    removeWatchListFromSlide: function(username, whichSlide, whichWatchList) {
+      removeWatchListFromSlide: function(username, whichSlide, whichWatchList) {
 
-    },
+      },
 
-    //@TODO metdata can be a array having all other required details about the new slide being created
-    createNewSlide: function(username, slideName) {
-      $http.post('/createslide',slideName);
-    },
+      //@TODO metdata can be a array having all other required details about the new slide being created
+      createNewSlide: function(username, slideName) {
+       console.log(slideName);
+$http.post('/createslide',slideName);
+      },
 
-    renameSlide: function(username, currentName, newName) {
+      renameSlide: function(username, currentName, newName) {
 
-    }
+      }
 
-  }//end of factory definition
-  return factory;
-}]);
+    }//end of factory definition
+    return factory;
+  }]);

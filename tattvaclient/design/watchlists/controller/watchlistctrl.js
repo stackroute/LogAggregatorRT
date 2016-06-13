@@ -7,7 +7,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
       stream:"",
       expressions: [],
       publishers: {
-        "dashboard": { "tabs": []},
+        "dashboard": {},
         "database": {},
         "outstream": {}
       }
@@ -17,7 +17,8 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
     if ( $stateParams.watchlistName) {
       $scope.editNamespace = $stateParams.watchlistName;
       if(selectedWlstdef)
-      $scope.wlstdef = selectedWlstdef;
+        $scope.wlstdef = selectedWlstdef;
+      console.log($scope.wlstdef);
       $scope.editFlag = true;
     }
   }
@@ -28,7 +29,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
 
   $scope.addNewExpression=function(index,expr) {
     var newExpr = {
-      "tag": ("Expression::" + ($scope.wlstdef.expressions.length + 1)),
+      "tag": ("tag::" + ($scope.wlstdef.expressions.length + 1)),
       "joinWith":"",
       "joinBy": "",
       "inputStream" : "",
@@ -45,8 +46,10 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
     $scope.getOutcomeOptions=watchlistconfg.getOutcomeOptions();
     if(isNaN(index)){
       $scope.index = $scope.wlstdef.expressions.length;
+      console.log($scope.index);
       if($scope.index!=0)
       {
+        console.log("This is the expressions",$scope.wlstdef.expressions[$scope.index-1]);
         $scope.wlstdef.expressions[$scope.index-1].joinWith="tag::"+($scope.index+1);
       }
     }
@@ -78,121 +81,142 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
         escapeToClose : false,
         locals: {"data": $scope.wlstdef}
       }).then(function(response) {
+        console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
       }, function(response) {
+        console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
       }).finally(function() {
+        console.log("finally gone..!");
+      });
+    };
+    $scope.showUIPublisherDialog();
+    }
+
+  $scope.toggleOutputToStream=function(){
+    console.log("outputToStreams");
+    console.log("hi")
+    for(i in $scope.wlstdef.publisher)
+    {
+      if($scope.wlstdef.publisher[i].publishType=="outputToStreams")
+      {
+        $scope.wlstdef.publisher.splice(i,1);
+      }
+    }
+  }
+
+
+  $scope.toggleSavetoDB=function(){
+    console.log("hi");
+    var flag;
+    for(i in $scope.wlstdef.publisher)
+    {
+      if($scope.wlstdef.publisher[i].publishType=="saveToDB")
+      {
+        $scope.wlstdef.publisher.splice(i,1);
+      }
+    }
+  }
+
+  $scope.togglePublishToDashboard=function(){
+    console.log("hi")
+    for(i in $scope.wlstdef.publisher)
+    {
+      if($scope.wlstdef.publisher[i].publishType=="publishToDashboard")
+      {
+        $scope.wlstdef.publisher.splice(i,1);
+      }
+    }
+  }
+
+  $scope.opnePublisherDialogWindow = function () {
+    console.log("in save");
+    //$scope.publisherData = {"WatchListName": "My first watch list"};
+    $scope.showUIPublisherDialog = function(ev) {
+      console.log("hi");
+      $mdDialog.show({
+        controller: "publisherCtrl",
+        templateUrl: "/design/watchlists/template/publisherSetting.html",
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: false,
+        escapeToClose : false,
+        locals: {"publisherData": $scope.wlstdef.publishers.dashboard }
+      }).then(function(dlgRes) {
+        $scope.wlstdef.publishers.dashboard = dlgRes;
+        console.log("RESOLVED with response: ", dlgRes, " publisher in parent: ", $scope.wlstdef.publishers.dashboard);
+      }, function(dlgRes) {
+        console.log("** REJECTED ** with response: ", dlgRes, " publisher in parent: ", $scope.wlstdef.publishers.dashboard);
+      }).finally(function() {
+        console.log("finally gone..!");
       });
     };
     $scope.showUIPublisherDialog();
   }
 
-  var flag1 =true;
-  $scope.toggleOutputToStream=function(){
-    if (flag1){
-      $scope.opneOutputStreamDialog = function (){
-        $scope.showOutputToStreamDialog = function(ev) {
-          $mdDialog.show({
-            controller: "outputToStreams",
-            templateUrl: "/design/watchlists/template/outputToStreams.html",
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose: false,
-            escapeToClose : false,
-            locals: { "data": $scope.wlstdef.publishers.outstream,
-            "publisherData" : $scope.wlstdef
-          }
-        }).then(function(response) {
-        }, function(response) {
-        }).finally(function() {
-        });
-      };
-      $scope.showOutputToStreamDialog();
-    }
-      flag1=false;
-    } else {
-      $scope.wlstdef.publishers.outstream={};
-      flag1=true;
-    }
+  $scope.opneOutputStreamDialog = function (){
+    console.log("to stream");
+    $scope.showOutputToStreamDialog = function(ev) {
+      $mdDialog.show({
+        controller: "outputToStreams",
+        templateUrl: "/design/watchlists/template/outputToStreams.html",
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: false,
+        escapeToClose : false,
+        locals: { "data": $scope.wlstdef }
+      }).then(function(response) {
+        console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }, function(response) {
+        console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }).finally(function() {
+        console.log("finally gone..!");
+      });
+    };
+    $scope.showOutputToStreamDialog();
   }
 
-
-  var save=true;
-  $scope.toggleSavetoDB=function(){
-    if (save) {
-      $scope.opneSaveToDBDialogWindow = function (){
-        $scope.showOutputToStreamDialog = function(ev) {
-          $mdDialog.show({
-            controller: "saveToDB",
-            templateUrl: "/design/watchlists/template/saveToDB.html",
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose: false,
-            escapeToClose : false,
-            locals: { "data": $scope.wlstdef,
-            "publisherData" : $scope.wlstdef.publishers.database
-          }
-        }).then(function(response) {
-        }, function(response) {
-        }).finally(function() {
-        });
-      };
-      $scope.showOutputToStreamDialog();
-      }
-      save=false;
-    } else {
-      $scope.wlstdef.publishers.database={};
-      save=true;
-    }
+  $scope.opneSaveToDBDialogWindow = function (){
+    console.log("to stream");
+    $scope.showOutputToStreamDialog = function(ev) {
+      console.log("hi");
+      $mdDialog.show({
+        controller: "saveToDB",
+        templateUrl: "/design/watchlists/template/saveToDB.html",
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: false,
+        escapeToClose : false,
+        locals: { "data": $scope.wlstdef }
+      }).then(function(response) {
+        console.log("RESOLVED with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }, function(response) {
+        console.log("** REJECTED ** with response: ", response, " publisher in parent: ", $scope.publisherData);
+      }).finally(function() {
+        console.log("finally gone..!");
+      });
+    };
+    $scope.showOutputToStreamDialog();
   }
 
-  var dash=true;
-  $scope.togglePublishToDashboard=function(){
-    if(dash){
-      $scope.opnePublisherDialogWindow = function () {
-        //$scope.publisherData = {"WatchListName": "My first watch list"};
-        $scope.showUIPublisherDialog = function(ev) {
-          $mdDialog.show({
-            controller: "publisherCtrl",
-            templateUrl: "/design/watchlists/template/publisherSetting.html",
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose: false,
-            escapeToClose : false,
-            locals: {"publisherData": $scope.wlstdef.publishers.dashboard }
-          }).then(function(dlgRes) {
-            $scope.wlstdef.publishers.dashboard = dlgRes;
-          }, function(dlgRes) {
-          }).finally(function() {
-          });
-        };
-        $scope.showUIPublisherDialog();
-      }
-      dash = false;
-    } else {
-      $scope.wlstdef.publishers.dashboard={};
-      save=true;
-    }
+  $scope.watchlistCancel = function(){
+    $state.go('design.watchlist.viewwatchlist');
   }
 
-$scope.watchlistCancel = function(){
-  $state.go('design.watchlist.viewwatchlist');
-}
-
-$scope.editWatchlist = function(){
-  $scope.editFlag = false;
-}
-$scope.showConfirm = function(ev) {
-  // Appending dialog to document.body to cover sidenav in docs app
-  var confirm = $mdDialog.confirm()
-  .title('Are you sure you want to cancel it')
-  .ariaLabel('Lucky day')
-  .targetEvent(ev)
-  .ok('Yes')
-  .cancel('No');
-  $mdDialog.show(confirm).then(function() {
-    $state.go("design.watchlist")
-  }, function() {
-    $state.go("design.createwatchlist")
-  });
-};
+  $scope.editWatchlist = function(){
+    $scope.editFlag = false;
+  }
+  $scope.showConfirm = function(ev) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+            .title('Are you sure you want to cancel it')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('Yes')
+            .cancel('No');
+      $mdDialog.show(confirm).then(function() {
+        $state.go("design.watchlist")
+      }, function() {
+        $state.go("design.createwatchlist")
+      });
+    };
 
 }]);

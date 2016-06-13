@@ -2,8 +2,8 @@
 <md-dialog>
   <md-toolbar>
     <div class="md-toolbar-tools" flex-offset="5">
-      <h2>Create new Instance</h2>
-    </div>
+    <h2>Create new Instance</h2>
+  </div>
   </md-toolbar>
   <md-dialog-content>
     <div class="instanceMain" flex ng-cloak>
@@ -96,14 +96,20 @@
           </div>
           <md-content class="successmsg" ng-show="success">
             <div layout="column">
-              <div>
-                <span flex-offset="10" class="md-primary">{{createMsg}}</span>
-              </div>
-              <div >
-                <md-button class="md-raised md-primary"  flex="40" flex-offset="65" ng-click="ok()" ng-show="success">OK</md-button>
-              </md-content>
-            </div>
-          </form>
+            <div>
+            <span flex-offset="10" class="md-primary">{{createMsg}}</span>
+          </div>
+             <div >
+            <md-button class="md-raised md-primary"  flex="40" flex-offset="65" ng-click="ok()" ng-show="success">OK</md-button>
+          </md-content>
+
         </div>
-      </md-dialog-content>
-    </md-dialog>
+
+      </form>
+    </div>
+
+
+
+
+  </md-dialog-content>
+</md-dialog>

@@ -2,8 +2,10 @@ angular.module('tattva')
 .controller('SignoutCtrl', ['$scope', '$state', 'AuthService',
 function($scope, $state, AuthService) {
 
+  console.log("Signout controller...!");
   AuthService.signout()
   .then(function(res){
+    console.log("go to ..");
     $state.go("tattva");
   },
   function(res){

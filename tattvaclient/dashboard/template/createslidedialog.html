@@ -1,21 +1,18 @@
-<md-dialog aria-label="Create Slide dialog" ng-cloak>
-    <form>
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <h2>Create Slide</h2>
-            </div>
-        </md-toolbar>
-        <md-dialog-content>
-            <div class="md-dialog-content" layout-padding>
-                <md-input-container>
-                    <label>Slide name</label>
-                    <input type="text" ng-model="watchslidename.slidename" ng-minlength="3" ng-maxlength="20" placeholder="Slide Name" required>
-                </md-input-container>
-            </div>
-        </md-dialog-content>
-        <md-dialog-actions layout="row">
-            <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
-            <md-button class="md-raised md-primary" ng-click="savedata()">Save</md-button>
-        </md-dialog-actions>
-    </form>
+<md-dialog aria-label="Create Slide dialog"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Create Slide</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout-padding>
+        <input ng-model="watchslidename.slidename" type="text" placeholder="Slide Name">
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+      <md-button  class="md-raised md-primary" ng-click="savedata()">Save</md-button>
+    </md-dialog-actions>
+  </form>
 </md-dialog>

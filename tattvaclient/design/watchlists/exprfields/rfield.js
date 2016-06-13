@@ -50,9 +50,9 @@ angular.module("tattva")
         locals: { "fieldData": expr.watch.rfield,"fieldData2":$scope.wlstdef}
       }).then(function(response) {
         expr.watch.rfield = response;
-        //console.log("RESOLVED with response: ", response, " data in autocomplete ctrl: ", expr.watch.rfield);
+        console.log("RESOLVED with response: ", response, " data in autocomplete ctrl: ", expr.watch.rfield);
       }, function(response) {
-        //console.log("** REJECTED ** with response: ", response, " data in autocomplete ctrl: ", expr.watch.rfield);
+        console.log("** REJECTED ** with response: ", response, " data in autocomplete ctrl: ", expr.watch.rfield);
       }).finally(function() {
       });
     };

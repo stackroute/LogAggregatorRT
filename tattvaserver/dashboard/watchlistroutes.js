@@ -18,17 +18,17 @@ mySlides:{
 // router.use(function(req,res,next)
 // {
 //   slide2.save(function (err,slide) {
-//     //console.log("inside save funciton");
+//     console.log("inside save funciton");
 //     if (err) {
-//       //console.log(err);
+//       console.log(err);
 //     }
-//     //console.log("slide is saved");
+//     console.log("slide is saved");
 //   });
-//   //console.log("before next");
+//   console.log("before next");
 //   next();
 // });
 router.post('/', function(req, res){
-  //console.log("heleleoooo");
+  console.log("heleleoooo");
   res.send("This is your specific slide");
   // next();
 });

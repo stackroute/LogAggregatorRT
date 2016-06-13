@@ -7,6 +7,6 @@ data.on('data',function(data)
 var a=JSON.parse(data);
 for(i in a)
 {
-//console.log(a[i].Field);
+console.log(a[i].Field);
 }
 });

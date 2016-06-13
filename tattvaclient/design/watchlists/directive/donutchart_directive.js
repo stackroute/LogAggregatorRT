@@ -2,6 +2,7 @@ angular.module('tattva')
 .directive('donutchart', function(){
   function link(scope, el, attr){
     var color = d3.scale.category10();
+    // console.log(scope.myresult.value);
     var data = scope.myresult.value;
     var width = 230;
     var height =230;

@@ -2,22 +2,22 @@ angular.module("tattva")
 .service('loadExprData', ['$http','namespaceFactory','streamService', function($http,namespaceFactory,streamService){
 
   this.getwatchlistdata=function(namespaceName){
-    //console.log("In the get namespace factory method",namespaceName);
+    console.log("In the get namespace factory method",namespaceName);
     var a=[];
     return $http.get('/watchlist/'+namespaceName).then(function(response) {
       data =  response.data;
-      //console.log(data);
+      console.log(data);
       for(i in data)
       {
         a.push(data[i].name);
       }
-      //console.log(a);
+      console.log(a);
       return a;
     });
   }
   // <!--Swagat loading the data for view/ edit watchlist-->
   this.getWatchlistData =function(wlName){
-    //console.log("in the service for getting watchlist data");
+    console.log("in the service for getting watchlist data");
     return $http.get('/watchlist/data/'+wlName).then(function(response){
       return response.data
     });
@@ -33,7 +33,7 @@ angular.module("tattva")
   }
 
   this.getNameSpacenames=function(){
-    //console.log("namespace \n requested");
+    console.log("namespace \n requested");
     var z=namespaceFactory.getNameSpace().then(function(data){
       var z=[];
       for(i in data)
@@ -54,7 +54,7 @@ angular.module("tattva")
 
 
   this.getNamespaceDetails= function(namespaceName){
-    //console.log("In the get namespace factory method",namespaceName);
+    console.log("In the get namespace factory method",namespaceName);
     return $http.get('/watchlist/'+namespaceName)
     .then(function(response) {
       data =  response.data;

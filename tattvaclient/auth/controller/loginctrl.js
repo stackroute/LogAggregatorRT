@@ -19,6 +19,7 @@ function($scope, $http, $state,AuthService) {
   }
 
   $scope.register=function() {
+      console.log($scope.user);
     AuthService.signUp($scope.user).then(function(user) {
       $state.go("home");
     }, function(err) {

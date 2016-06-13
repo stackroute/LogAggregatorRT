@@ -1,5 +1,6 @@
 .h1 {
   font-size: 50px;
+  font-family: monospace;
   text-align: center;
 }
 
@@ -33,10 +34,10 @@
 
 .tabHeading {
   padding-left: 20px;
-  color: #8c9394;
+  -webkit-filter: invert(100%);
 }
 
 .subtitle {
-  background-color: #f9f9f9;
+  background-color: #B2EBF2;
   padding: 0px;
 }

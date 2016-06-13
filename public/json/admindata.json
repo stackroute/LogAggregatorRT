@@ -1,0 +1,35 @@
+ [
+	{
+		"name": "Surya",
+		"img": "tattvaclient/images/person.jpg",
+		"email": "rajiff@gmail.com",
+		"password": "myname@123"
+	},
+	{
+		"name": "surya",
+		"img": "tattvaclient/images/person.jpg",
+		"email": "Surya@gmail.com",
+		"password": "default@123"
+	}, {
+		"name": "Ram",
+		"img": "tattvaclient/images/person.jpg",
+		"email": "ram@gmail.com",
+		"password": "default@123"
+	}, {
+		"name": "shyam",
+		"img": "tattvaclient/images/person.jpg",
+		"email": "shyam@gmail.com",
+		"password": "default@123"
+	}, {
+		"name": "dinesh",
+		"img": "tattvaclient/images/person.jpg",
+		"email": "dinesh@gmail.com",
+		"password": "default@123"
+	},
+	{
+		"name": "Ganesh",
+		"img": "tattvaclient/images/person.jpg",
+		"email": "dinesh@gmail.com",
+		"password": "default@123"
+	}
+]

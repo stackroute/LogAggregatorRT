@@ -51,7 +51,13 @@ var watchListSchema=new mongoose.Schema({
     "dashboard": {  "logFormat":{type:String},
                     "displaySize":{type:String},
                     "graphType":{type:String},
-                    "tabs": {type : Array}
+                    "tabs":[
+                    {
+                    "graph":{type:Boolean},
+                    "logData":{type:Boolean},
+                    "flowMap":{type:Boolean}
+                    }
+                  ]
                   },
       'database' : {
         "saveas": {type: String}

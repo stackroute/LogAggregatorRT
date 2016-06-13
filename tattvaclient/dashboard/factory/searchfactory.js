@@ -84,6 +84,7 @@ angular.module('tattva')
      for(i = 0; i < wldata.length; i++) {
        var wlObj = wldata[i];
        if (wlObj.wlid == wlid) {
+        //  console.log("insididdd"+wlObj);
          return wlObj;
        }
      }

@@ -19,8 +19,12 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,searchFactory) {
     }
   };
   // $scope.org=slideFactory.getArrayUser($scope.orgname);
+  // console.log($scope.org);
   $scope.userSlides=slideFactory.getAllSlides($scope.username);
+
   $scope.wldata=slideFactory.getwldata($scope.username, $scope.currentSlide.slideName);
+  // console.log($scope.currentSlide.slideName);
+  // console.log($scope.wldata);
   $scope.wlist=[];
   for(i=0;i<$scope.wldata.length;i++)
   {
@@ -28,7 +32,9 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,searchFactory) {
     $scope.wlist.push($scope.list);
   }
   $scope.goToSlide = function() {
+    console.log("I am asked to go to a slide ", $scope.selectedSlide)
     if($scope.selectedSlide !== undefined && $scope.selectedSlide != '' && $scope.selectedSlide !== null ) {
+      console.log("Changing to slide: ", $scope.selectedSlide)
       $state.go("home", { slidename: $scope.selectedSlide } );
     }
   }
@@ -44,9 +50,11 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,searchFactory) {
        locals:{watchslidename:$scope.watchslidename}
        }).then(function(response) {
          watchslidename = response;
+         console.log("watchslidename is: ", response);
          slideFactory.createNewSlide("prarthana",response);
        },
         function(response) {
+         console.log("**REJECTED** with response: ", response);
        }).finally(function() {
        });
    };
@@ -62,12 +70,15 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,searchFactory) {
         locals:{watchslidename:$scope.watchslidename}
         }).then(function(response) {
           watchslidename = response;
+          console.log("watchslidename is: ", response);
           slideFactory.createNewSlide("prarthana",response);
         },
          function(response) {
+          console.log("**REJECTED** with response: ", response);
         }).finally(function() {
         });
     };
+// console.log($scope.watchslidename);
 
 $scope.itemcollection=[
   {

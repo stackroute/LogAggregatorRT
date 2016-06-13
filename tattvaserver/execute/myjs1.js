@@ -19,30 +19,30 @@ var wsltresult = fs.createWriteStream('./wsltresult.json');
 //highland(wsstream)
 highland(srcstream)
     .map(function(data) {
-        //console.log('inspecting data');
+        console.log('inspecting data');
 
         if (Array.isArray(data)) {
-            //console.log('***** Data is ARRAY');
+            console.log('***** Data is ARRAY');
             for (i = 0; i < data.length; i++) {
                 if ((typeof data[i]) === 'object') {
-                    //console.log('***** Returning object');
+                    console.log('***** Returning object');
                     return data[i];
                 }
             }
         }
 
         if ((typeof data) === 'string') {
-            //console.log('***** Data is string');
+            console.log('***** Data is string');
             data = JSON.parse(data);
         } else if ((typeof data) === 'object') {
-            //console.log('***** Data is object');
+            console.log('***** Data is object');
             return data;
         } else {
             throw "Invalid data for processing...!";
             //return {};
         }
     }).map(function(data) {
-        //console.log(data.noOfFiles);
+        console.log(data.noOfFiles);
         return data;
     })
 //.pipe(exprPipeline)
@@ -60,38 +60,38 @@ function getExpressionPipeLine(wlstDef) {
     wlstDef.expressions.forEach(function(expr) {
 
         myProcessors.push(highland.map(function(logLineObj) {
-            //console.log("lfield: ", expr.watch.lfield);
+            console.log("lfield: ", expr.watch.lfield);
             if (expr.watch.lfield.fieldType == "DataFields") {
                 logLineObj['lhs'] = logLineObj[expr.watch.lfield.DataField];
             } else {
                 logLineObj['lhs'] = undefined;
             }
 
-            //console.log("LHS: ", logLineObj['lhs']);
+            console.log("LHS: ", logLineObj['lhs']);
 
             return logLineObj;
         }));
 
         myProcessors.push(highland.map(function(logLineObj) {
-            //console.log("rfield: ", expr.watch.rfield);
+            console.log("rfield: ", expr.watch.rfield);
             if (expr.watch.rfield.fieldType == "inputvalue") {
                 logLineObj['rhs'] = logLineObj[expr.watch.rfield.inputvalue];
             } else {
                 logLineObj['rhs'] = undefined;
             }
 
-            //console.log("RHS: ", logLineObj['rhs']);
+            console.log("RHS: ", logLineObj['rhs']);
 
             return logLineObj;
         }));
 
         myProcessors.push(highland.map(function(logLineObj) {
-            //console.log("operator: ", expr.watch.operator);
-            //console.log("oprtr: ", expr);
+            console.log("operator: ", expr.watch.operator);
+            console.log("oprtr: ", expr);
 
             logLineObj['oprtr'] = logLineObj[expr.watch.operator];
 
-            //console.log("OPRTR: ", logLineObj['oprtr']);
+            console.log("OPRTR: ", logLineObj['oprtr']);
 
             return logLineObj;
         }));
@@ -108,7 +108,7 @@ function getExpressionPipeLine(wlstDef) {
                 }
             }
 
-            //console.log("EXPR RESULT: ", logLineObj['expr_result']);
+            console.log("EXPR RESULT: ", logLineObj['expr_result']);
 
             return logLineObj;
         }));

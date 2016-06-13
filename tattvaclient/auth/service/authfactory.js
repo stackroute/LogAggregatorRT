@@ -8,9 +8,11 @@ angular.module("tattva")
         //@TODO set a expiry time stamp user.sessionTime = Date.now() + 2 minutes??
         $window.localStorage['member-user'] = JSON.stringify(user);
       } else {
+        console.log("Invalid user data for auth: ", user);
         auth.removeUser();
       }
     } else {
+      console.log("Undefined user data for auth: ", user);
       auth.removeUser();
     }
   };
@@ -162,6 +164,7 @@ auth.signIn = function(signinFormData) {
     },
     function(res) {
       //error
+      //console.log("Sign-in returned with error status: ", res.status, ", Error: ", res.data);
       reject(res.data);
     }
   );
@@ -197,22 +200,26 @@ auth.signUp = function(signupFormData) {
     .then(function(res) {
       //success
       if (res.status >= 400) {
+        console.log("error in signup ", res.data);
         //can be unauthorized and hence error
         auth.removeUser(); //ensuring user is not saved locally
         reject(res.data);
       } else if (res.status >= 200 && res.status <= 299) {
         //Successfully authenticated
+        console.log("Successfull signup of user: ", res.data);
         auth.saveUser(res.data);
         resolve(auth.getCurrentUser());
       }
     },
     function(res) {
       //error
+      console.log("Sign-up returned with error status: ", res.status, ", Error: ", res.data);
       reject(res.data);
     }
   );
 });
 };
 
+console.log(auth);
 return auth;
 });
