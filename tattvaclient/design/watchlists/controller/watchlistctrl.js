@@ -28,7 +28,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
 
   $scope.addNewExpression=function(index,expr) {
     var newExpr = {
-      "tag": ("tag::" + ($scope.wlstdef.expressions.length + 1)),
+      "tag": ("Expression::" + ($scope.wlstdef.expressions.length + 1)),
       "joinWith":"",
       "joinBy": "",
       "inputStream" : "",

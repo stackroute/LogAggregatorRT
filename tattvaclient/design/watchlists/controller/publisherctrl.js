@@ -49,9 +49,9 @@ function($scope,$mdDialog,publisherSettingFactory, publisherData){
   function getConfigData() {
     return {
       "widgetSizes": [
-        {"name":"Small","value":"30"},
-        {"name":"Standard","value":"50"},
-        {"name":"Wide","value":"70"}
+        {"name":"Small","value":"small"},
+        {"name":"Standard","value":"standard"},
+        {"name":"Wide","value":"wide"}
       ],
       "widgetTabs": [
         {"name":"Graph","value":"graph"},
