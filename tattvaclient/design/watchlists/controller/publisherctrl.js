@@ -10,7 +10,7 @@ function($scope,$mdDialog,publisherSettingFactory, publisherData){
 
 
   if($scope.publisherData.tabs){
-    console.log("Before: ", $scope.widgetTabs);
+    //console.log("Before: ", $scope.widgetTabs);
     $scope.publisherData.tabs.forEach(function(tabName){
       //iterate through this array to set the tabName to be selected
       angular.forEach($scope.widgetTabs, function(tab){
@@ -19,14 +19,21 @@ function($scope,$mdDialog,publisherSettingFactory, publisherData){
         }
       });
     });
-    console.log("After: ", $scope.widgetTabs);
+    //console.log("After: ", $scope.widgetTabs);
   }
+
+  // $scope.displaySize = $scope.publisherData.displaySize;
+  // $scope.logFormat=$scope.publisherData.logFormat;
+  // $scope.graphType=$scope.publisherData.graphType;
+  // $scope.tabs=$scope.publisherData.tabs;
 
   $scope.hide = function() {
     $mdDialog.hide();
   };
 
   $scope.updateBackPublisher = function(Data) {
+    //To
+    $scope.publisherData.tabs=[];
     angular.forEach($scope.widgetTabs, function(tab){
       if(tab.selected){
         $scope.publisherData.tabs.push(tab.name);

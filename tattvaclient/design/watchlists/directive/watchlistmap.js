@@ -25,7 +25,7 @@ angular.module('tattva').directive('watchlistmap', function() {
         watchdata = scope.watchdata;
         drawmap();
       }, true);
-      scope.$watch('watchdata.publisher', function(nv, ov) {
+      scope.$watch('watchdata.publishers', function(nv, ov) {
         watchdata = scope.watchdata;
         drawmap();
       }, true);
@@ -120,19 +120,7 @@ angular.module('tattva').directive('watchlistmap', function() {
           parent = mainroot.children[0];
           //expressions node
           for (var i = 0; i < expressions.length; i++) {
-            // if(expressions[i].inputStream!=="" && expressions[i].inputStream!==mainroot.children[0].name){
-            //   (mainroot.children).push({"name":expressions[i].inputStream, "color":colorcode[1].color, "children":[]});
-            // }
-            // else{
-            //  expressions[i].inputStream=mainroot.children[0].name;
-            // }
-            //  for (var j = 0; j < (mainroot.children).length; j++) {
-            // if(mainroot.children[j].name === expressions[i].inputStream)
-            // {
-            //  if(expressions[i].joinWith==="")  //joinwith task left
-            //
-
-            (parent.children).push({
+             (parent.children).push({
               "name": expressions[i].tag,
               "color": colorcode[2].color,
               "children": []
@@ -141,15 +129,91 @@ angular.module('tattva').directive('watchlistmap', function() {
 
           }
           //publishers node
-          if ( watchdata.expressions.length !=0 && watchdata.publisher.length != 0) {
-            for (var k = 0; k < watchdata.publisher.length; k++)
-            parent.children[k] = {
-              "name": watchdata.publisher[k],
-              "color": colorcode[3].color,
-              "children": []
-            }
-          }
-
+        //   if ( watchdata.expressions.length !=0) {
+        //     var arr=['dashboard','outstream','database'];
+        //     console.log((watchdata.publishers).dashboard.tabs.length!=0);
+        //     console.log(Object.keys(watchdata.publishers.database).length!=0);
+        //     console.log(Object.keys(watchdata.publishers.outstream).length!=0);
+        //     if((watchdata.publishers).dashboard.tabs.length!=0 && Object.keys(watchdata.publishers.database).length!=0 && Object.keys(watchdata.publishers.outstream).length!=0)
+        //     {
+        //       for(var i=0;i<arr.length;i++)
+        //       {
+        //     parent.children[i] = {
+        //       "name": arr[i],
+        //       "color": colorcode[3].color,
+        //       "children": []
+        //     }
+        //   }
+        //   }
+        //     if((watchdata.publishers).dashboard.tabs.length!=0  &&  Object.keys(watchdata.publishers.database).length!=0)
+        //     {
+        //       parent.children[0] = {
+        //         "name": "dashboard",
+        //         "color": colorcode[3].color,
+        //         "children": []
+        //       },
+        //       parent.children[1] = {
+        //         "name": "database",
+        //         "color": colorcode[3].color,
+        //         "children": []
+        //       }
+        //
+        //     }
+        //     if((watchdata.publishers).dashboard.tabs.length!=0  && Object.keys(watchdata.publishers.outstream).length!=0)
+        //     {
+        //       parent.children[0] = {
+        //         "name": "dashboard",
+        //         "color": colorcode[3].color,
+        //         "children": []
+        //       },
+        //       parent.children[1] = {
+        //         "name": "outstream",
+        //         "color": colorcode[3].color,
+        //         "children": []
+        //       }
+        //     }
+        //     if( Object.keys(watchdata.publishers.database).length!=0 && Object.keys(watchdata.publishers.outstream).length!=0)
+        //     {
+        //       console.log("outstream1");
+        //       parent.children[0] = {
+        //         "name": "database",
+        //         "color": colorcode[3].color,
+        //         "children": []
+        //       },
+        //       parent.children[1] = {
+        //         "name": "outstream",
+        //         "color": colorcode[3].color,
+        //         "children": []
+        //       }
+        //     }
+        //     if( Object.keys(watchdata.publishers.database).length!=0)
+        //     {
+        //       parent.children[0] = {
+        //         "name": "database",
+        //         "color": colorcode[3].color,
+        //         "children": []
+        //       }
+        //     }
+        //     if(Object.keys(watchdata.publishers.outstream).length!=0)
+        //     {
+        //       parent.children[0] = {
+        //         "name": "outstream",
+        //         "color": colorcode[3].color,
+        //         "children": []
+        //       }
+        //
+        //     }
+        //     if(watchdata.publishers.dashboard.tabs.length!=0 )
+        //     {
+        //       parent.children[0] = {
+        //         "name": "dashboard",
+        //         "color": colorcode[3].color,
+        //         "children": []
+        //       }
+        //     }
+        //
+        // }
+        //
 
           root = mainroot;
           root.x0 = height / 2;
