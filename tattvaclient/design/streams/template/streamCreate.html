@@ -23,7 +23,7 @@
 
     <div layout="row">
       <md-input-container class="md-block" flex="35">
-        <label>Name of Stream</label>
+        <label class="lowercase">Name of Stream</label>
         <input required name="streamName" ng-model="streamsData.user_streamName">
         <div ng-messages="projectForm.streamName.$error">
           <div ng-message="required">This is required.</div>
@@ -31,12 +31,13 @@
       </md-input-container>
       <span flex></span>
       <md-input-container flex="60">
-        <textarea class="textarea" ng-model="streamsData.stringDescription" type="textarea" placeholder="Description"></textarea>
+        <label class="lowercase">Description</label>
+        <textarea class="textarea" ng-model="streamsData.stringDescription" type="textarea" ></textarea>
       </md-input-container>
     </div>
     <h4 style="text-align: center">Query Criteria - Build Your Query Here</h4>
     <div>
-      <md-content>
+      <!-- <md-content> -->
         <div layout="row" flex ng-if="!showStreamQuery" ng-repeat="stmt in streamsData.queryBuilder">
           <!--===========================DropDown(Fields)==============================-->
           <md-input-container class="md-block" flex-gt-sm flex="25">
@@ -60,7 +61,7 @@
           <span flex></span>
           <!--===========================TextBox(Value)================================-->
           <md-input-container class="md-block" flex-gt-sm flex="25">
-            <label>Value</label>
+            <label class="lowercase">Value</label>
             <input required name="value" ng-model="stmt.user_value">
             <div ng-messages="projectForm.value.$error">
               <div ng-message="required">This is required.</div>
@@ -83,7 +84,7 @@
             Add
           </md-button>
         </div>
-      </md-content>
+      <!-- </md-content> -->
     </div>
     </fieldset>
     <div layout="row" flex-offset="40">

@@ -11,7 +11,7 @@
           <label flex="30"><md-subheader>Watch Display Size</md-subheader></label>
           <md-radio-group ng-model="publisherData.displaySize" flex="70">
             <div layout="row">
-              <md-radio-button ng-repeat="widgetSize in uiPublisherConfig.widgetSizes" value="{{widgetSize.value}}" class="md-primary" flex="35">
+              <md-radio-button ng-repeat="widgetSize in uiPublisherConfig.widgetSizes" value="{{widgetSize.value}}" class="md-primary" flex="35" ng-required="true">
                 {{widgetSize.name}}
               </md-radio-button>
             </div>
@@ -24,7 +24,7 @@
           <label flex="20"><md-subheader>Watch Tabs</md-subheader></label>
           <div layout="row" flex="80" layout-wrap>
             <div class="leftpadding" ng-repeat="tab in widgetTabs">
-              <md-checkbox ng-model="tab.selected" value="{{tab.value}}" layout="row">
+              <md-checkbox ng-model="tab.selected" value="{{tab.value}}" layout="row" ng-required="true">
                 {{ tab.name }}
               </md-checkbox>
             </div>
@@ -37,7 +37,7 @@
           <label flex="30"><md-subheader>Watch Graph type</md-subheader></label>
           <md-radio-group ng-model="publisherData.graphType" flex="70">
             <div layout="row">
-              <md-radio-button ng-repeat="graphTypes in uiPublisherConfig.graphTypes" value="{{graphTypes.value}}" class="md-primary" flex="50">
+              <md-radio-button ng-repeat="graphTypes in uiPublisherConfig.graphTypes" value="{{graphTypes.value}}" class="md-primary" flex="50" ng-required="true">
                 <md-icon class="material-icons">{{graphTypes.icon}}</md-icon>
               </md-radio-button>
             </div>
@@ -50,7 +50,7 @@
           <label flex="35"><md-subheader>Watch Log Data Display Type</md-subheader></label>
           <md-radio-group ng-model="publisherData.logFormat" flex="65">
             <div layout="row" layout-wrap>
-              <md-radio-button class="leftpadding md-primary" ng-repeat="displayTypes in uiPublisherConfig.logDataDisplayType" value="{{displayTypes.value}}" class="md-primary">
+              <md-radio-button class="leftpadding md-primary" ng-repeat="displayTypes in uiPublisherConfig.logDataDisplayType" value="{{displayTypes.value}}" class="md-primary" ng-required="true">
                 {{displayTypes.name}}
               </md-radio-button>
             </div>

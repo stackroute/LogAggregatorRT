@@ -23,3 +23,8 @@ text-transform: lowercase;
 fieldset.fieldsetStream{
 border: white;
 }
+
+.lowercase{
+  text-transform: none;
+  font-size: 16px;
+}
