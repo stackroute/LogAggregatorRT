@@ -1,6 +1,6 @@
-<form name="projectForm" flex id="outerBorder">
+<form name="projectForm" flex id="outerBorder" ng-submit="save()">
   <fieldset class="fieldsetStream" ng-disabled="editStreamFlag">
-  <!-- <div layout="column" flex> -->
+    <!-- <div layout="column" flex> -->
     <div layout="row" flex>
       <md-input-container class="md-block" flex-gt-sm flex="40">
         <label>Select Namespace</label>
@@ -36,13 +36,12 @@
     </div>
     <h4 style="text-align: center">Query Criteria - Build Your Query Here</h4>
     <div>
-      <md-content>
         <div layout="row" flex ng-if="!showStreamQuery" ng-repeat="stmt in streamsData.queryBuilder">
           <!--===========================DropDown(Fields)==============================-->
           <md-input-container class="md-block" flex-gt-sm flex="25">
             <label>Select field</label>
             <md-select ng-model="stmt.user_fields">
-              <md-option ng-repeat="namespace_field in namespaceFields" value="{{namespace_field}}" ng-disabled="editStreamFlag">
+              <md-option ng-repeat="namespace_field in namespaceFields track by $index" value="{{namespace_field}}" ng-disabled="editStreamFlag">
                 {{namespace_field}}
               </md-option>
             </md-select>
@@ -74,25 +73,18 @@
         </div>
         <div layout="row">
           <span flex></span>
-          <!-- <div> -->
-            <!-- <md-button class="md-raised" ng-if="showStreamQuery" ng-click="toggle()" flex-offset="5">
-              Remove
-            </md-button> -->
-          <!-- </div> -->
           <md-button class="md-raised" ng-click="streamsData.and()">
             Add
           </md-button>
         </div>
-      </md-content>
     </div>
-    </fieldset>
-    <div layout="row" flex-offset="40">
-      <md-button class="md-raised" ui-sref="design.streams.viewStreams">Cancel</md-button>
-      <md-button class="md-raised md-primary" ng-click="save()" ng-disabled="projectForm.$invalid" ui-sref="design.streams.viewStreams" ng-if="!editStream && !editStreamFlag">Create</md-button>
-      <md-button class="md-raised md-primary" ng-click="save()" ng-disabled="projectForm.$invalid" ui-sref="design.streams.viewStreams" ng-if="editStream && !editStreamFlag">Save</md-button>
-      <md-button class="md-raised md-primary" ng-click="edit()" ng-if="editStreamFlag">Edit</md-button>
-    </div>
-
+  </fieldset>
+  <div layout="row" flex-offset="40">
+    <md-button class="md-raised" ui-sref="design.streams.viewStreams">Cancel</md-button>
+    <md-button class="md-raised md-primary" type="submit" ng-disabled="projectForm.$invalid" ng-if="!editStream && !editStreamFlag">Create</md-button>
+    <md-button class="md-raised md-primary" type="submit" ng-disabled="projectForm.$invalid" ng-if="editStream && !editStreamFlag">Save</md-button>
+    <md-button class="md-raised md-primary" ng-click="edit()" ng-if="editStreamFlag">Edit</md-button>
+  </div>
   <!-- </div> -->
 </form>
 <!-- </md-whiteframe> -->

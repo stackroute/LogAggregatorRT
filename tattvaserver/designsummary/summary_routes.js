@@ -4,6 +4,7 @@ var StreamModel = require('../datastream/stream.js');
 var NamespaceModel = require('../namespace/namespaces.js');
 var datasourceModel = require('../datasources/datasource.js');
 var WatchlistModel = require('../watchlists/watchlists.js');
+var ActiveWatchlistModel = require('../watchloop/watchloop.js');
 
 var summaryStats = [];
 summary_router.get('/',function(req, res, next){
@@ -33,13 +34,13 @@ summary_router.get('/',function(req, res, next){
       WatchlistModel.count(function(err,count){
         callback(null,{name:"watchlist", value: count});
       });
-    }
-    //
-    // StreamModel.count(function(err,count){
-    //   //console.log("----------------------------------------------------------------",data);
-    //   summaryStats.push({name:"namespace", value: count});
-    // });
+    },
 
+    function activewatchlist(callback){
+      ActiveWatchlistModel.count(function(err,count){
+        callback(null,{name:"activewatchlist", value: count});
+      });
+    }
   ],
   function(err,summeryStats){
     //console.log("Hello",summeryStats);

@@ -26,7 +26,7 @@ angular.module('tattva')
       var streamDataToSave=streamData;
       $http({
         method : 'post',
-        url : '/datastream',
+        url : '/datastream/'+streamDataToSave.streamname,
         data : streamDataToSave
       }).then(function(response)
       {
