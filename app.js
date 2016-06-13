@@ -46,6 +46,7 @@ var mongoose = require( 'mongoose' );
 var stream_router=require('./tattvaserver/datastream/stream_routes.js');
 var summary_router=require('./tattvaserver/designsummary/summary_routes.js')
 var watchloop_router=require('./tattvaserver/watchloop/watchloop_routes.js')
+var Orguser_router=require('./tattvaserver/organisation/orguserRoutes.js')
 
 mongoose.connect(dbURI);
 mongoose.connection.on('connected', function () {  console.log('Mongoose connected to ' + dbURI); });
@@ -60,12 +61,12 @@ app.set('view engine', 'ejs');
 require('./tattvaserver/auth/auth')(app, passport);
 
 function isAuthenticated(req, res, next) {
-  if(req.path ==='/') {
+  // if(req.path ==='/') {
     return next();
-  }
-  else {
-    res.redirect('/');
-  }
+  // }
+  // else {
+  //   res.redirect('/');
+  // }
 };
 
 process.on('SIGINT', function() {
@@ -86,6 +87,8 @@ app.use('/datastream', isAuthenticated, stream_router);
 app.use('/createslide', isAuthenticated, watchlistslide_router);
 app.use('/appsummary',isAuthenticated, summary_router);
 app.use('/watchloop', isAuthenticated, watchloop_router);
+app.use('/organisation/user', isAuthenticated, Orguser_router);
+
 
 app.get('/OutcomeOptions',function(req,res)
 {

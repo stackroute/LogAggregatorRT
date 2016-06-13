@@ -75,55 +75,121 @@ module.exports = function(app, passport) {
     //Check if the organisation site already exists? (orgsite & email)
     //Check if the user already exists? (email)
 
-    //Create the Organisation
-    var newOrg = new OrganisationsModel({
-      "orgName": req.body.orgname,
-      "orgSite": req.body.orgsite,
-      "orgLogo":req.body.orglogo,
-      "orgLocation" : req.body.orglocation,
-      "contactName" : req.body.name,
-      "contactEmail": req.body.email
-    });
+    // //Create the Organisation
+    // var newOrg = new OrganisationsModel({
+    //   "orgName": req.body.orgname,
+    //   "orgSite": req.body.orgsite,
+    //   "orgLogo":req.body.orglogo,
+    //   "orgLocation" : req.body.orglocation,
+    //   "contactName" : req.body.name,
+    //   "contactEmail": req.body.email
+    // });
 
-    newOrg.save(function(err, orgObj) {
+    OrganisationsModel.find({'orgName': req.body.orgname}, function(err,Org){
+      console.log("org is ",Org);
       if(err) {
         console.log("Error in new org creation:" , err);
-          return res.status(401).json({err:"Invalid Input....!"});
+        return res.status(401).json({err:"Invalid Input....!"});
       }
-
-      //Create the User and attach him to the organisation just created as a Admin
-      var newUser = new UserModel({
-        "name" : req.body.name,
-        "email" : req.body.email,
-        "password" : req.body.password,
-        "orgsite" : req.body.orgsite,
-        "role" : "ORGADM"
-      });
-
-      newUser.save(function(err, savedUser){
-        if(err) {
-          console.log("Error in new org admin user creation:" , err);
-            return res.status(401).json(err);
-        }
-
-        //Now authenticate the user for login
-        passport.authenticate('local-signin', function(err, user, info) {
-          if (err) {
-            console.log("Error in user authenticate:" , err);
-            return res.status(500).json(err);
+      if(Org) {
+        //Create the Organisation
+        var newOrg = new OrganisationsModel({
+          "orgName": req.body.orgname,
+          "orgSite": req.body.orgsite,
+          "orgLogo":req.body.orglogo,
+          "orgLocation" : req.body.orglocation,
+          "contactName" : req.body.name,
+          "contactEmail": req.body.email
+        });
+        UserModel.find({'email': req.body.email},function(err,user){
+          if(err) {
+            console.log("Error in new org creation:" , err);
+            return res.status(401).json({err:"Invalid Input....!"});
           }
+          if(user){
+            newOrg.save(function(err, orgObj) {
+              if(err) {
+                console.log("Error in new org creation:" , err);
+                return res.status(401).json({err:"Invalid Input....!"});
+              }
 
-          if (user) {
-            console.log("Successfully authenticated user: ", user);
-            //You can put your additional code if you want to do something here, like enhancing user object with more data etc.,
-            return res.status(200).json(user);
-          } else {
-            console.log("unauthorized signin attempt \nerror:", err, "\nInfo:", info);
-            return res.status(401).json(info);
+              //Create the User and attach him to the organisation just created as a Admin
+              var newUser = new UserModel({
+                "name" : req.body.name,
+                "email" : req.body.email,
+                "password" : req.body.password,
+                "orgsite" : req.body.orgsite,
+                "role" : "ORGADM"
+              });
+
+              newUser.save(function(err, savedUser){
+                if(err) {
+                  console.log("Error in new org admin user creation:" , err);
+                  return res.status(401).json(err);
+                }
+
+                //Now authenticate the user for login
+                passport.authenticate('local-signin', function(err, user, info) {
+                  if (err) {
+                    console.log("Error in user authenticate:" , err);
+                    return res.status(500).json(err);
+                  }
+
+                  if (user) {
+                    console.log("Successfully authenticated user: ", user);
+                    //You can put your additional code if you want to do something here, like enhancing user object with more data etc.,
+                    return res.status(200).json(user);
+                  } else {
+                    console.log("unauthorized signin attempt \nerror:", err, "\nInfo:", info);
+                    return res.status(401).json(info);
+                  }
+                })(req, res, next);
+              })
+            });
           }
-        })(req, res, next);
-      })
+        });
+      }
     });
+
+    // newOrg.save(function(err, orgObj) {
+    //   if(err) {
+    //     console.log("Error in new org creation:" , err);
+    //       return res.status(401).json({err:"Invalid Input....!"});
+    //   }
+    //
+    //   //Create the User and attach him to the organisation just created as a Admin
+    //   var newUser = new UserModel({
+    //     "name" : req.body.name,
+    //     "email" : req.body.email,
+    //     "password" : req.body.password,
+    //     "orgsite" : req.body.orgsite,
+    //     "role" : "ORGADM"
+    //   });
+    //
+    //   newUser.save(function(err, savedUser){
+    //     if(err) {
+    //       console.log("Error in new org admin user creation:" , err);
+    //         return res.status(401).json(err);
+    //     }
+    //
+    //     //Now authenticate the user for login
+    //     passport.authenticate('local-signin', function(err, user, info) {
+    //       if (err) {
+    //         console.log("Error in user authenticate:" , err);
+    //         return res.status(500).json(err);
+    //       }
+    //
+    //       if (user) {
+    //         console.log("Successfully authenticated user: ", user);
+    //         //You can put your additional code if you want to do something here, like enhancing user object with more data etc.,
+    //         return res.status(200).json(user);
+    //       } else {
+    //         console.log("unauthorized signin attempt \nerror:", err, "\nInfo:", info);
+    //         return res.status(401).json(info);
+    //       }
+    //     })(req, res, next);
+    //   })
+    // });
   });
 
   passport.use('local-signin',

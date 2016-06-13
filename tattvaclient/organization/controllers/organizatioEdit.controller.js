@@ -1,41 +1,36 @@
 angular.module('tattva')
-.controller('orgEditCtrl', ['$scope', '$http','$mdDialog','$stateParams',
-function($scope, $http, $mdDialog,$stateParams) {
-
+.controller('orgEditCtrl', ['$scope', '$stateParams','userservice','$state',
+function($scope,$stateParams,userservice,$state) {
+  console.log("u r in edit organization");
   var name=$stateParams.userName;
 
-  console.log("specified name is",name);
+  console.log("u want to know thw information is",name);
 
-  // $scope.loadData = function() {
-  //   $http.get('/showOrgUser').then(function(response){ $scope.data = response.data;
-  //     for(var i in $scope.data) {
-  //       if($scope.data[i].name===name){
-  //         $scope.user=$scope.data[i];
-  //       }
-  //     }
-  //   });
-  // }
-  // $scope.loadData();
-  // console.log("outside"+$scope.data);
-  // $scope.saveData=function(){
-  //   var item={name:$scope.user.name,email:$scope.user.email,password:$scope.user.password};
-  //   console.log("Added user is",item);
-  //   $http({
-  //     method  : 'POST',
-  //     url     : '/orguser',
-  //     data    : item
-  //   })
-  //   .success(function(data) {
-  //     if (data.errors) {
-  //       // Showing errors.
-  //       $scope.errorName = data.errors.name;
-  //       $scope.errorUserName = data.errors.username;
-  //       $scope.errorEmail = data.errors.email;
-  //     } else {
-  //       $scope.message = data.message;
-  //     }
-  //   });
-  // };
+  $scope.loadData = function() {
+    userservice.getUserName().then(function(response){ $scope.user = response;
+      for(var i in $scope.user) {
+        if($scope.user[i].name===name) {
+          $scope.user.name=$scope.user[i].name;
+          $scope.user.email=$scope.user[i].email;
+          $scope.user.password="welcome@123";
+          $scope.user.cfpwd = "welcome@123"
+        }
+      }
+      console.log($scope.user);
+     });
+  }
+  $scope.loadData();
 
+  $scope.saveUser=function(){
+    console.log("u r saving the user");
+    var userData={name : $scope.user.name , email : $scope.user.email , password : $scope.user.password };
+    console.log("the user is ",userData);
+    userservice.saveUser(userData);
+    $state.go('organisation');
+  }
+
+  $scope.cancel = function() {
+    $state.go('organisation');
+  }
 }
 ]);
