@@ -22,18 +22,11 @@ function($scope,$mdDialog,publisherSettingFactory, publisherData){
     console.log("After: ", $scope.widgetTabs);
   }
 
-  // $scope.displaySize = $scope.publisherData.displaySize;
-  // $scope.logFormat=$scope.publisherData.logFormat;
-  // $scope.graphType=$scope.publisherData.graphType;
-  // $scope.tabs=$scope.publisherData.tabs;
-
   $scope.hide = function() {
     $mdDialog.hide();
   };
 
   $scope.updateBackPublisher = function(Data) {
-    //To
-    // $scope.tabs=[];
     angular.forEach($scope.widgetTabs, function(tab){
       if(tab.selected){
         $scope.publisherData.tabs.push(tab.name);

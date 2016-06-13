@@ -11,6 +11,8 @@ function($scope, $http, $stateParams, wlstDataService,namespaceFactory,loadExprD
       for(i in data){
         $scope.watchlistalldata.push(data[i]);
       }
+    }).then(function(data){
+      $scope.showwatchlists=true;
     })
   };
 }]);
