@@ -199,14 +199,16 @@
     <span style="color:rgb(0, 255, 255)">{{expr.watch.rfield.exprAsText}}</span>
   </div>
   <div layout="row">
-    <md-input-container>
-      <label>Outcome Forwarding</label>
-      <md-select ng-model="expr.outcomeForwarding">
-        <md-option ng-repeat="object in getOutcomeOptions">{{object}}
-        </md-option>
-      </md-select>
-    </md-input-container>
-    <div class="label" flex-offset="10" flex="90" flex-offset-md="10" flex-offset-sm="10">
+    <div flex="50">
+      <md-input-container>
+        <label>Outcome Forwarding</label>
+        <md-select ng-model="expr.outcomeForwarding">
+          <md-option ng-selected="$index == 2" ng-repeat="object in getOutcomeOptions">{{object}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+    <div class="label" flex-offset="10" flex="50" flex-offset-md="10" flex-offset-sm="10">
       <md-checkbox ng-model="expr.labelData">Highlight Matches</md-checkbox>
     </div>
   </div>
@@ -231,10 +233,10 @@
   <md-subheader><strong>Manage output publishing</strong></md-subheader>
 </div>
 
-<div class="publishlayout" flex-offset="10">
+<div class="publishlayout">
   <div id="watchListnamespace" layout="row">
     <div flex="32">
-      <md-checkbox ng-model="saveToDB" ng-change="toggleSavetoDB()" ng-disabled="editFlag">
+      <md-checkbox ng-model="saveToDB" ng-change="toggleSavetoDB()" ng-true-value="'checkedBox'" ng-disabled="editFlag">
         Save to Database
       </md-checkbox>
       <md-icon ng-show="saveToDB" flex-offset="10" ng-click="(saveToDB)?opneSaveToDBDialogWindow():''" class="function-bg md-primary material-icons">
@@ -260,13 +262,18 @@
   </div>
 </div>
 </fieldset>
-<div class="watchlistlayout">
-  <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag">save</md-button>
-  <md-button class="md-raised md-primary" ng-click='editWatchlist()' ng-if="editFlag">Edit</md-button>
-  <md-button class="md-raised" ng-click="showConfirm($event)">Cancel</md-button>
-</div>
-</form>
-<div class="jsonStructure">
-  <md-checkbox ng-model="isViewAsJSON">View as JSON Structure</md-checkbox>
-  <pre class="jsonStructureExpression  preview2" ng-show="isViewAsJSON">{{wlstdef | json }}</pre>
+<div class="publishlayout" layout="column" layout-padding>
+  <div>
+    <span flex></span>
+    <div style="float:right;">
+      <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag">save</md-button>
+      <md-button class="md-raised md-primary" ng-click='editWatchlist()' ng-if="editFlag">Edit</md-button>
+      <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
+    </div>
+  </div>
+  </form>
+  <div>
+    <md-checkbox ng-model="isViewAsJSON">View as JSON Structure</md-checkbox>
+    <pre class="jsonStructureExpression  preview2" ng-show="isViewAsJSON">{{wlstdef | json }}</pre>
+  </div>
 </div>

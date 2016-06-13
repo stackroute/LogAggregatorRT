@@ -1,8 +1,8 @@
 <div>
   <div layout="row" flex class="noSubscriber" layout-align="center center" ng-if="!nameSpaceListdata.length">
     <div  flex layout-padding layout-margin layout-align="start">
-      <h2>Create Namespace</h2>
-      <p>Namespace list is empty. Click on the below button to create a namespace.</p>
+      <h2>You are yet to create an Namespace</h2>
+      <p>Namespace defines format or schema of data generated at Data Source.</p>
       <md-button class="md-raised md-primary" ui-sref='design.createNamespace'>Create</md-button>
     </div>
   </div>
@@ -10,13 +10,13 @@
   <div ng-init="$scope.nameSpaceListdata = namespaceFactory.getNameSpace()" ng-if="nameSpaceListdata.length">
     <div ng-include src="'/design/designhome/template/subTitleTab.html'"></div>
     <md-content>
-        <div>
+        <div layout-padding>
           <md-grid-list md-cols-xs="2" md-cols-sm="4" md-cols-md="5" md-cols-lg="8" md-cols-xl="10"  md-row-height="180px" >
             <md-grid-tile ng-repeat="object in nameSpaceListdata" layout>
               <md-card class="NamespaceCard">
                 <md-card-header class="NamespaceListCardHeader" ui-sref="design.editNamespace({editNamespaceData: '{{object.name}}'})">
                   <md-card-avatar layout-align="center center">
-                    <ng-letter-avatar data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar>
+                    <ng-letter-avatar fontSize="20" data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar>
                   </md-card-avatar>
                   <md-card-header-text>
                     <span class="md-title" ><h3>{{object.name  | limitTo: 9}}</h3></span>

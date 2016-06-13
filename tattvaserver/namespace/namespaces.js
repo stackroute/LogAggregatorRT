@@ -18,8 +18,6 @@ var namespaceSchema = new mongoose.Schema({
   "editedOn": { type : Date, default : Date.now }
 });
 
-//Where are the validations?
-
 var Namespace = mongoose.model('Namespace', namespaceSchema);
 
 module.exports = Namespace;

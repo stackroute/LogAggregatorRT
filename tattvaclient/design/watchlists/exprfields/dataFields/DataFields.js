@@ -1,7 +1,6 @@
 angular.module("tattva")
 .controller('DataFieldsCtrl',['$scope','$mdDialog','fieldData','fieldData2','loadExprData','namespaceFactory',function($scope,$mdDialog,fieldData,fieldData2,loadExprData,namespaceFactory)
 {
-$scope.$watch('myvar',function(){console.log($scope.myvar)});
   $scope.fieldData=fieldData;
   $scope.hide = function() {
     $mdDialog.hide();
@@ -21,13 +20,13 @@ $scope.$watch('myvar',function(){console.log($scope.myvar)});
   }
 
   $scope.DataField=[];
-  console.log("name",fieldData2.namespace);
+  //console.log("name",fieldData2.namespace);
   namespaceFactory.getNamespaceDetails(fieldData2.namespace).then(function(data){
-  console.log(data);
+  //console.log(data);
   for (i in data.dataSchema){
   $scope.DataField.push(data.dataSchema[i].name)
 
   }
-  // console.log($scope.DataField);
+  // //console.log($scope.DataField);
   })
 }]);

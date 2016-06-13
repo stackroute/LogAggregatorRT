@@ -4,21 +4,21 @@ var watchloop = require('./watchloop.js');
 var watchlist = require('../watchlists/watchlists.js');
 var ObjectId = mongoose.Types.ObjectId;
 watchloop_router.get('/',function (request, response) {
-console.log("watchloop get request");
+//console.log("watchloop get request");
 });
 
 watchloop_router.post('/',function (request, response) {
   var watchloopObj = request.body;
 var o_id;
   watchlist.find({name:watchloopObj.name},{}, function(err, watchloopId){
-    console.log("watchlist id to be looped",watchloopId);
+    //console.log("watchlist id to be looped",watchloopId);
    o_id = ObjectId(watchloopId._id);
   })
   watchloopObj.watchid=o_id;
   var watchloop1 = new watchloop(watchloopObj);
   watchloop1.save(function(err, savewatchloopdata){
     if(err) return console.error(err);
-    console.log(savewatchloopdata);
+    //console.log(savewatchloopdata);
   });
 });
 
@@ -28,7 +28,7 @@ var o_id;
   var watchloopObj={};
   var o_id = ObjectId(watchlistObj._id);
   watchloopObj.status="active";
-  console.log("reached watchlist with body data");
+  //console.log("reached watchlist with body data");
   watchloopObj.watchid = watchlistObj._id;
   watchloopObj.watchname=watchlistObj.name;
   watchloopObj.execstatus="active";
@@ -39,10 +39,10 @@ var o_id;
     }
         watchloop.update({"_id":o_id}, watchloopObj, function(err, updatedObj) {
       if(err) {
-        console.log("Error in updating: ", watchlistObj._id, " name: ", watchloopObj.name);
+        //console.log("Error in updating: ", watchlistObj._id, " name: ", watchloopObj.name);
         console.error(err);
       }
-      console.log("Updated Watchlists ",updatedObj.name);
+      //console.log("Updated Watchlists ",updatedObj.name);
       response.status(200).json(updatedObj);
     });
   });

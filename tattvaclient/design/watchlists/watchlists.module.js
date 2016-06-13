@@ -21,7 +21,7 @@ function($stateProvider){
     resolve:{
       selectedWlstdef:function(loadExprData, $stateParams){
         return loadExprData.getWatchlistData($stateParams.watchlistName).then(function(response){
-          console.log(response);
+          //console.log(response);
           return response;
         });
       }

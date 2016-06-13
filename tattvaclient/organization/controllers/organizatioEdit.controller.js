@@ -3,7 +3,6 @@ angular.module('tattva')
 function($scope,$stateParams,userservice,$state) {
   console.log("u r in edit organization");
   var name=$stateParams.userName;
-
   console.log("u want to know thw information is",name);
 
   $scope.loadData = function() {
@@ -33,4 +32,5 @@ function($scope,$stateParams,userservice,$state) {
     $state.go('organisation');
   }
 }
+
 ]);

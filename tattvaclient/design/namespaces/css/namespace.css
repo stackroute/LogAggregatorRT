@@ -1,5 +1,5 @@
 
- div.noSubscriber{
+.noSubscriber{
    background:#F6F6F6;
    text-align: center;
    height: 600px;
@@ -10,20 +10,20 @@
    text-align: center;
  }
 
- div.editNamespace input{
+.editNamespace input{
    color:#868686 !important;
    font-size: 16px;
  }
- div.editNamespace textarea{
+.editNamespace textarea{
    color:#868686 !important;
    font-size: 14px;
    border:0px !important;
  }
- div.editNamespace md-radio-button{
+.editNamespace md-radio-button{
    color:#868686 !important;
    font-size: 14px;
  }
- div.editNamespace label{
+.editNamespace label{
    color:#868686 !important;
    font-size: 13px;
  }
@@ -49,4 +49,7 @@ md-card.NamespaceCard{
 .createNamespacePage{
   padding-left: 100px;
   padding-right: 100px;
+}
+.fieldsetNamespace{
+  border: white;
 }

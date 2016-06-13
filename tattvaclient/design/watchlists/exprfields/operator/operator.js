@@ -25,7 +25,7 @@ angular.module("tattva")
     $log.info('Text changed to ' + text);
   }
   function selectedItemChange(item, expr) {
-    console.log("Operator item: " , item);
+    //console.log("Operator item: " , item);
     expr.watch.operator = item;
   }
   function loadAll() {

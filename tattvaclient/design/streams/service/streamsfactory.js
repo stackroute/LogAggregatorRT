@@ -2,10 +2,12 @@ angular.module('tattva')
 .factory('streamFactory',['$http',function($http){
   var streamData={
     sendStream : function(sendData){
+      console.log("STREAM FACTORY NAMESPACE name",sendData);
       return $http.get('/datastream/'+sendData)
       .then(function(response){
+        console.log(response);
         data=response.data;
-        console.log("inside factory data =", data);
+        console.log( "inside factory data =", data);
         return data;
       });
     },
@@ -24,7 +26,7 @@ angular.module('tattva')
       var streamDataToSave=streamData;
       $http({
         method : 'post',
-        url : '/datastream',
+        url : '/datastream/'+streamDataToSave.streamname,
         data : streamDataToSave
       }).then(function(response)
       {

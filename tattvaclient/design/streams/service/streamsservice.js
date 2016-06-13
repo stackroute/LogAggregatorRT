@@ -23,7 +23,25 @@ angular.module('tattva')
   this.saveStream=function(streamsData){
     $http({
       method : 'post',
-      url : '/datastream',
+      url : '/datastream/'+streamsData.streamname,
+      data : streamsData
+    }).success(function(data){
+      if(data.errors){
+        $scope.errorName = data.errors.name;
+        $scope.errorUserName = data.errors.username;
+        $scope.errorEmail = data.errors.email;
+      }
+      else{
+        $scope.message=data.message;
+      }
+    });
+  }
+
+  this.saveEditedStream=function(streamsData){
+  console.log("streamsData = ",streamsData);
+    $http({
+      method : 'put',
+      url : '/datastream/'+streamsData.streamname,
       data : streamsData
     }).success(function(data){
       if(data.errors){

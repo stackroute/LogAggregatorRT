@@ -1,4 +1,4 @@
-console.log("hi");
+
 var flag,flagn,flaga;
 if($scope.saveToDB) {
 for(i in $scope.wlstdef.publisher) {
@@ -10,7 +10,6 @@ for(i in $scope.wlstdef.publisher) {
 if(flag!=1) {
   var z="saveToDB";
     $scope.wlstdef.publisher.push(z);
-      console.log($scope.wlstdef.publisher[0]);
 }
 }
 else {

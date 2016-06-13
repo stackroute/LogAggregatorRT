@@ -1,10 +1,12 @@
 .formpad{
 padding: 25px;
 }
+
 .query{
 text-align: center;
 color: #808080;
 }
+
 .inputField{
 font-size: 20px;
 }
@@ -12,4 +14,17 @@ font-size: 20px;
 .inputLabel{
 font-size: 20px;
 text-transform: lowercase;
+}
+
+#outerBorder{
+  margin: 2% 10% 0% 10%;
+}
+
+fieldset.fieldsetStream{
+border: white;
+}
+
+.lowercase{
+  text-transform: none;
+  font-size: 16px;
 }

@@ -1,6 +1,6 @@
 .publishlayout
 {
-margin-top: 2%;
+margin: 2% 11% 0% 11%;
 }
 .preview
 {
@@ -10,7 +10,7 @@ margin:1%;
 padding: 20px;
 color:#A6E22E;
 }
- 
+
 .preview2
 {
 background-color:#404040;
@@ -78,8 +78,8 @@ padding-top: 10px;
   height: 500px;
 }
 .outputDialog{
-  width: 60%;
-  height: 100%;
+  width: 50%;
+  height: 500px;
 }
 .padding
 {

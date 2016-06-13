@@ -4,7 +4,7 @@ var function_router = express.Router();
 var functions = require('./functions.js');
 
 function_router.use(function(req, res, next) {
-    console.log("we reached in the middleware-----------function------------------------------------");
+    //console.log("we reached in the middleware-----------function------------------------------------");
     var func = [{
         "_id" : "function:1",
         "name" : "Sum",
@@ -119,11 +119,11 @@ function_router.use(function(req, res, next) {
 
     function onInsert(err, docs) {
 
-      console.log("in functions");
+      //console.log("in functions");
         if (err) {
-            // console.log(err);
+            // //console.log(err);
         } else {
-            console.log('%d Sidenav is successfully stored.', docs);
+            //console.log('%d Sidenav is successfully stored.', docs);
         }
       }
     // var fun1= new functions({
@@ -147,7 +147,7 @@ function_router.use(function(req, res, next) {
     //
     // fun1.save(function (err) {
     //   if (err) {
-    //     console.log(err);
+    //     //console.log(err);
     //     return handleError(err);
     //   }
     // });
@@ -158,7 +158,7 @@ function_router.use(function(req, res, next) {
 //     res.send('hello ' + req.params.name + '!');
 // });
 function_router.get('/', function(req, res) {
-console.log("we reached in the route------get-------------------------------------------------------------------------");
+//console.log("we reached in the route------get-------------------------------------------------------------------------");
   functions.find({},{name:1,description:1},function (err, functionData) {
     res.send(functionData);
   })
