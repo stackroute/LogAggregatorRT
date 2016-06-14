@@ -2,7 +2,7 @@
   <md-subheader class="md-primary md-title" flex-offset="5">Watchlist from {{filternamespace}}</md-subheader>
   <md-divider></md-divider>
   <div layout-padding layout-margin ng-init="getwatchlistdata(objectJson)">
-    <md-grid-list md-cols="6" md-row-height="120px">
+    <md-grid-list md-cols="3" md-row-height="120px">
       <md-grid-tile  flex ng-repeat="object in watchlistalldata track by $index">
         <md-button layout-padding ui-sref="design.viewdata( { watchlistName: '{{object}}' })" layout="column" flex>
           <ng-letter-avatar fontSize="20" data={{object}} shape="round" avatarcustombgcolor="orange" charCount="2"></ng-letter-avatar>

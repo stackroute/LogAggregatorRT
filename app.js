@@ -25,6 +25,7 @@ var mongoose = require('mongoose');
 var stream_router = require('./tattvaserver/datastream/stream_routes.js');
 var summary_router = require('./tattvaserver/designsummary/summary_routes.js')
 var watchloop_router = require('./tattvaserver/watchloop/watchloop_routes.js')
+var Orguser_router=require('./tattvaserver/organisation/orgRoutes.js');
 
 //Express App created
 var app = express();
@@ -50,7 +51,8 @@ app.use(session({
     maxAge: 300000
   },
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  rolling: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -60,6 +62,7 @@ require('./tattvaserver/auth/auth')(app, passport);
 
 function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
+    req.session.touch();
     return next();
   }
 
@@ -91,7 +94,7 @@ process.on('SIGINT', function() {
 
 app.use('/', routes);
 app.use('/users', isAuthenticated, users);
-// app.use('/org_admin', organisation_router);
+app.use('/organisation/user', isAuthenticated, Orguser_router);
 app.use('/instance', isAuthenticated, datasourcesrouter);
 app.use('/function', isAuthenticated, function_router);
 app.use('/sideNav', isAuthenticated, sideNav_router);
