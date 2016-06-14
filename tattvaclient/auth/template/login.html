@@ -55,29 +55,36 @@
           <md-input-container class=" mic md-icon-float md-block">
             <label>Site Name</label>
           <md-icon class="material-icons">people</md-icon>
-            <input ng-model="user.orgsite" type="text">
+          <div layout=column>
+            <div>
+            <input ng-model="user.orgsite" name="sitename" type="text" ng-required="true" maxlength="8"  ng-pattern="/^\w+$/">
+          </div>
+          <div flex layout-align="right" ng-messages="registerForm.sitename.$error"  class="error" role="alert">
+            <div ng-message-exp="['pattern']">Only digits and alphabets accepted</div>
+          </div>
+          </div>
           </md-input-container>
 
           <md-input-container class="mic md-icon-float md-block">
             <label>Organisation Name</label>
           <md-icon class="material-icons">people</md-icon>
-            <input ng-model="user.orgname" type="text">
+            <input ng-model="user.orgname" ng-required="true" type="text">
           </md-input-container>
 
           <md-input-container class=" mic md-icon-float md-block">
               <md-icon class="material-icons">image</md-icon>
-            <input ng-model="user.orglogo" type="text" placeholder="Organisation Logo URL">
+            <input ng-model="user.orglogo" ng-required="true" type="text" placeholder="Organisation Logo URL">
           </md-input-container>
 
           <md-input-container class=" mic md-icon-float md-block">
               <md-icon class="material-icons">place</md-icon>
-            <input ng-model="user.orglocation" type="text" placeholder="Location">
+            <input ng-model="user.orglocation" ng-required="true" type="text" placeholder="Location">
           </md-input-container>
 
           <md-input-container class="mic md-icon-float md-block">
             <label>Contact Name</label>
               <md-icon class="material-icons">person</md-icon>
-            <input ng-model="user.name" type="text">
+            <input ng-model="user.name" ng-required="true" type="text">
           </md-input-container>
 
           <md-input-container class="mic md-icon-float md-block">

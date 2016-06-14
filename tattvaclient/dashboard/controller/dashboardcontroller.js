@@ -167,25 +167,51 @@ $scope.logdata=[
 ];
 
 $scope.watchlistdata=[{
-  "namespace": "apache",
-  "stream": "stream-1a",
+  "namespace": "apatche",
+  "stream": "stream1",
   "expressions": [
     {
-      "tag": "tag::1",
-      "joinWith": "",
+      "tag": "Expression::1",
+      "joinWith": "tag::2",
       "joinBy": "",
       "inputStream": "",
       "watch": {
         "lfield": {
-          "fieldType": ""
+          "fieldType": "Accumulate",
+          "AccumulateOn": "Time",
+          "AccumulateTill": "jhsai",
+          "FunctionenPostAccumulation": "Sum",
+          "FunctionenPostAccumulationParam": [
+            "apatche"
+          ],
+          "exprAsText": "Accumulate(@Time(jhsai).then(Sum(apatche))"
         },
         "rfield": {
-          "fieldType": ""
-        }
-      }
+          "fieldType": "constant",
+          "Constants": "e",
+          "exprAsText": "Constant(e)"
+        },
+        "operator": "+"
+      },
+      "outcomeForwarding": "All Data"
     },
     {
-      "tag": "tag::2",
+      "tag": "Expression::2",
+      "joinWith": "tag::3",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    },
+    {
+      "tag": "Expression::3",
       "joinWith": "",
       "joinBy": "",
       "inputStream": "",
@@ -196,22 +222,68 @@ $scope.watchlistdata=[{
         "rfield": {
           "fieldType": ""
         }
-      }
+      },
+      "outcomeForwarding": "All Data"
     }
   ],
-  "publisher": [
-    "outputStream",
-    "saveToDB"
-  ],
-  "name": "demo",
-  "description": "mydemo"
+  "publishers": {
+    "dashboard": {
+      "tabs": []
+    },
+    "database": {
+      "saveas": "watchlist1"
+    },
+    "outstream": {}
+  },
+  "name": "watchlist1",
+  "description": "demowatchlist1"
 },
 {
-  "namespace": "IOT",
-  "stream": "stream-1b",
+  "namespace": "ngnix",
+  "stream": "stream5",
   "expressions": [
     {
-      "tag": "tag::1",
+      "tag": "Expression::1",
+      "joinWith": "tag::2",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": "Accumulate",
+          "AccumulateOn": "Time",
+          "AccumulateTill": "jhsai",
+          "FunctionenPostAccumulation": "Sum",
+          "FunctionenPostAccumulationParam": [
+            "apatche"
+          ],
+          "exprAsText": "Accumulate(@Time(jhsai).then(Sum(apatche))"
+        },
+        "rfield": {
+          "fieldType": "constant",
+          "Constants": "e",
+          "exprAsText": "Constant(e)"
+        },
+        "operator": "+"
+      },
+      "outcomeForwarding": "All Data"
+    },
+    {
+      "tag": "Expression::2",
+      "joinWith": "tag::3",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    },
+    {
+      "tag": "Expression::3",
       "joinWith": "",
       "joinBy": "",
       "inputStream": "",
@@ -222,22 +294,304 @@ $scope.watchlistdata=[{
         "rfield": {
           "fieldType": ""
         }
-      }
+      },
+      "outcomeForwarding": "All Data"
     }
   ],
-  "publisher": [
-    "saveToDB"
+  "publishers": {
+    "dashboard": {
+      "tabs": []
+    },
+    "database": {
+      "saveas": "watchlist1"
+    },
+    "outstream": {}
+  },
+  "name": "watchlist1",
+  "description": "demowatchlist1"
+},
+{
+  "namespace": "lighttpd",
+  "stream": "stream1",
+  "expressions": [
+    {
+      "tag": "Expression::1",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    }
   ],
-  "name": "demo",
-  "description": "mydemo"
+  "publishers": {
+    "dashboard": {
+      "tabs": [
+        "Log Format"
+      ],
+      "displaySize": "standard",
+      "graphType": "line",
+      "logFormat": "rawdata"
+    },
+    "database": {
+      "saveas": "wathclist2"
+    },
+    "outstream": {}
+  },
+  "name": "wathclist2",
+  "description": "demo"
+},
+{
+  "namespace": "apatche",
+  "stream": "stream1",
+  "expressions": [
+    {
+      "tag": "Expression::1",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    }
+  ],
+  "publishers": {
+    "dashboard": {
+      "tabs": [
+        "Log Format"
+      ],
+      "displaySize": "standard",
+      "graphType": "line",
+      "logFormat": "rawdata"
+    },
+    "database": {
+      "saveas": "wathclist2"
+    },
+    "outstream": {}
+  },
+  "name": "wathclist2",
+  "description": "demo"
+},
+{
+  "namespace": "apatche",
+  "stream": "stream1",
+  "expressions": [
+    {
+      "tag": "Expression::1",
+      "joinWith": "tag::2",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    },
+    {
+      "tag": "Expression::2",
+      "joinWith": "tag::3",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    },
+    {
+      "tag": "Expression::3",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    }
+  ],
+  "publishers": {
+    "dashboard": {
+      "tabs": [
+        "Log Format"
+      ],
+      "displaySize": "standard",
+      "graphType": "line",
+      "logFormat": "rawdata"
+    },
+    "database": {
+      "saveas": "wathclist2"
+    },
+    "outstream": {}
+  },
+  "name": "wathclist2",
+  "description": "demo"
+},
+{
+  "namespace": "apatche",
+  "stream": "stream1",
+  "expressions": [
+    {
+      "tag": "Expression::1",
+      "joinWith": "tag::2",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    },
+    {
+      "tag": "Expression::2",
+      "joinWith": "tag::3",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    },
+    {
+      "tag": "Expression::3",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    }
+  ],
+  "publishers": {
+    "dashboard": {
+      "tabs": [
+        "Log Format"
+      ],
+      "displaySize": "standard",
+      "graphType": "line",
+      "logFormat": "rawdata"
+    },
+    "database": {
+      "saveas": "wathclist2"
+    },
+    "outstream": {}
+  },
+  "name": "wathclist2",
+  "description": "demo"
+},
+{
+  "namespace": "apatche",
+  "stream": "stream1",
+  "expressions": [
+    {
+      "tag": "Expression::1",
+      "joinWith": "tag::2",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    },
+    {
+      "tag": "Expression::2",
+      "joinWith": "tag::3",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    },
+    {
+      "tag": "Expression::3",
+      "joinWith": "",
+      "joinBy": "",
+      "inputStream": "",
+      "watch": {
+        "lfield": {
+          "fieldType": ""
+        },
+        "rfield": {
+          "fieldType": ""
+        }
+      },
+      "outcomeForwarding": "All Data"
+    }
+  ],
+  "publishers": {
+    "dashboard": {
+      "tabs": [
+        "Log Format"
+      ],
+      "displaySize": "standard",
+      "graphType": "line",
+      "logFormat": "rawdata"
+    },
+    "database": {
+      "saveas": "wathclist2"
+    },
+    "outstream": {}
+  },
+  "name": "wathclist2",
+  "description": "demo"
 },
 {
   "namespace": "BOA",
-  "stream": "stream-3",
+  "stream": "inputstream1",
   "expressions": [
     {
-      "tag": "tag::1",
-      "joinWith": "",
+      "tag": "Expression::1",
+      "joinWith": "tag::2",
       "joinBy": "",
       "inputStream": "",
       "watch": {
@@ -247,36 +601,11 @@ $scope.watchlistdata=[{
         "rfield": {
           "fieldType": ""
         }
-      }
-    }
-  ],
-  "publisher": [
-    "saveToDB",
-    "publishToDashboard"
-  ],
-  "name": "demo3",
-  "description": "mydemo3"
-},
-{
-  "namespace": "nginx",
-  "stream": "stream-1b",
-  "expressions": [
-    {
-      "tag": "tag::1",
-      "joinWith": "",
-      "joinBy": "",
-      "inputStream": "",
-      "watch": {
-        "lfield": {
-          "fieldType": ""
-        },
-        "rfield": {
-          "fieldType": ""
-        }
-      }
+      },
+      "outcomeForwarding": "All Data"
     },
     {
-      "tag": "tag::2",
+      "tag": "Expression::3",
       "joinWith": "",
       "joinBy": "",
       "inputStream": "",
@@ -287,135 +616,26 @@ $scope.watchlistdata=[{
         "rfield": {
           "fieldType": ""
         }
-      }
+      },
+      "outcomeForwarding": "All Data"
     }
   ],
-  "publisher": [
-    "saveToDB",
-    "publishToDashboard",
-    "outputStream"
-  ],
-  "name": "demo4",
-  "description": "mydemo4"
-},
-{
-  "namespace": "IOT",
-  "stream": "stream-1b",
-  "expressions": [
-    {
-      "tag": "tag::1",
-      "joinWith": "",
-      "joinBy": "",
-      "inputStream": "",
-      "watch": {
-        "lfield": {
-          "fieldType": ""
-        },
-        "rfield": {
-          "fieldType": ""
-        }
-      }
-    }
-  ],
-  "publisher": [
-    "saveToDB"
-  ],
-  "name": "demo4",
-  "description": "mydemo4"
-},
-{
-  "namespace": "apache",
-  "stream": "stream-1b",
-  "expressions": [
-    {
-      "tag": "tag::1",
-      "joinWith": "",
-      "joinBy": "",
-      "inputStream": "",
-      "watch": {
-        "lfield": {
-          "fieldType": ""
-        },
-        "rfield": {
-          "fieldType": ""
-        }
-      }
+  "publishers": {
+    "dashboard": {
+      "tabs": [
+        "Log Format"
+      ],
+      "displaySize": "standard",
+      "graphType": "line",
+      "logFormat": "rawdata"
     },
-    {
-      "tag": "tag::2",
-      "joinWith": "",
-      "joinBy": "",
-      "inputStream": "",
-      "watch": {
-        "lfield": {
-          "fieldType": ""
-        },
-        "rfield": {
-          "fieldType": ""
-        }
-      }
+    "database": {
+      "saveas": "wathclist2"
     },
-    {
-      "tag": "tag::3",
-      "joinWith": "",
-      "joinBy": "",
-      "inputStream": "",
-      "watch": {
-        "lfield": {
-          "fieldType": ""
-        },
-        "rfield": {
-          "fieldType": ""
-        }
-      }
-    },
-    {
-      "tag": "tag::4",
-      "joinWith": "",
-      "joinBy": "",
-      "inputStream": "",
-      "watch": {
-        "lfield": {
-          "fieldType": ""
-        },
-        "rfield": {
-          "fieldType": ""
-        }
-      }
-    }
-  ],
-  "publisher": [
-    "saveToDB",
-    "publishToDashboard"
-  ],
-  "name": "demo4",
-  "description": "mydemo4"
-},
-{
-  "namespace": "BOA",
-  "stream": "stream-3",
-  "expressions": [
-    {
-      "tag": "tag::1",
-      "joinWith": "",
-      "joinBy": "",
-      "inputStream": "",
-      "watch": {
-        "lfield": {
-          "fieldType": ""
-        },
-        "rfield": {
-          "fieldType": ""
-        }
-      }
-    }
-  ],
-  "publisher": [
-    "saveToDB",
-    "publishToDashboard"
-  ],
-  "name": "demo3",
-  "description": "mydemo3"
+    "outstream": {}
+  },
+  "name": "wathclist2",
+  "description": "demo"
 }
 ]
 
