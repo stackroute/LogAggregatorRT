@@ -17,6 +17,7 @@ watchlist_router.get('/', function(req, res, next) {
 watchlist_router.post('/',function (request, response) {
   var watchlistObj = request.body;
   watchlistObj.status="active";
+  watchlistObj.orgsite=request.user.orgsite;
   //console.log("reached watchlist with body data");
   watchlistObj.id = watchlistObj.name;
   var watchlist1 = new watchlist(watchlistObj);

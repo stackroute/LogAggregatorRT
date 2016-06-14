@@ -5,6 +5,7 @@ var watchListSchema=new mongoose.Schema({
   "namespace":{type: String, required : true,ref:"namespace"},
   "stream": {type: String, required : true},
   "status":{type:String,required:true},
+  "orgsite":{type:String,required:true},
   "expressions": [
     {
       "tag": {type: String, required : true},
