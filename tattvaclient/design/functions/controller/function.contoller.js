@@ -2,7 +2,8 @@ angular.module('tattva')
 .controller('functionlistCtrl', ['$scope', '$http','$mdDialog',
 function($scope, $http, $mdDialog) {
   $scope.tabTitle ="Function List";
-  $scope.stateChange="design.addfunction"
+  // $scope.stateChange="design.addfunction"
+  $scope.stateChange="design.function";
   $scope.loadData = function() {
     $http.get('/function').then(function(response){
       $scope.data = response.data;
@@ -47,33 +48,33 @@ function($scope, $http, $mdDialog,$stateParams) {
 
   var name=$stateParams.functionname;
   $scope.loadData = function() {
-    $http.get('/func_link_data').then(function(response){ $scope.data = response.data;
-      for(var i in $scope.data) {
-        if($scope.data[i].fun_name===name){
-          $scope.function=$scope.data[i];
-        }
-      }
-    });
+    // $http.get('/func_link_data').then(function(response){ $scope.data = response.data;
+    //   for(var i in $scope.data) {
+    //     if($scope.data[i].fun_name===name){
+    //       $scope.function=$scope.data[i];
+    //     }
+    //   }
+    // });
   }
   $scope.loadData();
   $scope.saveData=function(){
     var item={fun_name:$scope.data[0].fun_name,Descr:$scope.data[0].Descr,var:$scope.data[0].var,fun:$scope.data[0].fun};
-    $http({
-      method  : 'POST',
-      url     : '/func_send_data',
-      data    : item //forms user object
-      // headers : {'Content-Type': 'application/x-www-form-urlencoded'}
-    })
-    .success(function(data) {
-      if (data.errors) {
-        // Showing errors.
-        $scope.errorName = data.errors.name;
-        $scope.errorUserName = data.errors.username;
-        $scope.errorEmail = data.errors.email;
-      } else {
-        $scope.message = data.message;
-      }
-    });
+    // $http({
+    //   method  : 'POST',
+    //   url     : '/func_send_data',
+    //   data    : item //forms user object
+    //   // headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+    // })
+    // .success(function(data) {
+    //   if (data.errors) {
+    //     // Showing errors.
+    //     $scope.errorName = data.errors.name;
+    //     $scope.errorUserName = data.errors.username;
+    //     $scope.errorEmail = data.errors.email;
+    //   } else {
+    //     $scope.message = data.message;
+    //   }
+    // });
   };
 
 }

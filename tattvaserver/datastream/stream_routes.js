@@ -1,15 +1,15 @@
 var stream_router = require('express').Router();
 var stream = require('./stream.js');
 
-stream_router.get('/', function(req, res, next) {
+stream_router.get('/', function(request, res, next) {
   stream.find({},{streamname:1, instance:1}, function(err, data){
     res.send(data);
   });
 });
 
 
-stream_router.get('/details/:streamname', function(req, res, next) {
-  stream.findOne({streamname : req.params.streamname} , function(err, data){
+stream_router.get('/details/:streamname', function(request, res, next) {
+  stream.findOne({streamname : request.params.streamname} , function(err, data){
     if(err){
       console.error(err);
     }
@@ -17,9 +17,9 @@ stream_router.get('/details/:streamname', function(req, res, next) {
   });
 });
 
-stream_router.get('/:sendData', function(req, res, next) {
-  console.log("reached in the find stream route with namespace = ", req.params.sendData );
-  stream.find({namespace : req.params.sendData} , function(err, data){
+stream_router.get('/:namespaceName', function(request, res, next) {
+  console.log("reached in the find stream route with namespace = ", request.params.namespaceName );
+  stream.find({namespace : request.params.namespaceName} , function(err, data){
     if(err){
       console.error(err);
     }
@@ -28,8 +28,10 @@ stream_router.get('/:sendData', function(req, res, next) {
   });
 });
 
-stream_router.post('/',function (request, response) {
+stream_router.post('/:streamName',function (request, response) {
   var streamObj = request.body;
+
+  console.log("reached stream post route to save ", streamObj);
   streamObj.status="active";
   var stream1 = new stream(streamObj);
   stream1.save(function(err, savestreamdata){
@@ -37,9 +39,10 @@ stream_router.post('/',function (request, response) {
   });
 });
 
+
 stream_router.put('/:streamname',function (request, response) {
   var streamObj = request.body;
-// console.log("streamObj == ", streamObj.streamname);
+  // console.log("streamObj == ", streamObj.streamname);
   stream.update({streamname : streamObj.streamname}, streamObj, function(err, updatedObj){
     if(err){
       console.error("updating failed. Got update time error.",err);

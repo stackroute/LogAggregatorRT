@@ -23,7 +23,7 @@ angular.module('tattva')
   this.saveStream=function(streamsData){
     $http({
       method : 'post',
-      url : '/datastream',
+      url : '/datastream/'+streamsData.streamname,
       data : streamsData
     }).success(function(data){
       if(data.errors){

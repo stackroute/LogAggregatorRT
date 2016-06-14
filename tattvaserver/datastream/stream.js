@@ -1,7 +1,7 @@
 var mongoose = require( 'mongoose' );
 
 var streamSchema=new mongoose.Schema({
-  "streamname": {type: String, required:"true"},
+  "streamname": {type: String, required: "true", unique: "true"},
   "description": {type: String},
   "namespace":{type: String},
   "instance":{type:String},

@@ -7,21 +7,19 @@ function($stateProvider){
     templateUrl: "/design/namespaces/template/listNamespace.html",
     controller:"listNamespaceCtrl",
     resolve:{
-      getListOfNamespace:function(namespaceFactory){
+      nameSpaceColln:function(namespaceFactory) {
         return namespaceFactory.getNameSpace().then(function(response){
           return response;
+        }, function(response){
+          console.log("error in getting namespace data: ", response);
         });
       }
     }
-  })
-
-  .state('design.createNamespace', {
+  }).state('design.createNamespace', {
     url: "/namespace/new",
     templateUrl: "/design/namespaces/template/createNamespace.html",
     controller:"createNamespaceCtrl"
-  })
-
-  .state('design.editNamespace', {
+  }).state('design.editNamespace', {
     url: "/namespace/:editNamespaceData",
     templateUrl: "/design/namespaces/template/createNamespace.html",
     controller:"createNamespaceCtrl"

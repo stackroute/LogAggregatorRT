@@ -2,41 +2,49 @@ var namespace_router = require('express').Router();
 var Namespace = require('./namespaces.js');
 
 namespace_router.get('/', function(req, res){
-  Namespace.find({},{name:1, dataSchema:1}, function(err, namespaceData){
+  Namespace.find({},{name:1, dataSchema:1}, function(err, namespaceListData){
     if(err){
-      console.error(err);
+      return res.status(400).json(err);
     }
-    res.send(namespaceData);
+    else{
+      return res.status(200).json(namespaceListData);
+    }
   });
 });
 
-namespace_router.post('/', function (request, response) {
-  var namespaceObj = request.body;
+namespace_router.post('/:namespaceName', function (req, res) {
+  var namespaceObj = req.body;
   namespaceObj.tag = namespaceObj.name + namespaceObj.createdOn;//logic to obtain unique tag name
   var namespace1 = new Namespace(namespaceObj);
-  namespace1.save(function(err, savedNamespace){
+  namespace1.save(function(err, savedNamespaceData){
     if(err){
-      console.error(err);
+      return res.status(400).json(err);
     }
-    return savedNamespace;
+    else{
+      return res.status(200).json(savedNamespaceData);
+    }
   });
 });
 
-namespace_router.put('/',  function (request, response) {
-  Namespace.update({_id:request.body._id}, request.body,{},function(err, updatedObj){
+namespace_router.put('/:namespaceName',  function (req, res) {
+  Namespace.update({_id:req.body._id}, req.body, {}, function(err, updatedNamespaceData){
     if(err){
-      console.log(err);
+      return res.status(400).json(err);
     }
-    console.log('Namespace updated! ' , updatedObj);
+    else{
+      return res.status(200).json(updatedNamespaceData);
+    }
   });
 });
 
-namespace_router.get('/:name', function(req, res){
-  Namespace.findOne({name:req.params.name}, function(err, namespaceData){
+namespace_router.get('/:namespaceName', function(req, res){
+  Namespace.findOne({name:req.params.namespaceName}, function(err, namespaceData){
     if(err){
-      console.error(err);
+      return res.status(400).json(err);
     }
-    res.send(namespaceData);
+    else{
+      return res.status(200).json(namespaceData);
+    }
   });
 });
 

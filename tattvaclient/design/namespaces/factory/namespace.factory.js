@@ -1,78 +1,63 @@
 angular.module('tattva')
-.factory('namespaceFactory', ['$http', function($http){
+.factory('namespaceFactory', ['$http','$q', function($http, $q){
   var factory = {
-    saveNameSpace: function(createNamespaceFormData) {
-      return $http({
-        method  : 'post',
-        url     : '/namespaces',
-        data    : createNamespaceFormData
-      })
-      .then(function(response)
-      {
-        console.log(response);
-        return response;
-      });
-    },
-
-    getNameSpace: function() {
-      return $http.get('/namespaces').then(function(response) {
-        data =  response.data;
-        console.log(data);
-        return data;
-      });
-    },
-
-    getNamespaceDetails: function(namespaceName){
-      return $http.get('/namespaces/'+namespaceName)
-      .then(function(response) {
-        data =  response.data;
-        return data;
-      });
-    },
-
-    setNamespaceDetails : function(data, namespaceName){
-      var config = {
-        params: {"name" : namespaceName }
-      }
-      return $http.put('/namespaces/', data, config)
-      .then(
-        function(response){
-          return false;
+    saveNameSpace: function(createNamespaceData) {
+      return $q(function(resolve, reject) {
+        $http.post('/namespaces/'+createNamespaceData.name, createNamespaceData)
+        .then(function(res) {
+          //success
+          resolve(res.data);
+        },
+        function(res) {
+          //error
+          reject(res.data);
         }
       );
-    },
+    });
+  },
 
-    setNamespaceDetails : function(data, namespaceName){
-      console.log("data to be updated from factory = ",data);
-      var config = {
-        params: {"name" : namespaceName }
-      }
-      return $http.put('/namespaces/', data, config)
-      .then(
-        function(response){
-          return false;
-        }
-      );
-    },
-    getJSONObject : function (inputJSONObj){
-      inputJSONObj = JSON.parse(inputJSONObj)
-      console.log("inputJSONObj = ",inputJSONObj);
-      var dataObj = inputJSONObj[0];
-      var outputData = [];
-      var type;
-      for ( var i in dataObj){
-        if (isNaN(dataObj[i])){
-          type = "dimension"
-        }
-        else{
-          type = "measure"
-        }
-        outputData.push({"alias": i, "name": i, "type": type  });
-      }
-      console.log("outputData= ",outputData);
-      return outputData;
-    }
+  getNameSpace: function() {
+    return $q(function(resolve, reject) {
+      $http.get('/namespaces')
+      .then(function(res) {
+        //success
+        console.log(res.data);
+        resolve(res.data);
+      },
+      function(res) {
+        //error
+        reject(res.data);
+      });
+    });
+  },
 
-  }//end of factory definition
-  return factory;
+  getNamespaceDetails: function(namespaceName){
+    return $q(function(resolve, reject) {
+      $http.get('/namespaces/'+namespaceName)
+      .then(function(res) {
+        //success
+        resolve(res.data);
+      },
+      function(res) {
+        //error
+        reject(res.data);
+      });
+    });
+  },
+
+  setNamespaceDetails : function(data, namespaceName){
+    return $q(function(resolve, reject) {
+      $http.put('/namespaces/'+namespaceName, data)
+      .then(function(res) {
+        //success
+        resolve(res.data);
+      },
+      function(res) {
+        //error
+        reject(res.data);
+      });
+    });
+  },
+}//end of factory definition
+return factory;
 }]);

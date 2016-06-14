@@ -7,7 +7,7 @@
         <div  flex layout>
           <md-input-container flex="45" >
             <label>Name of NameSpace</label>
-            <input type="text" ng-model="nameSpace.name" name="name" ng-minlength="3" ng-maxlength="20" required>
+            <input type="text" ng-model="nameSpace.name" name="name" ng-minlength="3" ng-maxlength="20" ng-disabled="editData" required>
             <div ng-messages="createNameSpace.name.$error">
               <p ng-message="required">This is required.</p>
               <p ng-message="minlength">Namespace name is too short.</p>
@@ -34,10 +34,10 @@
         <div ng-if="uploadJSONFlag" layout-align="center center" layout="column">
           <textarea class="uploadJSONFormat" placeholder="Paste JSON format here" name="JSONFormat" ng-model="uploadJSONText" required></textarea>
           <div ng-messages="createNameSpace.JSONFormat.$error">
-            <p ng-message="required">This is required.</p>
+            <!-- <p ng-message="required">This is required.</p> -->
           </div>
           <md-input-container>
-            <md-button class="md-primary md-raised" ng-click="uploadJSON(uploadJSONText)">Save</md-button>
+            <md-button class="md-raised" ng-click="uploadJSON(uploadJSONText)">Parse</md-button>
           </md-input-container>
         </div>
 
@@ -59,9 +59,10 @@
 
             <md-input-container flex-offset="5" flex="20">
               <label>Data Field Name</label>
-              <input type="text" ng-model="dataFormatObj.name" name="fieldName" required>
+              <input type="text" ng-model="dataFormatObj.name" name="fieldName" ng-pattern="/^\S*$/" required>
               <div ng-messages="createNameSpace.fieldName.$error">
                 <div ng-message="required">This is required.</div>
+                <div ng-message="pattern">Space is not allowed in name.</div>
               </div>
             </md-input-container>
 

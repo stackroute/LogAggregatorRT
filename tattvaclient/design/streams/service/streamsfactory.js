@@ -7,7 +7,6 @@ angular.module('tattva')
       .then(function(response){
         console.log(response);
         data=response.data;
-        console.log( "inside factory data =", data);
         return data;
       });
     },
@@ -16,7 +15,6 @@ angular.module('tattva')
       return $http.get('/datastream/details/'+streamname)
       .then(function(response){
         data=response.data;
-        console.log("inside factory data 2 =", data);
         return data;
       });
     },
@@ -26,7 +24,7 @@ angular.module('tattva')
       var streamDataToSave=streamData;
       $http({
         method : 'post',
-        url : '/datastream',
+        url : '/datastream/'+streamDataToSave.streamname,
         data : streamDataToSave
       }).then(function(response)
       {

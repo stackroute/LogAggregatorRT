@@ -10,10 +10,11 @@
   <md-subheader class="md-primary md-title" flex-offset="5">Data sources from {{nspname}}</md-subheader>
   <md-divider></md-divider>
   <div layout="row">
-    <md-list flex=50>
+    <md-list flex>
       <md-content>
-        <md-list-item class="md-3-line" ng-repeat="object in instance" ng-if="$index % 2 == 0" layout="row">
-          <md-button flex="50" aria-label="Favorite" layout-padding ng-class="{'selected-item': $index == selectedInstanceIndex}" ng-click="selectInstanceIndex($index)">
+        <md-list-item flex class="md-3-line" ng-repeat="object in instance" ng-if="$index % 2 == 0" layout="row">
+          <div flex="50">
+          <md-button class="instancebtn" flex-offset="10" aria-label="Favorite" layout-padding ng-class="{'selected-item': $index == selectedInstanceIndex}" ng-click="selectInstanceIndex($index)">
             <md-item-content layout="row">
               <div flex="20">
                 <ng-letter-avatar data={{instance[$index].name}} avatarcustombgcolor="#2e2eb8" fontSize="20" charCount=2 size=16px shape="round"></ng-letter-avatar>
@@ -49,12 +50,14 @@
                 </md-button>
               </div> -->
             </div>
+             </md-button>
+           </div>
+           </md-item-content>
 
-          </md-item-content>
-        </md-button>
 
         <md-divider></md-divider>
-        <md-button flex="50" aria-label="Favorite" ng-if="instance.length > $index+1" layout-padding ng-class="{'selected-item': ($index+1) == selectedInstanceIndex }" ng-click="selectInstanceIndex($index+1)">
+        <div flex="50">
+        <md-button class="instancebtn" flex-offset="10" aria-label="Favorite" ng-if="instance.length > $index+1" layout-padding ng-class="{'selected-item': ($index+1) == selectedInstanceIndex }" ng-click="selectInstanceIndex($index+1)">
           <md-item-content layout="row" >
             <div flex="20" ng-if="instance.length > $index+1">
               <ng-letter-avatar  data={{instance[$index+1].name}} fontSize="20" charCount=2 avatarcustombgcolor="#2e2eb8" size=12px shape="round"></ng-letter-avatar>
@@ -87,6 +90,7 @@
             </md-item-content>
 
           </md-button>
+        </div>
           <md-divider></md-divider>
         </md-list-item>
       </md-content>
