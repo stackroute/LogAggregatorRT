@@ -1,15 +1,26 @@
-var evaluate= function(data)
+module.exports=function()
 {
-  var result=0;
-  for(var i=0; i< data.length; i++)
+
+  function execute(data)
   {
-    result+=data[i];
+    var result=0;
+   for(var i=0; i < (data).length; i++)
+   {
+     result+=data[i];
+   }
+    return result;
   }
 
-return result;
+  return {
 
-};
+   //evaluate fn
+   evaluate: function(data)
+    {
+      var result={};
+      result.error=false;
+        result.output=execute(data);
+        return result;
+      }
+    }
 
-
-
-module.exports=evaluate;
+  }

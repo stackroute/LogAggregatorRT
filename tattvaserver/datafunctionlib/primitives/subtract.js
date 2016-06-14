@@ -2,10 +2,11 @@ module.exports=function()
 {
   function execute(a, b)
   {
-    var result=a/b;
+    var result=a-b;
     return result;
   }
 return {
+
  //evaluate fn
  evaluate: function(data)
   {
