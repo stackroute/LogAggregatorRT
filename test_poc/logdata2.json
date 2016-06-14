@@ -1,0 +1,24 @@
+["CapitalOneDBNew.gitLogs", 1465394617.519, {
+    "commitDateTime": "2016-06-01T20:34:18Z",
+    "commitDate": "June  4 2016",
+    "commitDay": "Thursday",
+    "commitMonth": "June",
+    "commitYear": "2016",
+    "noOfFiles": 2,
+    "insertion": 5,
+    "deletion": 22,
+    "repo": "mongo-python-driver",
+    "gitUserName": "mongodb",
+    "reviewers": [],
+    "committer": {
+        "name": "Luke Lovett",
+        "email": "luke.lovett@mongodb.com",
+        "gitUserId": 5168837
+    },
+    "author": {
+        "name": "Luke Lovett",
+        "email": "luke.lovett@mongodb.com",
+        "gitUserId": 5168837
+    },
+    "commitId": "ecab1c9432462449248160ea45bf0c86402fdeb0"
+}]
