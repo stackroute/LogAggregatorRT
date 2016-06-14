@@ -32,7 +32,7 @@ var app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+  extended: false
 }));
 app.use(cookieParser());
 
@@ -45,12 +45,12 @@ app.use(express.static(path.join(__dirname, 'tattvaclient')));
 
 //Max age is 5 minutes
 app.use(session({
-    secret: 'TATTVA Complex Event Processor',
-    cookie: {
-        maxAge: 300000
-    },
-    resave: false,
-    saveUninitialized: false
+  secret: 'TATTVA Complex Event Processor',
+  cookie: {
+    maxAge: 300000
+  },
+  resave: false,
+  saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -59,35 +59,34 @@ app.use(flash());
 require('./tattvaserver/auth/auth')(app, passport);
 
 function isAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
+  if (req.isAuthenticated()) {
+    return next();
+  }
 
-    res.status(401).json({
-        "error": "Unauthorized request, please signin and retry..!"
-    });
-
+  res.status(401).json({
+    "error": "Unauthorized request, please signin and retry..!"
+  });
 };
 
 
 var dbURI = 'mongodb://localhost/wipro';
 mongoose.connect(dbURI);
 mongoose.connection.on('connected', function() {
-    console.log('Mongoose connected to ' + dbURI);
+  console.log('Mongoose connected to ' + dbURI);
 });
 mongoose.connection.on('error', function(err) {
-    console.log('Mongoose connection error: ' + err);
+  console.log('Mongoose connection error: ' + err);
 });
 mongoose.connection.on('disconnected', function() {
-    console.log('Mongoose disconnected');
+  console.log('Mongoose disconnected');
 });
 
 process.on('SIGINT', function() {
 
-    mongoose.connection.close(function() {
-        console.log('Mongoose disconnected through app termination');
-        process.exit(0);
-    });
+  mongoose.connection.close(function() {
+    console.log('Mongoose disconnected through app termination');
+    process.exit(0);
+  });
 });
 
 app.use('/', routes);
@@ -104,14 +103,14 @@ app.use('/appsummary', isAuthenticated, summary_router);
 app.use('/watchloop', isAuthenticated, watchloop_router);
 
 app.get('/OutcomeOptions', function(req, res) {
-    res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/outcomeOption.json'));
+  res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/outcomeOption.json'));
 });
 
 app.get('/fieldOption', function(req, res) {
-    res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/fieldOption.json'));
+  res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/fieldOption.json'));
 });
 app.get('/operatorOption', function(req, res) {
-    res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/operatorOption.json'));
+  res.sendFile(path.join(__dirname, 'tattvaclient/design/watchlists/json/operatorOption.json'));
 });
 
 app.use(function(req, res, next) {
@@ -120,21 +119,21 @@ app.use(function(req, res, next) {
 });
 
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
+  });
 }
 
 app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: err
-    });
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: err
+  });
 });
 
 module.exports = app;
