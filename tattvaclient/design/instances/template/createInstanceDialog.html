@@ -22,7 +22,7 @@
 
             <label>Name of Instance</label>
             <md-icon class="material-icons">label</md-icon>
-            <input type="text" ng-model="dInstance.name" ng-required="true" >
+            <input type="text" ng-model="dInstance.name" ng-disabled="flag" ng-required="true" >
             <div flex layout-align="right" ng-messages="createInstance.ip.$error" class="error" id="myerr" role="alert">
               <div ng-message-exp="['required']">
                 *required

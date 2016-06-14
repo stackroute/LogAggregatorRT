@@ -21,7 +21,7 @@ angular.module('tattva')
       $http.get('/namespaces')
       .then(function(res) {
         //success
-        console.log(res.data);
+        // console.log(res.data);
         resolve(res.data);
       },
       function(res) {
