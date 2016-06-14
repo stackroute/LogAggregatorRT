@@ -11,7 +11,7 @@
           <md-input-container class="md-block" flex-gt-sm>
             <label>Select output Stream</label>
             <md-select ng-model="publisherData.streamname">
-              <md-option ng-repeat="obj in streams">
+              <md-option ng-repeat="obj in streams track by $index">
                 {{obj}}
               </md-option>
             </md-select>

@@ -203,13 +203,13 @@
       <md-input-container>
         <label>Outcome Forwarding</label>
         <md-select ng-model="expr.outcomeForwarding">
-          <md-option ng-selected="$index == 2" ng-repeat="object in getOutcomeOptions">{{object}}
+          <md-option ng-selected="$index == 2" ng-repeat="object in getOutcomeOptions" ng-disabled="editFlag">{{object}}
           </md-option>
         </md-select>
       </md-input-container>
     </div>
     <div class="label" flex-offset="10" flex="50" flex-offset-md="10" flex-offset-sm="10">
-      <md-checkbox ng-model="expr.labelData">Highlight Matches</md-checkbox>
+      <md-checkbox ng-model="expr.labelData" ng-disabled="editFlag">Highlight Matches</md-checkbox>
     </div>
   </div>
 </div>
@@ -266,9 +266,9 @@
   <div>
     <span flex></span>
     <div style="float:right;">
-      <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag">save</md-button>
-      <md-button class="md-raised md-primary" ng-click='editWatchlist()' ng-if="editFlag">Edit</md-button>
       <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
+      <md-button class="md-raised md-primary" ng-click='editWatchlist()' ng-if="editFlag">Edit</md-button>
+      <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag">save</md-button>
     </div>
   </div>
   </form>

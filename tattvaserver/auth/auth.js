@@ -5,7 +5,6 @@ var LocalStrategy = require('passport-local').Strategy;
 var UserModel = require("../organisation/users");
 var OrganisationsModel = require("../organisation/organisations");
 
-
 module.exports = function(app, passport) {
     passport.serializeUser(function(user, done) {
         // console.log("serializeUser", user);

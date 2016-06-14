@@ -24,7 +24,7 @@ angular.module("tattva")
   };
   // <!--End-->
   this.getConstants=function(){
-    return [{"Name":"PI","Value":"3.14"},{"Name":"e","Value":"2.74"},{"Name":"φ","Value":"1.618033988749894848204586"}]
+    return [{"Name":"Archimedes' constant π","Value":"3.14"},{"Name":"Ramanujan constant K","Value":"0.76"},{"Name":"Omega Constant Ω","Value":"0.567"},{"Name":"Euler's number e","Value":"2.74"},{"Name":"The golden ratio φ","Value":"1.618033988749894848204586"}]
   }
 
 

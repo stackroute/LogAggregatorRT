@@ -4,7 +4,7 @@ var watchloop = require('./watchloop.js');
 var watchlist = require('../watchlists/watchlists.js');
 var ObjectId = mongoose.Types.ObjectId;
 watchloop_router.get('/',function (request, response) {
-//console.log("watchloop get request");
+next();
 });
 
 watchloop_router.post('/',function (request, response) {

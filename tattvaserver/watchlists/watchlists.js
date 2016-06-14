@@ -1,6 +1,6 @@
 var mongoose = require( 'mongoose' );
 var watchListSchema=new mongoose.Schema({
-  "name": {type: String, required : true,index:true,min:"1"},
+  "name": {type: String, unique: true, required : true,index:true,min:"1"},
   "description": {type: String, required : true,min:"2"},
   "namespace":{type: String, required : true,ref:"namespace"},
   "stream": {type: String, required : true},
@@ -8,7 +8,8 @@ var watchListSchema=new mongoose.Schema({
   "expressions": [
     {
       "tag": {type: String, required : true},
-      "joinWith":{type: String},
+      "parent":{type: String},
+      "child":{type:String},
       "joinBy":{type: String},
       "outcomeForwarding":{type: String},
       "labelData":{type: String},

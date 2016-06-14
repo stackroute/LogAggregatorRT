@@ -7,7 +7,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
       stream:"",
       expressions: [],
       publishers: {
-        "dashboard": { "tabs": []},
+        "dashboard": {},
         "database": {},
         "outstream": {}
       }
@@ -15,6 +15,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
 
     $scope.editFlag = false;
     if ( $stateParams.watchlistName) {
+    $scope.getOutcomeOptions=watchlistconfg.getOutcomeOptions();
       $scope.editNamespace = $stateParams.watchlistName;
       if(selectedWlstdef)
       $scope.wlstdef = selectedWlstdef;
@@ -22,42 +23,64 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
     }
   }
 
-  $scope.removeExpression=function(index) {
-    $scope.wlstdef.expressions.splice(index,1);
-  }
+  $scope.removeExpression=function(index,expr) {
+      console.log(index);
+      // if(index>1){
+      //   $scope.wlstdef.expressions[index-1].tag=expr.tag;
+      //   // $scope.wlstdef.expressions[index-1].child=$scope.wlstdef.expressions[index-1].tag;
+      // }
+      $scope.wlstdef.expressions.splice(index,1);
+    }
 
-  $scope.addNewExpression=function(index,expr) {
-    var newExpr = {
-      "tag": ("Expression::" + ($scope.wlstdef.expressions.length + 1)),
-      "joinWith":"",
-      "joinBy": "",
-      "inputStream" : "",
-      "watch": {
-        "lfield": {
-          "fieldType":"",
-        },
-        "rfield": {
-          "fieldType":"",
+
+    $scope.addNewExpression=function(index,expr) {
+        var newExpr = {
+          "tag": ("tag::" + ($scope.wlstdef.expressions.length + 1)),
+          "parent":"",
+          "child":"",
+          "joinBy": "And",
+          "inputStream" : "",
+          "watch": {
+            "lfield": {
+              "fieldType":"",
+            },
+            "rfield": {
+              "fieldType":"",
+            }
+          },
+        };
+        $scope.getOutcomeOptions=watchlistconfg.getOutcomeOptions();
+        $scope.index = 0;
+        if(isNaN(index)){
+          $scope.index = $scope.wlstdef.expressions.length;
+          if($scope.index!=0)
+          {
+            console.log($scope.index);
+            $scope.wlstdef.expressions[$scope.index-1].child="tag::"+($scope.index+1);
+          }
+          if($scope.wlstdef.expressions.length>0)
+          {
+            console.log($scope.index,$scope.wlstdef.expressions.length);
+            console.log($scope.wlstdef.expressions[0]);
+            newExpr.parent=$scope.wlstdef.expressions[$scope.index-1].tag;
+          }
         }
-      },
-    };
-    $scope.index = 0;
-    $scope.getOutcomeOptions=watchlistconfg.getOutcomeOptions();
-    if(isNaN(index)){
-      $scope.index = $scope.wlstdef.expressions.length;
-      if($scope.index!=0)
-      {
-        $scope.wlstdef.expressions[$scope.index-1].joinWith="tag::"+($scope.index+1);
+        else{
+          var current=newExpr;
+          current.child=expr.child;
+          expr.child=current.tag;
+          current.parent=expr.tag;
+          for(i in $scope.wlstdef.expressions)
+          {
+            if($scope.wlstdef.expressions[i].parent==current.parent)
+            {
+              $scope.wlstdef.expressions[i].parent=current.tag;
+            }
+          }
+          $scope.index = index+1;
+        }
+        $scope.wlstdef.expressions.splice($scope.index,0,newExpr);
       }
-    }
-    else{
-      var current=newExpr;
-      current.joinWith=expr.joinWith;
-      expr.joinWith=current.tag;
-      $scope.index = index+1;
-    }
-    $scope.wlstdef.expressions.splice($scope.index,0,newExpr);
-  }
 
   $scope.savewatchlist=function()
   {

@@ -101,10 +101,11 @@ app.use('/datastream', isAuthenticated, stream_router);
 app.use('/createslide', isAuthenticated, watchlistslide_router);
 app.use('/appsummary', isAuthenticated, summary_router);
 app.use('/watchloop', isAuthenticated, watchloop_router);
-// app.use(function(req, res, next) {
-//     err.status = 404;
-//     next(err);
-// });
+
+app.use(function(req, res, next) {
+    err.status = 404;
+    next(err);
+});
 
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
