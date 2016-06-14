@@ -18,7 +18,7 @@ var users = require('./routes/users');
 var function_router = require('./tattvaserver/functions/functions_routes.js');
 var sideNav_router = require('./tattvaserver/Home/home_routes.js');
 var watchlist_router = require('./tattvaserver/watchlists/watchlist_routes.js');
-var watchlistslide_router = require('./tattvaserver/dashboard/watchlistroutes');
+var watchlistslide_router=require('./tattvaserver/watchslide/watchslideroutes.js');
 var namespace_router = require('./tattvaserver/namespace/namespaces_routes.js');
 var datasourcesrouter = require('./tattvaserver/datasources/datasources_routes.js');
 var mongoose = require('mongoose');
@@ -98,7 +98,7 @@ app.use('/sideNav', isAuthenticated, sideNav_router);
 app.use('/namespaces', isAuthenticated, namespace_router);
 app.use('/watchlist', isAuthenticated, watchlist_router);
 app.use('/datastream', isAuthenticated, stream_router);
-app.use('/createslide', isAuthenticated, watchlistslide_router);
+app.use('/watchslide', isAuthenticated, watchlistslide_router);
 app.use('/appsummary', isAuthenticated, summary_router);
 app.use('/watchloop', isAuthenticated, watchloop_router);
 

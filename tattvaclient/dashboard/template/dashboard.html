@@ -3,8 +3,10 @@
     <div layout="row" style="padding-top:10px;">
       <div flex="30" class="leftpadding">
         <md-select class="currSlideDropdown" md-selected-text="getSelectedText()" ng-model="selectedSlide" ng-change="goToSlide()" placeholder="{{currentSlide.slideName}}" width="4">
-          <md-option ng-repeat="slide in userSlides" ng-value="slide.slideName">
-            {{slide.slideName}}
+          <md-option ng-repeat="slide in userSlides[0].mySlides" ng-value="slide.slidename">
+            <!-- <div ng-repeat="x in slide.mySlides"> -->
+{{slide.slidename}}
+            <!-- </div> -->
           </md-option>
         </md-select>
       </div>
@@ -19,9 +21,17 @@
         </md-button>
       </div> -->
     </div>
-    <div class="flexcontainer">
+<!-- <div ng-repeat="x in orgwatchdetails">
+{{x.name}}
+</div> -->
+<div class="flexcontainer">
+  <watchlistresultwidget class="flex-item"  final="y"ng-repeat="y in orgwatchdetails" data="logdata">
+  </watchlistresultwidget>
+</div>
+
+    <!-- <div class="flexcontainer">
       <watchlistresultwidget class="flex-item" flex={{x.size}} result="x" ng-repeat="x in wlist" data="logdata" watchlistdata="watchlistdata[x.wlid-1]">
       </watchlistresultwidget>
-    </div>
+    </div> -->
   </div>
 </md-content>
