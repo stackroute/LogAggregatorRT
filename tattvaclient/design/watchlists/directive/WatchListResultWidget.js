@@ -11,8 +11,7 @@ angular.module('tattva').directive('watchlistresultwidget', function() {
   directive.scope = {
     myresult: '=result',
     mylog:'=data',
-    watchdata:'=watchlistdata',
-    finaldata:'=final'
+    watchdata:'=watchlistdata'
   }
 
   return directive;

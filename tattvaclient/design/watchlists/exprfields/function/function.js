@@ -1,11 +1,11 @@
 angular.module("tattva")
-.controller('FunctionCtrl',['$scope','$mdDialog','fieldData','loadExprData',function($scope,$mdDialog,fieldData,loadExprData)
+.controller('FunctionCtrl',['$scope','$mdDialog','fieldData','loadExprData','fieldData2','namespaceFactory',function($scope,$mdDialog,fieldData,loadExprData,fieldData2,namespaceFactory)
 {
-
-  $scope.function=[];
+$scope.function=[];
+  $scope.namespace=fieldData2.namespace;
   loadExprData.getFunction().then(function(result){
     var data=result.data;
-    //console.log(data);
+    
     return data;
   }).then(function(data)
   {
@@ -13,22 +13,14 @@ angular.module("tattva")
     {
       $scope.function.push(data[i].name);
     }
-    //console.log($scope.function);
   });
 
 
-
   $scope.funParam=[];
-  loadExprData.getNameSpacenames().then(function(result)
-  {
-    //console.log("namespace \n requested \n now");
-    //console.log(result);
-    for(i in result)
-    {
-      //console.log(result);
-      $scope.funParam.push(result[i]);
+  namespaceFactory.getNamespaceDetails($scope.namespace).then(function(data){
+    for (i in data.dataSchema){
+      $scope.funParam.push(data.dataSchema[i].name);
     }
-    //console.log($scope.funParam);
   });
 
   $scope.getExprAsText =function(){

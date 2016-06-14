@@ -21,8 +21,9 @@ watchlist_router.post('/',function (request, response) {
   watchlistObj.id = watchlistObj.name;
   var watchlist1 = new watchlist(watchlistObj);
   watchlist1.save(function(err, savewatchlistdata){
-    if(err) return console.error(err);
+    if(err) return response.status(400).json(err);
     //console.log(savewatchlistdata);
+    return response.status(200).json(savewatchlistdata);
   });
 });
 <!--end of save watchlist-->
@@ -43,6 +44,7 @@ watchlist_router.put('/:watchlistname',function (request, response) {
       if(err) {
         //console.log("Error in updating: ", watchlistObj._id, " name: ", watchlistObj.name);
         console.error(err);
+        response.status(400).json({error: "error while updating the document"});
       }
       //console.log("Updated Watchlists ",updatedObj.name);
       response.status(200).json(updatedObj);

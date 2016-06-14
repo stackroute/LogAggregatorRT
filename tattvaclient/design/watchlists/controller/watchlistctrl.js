@@ -12,9 +12,10 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
         "outstream": {}
       }
     };
-
+$scope.editparams=undefined;
     $scope.editFlag = false;
     if ( $stateParams.watchlistName) {
+    $scope.editparams=$stateParams.watchlistName;
     $scope.getOutcomeOptions=watchlistconfg.getOutcomeOptions();
       $scope.editNamespace = $stateParams.watchlistName;
       if(selectedWlstdef)
@@ -24,9 +25,9 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
   }
 
   $scope.removeExpression=function(index,expr) {
-      console.log(index);
+      // console.log(index);
       // if(index>1){
-      //   $scope.wlstdef.expressions[index-1].tag=expr.tag;
+      //   $scope.wlstdef.expressions[index].parent=$scope.wlstdef.expressions[index-1].tag;
       //   // $scope.wlstdef.expressions[index-1].child=$scope.wlstdef.expressions[index-1].tag;
       // }
       $scope.wlstdef.expressions.splice(index,1);
@@ -35,7 +36,7 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
 
     $scope.addNewExpression=function(index,expr) {
         var newExpr = {
-          "tag": ("Expression::" + ($scope.wlstdef.expressions.length + 1)),
+          "tag": ("Expressions::" + ($scope.wlstdef.expressions.length + 1)),
           "parent":"",
           "child":"",
           "joinBy": "And",
@@ -86,27 +87,62 @@ function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, sele
   {
 
     if ($scope.editNamespace) {
-      saveToDB.editwatchlistdata($scope.wlstdef);
+      saveToDB.editwatchlistdata($scope.wlstdef)
+      .then(
+        function(res){
+            console.log("ctrl success");
+
+          $scope.showWatchManager();
+        },
+        function(res){
+
+        }
+      );
+
     }
     else{
-      saveToDB.savewatchlistdata($scope.wlstdef);
+      saveToDB.savewatchlistdata($scope.wlstdef)
+      .then(
+        function(res){
+            console.log("ctrl success");
+          $scope.showWatchManager();
+        },
+        function(res){
+
+        }
+      );
     }
-    $scope.showUIPublisherDialog = function(ev) {
-      $mdDialog.show({
-        controller: "watchlistManagerCtrl",
-        templateUrl: "/design/watchlists/template/watchlistManager.html",
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose: false,
-        escapeToClose : false,
-        locals: {"data": $scope.wlstdef}
-      }).then(function(response) {
-      }, function(response) {
-      }).finally(function() {
-      });
-    };
-    $scope.showUIPublisherDialog();
+    // $scope.showUIPublisherDialog = function(ev) {
+    //   $mdDialog.show({
+    //     controller: "watchlistManagerCtrl",
+    //     templateUrl: "/design/watchlists/template/watchlistManager.html",
+    //     parent: angular.element(document.body),
+    //     targetEvent: ev,
+    //     clickOutsideToClose: false,
+    //     escapeToClose : false,
+    //     locals: {"data": $scope.wlstdef,"edit":$scope.editparams}
+    //   }).then(function(response) {
+    //   }, function(response) {
+    //   }).finally(function() {
+    //   });
+    // };
+    // $scope.showUIPublisherDialog();
   }
+
+  $scope.showWatchManager = function(ev) {
+    $mdDialog.show({
+      controller: "watchlistManagerCtrl",
+      templateUrl: "/design/watchlists/template/watchlistManager.html",
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: false,
+      escapeToClose : false,
+      locals: {"data": $scope.wlstdef,"edit":$scope.editparams}
+    }).then(function(response) {
+    }, function(response) {
+    }).finally(function() {
+    });
+  };
 
   var flag1 =true;
   $scope.toggleOutputToStream=function(){

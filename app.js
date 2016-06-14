@@ -10,6 +10,7 @@ var session = require('express-session');
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var routes = require('./routes/index');
+var watchloopExecutor = require('./tattvaserver/watchloop/watchlooprunner.js')
 //var fs = require("fs");
 //var MongoStore = require('connect-mongo')(session);
 
@@ -104,6 +105,9 @@ app.use('/datastream', isAuthenticated, stream_router);
 app.use('/watchslide', isAuthenticated, watchlistslide_router);
 app.use('/appsummary', isAuthenticated, summary_router);
 app.use('/watchloop', isAuthenticated, watchloop_router);
+
+console.log("Starting watch list executor...!");
+watchloopExecutor();
 
 app.use(function(req, res, next) {
     err.status = 404;
