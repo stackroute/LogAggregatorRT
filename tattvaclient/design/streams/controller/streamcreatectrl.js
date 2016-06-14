@@ -76,16 +76,16 @@ angular.module('tattva')
   }
 
   $scope.save=function(){
-    console.log("Inside Factory");
+    // console.log("Inside Factory");
     if ($stateParams.streamName) {
-      console.log("streams=====",$stateParams.streamName);
+      // console.log("streams=====",$stateParams.streamName);
       var streamData={namespace : $scope.user_namespace , instance : $scope.user_instance , streamname : $scope.streamsData.user_streamName, description : $scope.streamsData.stringDescription , query : $scope.streamsData.queryBuilder };
       streamsservice.saveEditedStream(streamData);
       $scope.editStreamFlag = true;
     }
     else {
       var streamData={namespace : $scope.user_namespace , instance : $scope.user_instance, streamname : $scope.streamsData.user_streamName, description : $scope.streamsData.stringDescription , query : $scope.streamsData.queryBuilder };
-      console.log("streamData = ",streamData);
+      // console.log("streamData = ",streamData);
       streamsservice.saveStream(streamData);
       $scope.editStreamFlag = true;
     }

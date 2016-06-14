@@ -17,10 +17,10 @@ angular.module("tattva").factory('authinterceptor', ['$q', '$rootScope',
             },*/
 
             'responseError': function(rejection) {
-                console.log("response error ", rejection.status);
+                // console.log("response error ", rejection.status);
 
                 if (rejection.status === 401) {
-                    console.log('Error due to authentication, requires signin again');
+                    // console.log('Error due to authentication, requires signin again');
                     $rootScope.$emit("member-unauthorized");
                 }
 

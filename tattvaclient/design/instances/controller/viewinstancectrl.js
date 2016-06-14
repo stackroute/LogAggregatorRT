@@ -33,6 +33,7 @@ console.log($scope.instance);
       $scope.dsdata = response.data;
 
       //mdDialog
+      $scope.flag=true;
 
       $mdDialog.show({
         // targetEvent: $event,

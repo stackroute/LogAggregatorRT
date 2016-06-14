@@ -17,7 +17,7 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
   $scope.addInstance = function($event) {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
-
+    $scope.flag=false;
     $mdDialog.show({
       targetEvent: $event,
       controller: DialogController,
@@ -96,16 +96,13 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
 
     $scope.ok=function(){
       // if($scope.nspname===null)
-      //   // $state.go("design.instance");
+        $state.go("design.instance");
       // else
       // $state.go("design.instance.viewInstance({name: '"+$scope.dInstance.namespace+"' })");
       $mdDialog.cancel();
     }
 
     $scope.cancel = function() {
-      $mdDialog.cancel();
-    }
-    $scope.ok=function(){
       $mdDialog.cancel();
     }
 
