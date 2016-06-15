@@ -1,21 +1,27 @@
 angular.module('tattva')
-.controller('dashboardcontroller', ['$scope','$mdDialog','$state', "$stateParams" ,'slideFactory','wlstDataService','searchFactory',
-function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,searchFactory) {
+.controller('dashboardcontroller', ['$scope','$mdDialog','$state', "$stateParams" ,'slideFactory','wlstDataService','searchFactory', 'AuthService',
+function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,searchFactory,AuthService) {
   $scope.orgname="wipro";
   $scope.selectedSlide = null;
+  $scope.socket = io();
+  var usr = AuthService.getCurrentUser();
   $scope.orgwatchdetails = slideFactory.getOrgWatchlists(function(data){
     $scope.orgwatchdetails=data;
+    for(i=0;i<$scope.orgwatchdetails.length; i++){
+      var roomName = usr.orgsite + "::" + $scope.orgwatchdetails[i].name;
+      console.log("Joining room: ", roomName);
+      $scope.socket.emit('join:room', {
+        'room': roomName
+      });
+    };
+
   });
   $scope.pubMessages = [];
 
-  //$scope.init=function()
-  //{
-    console.log("inside init function");
+  // $scope.init=function()
+  // {
+    // console.log("inside init function");
 
-    $scope.socket = io();
-    $scope.socket.emit('join:room', {
-      'room': 'myroom'
-    });
     //register a event to receive message from server
     console.log("Listening for watch list message on socket");
     $scope.socket.on('watchlist:getdata', function(data) {
@@ -28,7 +34,7 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
       $scope.$apply($scope.pubMessages);
     });
     console.log("Completed init");
-  //}
+  // }
 
   if($stateParams.slidename !== null){
     $scope.currentSlide = slideFactory.getSlide($stateParams.slidename,function(data){
