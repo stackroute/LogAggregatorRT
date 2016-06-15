@@ -216,7 +216,7 @@ $scope.editparams=undefined;
             targetEvent: ev,
             clickOutsideToClose: false,
             escapeToClose : false,
-            locals: {"publisherData": $scope.wlstdef.publishers.dashboard }
+            locals: {"publisherData": $scope.wlstdef.publishers.dashboard,"namespace":$scope.wlstdef.namespace }
           }).then(function(dlgRes) {
             $scope.wlstdef.publishers.dashboard = dlgRes;
           }, function(dlgRes) {

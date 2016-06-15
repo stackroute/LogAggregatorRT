@@ -1,6 +1,7 @@
 angular.module("tattva")
-.controller('AccumulateCtrl',['$scope','$mdDialog','fieldData','loadExprData',function($scope,$mdDialog,fieldData,loadExprData)
+.controller('AccumulateCtrl',['$scope','$mdDialog','fieldData','loadExprData','namespaceFactory','fieldData2',function($scope,$mdDialog,fieldData,loadExprData,namespaceFactory,fieldData2)
 {
+$scope.namespace=fieldData2.namespace;
   $scope.function=[];
   loadExprData.getFunction().then(function(result){
     var data=result.data;
@@ -12,22 +13,15 @@ angular.module("tattva")
     {
       $scope.function.push(data[i].name);
     }
-    //console.log($scope.function);
   });
-
 
   $scope.funParam=[];
-  loadExprData.getNameSpacenames().then(function(result)
-  {
-    //console.log("namespace \n requested \n now");
-    //console.log(result);
-    for(i in result)
-    {
-      //console.log(result);
-      $scope.funParam.push(result[i]);
+  namespaceFactory.getNamespaceDetails($scope.namespace).then(function(data){
+    for (i in data.dataSchema){
+          $scope.funParam.push(data.dataSchema[i].name);
     }
-    //console.log($scope.funParam);
   });
+
 
   $scope.fieldData=fieldData;
   $scope.hide = function() {

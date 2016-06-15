@@ -218,7 +218,7 @@
 </div> <!-- end of ng repeat start for "stmt in wlstdef.statements -->
 <div ng-repeat-end>
   <md-button class="float-right md-raised md-mini" ng-click="removeExpression($index);" aria-label="">Remove</md-button>
-  <md-button class="md-raised md-mini" ng-show="wlstdef.expressions.length>1 && !$last" ng-click="addNewExpression($index,expr);" aria-label="">ADD</md-button>
+  <md-button class="float-right md-raised md-mini" ng-show="wlstdef.expressions.length>1 && !$last" ng-click="addNewExpression($index,expr);" aria-label="">ADD</md-button>
   <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
   <div  layout="row" layout-align="start center" flex>
     <md-button style="text-align:left" ng-class="{'last':$last}" class="md-raised">Join With {{expr.joinWith}}</md-button>

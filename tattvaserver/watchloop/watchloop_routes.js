@@ -2,6 +2,9 @@ var watchloop_router = require('express').Router();
 var mongoose = require( 'mongoose' );
 var watchloop = require('./watchloop.js');
 var watchlist = require('../watchlists/watchlists.js');
+// var watchloopExecutor = require('./watchlooprunner.js')
+var watchExecutor = require ('../watchexecutor/watchlistexecutor');
+
 var ObjectId = mongoose.Types.ObjectId;
 watchloop_router.get('/',function (request, response) {
 next();
@@ -10,17 +13,23 @@ next();
 watchloop_router.post('/',function (request, response) {
   var watchloopObj = request.body;
   var o_id;
+  var dataSource = {
+    ipaddr: '172.23.238.253',
+    port: '7070'
+  };
+
   watchlist.findOne({name:watchloopObj.watchname},{}, function(err, watchloopId){
-    console.log("watchlist id to be looped",watchloopId);
+    console.log("** watchlist id to be looped", watchloopId);
     o_id = ObjectId(watchloopId._id);
     console.log("this is id"+o_id);
     watchloopObj.watchid=o_id;
-    console.log(watchloopObj);
     var watchloop1 = new watchloop(watchloopObj);
     watchloop1.save(function(err, savewatchloopdata){
       if(err) return console.error(err);
-      //console.log(savewatchloopdata);
-      console.log("saved watchloop  data",savewatchloopdata);
+      console.log("Starting execution");
+      //this is object
+        watchExecutor(watchloopId, dataSource);
+      //Execute the watch list using Watch list executor
     });
   })
 });

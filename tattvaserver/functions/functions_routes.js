@@ -8,7 +8,7 @@ function_router.use(function(req, res, next) {
     var func = [{
         "_id" : "function:1",
         "name" : "Sum",
-        "description": "This is an invalid function",
+        "description": "Adds two variables",
         "fnvartype":[
         {
           "var":"measures",
@@ -26,7 +26,7 @@ function_router.use(function(req, res, next) {
       {
         "_id" : "function:2",
         "name" : "Subtract",
-        "description": "This is an invalid function",
+        "description": "Subtract one variable from another",
         "fnvartype":[
         {
           "var":"measures",
@@ -44,7 +44,7 @@ function_router.use(function(req, res, next) {
       {
         "_id" : "function:3",
         "name" : "Multiply",
-        "description": "This is an invalid function",
+        "description": "Multiply two varibles",
         "fnvartype":[
         {
           "var":"measures",
@@ -62,7 +62,7 @@ function_router.use(function(req, res, next) {
       {
         "_id" : "function:4",
         "name" : "Divide",
-        "description": "This is an invalid function",
+        "description": "Divide two variables",
         "fnvartype":[
         {
           "var":"measures",
@@ -73,14 +73,14 @@ function_router.use(function(req, res, next) {
           "value": true
         }],
         "variables":"Number x,Number y",
-        "code" : "int Aggr(int x,char y){ return x/y};",
+        "code" : "int Divide(int x,char y){ return x/y};",
         "createdBy":"Jasjeet",
         "editedBy":"Pooja"
       },
       {
         "_id" : "function:5",
         "name" : "Calculate",
-        "description": "This is an invalid function",
+        "description": "Add '2' to the sum of two variables",
         "fnvartype":[
         {
           "var":"measures",
@@ -91,14 +91,14 @@ function_router.use(function(req, res, next) {
           "value": true
         }],
         "variables":"Number x,Number y",
-        "code" : "int Aggr(int x,char y){ return x+y+2};",
+        "code" : "int cal(int x,char y){ return x+y+2};",
         "createdBy":"Jasjeet",
         "editedBy":"Pooja"
       },
       {
         "_id" : "function:6",
         "name" : "Aggregate",
-        "description": "This is an invalid function",
+        "description": "finds the aggregate value of two variables",
         "fnvartype":[
         {
           "var":"measures",

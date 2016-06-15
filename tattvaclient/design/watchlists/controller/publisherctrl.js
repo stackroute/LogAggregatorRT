@@ -1,13 +1,20 @@
 angular.module('tattva')
-.controller('publisherCtrl', ['$scope','$mdDialog','publisherSettingFactory', "publisherData",
-function($scope,$mdDialog,publisherSettingFactory, publisherData){
+.controller('publisherCtrl', ['$scope','$mdDialog','publisherSettingFactory', 'publisherData','namespaceFactory','namespace',
+function($scope,$mdDialog,publisherSettingFactory, publisherData,namespaceFactory,namespace){
   //Data for publishing configuration passed form Watchlist controllre (parent controller)
   $scope.publisherData = publisherData;
-
+  $scope.namespace=namespace;
   $scope.uiPublisherConfig = getConfigData();
 
   $scope.widgetTabs = $scope.uiPublisherConfig.widgetTabs.slice();
 
+
+    $scope.xParam=[];
+    namespaceFactory.getNamespaceDetails($scope.namespace).then(function(data){
+      for (i in data.dataSchema){
+            $scope.xParam.push(data.dataSchema[i].name);
+      }
+    });
 
   if($scope.publisherData.tabs){
     //console.log("Before: ", $scope.widgetTabs);
@@ -19,14 +26,7 @@ function($scope,$mdDialog,publisherSettingFactory, publisherData){
         }
       });
     });
-    //console.log("After: ", $scope.widgetTabs);
   }
-
-  // $scope.displaySize = $scope.publisherData.displaySize;
-  // $scope.logFormat=$scope.publisherData.logFormat;
-  // $scope.graphType=$scope.publisherData.graphType;
-  // $scope.tabs=$scope.publisherData.tabs;
-
   $scope.hide = function() {
     $mdDialog.hide();
   };

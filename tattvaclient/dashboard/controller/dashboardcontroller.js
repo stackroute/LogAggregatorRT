@@ -21,7 +21,7 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
     $scope.socket.on('watchlist:getdata', function(data) {
       console.log("on watchlist getdata event ", data);
       $scope.pubMessages.push(data);
-      //$scope.$apply($scope.pubMessages);
+      $scope.$apply($scope.pubMessages);
     });
     console.log("Completed init");
   //}
