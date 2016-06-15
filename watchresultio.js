@@ -10,8 +10,8 @@ io.on('connection', function(socket) {
 
 	socket.on('watchlist:onResult', function(data) {
 		io.to(data.room).emit('room:message', {'room':data.room, 'message':data.message});
-		console.log("New message to room: ", data);
-		socket.to(data.room).emit('watchlist:getdata', {'room':data.room, 'message':data.message});
+		console.log("New message to room: ", data.room.name);
+		socket.to(data.room.name).emit('watchlist:getdata', {'room':data.room, 'message':data.message});
 	});
 });
 

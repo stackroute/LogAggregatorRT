@@ -1,4 +1,4 @@
-<md-content class="content" ng-init="init()">
+<md-content class="content">
   <div ng-controller="dashboardcontroller">
     <div layout="row" style="padding-top:10px;">
       <div flex="30" class="leftpadding">
@@ -25,10 +25,11 @@
 {{x.name}}
 </div> -->
 <div class="flexcontainer">
-  <watchlistresultwidget class="flex-item"  final="y"ng-repeat="y in orgwatchdetails" data="logdata">
+  <watchlistresultwidget class="flex-item" flex="{{y.publishers.dashboard.displaySize}}" finalmsg="pubMessages" final="y"ng-repeat="y in orgwatchdetails" watchlistdata="y">
   </watchlistresultwidget>
 </div>
-
+<!-- <div ng-repeat="msg in pubMessages" mymessage="msg">{{msg}}
+</div> -->
     <!-- <div class="flexcontainer">
       <watchlistresultwidget class="flex-item" flex={{x.size}} result="x" ng-repeat="x in wlist" data="logdata" watchlistdata="watchlistdata[x.wlid-1]">
       </watchlistresultwidget>

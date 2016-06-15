@@ -9,7 +9,7 @@ var exprReducerPipeline = require('./exprreducerpipeline');
 var exprPublisherPipeline = require('./watchpublisherpipeline');
 
 var watchExecutor = function(wlstDef, dataSource) {
-  console.log("Request recieved for executing watch list ", wlstDef.name, " from ", dataSource.ipaddr, ":", dataSource.port);
+  // console.log("Request recieved for executing watch list ", wlstDef.name, " from ", dataSource.ipaddr, ":", dataSource.port);
 
   //Create the connector
   var sourceStream = websocketConnector(dataSource.ipaddr, dataSource.port);

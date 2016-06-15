@@ -37,7 +37,7 @@ md-icon:focus {
  }
 .flex-item
 {
-  width:47%;
+  /*width:47%;*/
   border-radius: 1%;
   padding: 15px;
 }

@@ -95,7 +95,7 @@ router.delete('/:slidename/:username', function (req, res) {
 });
 //getall watchlist data for org lside
 router.get('/orgwatchlists', function (req, res) {
-  watchlistdetails.find({}, 'name','publishers',function(err, watchslideData){
+  watchlistdetails.find({}, function(err, watchslideData){
     if(err){
       console.log("Error is "+err);
     }

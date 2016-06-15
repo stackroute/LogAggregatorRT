@@ -1,3 +1,8 @@
-<md-content class="md-padding fix">
+<md-content class="md-padding fix" ng-if="finaldata.publishers.dashboard.graphType === 'donut'">
   <donutchart></donutchart>
+</md-content>
+<md-content class="md-padding fix" ng-if="finaldata.publishers.dashboard.graphType === 'line'">
+  <div ng-controller="SalesController">
+    <div linear-chart chart-data="salesData"></div>
+  </div>
 </md-content>

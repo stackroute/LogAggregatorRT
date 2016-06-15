@@ -19,9 +19,13 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
     //register a event to receive message from server
     console.log("Listening for watch list message on socket");
     $scope.socket.on('watchlist:getdata', function(data) {
-      console.log("on watchlist getdata event ", data);
+      // console.log("on watchlist getdata event ", data);
+      if($scope.pubMessages.length >= 250) {
+          console.log("limiting the pubmessage push");
+        $scope.pubMessages = [];
+      }
       $scope.pubMessages.push(data);
-      //$scope.$apply($scope.pubMessages);
+      $scope.$apply($scope.pubMessages);
     });
     console.log("Completed init");
   //}
@@ -44,7 +48,7 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
     if ($scope.selectedSlide !== undefined) {
       // return "Displaying Watches from Slide: <b>" + $scope.currentSlide.slideName + "</b>";
       if($stateParams.slidename==null)
-      {return "Displaying Watches from Slide: <b>" + $scope.currentSlide[0].defaultSlide+ "</b>";}
+      {return "Displaying Watches from Slide: <b> Organisation Slide </b>";}
       else{return "Displaying Watches from Slide: <b>" + $scope.currentSlide+ "</b>";}
     } else {
       return "Please select an Silde";
