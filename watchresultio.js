@@ -1,7 +1,6 @@
 var io = require('socket.io')();
 
 io.on('connection', function(socket) {
-	console.log('a new client socket connected ');
 
 	socket.on('join:room', function(data) {
 		console.log("New client is joining: ", data.room);
@@ -10,7 +9,6 @@ io.on('connection', function(socket) {
 
 	socket.on('watchlist:onResult', function(data) {
 		io.to(data.room).emit('room:message', {'room':data.room, 'message':data.message});
-		console.log("New message to room: ", data.room.name);
 		socket.to(data.room.name).emit('watchlist:getdata', {'room':data.room, 'message':data.message});
 	});
 });

@@ -6,10 +6,12 @@ var fs = require('fs');
 var watchPublishPipeline = function(wlstDef) {
   var myProcessors = [];
   var socket = new socketClient('http://localhost:8080/');
-  //'room': (wlstDef.orgsite + "::" + wlstDef.name);
+  var roomName = wlstDef.orgsite + "::" + wlstDef.name;
   socket.emit('join:room', {
-    'room': 'myroom'
+    'room': roomName
   });
+
+  console.log("Watch room ", roomName);
 
   var outLogFile = wlstDef.name;
   outLogFile = outLogFile.replace(" ", "_") + ".log";
@@ -17,27 +19,25 @@ var watchPublishPipeline = function(wlstDef) {
 
   if (wlstDef.publishers.dashboard) {
     myProcessors.push(highland.map(function(execObj) {
-      console.log("Emmitting data over socket room");
+      // console.log("Emmitting data over socket room");
       socket.emit('watchlist:onResult', {
         'room': {
-          'name': 'myroom'
+          'name': roomName
         },
         'message': {
           'data': execObj
         }
       });
-
       return execObj;
     }));
 
     myProcessors.push(highland.each(function(execObj) {
-      outtream.write("\n" + JSON.stringify(execObj) + "\n");
+      //outtream.write("\n" + JSON.stringify(execObj) + "\n");
+      outtream.write(".");
 
-      console.log("Result: ", execObj.path)
+      // console.log("Result: ", execObj.path)
       return execObj;
     }));
-
-
   }
 
   if (wlstDef.publishers.database.saveas) {
