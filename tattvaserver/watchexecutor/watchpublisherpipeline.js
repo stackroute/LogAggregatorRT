@@ -1,4 +1,5 @@
 var highland = require('highland');
+// var socket = require('socket.io-client')('http://localhost:8080/');
 var fs=require('fs');
 
 var watchPublishPipeline = function(wlstDef) {
@@ -12,6 +13,25 @@ var watchPublishPipeline = function(wlstDef) {
       outtream.write("\n" + JSON.stringify(execObj) +"\n");
 
       console.log("Result: ", execObj.path)
+      return execObj;
+    }));
+
+    myProcessors.push(highland.each(function(execObj) {
+      console.log("Sending data over sockets ");
+
+      var socket = require('socket.io-client')('http://localhost:8080/');
+
+      //'room': (wlstDef.orgsite + "::" + wlstDef.name);
+      socket.emit('join:room', {
+        'room': 'myroom'
+      });
+
+      console.log("Emmitting data over socket room");
+      socket.emit('watchlist:onResult', {
+        'room': {'name': 'myroom'},
+        'message': {'data': execObj }
+      });
+
       return execObj;
     }));
   }
