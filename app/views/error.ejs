@@ -1,3 +1,27 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>LogAggregatorRT</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
+</head>
+<body style="background-color:#fafafa;"ng-app='errDisp' ng-controller="ErrorCtrl" ng-cloak>
+  <p class="404"style="font-size:300px;margin:0px;padding:10% 10% 0% 32%;text-shadow: 6px 6px 0px rgba(0,0,0,0.2);">404</p>
+  <!-- <md-icon class="material-icons">add</md-icon> -->
+  <h1 style="padding-left:22%;">We can't seem to find the page you are looking for...</h1>
+
+  <script src="/angular/angular.min.js" charset="utf-8"></script>
+  <script src="/angular-animate/angular-animate.min.js" charset="utf-8"></script>
+  <script src="/angular-aria/angular-aria.min.js" charset="utf-8"></script>
+  <script src="/angular-messages/angular-messages.min.js" charset="utf-8"></script>
+  <script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
+  <script src="/angular-material-icons/angular-material-icons.min.js" charset="utf-8"></script>
+</body>
+<script>
+angular.module("errDisp", ['ngMaterial'])
+.controller('ErrorCtrl', ["$scope", function($scope){
+
+}]);
+</script>
+</html>

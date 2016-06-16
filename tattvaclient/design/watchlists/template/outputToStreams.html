@@ -1,0 +1,28 @@
+<md-dialog style="width:600px;">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Output To Output Stream</h2>
+    </div>
+  </md-toolbar>
+  <div>
+     <form ng-submit="updateBackPublisher(Data)">
+      <md-dialog-content>
+        <div layout-padding>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Select output Stream</label>
+            <md-select ng-model="publisherData.streamname">
+              <md-option ng-repeat="obj in streams track by $index">
+                {{obj}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+      </md-dialog-content>
+      <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+        <md-button type="submit" class="md-raised md-primary">OK</md-button>
+      </md-dialog-actions>
+    </form>
+  </div>
+</md-dialog>

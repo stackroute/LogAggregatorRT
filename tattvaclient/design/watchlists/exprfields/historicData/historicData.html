@@ -1,0 +1,39 @@
+<md-dialog class="watchlistDialog">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Historic Data</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content class="md-padding">
+    <form name="frmHstrcData" ng-submit="updateBackPublisher()">
+      <div layout layout-sm="column">
+        <md-input-container flex> <md-select name="historicfunction" ng-model="fieldData.historicfunction" required>
+          <label>Select Function</label>
+          <md-option>Historic Function1</md-option>
+          <md-option>Historic Function2</md-option>
+          <md-option>Historic Function3</md-option>
+          <md-option>Historic Function4</md-option>
+        </md-select>
+        <div ng-messages="frmHstrcData.historicfunction.$error">
+            <div ng-message="required">This is required!</div>
+          </div>
+      </md-input-container>
+      </div>
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>Parameter</label>
+          <input name="historicfunctionparam" ng-model="fieldData.historicfunctionparam" required>
+          <div ng-messages="frmHstrcData.historicfunctionparam.$error">
+              <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <br><br><br><br><br><br><br><br><br>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()"> Cancel </md-button>
+      <md-button type="submit" class="md-primary md-raised" > OK </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

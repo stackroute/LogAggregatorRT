@@ -1,0 +1,16 @@
+<md-content class="md-padding fix" ng-if="finaldata.publishers.dashboard.graphType === 'donut'">
+  <donutchart></donutchart>
+</md-content>
+<md-content class="md-padding fix" ng-if="finaldata.publishers.dashboard.graphType === 'line'">
+  <div ng-controller="SalesController">
+    <div linear-chart chart-data="salesData"></div>
+  </div>
+  <!-- <div ng-controller="dashboardcontroller">
+  {{finaldata.publishers.dashboard.xaxis}} /
+  {{finaldata.publishers.dashboard.yaxis}}
+  {{pubMessages[0].message.data.data[finaldata.publishers.dashboard.xaxis]}}
+  <br><br>
+  {{pubMessages[0].message.data.data[finaldata.publishers.dashboard.yaxis]}}
+    <div linear-chart chart-data="pubMessages" config-data="finaldata"></div>
+  </div> -->
+</md-content>

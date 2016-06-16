@@ -1,0 +1,57 @@
+<md-dialog class="watchlistDialog">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Accumulate</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content class="md-padding">
+    <form name="AccumulatFrm" ng-submit="updateBackPublisher()">
+      <div layout="column" layout-sm="column">
+
+        <md-input-container class="watchlistcheckbox" flex="50">
+          <md-select name="AccumulateOn" ng-model="fieldData.AccumulateOn" required>
+            <label>Accumulate On</label>
+            <md-option>Record</md-option>
+            <md-option>Time</md-option>
+          </md-select>
+          <div ng-messages="AccumulatFrm.AccumulateOn.$error">
+            <div ng-message="required">This is required!</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="watchlistcheckbox" flex="50">
+          <label>Accumulate Till</label>
+          <input name="AccumulateTill" ng-model="fieldData.AccumulateTill" required>
+          <div ng-messages="AccumulatFrm.AccumulateTill.$error">
+            <div ng-message="required">This is required!</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="watchlistcheckbox" flex>
+          <md-select name="FunctionenPostAccumulation" ng-model="fieldData.FunctionenPostAccumulation" required>
+            <label>Function post Accumulation</label>
+            <md-option ng-repeat="object in function">{{object}}</md-option>
+          </md-select>
+          <div ng-messages="AccumulatFrm.FunctionenPostAccumulation.$error">
+            <div ng-message="required">This is required!</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="watchlistcheckbox" flex="50">
+          <label>Params</label>
+          <md-select ng-model="fieldData.FunctionenPostAccumulationParam"
+          md-on-close="clearSearchTerm()"
+          data-md-container-class="selectdemoSelectHeader"
+          multiple required>
+          <md-optgroup label="functionparam">
+            <md-option ng-value="params" ng-repeat="params in funParam">{{params}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+    <md-button ng-click="cancel()"> Cancel </md-button>
+    <md-button type="submit" class="md-primary md-raised"> OK </md-button>
+  </form>
+</md-dialog-actions>
+</md-dialog>

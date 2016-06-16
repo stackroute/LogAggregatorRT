@@ -1,0 +1,66 @@
+<div class="content">
+
+  <div flex-offset="5">
+    <md-card>
+      <div layout="row">
+        <div flex="10">
+          <md-card-avatar>
+            <img class="logo" style="height:50px; width:70px;" ng-src="{{org.orgLogo}}"/>
+          </md-card-avatar>
+        </div>
+        <div flex="90" >
+          <div layout="column"></div>
+          <div layout="column">
+            <span class="md-title">{{org.orgName}}</span></div>
+            <div layout="column">
+              <span class="md-subhead">{{org.orgLocation}}</span>
+            </div>
+          </div>
+        </div>
+        <div layout="row">
+          <div flex="60"></div>
+          <div flex="20" >
+            <div class="md-hue-1" ng-show="showSearch">
+              <md-input-container md-theme="input">
+                <input ng-model="search.name" placeholder="enter search">
+              </md-input-container>
+            </div>
+          </div>
+          <div flex="10">
+            <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+              <ng-md-icon icon="search"></ng-md-icon>
+            </md-button>
+          </div>
+          <div flex="10" flex-offset="5">
+            <!-- <ng-md-icon aria-label="" icon="person_add" ng-click="showAdd()" size="30px"></ng-md-icon> -->
+            <ng-md-icon aria-label="" icon="person_add" ui-sref="organisation.organisationEdit" size="30px"></ng-md-icon>
+          </div>
+        </div>
+      </md-card>
+      <div>
+        <md-card >
+          <!-- <h3 flex-offset="5">Recent users</h3> -->
+          <md-list>
+            <md-subheader><h4>Recent users</h4></md-subheader>
+            <md-list-item class="md-3-line hover" ng-repeat="person in user | filter:search">
+              <img alt="{{ user[$index].name }}" ng-src="http://www.hit4hit.org/img/login/user-icon-6.png" class="md-avatar"/>
+              <!-- <img alt="{{ user[$index].name }}" ng-src="{{ user[$index].img }}" class="md-avatar"/> -->
+              <!-- <span class='md-avatar'><ng-letter-avatar data="{{ data[$index].fun_name  }}" shape="round" avatarcustombgcolor="#ff944d"></ng-letter-avatar></span> -->
+              <!-- <ng-letter-avatar data="{{ user[$index].name  }}" shape="round" avatarcustombgcolor="#ff944d" size="16px" font-size="20px"></ng-letter-avatar> -->
+              <div class="md-list-item-text" layout="column">
+                <h3>{{ person.name }}</h3>
+                <p>{{  person.email}}</p>
+              </div>
+              <!-- <md-icon md-font-icon="fa fa-trash"></md-icon> -->
+              <md-subheader md-no-sticky >
+              <md-button class="md-fab md-mini md-secondary" aria-label="Comment">
+                <ng-md-icon icon="mode_edit" ui-sref="organisation.organisationEdit({userName:'{{person.name}}'  })"></ng-md-icon>
+              </md-button>
+            </md-subheader>
+              <md-divider ng-if="!$last" style="margin: 10px 0px 10px 0px;"></md-divider>
+            </md-list-item>
+          </md-list>
+        </md-card>
+      </div>
+      </div>
+    </div>
