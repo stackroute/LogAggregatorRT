@@ -2,19 +2,7 @@ var datasourcesroutes = require('express').Router();
 var bodyParser = require('body-parser');
 var JSONparser = bodyParser.json();
 var datasource = require('./datasource.js');
-var namespace = require('./namespaces.js');
-
-
-
-//middleware and routes
-datasourcesroutes.use(function(req, res, next) {
-    //console.log("instances");
-
-    next();
-});
-
-
-
+var namespace = require('../namespace/namespaces.js');
 
 datasourcesroutes.get('/edit/:dsourcename', function(req, res) {
     var dsourcename = req.params.dsourcename;
@@ -41,7 +29,6 @@ datasourcesroutes.get('/edit/:dsourcename', function(req, res) {
         });
     });
 });
-
 
 datasourcesroutes.put('/editdialogInstance', function(req, res) {
     //console.log("req.body =    = ", req.body  );
@@ -71,7 +58,6 @@ datasourcesroutes.put('/editdialogInstance', function(req, res) {
                                 port: req.body.port,
                                 location: req.body.location,
                                 description: req.body.description,
-                                createdBy: "pooja singh",
                                 editedBy: "pooja singh"
                               }
                                 datasource.update({
@@ -83,26 +69,24 @@ datasourcesroutes.put('/editdialogInstance', function(req, res) {
                                     //console.log('Updated Doc = ', updatedObj);
                                     res.send(updatedObj);
                                 });
-
                             }
         }); //outer datasource
-
     }); //outer
-
-
-
 });
 
 datasourcesroutes.post('/createdialogInstance', JSONparser, function(req, res) {
-
     var sourcedata = req.body;
     namespace.findOne({
         name: sourcedata.namespace
     }, function(err, namespacedata) {
+      if(err){
+        console.log("Unable to find namespace '", sourcedata.namespace, "' to which instances was being subscribed, error: ", err);
+        res.status(500).json({error:"Invalid namespace or not found..!"});
+      }
         var refid = namespacedata._id;
         var obj = {
             name: sourcedata.name,
-            tag: "tag::" + (sourcedata.location).substring(0, 2) + sourcedata.port,
+            //tag: "tag::" + (sourcedata.location).substring(0, 2) + sourcedata.port,
             nsid: refid,
             ipaddr: sourcedata.ipAddress,
             port: sourcedata.port,
@@ -110,20 +94,18 @@ datasourcesroutes.post('/createdialogInstance', JSONparser, function(req, res) {
             location: sourcedata.location,
             createdBy: "pooja singh",
             editedBy: "pooja singh"
-
         };
         datasource.create(obj, function(err, ddata) {
             if (err) {
-                //console.log(err);
+              console.log("Failed to save a new datasource, error: ",err);
+              res.status(500).json({"error":"Internal error in saving..!"});
             } else {
                 //console.log(ddata);
-            res.send(ddata);
+                res.status(200).json(namespacedata);
+                // res.send(ddata);
             }
-
         });
-
     });
-
 });
 
 datasourcesroutes.get('/:param', function(req, res) {
@@ -133,55 +115,32 @@ datasourcesroutes.get('/:param', function(req, res) {
         name: nsp
     }, function(err, namespacedata) {
         var refid = namespacedata._id;
-
-        //console.log(namespacedata, "----------", namespacedata._id);
+        if(err){
+          console.log("Unable to find namespace '",nsp, "' of which instances were quaried, error: ", err);
+          res.status(500).json({error:"Invalid namespace or not found..!"});
+        }
         datasource.find({
             nsid: refid
         }, function(err, datasourcedata) {
-            res.send(datasourcedata);
+          if(err){
+            console.log("Unable to find the instance in ",nsp, " error: ", err);
+            res.status(500).json({error: "Failed to find requested data..!"});
+          }
+          res.send(datasourcedata);
         });
-
     });
 });
 
-
 datasourcesroutes.get('/', function(req, res) {
-    //console.log("get");
     namespace.find({}, {
         name: 1
     }, function(err, namespacedata) {
+      if(err){
+        console.log("Namespaces could not be fetched, error: ", err);
+        res.status(500).json({error:"Internal error"});
+      }
         res.send(namespacedata);
     });
-
-
-    // namespace.findOne({name:"lighttpd"}).then(function(nsp){
-    //     //console.log(nsp._id);
-    //
-    //
-    //
-    //
-    //      var feed= new datasources({
-    //        "name":"server-32",
-    //       "tag" :"tag::39000",
-    //       "nsid":nsp._id,
-    //       "ipaddr":"192.138.05.127",
-    //       "port":9000,
-    //       "description":"server-1, xxxxx dataflow",
-    //       "location":"Block-IV,Kormangala",lighttpdlighttpd
-    //       "createdBy":"pooja singh",
-    //       "editedBy":"pooja singh"
-    //     });
-    //
-    //     feed.save(function (err) {
-    //       if (err){
-    //     //console.log(err);
-    //          return handleError(err)
-    //       }
-    //     });
-    //   });
 });
-
-
-
 
 module.exports = datasourcesroutes;

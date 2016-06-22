@@ -3,12 +3,7 @@ angular.module('tattva')
   var streamData={
     sendStream : function(sendData){
       console.log("STREAM FACTORY NAMESPACE name",sendData);
-      return $http.get('/datastream/'+sendData)
-      .then(function(response){
-        console.log(response);
-        data=response.data;
-        return data;
-      });
+      return $http.get('/datastream/'+sendData);
     },
 
     sendStreamdata : function(streamname){
@@ -29,6 +24,9 @@ angular.module('tattva')
       }).then(function(response)
       {
         if (response.data.errors) {
+          // console.log("testing123:",
+
+          response.data.errors;
           // Showing errors.
           $scope.errorName = response.data.errors.name;
         } else {

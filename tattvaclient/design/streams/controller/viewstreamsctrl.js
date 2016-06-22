@@ -14,6 +14,8 @@ function($scope, $http, $stateParams, streamFactory, namespaceService){
       streamFactory.sendStream(nsname).then(function(res){
         $scope.streamResultData = res;
         // console.log($scope.streamResultData);
+      },function(res){
+        $scope.resError = res.data.error;
       });
     }
   }

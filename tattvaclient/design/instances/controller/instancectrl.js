@@ -8,7 +8,6 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
   $scope.selectedIndex = 1;
   $scope.submitInstance = function() {
     $state.go('instance.submitInstance');
-
   }
 
   namespaceFactory.getNameSpace().then(function(response){$scope.data=response;});
@@ -28,8 +27,6 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
       /* scope:{success:'false'}*/
     });
 
-
-
     $scope.$watch(function() {
       return $mdMedia('xs') || $mdMedia('sm');
     }, function(wantsFullScreen) {
@@ -37,8 +34,6 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
     });
 
     function DialogController($scope, $state, $mdDialog, $http) {
-
-
       namespaceFactory.getNameSpace().then(function(response){  $scope.namespaceSelect=response;});
 
       $scope.formtype="CREATE";
@@ -55,13 +50,14 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
 
       $scope.createMsg = "";
       $scope.instanceSubmit = function() {
-
+        $scope.resError = "";
         $http({
           method: 'POST',
           url: 'instance/createdialogInstance',
           data: $scope.dInstance
-        }).success(function(response) {
+        }).then(function(response) {
           var data = {};
+          console.log("success");
           // if (data.errors) {
           //     $scope.errorName = data.errors.name;
           //     $scope.errorUserName = data.errors.username;
@@ -90,10 +86,12 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
         $state.go("design.instance");
         else*/
         // $state.go("design.instance.viewInstance.addInstance({name: '"+$scope.dInstance.namespace+"' })");
-
+        // $scope.flag=true;
+      }, function(res){
+        $scope.resError = res.data.error;
+//        console.log(res.data.error);
       });
     }
-
     $scope.ok=function(){
       // if($scope.nspname===null)
         $state.go("design.instance");
@@ -101,11 +99,9 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
       // $state.go("design.instance.viewInstance({name: '"+$scope.dInstance.namespace+"' })");
       $mdDialog.cancel();
     }
-
     $scope.cancel = function() {
       $mdDialog.cancel();
     }
-
   }
 }
 }
