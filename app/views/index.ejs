@@ -1,143 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LogAggregatorRT</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="/design/namespaces/css/namespace.css">
-    <link rel="stylesheet" href="/design/watchlists/stylewatchlist/watchlistCustomStyle.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="/design/watchlists/stylewatchlist/watchmapstyle.css">
-    <link rel="stylesheet" href="/design/instances/css/instancestyle.css">
-    <link rel="stylesheet" href="design/streams/css/streamstyle.css">
-    <link rel="stylesheet" href="/home/css/homestyle.css">
-    <link rel="stylesheet" href="/organization/css/organisationstyle.css">
-    <link rel="stylesheet" href="/design/functions/css/function.style.css">
-    <link rel="stylesheet" href="/dashboard/css/dashboarstyle.css">
-    <link rel="stylesheet" href="/design/designhome/css/designsummerystyle.css">
-    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/material-icons/css/material-icons.min.css">
-    <link rel="stylesheet" href="/auth/css/login.css">
-</head>
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>LogAggregatorRT</title>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
+      <link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
+      <link rel="stylesheet" href="/design/namespaces/css/namespace.css">
+      <link rel="stylesheet" href="/design/watchlists/stylewatchlist/watchlistCustomStyle.css" media="screen" title="no title" charset="utf-8">
+      <link rel="stylesheet" href="/design/watchlists/stylewatchlist/watchmapstyle.css">
+      <link rel="stylesheet" href="/design/instances/css/instancestyle.css">
+      <link rel="stylesheet" href="design/streams/css/streamstyle.css">
+      <link rel="stylesheet" href="/home/css/homestyle.css">
+      <link rel="stylesheet" href="/organization/css/organisationstyle.css">
+      <link rel="stylesheet" href="/design/functions/css/function.style.css">
+      <link rel="stylesheet" href="/dashboard/css/dashboarstyle.css">
+      <link rel="stylesheet" href="/design/designhome/css/designsummerystyle.css">
+      <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="/material-icons/css/material-icons.min.css">
+      <link rel="stylesheet" href="/auth/css/login.css">
+  </head>
 
-<body ng-app='tattva' ng-controller="AppRouteCtrl" ng-cloak>
-    <div layout="column" ng-clock>
-        <div ui-view="header"></div>
-        <div ui-view="content"></div>
-        <div ui-view="footer"></div>
-    </div>
-    <script src="/angular/angular.min.js" charset="utf-8"></script>
-    <script src="/angular-animate/angular-animate.min.js" charset="utf-8"></script>
-    <script src="/angular-aria/angular-aria.min.js" charset="utf-8"></script>
-    <script src="/angular-messages/angular-messages.min.js" charset="utf-8"></script>
-    <script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
-    <script src="/angular-material-icons/angular-material-icons.min.js" charset="utf-8"></script>
-    <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <!-- <script src="/angular-material-data-table/dist/md-data-table.min.js"></script> -->
-    <script src="/ng-letter-avatar/dist/ngletteravatar.min.js"></script>
-    <script src="/ace-builds/src-min-noconflict/ace.js"></script>
-    <script src="/angular-ui-ace/ui-ace.js"></script>
-    <script src="/d3/d3.min.js" charset="utf-8"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <!-- Tattva app -->
-    <script src="tattva.module.js" charset="utf-8"></script>
-    <!-- End Tattva app -->
-    <!-- Login module -->
-    <script src="/auth/auth.module.js" charset="utf-8"></script>
-    <script src="/auth/service/authfactory.js" charset="utf-8"></script>
-    <script src="/auth/service/authinterceptor.js" charset="utf-8"></script>
-    <script src="/auth/controller/loginctrl.js" charset="utf-8"></script>
-    <script src="/auth/controller/signoutctrl.js" charset="utf-8"></script>
-    <!-- End of Login module -->
-    <!-- Organization module -->
-    <script src="/organization/organization.module.js"></script>
-    <script src="/organization/controllers/organization.controller.js"></script>
-    <script src="/organization/service/organisationService.js"></script>
-    <script src="/organization/controllers/organizatioEdit.controller.js"></script>
-    <!-- End of Organization module -->
-    <!-- designhome -->
-    <script src="/design/designhome/controller/summarycontroller.js" charset="utf-8"></script>
-    <script src="/design/designhome/service/designhomefactory.js" charset="utf-8"></script>
-    <!-- End of designhome -->
-    <!--namespace module-->
-    <script src="design/namespaces/namespace.module.js" charset="utf-8"></script>
-    <script src="design/namespaces/factory/namespacefactory.js" charset="utf-8"></script>
-    <script src="design/namespaces/controllers/createnamespacectrl.js" charset="utf-8"></script>
-    <script src="design/namespaces/controllers/listnamespacectrl.js" charset="utf-8"></script>
-    <!--end of namespace module-->
-    <!-- function module -->
-    <script src="/design/functions/function.module.js"></script>
-    <script src="/design/functions/controller/function.contoller.js"></script>
-    <!-- end of function module -->
-    <!--instance module scripts-->
-    <script src="/design/instances/instance.module.js" charset="utf-8"></script>
-    <script src="/design/instances/controller/instancectrl.js" charset="utf-8"></script>
-    <script src="/design/instances/controller/viewinstancectrl.js" charset="utf-8"></script>
-    <script src="/design/instances/services/loaddatasources.js" charset="utf-8"></script>
-    <!--instance scripts end-->
-    <!-- Streams module -->
-    <script src="/design/streams/streams.module.js" charset="utf-8"></script>
-    <script src="/design/streams/service/streamsfactory.js" charset="utf-8"></script>
-    <script src="/design/streams/service/streamsservice.js" charset="utf-8"></script>
-    <script src="/design/streams/directive/createquery.js" charset="utf-8"></script>
-    <script src="/design/streams/controller/namespacelistctrl.js" charset="utf-8"></script>
-    <script src="/design/streams/controller/streamcreatectrl.js" charset="utf-8"></script>
-    <script src="/design/streams/controller/viewstreamsctrl.js" charset="utf-8"></script>
-    <!--End of Streams module -->
-    <!-- Watchlists module -->
-    <!-- <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script> -->
-    <script src="/design/watchlists/service/watchlistconfg.js" charset="utf-8"></script>
-    <script src="/design/watchlists/controller/namespacectrl.js" charset="utf-8"></script>
-    <script src="design/watchlists/controller/watchlistManagerCtrl.js"></script>
-    <script src="/design/watchlists/service/loadExprData.js" charset="utf-8"></script>
-    <script src="/design/watchlists/service/savetodb.js" charset="utf-8"></script>
-    <script src="/design/watchlists/controller/watchlistDetailedetailViewCtrl.js" charset="utf-8"></script>
-    <script src="/design/watchlists/controller/actionButtonCtrl.js" charset="utf-8"></script>
-    <script src="/design/watchlists/controller/watchlistViewctrl.js" charset="utf-8"></script>
-    <script src="/design/watchlists/controller/outputToStream.js" charset="utf-8"></script>
-    <script src="/design/watchlists/controller/saveToDB.js" charset="utf-8"></script>
-    <script src="/design/watchlists/controller/watchlistManagerCtrl.js" charset="utf-8"></script>
-    <script src="/design/watchlists/service/wlstDataService.js" charset="utf-8"></script>
-    <script src="/design/watchlists/directive/donutchart_directive.js" charset="utf-8"></script>
-    <script src="/design/watchlists/directive/linechart_directive.js" charset="utf-8"></script>
-    <script src="/design/watchlists/directive/watchlistmap.js" charset="utf-8"></script>
-    <script src="/design/watchlists/controller/namespacebasedwatchlist.js" charset="utf-8"></script>
-    <script src="/design/watchlists/watchlists.module.js" charset="utf-8"></script>
-    <script src="/design/watchlists/directive/WatchListResultWidget.js" charset="utf-8"></script>
-    <script src="/design/watchlists/exprfields/operator/operator.js" charset="utf-8"></script>
-    <script src="/design/watchlists/exprfields/rfield.js" charset="utf-8"></script>
-    <script src="/design/watchlists/exprfields/lfield.js" charset="utf-8"></script>
-    <script src="/design/watchlists/exprfields/accumulate/accumulate.js" charset="utf-8"></script>
-    <script src="/design/watchlists/exprfields/constant/constant.js" charset="utf-8"></script>
-    <script src="/design/watchlists/exprfields/DataFields/DataFields.js" charset="utf-8"></script>
-    <script src="/design/watchlists/exprfields/function/function.js" charset="utf-8"></script>
-    <script src="/design/watchlists/exprfields/historicData/historicData.js" charset="utf-8"></script>
-    <script src="/design/watchlists/exprfields/inputValue/inputValue.js" charset="utf-8"></script>
-    <script src="/design/watchlists/controller/streamCtrl.js" charset="utf-8"></script>
-    <script src="/design/watchlists/controller/WatchListCtrl.js" charset="utf-8"></script>
-    <script src="/design/watchlists/controller/linechartcontroller.js" charset="utf-8"></script>
-    <script src="/design/watchlists/controller/publisherctrl.js" charset="utf-8"></script>
-    <script src="/design/watchlists/service/uiPublisher.factory.js" charset="utf-8"></script>
-    <!-- End of Watchlists module -->
-    <!-- Design Home module -->
-    <script src="/design/designhome/designhome.module.js" charset="utf-8"></script>
-    <!-- End of Design Home module -->
-    <!--  dashboard module-->
-    <script src="/dashboard/dashboard.module.js" charset="utf-8"></script>
-    <script src="/dashboard/controller/dashboardcontroller.js" charset="utf-8"></script>
-    <script src="/dashboard/controller/DashboardDialogueCtrl.js" charset="utf-8"></script>
-    <script src="/dashboard/controller/addwatchlistCtrl.js" charset="utf-8"></script>
-    <script src="/dashboard/factory/slidefactory.js" charset="utf-8"></script>
-    <script src="/dashboard/factory/searchfactory.js" charset="utf-8"></script>
-    <!--dashboard end  -->
-    <!-- Home Module -->
-    <script src="/home/home.module.js" charset="utf-8"></script>
-    <script src="/home/service/sideNavItemsFactory.js" charset="utf-8"></script>
-    <script src="/home/controller/approutectrl.js" charset="utf-8"></script>
-    <script src="/home/controller/headerctrl.js" charset="utf-8"></script>
-    <!-- End Home Module -->
-</body>
+  <body ng-app='tattva' ng-controller="AppRouteCtrl" ng-cloak>
+      <div layout="column" ng-clock>
+          <div ui-view="header"></div>
+          <div ui-view="content"></div>
+          <div ui-view="footer"></div>
+      </div>
 
+      <script src="/angular/angular.min.js" charset="utf-8"></script>
+      <script src="/angular-animate/angular-animate.min.js" charset="utf-8"></script>
+      <script src="/angular-aria/angular-aria.min.js" charset="utf-8"></script>
+      <script src="/angular-messages/angular-messages.min.js" charset="utf-8"></script>
+      <script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
+      <script src="/angular-material-icons/angular-material-icons.min.js" charset="utf-8"></script>
+      <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
+      <!-- <script src="/angular-material-data-table/dist/md-data-table.min.js"></script> -->
+      <script src="/ng-letter-avatar/dist/ngletteravatar.min.js"></script>
+      <script src="/ace-builds/src-min-noconflict/ace.js"></script>
+      <script src="/angular-ui-ace/ui-ace.js"></script>
+      <script src="/d3/d3.min.js" charset="utf-8"></script>
+      <script src="/socket.io/socket.io.js"></script>
+      <!-- Tattva app -->
+      <script src="tattva.module.js" charset="utf-8"></script>
+      <!-- End Tattva app -->
+      <!-- Login module -->
+      <script src="/auth/auth.module.js" charset="utf-8"></script>
+      <script src="/auth/service/authfactory.js" charset="utf-8"></script>
+      <script src="/auth/service/authinterceptor.js" charset="utf-8"></script>
+      <script src="/auth/controller/loginctrl.js" charset="utf-8"></script>
+      <script src="/auth/controller/signoutctrl.js" charset="utf-8"></script>
+      <!-- End of Login module -->
+      <!-- Organization module -->
+      <script src="/organization/organization.module.js"></script>
+      <script src="/organization/controllers/organization.controller.js"></script>
+      <script src="/organization/service/organisationService.js"></script>
+      <script src="/organization/controllers/organizatioEdit.controller.js"></script>
+      <!-- End of Organization module -->
+      <!-- designhome -->
+      <script src="/design/designhome/controller/summarycontroller.js" charset="utf-8"></script>
+      <script src="/design/designhome/service/designhomefactory.js" charset="utf-8"></script>
+      <!-- End of designhome -->
+      <!--namespace module-->
+      <script src="design/namespaces/namespace.module.js" charset="utf-8"></script>
+      <script src="design/namespaces/factory/namespacefactory.js" charset="utf-8"></script>
+      <script src="design/namespaces/controllers/createnamespacectrl.js" charset="utf-8"></script>
+      <script src="design/namespaces/controllers/listnamespacectrl.js" charset="utf-8"></script>
+      <!--end of namespace module-->
+      <!-- function module -->
+      <script src="/design/functions/function.module.js"></script>
+      <script src="/design/functions/controller/function.contoller.js"></script>
+      <!-- end of function module -->
+      <!--instance module scripts-->
+      <script src="/design/instances/instance.module.js" charset="utf-8"></script>
+      <script src="/design/instances/controller/instancectrl.js" charset="utf-8"></script>
+      <script src="/design/instances/controller/viewinstancectrl.js" charset="utf-8"></script>
+      <script src="/design/instances/services/loaddatasources.js" charset="utf-8"></script>
+      <!--instance scripts end-->
+      <!-- Streams module -->
+      <script src="/design/streams/streams.module.js" charset="utf-8"></script>
+      <script src="/design/streams/service/streamsfactory.js" charset="utf-8"></script>
+      <script src="/design/streams/service/streamsservice.js" charset="utf-8"></script>
+      <script src="/design/streams/directive/createquery.js" charset="utf-8"></script>
+      <script src="/design/streams/controller/namespacelistctrl.js" charset="utf-8"></script>
+      <script src="/design/streams/controller/streamcreatectrl.js" charset="utf-8"></script>
+      <script src="/design/streams/controller/viewstreamsctrl.js" charset="utf-8"></script>
+      <!--End of Streams module -->
+      <!-- Watchlists module -->
+      <!-- <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script> -->
+      <script src="/design/watchlists/service/watchlistconfg.js" charset="utf-8"></script>
+      <script src="/design/watchlists/controller/namespacectrl.js" charset="utf-8"></script>
+      <script src="design/watchlists/controller/watchlistManagerCtrl.js"></script>
+      <script src="/design/watchlists/service/loadExprData.js" charset="utf-8"></script>
+      <script src="/design/watchlists/service/savetodb.js" charset="utf-8"></script>
+      <script src="/design/watchlists/controller/watchlistDetailedetailViewCtrl.js" charset="utf-8"></script>
+      <script src="/design/watchlists/controller/actionButtonCtrl.js" charset="utf-8"></script>
+      <script src="/design/watchlists/controller/watchlistViewctrl.js" charset="utf-8"></script>
+      <script src="/design/watchlists/controller/outputToStream.js" charset="utf-8"></script>
+      <script src="/design/watchlists/controller/saveToDB.js" charset="utf-8"></script>
+      <script src="/design/watchlists/controller/watchlistManagerCtrl.js" charset="utf-8"></script>
+      <script src="/design/watchlists/service/wlstDataService.js" charset="utf-8"></script>
+      <script src="/design/watchlists/directive/donutchart_directive.js" charset="utf-8"></script>
+      <script src="/design/watchlists/directive/linechart_directive.js" charset="utf-8"></script>
+      <script src="/design/watchlists/directive/logdata.js" charset="utf-8"></script>
+      <script src="/design/watchlists/directive/watchlistmap.js" charset="utf-8"></script>
+      <script src="/design/watchlists/controller/namespacebasedwatchlist.js" charset="utf-8"></script>
+      <script src="/design/watchlists/watchlists.module.js" charset="utf-8"></script>
+      <script src="/design/watchlists/directive/WatchListResultWidget.js" charset="utf-8"></script>
+      <script src="/design/watchlists/exprfields/operator/operator.js" charset="utf-8"></script>
+      <script src="/design/watchlists/exprfields/rfield.js" charset="utf-8"></script>
+      <script src="/design/watchlists/exprfields/lfield.js" charset="utf-8"></script>
+      <script src="/design/watchlists/exprfields/accumulate/accumulate.js" charset="utf-8"></script>
+      <script src="/design/watchlists/exprfields/constant/constant.js" charset="utf-8"></script>
+      <script src="/design/watchlists/exprfields/DataFields/DataFields.js" charset="utf-8"></script>
+      <script src="/design/watchlists/exprfields/function/function.js" charset="utf-8"></script>
+      <script src="/design/watchlists/exprfields/historicData/historicData.js" charset="utf-8"></script>
+      <script src="/design/watchlists/exprfields/inputValue/inputValue.js" charset="utf-8"></script>
+      <script src="/design/watchlists/controller/streamCtrl.js" charset="utf-8"></script>
+      <script src="/design/watchlists/controller/WatchListCtrl.js" charset="utf-8"></script>
+      <script src="/design/watchlists/controller/linechartcontroller.js" charset="utf-8"></script>
+      <script src="/design/watchlists/controller/publisherctrl.js" charset="utf-8"></script>
+      <script src="/design/watchlists/service/uiPublisher.factory.js" charset="utf-8"></script>
+      <!-- End of Watchlists module -->
+      <!-- Design Home module -->
+      <script src="/design/designhome/designhome.module.js" charset="utf-8"></script>
+      <!-- End of Design Home module -->
+      <!--  dashboard module-->
+      <script src="/dashboard/dashboard.module.js" charset="utf-8"></script>
+      <script src="/dashboard/controller/dashboardcontroller.js" charset="utf-8"></script>
+      <script src="/dashboard/controller/DashboardDialogueCtrl.js" charset="utf-8"></script>
+      <script src="/dashboard/controller/addwatchlistCtrl.js" charset="utf-8"></script>
+      <script src="/dashboard/factory/slidefactory.js" charset="utf-8"></script>
+      <script src="/dashboard/factory/searchfactory.js" charset="utf-8"></script>
+      <!--dashboard end  -->
+      <!-- Home Module -->
+      <script src="/home/home.module.js" charset="utf-8"></script>
+      <script src="/home/service/sideNavItemsFactory.js" charset="utf-8"></script>
+      <script src="/home/controller/approutectrl.js" charset="utf-8"></script>
+      <script src="/home/controller/headerctrl.js" charset="utf-8"></script>
+      <!-- End Home Module -->
+    </body>
 </html>

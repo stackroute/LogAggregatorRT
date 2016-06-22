@@ -1,21 +1,29 @@
-angular.module('tattva').directive('watchlistresultwidget', function() {
-  var directive = {};
-  directive.restrict = 'E';
-  directive.templateUrl = "/design/watchlists/template/WatchListResultWidget.html";
-  // directive.link = function(scope, elem, attr) {
-  //   elem.getElementById('graphTab').appendchild('<mygraph type=scope.myresult.charttype></mygraph>');
-  // }
-  // directive.controller = function($scope) {
-  //   $scope.getChartTemplate = function() { return "/partials/" + $scope.myresult.charttype + ".html"; }
-  // };
-  directive.scope = {
-    myresult: '=result',
-    mylog:'=data',
-    watchdata:'=watchlistdata',
-    finaldata:'=final',
-    finalpubmsg:'=finalmsg'
-
-  }
-
-  return directive;
+angular.module('tattva')
+.directive('watchwidget', function(AuthService) {
+  return{
+    restrict : 'E',
+    scope: {
+      watchdefn:'<watchdefn'
+    },
+    templateUrl : "/design/watchlists/template/WatchListResultWidget.html",
+    controller:['$scope', 'AuthService',
+    function($scope, AuthService) {
+      var usr = AuthService.getCurrentUser();
+      var roomName = usr.orgsite + "::" + $scope.watchdefn.name;
+      $scope.socket = io();
+      $scope.socket.emit('join:room', {
+        'room':roomName
+      });
+      $scope.$on('$destroy', function(){
+        if($scope.socket) {
+          $scope.socket.emit('leave:room', {
+            'room': roomName
+          });
+          $scope.socket.disconnect();
+          delete $scope.socket;
+          $scope.socket = null;
+        }
+      });
+    }]
+  };
 });
