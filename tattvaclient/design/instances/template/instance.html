@@ -1,4 +1,4 @@
- <div ng-if="data.length!=0">
+<div ng-if="data.length!=0">
   <div class="listInstance" id="popupContainer">
     <!-- <md-content md-padding>
     <md-tabs md-stretch-tabs="never" md-selected="selectedIndex" md-swipe-content="true" md-border-bottom >
@@ -29,27 +29,39 @@
     <md-content class="listmain" flex >
       <md-list>
         <md-content class="listmenu">
-          <md-list-item ng-repeat="object in data" ui-sref="design.instance.viewInstance({name: '{{object.name}}' })" class="md-2-line"  ng-click="null" ng-show="data.length" >
-              <md-divider ng-if="data.length >= 1"></md-divider>
-            <md-item-content layout="row" flex>
-              <div class="md-list-item-text md-tile-left inset" flex="30" >
-                <ng-letter-avatar fontSize="20" data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
-              </div>
-              <div class="md-tile-content" flex="70">
-                <h4>{{object.name}}</h4>
-              </div>
-            </md-item-content>
-          </md-list-item>
-        </md-content>
-      </md-list>
-
-    </md-content>
-  </div>
-
-
-  <div ui-view layout="row" flex="75">
-
-  </div>
+          <div layout="row" flex="99">
+            <div layout="column" flex-offset="5" flex="50">
+              <md-input-container >
+                <label>Search:</label>
+                <input ng-model="searchText" id="search">
+              </md-input-container>
+            </div>
+            <div layout="column" flex-offset="20" flex="25">
+              <md-button class="md-fab md-mini md-primary" ng-click="order('name')" aria-label="Favorite">
+                <md-icon>sort_by_alpha</md-icon>
+              </md-button>
+              <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+            </div>
+          </div>
+          <md-list-item ng-repeat="object in data | filter:searchText| orderBy:predicate:reverse track by object.name "
+          ui-sref="design.instance.viewInstance({name: '{{object.name}}' })" class="md-2-line"
+          ng-click="setClickedRow(object.name)" ng-show="data.length" ng-class="{'selected':object.name == selectedRow}">
+          <md-divider ng-if="data.length >= 1"></md-divider>
+          <md-item-content layout="row" flex>
+            <div class="md-list-item-text md-tile-left inset" flex="30" >
+              <ng-letter-avatar fontSize="20" data={{object.name}} shape="round" avatarcustombgcolor="#339933" charCount=2></ng-letter-avatar>
+            </div>
+            <div class="md-tile-content" flex="70">
+              <h4>{{object.name}}</h4>
+            </div>
+          </md-item-content>
+        </md-list-item>
+      </md-content>
+    </md-list>
+  </md-content>
+</div>
+<div ui-view layout="row" flex="75">
+</div>
 </div>
 </div>
 </div>

@@ -5,7 +5,7 @@
         <md-select class="currSlideDropdown" md-selected-text="getSelectedText()" ng-model="selectedSlide" ng-change="goToSlide()" placeholder="{{currentSlide.slideName}}" width="4">
           <md-option ng-repeat="slide in userSlides[0].mySlides" ng-value="slide.slidename">
             <!-- <div ng-repeat="x in slide.mySlides"> -->
-{{slide.slidename}}
+            {{slide.slidename}}
             <!-- </div> -->
           </md-option>
         </md-select>
@@ -16,23 +16,15 @@
       </div>
       <!-- <span  flex></span> -->
       <!-- <div flex="20">
-        <md-button class="md-fab md-mini md-primary" aria-label="Favorite">
-          <md-icon class="material-icons">add</md-icon>
-        </md-button>
-      </div> -->
-    </div>
-<!-- <div ng-repeat="x in orgwatchdetails">
-{{x.name}}
-</div> -->
-<div class="flexcontainer">
-  <watchlistresultwidget class="flex-item" flex="{{y.publishers.dashboard.displaySize}}" finalmsg="pubMessages" final="y"ng-repeat="y in orgwatchdetails" watchlistdata="y">
-  </watchlistresultwidget>
+      <md-button class="md-fab md-mini md-primary" aria-label="Favorite">
+      <md-icon class="material-icons">add</md-icon>
+    </md-button>
+  </div> -->
 </div>
-<!-- <div ng-repeat="msg in pubMessages" mymessage="msg">{{msg}}
-</div> -->
-    <!-- <div class="flexcontainer">
-      <watchlistresultwidget class="flex-item" flex={{x.size}} result="x" ng-repeat="x in wlist" data="logdata" watchlistdata="watchlistdata[x.wlid-1]">
-      </watchlistresultwidget>
-    </div> -->
-  </div>
+<div class="flexcontainer">
+  <watchwidget class="flex-item" flex="{{watch.publishers.dashboard.displaySize}}"
+  watchdefn="watch"  ng-repeat="watch in watchCollection">
+</watchwidget>
+</div>
+</div>
 </md-content>

@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, 'tattvaclient')));
 app.use(session({
   secret: 'TATTVA Complex Event Processor',
   cookie: {
-    maxAge: 300000
+    maxAge: 3000000
   },
   resave: false,
   saveUninitialized: false,

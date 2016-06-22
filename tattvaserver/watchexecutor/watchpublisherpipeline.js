@@ -20,12 +20,27 @@ var watchPublishPipeline = function(wlstDef) {
   if (wlstDef.publishers.dashboard) {
     myProcessors.push(highland.map(function(execObj) {
       // console.log("Emmitting data over socket room");
+      var graphData = {};
+
+      //If graph was selected
+      if(wlstDef.publishers.dashboard.graphType) {
+        graphData[wlstDef.publishers.dashboard.xaxis] = execObj.data[wlstDef.publishers.dashboard.xaxis];
+        graphData[wlstDef.publishers.dashboard.yaxis] = execObj.data[wlstDef.publishers.dashboard.yaxis];
+        graphData['result'] = false;
+        if(execObj.path) {
+          if(execObj.path.watchresult)
+          graphData['result'] = execObj.path.watchresult;
+        }
+      }
+
       socket.emit('watchlist:onResult', {
         'room': {
           'name': roomName
         },
         'message': {
-          'data': execObj
+          'logdata': execObj.data,
+          'graphdata': graphData,
+          'path': execObj.path
         }
       });
       return execObj;

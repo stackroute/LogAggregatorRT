@@ -2,42 +2,64 @@ angular.module('tattva').directive('linearChart', function($parse, $window){
   return{
     restrict:'EA',
     template:"<svg width='1070' height='200'></svg>",
+    scope:{
+      eventobj:"<eventobj",
+      configobj:"<configobj"
+    },
     link: function(scope, elem, attrs){
-      var exp = $parse(attrs.chartData);
-      var salesDataToPlot=exp(scope);
+      console.log("LineChart");
+      var graphData = [];
+      // var exp = $parse(attrs.chartData);
+      var xattr=scope.configobj.xaxis;
+      var yattr=scope.configobj.yaxis;
+      console.log("xattr:",xattr);
+      console.log("yattr:",yattr);
+      // var salesDataToPlot=exp(scope);
       var padding = 20;
       var pathClass="path";
       var xScale, yScale, xAxisGen, yAxisGen, lineFun;
       var d3 = $window.d3;
       var rawSvg=elem.find('svg');
       var svg = d3.select(rawSvg[0]);
-      scope.$watchCollection(exp, function(newVal, oldVal){
-        salesDataToPlot=newVal;
+      // var parseDate = d3.time.format("%Y-%m-%d").parse;
+      // scope.$watchCollection(exp, function(newVal, oldVal){
+      //   salesDataToPlot=newVal;
+      //   redrawLineChart();
+      // });
+      scope.eventobj.on("watchlist::graphdata",function(data){
+        graphData.push(data);
         redrawLineChart();
       });
       function setChartParameters(){
+        // console.log("[",salesDataToPlot.length,"]");
         xScale = d3.scale.linear()
-        .domain([salesDataToPlot[0].hour, salesDataToPlot[salesDataToPlot.length-1].hour])
+        .domain(d3.extent(graphData, function(d) {
+          return (new Date(d.message[xattr]));
+        }))
+        // .domain([1,salesDataToPlot.length])
         .range([padding + 5, rawSvg.attr("width") - padding]);
         yScale = d3.scale.linear()
-        .domain([0, d3.max(salesDataToPlot, function (d) {
-          return d.sales;
+        .domain([0, d3.max(graphData, function (d) {
+          return d.message[yattr];
         })])
         .range([rawSvg.attr("height") - padding, 0]);
         xAxisGen = d3.svg.axis()
         .scale(xScale)
         .orient("bottom")
-        .ticks(salesDataToPlot.length - 1);
+        .ticks(10);
         yAxisGen = d3.svg.axis()
         .scale(yScale)
         .orient("left")
         .ticks(5);
         lineFun = d3.svg.line()
         .x(function (d) {
-          return xScale(d.hour);
+          // console.log("date:",new Date(d.message.data.data[xattr]));
+          return xScale(new Date(d.message[xattr]));
+          // var hour=salesDataToPlot.length+1;
+          // return hour;
         })
         .y(function (d) {
-          return yScale(d.sales);
+          return yScale(d.message[yattr]);
         })
         .interpolate("basis");
       }
@@ -53,7 +75,7 @@ angular.module('tattva').directive('linearChart', function($parse, $window){
         .call(yAxisGen);
         svg.append("svg:path")
         .attr({
-          d: lineFun(salesDataToPlot),
+          d: lineFun(graphData),
           "stroke": "#00BCD4",
           "stroke-width": 2,
           "fill": "none",
@@ -66,7 +88,7 @@ angular.module('tattva').directive('linearChart', function($parse, $window){
         svg.selectAll("g.x.axis").call(xAxisGen);
         svg.selectAll("."+pathClass)
         .attr({
-          d: lineFun(salesDataToPlot)
+          d: lineFun(graphData)
         });
       }
       drawLineChart();
