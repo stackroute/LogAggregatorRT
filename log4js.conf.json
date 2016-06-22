@@ -1,7 +1,7 @@
 {
     "appenders": [{
         "type": "console",
-        "filename": "tattva.log",
+        "filename": "jwt_auth_demo.log",
         "pattern": "-yyyy-MM-dd",
         "layout": {
             "type": "pattern",
