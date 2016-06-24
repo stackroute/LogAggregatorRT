@@ -10,7 +10,21 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
     $state.go('instance.submitInstance');
   }
 
-  namespaceFactory.getNameSpace().then(function(response){$scope.data=response;});
+  namespaceFactory.getNameSpace().then(function(response){$scope.data=response;
+    $scope.selectedRow = $scope.data[0].name;
+    $state.go("design.instance.viewInstance",{name:$scope.data[0].name});
+  });
+
+  $scope.setClickedRow = function(index){  //function that sets the value of selectedRow to current index
+    $scope.selectedRow = index;
+  }
+
+  $scope.predicate = 'name';
+  $scope.reverse = false;
+  $scope.order = function(predicate) {
+    $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+    $scope.predicate = predicate;
+  };
 
   $scope.status = '';
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
@@ -45,7 +59,6 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
         port: "",
         description: "",
         location: ""
-
       };
 
       $scope.createMsg = "";
@@ -70,7 +83,6 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
           // {
           $scope.success = true;
           $scope.createMsg = "Instance Saved Successfully...!";
-
           // }
 
           /*  $mdDialog.templateUrl="partials/status.html";*/
@@ -80,7 +92,6 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
         }*/
 
         /* console.dir($state);
-
 
         /*if($scope.nspname===null)
         $state.go("design.instance");
@@ -94,7 +105,7 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
     }
     $scope.ok=function(){
       // if($scope.nspname===null)
-        $state.go("design.instance");
+      $state.go("design.instance");
       // else
       // $state.go("design.instance.viewInstance({name: '"+$scope.dInstance.namespace+"' })");
       $mdDialog.cancel();

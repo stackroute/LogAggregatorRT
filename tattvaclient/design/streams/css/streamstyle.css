@@ -1,10 +1,10 @@
 .formpad{
-padding: 25px;
+  padding: 25px;
 }
 
 .query{
-text-align: center;
-color: #808080;
+  text-align: center;
+  color: #808080;
 }
 
 .error{
@@ -12,20 +12,28 @@ color: red;
 }
 
 .inputField{
-font-size: 20px;
+  font-size: 20px;
 }
 
 .inputLabel{
-font-size: 20px;
-text-transform: lowercase;
+  font-size: 20px;
+  text-transform: lowercase;
 }
-
+.viewInst .md-button{
+  text-transform: none;
+}
+.md-fab{
+  margin-top: 10px;
+}
+.selected {
+  background-color: rgba(158,158,158,0.2);
+}
 #outerBorder{
   margin: 2% 10% 0% 10%;
 }
 
 fieldset.fieldsetStream{
-border: white;
+  border: white;
 }
 
 .lowercase{
