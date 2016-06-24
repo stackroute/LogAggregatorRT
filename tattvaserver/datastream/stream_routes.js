@@ -21,6 +21,7 @@ stream_router.get('/details/:streamname', function(request, res, next) {
   });
 });
 
+//here buddy
 stream_router.get('/:namespaceName', function(request, res, next) {
   stream.find({namespace : request.params.namespaceName} , function(err, data){
     if(err){
