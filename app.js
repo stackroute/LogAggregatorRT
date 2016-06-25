@@ -109,7 +109,7 @@ app.use('/appsummary', isAuthenticated, summary_router);
 app.use('/watchloop', isAuthenticated, watchloop_router);
 
 logger.info("Starting watch list executor...!");
-//watchloopExecutor();
+watchloopExecutor();
 
 app.use(function(req, res, next) {
     err.status = 404;

@@ -2,7 +2,7 @@ var mongoose = require( 'mongoose' );
 
 var namespaceSchema = new mongoose.Schema({
   "name":{type : String, required : true, unique:true, min:2, max:30},
-  "tag":{type : String, required : true, unique:true},
+  // "tag":{type : String, required : true, unique:true},
   "dataSchema":[
     {
       "alias":{type: String, required : true},
