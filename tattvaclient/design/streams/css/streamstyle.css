@@ -7,6 +7,10 @@
   color: #808080;
 }
 
+.error{
+color: red; 
+}
+
 .inputField{
   font-size: 20px;
 }

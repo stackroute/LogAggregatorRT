@@ -7,6 +7,8 @@ angular.module('tattva')
     $scope.data=response;
     $scope.selectedRow = $scope.data[0].name;
     $state.go("design.streams.viewStreams",{nsname:$scope.data[0].name});
+  },function(response){
+    $scope.resError = response.data.error;
   });
 
   $scope.setClickedRow = function(index){  //function that sets the value of selectedRow to current index

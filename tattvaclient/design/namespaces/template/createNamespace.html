@@ -84,6 +84,7 @@
 
       </fieldset>
       <!-- </md-whiteframe> -->
+      <div layout="row" class="internalerror" ng-show="error" layout-align="center right">{{error}}</span></div>
       <div layout layout-align="center center" >
         <md-button class="md-raised" ng-click="createNamespaceCancel()" ng-if="editData && editNamespaceFlag">Cancel</md-button><!--view namespace-->
         <md-button class="md-raised" ng-click="showConfirm($event)" ng-if="editData && !editNamespaceFlag">Cancel</md-button><!--edit namespace-->

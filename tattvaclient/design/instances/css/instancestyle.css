@@ -58,7 +58,9 @@ md-input-container label{
 .searchbox md-input-container .md-errors-spacer {
   min-height: 0;
 }
-
+.error{
+  color:red;
+}
 .instance{
   padding-top:5%;
   margin-left:30%;

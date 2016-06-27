@@ -53,3 +53,7 @@ md-card.NamespaceCard{
 .fieldsetNamespace{
   border: white;
 }
+.internalerror
+{
+  color:rgb(216,67,21) !important;
+}
