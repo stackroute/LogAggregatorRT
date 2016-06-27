@@ -26,7 +26,7 @@ angular.module('tattva').directive('linearChart', function($parse, $window){
       //   salesDataToPlot=newVal;
       //   redrawLineChart();
       // });
-      scope.eventobj.on("watchlist::graphdata",function(data){
+      scope.eventobj.on("watchview::orgsite::watchCollection",function(data){
         graphData.push(data);
         redrawLineChart();
       });
