@@ -7,6 +7,7 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
   $scope.watchCollection = slideFactory.getOrgWatchlists(function(data){
     $scope.watchCollection=data;
   });
+  $scope.socket=io();
 
   if($stateParams.slidename !== null){
     $scope.currentSlide = slideFactory.getSlide($stateParams.slidename,function(data){

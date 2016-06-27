@@ -10,16 +10,20 @@ angular.module('tattva').directive('logdata', function($parse, $window){
       scope.logs = [];
       var logBuffer = [];
       var batchSize = 100;
-      scope.eventobj.on("watchlist::logdata",function(data){
+      
+      scope.eventobj.on("watchview::orgsite::watchcollection",function(data){
         scope.logs.push(data);
-        /*logBuffer.push(data);
-        if(logBuffer.length == batchSize) {
-        console.log("Buffer reached ", logBuffer.length, " : ", scope.logs.length);
-        // scope.logs = scope.logs.concat(logBuffer);
-        Array.prototype.push.apply(scope.logs, logBuffer);
-        logBuffer = [];
-      }*/
-    });
+      });
+    //   scope.eventobj.on("watchlist::logdata",function(data){
+    //     scope.logs.push(data);
+    //     /*logBuffer.push(data);
+    //     if(logBuffer.length == batchSize) {
+    //     console.log("Buffer reached ", logBuffer.length, " : ", scope.logs.length);
+    //     // scope.logs = scope.logs.concat(logBuffer);
+    //     Array.prototype.push.apply(scope.logs, logBuffer);
+    //     logBuffer = [];
+    //   }*/
+    // });
   }
 };
 });

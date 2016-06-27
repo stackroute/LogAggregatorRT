@@ -25,6 +25,7 @@ var watchPublishPipeline = function(wlstDef) {
       //If graph was selected
       if(wlstDef.publishers.dashboard.graphType) {
         graphData[wlstDef.publishers.dashboard.xaxis] = execObj.data[wlstDef.publishers.dashboard.xaxis];
+        // graphData[wlstDef.publishers.dashboard.xaxis] = new Date();
         graphData[wlstDef.publishers.dashboard.yaxis] = execObj.data[wlstDef.publishers.dashboard.yaxis];
         graphData['result'] = false;
         if(execObj.path) {
