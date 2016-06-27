@@ -2,7 +2,7 @@ var mongoose=require("mongoose");
 var Schema=mongoose.Schema;
 var datasourceSchema= new Schema({
   "name":{ type : String, required : true, unique: true, minlength: 2, maxlength: 30},
-  "tag" :{ type: String, required:true, unique:true},
+  // "tag" :{ type: String, required:true, unique:true},
   "nsid":{type: Schema.Types.ObjectId , ref: 'namespace' ,required : true},
   "ipaddr":{type: String, required : true},
   "port":{type: Number, required : true, minlength: 1, maxlength: 5},
@@ -16,6 +16,5 @@ var datasourceSchema= new Schema({
 });
 
 var datasource=mongoose.model('datasource', datasourceSchema);
-
 
 module.exports = datasource;
