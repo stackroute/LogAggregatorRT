@@ -2,6 +2,9 @@ html,
 body{
   min-height: 100%;
 }
+.canvasjs-chart-credit{
+  display: none;
+}
 
 .menu{
   padding: 20px;
@@ -50,7 +53,7 @@ mind-map{
 }
 rect {
   fill:none;
-    pointer-events: all;
+  pointer-events: all;
 
 }
 line {
@@ -94,9 +97,9 @@ g:hover > .function-btn{
 .function-bg{
   cursor: pointer;
 }
- .watchmapheader span.md-subheader-content{
-   height:8px;
- }
- .exprHeading{
-   margin: 1% 0% 0% 1%;
- }
+.watchmapheader span.md-subheader-content{
+  height:8px;
+}
+.exprHeading{
+  margin: 1% 0% 0% 1%;
+}
