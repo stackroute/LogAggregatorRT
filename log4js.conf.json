@@ -1,14 +1,10 @@
 {
     "appenders": [{
         "type": "console",
-        "filename": "jwt_auth_demo.log",
-        "pattern": "-yyyy-MM-dd",
         "layout": {
             "type": "pattern",
             "pattern": "[%d{DATE}] %[[%p]%] - %m"
-        },
-        "maxLogSize": 1024,
-        "backups": 3
+        }
     }, {
         "type": "dateFile",
         "filename": "tattva.log",
