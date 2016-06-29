@@ -2,14 +2,5 @@
   <donutchart></donutchart>
 </md-content>
 <md-content class="md-padding fix" ng-if="watchdefn.publishers.dashboard.graphType === 'line'">
-  <!-- <div ng-controller="SalesController">
-  <div linear-chart chart-data="salesData" xattr="hour" y-attr="sales"></div>
-</div> -->
-{{watchdefn.publishers.dashboard.xaxis}} /
-{{watchdefn.publishers.dashboard.yaxis}}
-<!-- {{pubMessages[0].message.data.data[watchdefn.publishers.dashboard.xaxis]}}
-<br><br>
-{{pubMessages[0].message.data.data[watchdefn.publishers.dashboard.yaxis]}} -->
-<div linear-chart eventobj="socket" configobj="watchdefn.publishers.dashboard">
-</div>
+  <linear-chart watchname="watchdefn.name" orgsite="watchdefn.orgsite" eventobj="eventobj" configobj="watchdefn.publishers.dashboard"></linear-chart>
 </md-content>
