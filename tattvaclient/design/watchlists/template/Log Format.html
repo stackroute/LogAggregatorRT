@@ -1,10 +1,5 @@
-<!-- <div ng-controller="WatchGraphCtrl">
-<md-content class="md-padding fix" >
-<pre style="background-color:#f0f3f3;padding:5%;">{{finalpubmsg | json }}</pre>
-</md-content>
-</div> -->
 <md-content class="md-padding fix" >
   <pre style="background-color:#f0f3f3;padding:5%;">
-    <div logdata eventobj="socket" configobj="watchdefn.publishers.dashboard" ></div>
+    <div logdata watchname="watchdefn.name" orgsite="watchdefn.orgsite" eventobj="eventobj" configobj="watchdefn.publishers.dashboard" ></div>
   </pre>
 </md-content>

@@ -47,13 +47,12 @@ angular.module("tattva")
             streamData.splice(0,streamData.length);
           }
       if(typeof($scope.$parent.wlstdef.namespace)=="undefined") return;
-      streamFactory.sendStream($scope.$parent.wlstdef.namespace).then(function(data)
-      {
-        for(i in data)
-        {
+      streamFactory.sendStream($scope.$parent.wlstdef.namespace).then(function(res) {
+        var data = res.data;
+        for(i in data) {
           streamData.push(data[i].streamname);
         }
-      })
+      }, function(res) { console.log("Error: ", res.data.error); $scope.error = res.data.error; })
     }
   );
   return streamData;
