@@ -1,6 +1,7 @@
 <md-content class="content">
   <div ng-controller="sunburstGraph">
     <sunburstchart data="sunburstData" stats="stats(selectionObj)"></sunburstchart>
-    <selection data="sunburstData" stats="tattvaStats"></selection>
+    <!-- <selection data="sunburstData" stats="tattvaStats"></selection> -->
+    <div ui-view="adminSelection"></div>
   </div>
 </md-content>
