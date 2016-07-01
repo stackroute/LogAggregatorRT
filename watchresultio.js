@@ -12,15 +12,13 @@ io.on('connection', function(socket) {
 	// 	socket.leave(data.room);
 	// });
 
-	socket.on('watchlist:onResult', function(data) {
+	socket.on('watchlist:onResultPublish', function(data) {
 		// io.to(data.room).emit('room:message', {'room':data.room, 'message':data.message});
 		// socket.to(data.room.name).emit('watchlist::graphdata', {'room':data.room, 'message':data.message.graphdata});
 		// socket.to(data.room.name).emit('watchlist::logdata', {'room':data.room, 'message':data.message.logdata});
-		socket.emit('watchview::orgsite::watchCollection',{
-			'room':data.room, 'message':data.message.graphdata
-		});
+		var eventName = 'watchlist::onResult' + '::' + data.channel;
+		var eventData = {'logdata': data.logdata, 'watchresult': data.watchresult};
+		io.emit(eventName, eventData);
 	});
 });
-
-
 module.exports = io;

@@ -1,6 +1,6 @@
 .fix
 {
-  height: 250px;
+  height: 400px;
 }
 .shad:hover
 {
@@ -8,7 +8,7 @@
 }
 .shad
 {
-  height:425px;
+  height:600px;
   border:1px solid #cfcfd6;
   border-radius: 1%;
 }

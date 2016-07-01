@@ -8,9 +8,6 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
     $scope.watchCollection=data;
   });
   $scope.socket=io();
-  // socket.on('watchview::orgsite::watchCollection',{
-  // 	'room':data.room, 'message':data.message.graphdata
-  // })
 
   if($stateParams.slidename !== null){
     $scope.currentSlide = slideFactory.getSlide($stateParams.slidename,function(data){
@@ -18,7 +15,8 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
       console.log(data);
       console.log("Slide data:when stateparams is not null ", $scope.currentSlide);
     });
-  } else {
+  }
+   else {
     $scope.currentSlide = slideFactory.getDefaultSlide(function(data){
       $scope.currentSlide=data;
       console.log(data);
