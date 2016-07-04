@@ -7,10 +7,12 @@ var dbPublisherPipeline = function(wlstDef) {
   var historicDB = wlstDef.orgsite + "_historic";
 
   var collnName = wlstDef.name;
-  collnName = collnName.replace(" ").toLowerCase();
+  collnName = collnName.replace(/\s/g, '_').toLowerCase();
   collnName += "_outcomes";
 
-  var saveToDBStream = streamToMongo({db: 'mongodb://localhost:27017/test3', collection:collnName});
+  var dbServer = 'mongodb://localhost:27017/' + historicDB;
+
+  var saveToDBStream = streamToMongo({db:dbServer, collection:collnName});
 
   return saveToDBStream;
 }
