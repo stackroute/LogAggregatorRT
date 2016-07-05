@@ -1,5 +1,5 @@
 angular.module('tattva')
-.directive('watchwidget', function(AuthService) {
+.directive('watchwidget', function() {
   return{
     restrict : 'E',
     scope: {

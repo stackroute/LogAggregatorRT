@@ -1,8 +1,10 @@
 var stream_router = require('express').Router();
-var stream = require('./stream.js');
+var StreamSchema = require('./stream.js');
+var dataProvider = require('../core/datamodelprovider');
 
 stream_router.get('/', function(request, res, next) {
-  stream.find({},{streamname:1, instance:1}, function(err, data){
+  var StreamModel = dataProvider.getModel(StreamSchema, request.user.orgsite);
+  StreamModel.find({},{streamname:1, instance:1}, function(err, data){
     if(err){
       console.log("Error in find streams, error: ", err);
       res.status(500).json({error:"Internal error occurred..!"})
@@ -12,7 +14,8 @@ stream_router.get('/', function(request, res, next) {
 });
 
 stream_router.get('/details/:streamname', function(request, res, next) {
-  stream.findOne({streamname : request.params.streamname} , function(err, data){
+  var StreamModel = dataProvider.getModel(StreamSchema, request.user.orgsite);
+  StreamModel.findOne({streamname : request.params.streamname} , function(err, data){
     if(err){
       console.log("Stream ",request.params.streamname," not found or does not exist, error: ",err);
       res.status(500).json({error:"Requested stream not found..!"});
@@ -23,7 +26,8 @@ stream_router.get('/details/:streamname', function(request, res, next) {
 
 //here buddy
 stream_router.get('/:namespaceName', function(request, res, next) {
-  stream.find({namespace : request.params.namespaceName} , function(err, data){
+  var StreamModel = dataProvider.getModel(StreamSchema, request.user.orgsite);
+  StreamModel.find({namespace : request.params.namespaceName} , function(err, data){
     if(err){
       console.log("Stream with namespace as ",request.params.namespaceName," not found or does not exist, error: ", err);
       res.status(500).json({error:"Requested data not found..!"});
@@ -34,10 +38,12 @@ stream_router.get('/:namespaceName', function(request, res, next) {
 });
 
 stream_router.post('/:streamName',function (request, response) {
+  var StreamModel = dataProvider.getModel(StreamSchema, request.user.orgsite);
   var streamObj = request.body;
   // console.log("reached stream post route to save ", streamObj);
+  streamObj.orgsite=request.user.orgsite;
   streamObj.status="active";
-  var stream1 = new stream(streamObj);
+  var stream1 = new StreamModel(streamObj);
   stream1.save(function(err, savestreamdata){
     if(err) {
       console.log("Error in saving a new stream, error: ", err);
@@ -52,14 +58,15 @@ stream_router.post('/:streamName',function (request, response) {
 });
 
 stream_router.put('/:streamname',function (request, response) {
+  console.log("Updating streams");
   var streamObj = request.body;
-  stream.update({streamname : streamObj.streamname}, streamObj, function(err, updatedObj){
+  var StreamModel = dataProvider.getModel(StreamSchema, request.user.orgsite);
+  StreamModel.update({streamname : streamObj.streamname}, streamObj, function(err, updatedObj){
     if(err) {
       console.log("PUT request could not be completed for stream ",streamObj.streamname," error: ",err);
-      res.status(500).json({error:"Operation failed with internal errors..!"})
+      response.status(500).json({error:"Operation failed with internal errors..!"})
     }
-
-    res.json(updatedObj);
+    return response.json(updatedObj);
   });
 });
 

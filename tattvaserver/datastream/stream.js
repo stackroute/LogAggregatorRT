@@ -1,6 +1,7 @@
 var mongoose = require( 'mongoose' );
 
 var streamSchema=new mongoose.Schema({
+  "orgsite":{type:String,required:true},
   "streamname": {type: String, required: "true", unique: true},
   "description": {type: String},
   "namespace":{type: String},
@@ -18,6 +19,6 @@ var streamSchema=new mongoose.Schema({
       "user_value":{type:String}
     }
   ]
-});
-var stream = mongoose.model('stream', streamSchema);
-module.exports = stream;
+},{collection: "streams"});
+// var stream = mongoose.model('stream', streamSchema);
+module.exports = streamSchema;

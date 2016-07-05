@@ -1,17 +1,8 @@
 var watchlist_router = require('express').Router();
-var watchlist = require('./watchlists.js');
-var mongoose = require( 'mongoose' );
-var ObjectId = mongoose.Types.ObjectId;
-
-watchlist_router.use('/', function(req, res, next) {
-  //console.log(' watchlist use router invoked');
-  next();
-});
-
-watchlist_router.get('/', function(req, res, next) {
-  //console.log(' watchlist router use invoked');
-  next();
-});
+var WatchListSchema = require('./watchlists.js');
+var dataProvider = require('../core/datamodelprovider');
+// var mongoose = require( 'mongoose' );
+// var ObjectId = mongoose.Types.ObjectId;
 
 <!--save WatchList-->
 watchlist_router.post('/',function (request, response) {
@@ -20,9 +11,13 @@ watchlist_router.post('/',function (request, response) {
   watchlistObj.orgsite=request.user.orgsite;
   //console.log("reached watchlist with body data");
   watchlistObj.id = watchlistObj.name;
-  var watchlist1 = new watchlist(watchlistObj);
+  var WatchListModel = dataProvider.getModel(WatchListSchema, request.user.orgsite);
+  var watchlist1 = new WatchListModel(watchlistObj);
   watchlist1.save(function(err, savewatchlistdata){
-    if(err) return response.status(400).json(err);
+    if(err) {
+      console.log("Error in saving watch list, error:", err);
+      return response.status(400).json({error:"Internal error in completing the operation"});
+    }
     //console.log(savewatchlistdata);
     return response.status(200).json(savewatchlistdata);
   });
@@ -33,19 +28,21 @@ watchlist_router.post('/',function (request, response) {
 watchlist_router.put('/:watchlistname',function (request, response) {
   var watchlistObj = request.body;
   watchlistObj.status="active";
-  var o_id = ObjectId(watchlistObj._id);
-  watchlist.find({_id: o_id}, function(err, wlist){
+  // var o_id = ObjectId(watchlistObj._id);
+  var watchname=watchlistObj.name;
+  var WatchListModel = dataProvider.getModel(WatchListSchema, request.user.orgsite);
+  WatchListModel.find({name: watchname}, function(err, wlist){
     if (err) {
       //console.log(err);
-      //console.log("Error in find watchlist for update: ", watchlistObj._id, " name: ", watchlistObj.name);
+      console.log("Error in find watchlist for update: ", watchlistObj._id, " name: ", watchlistObj.name);
       response.status(500).json({error: "unable to find the required watchlist for saving..!"});
     }
     //console.log("Watchlist requested = ", wlist);
-    watchlist.update({"_id":o_id}, watchlistObj, function(err, updatedObj) {
+    WatchListModel.update({"name":watchname}, watchlistObj, function(err, updatedObj) {
       if(err) {
         //console.log("Error in updating: ", watchlistObj._id, " name: ", watchlistObj.name);
-        console.error(err);
-        response.status(400).json({error: "error while updating the document"});
+        console.error("Error in updating watchlist, error:", err);
+        response.status(500).json({error: "Internal error occurred in completing operation..!"});
       }
       //console.log("Updated Watchlists ",updatedObj.name);
       response.status(200).json(updatedObj);
@@ -54,27 +51,27 @@ watchlist_router.put('/:watchlistname',function (request, response) {
 });
 <!--end of edit watchlist-->
 
-
 watchlist_router.get('/:namespaceName', function(req, res){
-  watchlist.find({namespace:req.params.namespaceName}, function(err, watchlistalldata){
-    if(err)
-    {
-      console.error(err);
+  var WatchListModel = dataProvider.getModel(WatchListSchema, req.user.orgsite);
+  WatchListModel.find({namespace:req.params.namespaceName}, function(err, watchlistalldata){
+    if(err){
+      console.error("Error in finding watchlist, error:", err);
+      return res.status(500).json({error: "Internal error occurred..!"});
     }
-    res.send(watchlistalldata);
+    return res.send(watchlistalldata);
   });
   //console.log("Namespace list requested /n/n/n\n\n\n\n\n response successfully sent./n/n/n\n\n\n\n\n");
 });
 watchlist_router.get('/data/:watchlistName', function(req, res){
-  watchlist.findOne({name:req.params.watchlistName}, function(err, watchlistalldata){
-    if(err)
-    {
-      console.error(err);
+  var WatchListModel = dataProvider.getModel(WatchListSchema, req.user.orgsite);
+  WatchListModel.findOne({name:req.params.watchlistName}, function(err, watchlistalldata){
+    if(err) {
+      console.error("Error occurred in finding watch list, error:", err);
+      return res.status(500).json({error:"Internal error occurred ..!"});
     }
-    res.send(watchlistalldata);
+    return res.send(watchlistalldata);
   });
 });
-
 
 watchlist_router.get('/stream',function(req,res,next){
   // //console.log(req.param('namespace'));
