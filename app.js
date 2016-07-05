@@ -5,6 +5,7 @@ var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+
 var flash = require('connect-flash');
 var session = require('express-session');
 var routes = require('./routes/index');
@@ -46,33 +47,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'tattvaclient')));
 
 //Max age is 5 minutes
-app.use(session({
-    secret: 'TATTVA Complex Event Processor',
-    cookie: {
-        maxAge: 300000
-    },
-    resave: false,
-    saveUninitialized: false,
-    rolling: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+// app.use(session({
+//     secret: 'TATTVA Complex Event Processor',
+//     cookie: {
+//         maxAge: 300000
+//     },
+//     resave: false,
+//     saveUninitialized: false,
+//     rolling: true
+// }));
+// app.use(passport.initialize());
+// app.use(passport.session());
+// app.use(flash());
 
-require('./tattvaserver/auth/auth')(app, passport);
-
-function isAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        req.session.touch();
-        return next();
-    }
-
-    logger.debug('Unauthorised request found..!');
-    res.status(401).json({
-        "error": "Unauthorized request, please signin and retry..!"
-    });
-};
-
+//require('./tattvaserver/auth/auth')(app, passport);
+require('./tattvaserver/auth/authbyjwttoken')(app);
+var isAuthenticated = require('./tattvaserver/auth/authcheckjwt');
 
 var dbURI = 'mongodb://localhost/wipro';
 mongoose.connect(dbURI);
@@ -96,17 +86,17 @@ process.on('SIGINT', function() {
 
 
 app.use('/', routes);
-app.use('/users', isAuthenticated, users);
-app.use('/organisation/user', isAuthenticated, Orguser_router);
-app.use('/instance', isAuthenticated, datasourcesrouter);
-app.use('/function', isAuthenticated, function_router);
-app.use('/sideNav', isAuthenticated, sideNav_router);
-app.use('/namespaces', isAuthenticated, namespace_router);
-app.use('/watchlist', isAuthenticated, watchlist_router);
-app.use('/datastream', isAuthenticated, stream_router);
-app.use('/watchslide', isAuthenticated, watchlistslide_router);
-app.use('/appsummary', isAuthenticated, summary_router);
-app.use('/watchloop', isAuthenticated, watchloop_router);
+app.use('/users',isAuthenticated,  users);
+app.use('/organisation/user',isAuthenticated,  Orguser_router);
+app.use('/instance',isAuthenticated,  datasourcesrouter);
+app.use('/function',isAuthenticated,  function_router);
+app.use('/sideNav',isAuthenticated, sideNav_router);
+app.use('/namespaces',isAuthenticated, namespace_router);
+app.use('/watchlist',isAuthenticated,  watchlist_router);
+app.use('/datastream',isAuthenticated,  stream_router);
+app.use('/watchslide',isAuthenticated, watchlistslide_router);
+app.use('/appsummary',isAuthenticated, summary_router);
+app.use('/watchloop',isAuthenticated,  watchloop_router);
 
 logger.info("Starting watch list executor...!");
 //watchloopExecutor();
