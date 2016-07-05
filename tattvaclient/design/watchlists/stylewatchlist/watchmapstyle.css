@@ -1,3 +1,107 @@
+<<<<<<< HEAD
+html,
+body{
+  min-height: 100%;
+}
+
+.menu{
+  padding: 20px;
+  position: fixed;
+}
+.menu .downloadWrap{
+  display: inline-block;
+  margin-left: 5px;
+  padding-left: 10px;
+  border-left: 5px solid #ccc;
+}
+.menu .fileName{
+  font-size: inherit;
+  padding: 6px 7px;
+  border-radius: 5px;
+  border: 1px solid #CCC;
+  outline: none;
+  vertical-align: middle;
+}
+#downloadLinkWrap{
+  display: inline-block;
+}
+.menu .loadFile{
+  position: relative;
+}
+.menu .loadFile input{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.minMapWrap,
+.mindmap{
+  width: 100%;
+  height: 700px;
+}
+mind-map{
+  display:block;
+}
+.svgsize{
+  background: #fff;
+}
+rect {
+  fill:none;
+    pointer-events: all;
+
+}
+line {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+
+}
+.node {
+  position: relative;
+  display: inline-block;
+  font: 10px sans-serif;
+}
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+.function-btn{
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.function-btn.add{
+  fill: #57D37E;
+}
+.function-btn.remove{
+  fill: #E97979;
+}
+.function-btn.edit{
+  fill: #79AFE9;
+}
+g:hover > .function-btn{
+  opacity: 1;
+}
+.function-bg{
+  cursor: pointer;
+}
+ .watchmapheader span.md-subheader-content{
+   height:8px;
+ }
+ .exprHeading{
+   margin: 1% 0% 0% 1%;
+ }
+=======
 html,
 body{
   min-height: 100%;
@@ -103,3 +207,4 @@ g:hover > .function-btn{
 .exprHeading{
   margin: 1% 0% 0% 1%;
 }
+>>>>>>> d0fd2f224528df142a1137002af3700304472817

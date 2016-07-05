@@ -6,9 +6,9 @@ namespace_router.get('/', function(req, res){
   var NamespaceModel = dataProvider.getModel(NamespaceSchema, req.user.orgsite);
   NamespaceModel.find({},{name:1, dataSchema:1}, function(err, namespaceListData){
     if(err){
-      console.log("Error occurred in getting namespaces ", err);
-      return res.status(400).json({error:"Internal error occurred..!"});
-    } else{
+      return res.status(400).json(err);
+    }
+    else{
       return res.status(200).json(namespaceListData);
     }
   });
@@ -22,9 +22,9 @@ namespace_router.post('/:namespaceName', function (req, res) {
   var namespace1 = new NamespaceModel(req.body);
   namespace1.save(function(err, savedNamespaceData){
     if(err){
-      console.log("Error occurred in saving namesapce ", err);
-      return res.status(500).json({error:"Internal error in completing the operation..!"});
-    } else{
+      return res.status(400).json(err);
+    }
+    else{
       return res.status(200).json(savedNamespaceData);
     }
   });
@@ -34,9 +34,9 @@ namespace_router.put('/:namespaceName',  function (req, res) {
   var NamespaceModel = dataProvider.getModel(NamespaceSchema, req.user.orgsite);
   NamespaceModel.update({_id:req.body._id}, req.body, {}, function(err, updatedNamespaceData){
     if(err){
-      console.log("Error occurred in saving namesapce ", err);
-      return res.status(500).json({error:"Internal error in completing the operation..!"});
-    } else{
+      return res.status(400).json(err);
+    }
+    else{
       return res.status(200).json(updatedNamespaceData);
     }
   });

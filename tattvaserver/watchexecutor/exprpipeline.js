@@ -18,7 +18,13 @@ var exprPipeline = function(wlstDef) {
   //For normalising incoming data
   myProcessors.push(highland.map(function(data) {
     data = JSON.parse(data);
-    var execObj={"path":{}, "data":data[2]};
+    var execObj={'watchname': wlstDef.name, 
+    'orgsite': wlstDef.orgsite,
+    'inon': new Date(),
+    "data":data[2],
+    "path":{},
+    "errormsg": {}
+  };
     return execObj;
   }));
 
