@@ -71,6 +71,11 @@ angular.module("tattva")
             "icon" : "dashboard",
           },
           {
+            "menu"  : "Admin Dashboard",
+            "link"  : "adminHome",
+            "icon"  :  "dashboard",
+          },
+          {
             "menu" : "Design",
             "link" : "design.summary",
             "icon" : "playlist_add",

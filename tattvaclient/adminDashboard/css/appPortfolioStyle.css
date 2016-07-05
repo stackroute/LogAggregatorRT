@@ -5,17 +5,10 @@
   background: #fff;
   margin: 30px;
 }
-.vertical-divider {
-  padding-top: 4.6%;
-  width: 6%;
-  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
-  transform: rotate(90deg);
-  padding-bottom: 0px;
-}
-form {
+/*form {
   position: absolute;
   right: 10px;
-  top: 10px;}
+  top: 10px;}*/
 path {
   stroke: #fff;
   fill-rule: evenodd;}

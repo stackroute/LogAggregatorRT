@@ -12,7 +12,6 @@ var datasourceSchema= new Schema({
   "createdOn": { type : Date, default : Date.now },
   "editedBy":String,
   "editedOn": { type : Date, default : Date.now }
-
 });
 
 var datasource=mongoose.model('datasource', datasourceSchema);

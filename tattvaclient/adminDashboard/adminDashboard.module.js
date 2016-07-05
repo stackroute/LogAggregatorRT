@@ -1,49 +1,65 @@
-angular.module("tattva").config(['$stateProvider','$urlRouterProvider', function($stateProvider){
-.stateProvider
+angular.module("tattva").config(['$stateProvider', function($stateProvider){
+$stateProvider
 .state('adminHome',
 {
-  url: "/tattva/admin/dashboard",
+  url: "/admin/dashboard",
   views: {
     "header" : {
       templateUrl: "/home/template/header.html",
       controller: "HeaderCtrl"
     },
-    "content@" : {
-      templateUrl: "/template/adminDashboard.html"
+    "content" : {
+      templateUrl: "adminDashboard/template/adminDashboard.html",
+      controller:"adminDashboardCtrl"
       },
     "footer" : {
       templateUrl:"/home/template/footer.html"
-        }
+    }
   }
+  // data:{
+  //   selectionObj : selectionObj
+  // }
+  // resolve:{
+  //   // selectionObject :  selectionObj
+  //     return selectionObj
+  //   }
+  // }
 })
-.state('adminHome.selection',
+.state('adminHome.appPortfolio',
 {
-  url: "/selection",
-  templateUrl:"/template/adminSelection.html",
-  controller:"adminSelectionController"
+  url:'/',
+  templateUrl:"adminDashboard/template/appPortfolio.html",
+  controller:"appPortfolioCtrl"
 })
-.state('watchInfo',
+.state('adminHome.orgwatches',
 {
-  url: "/tattva/admin/org/:orgSite/watch/:watchlist",
-  params: {
-    org:null,
-    watchlist: null
-  },
-  views: {
-    "header" : {
-      templateUrl: "",
-      controller: "HeaderCtrl"
-    },
-    "content@" : {
-      templateUrl: ""
-      },
-    "footer" : {
-      templateUrl:
-        }
-    // "adminSelection" :{
-    //   templateUrl:"/"
-    // }
-  }
-}
-)
-}
+  url: "/org/:orgSite",
+  templateUrl:"adminDashboard/template/orgportfolio.html",
+  controller: "orgWatchlistsCtrl",
+  // resolve:{
+  //   // selectionObj:selectionObject()
+  // }
+  // templateUrl:"adminDashboard/template/orgportfolio.html",
+  // controller:"adminDashboardController.js"
+});
+// $rootScope.$on
+// $urlRouterProvider.otherwise('/adminHome.orgportfolio');
+}]);
+
+
+// .state({
+//   name:'adminHome',
+//   url: "/admin/dashboard",
+//   views:{
+//     "header" : {
+//       templateUrl: "/home/template/header.html",
+//       controller: "HeaderCtrl"
+//     },
+//     "content" : {
+//       templateUrl: "adminDashboard/template/adminDashboard.html"
+//       },
+//     "footer" : {
+//       templateUrl:"/home/template/footer.html"
+//       }
+//     }
+//   });

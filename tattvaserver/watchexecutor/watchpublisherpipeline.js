@@ -34,10 +34,9 @@ var watchPublishPipeline = function(wlstDef) {
   }));
 
   myProcessors.push(highland.each(function(execObj) {
-    //outtream.write("\n" + JSON.stringify(execObj) + "\n");
+    // outtream.write("\n" + JSON.stringify(execObj) + "\n");
     outtream.write(".");
-
-    // console.log("Result: ", execObj.path)
+    //  console.log("Result: ", execObj.path)
     return execObj;
   }));
 }
