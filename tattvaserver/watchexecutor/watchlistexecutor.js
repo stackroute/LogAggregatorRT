@@ -31,7 +31,11 @@ var watchExecutor = function(wlstDef, dataSource) {
     highland(sourceStream)
     .pipe(exprPipe)
     .pipe(exprReducePipe)
-    .pipe(uiPublisherPipe)
+    .pipe(uiPublisherPipe).map(function(execObj){
+      //This will mark the exit from the pipeline just before saving
+      execObj['outon'] = new Date();
+      return execObj;
+    })
     .pipe(dbPublisherPipe)
     // .pipe(drainerPipe)
   });
