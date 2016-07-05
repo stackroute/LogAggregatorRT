@@ -31,7 +31,7 @@ watchloop_router.post('/',function (request, response) {
       //this is object
         watchExecutor(watchlist, dataSource);
       //Execute the watch list using Watch list executor
-      return res.json(savewatchloopdata);
+      return response.json(savewatchloopdata);
     });
   })
 });
