@@ -1,6 +1,10 @@
 <md-content class="content">
-  <div ng-controller="sunburstGraph">
-    <sunburstchart data="sunburstData" stats="stats(selectionObj)"></sunburstchart>
-    <selection data="sunburstData" stats="tattvaStats"></selection>
-  </div>
+  <div ng-controller="adminDashboardCtrl">
+    <portfolio data="sunburstData" stats="stats(selectionObj)"></portfolio>
+    <!-- <a ui-sref=".orgwatches">go to orgwatches</a> -->
+    <!-- <md-whitefield class="md-whiteframe-3dp" flex="70" flex-sm="80" flex-gt-sm="80" flex-gt-md="80" style="height:400px;width:500px"> -->
+      <ui-view></ui-view>
+    <!-- </md-whitefield> -->
 </md-content>
+</div>
+<!-- <span flex></span> -->

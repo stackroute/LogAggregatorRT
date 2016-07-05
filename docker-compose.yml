@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 version: '2'
 services:
   webapp:
@@ -23,7 +22,6 @@ services:
       - 27017
     ports:
       - 27017:27017
-=======
 version: '2'
 services:
   webapp:
@@ -61,4 +59,3 @@ services:
       - 27017
     ports:
       - 27017:27017
->>>>>>> d0fd2f224528df142a1137002af3700304472817

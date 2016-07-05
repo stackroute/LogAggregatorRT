@@ -17,5 +17,4 @@ var datasourceSchema= new Schema({
   ,{collection: "datasources"});
 
 // var datasource=mongoose.model('datasource', datasourceSchema);
-
 module.exports = datasourceSchema;
