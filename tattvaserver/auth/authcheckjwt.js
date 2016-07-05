@@ -1,8 +1,9 @@
 var jwt = require('jsonwebtoken');
 
-var UserModel = require("../organisation/users");
-var OrganisationsModel = require("../organisation/organisations");
-var WatchSlideModel = require("../watchslide/watchslide");
+var UserSchema = require("../organisation/users");
+// var OrganisationSchema = require("../organisation/organisations");
+// var WatchSlideSchema = require("../watchslide/watchslide");
+var dataProvider = require('../core/datamodelprovider');
 
 module.exports = function isAuthenticated(req, res, next) {
   //console.log("checking for Authentication");
@@ -28,6 +29,7 @@ module.exports = function isAuthenticated(req, res, next) {
     }
 
     console.log("Decoded payload: ", payload);
+    var UserModel = dataProvider.getModel(UserSchema,"tattva");
 
     if (payload) {
       UserModel.findOne({

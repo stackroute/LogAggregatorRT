@@ -9,35 +9,30 @@ angular.module('tattva').directive('linearChart', function($parse, $window){
     link: function(scope, elem, attrs){
       console.log("LineChart");
       var graphData = [];
-      // var exp = $parse(attrs.chartData);
       var xattr=scope.configobj.xaxis;
       var yattr=scope.configobj.yaxis;
-      console.log("xattr:",xattr);
-      console.log("yattr:",yattr);
-      // var salesDataToPlot=exp(scope);
       var padding = 20;
       var pathClass="path";
       var xScale, yScale, xAxisGen, yAxisGen, lineFun;
       var d3 = $window.d3;
       var rawSvg=elem.find('svg');
       var svg = d3.select(rawSvg[0]);
-      // var parseDate = d3.time.format("%Y-%m-%d").parse;
-      // scope.$watchCollection(exp, function(newVal, oldVal){
-      //   salesDataToPlot=newVal;
-      //   redrawLineChart();
-      // });
+      var parsedDate=null;
+
       scope.eventobj.on("watchlist::graphdata",function(data){
+        if(graphData.length >= 100) graphData = [];
         graphData.push(data);
         redrawLineChart();
       });
       function setChartParameters(){
-        // console.log("[",salesDataToPlot.length,"]");
-        xScale = d3.scale.linear()
+         xScale = d3.time.scale.utc()
         .domain(d3.extent(graphData, function(d) {
-          return (new Date(d.message[xattr]));
+           return (parsedDate);
+          // return d.message[xattr];
         }))
-        // .domain([1,salesDataToPlot.length])
-        .range([padding + 5, rawSvg.attr("width") - padding]);
+        // .domain([1,graphData.length])
+        .range([padding +5, rawSvg.attr("width") - padding]);
+        //  .rangeRoundBands([20, rawSvg.attr("width")]);
         yScale = d3.scale.linear()
         .domain([0, d3.max(graphData, function (d) {
           return d.message[yattr];
@@ -46,24 +41,33 @@ angular.module('tattva').directive('linearChart', function($parse, $window){
         xAxisGen = d3.svg.axis()
         .scale(xScale)
         .orient("bottom")
-        .ticks(10);
+        .ticks(10)
+        .tickFormat(d3.time.format.utc('%D %Hh %Mm %Ss'));
         yAxisGen = d3.svg.axis()
         .scale(yScale)
         .orient("left")
         .ticks(5);
         lineFun = d3.svg.line()
         .x(function (d) {
-          // console.log("date:",new Date(d.message.data.data[xattr]));
-          return xScale(new Date(d.message[xattr]));
-          // var hour=salesDataToPlot.length+1;
-          // return hour;
+          // console.log("X axis date now as : ", d.message[xattr]);
+          // return xScale(d.message[xattr]);
+          var date = new Date(d.message[xattr]);
+          // d.message[xattr] = date.toUTCString();
+          // date = new Date(d.message[xattr]);
+          parsedDate = new Date(date.getUTCFullYear(),
+          date.getUTCMonth(),
+          date.getUTCDate(),
+          date.getUTCHours(),
+          date.getUTCMinutes(),
+          date.getUTCSeconds());
+          return xScale(parsedDate);
         })
         .y(function (d) {
           return yScale(d.message[yattr]);
         })
         .interpolate("basis");
       }
-      function drawLineChart() {
+     function drawLineChart() {
         setChartParameters();
         svg.append("svg:g")
         .attr("class", "x axis")
@@ -84,8 +88,8 @@ angular.module('tattva').directive('linearChart', function($parse, $window){
       }
       function redrawLineChart() {
         setChartParameters();
-        svg.selectAll("g.y.axis").call(yAxisGen);
         svg.selectAll("g.x.axis").call(xAxisGen);
+        svg.selectAll("g.y.axis").call(yAxisGen);
         svg.selectAll("."+pathClass)
         .attr({
           d: lineFun(graphData)

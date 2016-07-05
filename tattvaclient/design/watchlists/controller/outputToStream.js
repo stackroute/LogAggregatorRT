@@ -8,13 +8,13 @@ angular.module("tattva")
     $mdDialog.hide();
   };
   $scope.streams=[];
-  streamFactory.sendStream(publisherData.namespace).then(function(data)
-  {
+  streamFactory.sendStream(publisherData.namespace).then(function(res) {
+    var data = res.data;
     for(i in data)
     {
       $scope.streams.push(data[i].streamname);
     }
-  });
+  }, function(res){ console.log("Error in getting stream data: ", res.data.error); $scope.error = res.data.error; });
 
   $scope.updateBackPublisher = function(Data) {
     $mdDialog.hide($scope.publisherData);

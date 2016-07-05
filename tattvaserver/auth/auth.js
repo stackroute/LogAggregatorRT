@@ -2,9 +2,11 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var LocalStrategy = require('passport-local').Strategy;
 
-var UserModel = require("../organisation/users");
-var OrganisationsModel = require("../organisation/organisations");
-var WatchSlideModel = require("../watchslide/watchslide")
+var dataProvider = require('../core/datamodelprovider');
+
+var UserSchema = require('../organisation/users');
+var OrganisationSchema = require("../organisation/organisations");
+var WatchSlideSchema = require("../watchslide/watchslide");
 
 module.exports = function(app, passport) {
     passport.serializeUser(function(user, done) {
@@ -14,6 +16,7 @@ module.exports = function(app, passport) {
 
     passport.deserializeUser(function(email, done) {
         // console.log("deserializeUser ", email);
+        var UserModel = dataProvider.getModel(UserSchema,"tattva");
         UserModel.findOne({
             email: email
         }, function(err, user) {
@@ -79,6 +82,7 @@ module.exports = function(app, passport) {
         //Check if the user already exists? (email)
 
         //Create the Organisation
+        var OrganisationsModel = dataProvider.getModel(OrganisationSchema,"tattva");
         var newOrg = new OrganisationsModel({
             "orgName": req.body.orgname,
             "orgSite": req.body.orgsite,
@@ -96,6 +100,7 @@ module.exports = function(app, passport) {
                 });
             }
 
+            var UserModel = dataProvider.getModel(UserSchema,"tattva");
             //Create the User and attach him to the organisation just created as a Admin
             var newUser = new UserModel({
                 "name": req.body.name,
@@ -113,9 +118,10 @@ module.exports = function(app, passport) {
 
                 //After user is created, lets add a default watchslide
                 // slide creation
+                var WatchSlideModel = dataProvider.getModel(WatchSlideSchema, savedUser.orgsite);
                 var userDefaultSlide = new WatchSlideModel({
                     "username": savedUser.email,
-                    "orgname": savedUser.orgsite,
+                    "orgsite": savedUser.orgsite,
                     "defaultSlide": 'org',
                     "mySlides": []
                 });
@@ -165,7 +171,7 @@ module.exports = function(app, passport) {
         },
         function(req, email, password, done) {
             console.log("Finding user by email: ", email);
-
+            var UserModel = dataProvider.getModel(UserSchema,"tattva");
             UserModel.findOne({
                 'email': email
             }, function(err, user) {
@@ -184,7 +190,7 @@ module.exports = function(app, passport) {
                         message: 'Invalid user credentials, please retry with valid credentials..!'
                     });
                 }
-
+                var OrganisationsModel = dataProvider.getModel(OrganisationSchema,"tattva");
                 OrganisationsModel.findOne({
                     'orgSite': user.orgsite
                 }, function(err, org) {

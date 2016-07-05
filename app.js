@@ -35,7 +35,7 @@ var app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+  extended: false
 }));
 app.use(cookieParser());
 
@@ -64,25 +64,25 @@ app.use(express.static(path.join(__dirname, 'tattvaclient')));
 require('./tattvaserver/auth/authbyjwttoken')(app);
 var isAuthenticated = require('./tattvaserver/auth/authcheckjwt');
 
-var dbURI = 'mongodb://localhost/wipro';
-mongoose.connect(dbURI);
-mongoose.connection.on('connected', function() {
-    logger.debug('Mongoose connected to ' + dbURI);
-});
-mongoose.connection.on('error', function(err) {
-    logger.debug('Mongoose connection error: ' + err);
-});
-mongoose.connection.on('disconnected', function() {
-    logger.debug('Mongoose disconnected');
-});
-
-process.on('SIGINT', function() {
-
-    mongoose.connection.close(function() {
-        logger.debug('Mongoose disconnected through app termination');
-        process.exit(0);
-    });
-});
+// var dbURI = 'mongodb://localhost/wipro';
+// mongoose.connect(dbURI);
+// mongoose.connection.on('connected', function() {
+//     logger.debug('Mongoose connected to ' + dbURI);
+// });
+// mongoose.connection.on('error', function(err) {
+//     logger.debug('Mongoose connection error: ' + err);
+// });
+// mongoose.connection.on('disconnected', function() {
+//     logger.debug('Mongoose disconnected');
+// });
+//
+// process.on('SIGINT', function() {
+//
+//     mongoose.connection.close(function() {
+//         logger.debug('Mongoose disconnected through app termination');
+//         process.exit(0);
+//     });
+// });
 
 
 app.use('/', routes);
@@ -99,29 +99,29 @@ app.use('/appsummary',isAuthenticated, summary_router);
 app.use('/watchloop',isAuthenticated,  watchloop_router);
 
 logger.info("Starting watch list executor...!");
-//watchloopExecutor();
+watchloopExecutor();
 
 app.use(function(req, res, next) {
-    err.status = 404;
-    next(err);
+  err.status = 404;
+  next(err);
 });
 
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
+  });
 }
 
 app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: err
-    });
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: err
+  });
 });
 
 module.exports = app;

@@ -28,9 +28,8 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "serve-favicon": "~2.3.0",
-    "should": "^9.0.2",
     "socket.io": "^1.4.6",
-    "supertest": "^1.2.0",
+    "stream-to-mongo": "^0.1.5",
     "websocket-stream": "^3.2.1"
   }
 }

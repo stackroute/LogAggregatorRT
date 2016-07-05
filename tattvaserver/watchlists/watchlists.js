@@ -65,6 +65,6 @@ var watchListSchema=new mongoose.Schema({
       }
   }
 
-  });
-var watchlist = mongoose.model('watchlist', watchListSchema);
-module.exports = watchlist;
+},{collection: "watchlists"});
+// var watchlist = mongoose.model('watchlist', watchListSchema);
+module.exports = watchListSchema;

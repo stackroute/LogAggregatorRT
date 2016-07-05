@@ -7,6 +7,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
       <link rel="stylesheet" href="/angular-material-icons/angular-material-icons.css" media="screen" title="no title" charset="utf-8">
+      <link rel="stylesheet" href="/adminDashboard/css/appPortfolioStyle.css">
       <link rel="stylesheet" href="/design/namespaces/css/namespace.css">
       <link rel="stylesheet" href="/design/watchlists/stylewatchlist/watchlistCustomStyle.css" media="screen" title="no title" charset="utf-8">
       <link rel="stylesheet" href="/design/watchlists/stylewatchlist/watchmapstyle.css">
@@ -36,11 +37,11 @@
       <script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
       <script src="/angular-material-icons/angular-material-icons.min.js" charset="utf-8"></script>
       <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
-      <!-- <script src="/angular-material-data-table/dist/md-data-table.min.js"></script> -->
       <script src="/ng-letter-avatar/dist/ngletteravatar.min.js"></script>
       <script src="/ace-builds/src-min-noconflict/ace.js"></script>
       <script src="/angular-ui-ace/ui-ace.js"></script>
       <script src="/d3/d3.min.js" charset="utf-8"></script>
+      <script src="/non_bower_modules/canvasjs.min.js"></script>
       <script src="/socket.io/socket.io.js"></script>
       <!-- Tattva app -->
       <script src="tattva.module.js" charset="utf-8"></script>
@@ -88,7 +89,6 @@
       <script src="/design/streams/controller/viewstreamsctrl.js" charset="utf-8"></script>
       <!--End of Streams module -->
       <!-- Watchlists module -->
-      <!-- <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script> -->
       <script src="/design/watchlists/service/watchlistconfg.js" charset="utf-8"></script>
       <script src="/design/watchlists/controller/namespacectrl.js" charset="utf-8"></script>
       <script src="design/watchlists/controller/watchlistManagerCtrl.js"></script>
@@ -102,7 +102,8 @@
       <script src="/design/watchlists/controller/watchlistManagerCtrl.js" charset="utf-8"></script>
       <script src="/design/watchlists/service/wlstDataService.js" charset="utf-8"></script>
       <script src="/design/watchlists/directive/donutchart_directive.js" charset="utf-8"></script>
-      <script src="/design/watchlists/directive/linechart_directive.js" charset="utf-8"></script>
+      <!-- <script src="/design/watchlists/directive/linechart_directive.js" charset="utf-8"></script> -->
+      <script src="/design/watchlists/directive/livecanvas.js" charset="utf-8"></script>
       <script src="/design/watchlists/directive/logdata.js" charset="utf-8"></script>
       <script src="/design/watchlists/directive/watchlistmap.js" charset="utf-8"></script>
       <script src="/design/watchlists/controller/namespacebasedwatchlist.js" charset="utf-8"></script>
@@ -134,6 +135,14 @@
       <script src="/dashboard/factory/slidefactory.js" charset="utf-8"></script>
       <script src="/dashboard/factory/searchfactory.js" charset="utf-8"></script>
       <!--dashboard end  -->
+      <!-- admin dashboard module -->
+      <script src="/adminDashboard/adminDashboard.module.js"></script>
+      <script src="/adminDashboard/controller/adminDashboardCtrl.js"></script>
+      <script src="/adminDashboard/controller/appPortfolioCtrl.js"></script>
+      <script src="/adminDashboard/controller/orgWatchlistsCtrl.js"></script>
+      <script src="/adminDashboard/controller/orgDialogCtrl.js"></script>
+      <script src="/adminDashboard/directive/appPortfolioGraphDirective.js"></script>
+      <!-- admin dashboard module end -->
       <!-- Home Module -->
       <script src="/home/home.module.js" charset="utf-8"></script>
       <script src="/home/service/sideNavItemsFactory.js" charset="utf-8"></script>

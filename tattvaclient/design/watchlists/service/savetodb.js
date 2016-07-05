@@ -25,7 +25,7 @@ this.savewatchloopeditdata=function(watchlistData1){
       url : '/watchloop',
       data : watchlistData1
     }).then(function(response)
-    { 
+    {
     },function(err){
       //console.log(err);
     });
@@ -124,8 +124,7 @@ this.savewatchloopeditdata=function(watchlistData1){
 
   this.getwatchlistdata=function()
   {
-    $http.get('/watchlistdata',function()
-    {
+    $http.get('/watchlistdata',function() {
     });
   };
 }]);

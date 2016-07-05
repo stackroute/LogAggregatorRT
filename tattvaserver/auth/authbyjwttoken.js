@@ -1,8 +1,10 @@
 var jwt = require('jsonwebtoken');
 
-var UserModel = require("../organisation/users");
-var OrganisationsModel = require("../organisation/organisations");
-var WatchSlideModel = require("../watchslide/watchslide");
+var UserSchema = require("../organisation/users");
+var OrganisationSchema = require("../organisation/organisations");
+var WatchSlideSchema = require("../watchslide/watchslide");
+var dataProvider = require('../core/datamodelprovider');
+
 
 module.exports = function(app) {
   app.post('/signup', function(req, res, next) {
@@ -14,6 +16,7 @@ module.exports = function(app) {
       });
     }
 
+    var OrganisationsModel = dataProvider.getModel(OrganisationSchema,"tattva");
     //Create the organisation
     var newOrganisation = new OrganisationsModel({
       "orgName": req.body.orgname,
@@ -33,7 +36,7 @@ module.exports = function(app) {
         err.status=401;
         throw err;
       }
-
+      var UserModel = dataProvider.getModel(UserSchema,"tattva");
       //After organisation is created User is created
       var newUser = new UserModel({
         "name":req.body.name,
@@ -49,6 +52,8 @@ module.exports = function(app) {
           return res.status(401).json(err);
         }
 
+console.log("org site:",userObj.orgsite);
+        var WatchSlideModel = dataProvider.getModel(WatchSlideSchema,userObj.orgsite);
         //After user is created, add a default watchslide
         var userDefaultSlide = new WatchSlideModel({
           "username": userObj.email,
@@ -62,6 +67,7 @@ module.exports = function(app) {
             // console.log("Error in saving default slide details for user", err);
             return res.status(401).json(err);
           }
+
 
           OrganisationsModel.findOne({
             'orgSite': userObj.orgsite
@@ -105,6 +111,7 @@ module.exports = function(app) {
       });
       return;
     }
+    var UserModel = dataProvider.getModel(UserSchema,"tattva");
     UserModel.findOne({
       email: req.body.email
     }, {
@@ -136,6 +143,7 @@ module.exports = function(app) {
         return;
       }
 
+      var OrganisationsModel = dataProvider.getModel(OrganisationSchema,"tattva");
       OrganisationsModel.findOne({
         'orgSite': user.orgsite
       }, function(err, org) {

@@ -20,21 +20,13 @@ angular.module('tattva')
 }]);
 angular.module('tattva')
 .service('streamsservice',['$http',function($http){
-  this.saveStream=function(streamsData){
-    $http({
+  var resError="";
+  this.saveStream=function(streamsData, successCB, errorCB){
+  return  $http({
       method : 'post',
       url : '/datastream/'+streamsData.streamname,
       data : streamsData
-    }).success(function(data){
-      if(data.errors){
-        $scope.errorName = data.errors.name;
-        $scope.errorUserName = data.errors.username;
-        $scope.errorEmail = data.errors.email;
-      }
-      else{
-        $scope.message=data.message;
-      }
-    });
+    }).then(successCB,errorCB);
   }
 
   this.saveEditedStream=function(streamsData){
@@ -44,14 +36,7 @@ angular.module('tattva')
       url : '/datastream/'+streamsData.streamname,
       data : streamsData
     }).success(function(data){
-      if(data.errors){
-        $scope.errorName = data.errors.name;
-        $scope.errorUserName = data.errors.username;
-        $scope.errorEmail = data.errors.email;
-      }
-      else{
-        $scope.message=data.message;
-      }
+      
     });
   }
 }]);

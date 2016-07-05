@@ -9,8 +9,8 @@
             <!-- </div> -->
           </md-option>
         </md-select>
-      </div>
       <div flex="10">
+      </div>
         <md-button class="currSlideDropdown md-raised md-accent" aria-label="Favorite" ng-click="slidecreate($event)">Add Slide
         </md-button>
       </div>
@@ -22,8 +22,8 @@
   </div> -->
 </div>
 <div class="flexcontainer">
-  <watchwidget class="flex-item" flex="{{watch.publishers.dashboard.displaySize}}"
-  watchdefn="watch"  ng-repeat="watch in watchCollection">
+  <watchwidget class="flex-item" ng-repeat="watch in watchCollection"
+   flex="{{watch.publishers.dashboard.displaySize}}" watchdefn="watch" eventobj="socket" >
 </watchwidget>
 </div>
 </div>

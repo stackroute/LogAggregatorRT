@@ -1,0 +1,16 @@
+#sbrst {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  position: relative;
+  background: #fff;
+  margin: 30px;
+}
+/*form {
+  position: absolute;
+  right: 10px;
+  top: 10px;}*/
+path {
+  stroke: #fff;
+  fill-rule: evenodd;}
+
+/*only sunburst styling added so far*/
