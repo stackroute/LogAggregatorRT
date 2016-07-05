@@ -34,7 +34,7 @@ var app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+  extended: false
 }));
 app.use(cookieParser());
 
@@ -47,13 +47,13 @@ app.use(express.static(path.join(__dirname, 'tattvaclient')));
 
 //Max age is 5 minutes
 app.use(session({
-    secret: 'TATTVA Complex Event Processor',
-    cookie: {
-        maxAge: 3000000
-    },
-    resave: false,
-    saveUninitialized: false,
-    rolling: true
+  secret: 'TATTVA Complex Event Processor',
+  cookie: {
+    maxAge: 3000000
+  },
+  resave: false,
+  saveUninitialized: false,
+  rolling: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -62,37 +62,37 @@ app.use(flash());
 require('./tattvaserver/auth/auth')(app, passport);
 
 function isAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        req.session.touch();
-        return next();
-    }
+  if (req.isAuthenticated()) {
+    req.session.touch();
+    return next();
+  }
 
-    logger.debug('Unauthorised request found..!');
-    res.status(401).json({
-        "error": "Unauthorized request, please signin and retry..!"
-    });
+  logger.debug('Unauthorised request found..!');
+  res.status(401).json({
+    "error": "Unauthorized request, please signin and retry..!"
+  });
 };
 
 
-var dbURI = 'mongodb://localhost/wipro';
-mongoose.connect(dbURI);
-mongoose.connection.on('connected', function() {
-    logger.debug('Mongoose connected to ' + dbURI);
-});
-mongoose.connection.on('error', function(err) {
-    logger.debug('Mongoose connection error: ' + err);
-});
-mongoose.connection.on('disconnected', function() {
-    logger.debug('Mongoose disconnected');
-});
-
-process.on('SIGINT', function() {
-
-    mongoose.connection.close(function() {
-        logger.debug('Mongoose disconnected through app termination');
-        process.exit(0);
-    });
-});
+// var dbURI = 'mongodb://localhost/wipro';
+// mongoose.connect(dbURI);
+// mongoose.connection.on('connected', function() {
+//     logger.debug('Mongoose connected to ' + dbURI);
+// });
+// mongoose.connection.on('error', function(err) {
+//     logger.debug('Mongoose connection error: ' + err);
+// });
+// mongoose.connection.on('disconnected', function() {
+//     logger.debug('Mongoose disconnected');
+// });
+//
+// process.on('SIGINT', function() {
+//
+//     mongoose.connection.close(function() {
+//         logger.debug('Mongoose disconnected through app termination');
+//         process.exit(0);
+//     });
+// });
 
 
 app.use('/', routes);
@@ -112,26 +112,26 @@ logger.info("Starting watch list executor...!");
 watchloopExecutor();
 
 app.use(function(req, res, next) {
-    err.status = 404;
-    next(err);
+  err.status = 404;
+  next(err);
 });
 
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
+  });
 }
 
 app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: err
-    });
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: err
+  });
 });
 
 module.exports = app;

@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 
-// dbURL = 'mongodb://localhost/sampledatabase';
-// mongoose.connect(dbURL);
-
-var slideSchema2=new mongoose.Schema({
+var watchslideSchema=new mongoose.Schema({
   username:{type:String, require:true, unique: true},
   orgsite:{type:String, require:true},
   defaultSlide:{type:String, require:true, default:'org'},
@@ -12,6 +9,6 @@ var slideSchema2=new mongoose.Schema({
     watchlists:{type:Array}
   }]
   // mySlides:{type:Array}
-});
-var watchslide =mongoose.model("watchslide",slideSchema2);
-module.exports=watchslide;
+},{collection: "watchslides"});
+// var watchslide =mongoose.model("watchslide",slideSchema2);
+module.exports=watchslideSchema;

@@ -82,7 +82,8 @@ angular.module('tattva')
       // console.log("streams=====",$stateParams.streamName);
         // console.log(res.data.error);
         // $scope.resError = res.data.error;
-
+      var streamData={namespace : $scope.user_namespace , instance : $scope.user_instance , streamname : $scope.streamsData.user_streamName, description : $scope.streamsData.stringDescription , query : $scope.streamsData.queryBuilder };
+      streamsservice.saveEditedStream(streamData);
       $scope.editStreamFlag = true;
     }
     else {
@@ -93,7 +94,6 @@ angular.module('tattva')
         // $scope.showAlert("Stream saved successfully");
         // var savedDialog = $mdDialog.confirm()
         //                         .title('Stream')
-        $state.go("design.streams.viewStreams");
         //success---change the state
       },function(errorCB){
         //error
@@ -102,6 +102,7 @@ angular.module('tattva')
       });
       $scope.editStreamFlag = true;
     }
+    $state.go("design.streams.viewStreams");
   }
 
   $scope.edit=function(){

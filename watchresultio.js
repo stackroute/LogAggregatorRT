@@ -21,5 +21,4 @@ io.on('connection', function(socket) {
 		io.emit(eventName, eventData);
 	});
 });
-
 module.exports = io;

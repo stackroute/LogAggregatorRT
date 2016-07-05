@@ -7,7 +7,8 @@ var UserSchema  = mongoose.Schema({
   "hash_password" : {type : String, required : true,min:8 ,max : 30},
   "orgsite" : {type : String, index:true, min:3 ,max : 50},
   "role" : {type : String, required : true, index:true}
-});
+},{collection: "users"});
+
 //Instance Methods and Static Methods
 // - for validation of data values
 // - for validation of unique user in the system
@@ -37,8 +38,8 @@ UserSchema.methods = {
 };
 
 //Create the model for user, collection name is given as "users"
-var User = mongoose.model('user',
-UserSchema,
-"users"); //This is the collection name in the Database
+// var User = mongoose.model('user',
+// UserSchema,
+// "users"); //This is the collection name in the Database
 
-module.exports = User;
+module.exports = UserSchema;

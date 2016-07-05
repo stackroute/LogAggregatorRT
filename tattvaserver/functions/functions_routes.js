@@ -1,7 +1,8 @@
 var express = require('express');
 var function_router = express.Router();
 
-var functions = require('./functions.js');
+var FunctionSchema = require('./functions.js');
+var dataProvider = require('../core/datamodelprovider');
 
 function_router.use(function(req, res, next) {
     //console.log("we reached in the middleware-----------function------------------------------------");
@@ -114,8 +115,8 @@ function_router.use(function(req, res, next) {
         "editedBy":"Pooja"
       }
     ];
-
-    functions.collection.insert(func,onInsert);
+    var FunctionModel = dataProvider.getModel(FunctionSchema, req.user.orgsite);
+    FunctionModel.collection.insert(func,onInsert);
 
     function onInsert(err, docs) {
 
@@ -158,8 +159,9 @@ function_router.use(function(req, res, next) {
 //     res.send('hello ' + req.params.name + '!');
 // });
 function_router.get('/', function(req, res) {
+  var FunctionModel = dataProvider.getModel(FunctionSchema, req.user.orgsite);
 //console.log("we reached in the route------get-------------------------------------------------------------------------");
-  functions.find({},{name:1,description:1},function (err, functionData) {
+  FunctionModel.find({},{name:1,description:1},function (err, functionData) {
     res.send(functionData);
   })
 });
