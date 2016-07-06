@@ -1,19 +1,25 @@
 angular.module('tattva')
-.controller("appPortfolioCtrl",['$scope','$http','$state', function($scope, $http, $state) {
+.controller("appPortfolioCtrl",['$scope','$http','$state','$mdDialog','adminFactory',
+ function($scope, $http, $state,$mdDialog,adminFactory) {
 
-  // console.log("current seelection :" $scope.tattvaStats);
-  
+  adminFactory.orgList().then(function(res){
+    $scope.orgs=res.data;
+      console.log('$scope.orgs',$scope.orgs);
+  },function(res){
+    console.log("error",res.data.error);
+  })
 
-  var orgClick = function(ev,orgName){
-    console.log("Calling the dialog box");
+  $scope.orgClick = function(ev,orgSite){
+    console.log("Calling the dialog box for org:",orgSite);
     $mdDialog.show({
-      controller: "orgDialogController",
+      controller: "orgDialogCtrl",
       templateUrl:'adminDashboard/template/orgDialog.html',
       parent: angular.element(document.body),
       targetEvent: ev,
+      locals:{orgSite:orgSite},
       // clickOutsideToClose:true,
-      // escapeToClose:true,
-      // fullscreen: useFullScreen
+      escapeToClose:true,
+      fullscreen: true
     });
     // .then(function(response) {
     //   $scope.status = 'You said the information was "' + response + '".';

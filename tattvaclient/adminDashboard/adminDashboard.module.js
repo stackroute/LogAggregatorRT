@@ -16,14 +16,6 @@ $stateProvider
       templateUrl:"/home/template/footer.html"
     }
   }
-  // data:{
-  //   selectionObj : selectionObj
-  // }
-  // resolve:{
-  //   // selectionObject :  selectionObj
-  //     return selectionObj
-  //   }
-  // }
 })
 .state('adminHome.appPortfolio',
 {
@@ -33,7 +25,7 @@ $stateProvider
 })
 .state('adminHome.orgwatches',
 {
-  url: "/org/:orgSite",
+  url: "/org/:orgSite:namespace:instance:stream:watchlist",
   templateUrl:"adminDashboard/template/orgportfolio.html",
   controller: "orgWatchlistsCtrl",
   // resolve:{

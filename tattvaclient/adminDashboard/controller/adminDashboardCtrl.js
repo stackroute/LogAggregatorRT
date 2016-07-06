@@ -1,4 +1,5 @@
-angular.module('tattva').controller("adminDashboardCtrl",['$scope','$http','$state',function($scope, $http,$state){
+angular.module('tattva').controller("adminDashboardCtrl",['$scope','$http','$state','adminFactory',
+function($scope, $http,$state,adminFactory){
   var currentInstance=null;
   $scope.stats=null;
     // function getGraphdata() {
@@ -9,6 +10,7 @@ angular.module('tattva').controller("adminDashboardCtrl",['$scope','$http','$sta
     //   console.log("Error in getting graph data from server, error: ", res.data);
     // });
   // }
+
   $scope.sunburstData = {
     name:"tattva",
     instanceType : "superUser",
@@ -177,20 +179,6 @@ angular.module('tattva').controller("adminDashboardCtrl",['$scope','$http','$sta
     ]
   };
 
-  $scope.orgs = [
-    {
-      name:"wipro digital",
-      address:"Electronic city,bangalore",
-      logo:"http://www.thehindubusinessline.com/multimedia/dynamic/02440/wipro-digital_2440034f.jpg"
-    },
-    {
-      name:"deloitte digital",
-      address:"Gachibowli,Hyderbad",
-      logo:"http://symposium.adobe.com/images/deloitte-digital-logo.png"
-    }
-  ];
-
-  // console.log("from the parent controller scope:",$scope.sunburstData);
   // getGraphdata();
   var previousOrgSite;
   var selectionObj;
@@ -206,7 +194,7 @@ angular.module('tattva').controller("adminDashboardCtrl",['$scope','$http','$sta
     } else {
       prms = {orgSite: $scope.tattvaStats.orgSite};
       if(prms.orgSite!=previousOrgSite){
-      console.log("changing state to orgwatches with params as ", prms);
+      // console.log("changing state to orgwatches with params as ", prms);
       $state.go('adminHome.orgwatches', prms );
       previousOrgSite = prms.orgSite;
       }
