@@ -13,7 +13,7 @@ function ModelProvider() {
     }
 
     var modelName = schemaObj.get('collection');
-    console.log("modelName:",modelName);
+    logger.info("modelName:",modelName);
 
     if(!modelName) {
         throw new Error("Invalid data in for establishing source..!");
@@ -22,7 +22,7 @@ function ModelProvider() {
     var modelObj = getFromMap(dbName, modelName);
     if(!modelObj) {
       var connection = getDBConnection(dbName);
-      console.log("Creating new model object for ", dbName, " : ", modelName);
+      logger.info("Creating new model object for ", dbName, " : ", modelName);
       modelObj = connection.model(modelName, schemaObj);
       pushToMap(dbName, modelName, modelObj);
     }
@@ -44,7 +44,7 @@ function ModelProvider() {
     if( ! modelMap[dbName] ) {
       modelMap[dbName] = { modelName: modelObj }
     } else if(modelMap[dbName][modelName]) {
-      console.log("Over writing the existing model Obj");
+      logger.info("Over writing the existing model Obj");
       modelMap[dbName][modelName] = modelObj;
     } else {
       modelMap[dbName][modelName] = modelObj;
@@ -57,7 +57,7 @@ function ModelProvider() {
     if(dbConnectionMap[dbName]) {
       connection = dbConnectionMap[dbName]
     } else {
-      console.log("Creating new connection for ", dbName);
+      logger.info("Creating new connection for ", dbName);
       var dbURI = 'mongodb://localhost/'+dbName;
       connection = mongoose.createConnection(dbURI);
       dbConnectionMap[dbName] = connection;
@@ -66,7 +66,7 @@ function ModelProvider() {
   };
 
   process.on('SIGINT', function() {
-    console.log("Going to terminate all active connections...!");
+    logger.info("Going to terminate all active connections...!");
     //Destroy all model objects in modelmap
     //Loop through connectionMap and close each connection;
     process.exit(0);
