@@ -1,3 +1,4 @@
 angular.module('tattva')
-.controller("orgDialogCtrl",['$scope','$http','$stateParams', function($scope, $http, $stateParams) {
+.controller("orgDialogCtrl",['$scope','orgSite','$stateParams', function($scope, orgSite, $stateParams) {
+      $scope.orgSite = orgSite;
   }]);

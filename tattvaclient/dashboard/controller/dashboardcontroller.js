@@ -7,7 +7,14 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
   $scope.watchCollection = slideFactory.getOrgWatchlists(function(data){
     $scope.watchCollection=data;
   });
+
   $scope.socket=io();
+  $scope.$on('$destroy', function(){
+
+    if($scope.socket){
+      $scope.socket.disconnect();
+      }
+    });
 
   if($stateParams.slidename !== null){
     $scope.currentSlide = slideFactory.getSlide($stateParams.slidename,function(data){
