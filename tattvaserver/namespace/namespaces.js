@@ -2,6 +2,7 @@ var mongoose = require( 'mongoose' );
 
 var namespaceSchema = new mongoose.Schema({
   "name":{type : String, required : true, unique:true, min:2, max:30},
+  "orgsite":{type:String,required:true},
   // "tag":{type : String, required : true, unique:true},
   "dataSchema":[
     {
@@ -16,8 +17,8 @@ var namespaceSchema = new mongoose.Schema({
   "createdOn": { type : Date, default : Date.now },
   "editedBy":String,
   "editedOn": { type : Date, default : Date.now }
-});
+},{collection: "namespaces"});
 
-var Namespace = mongoose.model('Namespace', namespaceSchema);
+// var Namespace = mongoose.model('Namespace', namespaceSchema);
 
-module.exports = Namespace;
+module.exports = namespaceSchema;

@@ -36,14 +36,7 @@ angular.module('tattva')
       url : '/datastream/'+streamsData.streamname,
       data : streamsData
     }).success(function(data){
-      if(data.errors){
-        $scope.errorName = data.errors.name;
-        $scope.errorUserName = data.errors.username;
-        $scope.errorEmail = data.errors.email;
-      }
-      else{
-        $scope.message=data.message;
-      }
+      
     });
   }
 }]);

@@ -7,18 +7,24 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
   $scope.watchCollection = slideFactory.getOrgWatchlists(function(data){
     $scope.watchCollection=data;
   });
+
   $scope.socket=io();
+  $scope.$on('$destroy', function(){
+
+    if($scope.socket){
+      $scope.socket.disconnect();
+      }
+    });
 
   if($stateParams.slidename !== null){
     $scope.currentSlide = slideFactory.getSlide($stateParams.slidename,function(data){
       $scope.currentSlide=data;
-      console.log(data);
       console.log("Slide data:when stateparams is not null ", $scope.currentSlide);
     });
-  } else {
+  }
+   else {
     $scope.currentSlide = slideFactory.getDefaultSlide(function(data){
       $scope.currentSlide=data;
-      console.log(data);
       console.log("Slide data: ", $scope.currentSlide);
     });
   }

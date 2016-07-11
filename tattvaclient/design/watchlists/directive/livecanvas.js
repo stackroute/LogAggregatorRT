@@ -41,7 +41,7 @@ angular.module('tattva').directive('linearChart', function(){
           dataPoints : graphData
         }]
       });
-      chart.render();
+      // chart.render();
 
       var updateChart = function () {
         chart.render();

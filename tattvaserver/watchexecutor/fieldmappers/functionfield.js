@@ -1,4 +1,4 @@
- var funcExecutor = require("../../datafunctionlib/functionexecutor");
+var funcExecutor = require("../../datafunctionlib/functionexecutor");
 var logger = require("../../../applogger");
 
 var functionFieldMapper = {
@@ -22,7 +22,6 @@ var functionFieldMapper = {
       logger.debug("Error in executing function ", functionName, " with parameters ", fnParamData);
       result = undefined;
     }
-
     // logger.debug(result, " = ", functionName, "(", fnParamData, ")", "  data: ", dataObj);
     return result;
   }

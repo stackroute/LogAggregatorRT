@@ -1,8 +1,7 @@
-angular.module('sunburst').directive('sunburstchart',function(){
+angular.module('tattva').directive('portfolio',function(){
   return{
     restrict:'EA',
-    transclude:true,
-    templateUrl:"sunDir.html",
+    templateUrl:"adminDashboard/template/portfolio.html",
     scope:{
       data:"<data",
       stats:"&stats"
@@ -14,13 +13,12 @@ angular.module('sunburst').directive('sunburstchart',function(){
       };
       setSelectDetails=function(d){
         $scope.$apply(function(){
-          //to update the data in DOM in case of change in selection
           $scope.selectedinstance=d;
         });
       }
     }],
-    controllerAs :'ctrl',
     link:function(scope, element, attrs){
+      // console.log("inside directive link");
         scope.$watch('data', function(nv, ov) {
         scope.data = nv;
         //setting root node i.e. TATTVA node
@@ -29,8 +27,8 @@ angular.module('sunburst').directive('sunburstchart',function(){
           drawMap(root);
       });
       //defining DOM Size
-      var width = 400,
-          height = 450,
+      var width = 300,
+          height = 350,
           radius = Math.min(width, height) / 2;
 
       var x = d3.scale.linear()
@@ -160,10 +158,12 @@ angular.module('sunburst').directive('sunburstchart',function(){
 
       //create object for the current selection -->displayed along with the chart out of chart directive scope
       function createobj(d){
+        // console.log("selection object:",d);
         var returnObject = {
           "name": d.name,
           "instanceType":d.instanceType,
-          "level":d.level
+          "level":d.level,
+          "orgSite":d.orgSite
           };
         if(d.children.length>0){
         // returnObject[d.children[0].instanceType] = d.children.length;

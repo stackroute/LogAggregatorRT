@@ -7,8 +7,8 @@ var OrgSchema  = mongoose.Schema({
   "orgLocation" : {type : String, required : true},
   "contactName" : {type : String, required : true,min:2 ,max : 50},
   "contactEmail": {type : String, required : true, unique : true, index:true}
-});
+},{collection: "organisations"});
 
-var Organisation = mongoose.model('Organisation', OrgSchema, "organisations");
+// var Organisation = mongoose.model('Organisation', OrgSchema, "organisations");
 
-module.exports = Organisation;
+module.exports = OrgSchema;
