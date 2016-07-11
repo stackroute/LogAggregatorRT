@@ -7,6 +7,7 @@ angular.module('tattva').directive('portfolio',function(){
       stats:"&stats"
     },
     controller: ['$scope',function ($scope){
+      //default selection
       $scope.selectedinstance={};
       setRootNode = function(root){
         $scope.selectedinstance = root;
@@ -16,6 +17,11 @@ angular.module('tattva').directive('portfolio',function(){
           $scope.selectedinstance=d;
         });
       }
+      setHoverDetails=function(d){
+        $scope.$apply(function(){
+          $scope.hoveredinstance=d;
+        })
+      }
     }],
     link:function(scope, element, attrs){
       // console.log("inside directive link");
@@ -24,11 +30,15 @@ angular.module('tattva').directive('portfolio',function(){
         //setting root node i.e. TATTVA node
         root = scope.data;
         if(root)
+        {
+          var obj=createobj(root);
+          setRootNode(obj);
           drawMap(root);
+        }
       });
       //defining DOM Size
-      var width = 300,
-          height = 350,
+      var width = 400,
+          height = 500,
           radius = Math.min(width, height) / 2;
 
       var x = d3.scale.linear()
@@ -59,6 +69,65 @@ angular.module('tattva').directive('portfolio',function(){
           .innerRadius(function(d) { return Math.max(0, y(d.y)); })
           .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
 
+          (function() {
+            d3.legend = function(g) {
+              g.each(function() {
+            var g= d3.select(this),
+            items = {},
+            svg = d3.select(g.property("nearestViewportElement")),
+            legendPadding = g.attr("data-style-padding") || 5,
+            lb = g.selectAll(".legend-box").data([true]),
+            li = g.selectAll(".legend-items").data([true])
+
+        lb.enter().append("rect").classed("legend-box",true)
+        li.enter().append("g").classed("legend-items",true)
+
+        svg.selectAll("[data-legend]").each(function() {
+            var self = d3.select(this)
+            items[self.attr("data-legend")] = {
+              pos : self.attr("data-legend-pos") || this.getBBox().y,
+              color : self.attr("data-legend-color") != undefined ? self.attr("data-legend-color") : self.style("fill") != 'none' ? self.style("fill") : self.style("stroke")
+            }
+          })
+
+        items = d3.entries(items).sort(function(a,b) { return a.value.pos-b.value.pos})
+
+        li.selectAll("text")
+            .data(items,function(d) { return d.key})
+            .call(function(d) { d.enter().append("text")})
+            .call(function(d) { d.exit().remove()})
+            .attr("y",function(d,i) { return i+"em"})
+            .attr("x","1em")
+            .text(function(d) { return d.key;});
+
+        li.selectAll("circle")
+            .data(items,function(d) { return d.key})
+            .call(function(d) { d.enter().append("circle")})
+            .call(function(d) { d.exit().remove()})
+            .attr("cy",function(d,i) { return i-0.25+"em"})
+            .attr("cx",0)
+            .attr("r","0.4em")
+            .style("fill",function(d) { return black;});
+            // .style("fill",function(d) { console.log(d.value.color);return d.value.color})
+
+        // Reposition and resize the box
+        var lbbox = li[0][0].getBBox()
+        lb.attr("x",(lbbox.x-legendPadding))
+            .attr("y",(lbbox.y-legendPadding))
+            .attr("height",(lbbox.height+2*legendPadding))
+            .attr("width",(lbbox.width+2*legendPadding))
+      })
+      return g
+    }
+    })()
+
+          // defining on hover legends for sunburstchart
+          var legend = svg.append("g")
+          .attr("class","legend")
+          .style("font-size","12px")
+          .attr("transform", "translate(0, 20)")
+          .call(d3.legend);
+
       var node;
       function drawMap(root) {
         // setRootNode(root);
@@ -77,8 +146,8 @@ angular.module('tattva').directive('portfolio',function(){
               if(d.instanceType=="watchlist"){return "red"};
             })
             .on("click", click)
-            // .on("mouseover",updateLegend)
-            // .on("mouseout",removelegend)
+            .on("mouseover",updateLegend)
+            .on("mouseout",removelegend)
             .each(stash);
 
         //on click function <--> defining behaviour of control on click of an instance
@@ -88,23 +157,22 @@ angular.module('tattva').directive('portfolio',function(){
             .duration(700)
             .attrTween("d", arcTweenZoom(d));
         }
-          //defining on hover legends for sunburstchart
-        // var legend = svg.append("g")
-        //                 .attr("class","legend")
-        //                 .style("font-size","12px")
-        //                 .attr("transform", "translate(0, 20)");
-        //                 // .call(d3.legend);
-        // function legend_function(d)
-        // {
-        //   return "<h2>"+d.name+"</h2><p>"+"Instance Type: "+d.instanceType+"</p>";
-        // }
-        // function updateLegend(d){
-        //   legend.html(legend_function(d));
-        //   legend.transition().duration(200).style("opacity","1");
-        // }
-        // function removelegend(d){
-        //   legend.transition().duration(1000).style("opacity","0");
-        // }
+
+        function legend_function(d)
+        {
+          // console.log(d);
+          // return "<h2>"+d.name+"</h2><p>"+"Instance Type: "+d.instanceType+"</p>";
+          var obj=createobj(d);
+          setHoverDetails(obj);
+          return "<h2>d.name</h2>"
+        }
+        function updateLegend(d){
+          legend.html(legend_function(d));
+          legend.transition().duration(100).style("opacity","1");
+        }
+        function removelegend(d){
+          legend.transition().duration(1000).style("opacity","0");
+        }
       }
       d3.select(self.frameElement).style("height", height + "px");
       // Setup for switching data: stash the old values for transition.
@@ -135,17 +203,9 @@ angular.module('tattva').directive('portfolio',function(){
       }
       // When zooming: interpolate the scales.
       function arcTweenZoom(d) {
-        // console.log("printing from dir",d);
         var obj=createobj(d);
         setSelectDetails(obj);
-        // var statsObj = {
-        //   name:d.name,
-        //   instanceType:d.instanceType
-        // };
         stats(obj);
-        // change(d);
-        // scope.selectedinstance=d;
-        // console.log("selected instance:",scope.selectedinstance);
         var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
             yd = d3.interpolate(y.domain(), [d.y, 1]),
             yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);

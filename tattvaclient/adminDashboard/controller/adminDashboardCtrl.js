@@ -18,47 +18,47 @@ function($scope, $http,$state,adminFactory){
     level : 1,
     children:[
       {
-        name:"org1",
+        name:"Amazon",
         instanceType:"organization",
         level:2,
-        orgSite:"org1",
+        orgSite:"amazon",
         // logo:"http://www.thehindubusinessline.com/multimedia/dynamic/02440/wipro-digital_2440034f.jpg",
         children:[
           {
             name:"ns1",
             instanceType:"namespace",
             level:3,
-            orgSite:"org1",
+            orgSite:"amazon",
             children:[
               {
                 name:"IS1",
                 instanceType:"instance",
                 level:4,
-                orgSite:"org1",
+                orgSite:"amazon",
                 children:[
                   {
                     name:"s1",
                     instanceType:"stream",
                     level:5,
-                    orgSite:"org1",
+                    orgSite:"amazon",
                     children:[
                       {
                         name:"w1",
                         instanceType:"watchlist",
-                        orgSite:"org1",
+                        orgSite:"amazon",
                         level:6,
                         children:[]
                       },
                       {
                         name:"w2",
                         instanceType:"watchlist",
-                        orgSite:"org1",
+                        orgSite:"amazon",
                         level:6,
                         children:[]
                       },{
                         name:"w3",
                         instanceType:"watchlist",
-                        orgSite:"org1",
+                        orgSite:"amazon",
                         level:6,
                         children:[]
                       }
@@ -68,7 +68,7 @@ function($scope, $http,$state,adminFactory){
                     name:"s2",
                     instanceType:"stream",
                     level:5,
-                    orgSite:"org1",
+                    orgSite:"amazon",
                     children:[
                       {
                         name:"w1",
@@ -84,18 +84,18 @@ function($scope, $http,$state,adminFactory){
                 name:"IS2",
                 instanceType:"instance",
                 level:4,
-                orgSite:"org1",
+                orgSite:"amazon",
                 children:[
                   {
                     name:"s1",
                     instanceType:"stream",
                     level:5,
-                    orgSite:"org1",
+                    orgSite:"amazon",
                     children:[
                       {
                         name:"w1",
                         instanceType:"watchlist",
-                        orgSite:"org1",
+                        orgSite:"amazon",
                         level:6,
                         // children:[]
                       }

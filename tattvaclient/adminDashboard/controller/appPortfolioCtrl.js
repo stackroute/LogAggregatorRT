@@ -10,17 +10,15 @@ angular.module('tattva')
   })
 
   $scope.orgClick = function(ev,orgSite){
-    console.log("Calling the dialog box for org:",orgSite);
-    $mdDialog.show({
-      controller: "orgDialogCtrl",
-      templateUrl:'adminDashboard/template/orgDialog.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      locals:{orgSite:orgSite},
-      // clickOutsideToClose:true,
-      escapeToClose:true,
-      fullscreen: true
-    });
+      $mdDialog.show({
+        controller: "orgDialogCtrl",
+        templateUrl:'adminDashboard/template/orgDialog.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        locals:{orgSite:orgSite},
+        escapeToClose:true,
+        fullscreen: true
+      });
     // .then(function(response) {
     //   $scope.status = 'You said the information was "' + response + '".';
     // }, function() {
