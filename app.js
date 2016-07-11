@@ -28,10 +28,15 @@ var summary_router = require('./tattvaserver/designsummary/summary_routes.js')
 var watchloop_router = require('./tattvaserver/watchloop/watchloop_routes.js')
 var Orguser_router = require('./tattvaserver/organisation/orgRoutes.js');
 var admin_router = require('./tattvaserver/adminDashboard/admin_routes.js');
-var watchloopExecutor = require('./tattvaserver/watchloop/watchlooprunner.js')
+// var watchloopExecutor = require('./tattvaserver/watchloop/watchlooprunner.js')
 
 //Express App created
 var app = express();
+
+app.onAppStart = function(addr) {
+  console.log("Tattva web app is now Running on port:",addr.port);
+  logger.info("Tattva web app is now Running on port:",addr.port);
+}
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -100,8 +105,8 @@ app.use('/appsummary',isAuthenticated, summary_router);
 app.use('/watchloop',isAuthenticated,  watchloop_router);
 app.use('/adminDashboard',isAuthenticated, admin_router);
 
-logger.info("Starting watch list executor...!");
-watchloopExecutor();
+// logger.info("Starting watch list executor...!");
+// watchloopExecutor();
 
 app.use(function(req, res, next) {
   err.status = 404;

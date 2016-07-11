@@ -18,7 +18,7 @@ var exprPipeline = function(wlstDef) {
   //For normalising incoming data
   myProcessors.push(highland.map(function(data) {
     data = JSON.parse(data);
-    var execObj={'watchname': wlstDef.name, 
+    var execObj={'watchname': wlstDef.name,
     'orgsite': wlstDef.orgsite,
     'inon': new Date(),
     "data":data[2],
@@ -83,7 +83,9 @@ function mapExprField(field, dataObj) {
     result = constantMapper.map(field, dataObj);
   } else if (field.fieldType == "Function") {
     result = functionMapper.map(field, dataObj);
-  }  else {
+  } else if (field.fieldType == "Accumulator") {
+    result = accumulatorMapper.map(field, dataObj);
+  } else {
     result = undefined;
   }
   return result;
