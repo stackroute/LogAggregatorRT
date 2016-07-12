@@ -1,4 +1,4 @@
-angular.module('tattva').directive('linearChart', function(){
+angular.module('tattva').directive('linearChart', function($interval){
   return{
     restrict:'EA',
     template:'<div id="container"></div>',
@@ -47,6 +47,10 @@ angular.module('tattva').directive('linearChart', function(){
         chart.render();
       };
 
+      $interval(function(){
+        updateChart();
+      }, 2000);
+
       var eventName = 'watchlist::onResult' + '::' + scope.orgsite + '::' + scope.watchname;
       scope.eventobj.on(eventName, function(data) {
         var date = new Date(data.logdata[xattr]);
@@ -57,7 +61,7 @@ angular.module('tattva').directive('linearChart', function(){
         date.getUTCMinutes(),
         date.getUTCSeconds());
         graphData.push({x:parsedDate,y:data.logdata[yattr]});
-        updateChart();
+        //updateChart();
       });
 
     }
