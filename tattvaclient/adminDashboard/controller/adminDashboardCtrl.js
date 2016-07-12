@@ -193,10 +193,14 @@ function($scope, $http,$state,adminFactory){
       $state.go('adminHome.appPortfolio');
     } else {
       prms = {orgSite: $scope.tattvaStats.orgSite};
-      if(prms.orgSite!=previousOrgSite){
-      // console.log("changing state to orgwatches with params as ", prms);
+      if(prms.orgSite!=previousOrgSite && prms.orgSite!="tattva"){
+      console.log("changing state to orgwatches with params as ", prms);
       $state.go('adminHome.orgwatches', prms );
       previousOrgSite = prms.orgSite;
+      }
+      else if(prms.orgSite=="tattva"){
+          console.log("Transitioning to default sub state (orgportfolio)");
+          $state.go('adminHome.appPortfolio');
       }
     }
   };

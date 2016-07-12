@@ -20,9 +20,18 @@ angular.module('tattva').factory('adminFactory',['$http',function($http){
       return $http.get('/adminDashboard/getWatchlists/'+orgSite);
     },
 
-    getOrgInfo : function(orgSite){
-      return $http.get('/adminDashboard/getOrgInfo/'+orgSite);
+    getOrganisationInfo : function(orgSite){
+      return $http.get('/adminDashboard/getOrganisationInfo/'+orgSite);
+    },
+
+    getorgContactInfo : function(orgSite){
+      return $http.get('/adminDashboard/getorgContactInfo/'+orgSite);
+    },
+
+    getOrgActivity : function(orgSite){
+      return $http.get('/adminDashboard/getOrgActivity/'+orgSite);
     }
+
 
     // getWatchlist : function(getThisWatch){
     //   $http.get('getThisWatch/:'+getThisWatch.orgSite+'/:'+getThisWatch.name).then(function(res){

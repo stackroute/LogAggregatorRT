@@ -12,6 +12,11 @@ watchlist_router.post('/',function (request, response) {
   //console.log("reached watchlist with body data");
   watchlistObj.id = watchlistObj.name;
   var WatchListModel = dataProvider.getModel(WatchListSchema, request.user.orgsite);
+  watchlistObj["createdBy"] = request.user.name;
+  watchlistObj["createdOn"] = new Date();
+  watchlistObj["editedBy"] = request.user.name;
+  watchlistObj["editedOn"] = new Date();
+
   var watchlist1 = new WatchListModel(watchlistObj);
   watchlist1.save(function(err, savewatchlistdata){
     if(err) {
@@ -27,6 +32,8 @@ watchlist_router.post('/',function (request, response) {
 
 watchlist_router.put('/:watchlistname',function (request, response) {
   var watchlistObj = request.body;
+  watchlistObj["editedBy"] = request.user.name;
+  watchlistObj["editedOn"] = new Date();
   watchlistObj.status="active";
   // var o_id = ObjectId(watchlistObj._id);
   var watchname=watchlistObj.name;

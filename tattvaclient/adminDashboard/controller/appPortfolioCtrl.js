@@ -19,11 +19,6 @@ angular.module('tattva')
         escapeToClose:true,
         fullscreen: true
       });
-    // .then(function(response) {
-    //   $scope.status = 'You said the information was "' + response + '".';
-    // }, function() {
-    //   $scope.status = 'You cancelled the dialog.';
-    // });
   };
 
 }]);
