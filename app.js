@@ -27,10 +27,16 @@ var stream_router = require('./tattvaserver/datastream/stream_routes.js');
 var summary_router = require('./tattvaserver/designsummary/summary_routes.js')
 var watchloop_router = require('./tattvaserver/watchloop/watchloop_routes.js')
 var Orguser_router = require('./tattvaserver/organisation/orgRoutes.js');
-var watchloopExecutor = require('./tattvaserver/watchloop/watchlooprunner.js')
+var admin_router = require('./tattvaserver/adminDashboard/admin_routes.js');
+// var watchloopExecutor = require('./tattvaserver/watchloop/watchlooprunner.js')
 
 //Express App created
 var app = express();
+
+app.onAppStart = function(addr) {
+  console.log("Tattva web app is now Running on port:",addr.port);
+  logger.info("Tattva web app is now Running on port:",addr.port);
+}
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -97,9 +103,10 @@ app.use('/datastream',isAuthenticated,  stream_router);
 app.use('/watchslide',isAuthenticated, watchlistslide_router);
 app.use('/appsummary',isAuthenticated, summary_router);
 app.use('/watchloop',isAuthenticated,  watchloop_router);
+app.use('/adminDashboard',isAuthenticated, admin_router);
 
-logger.info("Starting watch list executor...!");
-watchloopExecutor();
+// logger.info("Starting watch list executor...!");
+// watchloopExecutor();
 
 app.use(function(req, res, next) {
   err.status = 404;
@@ -109,6 +116,8 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
+    logger.error("Internal error: ", err);
+    console.log("Internal error: ", err);
     res.render('error', {
       message: err.message,
       error: err
@@ -118,6 +127,8 @@ if (app.get('env') === 'development') {
 
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
+  logger.error("Internal error: ", err);
+  console.log("Internal error: ", err);
   res.render('error', {
     message: err.message,
     error: err

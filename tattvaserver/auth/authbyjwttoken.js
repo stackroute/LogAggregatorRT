@@ -74,13 +74,14 @@ console.log("org site:",userObj.orgsite);
           }, function(err, org) {
             if (err) {
               console.log("Error in finding organisation of the user: ", err, " User: ", email, " org: ", userObj.orgsite);
-              return done(err);
+              return res.status(500).json(err);
             }
 
             if (!org) {
-              return done(null, false, {
-                message: 'Invalid user credentials, please retry with valid credentials..!'
-              });
+              // return done(null, false, {
+              //   message: 'Invalid user credentials, please retry with valid credentials..!'
+              // });
+                return res.status(401).json({message:'Invalid user credentials, please retry with valid credentials..!'});
             }
 
             var sessionUserUp = {
@@ -149,13 +150,16 @@ console.log("org site:",userObj.orgsite);
       }, function(err, org) {
         if (err) {
           console.log("Error in finding organisation of the user: ", err, " User: ", email, " org: ", user.orgsite);
-          return done(err);
+          //return done(err);
+          return res.status(500).json(err);
         }
 
         if (!org) {
-          return done(null, false, {
-            message: 'Invalid user credentials, please retry with valid credentials..!'
-          });
+          // return done(null, false, {
+          //   message: 'Invalid user credentials, please retry with valid credentials..!'
+          // });
+
+            return res.status(401).json({message:'Invalid user credentials, please retry with valid credentials..!'});
         }
 
         var sessionUser = {

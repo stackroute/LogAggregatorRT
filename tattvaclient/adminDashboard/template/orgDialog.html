@@ -1,7 +1,38 @@
-<md-dialog style="width:600px;">
+<md-dialog aria-label="Full Screen Dialog Test" class="fullscreen-dialog">
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <h2>organization details</h2>
+      <h2>{{orgSite}}</h2>
     </div>
   </md-toolbar>
+  <md-dialog-content>
+
+    <md-input-container class="md-block" flex-gt-xs>
+      <label>Namespaces</label>
+      <input ng-model="orgInfo.namespaces" disabled>
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-xs>
+        <label>Datasources</label>
+        <input ng-model="orgInfo.datasources" disabled>
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-xs>
+        <label>Streams</label>
+        <input ng-model="orgInfo.streams" disabled>
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-xs>
+        <label>Watchlists</label>
+        <input ng-model="orgInfo.watchlists" disabled>
+    </md-input-container>
+<!--
+    Namespaces : {{orgInfo.namespaces}}
+    Datasources : {{orgInfo.datasources}}
+    Streams : {{orgInfo.streams}}
+    Watchlists : {{orgInfo.watchlists}} -->
+  </md-dialog-content>
+  <md-dialog-actions>
+
+  </md-dialog-actions>
+
 </md-dialog>

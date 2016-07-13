@@ -14,7 +14,7 @@ Orguser_router.get('/:userName', function(req, res){
   });
 });
 
-Orguser_router.post('/:name',function (request, response) {
+Orguser_router.post('/:name',function (req, res) {
   var UserModel = dataProvider.getModel(UserSchema,"tattva");
   var newUser = new UserModel({
     "name" : request.body.name,
@@ -25,7 +25,7 @@ Orguser_router.post('/:name',function (request, response) {
   newUser.save(function(err, user){
     if(err) {
       console.error("Error in saving the user ", err);
-      return response.status(500).json({error: "Internal error in completing operation..!"})
+      return res.status(500).json({error: "Internal error in completing operation..!"})
     }
     // console.log("User = ",user);
     res.json(user);

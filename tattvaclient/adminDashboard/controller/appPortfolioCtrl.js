@@ -1,25 +1,24 @@
 angular.module('tattva')
-.controller("appPortfolioCtrl",['$scope','$http','$state', function($scope, $http, $state) {
+.controller("appPortfolioCtrl",['$scope','$http','$state','$mdDialog','adminFactory',
+ function($scope, $http, $state,$mdDialog,adminFactory) {
 
-  // console.log("current seelection :" $scope.tattvaStats);
-  
+  adminFactory.orgList().then(function(res){
+    $scope.orgs=res.data;
+      console.log('$scope.orgs',$scope.orgs);
+  },function(res){
+    console.log("error",res.data.error);
+  })
 
-  var orgClick = function(ev,orgName){
-    console.log("Calling the dialog box");
-    $mdDialog.show({
-      controller: "orgDialogController",
-      templateUrl:'adminDashboard/template/orgDialog.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      // clickOutsideToClose:true,
-      // escapeToClose:true,
-      // fullscreen: useFullScreen
-    });
-    // .then(function(response) {
-    //   $scope.status = 'You said the information was "' + response + '".';
-    // }, function() {
-    //   $scope.status = 'You cancelled the dialog.';
-    // });
+  $scope.orgClick = function(ev,orgSite){
+      $mdDialog.show({
+        controller: "orgDialogCtrl",
+        templateUrl:'adminDashboard/template/orgDialog.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        locals:{orgSite:orgSite},
+        escapeToClose:true,
+        fullscreen: true
+      });
   };
 
 }]);
