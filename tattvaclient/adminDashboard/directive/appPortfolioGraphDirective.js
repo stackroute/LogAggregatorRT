@@ -124,6 +124,8 @@ angular.module('tattva').directive('portfolio',function(){
           // defining on hover legends for sunburstchart
           var legend = svg.append("g")
           .attr("class","legend")
+          .attr("width","18px")
+          .attr("height","18px")
           .style("font-size","12px")
           .attr("transform", "translate(0, 20)")
           .call(d3.legend);
@@ -171,7 +173,7 @@ angular.module('tattva').directive('portfolio',function(){
           legend.transition().duration(100).style("opacity","1");
         }
         function removelegend(d){
-          legend.transition().duration(1000).style("opacity","0");
+          legend.transition().duration(1000).style("opacity","1");
         }
       }
       d3.select(self.frameElement).style("height", height + "px");
