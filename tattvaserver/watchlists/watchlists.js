@@ -6,6 +6,10 @@ var watchListSchema=new mongoose.Schema({
   "stream": {type: String, required : true},
   "status":{type:String,required:true},
   "orgsite":{type:String,required:true},
+  "createdBy":String,
+  "createdOn": { type : Date, default : Date.now },
+  "editedBy":String,
+  "editedOn": { type : Date, default : Date.now },
   "expressions": [
     {
       "tag": {type: String, required : true},
