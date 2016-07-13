@@ -17,9 +17,10 @@
           <md-whiteframe   layout-align="center center">
 
             <span class="md-headline"> {{orgSite}}</span><br>
-            <span class="md-subhead"><b>Organisation Info:</b> MULTI TENET APP</span><br>
-            <span class="md-subhead"><b>e-mail</b>: baba3375</span><br>
-            <span class="md-subhead"><b>Place</b>: Kandhar</span><br>
+            <span class="md-subhead"><b>Organisation Name:</b> {{orgContactInfo.orgName}}</span><br>
+            <span class="md-subhead"><b>Contact Name:</b> {{orgContactInfo.contactName}}</span><br>
+            <span class="md-subhead"><b>Contact email:</b> {{orgContactInfo.contactEmail}}</span><br>
+            <span class="md-subhead"><b>Location:</b> {{orgContactInfo.orgLocation}}</span><br>
 
 
           </md-whiteframe>
@@ -43,7 +44,7 @@
 
                       <ng-letter-avatar fontSize="20" data="NA" shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar>
                     </div>
-                    <md-button class="md-secondary">{{orgSite}}</md-button>
+                    <md-button class="md-secondary">{{orgInfo.namespaces}}</md-button>
                     <md-divider ng-if="!$last"></md-divider>
                   </md-list-item>
                 </md-list>
@@ -55,7 +56,7 @@
 
                       <ng-letter-avatar fontSize="20" data="IN" shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar>
                     </div>
-                    <md-button class="md-secondary">{{orgSite}}</md-button>
+                    <md-button class="md-secondary">{{orgInfo.datasources}}</md-button>
                     <md-divider ng-if="!$last"></md-divider>
                   </md-list-item>
                 </md-list>
@@ -67,7 +68,7 @@
 
                       <ng-letter-avatar fontSize="20" data="ST" shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar>
                     </div>
-                    <md-button class="md-secondary">{{orgSite}}</md-button>
+                    <md-button class="md-secondary">{{orgInfo.streams}}</md-button>
                     <md-divider ng-if="!$last"></md-divider>
                   </md-list-item>
                 </md-list>
@@ -80,7 +81,7 @@
 
                       <ng-letter-avatar fontSize="20" data="WL" shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar>
                     </div>
-                    <md-button class="md-secondary">{{orgSite}}</md-button>
+                    <md-button class="md-secondary">{{orgInfo.watchlists}}</md-button>
                     <md-divider ng-if="!$last"></md-divider>
                   </md-list-item>
                 </md-list>
@@ -96,45 +97,20 @@
                   </md-card-title-text>
                 </md-card-title>
                   <md-card-content>
-                   <div layout="column">
 
-....                   <div layout="row" layout-padding flex>
-                     <md-input-container flex="45">
-                       <label><b><h3 class="md-display-5">WATCHLISTS</h3></b></label>
-                       <textarea class="textarea" ng-model="nameSpace.description" name="description" type="textarea"  required></textarea>
-                       <div ng-messages="createNameSpace.description.$error">
-                         <p ng-message="required">This is required.</p>
-                       </div>
-                     </md-input-container>
+                    <md-list>
+                      <md-button class="md-secondary">Edit Time</md-button>
+                      <md-divider></md-divider>
+                        <md-list-item class="md-3-line" ng-repeat="activity in recentActivity">
+                        <div class="md-list-item-text">
+                          <h3>NAME:{{activity.name}}</h3>
+                          <h4>NAMESPACE:{{activity.namespace}}</h4>
+                          <!-- <p> {{item.notes}}</p> -->
 
-                    <md-input-container flex="45">
-                      <label><b><h3 class="md-display-5">OWNER OF WATCHLIST</h3></b></label>
-                      <textarea class="textarea" ng-model="nameSpace.description" name="description" type="textarea"  required></textarea>
-                      <div ng-messages="createNameSpace.description.$error">
-                        <p ng-message="required">This is required.</p>
-                      </div>
-                    </md-input-container>
-...                     </div>
-
-                     <div layout="row" layout-padding flex>
-                       <md-input-container flex="45">
-                         <label><b><h3 class="md-display-5">WATCHLISTS</h3></b></label>
-                         <textarea class="textarea" ng-model="nameSpace.description" name="description" type="textarea"  required></textarea>
-                         <div ng-messages="createNameSpace.description.$error">
-                           <p ng-message="required">This is required.</p>
-                         </div>
-                       </md-input-container>
-
-                      <md-input-container flex="45">
-                        <label><b><h3 class="md-display-5">OWNER OF WATCHLIST</h3></b></label>
-                        <textarea class="textarea" ng-model="nameSpace.description" name="description" type="textarea"  required></textarea>
-                        <div ng-messages="createNameSpace.description.$error">
-                          <p ng-message="required">This is required.</p>
-                        </div>
-                      </md-input-container>
-
-
-                </div>
+                        <md-button class="md-secondary">{{activity.editedOn}}</md-button>
+                        <md-divider ng-if="!$last"></md-divider>
+                      </md-list-item>
+                    </md-list>
 
                   </md-card-content>
 
