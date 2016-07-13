@@ -9,7 +9,6 @@ var DatasourceSchema = require('../datasources/datasource.js');
 var StreamSchema = require('../datastream/stream.js');
 var watchListSchema = require('../watchlists/watchlists.js');
 
-
 admin_routes.get('/appPortfolio',function(req,res){
   var orgModel = dataModelProvider.getModel(OrgSchema,"tattva");
   orgModel.find({},function(err,data){
@@ -25,22 +24,8 @@ admin_routes.get('/getWatchlists/:orgSite',function(req,res){
   console.log("params to getWatchlist:",req.params.orgSite);
   var orgSites = [];
   var data = [];
-  if(req.params.orgSite==="tattva"){
-    var orgModel = dataModelProvider.getModel(OrgSchema,"tattva");
-    orgModel.find({},function(err,orgs){
-      for(var i=0;i<orgs.length;i++){
-        orgSites.push(orgs[i].orgSite);
-      }
-      console.log("orgs:",orgSites);
-      for(orgSite in orgSites){
-        watchesForOrg(req.params.orgSite);
-      }
-    })
-  }
-  else{
-    // data.push(watchesForOrg(req.params.orgSite));
+  if(req.params.orgSite!="tattva"){
     watchesForOrg(req.params.orgSite);
-    // console.log("data: ",data);
   }
   function watchesForOrg(orgSite){
   var watchModel = dataModelProvider.getModel(watchListSchema,orgSite);
@@ -49,23 +34,18 @@ admin_routes.get('/getWatchlists/:orgSite',function(req,res){
       console.log("Watchlists get request error for "+orgSite+" error:",err);
       res.status(500).json({error:"Internal Server Error"});
       }
-    // console.log("watchInfo:",watchInfo);
     return res.send(data);
-    // return watchInfo;
     })
   }
 });
 
-admin_routes.get('/getOrgInfo/:orgSite',function(req,res){
+admin_routes.get('/getOrganisationInfo/:orgSite',function(req,res){
   console.log("params to getOrgInfo:",req.params);
-  // console.log(req.params.orgSite,"===",req.user.orgSite,"=",req.params.orgSite===req.user.orgSite);
   var orgStats = {};
 
   asyncRunner.parallel([
-    function namespace(callback) {
-      // console.log("namespace querry");
-      console.log("req.user.orgSite:",req.user.orgsite);
-      console.log("req.params.orgSite:",req.params.orgSite);
+    function namespaceCount(callback) {
+      console.log("namespace querry");
       var NamespaceModel = dataModelProvider.getModel(namespaceSchema, req.params.orgSite);
       NamespaceModel.count(function(err,count){
         if(err){
@@ -77,8 +57,8 @@ admin_routes.get('/getOrgInfo/:orgSite',function(req,res){
       })
     },
 
-    function datasource(callback){
-      // console.log('datasource querry');
+    function datasourceCount(callback){
+      console.log('datasource querry');
       var DatasourceModel = dataModelProvider.getModel(DatasourceSchema, req.params.orgSite);
       DatasourceModel.count(function(err,count){
         if(err){
@@ -90,8 +70,8 @@ admin_routes.get('/getOrgInfo/:orgSite',function(req,res){
       })
     },
 
-    function stream(callback){
-      // console.log("stream query");
+    function streamCount(callback){
+      console.log("stream query");
       var StreamModel = dataModelProvider.getModel(StreamSchema, req.params.orgSite);
       StreamModel.count(function(err,count){
         if(err){
@@ -103,7 +83,7 @@ admin_routes.get('/getOrgInfo/:orgSite',function(req,res){
       })
     },
 
-    function watchlist(callback){
+    function watchlistCount(callback){
       console.log("watchlists query");
       var WatchlistModel = dataModelProvider.getModel(watchListSchema, req.params.orgSite);
       WatchlistModel.count(function(err,count){
@@ -115,42 +95,10 @@ admin_routes.get('/getOrgInfo/:orgSite',function(req,res){
         callback(null,{name:"watchlist", value: count});
       })
     },
-
-    function contactInfo(callback){
-      console.log("contact query");
-      // console.log("userModel:",req.params.orgSite);
-      var userModel = dataModelProvider.getModel(UserSchema,"tattva");
-      userModel.find({orgsite:req.params.orgSite},function(err,orgUser){
-        if(err){
-          console.log("Error in contactInfo module",err);
-          res.status(500).json({error:"error in getting userInfo for organisation:",orgSite});
-        }
-        // console.log("orgUser:",orgUser);
-        orgStats["ContactName"] = orgUser[0].name;
-        orgStats["ContactEmail"] = orgUser[0].email;
-        callback(null,{ContactName:orgUser[0].name,ContactEmail : orgUser[0].email});
-      });
-    },
-
-    function orgLogo(callback){
-      console.log("orglogo query for ",req.params.orgSite);
-      var orgModel = dataModelProvider.getModel(OrgSchema,"tattva");
-      orgModel.find({orgSite : req.params.orgSite},function(err,Org){
-        // orgStats["orgLogo"] = Org[0].orgSite;
-        if(err){
-          console.log("error in orglogo query");
-          res.status(500).json({error:"error in getting orgLogo for organisation:",orgSite});
-        }
-        // console.log("org:\n",Org);
-        orgStats[orgLogo] = Org[0].orgLogo;
-        callback(null,{orgLogo:Org[0].orgLogo});
-      })
-    }
-
   ],
 
     function(err,summeryStats){
-      console.log("inside Calback");
+      console.log("inside orgInfo Callback");
       if(err){
         console.log("Error in callback module error:",err);
         res.status(500).json({error:"error in getting summery stats for orgSite:",orgSite})
@@ -158,6 +106,33 @@ admin_routes.get('/getOrgInfo/:orgSite',function(req,res){
     console.log('orgStats contents',orgStats);
     res.json(orgStats);
     });
+});
+
+admin_routes.get('/getOrgActivity/:orgSite',function(req,res){
+  console.log("org activity query for ",req.params.orgSite);
+  var watchModel = dataModelProvider.getModel(watchListSchema,req.params.orgSite);
+  var recentActivity = [];
+  watchModel.find({},null,{sort:{"editedOn":-1}},function(err,activity){
+    if(err){
+      console.log("Error in getting org recent activity");
+      res.status(500).json({error:"error in getting recent activity for organisation:"+req.params.orgSite});
+    }
+    console.log('activity',activity);
+    res.send(activity);
+  })
+});
+
+admin_routes.get('/getorgContactInfo/:orgSite',function(req,res){
+  var orgModel = dataModelProvider.getModel(OrgSchema,"tattva");
+  var ContactInfo = [];
+  orgModel.find({orgSite : req.params.orgSite},function(err,Org){
+    if(err){
+      console.log("error in getting org contact info");
+      res.status(500).json({error:"error in getting orgLogo for organisation:"+req.params.orgSite});
+    }
+    console.log("Org Contact Info",Org[0]);
+    res.send(Org[0]);
+  })
 });
 
 module.exports = admin_routes;

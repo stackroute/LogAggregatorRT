@@ -29,19 +29,23 @@ var chart = new CanvasJS.Chart('container',{
     }]
 
   });
+
   //chart.render();
 
   var updateChart = function () {
     chart.render();
-  };
+  }
 
+  setInterval(function(){
+    updateChart()
+  }, 2000);
 
   var socket = io();
   socket.on('connect', function () {
     console.log("Connected to socket server...!");
     //  ["CapitalOneDBNew.gitLogs",1466777632.196,{"commitDateTime":"2009-01-22T22:38:16Z","commitDate":"January  5 2009","commitDay":"Friday","commitMonth":"January","commitYear":"2009","noOfFiles":1,"insertion":22,"deletion":0,"repo":"mongo-python-driver","gitUserName":"mongodb","reviewers":[],"committer":{"name":"Mike Dirolf","email":"mike@10gen.com","gitUserId":"NA"},"author":{"name":"Mike Dirolf","email":"mike@10gen.com","gitUserId":"NA"},"commitId":"601b1618ad2be0887b45d97bb1e3726e049dc267"}]
     var eventName = "watchlist::onResult::Wipro::Git Analysis";
-    socket.on(eventName,function(data){
+    socket.on(eventName,function(data) {
       var date = new Date(data.logdata[xattr]);
       parsedDate = new Date(date.getUTCFullYear(),
       date.getUTCMonth(),
@@ -51,8 +55,5 @@ var chart = new CanvasJS.Chart('container',{
       date.getUTCSeconds());
       graphData1.push({x:parsedDate,y:data.logdata[yattrIns]});
       graphData2.push({x:parsedDate,y:data.logdata[yattrDel]});
-      //
-      updateChart();
     });
-
   });
