@@ -13,8 +13,8 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
 
     if($scope.socket){
       $scope.socket.disconnect();
-      }
-    });
+    }
+  });
 
   if($stateParams.slidename !== null){
     $scope.currentSlide = slideFactory.getSlide($stateParams.slidename,function(data){
@@ -22,7 +22,7 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
       console.log("Slide data:when stateparams is not null ", $scope.currentSlide);
     });
   }
-   else {
+  else {
     $scope.currentSlide = slideFactory.getDefaultSlide(function(data){
       $scope.currentSlide=data;
       console.log("Slide data: ", $scope.currentSlide);

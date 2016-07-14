@@ -92,6 +92,14 @@ var isAuthenticated = require('./tattvaserver/auth/authcheckjwt');
 
 
 app.use('/', routes);
+app.get('/guest', function(req, res){
+  var navItems = {
+    topNav: [{'link': 'signin',
+    'menu': 'Sign in'}],
+    sideNav: []
+  };
+  res.json(navItems);
+});
 app.use('/users',isAuthenticated,  users);
 app.use('/organisation/user',isAuthenticated,  Orguser_router);
 app.use('/instance',isAuthenticated,  datasourcesrouter);
@@ -110,12 +118,16 @@ app.use('/adminDashboard',isAuthenticated, admin_router);
 
 app.use(function(req, res, next) {
   err.status = 404;
+  // return res.status(404).json({error: "Requested resource not found..!"});
   next(err);
 });
 
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
+    logger.error("Unhandled error: ", err);
+
     res.status(err.status || 500);
+
     res.render('error', {
       message: err.message,
       error: err
@@ -124,7 +136,10 @@ if (app.get('env') === 'development') {
 }
 
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
+  logger.error("Unhandled error: ", err);
+
+  res.status(err.status || 500).json;
+
   res.render('error', {
     message: err.message,
     error: err
