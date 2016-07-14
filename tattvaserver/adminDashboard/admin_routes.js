@@ -9,6 +9,181 @@ var DatasourceSchema = require('../datasources/datasource.js');
 var StreamSchema = require('../datastream/stream.js');
 var watchListSchema = require('../watchlists/watchlists.js');
 
+admin_routes.get('/',function(req,res){
+  var OrgModel  = dataModelProvider.getModel(OrgSchema,"tattva");
+  var tattvaChildren = [];
+  var namespaces = [];
+  var datasources = [];
+  var streams = [];
+  var watchLists = [];
+  OrgModel.find({},function(err,organisations){
+      if(err){
+        console.log("error in getting orgs for graph data");
+        res.status(500).json({error:"error in getting graph data:orgs"});
+      }
+      // console.log(organisations);
+      for(var i=0;i<organisations.length;i++){
+        var orgobj = {
+          name : organisations[i].orgSite,
+          orgSite : organisations[i].orgSite,
+          level : 2,
+          instanceType : "organization",
+          children : []
+        };
+        tattvaChildren.push(orgobj);
+      }
+        // console.log(organisations[i]);
+      for(var i=0;i<tattvaChildren.length;i++){
+        // console.log("loop val:",i);
+      asyncRunner.parallel(
+        [
+        function namespace(callback){
+          console.log("namespaces query");
+          var NamespaceModel = dataModelProvider.getModel(namespaceSchema, organisations[i].orgSite);
+          NamespaceModel.find({},function(err,allnamespaces){
+            if(err){
+              console.log("error in getting namespaces for graph data error:",err);
+              res.status(500).json({error:"error in getting namespaces for graph data"});
+            }
+            // console.log("allnamespaces /n",allnamespaces);
+            // namespaces = allnamespaces;
+            callback(null,{"namespaces":allnamespaces});
+          });
+        },
+        function instance(callback){
+          console.log("instances query");
+          console.log('datasource querry');
+          var DatasourceModel = dataModelProvider.getModel(DatasourceSchema, organisations[i].orgSite);
+          DatasourceModel.find({},function(err,allDatasources){
+            if(err){
+              console.log("error in getting datasources for graph data error:",error);
+              res.status(500).json({error:"error in getting datasources for graph data"});
+            }
+            // datasources = allDatasources;
+            callback(null,{"datasources":allDatasources});
+          });
+        },
+        function stream(callback){
+          console.log("streams query");
+          var StreamModel = dataModelProvider.getModel(StreamSchema, organisations[i].orgSite);
+          StreamModel.find({},function(err,allStreams){
+            if(err){
+              console.log("error in getting datasources for graph data error:",error);
+              res.status(500).json({error:"error in getting datasources for graph data"});
+            }
+            // streams = allStreams;
+            callback(null,{"streams":allStreams});
+          });
+        },
+        function watchlist(callback){
+          console.log("watchlist query");
+          var WatchlistModel = dataModelProvider.getModel(watchListSchema, organisations[i].orgSite);
+          WatchlistModel.find({},function(err,allWatchlists){
+            if(err){
+              console.log("error in getting datasources for graph data error:",error);
+              res.status(500).json({error:"error in getting datasources for graph data"});
+            }
+            // watchlists = allWatchlists;
+            callback(null,{"watchlists":allWatchlists});
+          });
+        }
+      ],function(err,allchildren){
+          if(err){
+            console.log("error in getting sunburst graph data error:",err);
+            res.status(500).json({error:"error in getting sunburst graph data error"});
+          }
+          // console.log("tattvaChildren",tattvaChildren);
+          console.log("i",i);
+          // console.log("current org before namespace addition",tattvaChildren[i]);
+
+          //add namespaces to resulutant json
+          for(var j=0;j<allchildren.namespaces;j++){
+            var namespaceobj = {
+                name : allchildren.namespaces[j].name,
+                orgSite : organisations[i].orgSite,
+                level : 3,
+                instanceType : "namespace",
+                children : []
+            };
+            // console.log("namesoace object");
+            tattvaChildren[i].children.push(namespaceobj);
+          }
+          // console.log("current org after namespace addition:",tattvaChildren[i]);
+
+          //add instances to resulutant json
+          for(var j=0;j<allchildren.datasources;j++){
+            var ownerNamespace =  allchildren.datasources[j].namespace;
+            for(var k=0;k<tattvaChildren.children.length;k++){
+              //loop for namespace
+              if(ownerNamespace == obj.children[k].name){
+                var datasourceobj = {
+                  name : allchildren.datasources[j].name,
+                  orgSite : organisations[i].orgSite,
+                  level : 4,
+                  instanceType : "instance",
+                  children : []
+                };
+                tattvaChildren.children[k].children.push(namespaceobj);
+              }
+            }
+          }
+
+          //add streams to resultant json
+          for(var j=0;j<allchildren.streams;j++){
+            var ownerNamespace = allchildren.streams[j].namespace;
+            var ownerDatasource = allchildren.streams[j].instance;
+            for(k=0;k<tattvaChildren.children.length;k++){
+              //loop for namespace
+              if(ownerNamespace == tattvaChildren.children[k]){
+                for(l=0;l<tattvaChildren.children[k].children.length;l++){
+                  //loop for datasource
+                  if(ownerDatasource = tattvaChildren.children[k].children[l]){
+                    var streamsobj = {
+                      name : allchildren.streams[j].name,
+                      orgSite : organisations[i].orgSite,
+                      level : 5,
+                      instanceType : "stream",
+                      children : []
+                    };
+                    tattvaChildren.children[k].children[l].children.push(streamsobj);
+                  }
+                }
+              }
+            }
+          }
+
+          //add watchlist to resultant json
+          for(var j=0;j<allchildren.watchlists;j++){
+            var ownerNamespace = allchildren.watchlists[j].namespace;
+            var ownerStream = allchildren.watchlists[j].stream;
+            for(k=0;k<tattvaChildren.children.length;k++){
+              //loop for namespace
+              if(ownerNamespace == tattvaChildren.children[k]){
+                for(l=0;l<tattvaChildren.children[k].children.length;l++){
+                  //loop for datasource
+                  for(m=0;m<tattvaChildren.children[k].children[l].chlidren.length;l++){
+                    //loop for stream
+                    if(ownerDatasource = tattvaChildren.children[k].children[l].children[m]){
+                    var streamsobj = {
+                      name : allchildren.wactchlists[j].name,
+                      orgSite : organisations[i].orgSite,
+                      level : 6,
+                      instanceType : "watchlist",
+                      children : []
+                    };
+                    tattvaChildren.children[k].children[l].children[m].children.push(streamsobj);
+                  }
+                }
+              }
+            }
+          }
+        }
+        // console.log(" tattvaChildren ",tattvaChildren);
+        // res.send(tattvaChildren);
+    });
+  }
+})
+});
 admin_routes.get('/appPortfolio',function(req,res){
   var orgModel = dataModelProvider.getModel(OrgSchema,"tattva");
   orgModel.find({},function(err,data){

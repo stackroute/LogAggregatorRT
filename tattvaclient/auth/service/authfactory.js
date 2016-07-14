@@ -47,6 +47,16 @@ angular.module("tattva")
     }
   };
 
+  auth.isTattvaAdmin = function(){
+    var user = auth.getUser();
+
+    if(user.role == "tattvaAdmin"){
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   auth.getCurrentUser = function() {
     if (auth.isMember()) {
       return auth.getUser();
@@ -56,7 +66,25 @@ angular.module("tattva")
   };
 
   auth.getUserNavItem = function() {
-    if(auth.isMember()) {
+    // console.log("auth",auth.getUser());
+    if(auth.isMember() && auth.isTattvaAdmin()){
+      navItems = {
+        topNav: [
+          {
+            'menu': 'Sign out',
+            'link': 'signout'
+          }
+        ],
+        sideNav: [
+          {
+            "menu"  : "Admin Dashboard",
+            "link"  : "adminHome",
+            "icon"  :  "dashboard",
+          },
+        ]
+      }
+      return navItems
+    } else if(auth.isMember()) {
       navItems = {
         topNav: [
           {
@@ -69,11 +97,6 @@ angular.module("tattva")
             "menu" : "Dashboard",
             "link" : "home",
             "icon" : "dashboard",
-          },
-          {
-            "menu"  : "Admin Dashboard",
-            "link"  : "adminHome",
-            "icon"  :  "dashboard",
           },
           {
             "menu" : "Design",
@@ -121,8 +144,7 @@ angular.module("tattva")
         ]
       }
       return navItems;
-    }
-    else {
+    } else {
       navItems = {
         topNav: [{'link': 'signin',
         'menu': 'Sign in'

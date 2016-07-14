@@ -1,15 +1,9 @@
 angular.module('tattva').factory('adminFactory',['$http',function($http){
   var factory={
-    // appPortfolio : function(){
-    //     $http.get('appPortfolio').then(function(res){
-    //       //success
-    //       console.log("recieved response:",res.data);
-    //       return;
-    //     },
-    //     function(res){
-    //       console.log("Failed to load app portfolio error:",res.data.error);
-    //     });
-    //   },
+    
+    appPortfolio : function(){
+        return $http.get('/adminDashboard');
+    },
 
     orgList : function(){
         return $http.get('/adminDashboard/appPortfolio');
