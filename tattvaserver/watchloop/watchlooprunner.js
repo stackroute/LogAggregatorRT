@@ -49,6 +49,11 @@ var loopRunner = function() {
               return;
             }
 
+            if(!wlstDef) {
+              logger.error("Skipping execution as watchlist not found ", watch.watchname);
+              return;
+            }
+
             logger.info("Starting execution for watch: ", wlstDef.orgsite, '::', wlstDef.name);
             watchExecutor(wlstDef, dataSource);
           });

@@ -9,9 +9,9 @@ watchlist_router.post('/',function (request, response) {
   var watchlistObj = request.body;
   watchlistObj.status="active";
   watchlistObj.orgsite=request.user.orgsite;
-  watchlistObj.createdBy= req.user.email,
+  watchlistObj.createdBy= request.user.email,
   watchlistObj.createdOn= new Date(),
-  watchlistObj.editedBy= req.user.email,
+  watchlistObj.editedBy= request.user.email,
   watchlistObj.editedOn= new Date()
   //console.log("reached watchlist with body data");
   watchlistObj.id = watchlistObj.name;
