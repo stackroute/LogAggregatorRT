@@ -13,7 +13,7 @@ angular.module("tattva")
         // Showing errors.
         $scope.errorName = response.data.errors.name;
       } else {
-        $scope.message = response.data.message;
+        // $scope.message = response.data.message;
       }
     },function(err){
     });
@@ -120,6 +120,23 @@ this.savewatchloopeditdata=function(watchlistData1){
 
 
   };
+
+  // this.removeWatchlist=function(watchlistData1){
+  //   var watchlistData=watchlistData1;
+  //   return $q(function(resolve, reject) {
+  //     $http.delete('/watchlist/'+watchlistData.name)
+  //     .then(function(res) {
+  //       //success
+  //           console.log("remove from db success");
+  //         resolve(res.data);
+  //     },
+  //     function(res) {
+  //       //error
+  //       reject(res.data);
+  //     }
+  //   );
+  // })
+  // };
 
 
   this.getwatchlistdata=function()

@@ -27,7 +27,6 @@ angular.module("tattva")
     var u = $window.localStorage['member-user'];
     if (u !== undefined)
     u = JSON.parse(u);
-
     return u;
   };
 
@@ -56,83 +55,21 @@ angular.module("tattva")
   };
 
   auth.getUserNavItem = function() {
-    if(auth.isMember()) {
-      navItems = {
-        topNav: [
-          {
-            'menu': 'Sign out',
-            'link': 'signout'
-          }
-        ],
-        sideNav: [
-          {
-            "menu" : "Dashboard",
-            "link" : "home",
-            "icon" : "dashboard",
-          },
-          {
-            "menu"  : "Admin Dashboard",
-            "link"  : "adminHome",
-            "icon"  :  "dashboard",
-          },
-          {
-            "menu" : "Design",
-            "link" : "design.summary",
-            "icon" : "playlist_add",
-            "children" : [
-              {
-                "menu" : "Namespace",
-                "link" : "design.namespace"
-              },
-              {
-                "menu" : "Instance",
-                "link" : "design.instance"
-              },
-              {
-                "menu" : "Streams",
-                "link" : "design.streams"
-              },
-              {
-                "menu" : "Functions",
-                "link" : "design.function"
-              },
-              {
-                "menu" : "Watchlists",
-                "link" : "design.watchlist"
-              }
-            ]
-          },
-          {
-            "menu" : "Organisation",
-            "link" : "organisation",
-            "icon" : "group"
-          },
-          {
-            "menu" : "Action",
-            "link" : "action",
-            "icon" : "gavel"
-          },
-          {
-            "menu" : "Notification",
-            "link" : "notification",
-            "icon" :  "notifications"
-
-          }
-        ]
-      }
-      return navItems;
+    var url = "";
+    if (auth.isMember()) {
+      url = '/sideNav/' + auth.getUser().role;
+    } else {
+      url = '/guest';
     }
-    else {
-      navItems = {
-        topNav: [{'link': 'signin',
-        'menu': 'Sign in'
-      }
-    ],
-    sideNav: []
-  }
-  return navItems;
-}
-}
+
+    return $http.get(url).then(function(res) {
+      data =  res.data;
+      return data;
+    }, function(res) {
+      console.log("Error in completing the request: ", res);
+      return undefined;
+    });
+  };
 
 auth.signIn = function(signinFormData) {
   //Returning a promise object

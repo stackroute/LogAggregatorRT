@@ -1,6 +1,7 @@
 var io = require('socket.io')();
+var redis = require('redis');
 
-io.on('connection', function(socket) {
+/*io.on('connection', function(socket) {
 
 	// socket.on('join:room', function(data) {
 	// 	console.log("New client is joining: ", data.room);
@@ -21,4 +22,23 @@ io.on('connection', function(socket) {
 		io.emit(eventName, eventData);
 	});
 });
+*/
+
+var redisClient = redis.createClient();
+
+io.on('connection', function(socket) {
+	console.log("subscribing to client");
+	redisClient.subscribe('watchlist:onResultPublish');
+
+	redisClient.on('message', function(channel, chDataStr) {
+		var chData = JSON.parse(chDataStr);
+		// console.log("Got message from channel ", channel, " data is: ", chData);
+		// console.log("data1:",data[0].logdata);
+		var eventName = 'watchlist::onResult' + '::' + chData.channel;
+		var eventData = {'logdata': chData.logdata, 'watchresult': chData.watchresult};
+
+		io.emit(eventName, eventData);
+	});
+});
+
 module.exports = io;
