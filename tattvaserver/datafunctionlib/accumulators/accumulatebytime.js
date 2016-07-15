@@ -40,7 +40,7 @@ function TimeAccumulator () {
   };
 
   this.collectData = function(usrRecord) {
-    if(!usrRecord) {
+    if(usrRecord === null || usrRecord === undefined) {
       return false;
     }
 
