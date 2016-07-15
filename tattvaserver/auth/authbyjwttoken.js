@@ -7,6 +7,13 @@ var dataProvider = require('../core/datamodelprovider');
 
 
 module.exports = function(app) {
+
+  app.get("/signout", function(req, res, next) {
+      console.log("Logging out user...!");
+      // req.session.destroy();
+      return res.status(200).json();
+  });
+
   app.post('/signup', function(req, res, next) {
 
     if (!req.body.orgname || !req.body.orgsite || !req.body.orglogo || !req.body.orglocation || !req.body.name || !req.body.email || !req.body.password)
