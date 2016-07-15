@@ -7,14 +7,16 @@
     <!-- <span flex></span> -->
   </div>
 </md-toolbar>
-
+ <span flex></span>
 <div flex-offset="5" flex="90">
 <md-grid-list  md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
   <!-- <div layout="center center" -->
-<md-grid-tile ng-repeat="x in watches" ng-click="" ng-style="{'background':brown}">
+<md-grid-tile ng-repeat="x in watches" ng-click="appClick($event,x)" style="cursor:pointer;background-size:contain;background-repeat:no-repeat">
+
   <md-grid-tile-header>
     <h3>{{x.name}}</h3>
   </md-grid-tile-header>
+<md-icon class"material-icons" style="font-size:72px;margin: 70px 150px 120px 80px" aria-label="Graph dialog">show_chart</md-icon>
   <md-grid-tile-footer>
     <h3>namespace:{{x.namespace}}</h3>
   </md-grid-tile-footer>
