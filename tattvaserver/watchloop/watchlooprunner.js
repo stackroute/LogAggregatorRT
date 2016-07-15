@@ -12,7 +12,7 @@ var loopRunner = function() {
   //kick watchExecutor(wlstDef);
 
   var dataSource = {
-    ipaddr: '172.23.238.253',
+    ipaddr: '172.23.238.251',
     port: '7070'
   };
 

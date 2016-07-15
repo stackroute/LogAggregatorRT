@@ -9,6 +9,10 @@ watchlist_router.post('/',function (request, response) {
   var watchlistObj = request.body;
   watchlistObj.status="active";
   watchlistObj.orgsite=request.user.orgsite;
+  watchlistObj.createdBy= req.user.email,
+  watchlistObj.createdOn= new Date(),
+  watchlistObj.editedBy= req.user.email,
+  watchlistObj.editedOn= new Date()
   //console.log("reached watchlist with body data");
   watchlistObj.id = watchlistObj.name;
   var WatchListModel = dataProvider.getModel(WatchListSchema, request.user.orgsite);
@@ -44,7 +48,10 @@ watchlist_router.put('/:watchlistname',function (request, response) {
       console.log("Error in find watchlist for update: ", watchlistObj._id, " name: ", watchlistObj.name);
       response.status(500).json({error: "unable to find the required watchlist for saving..!"});
     }
-    //console.log("Watchlist requested = ", wlist);
+    else{
+        watchlistObj.editedBy= request.user.email,
+        watchlistObj.editedOn= new Date()
+      }
     WatchListModel.update({"name":watchname}, watchlistObj, function(err, updatedObj) {
       if(err) {
         //console.log("Error in updating: ", watchlistObj._id, " name: ", watchlistObj.name);
@@ -57,6 +64,24 @@ watchlist_router.put('/:watchlistname',function (request, response) {
   });
 });
 <!--end of edit watchlist-->
+
+// watchlist_router.delete('/:watchlistname',function (request, response) {
+//   var watchname=request.params.watchlistname;
+//   var WatchListModel = dataProvider.getModel(WatchListSchema, request.user.orgsite);
+//   WatchListModel.find({"name": watchname}, function(err, wlist){
+//     if (err) {
+//       response.status(500).json({error: "unable to find the required watchlist for deleting..!"});
+//     }
+//     WatchListModel.remove({ "name":watchname }, function(err) {
+//       if(err) {
+//         console.error("Error in removing watchlist, error:", err);
+//         response.status(500).json({error: "Internal error occurred in completing operation..!"});
+//       }
+//       response.status(200).json("success");
+//     });
+//   });
+// });
+// <!--end of remove watchlist-->
 
 watchlist_router.get('/:namespaceName', function(req, res){
   var WatchListModel = dataProvider.getModel(WatchListSchema, req.user.orgsite);

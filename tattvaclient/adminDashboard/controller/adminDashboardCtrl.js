@@ -180,6 +180,7 @@ function($scope, $http,$state,adminFactory){
   };
 
   // getGraphdata();
+  var graphData = adminFactory.appPortfolio();
   var previousOrgSite;
   var selectionObj;
   $state.go('adminHome.appPortfolio');
