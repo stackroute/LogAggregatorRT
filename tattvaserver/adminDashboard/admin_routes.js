@@ -19,7 +19,7 @@ admin_routes.get('/',function(req,res){
   OrgModel.find({},function(err,organisations){
       if(err){
         console.log("error in getting orgs for graph data");
-        res.status(500).json({error:"error in getting graph data:orgs"});
+        res.status(500).json("error in getting graph data:orgs");
       }
       // console.log(organisations);
       for(var i=0;i<organisations.length;i++){
@@ -43,7 +43,7 @@ admin_routes.get('/',function(req,res){
           NamespaceModel.find({},function(err,allnamespaces){
             if(err){
               console.log("error in getting namespaces for graph data error:",err);
-              res.status(500).json({error:"error in getting namespaces for graph data"});
+              res.status(500).json("error in getting namespaces for graph data");
             }
             // console.log("allnamespaces /n",allnamespaces);
             // namespaces = allnamespaces;
@@ -57,7 +57,7 @@ admin_routes.get('/',function(req,res){
           DatasourceModel.find({},function(err,allDatasources){
             if(err){
               console.log("error in getting datasources for graph data error:",error);
-              res.status(500).json({error:"error in getting datasources for graph data"});
+              res.status(500).json("error in getting datasources for graph data");
             }
             // datasources = allDatasources;
             callback(null,{"datasources":allDatasources});
@@ -69,7 +69,7 @@ admin_routes.get('/',function(req,res){
           StreamModel.find({},function(err,allStreams){
             if(err){
               console.log("error in getting datasources for graph data error:",error);
-              res.status(500).json({error:"error in getting datasources for graph data"});
+              res.status(500).json("error in getting datasources for graph data");
             }
             // streams = allStreams;
             callback(null,{"streams":allStreams});
@@ -81,7 +81,7 @@ admin_routes.get('/',function(req,res){
           WatchlistModel.find({},function(err,allWatchlists){
             if(err){
               console.log("error in getting datasources for graph data error:",error);
-              res.status(500).json({error:"error in getting datasources for graph data"});
+              res.status(500).json("error in getting datasources for graph data");
             }
             // watchlists = allWatchlists;
             callback(null,{"watchlists":allWatchlists});
@@ -90,7 +90,7 @@ admin_routes.get('/',function(req,res){
       ],function(err,allchildren){
           if(err){
             console.log("error in getting sunburst graph data error:",err);
-            res.status(500).json({error:"error in getting sunburst graph data error"});
+            res.status(500).json("error in getting sunburst graph data error");
           }
           // console.log("tattvaChildren",tattvaChildren);
           console.log("i",i);
@@ -189,7 +189,7 @@ admin_routes.get('/appPortfolio',function(req,res){
   orgModel.find({},function(err,data){
     if(err){
       console.log("AppPortfolio get request error:",err);
-      res.status(500).json({error:"Internal error occurred"});
+      res.status(500).json("Internal error occurred");
     }
     return res.send(data);
   })
@@ -207,7 +207,7 @@ admin_routes.get('/getWatchlists/:orgSite',function(req,res){
   watchModel.find({},function(err,data){
     if(err){
       console.log("Watchlists get request error for "+orgSite+" error:",err);
-      res.status(500).json({error:"Internal Server Error"});
+      res.status(500).json("Internal Server Error");
       }
     return res.send(data);
     })
@@ -225,7 +225,7 @@ admin_routes.get('/getOrganisationInfo/:orgSite',function(req,res){
       NamespaceModel.count(function(err,count){
         if(err){
           console.log("Error in namespace query module error:",err);
-          res.status(500).json({error:"error in getting namespaces for orgSite:",orgSite})
+          res.status(500).json("error in getting namespaces for orgSite");
         }
         callback(null,{name:"namespace", value: count});
         orgStats["namespaces"] = count;
@@ -238,7 +238,7 @@ admin_routes.get('/getOrganisationInfo/:orgSite',function(req,res){
       DatasourceModel.count(function(err,count){
         if(err){
           console.log("Error in datasource query module error:",err);
-          res.status(500).json({error:"error in getting datasources for orgSite:",orgSite})
+          res.status(500).json("error in getting datasources for orgSite")
         }
         orgStats["datasources"] = count;
         callback(null,{name:"datasource", value: count});
@@ -251,7 +251,7 @@ admin_routes.get('/getOrganisationInfo/:orgSite',function(req,res){
       StreamModel.count(function(err,count){
         if(err){
           console.log("Error in stream query module error:",err);
-          res.status(500).json({error:"error in getting streams for orgSite:",orgSite})
+          res.status(500).json("error in getting streams for orgSite:")
         }
         orgStats["streams"] = count;
         callback(null, {name:"streams", value: count});
@@ -264,7 +264,7 @@ admin_routes.get('/getOrganisationInfo/:orgSite',function(req,res){
       WatchlistModel.count(function(err,count){
         if(err){
           console.log("Error in watchlist query module error:",err);
-          res.status(500).json({error:"error in getting watchlists for orgSite:",orgSite})
+          res.status(500).json("error in getting watchlists for orgSite")
         }
         orgStats["watchlists"] = count;
         callback(null,{name:"watchlist", value: count});
@@ -276,7 +276,7 @@ admin_routes.get('/getOrganisationInfo/:orgSite',function(req,res){
       console.log("inside orgInfo Callback");
       if(err){
         console.log("Error in callback module error:",err);
-        res.status(500).json({error:"error in getting summery stats for orgSite:",orgSite})
+        res.status(500).json("error in getting summery stats for orgSite")
       }
     console.log('orgStats contents',orgStats);
     res.json(orgStats);
@@ -290,7 +290,7 @@ admin_routes.get('/getOrgActivity/:orgSite',function(req,res){
   watchModel.find({},null,{sort:{"editedOn":-1}},function(err,activity){
     if(err){
       console.log("Error in getting org recent activity");
-      res.status(500).json({error:"error in getting recent activity for organisation:"+req.params.orgSite});
+      res.status(500).json("error in getting recent activity for organisation");
     }
     console.log('activity',activity);
     res.send(activity);
@@ -303,7 +303,7 @@ admin_routes.get('/getorgContactInfo/:orgSite',function(req,res){
   orgModel.find({orgSite : req.params.orgSite},function(err,Org){
     if(err){
       console.log("error in getting org contact info");
-      res.status(500).json({error:"error in getting orgLogo for organisation:"+req.params.orgSite});
+      res.status(500).json("error in getting orgLogo for organisation");
     }
     console.log("Org Contact Info",Org[0]);
     res.send(Org[0]);
