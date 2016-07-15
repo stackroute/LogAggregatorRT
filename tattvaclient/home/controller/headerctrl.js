@@ -3,8 +3,10 @@ angular.module('tattva')
   $scope.openLeftMenu = function() {
     $mdSidenav('left').toggle();
   };
-
-  $scope.userNavItems = AuthService.getUserNavItem();
+  AuthService.getUserNavItem().then(function(response){
+    $scope.userNavItems = response;
+    if($scope.userNavItems)
+      $scope.items=$scope.userNavItems.sideNav;
+  });
   $scope.user = AuthService.getCurrentUser();
-  $scope.items=$scope.userNavItems.sideNav;
 });

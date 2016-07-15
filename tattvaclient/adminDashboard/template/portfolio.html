@@ -1,24 +1,13 @@
-<div layout-align="center center">
-  <md-whiteframe id="sbrst" layout="row" class="md-whiteframe-3dp" flex-sm="" flex-gt-sm="95" flex-gt-md="">
-    <div style="float:left" flex-offset="10" flex="40">
-      <div id='sunburstcontainer'></div>
+    <md-whiteframe id="sbrst" layout="column" class="md-whiteframe-3dp" flex-sm="100" flex-gt-sm="100" flex-gt-md="100">
+
+    <div style="float:left"
+      <div id='sunburstcontainer'>
+        <div id="explanation" >{{hoveredinstance.toUpperCase()}}</div>
       </div>
-      <md-divider></md-divider>
-      <div flex-offset="10" flex="30">
-        <div>
-          <h2>Selection Details</h2>
-          <h4>Selection Name : {{selectedinstance.name}}</h4>
-          <p>Instance Type : {{selectedinstance.instanceType}}</p>
-          <p>level : {{selectedinstance.level}}</p>
-          <p>children : {{selectedinstance.children}}</p>
-        </div>
-        <div>
-          <h2>Hover details</h2>
-          <h4>Selection Name : {{hoveredinstance.name}}</h4>
-          <p>Instance Type : {{hoveredinstance.instanceType}}</p>
-          <p>level : {{hoveredinstance.level}}</p>
-          <p>children : {{hoveredinstance.children}}</p>
-        </div>
-      </div>
+    </div>
+
+    <md-divider></md-divider>
+    <md-button md-no-ink class="md-primary">{{hoverStats.collection}}{{hoverStats.orgSite}} : {{hoverStats.count}}</md-button>
+    <md-divider></md-divider>
+
     </md-whiteframe>
-</div>

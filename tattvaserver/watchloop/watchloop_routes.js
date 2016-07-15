@@ -1,5 +1,5 @@
 var watchloop_router = require('express').Router();
-var mongoose = require( 'mongoose' );
+// var mongoose = require( 'mongoose' );
 var WatchLoopSchema = require('./watchloop.js');
 var WatchListSchema = require('../watchlists/watchlists.js');
 var dataProvider = require('../core/datamodelprovider');
@@ -10,7 +10,7 @@ var watchExecutor = require('../watchexecutor/watchlistexecutor');
 
 watchloop_router.post('/',function (request, response) {
   var watchloopObj = request.body;
-  var o_id;
+  // var o_id;
   var dataSource = {
     ipaddr: '172.23.238.251',
     port: '7070'

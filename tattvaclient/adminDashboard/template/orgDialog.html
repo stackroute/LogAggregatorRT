@@ -1,142 +1,123 @@
 <md-dialog  aria-label="Full Screen Dialog Test" class="fullscreen-dialog">
+
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <h2>{{orgSite}}</h2>
+      <h2><b>ORGANISATIONAL OVERVIEW</b></h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon class="material-icons" aria-label="Close dialog">clear</md-icon>
+      </md-button>
     </div>
   </md-toolbar>
-  <md-dialog-content class="md-padding" >
 
-    <div layout="row" layout-xs="column" layout-align="left center">
+  <md-dialog-content class="md-padding" >
+    <div layout="row" layout-xs="column" layout-align>
 
       <div class="logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Dell_Logo.png" alt="static" width="200" height="200" border-radius="80%" />
+        <img src="{{orgContactInfo.orgLogo}}" alt="static" width="200" height="200" border-radius="80%" />
+      <div class="logo" flex>
+        <img class="img-circle" ng-src="{{orgContactInfo.orgLogo}}" alt="static" width="110" height="110" border-radius="80%" />
       </div>
 
-      <div class="support" flex-offset="12">
-        <md-content class="md-padding" layout-xs="column" layout="row">
-          <md-whiteframe   layout-align="center center">
+      <div class="support" flex-offset="5" flex="90">
+        <md-content layout-xs="column" layout="row">
+          <md-whiteframe  layout-align>
 
-            <span class="md-headline"> {{orgSite}}</span><br>
-            <span class="md-subhead"><b>Organisation Name:</b> {{orgContactInfo.orgName}}</span><br>
-            <span class="md-subhead"><b>Contact Name:</b> {{orgContactInfo.contactName}}</span><br>
-            <span class="md-subhead"><b>Contact email:</b> {{orgContactInfo.contactEmail}}</span><br>
-            <span class="md-subhead"><b>Location:</b> {{orgContactInfo.orgLocation}}</span><br>
+            <h3>{{orgContactInfo.orgName}}</h3>
+            <h4>  {{orgSite}}</h4>
+
+            <h5>{{orgContactInfo.contactName}} <{{orgContactInfo.contactEmail}}></h5>
 
 
           </md-whiteframe>
         </div>
       </div>
-
-      <md-content class="md-padding" layout-xs="column" layout="row">
-        <div layout="row" flex layout-xs="column" >
-          <div flex >
-            <md-card flex="100" >
-              <md-card-title>
-                <md-card-title-text>
-                  <h3 class="md-display-6">ORGANISATION DETAILS</h3>
-                </md-card-title-text>
-              </md-card-title>
-              <md-card-content>
-
-                <md-list>
-                  <md-list-item class="md-3-line">
-                    <div class="md-list-item-text">
-
-                      <ng-letter-avatar fontSize="20" data="NA" shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar>
-                    </div>
-                    <md-button class="md-secondary">{{orgInfo.namespaces}}</md-button>
-                    <md-divider ng-if="!$last"></md-divider>
-                  </md-list-item>
-                </md-list>
+    </md-content>
+    <md-content class="md-padding" layout-xs="column" layout="row">
 
 
-                <md-list>
-                  <md-list-item class="md-3-line">
-                    <div class="md-list-item-text">
+      <div layout="row" flex layout-xs="column" >
+        <md-whiteframe class="md-whiteframe-10dp" flex="40">
+          <div>
 
-                      <ng-letter-avatar fontSize="20" data="IN" shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar>
-                    </div>
-                    <md-button class="md-secondary">{{orgInfo.datasources}}</md-button>
-                    <md-divider ng-if="!$last"></md-divider>
-                  </md-list-item>
-                </md-list>
+      <md-subheader><h2><b>ABOUT</b></h2></md-subheader>
+      <md-list>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text">
+            <h3 class="md-display-3"><b>NAMESPACES</b></h3>
+          </div>
+          <md-button class="md-secondary md-fab"><b>{{orgInfo.namespaces}}</b></md-button>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
 
+      <md-list>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text">
+            <h3 class="md-display-3"><b>INSTANCES</b></h3>
+          </div>
+          <md-button class="md-secondary md-fab"><b>{{orgInfo.datasources}}</b></md-button>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
 
-                <md-list>
-                  <md-list-item class="md-3-line">
-                    <div class="md-list-item-text">
+      <md-list>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text">
 
-                      <ng-letter-avatar fontSize="20" data="ST" shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar>
-                    </div>
-                    <md-button class="md-secondary">{{orgInfo.streams}}</md-button>
-                    <md-divider ng-if="!$last"></md-divider>
-                  </md-list-item>
-                </md-list>
+            <h3 class="md-display-3"><b>STREAMS</b></h3>
 
+          </div>
+          <md-button class="md-secondary md-fab "><b>{{orgInfo.streams}}</b></md-button>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
 
+      <md-list>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text">
+            <h3 class="md-display-3"><b>WATCHLISTS</b></h3>
+          </div>
+          <md-button class="md-secondary md-fab"><b>{{orgInfo.watchlists}}</b></md-button>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+    </div>
+  </md-whiteframe>
 
-                <md-list>
-                  <md-list-item class="md-1-line">
-                    <div class="md-list-item-text">
-
-                      <ng-letter-avatar fontSize="20" data="WL" shape="round" avatarcustombgcolor="#339933" charCount="2"></ng-letter-avatar>
-                    </div>
-                    <md-button class="md-secondary">{{orgInfo.watchlists}}</md-button>
-                    <md-divider ng-if="!$last"></md-divider>
-                  </md-list-item>
-                </md-list>
-
-              </md-card>
-            </div>
-
-            <div flex-xs="" flex-gt-xs="70" flex >
-              <md-card flex="80">
-                <md-card-title>
-                  <md-card-title-text>
-                    <h3 class="md-display-6">ACTIVIY LOG</h3>
-                  </md-card-title-text>
-                </md-card-title>
-                  <md-card-content>
-
-                    <md-list>
-                      <md-button class="md-secondary">Edit Time</md-button>
-                      <md-divider></md-divider>
-                        <md-list-item class="md-3-line" ng-repeat="activity in recentActivity">
-                        <div class="md-list-item-text">
-                          <h3>NAME:{{activity.name}}</h3>
-                          <h4>NAMESPACE:{{activity.namespace}}</h4>
-                          <!-- <p> {{item.notes}}</p> -->
-
-                        <md-button class="md-secondary">{{activity.editedOn}}</md-button>
-                        <md-divider ng-if="!$last"></md-divider>
-                      </md-list-item>
-                    </md-list>
-
-                  </md-card-content>
-
-                  </md-card>
-
-                </div>
-              </div>
+  <md-whiteframe class="md-whiteframe-10dp" flex="70" flex-offset="5">
 
 
+    <div layout="row" flex layout-xs="column" >
 
+      <!-- <md-toolbar>
+      <div class="md-toolbar-tools">
 
+      <h2>
+      <span><b>RECENT ACTIVITY</b></span>
+    </h2>
+  </div>
+</md-toolbar> -->
+<!-- <md-subheader class="md-primary"><h3><b>RECENT ACTIVITY</b></h3></md-subheader> -->
+<md-subheader><h2><b>RECENT ACTIVITY</b></h2></md-subheader>
+</div>
 
+</md-content>
+<div layout="column">
+  <md-card ng-repeat="activity in recentActivity">
+    <md-list>
+      <md-list-item class="md-3-line" >
+        <div class="md-list-item-text">
+          <h3><b>UPDATED ON:- {{activity.editedOn}}</b></h3>
+          <h5><b>WATCHLIST NAME:- {{activity.name}}</b></h5>
+          <h6><b>EDITED BY:- {{activity.editedBy}}</b></h6>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-card>
+</div>
 
-            </md-content>
-
-          </md-dialog-content>
-
-
-
-        </md-dialog>
-        <!-- <md-card>
-
-
-
-
-
-      </md-card-content>
-
-    </md-card> -->
+</md-whiteframe>
+</div>
+</md-dialog-content>
+</md-dialog>
