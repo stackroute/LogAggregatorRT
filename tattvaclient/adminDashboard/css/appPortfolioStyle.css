@@ -22,3 +22,14 @@ path {
   border-radius: 0;
 
 }
+
+#explanation {
+  position: absolute;
+  top: 200px;
+  left: 130px;
+  width: 140px;
+  height: 20px;
+  text-align: center;
+  color: #666;
+  z-index: 1000;
+}

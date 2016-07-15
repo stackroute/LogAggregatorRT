@@ -1,7 +1,7 @@
 angular.module('tattva').factory('adminFactory',['$http',function($http){
   var factory={
-    
-    appPortfolio : function(){
+
+    appDetails : function(){
         return $http.get('/adminDashboard');
     },
 
@@ -10,7 +10,6 @@ angular.module('tattva').factory('adminFactory',['$http',function($http){
     },
 
     getWatchlists : function(orgSite){
-      // console.log("orgSite from factory:",orgSite);
       return $http.get('/adminDashboard/getWatchlists/'+orgSite);
     },
 
@@ -25,15 +24,7 @@ angular.module('tattva').factory('adminFactory',['$http',function($http){
     getOrgActivity : function(orgSite){
       return $http.get('/adminDashboard/getOrgActivity/'+orgSite);
     }
-
-
-    // getWatchlist : function(getThisWatch){
-    //   $http.get('getThisWatch/:'+getThisWatch.orgSite+'/:'+getThisWatch.name).then(function(res){
-    //     //sucess
-    //   },function(res){
-    //     console.log("Failed to get watchlist:"+getThisWatch.name+"of organisation:"+getThisWatch.orgSite+" error:",res.data.error);
-    //   });
-    // }
   };
+
   return factory;
 }]);

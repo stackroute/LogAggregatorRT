@@ -4,7 +4,7 @@ angular.module('tattva')
 
   adminFactory.orgList().then(function(res){
     $scope.orgs=res.data;
-      console.log('$scope.orgs',$scope.orgs);
+      // console.log('$scope.orgs',$scope.orgs);
   },function(res){
     console.log("error",res.data.error);
   })

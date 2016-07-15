@@ -25,33 +25,15 @@ $stateProvider
 })
 .state('adminHome.orgwatches',
 {
-  url: "/org/:orgSite:namespace:instance:stream:watchlist",
+  url:"/org/:orgSite",
   templateUrl:"adminDashboard/template/orgportfolio.html",
   controller: "orgWatchlistsCtrl",
-  // resolve:{
-  //   // selectionObj:selectionObject()
-  // }
-  // templateUrl:"adminDashboard/template/orgportfolio.html",
-  // controller:"adminDashboardController.js"
+  params:{
+    namespace : null,
+    datasource : null,
+    stream : null,
+    watchlist : null
+  }
+
 });
-// $rootScope.$on
-// $urlRouterProvider.otherwise('/adminHome.orgportfolio');
 }]);
-
-
-// .state({
-//   name:'adminHome',
-//   url: "/admin/dashboard",
-//   views:{
-//     "header" : {
-//       templateUrl: "/home/template/header.html",
-//       controller: "HeaderCtrl"
-//     },
-//     "content" : {
-//       templateUrl: "adminDashboard/template/adminDashboard.html"
-//       },
-//     "footer" : {
-//       templateUrl:"/home/template/footer.html"
-//       }
-//     }
-//   });
