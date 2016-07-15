@@ -25,5 +25,5 @@ if (fs.existsSync(envFile)) {
 
 module.exports = {
     masterdb: 'tattva',
-    db: ('mongodb://127.0.0.1:27017/' + masterdb)
+    db: ('mongodb://127.0.0.1:27017/' + this.masterdb)
 };

@@ -83,7 +83,7 @@ function mapExprField(field, dataObj) {
     result = constantMapper.map(field, dataObj);
   } else if (field.fieldType == "Function") {
     result = functionMapper.map(field, dataObj);
-  } else if (field.fieldType == "Accumulator") {
+  } else if (field.fieldType == "Accumulate") {
     result = accumulatorMapper.map(field, dataObj);
   } else {
     result = undefined;

@@ -2,13 +2,13 @@ var mongoose = require( 'mongoose' );
 var watchListSchema=new mongoose.Schema({
   "name": {type: String, unique: true, required : true,index:true,min:"1"},
   "description": {type: String, required : true,min:"2"},
-  "namespace":{type: String, required : true,ref:"namespace"},
+  "namespace":{type: String, required : true},
   "stream": {type: String, required : true},
   "status":{type:String,required:true},
   "orgsite":{type:String,required:true},
-  "createdBy":String,
+  "createdBy":{ type: String},
   "createdOn": { type : Date, default : Date.now },
-  "editedBy":String,
+  "editedBy": { type: String },
   "editedOn": { type : Date, default : Date.now },
   "expressions": [
     {

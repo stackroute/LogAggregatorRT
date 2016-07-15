@@ -9,7 +9,8 @@ var exprReducerPipeline = require('./exprreducerpipeline');
 
 //Publishers
 var dbPublisherPipeline = require('./publishers/databasepublisher');
-var uiPublisherPipeline = require('./publishers/dashboardpublisher');
+// var uiPublisherPipeline = require('./publishers/dashboardpublisher');
+var uiPublisherPipeline = require('./publishers/dashboardredispublisher');
 var drainerPipeline = require('./publishers/streamdrainer');
 // var outStreamPipeline = require('./publishers/outstreampublisher');
 
