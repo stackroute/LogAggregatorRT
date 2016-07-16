@@ -47,27 +47,25 @@ app.getPort = function() {
 app.use('/watchtaskprocessor/', processRoutes);
 
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
+    var err = new Error('Resource not found');
     err.status = 404;
-    res.status(404).json({
-        "error": "resource not found"
+    return res.status(err.status).json({
+        "error": err.message
     });
 });
 
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
         logger.error("Internal error in watch processor: ", err);
-        res.status(500).json({
+        return res.status(err.status || 500).json({
             "error": err.message
         });
     });
 }
 
 app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
     logger.error("Internal error in watch processor: ", err);
-    res.status(500).json({
+    return res.status(err.status || 500).json({
         "error": err.message
     });
 });

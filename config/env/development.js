@@ -24,10 +24,12 @@ if (fs.existsSync(envFile)) {
  */
 module.exports = {
     masterdb: 'tattva',
-
-    mongo: { host:'127.0.0.1', port: 27017},
-    redis: { host:"127.0.0.1", port: 6379}
-};
-
-    db: ('mongodb://127.0.0.1:27017/' + this.masterdb)
+    mongo: {
+        host: '127.0.0.1',
+        port: 27017
+    },
+    redis: {
+        host: "127.0.0.1",
+        port: 6379
+    }
 };
