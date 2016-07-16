@@ -1,10 +1,11 @@
 <md-content class="content">
-  <div ng-controller="adminDashboardCtrl">
-    <portfolio data="sunburstData" stats="stats(selectionObj)"></portfolio>
-    <!-- <a ui-sref=".orgwatches">go to orgwatches</a> -->
-    <!-- <md-whitefield class="md-whiteframe-3dp" flex="70" flex-sm="80" flex-gt-sm="80" flex-gt-md="80" style="height:400px;width:500px"> -->
+  <div ng-controller="adminDashboardCtrl" layout="row" layout-align="none none" flex-sm="100" flex-gt-sm="100" flex-gt-md="100">
+
+    <portfolio data="sunburstData" stats="stats(selectionObj)" ></portfolio>
+
+      <md-divider></md-divider>
+      <div flex="70">
       <ui-view></ui-view>
-    <!-- </md-whitefield> -->
+    </div>
 </md-content>
 </div>
-<!-- <span flex></span> -->

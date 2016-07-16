@@ -14,8 +14,18 @@ router.get('/echo', function(req, res) {
  * Process a new Task
  */
 router.post('/watchtask', function(req, res) {
-    var task = req.body;
-    res.json({});
+    var watchtask = req.body;
+
+    if (watchtask === undefined) {
+        res.status(400).json({
+            error: "Invalid request, one or more required request data not found..!"
+        });
+    }
+
+    var processor = new taskProcessor();
+    var result = processor.processNewTask(watchtask);
+
+    return res.json(result);
 });
 
 module.exports = router;

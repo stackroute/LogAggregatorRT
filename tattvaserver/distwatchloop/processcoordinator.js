@@ -35,11 +35,11 @@ function processCordinator() {
   this.initializeProcessors=function(){
     for(var i=0;i<noOfProcessors;i++){
       processorUrl.push({
-        pid:("Processor::" + (processorUrl.length + 1)),
-        ipaddr:"",
-        port:"",
-        upTime:"",
-        workers:[]
+        url: ("Processor::" + (processorUrl.length + 1)),
+        ipaddr: "",
+        port: "",
+        upTime: "",
+        workers: []
       });
     }
     return processorUrl;

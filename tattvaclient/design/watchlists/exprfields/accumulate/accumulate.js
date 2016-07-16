@@ -1,24 +1,25 @@
 angular.module("tattva")
 .controller('AccumulateCtrl',['$scope','$mdDialog','fieldData','loadExprData','namespaceFactory','fieldData2',function($scope,$mdDialog,fieldData,loadExprData,namespaceFactory,fieldData2)
 {
-$scope.namespace=fieldData2.namespace;
+  $scope.namespace=fieldData2.namespace;
   $scope.function=[];
+
   loadExprData.getFunction().then(function(result){
     var data=result.data;
     //console.log(data);
     return data;
-  }).then(function(data)
-  {
-    for(i in data)
-    {
-      $scope.function.push(data[i].name);
+  }).then(function(data) {
+    for(i in data) {
+      if(data[i].type == 'aggregate') {
+        $scope.function.push(data[i].name);
+      }
     }
   });
 
   $scope.funParam=[];
   namespaceFactory.getNamespaceDetails($scope.namespace).then(function(data){
     for (i in data.dataSchema){
-          $scope.funParam.push(data.dataSchema[i].name);
+      $scope.funParam.push(data.dataSchema[i].name);
     }
   });
 

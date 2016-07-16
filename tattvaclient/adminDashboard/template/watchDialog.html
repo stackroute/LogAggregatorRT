@@ -1,0 +1,45 @@
+<md-dialog aria-label="Full Screen dialog" class="full-dialog">
+
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2><b>{{orgSite}}</b></h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon class"material-icons" aria-label="Close dialog">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content class="md-padding">
+    <watchwidget class="flex-item" flex="{{watch.publishers.dashboard.displaySize}}" watchdefn="watch" eventobj="socket">
+    </watchwidget>
+
+    <md-whiteframe class="md-whiteframe-10dp" flex="column"  layout layout-align="center center">
+      <!-- <span>.md-whiteframe-10dp</span> -->
+      <md-card flex="column">
+        <md-content>
+          <md-list>
+            <md-list-item class="md-5-line" >
+
+              <div class="md-list-item-text">
+
+                <h5><b>EDITED BY: {{watch.editedBy}}<b></h6>
+                <h6>EDITED ON: {{watch.editedBy}}</h6>
+                <h5><b>CREATED BY: {{watch.editedBy}}</b></h5>
+                <h6>CREATED ON: {{watch.editedBy}}</h5>
+
+              </div>
+              <div class="md-list-item-text" style="margin:-100px 0px 0px 840px;";>
+                <h4><b>STATUS:</b></h4>
+              </div>
+
+            </md-list-item>
+          </md-list>
+        </md-content>
+      </md-card>
+    </md-whiteframe>
+
+
+  </md-dialog-content>
+
+</md-dialog>
