@@ -3,6 +3,8 @@ var websocket = require('websocket-stream');
 var highland = require('highland');
 var appConfig = require('../../../config/appconfig');
 
+var logger = require('../../../applogger');
+
 function sourceConnectorTask(subscribeFrom, publishTo, payload) {
   var subChannelClient = redis.createClient({host:appConfig.redis.host, port:appConfig.redis.port});
   var pubChannelClient = redis.createClient({host:appConfig.redis.host, port:appConfig.redis.port});
@@ -11,16 +13,16 @@ function sourceConnectorTask(subscribeFrom, publishTo, payload) {
     throw new Error("Watch list definition is not passed for processing..!");
   }
 
-  var wlstDef = payload.watch;
-
   this.doTask = function() {
     // console.log("Now i will do the work");
     subChannelClient.subscribe(subscribeFrom);
 
     subChannelClient.on('message', function(channel, data){
-      // dataObj = JSON.parse(data);
-      console.log("Got message with data: ", data, " from channel: ", channel);
-      var dataSourceIp = "172.23.238.163";
+      // logger.debug("Got message from channel: ", channel, " with data: ", data);
+
+      dataObj = JSON.parse(data);
+
+      var dataSourceIp = "172.23.238.251";
       var dataSourcePort = "7070";
       var wsstream = websocket('ws://' + dataSourceIp + ':' + dataSourcePort);
       highland(wsstream).each(function(streamData){
