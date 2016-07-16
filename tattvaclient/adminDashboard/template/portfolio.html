@@ -1,13 +1,14 @@
     <md-whiteframe id="sbrst" layout="column" class="md-whiteframe-3dp" flex-sm="100" flex-gt-sm="100" flex-gt-md="100">
 
+      <!-- <md-divider></md-divider> -->
+      <md-button md-no-ink class="md-primary">{{hoverStats.collection}}{{hoverStats.orgSite}} : {{hoverStats.count}}</md-button>
+      <md-divider></md-divider>
+
     <div style="float:left"
       <div id='sunburstcontainer'>
-        <div id="explanation" >{{hoveredinstance.toUpperCase()}}</div>
+        <div id="explanation">{{hoveredinstance.toUpperCase()}}</div>
       </div>
     </div>
 
-    <md-divider></md-divider>
-    <md-button md-no-ink class="md-primary">{{hoverStats.collection}}{{hoverStats.orgSite}} : {{hoverStats.count}}</md-button>
-    <md-divider></md-divider>
 
     </md-whiteframe>

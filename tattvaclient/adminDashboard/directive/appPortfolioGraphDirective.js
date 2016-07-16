@@ -63,8 +63,8 @@ angular.module('tattva').directive('portfolio',function(){
         }
       });
       //defining DOM Size
-      var width = 400,
-          height = 400,
+      var width = 450,
+          height = 450,
           radius = Math.min(width, height) / 2;
 
       var x = d3.scale.linear()
