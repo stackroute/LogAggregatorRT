@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
-var distWatchloopExecutor = require('./tattvaserver/distwatchloop/distwatchlooprunner.js');
+var distWatchLoopRunner = require('./tattvaserver/distwatchloop/distwatchlooprunner.js');
 var appConfig = require("./config/appconfig");
 
 //APP logger
@@ -34,7 +34,7 @@ app.getPort = function() {
 }
 
 logger.info("Starting distributed Watchloop service...");
-distWatchloopExecutor();
+setImmediate(distWatchLoopRunner);
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

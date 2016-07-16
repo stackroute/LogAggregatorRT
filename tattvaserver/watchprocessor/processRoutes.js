@@ -22,10 +22,14 @@ router.post('/watchtask', function(req, res) {
         });
     }
 
-    var processor = new taskProcessor();
-    var result = processor.processNewTask(watchtask);
+    try {
+      var processor = new taskProcessor();
+      var result = processor.processNewTask(watchtask);
+    } catch(err) {
+      res.status(400).json({error:err.message});
+    }
 
-    return res.json(result);
+    return res.status(200).json({status: "success"});
 });
 
 module.exports = router;
