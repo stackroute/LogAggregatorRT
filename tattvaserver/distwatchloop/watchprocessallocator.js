@@ -17,7 +17,7 @@ var nextAvailableProcessor = function() {
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
-  randomIndex = getRandomInt(0, 1);
+  randomIndex = getRandomInt(0, 2);
   var processorObj = processorMap[randomIndex];
 
   return processorObj;
