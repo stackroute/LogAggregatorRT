@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
+var watchloopservice_routes = require('./tattvaserver/distwatchloop/watchloopservice_routes');
 var distWatchLoopRunner = require('./tattvaserver/distwatchloop/distwatchlooprunner.js');
 var appConfig = require("./config/appconfig");
 
@@ -15,51 +16,53 @@ var app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+  extended: false
 }));
 
 app.onAppStart = function(addr) {
-  logger.info("Dist Watchloop Service App is now Running on port:",addr.port);
+  logger.info("Dist Watchloop Service App is now Running on port:", addr.port);
 }
 
 app.getPort = function() {
-    port = undefined;
+  port = undefined;
 
-    if (process.argv.length >= 2) {
-        port = process.argv[2];
-        logger.debug("Port ", port, " was passed");
-    }
+  if (process.argv.length >= 2) {
+    port = process.argv[2];
+    logger.debug("Port ", port, " was passed");
+  }
 
-    return port;
+  return port;
 }
 
+app.use('/watchloopservice', watchloopservice_routes);
+
 logger.info("Starting distributed Watchloop service...");
-setImmediate(distWatchLoopRunner);
+// setImmediate(distWatchLoopRunner);
 
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    res.status(404).json({
-        "error": "resource not found"
-    });
+  var err = new Error('Not Found');
+  err.status = 404;
+  res.status(404).json({
+    "error": "resource not found"
+  });
 });
 
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        logger.error("Internal error in watch processor: ", err);
-        res.status(500).json({
-            "error": err.message
-        });
-    });
-}
-
-app.use(function(err, req, res, next) {
+  app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     logger.error("Internal error in watch processor: ", err);
     res.status(500).json({
-        "error": err.message
+      "error": err.message
     });
+  });
+}
+
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  logger.error("Internal error in watch processor: ", err);
+  res.status(500).json({
+    "error": err.message
+  });
 });
 
 module.exports = app;

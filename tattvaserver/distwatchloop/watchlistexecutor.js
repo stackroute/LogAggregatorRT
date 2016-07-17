@@ -3,6 +3,7 @@ var taskTopologyBuilder = require('./watchTaskTopologyBuilder');
 var processAllocator = require('./watchprocessallocator');
 var ProcessAllocateTask = require('./processallocatetask');
 var redis = require('redis');
+var appConfig = require('../../config/appconfig');
 var logger = require('../../applogger');
 
 var disExecuteWatchList = function(wlstDef) {
@@ -23,7 +24,10 @@ var disExecuteWatchList = function(wlstDef) {
       // saveTopologyToProcessorMap();
 
       //Start the execution
-      var redisClient = redis.createClient();
+      var redisClient = redis.createClient({
+        host: appConfig.redis.host,
+        port: appConfig.redis.port
+      });
       redisClient.publish(watchTopology[0].subFrom, JSON.stringify({
         start: true
       }));
