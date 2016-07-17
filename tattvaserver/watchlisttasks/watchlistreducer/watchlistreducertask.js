@@ -1,22 +1,26 @@
 var redis = require('redis');
-
+var appConfig = require('../../../config/appconfig');
 var logger = require("../../../applogger");
 
 function watchlistReducerTask(subscribeFrom, publishTo, payload) {
-  // var channelClient = redis.createClient({host:appConfig.redishost, port:appConfig.redisport});
-  var subChannelClient = redis.createClient();
-  var pubChannelClient = redis.createClient();
+  if (payload['watch'] === undefined) {
+    throw new Error("Watch list definition is not passed for processing..!");
+  }
 
-  // if(payload['watch'] === undefined) {
-  //   throw new Error("Watch list definition is not passed for processing..!");
-  // }
+  var subChannelClient = redis.createClient({
+    host: appConfig.redis.host,
+    port: appConfig.redis.port
+  });
+  var pubChannelClient = redis.createClient({
+    host: appConfig.redis.host,
+    port: appConfig.redis.port
+  });
 
   this.doTask = function() {
-    // console.log("Now i will do the work");
     subChannelClient.subscribe(subscribeFrom);
 
     subChannelClient.on('message', function(channel, data) {
-      logger.debug("Got message from channel: ", channel, " with data: ", data);
+      // logger.debug("Got message from channel: ", channel, " with data: ", data);
 
       var execObj = JSON.parse(data);
 
@@ -28,12 +32,10 @@ function watchlistReducerTask(subscribeFrom, publishTo, payload) {
 
       execObj.path["watchresult"] = watchListResult;
 
-      // logger.debug(" Watch result ", execObj);
-
       pubChannelClient.publish(publishTo, JSON.stringify(execObj));
 
     });
   }
-}//end of module function
+} //end of module function
 
 module.exports = watchlistReducerTask;

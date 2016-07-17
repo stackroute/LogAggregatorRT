@@ -1,5 +1,7 @@
-var procController = function() {
+var registerProcessorWithLoopService = function() {
 
 }
 
-module.exports = procController;
+module.exports = {
+    registerProcessor: registerProcessorWithLoopService
+};

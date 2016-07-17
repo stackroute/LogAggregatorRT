@@ -21,6 +21,7 @@ var exprProcessor = function(expr, execObj) {
 
   //@TODO Highlight match
   //@TODO Output forwarding
+  //@TODO Adding back result to data as a field
   execObj.path[expr.tag] = {};
   execObj.path[expr.tag]['lhs'] = lhs;
   execObj.path[expr.tag]['rhs'] = rhs;
