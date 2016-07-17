@@ -1,4 +1,8 @@
 var redis = require('redis');
+var appConfig = require('../../../config/appconfig');
+
+var logger = require('../../../applogger');
+
 
 function pubDbTask(subscribeFrom, publishTo, payload) {
   if (payload['watch'] === undefined) {

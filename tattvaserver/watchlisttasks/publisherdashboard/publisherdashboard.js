@@ -22,7 +22,7 @@ function pubDashboardTask(subscribeFrom, publishTo, payload) {
     subChannelClient.subscribe(subscribeFrom);
 
     subChannelClient.on('message', function(channel, data) {
-      logger.debug("Got message from channel: ", channel, " with data: ", data);
+      // logger.debug("Got message from channel: ", channel, " with data: ", data);
 
       execObj = JSON.parse(data);
 

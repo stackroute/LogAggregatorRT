@@ -10,10 +10,10 @@ var pubDbTask = require('../publisherdatabase/publisherdatabase');
 var WatchListSchema = require('../../watchlists/watchlists');
 var dataProvider = require('../../core/datamodelprovider');
 
-var WatchListModel = dataProvider.getModel(WatchListSchema, 'Digital');
+var WatchListModel = dataProvider.getModel(WatchListSchema, 'niit');
 
 WatchListModel.findOne({
-  name: 'AC Log Data'
+  name: "Git Anomoly Analysis"
 }, function(err, data) {
   if (err) {
     console.log("Error in getting watch list data: ", err);
@@ -25,25 +25,27 @@ WatchListModel.findOne({
     return;
   }
 
+  // console.log("Watchlist: ", data);
+
   test(data);
 });
 
 
 function test(wlstDef) {
   testSrcConnectorTask(wlstDef);
-  testDataParserTask(wlstDef);
-  testExpProcessorTask(wlstDef);
-  testWlstResultTask(wlstDef);
-  testPubDashboard(wlstDef);
-  testPubDB(wlstDef);
+  // testDataParserTask(wlstDef);
+  // testExpProcessorTask(wlstDef);
+  // testWlstResultTask(wlstDef);
+  // testPubDashboard(wlstDef);
+  // testPubDB(wlstDef);
 
-  startWatchExec();
+  startWatchExec(wlstDef);
 }
 
-function startWatchExec() {
+function startWatchExec(wlstDef) {
   var client = redis.createClient();
 
-  var subFrom = getChannelName('onStart', "Digital", 'AC Log Data');
+  var subFrom = getChannelName('onStart', wlstDef.orgsite, wlstDef.name);
   client.publish(subFrom, JSON.stringify({
     start: true
   }));
@@ -51,8 +53,8 @@ function startWatchExec() {
 
 
 function testSrcConnectorTask(wlstDef) {
-  var subFrom = getChannelName('onStart', "Digital", 'AC Log Data');
-  var pubTo = getChannelName('onData', "Digital", 'AC Log Data');
+  var subFrom = getChannelName('onStart', wlstDef.orgsite, wlstDef.name);
+  var pubTo = getChannelName('onData', wlstDef.orgsite, wlstDef.name);
   var payload = {
     'watch': wlstDef
   };
@@ -62,8 +64,8 @@ function testSrcConnectorTask(wlstDef) {
 }
 
 function testDataParserTask(wlstDef) {
-  var subFrom = getChannelName('onData', "Digital", 'AC Log Data');
-  var pubTo = getChannelName('onParse', "Digital", 'AC Log Data');
+  var subFrom = getChannelName('onData', wlstDef.orgsite, wlstDef.name);
+  var pubTo = getChannelName('onParse', wlstDef.orgsite, wlstDef.name);
   var payload = {
     'watch': wlstDef
   };
@@ -73,8 +75,8 @@ function testDataParserTask(wlstDef) {
 }
 
 function testExpProcessorTask(wlstDef) {
-  var subFrom = getChannelName('onParse', "Digital", 'AC Log Data');
-  var pubTo = getChannelName('onExp', "Digital", 'AC Log Data');
+  var subFrom = getChannelName('onParse', wlstDef.orgsite, wlstDef.name);
+  var pubTo = getChannelName('onExp', wlstDef.orgsite, wlstDef.name);
 
   var payload = {
     'watch': wlstDef,
@@ -86,8 +88,8 @@ function testExpProcessorTask(wlstDef) {
 }
 
 function testWlstResultTask(wlstDef) {
-  var subFrom = getChannelName('onExp', "Digital", 'AC Log Data');
-  var pubTo = getChannelName('onResult', "Digital", 'AC Log Data');
+  var subFrom = getChannelName('onExp', wlstDef.orgsite, wlstDef.name);
+  var pubTo = getChannelName('onResult', wlstDef.orgsite, wlstDef.name);
   var payload = {
     'watch': wlstDef
   };
@@ -97,7 +99,7 @@ function testWlstResultTask(wlstDef) {
 }
 
 function testPubDashboard(wlstDef) {
-  var subFrom = getChannelName('onResult', "Digital", 'AC Log Data');
+  var subFrom = getChannelName('onResult', wlstDef.orgsite, wlstDef.name);
   var pubTo = "";
   var payload = {
     'watch': wlstDef
@@ -108,7 +110,7 @@ function testPubDashboard(wlstDef) {
 }
 
 function testPubDB(wlstDef) {
-  var subFrom = getChannelName('onResult', "Digital", 'AC Log Data');
+  var subFrom = getChannelName('onResult', wlstDef.orgsite, wlstDef.name);
   var pubTo = "";
   var payload = {
     'watch': wlstDef
@@ -119,8 +121,8 @@ function testPubDB(wlstDef) {
 }
 
 // function testOutStream(wlstDef) {
-//   var subFrom = getChannelName('onResult', "Digital", 'AC Log Data');
-//   //var pubTo = getChannelName('onResult', "Digital", 'AC Log Data');
+//   var subFrom = getChannelName('onResult', wlstDef.orgsite, wlstDef.name);
+//   //var pubTo = getChannelName('onResult', wlstDef.orgsite, wlstDef.name);
 //   var payload = { 'watch' : wlstDef };
 //   var task = new pubDbTask(subFrom, payload);
 //   console.log("Data for Database");
@@ -128,8 +130,6 @@ function testPubDB(wlstDef) {
 // }
 
 function getChannelName(eventName, orgSite, watchName) {
-  // var 'AC Log Data' = 'AC Log Data';
-  // var "Digital" = 'Digital';
   var channel = 'watchlist:' + eventName + ':' + orgSite + ':' + watchName;
   channel = channel.toLowerCase();
   return channel;

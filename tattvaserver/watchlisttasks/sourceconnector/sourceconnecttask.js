@@ -6,33 +6,38 @@ var appConfig = require('../../../config/appconfig');
 var logger = require('../../../applogger');
 
 function sourceConnectorTask(subscribeFrom, publishTo, payload) {
-  var subChannelClient = redis.createClient({host:appConfig.redis.host, port:appConfig.redis.port});
-  var pubChannelClient = redis.createClient({host:appConfig.redis.host, port:appConfig.redis.port});
+  var subChannelClient = redis.createClient({
+    host: appConfig.redis.host,
+    port: appConfig.redis.port
+  });
+  var pubChannelClient = redis.createClient({
+    host: appConfig.redis.host,
+    port: appConfig.redis.port
+  });
 
-  if(payload['watch'] === undefined) {
+  if (payload['watch'] === undefined) {
     throw new Error("Watch list definition is not passed for processing..!");
   }
 
   this.doTask = function() {
-    // console.log("Now i will do the work");
     subChannelClient.subscribe(subscribeFrom);
 
-    subChannelClient.on('message', function(channel, data){
+    subChannelClient.on('message', function(channel, data) {
       // logger.debug("Got message from channel: ", channel, " with data: ", data);
 
       dataObj = JSON.parse(data);
 
-      var dataSourceIp = "172.23.238.251";
+      var dataSourceIp = "127.0.0.1";
       var dataSourcePort = "7070";
       var wsstream = websocket('ws://' + dataSourceIp + ':' + dataSourcePort);
-      highland(wsstream).each(function(streamData){
-        // console.log(JSON.parse(streamData));
+      highland(wsstream).each(function(streamData) {
+        // logger.debug("Stream data: ", streamData);
         var logObj = JSON.parse(streamData);
-
+        // logger.debug("Parsed Stream data: ", logObj);
         pubChannelClient.publish(publishTo, JSON.stringify(logObj));
       });
     });
   }
-}//end of module function
+} //end of module function
 
 module.exports = sourceConnectorTask;

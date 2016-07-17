@@ -19,7 +19,7 @@ function pubDbTask(subscribeFrom, publishTo, payload) {
   var collnName = payload.watch.name;
   collnName = (collnName.replace(/\s/g, '_').toLowerCase()) + "_outcomes";
 
-  var dbServer = 'mongodb://' + appconfig.mongo.host + ':' + appconfig.mongo.port + '/' + historicDB;
+  var dbServer = 'mongodb://' + appConfig.mongo.host + ':' + appConfig.mongo.port + '/' + historicDB;
   var saveToDBStream = streamToMongo({
     db: dbServer,
     collection: collnName
@@ -27,7 +27,7 @@ function pubDbTask(subscribeFrom, publishTo, payload) {
 
   this.doTask = function() {
     // console.log("Now i will do the work");
-    highland(function(push, nex) {
+    highland(function(push, next) {
       subChannelClient.subscribe(subscribeFrom);
 
       subChannelClient.on('message', function(channel, data) {

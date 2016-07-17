@@ -17,25 +17,29 @@ var buildTopology = function(wlstDef) {
     type: watchListTaskConfig.SOURCE_CONNECTOR,
     subFrom: getChannelName(tplgyEventNames.ON_START, wlstDef.orgsite, wlstDef.name),
     pubTo: getChannelName(tplgyEventNames.ON_DATA, wlstDef.orgsite, wlstDef.name),
-    watchlist: wlstDef.name,
+    watchName: wlstDef.name,
     orgsite: wlstDef.orgsite,
-    payload: {'watch': wlstDef}
-  },{
+    payload: {
+      'watch': wlstDef
+    }
+  }, {
     name: getTaskName(watchListTaskConfig.DATA_PRASER, wlstDef.orgsite, wlstDef.name),
     type: watchListTaskConfig.DATA_PRASER,
     subFrom: getChannelName(tplgyEventNames.ON_DATA, wlstDef.orgsite, wlstDef.name),
     pubTo: getChannelName(tplgyEventNames.ON_PARSE, wlstDef.orgsite, wlstDef.name),
-    watchlist: wlstDef.name,
+    watchName: wlstDef.name,
     orgsite: wlstDef.orgsite,
-    payload: {'watch': wlstDef}
+    payload: {
+      'watch': wlstDef
+    }
   });
 
   var exprEventName = "";
-  for(i = 0; i <wlstDef.expressions.length; i++) {
+  for (i = 0; i < wlstDef.expressions.length; i++) {
     expr = wlstDef.expressions[i];
 
     subFrom = "";
-    if(i == 0) {
+    if (i == 0) {
       subFrom = getChannelName(tplgyEventNames.ON_PARSE, wlstDef.orgsite, wlstDef.name);
     } else {
       subFrom = getChannelName((tplgyEventNames.ON_EXPR + "::" + expr.parent), wlstDef.orgsite, wlstDef.name);
@@ -46,15 +50,18 @@ var buildTopology = function(wlstDef) {
       type: watchListTaskConfig.EXPRESSION_PROCESSOR,
       subFrom: subFrom,
       pubTo: getChannelName((tplgyEventNames.ON_EXPR + "::" + expr.tag), wlstDef.orgsite, wlstDef.name),
-      watchlist: wlstDef.name,
+      watchName: wlstDef.name,
       orgsite: wlstDef.orgsite,
-      payload: {'watch': wlstDef, 'expr': wlstDef.expressions[i]}
+      payload: {
+        'watch': wlstDef,
+        'expr': wlstDef.expressions[i]
+      }
     };
 
     topology.push(taskObj);
   }
 
-  var lastExpr = wlstDef.expressions[(wlstDef.expressions.length-1)];
+  var lastExpr = wlstDef.expressions[(wlstDef.expressions.length - 1)];
   exprEventName = tplgyEventNames.ON_EXPR + "::" + lastExpr.tag;
 
   topology.push({
@@ -62,33 +69,41 @@ var buildTopology = function(wlstDef) {
     type: watchListTaskConfig.WATCHLIST_REDUCER,
     subFrom: getChannelName(exprEventName, wlstDef.orgsite, wlstDef.name),
     pubTo: getChannelName(tplgyEventNames.ON_FINISH, wlstDef.orgsite, wlstDef.name),
-    watchlist: wlstDef.name,
+    watchName: wlstDef.name,
     orgsite: wlstDef.orgsite,
-    payload: {'watch': wlstDef}
-  },{
+    payload: {
+      'watch': wlstDef
+    }
+  }, {
     name: getTaskName(watchListTaskConfig.DATABASE_PUBLISHER, wlstDef.orgsite, wlstDef.name),
     type: watchListTaskConfig.DATABASE_PUBLISHER,
     subFrom: getChannelName(tplgyEventNames.ON_FINISH, wlstDef.orgsite, wlstDef.name),
     pubTo: "",
-    watchlist: wlstDef.name,
+    watchName: wlstDef.name,
     orgsite: wlstDef.orgsite,
-    payload: {'watch': wlstDef}
-  },{
+    payload: {
+      'watch': wlstDef
+    }
+  }, {
     name: getTaskName(watchListTaskConfig.DASHBOARD_PUBLISHER, wlstDef.orgsite, wlstDef.name),
     type: watchListTaskConfig.DASHBOARD_PUBLISHER,
     subFrom: getChannelName(tplgyEventNames.ON_FINISH, wlstDef.orgsite, wlstDef.name),
     pubTo: "",
-    watchlist: wlstDef.name,
+    watchName: wlstDef.name,
     orgsite: wlstDef.orgsite,
-    payload: {'watch': wlstDef}
-  },{
+    payload: {
+      'watch': wlstDef
+    }
+  }, {
     name: getTaskName(watchListTaskConfig.OUTSTREAM_PUBLISHER, wlstDef.orgsite, wlstDef.name),
     type: watchListTaskConfig.OUTSTREAM_PUBLISHER,
     subFrom: getChannelName(tplgyEventNames.ON_FINISH, wlstDef.orgsite, wlstDef.name),
     pubTo: "",
-    watchlist: wlstDef.name,
+    watchName: wlstDef.name,
     orgsite: wlstDef.orgsite,
-    payload: {'watch': wlstDef}
+    payload: {
+      'watch': wlstDef
+    }
   });
 
   return topology;
@@ -107,5 +122,5 @@ function getChannelName(eventName, orgSite, watchName) {
 }
 
 module.exports = {
-  buildTaskTopology : buildTopology
+  buildTaskTopology: buildTopology
 };
