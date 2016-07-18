@@ -121,6 +121,10 @@ sideNav_router.get('/:userRole', function(req, res) {
               "link" : "design.function"
             },
             {
+              "menu" : "Constants",
+              "link" : "design.constant"
+            },
+            {
               "menu" : "Watchlists",
               "link" : "design.watchlist"
             }
@@ -179,6 +183,10 @@ sideNav_router.get('/:userRole', function(req, res) {
             {
               "menu" : "Functions",
               "link" : "design.function"
+            },
+            {
+              "menu" : "Constants",
+              "link" : "design.constant"
             },
             {
               "menu" : "Watchlists",
