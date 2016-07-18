@@ -1,19 +1,32 @@
-angular.module('tattva').directive('logdata', function(){
-  return{
-    restrict:'EA',
+angular.module('tattva').directive('logdata', function($interval) {
+  return {
+    restrict: 'EA',
     // template:'Packets:{{logs.length}}<div ng-repeat="line in logs"><pre>{{$index }} : {{ line | json }}</pre><hr/></div>',
-    template:'Packets:{{logs.length}}<div><pre>{{ logs | json }}</pre></div>',
-    scope:{
-      watchname:"<watchname",
+    template: 'Packets:{{logs.length}}<div><pre>{{ logs | json }}</pre></div>',
+    scope: {
+      watchname: "<watchname",
       orgsite: "<orgsite",
-      eventobj:"<eventobj",
-      configobj:"<configobj"
+      eventobj: "<eventobj",
+      configobj: "<configobj"
     },
-    link: function(scope, elem, attrs){
+    link: function(scope, elem, attrs) {
       scope.logs = [];
+
+      var logData = [];
+
+      var maxData = 300;
+      var updateInterval = 2000;
+
+      $interval(function() {
+        scope.logs = logData;
+      }, updateInterval);
+
       var eventName = 'watchlist::onResult' + '::' + scope.orgsite + '::' + scope.watchname;
       scope.eventobj.on(eventName, function(data) {
-        scope.logs.push(data.logdata);
+        logData.push(data.logdata)
+        if (logData.length > maxData) {
+          logData.shift();
+        }
       });
     }
   };

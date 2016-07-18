@@ -1,47 +1,137 @@
+var logger = require('../../../applogger');
+var redis = require('redis');
 var sourceConnectorTask = require('../sourceconnector/sourceconnecttask');
 var dataParserTask = require('../dataparser/dataparsetask');
 var exprProcessTask = require('../expressionprocessor/expprocesstask');
-var exprReducerTask = require('../expressionreducer/expressionreducertask');
+var wtlstResultTask = require('../watchlistreducer/watchlistreducertask');
 var pubDashboardTask = require('../publisherdashboard/publisherdashboard');
 var pubDbTask = require('../publisherdatabase/publisherdatabase');
 
-var watchListSchema = require('../watchlists/watchlists');
-var dataProvider = require('../core/datamodelprovider');
-var WatchListModel = dataProvider.getModel(WatchListSchema, 'Digital_historic');
+var WatchListSchema = require('../../watchlists/watchlists');
+var dataProvider = require('../../core/datamodelprovider');
 
-WatchListModel.findOne({name: 'ac_log_data_outcomes'}, function(err, data) {
-  if(err) {
+var WatchListModel = dataProvider.getModel(WatchListSchema, 'niit');
+
+WatchListModel.findOne({
+  name: "Git Anomoly Analysis"
+}, function(err, data) {
+  if (err) {
     console.log("Error in getting watch list data: ", err);
     return;
   }
 
-  if(!data) {
+  if (!data) {
     console.log("No watch lists found");
     return;
   }
 
+  // console.log("Watchlist: ", data);
+
   test(data);
 });
 
-//var redis = require('redis');
 
 function test(wlstDef) {
-  var task = new srcConnectTask(wlstDef, 'watchlist:onStart:Digital:GitLogWatch', 'watchlist:onData:Digital:GitLogWatch');
-  task.doTask();
+  testSrcConnectorTask(wlstDef);
+  // testDataParserTask(wlstDef);
+  // testExpProcessorTask(wlstDef);
+  // testWlstResultTask(wlstDef);
+  // testPubDashboard(wlstDef);
+  // testPubDB(wlstDef);
 
-  var task2 = new parseTask(wlstDef, 'watchlist:onData:Digital:GitLogWatch', 'watchlist:onParse:Digital:GitLogWatch');
-  task.doTask();
-
-  var task3 = new exprTask(wlstDef, 'watchlist:onParse:Digital:GitLogWatch', 'watchlist:onExpr:Digital:GitLogWatch');
-  task.doTask();
-
-  var task3 = new exprReduceTask(wlstDef, 'watchlist:onExpr:Digital:GitLogWatch', 'watchlist:onExpReduce:Digital:GitLogWatch');
-  task.doTask();
-
-  var task4 = new publshrDashboardTask(wlstDef, 'watchlist:onExpReduce:Digital:GitLogWatch', 'watchlist:onPublshrDashboard:Digital:GitLogWatch');
-  task.doTask();
-
-  var task5 = new publshrDatabaseTask(wlstDef, 'watchlist:onPublshrDb:Digital:GitLogWatch', 'watchlist:onPublshrDashboard:Digital:GitLogWatch');
-  task.doTask();
-  console.log("Got data: ",data);
+  startWatchExec(wlstDef);
 }
+
+function startWatchExec(wlstDef) {
+  var client = redis.createClient();
+
+  var subFrom = getChannelName('onStart', wlstDef.orgsite, wlstDef.name);
+  client.publish(subFrom, JSON.stringify({
+    start: true
+  }));
+}
+
+
+function testSrcConnectorTask(wlstDef) {
+  var subFrom = getChannelName('onStart', wlstDef.orgsite, wlstDef.name);
+  var pubTo = getChannelName('onData', wlstDef.orgsite, wlstDef.name);
+  var payload = {
+    'watch': wlstDef
+  };
+  var task = new sourceConnectorTask(subFrom, pubTo, payload);
+
+  task.doTask();
+}
+
+function testDataParserTask(wlstDef) {
+  var subFrom = getChannelName('onData', wlstDef.orgsite, wlstDef.name);
+  var pubTo = getChannelName('onParse', wlstDef.orgsite, wlstDef.name);
+  var payload = {
+    'watch': wlstDef
+  };
+  var task = new dataParserTask(subFrom, pubTo, payload);
+
+  task.doTask();
+}
+
+function testExpProcessorTask(wlstDef) {
+  var subFrom = getChannelName('onParse', wlstDef.orgsite, wlstDef.name);
+  var pubTo = getChannelName('onExp', wlstDef.orgsite, wlstDef.name);
+
+  var payload = {
+    'watch': wlstDef,
+    'expr': wlstDef.expressions[0]
+  };
+  var task = new exprProcessTask(subFrom, pubTo, payload);
+
+  task.doTask();
+}
+
+function testWlstResultTask(wlstDef) {
+  var subFrom = getChannelName('onExp', wlstDef.orgsite, wlstDef.name);
+  var pubTo = getChannelName('onResult', wlstDef.orgsite, wlstDef.name);
+  var payload = {
+    'watch': wlstDef
+  };
+  var task = new wtlstResultTask(subFrom, pubTo, payload);
+
+  task.doTask();
+}
+
+function testPubDashboard(wlstDef) {
+  var subFrom = getChannelName('onResult', wlstDef.orgsite, wlstDef.name);
+  var pubTo = "";
+  var payload = {
+    'watch': wlstDef
+  };
+  var task = new pubDashboardTask(subFrom, pubTo, payload);
+
+  task.doTask();
+}
+
+function testPubDB(wlstDef) {
+  var subFrom = getChannelName('onResult', wlstDef.orgsite, wlstDef.name);
+  var pubTo = "";
+  var payload = {
+    'watch': wlstDef
+  };
+  var task = new pubDbTask(subFrom, payload);
+
+  task.doTask();
+}
+
+// function testOutStream(wlstDef) {
+//   var subFrom = getChannelName('onResult', wlstDef.orgsite, wlstDef.name);
+//   //var pubTo = getChannelName('onResult', wlstDef.orgsite, wlstDef.name);
+//   var payload = { 'watch' : wlstDef };
+//   var task = new pubDbTask(subFrom, payload);
+//   console.log("Data for Database");
+//   task.doTask();
+// }
+
+function getChannelName(eventName, orgSite, watchName) {
+  var channel = 'watchlist:' + eventName + ':' + orgSite + ':' + watchName;
+  channel = channel.toLowerCase();
+  return channel;
+}
+//

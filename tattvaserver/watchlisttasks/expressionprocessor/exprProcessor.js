@@ -1,31 +1,34 @@
 //Mappers
-var constMapper = require('../../fieldmappers/constantfield');
-var accumulatorMapper = require('../..fieldmappers/accumulatorfield');
-var datafieldMapper = require('../../fieldmappers/dataFields');
-var functionMapper = require('../../fieldmappers/functionfield');
-var historicMapper = require('../../fieldmappers/historicfield');
-var inputMapper = require('../../fieldmappers/inputvaluefield');
-var constantMapper=require('../../fieldmappers/constantfield')
+var constMapper = require('../../watchexecutor/fieldmappers/constantfield');
+var accumulatorMapper = require('../../watchexecutor/fieldmappers/accumulatorfield');
+var datafieldMapper = require('../../watchexecutor/fieldmappers/dataFields');
+var functionMapper = require('../../watchexecutor/fieldmappers/functionfield');
+var historicMapper = require('../../watchexecutor/fieldmappers/historicfield');
+var inputMapper = require('../../watchexecutor/fieldmappers/inputvaluefield');
+var constantMapper = require('../../watchexecutor/fieldmappers/constantfield');
 //Operators
-var operatorMapper = require('./fieldOperator');
+var operatorMapper = require('../../watchexecutor/fieldOperator');
 
-var exprProcessor = function() {
+var logger = require('../../../applogger');
 
-  this.processExpression = function(expr, execObj) {
-    //process a expression
-    var lhs = mapExprField(expr.watch.lfield, execObj.data);
-    var rhs = mapExprField(expr.watch.rfield, execObj.data);
-    var oprtr = expr.watch.operator;
-    var result = operatorMapper.evaluate(oprtr, lhs, rhs);
+var exprProcessor = function(expr, execObj) {
+  // logger.debug("Processing expression: ", expr, " with data: ", execObj);
+  //process a expression
+  var lhs = mapExprField(expr.watch.lfield, execObj.data);
+  var rhs = mapExprField(expr.watch.rfield, execObj.data);
+  var oprtr = expr.watch.operator;
+  var result = operatorMapper.evaluate(oprtr, lhs, rhs);
 
-    //@TODO Highlight match
-    //@TODO Output forwarding
-    execObj.path[expr.tag] = {};
-    execObj.path[expr.tag]['lhs'] = lhs;
-    execObj.path[expr.tag]['rhs'] = rhs;
-    execObj.path[expr.tag]['oprtr'] = oprtr;
-    execObj.path[expr.tag]['result'] = result;
-  }
+  //@TODO Highlight match
+  //@TODO Output forwarding
+  //@TODO Adding back result to data as a field
+  execObj.path[expr.tag] = {};
+  execObj.path[expr.tag]['lhs'] = lhs;
+  execObj.path[expr.tag]['rhs'] = rhs;
+  execObj.path[expr.tag]['oprtr'] = oprtr;
+  execObj.path[expr.tag]['result'] = result;
+
+  return execObj;
 };
 
 function mapExprField(field, dataObj) {
@@ -47,4 +50,6 @@ function mapExprField(field, dataObj) {
   return result;
 }
 
-module.exports = exprProcessor;
+module.exports = {
+  processExpression: exprProcessor
+};

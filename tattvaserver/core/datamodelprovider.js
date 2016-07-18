@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const logger = require('../../applogger');
+var appConfig = require('../../config/appconfig');
 
 function ModelProvider() {
   //To keep the instances of models recently created for a specific database
@@ -58,7 +59,7 @@ function ModelProvider() {
       connection = dbConnectionMap[dbName]
     } else {
       logger.info("Creating new connection for ", dbName);
-      var dbURI = 'mongodb://localhost/'+dbName;
+      var dbURI = 'mongodb://'+ appConfig.mongo.host + ':' + appConfig.mongo.port + '/' + dbName;
       connection = mongoose.createConnection(dbURI);
       dbConnectionMap[dbName] = connection;
     }
