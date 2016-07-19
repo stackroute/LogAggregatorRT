@@ -28,7 +28,7 @@ module.exports = function isAuthenticated(req, res, next) {
       return;
     }
 
-    console.log("Decoded payload: ", payload);
+    // console.log("Decoded payload: ", payload);
     var UserModel = dataProvider.getModel(UserSchema,"tattva");
 
     if (payload) {

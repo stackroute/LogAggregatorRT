@@ -1,54 +1,53 @@
-var WatchListSchema = require('../watchlists/watchlists.js');
-var dataProvider = require('../core/datamodelprovider');
-var buildTopology = require('./watchloopworker');
-var processCoordinator = require('./processCoordinator');
+var asyncModel = require('async');
+var taskTopologyBuilder = require('./watchTaskTopologyBuilder');
+var processAllocator = require('./watchprocessallocator');
+var ProcessAllocateTask = require('./processallocatetask');
 var redis = require('redis');
-var redisClient = redis.createClient();
-var logger = require("../../applogger");
+var appConfig = require('../../config/appconfig');
+var logger = require('../../applogger');
 
-var loopRunner = function(watchlist) {
-  var WatchListModel = dataProvider.getModel(WatchListSchema, watchlist.orgsite);
-  return WatchListModel.findOne({name:watchlist.watchname}, function(err, watch){
-    if(err) {
-      logger.error("Error in finding watchlist ", watchlist.watchname, " of org ", org.orgSite, " error: ", err);
-      return;
-    }
+var distExecuteWatchList = function(wlstDef) {
+  if (wlstDef.expressions.length > 0) {
+    var watchTopology = taskTopologyBuilder.buildTaskTopology(wlstDef);
+    // logger.debug("watch topology of orgsite: ",wlstDef.orgsite," is:",watchTopology);
 
-    logger.info("Starting execution for watch: ", watch.orgsite, '::', watch.name);
+    processAllocatorTaskArray = [];
+    watchTopology.forEach(function(watchTask) {
+      // processorObj = processAllocator.getNextAvailableProcessor();
+      // var task = new ProcessAllocateTask(watchTask, processorObj);
+      var task = new ProcessAllocateTask(watchTask);
+      processAllocatorTaskArray.push(task);
+    });
 
-    if(watch.expressions.length > 0) {
-      var workerTopology = buildTopology(watch);
-      // console.log("workerTopology:",workerTopology);
-      var processToWorkerMap = processCoordinator.assignWorkersToProcesor(workerTopology,function(arg){
+    asyncModel.parallel(processAllocatorTaskArray, function(err, taskResult) {
+      // logger.debug("Task To Processor Allocate result: ", taskResult);
+      //Save to DB
+      // saveTopologyToProcessorMap();
 
-        var subChannel = workerTopology[0].subChannel;
-        redisClient.publish(subChannel, "start");
+      //Start the execution
+      var redisClient = redis.createClient({
+        host: appConfig.redis.host,
+        port: appConfig.redis.port
       });
-      // console.log("subChannel:",workerArray[0].subChannel);
 
-      // for(var i=0;i<processorToWorkerMap.length;i++){
-      //   for(var j=0;j<processorToWorkerMap.tasks.length;j++){
-      //     if(processorToWorkerMap[i].tasks[j].type==="SourceConnector")
-      //     {
-      //       subChannel=processorToWorkerMap[i].tasks[j].subChannel;
-      //       console.log("subChannel:",subChannel);
-      //     }
-      //   }
-      // }
+      setTimeout(function(){
+        logger.debug('Kicking execution of ', watchTopology[0].subFrom);
+        redisClient.publish(watchTopology[0].subFrom, JSON.stringify({
+          start: true
+        }));
 
-      // redisClient.subscribe(subChannel);
-      // redisClient.on("subscribe", function(channel, count) {
-      //   console.log("Subscribed to " + channel + ". Now subscribed to " + count + " channel(s).");
-      //   pub.publish(subChannel, "start");
-      // });
-      //
-      // redisClient.on('message', function(channel, message) {
-      //   console.log("Message from channel ", channel, " : ", message);
-      // });
+        //Publish event about watch lists starting on processors
+        var chnl = 'watchlist::onWatchListExec::' + wlstDef.orgsite + '::' + wlstDef.name;
+        redisClient.publish(chnl, JSON.stringify({name:wlstDef.name, orgsite: wlstDef.orgsite}));
+        logger.debug("Published ", chnl);
+      }, 5000);
 
-    } else {
-      logger.error("Skipping watch list execution for watchlist: ", watchlist.name, " as there are no expressions to execute..!");
-    }
-  });
-};
-module.exports = loopRunner;
+    });
+  } else {
+    logger.error("Skipping watch list execution for watchlist: ", wlstDef.name, " as there are no expressions to execute..!");
+  }
+}
+
+module.exports = {
+  executeWatchList: distExecuteWatchList
+}

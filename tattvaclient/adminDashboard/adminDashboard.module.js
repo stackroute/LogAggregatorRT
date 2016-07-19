@@ -35,5 +35,23 @@ $stateProvider
     watchlist : null
   }
 
+})
+.state('processorControlPanel',
+{
+  url: "/admin/processorRoadmap",
+  views: {
+    "header" : {
+      templateUrl: "/home/template/header.html",
+      controller: "HeaderCtrl"
+    },
+    "content" : {
+      templateUrl: "adminDashboard/template/processorControlPanel.html",
+      controller:"processorControlPanelCtrl"
+      },
+    "footer" : {
+      templateUrl:"/home/template/footer.html"
+    }
+  }
 });
+
 }]);

@@ -87,4 +87,10 @@ function($scope, $http, $stateParams,$mdDialog,adminFactory) {
         fullscreen: true
       });
   };
+
+  // var random = function(){
+    var num = 10*Math.random();
+    console.log("num",num);
+  // }
+
 }]);

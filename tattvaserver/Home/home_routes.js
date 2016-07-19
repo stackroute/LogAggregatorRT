@@ -121,6 +121,10 @@ sideNav_router.get('/:userRole', function(req, res) {
               "link" : "design.function"
             },
             {
+              "menu" : "Constants",
+              "link" : "design.constant"
+            },
+            {
               "menu" : "Watchlists",
               "link" : "design.watchlist"
             }
@@ -181,6 +185,10 @@ sideNav_router.get('/:userRole', function(req, res) {
               "link" : "design.function"
             },
             {
+              "menu" : "Constants",
+              "link" : "design.constant"
+            },
+            {
               "menu" : "Watchlists",
               "link" : "design.watchlist"
             }
@@ -200,7 +208,7 @@ sideNav_router.get('/:userRole', function(req, res) {
       ]
     };
   }
-  else if(userRole==="TATTVAADM"){
+  else if(userRole==="tattvaAdmin"){
     var navItems = {
       topNav: [
         {
@@ -214,6 +222,11 @@ sideNav_router.get('/:userRole', function(req, res) {
           "link"  : "adminHome",
           "icon"  :  "dashboard",
         },
+        {
+          "menu"  : "Processor Control Panel",
+          "link"  : "processorControlPanel",
+          "icon"  : "memory"
+        }
       ]
     };
   } else{

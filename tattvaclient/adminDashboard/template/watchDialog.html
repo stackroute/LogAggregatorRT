@@ -11,41 +11,27 @@
   </md-toolbar>
 
   <md-dialog-content class="md-padding">
-
     <watchwidget class="flex-item" flex="{{watch.publishers.dashboard.displaySize}}" watchdefn="watch" eventobj="socket">
+      <span>
+        <div style='margin:5px;'>
+          <h4 style='display:inline'>By {{watch.createdBy}}</h4>
+          <p style='display:inline'>On {{watch.createdOn| date:"medium"}}</p>
+          <p>Modified by {{watch.editedBy}} on {{watch.editedOn| date:"medium"}}</p>
+        </div>
+      </span>
     </watchwidget>
-    <md-content class="md-padding" layout-xs="column" layout="row">
 
-      <md-whiteframe class="md-whiteframe-3dp" flex="20">
-        dgrgergerjjkkmm
-      </md-whiteframe>
-
-      <md-whiteframe class="md-whiteframe-3dp" flex="column" flex="20" flex-offset>
-        dgrgergerjjkkmm
-      </md-whiteframe>
-
-      <md-whiteframe class="md-whiteframe-3dp" flex="column" flex="20">
-        dgrgergerjjkkmm
-      </md-whiteframe>
-
-      <md-whiteframe class="md-whiteframe-3dp" flex="column">
-        <md-content>
-          <md-list>
-            <md-list-item class="md-5-line" >
-              <div class="md-list-item-text">
-                <h5><b>EDITED BY: {{watch.editedBy}}<b></h6>
-                  <h6>EDITED ON: {{watch.editedOn}}</h6>
-                  <h5><b>CREATED BY: {{watch.createdBy}}</b></h5>
-                  <h6>CREATED ON: {{watch.createdOn}}</h5>
-                  </div>
-                </md-list-item>
-              </md-list>
-            </md-content>
-          </md-whiteframe>
-
-        </md-content>
-
-
-</md-dialog-content>
+    <div flex="15">
+      <md-card md-theme="dark-grey" md-theme-watch>
+        <md-card-header>
+          <md-card-header-text>
+            <span class="md-headline">{{processorName}}</span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-divider></md-divider>
+        <heatmap data="processorMap" filter="watchtaskfilter"></heatmap>
+      </md-card>
+    </div>
+  </md-dialog-content>
 
 </md-dialog>

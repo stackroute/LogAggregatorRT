@@ -5,7 +5,7 @@ function($scope, $http, $state,$mdDialog,adminFactory) {
   adminFactory.orgList().then(function(res){
     $scope.orgColln=res.data;
       // console.log('$scope.orgs',$scope.orgs);
-    console.log('$scope.orgs',$scope.orgs);
+    console.log('$scope.orgs',$scope.orgColln);
   },function(res){
     console.log("error",res.data.error);
   })

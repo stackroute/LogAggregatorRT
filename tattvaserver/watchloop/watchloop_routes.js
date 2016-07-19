@@ -19,6 +19,9 @@ watchloop_router.post('/',function (request, response) {
   WatchListModel.findOne({name:watchloopObj.watchname},{}, function(err, watchlist){
     watchloopObj.watchname=watchlist.name;
     watchloopObj.orgsite=request.user.orgsite;
+    watchloopObj.status="active";
+    watchloopObj.execstatus = "created";
+    watchloopObj.execstartedon = '';
     var WatchLoopModel = dataProvider.getModel(WatchLoopSchema, request.user.orgsite);
     var watchloop1 = new WatchLoopModel(watchloopObj);
     watchloop1.save(function(err, savewatchloopdata){
@@ -41,10 +44,10 @@ watchloop_router.put('/',function (request, response) {
   var watchloopObj={};
   // var o_id = ObjectId(watchlistObj._id);
   var watchname=watchlistObj.name;
-  watchloopObj.status="active";
   watchloopObj.watchname = watchname;
-  watchloopObj.execstatus="active";
-  watchloopObj.execstartedon=Date.now();
+  watchloopObj.status="active";
+  watchloopObj.execstatus = "stopped";
+  watchloopObj.execstartedon = '';
   // watchloop.find({_id: o_id}, function(err, wlist){
   // //   if (err) {
   //     response.status(500).json({error: "unable to find the required watchlist for saving..!"});

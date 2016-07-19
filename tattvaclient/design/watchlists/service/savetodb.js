@@ -5,7 +5,7 @@ angular.module("tattva")
     var watchloopdata={watchname:watchlistData1.name,execstatus:"active",execstartedon:"",execstoppedon:"",watcherrors:""};
     $http({
       method : 'post',
-      url : '/watchloop',
+      url : '/distwatchloop/watchloop',
       data : watchloopdata
     }).then(function(response)
     {
@@ -22,7 +22,7 @@ angular.module("tattva")
 this.savewatchloopeditdata=function(watchlistData1){
     $http({
       method : 'put',
-      url : '/watchloop',
+      url : '/distwatchloop/watchloop',
       data : watchlistData1
     }).then(function(response)
     {
