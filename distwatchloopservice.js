@@ -5,7 +5,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
 var watchloopservice_routes = require('./tattvaserver/distwatchloop/watchloopservice_routes');
-var distwatchloop_router = require('./tattvaserver/distwatchloop/distwatchloopservice_routes.js')
+var distwatchloopservice_routes = require('./tattvaserver/distwatchloop/distwatchloopservice_routes')
 var distWatchLoopRunner = require('./tattvaserver/distwatchloop/distwatchlooprunner.js');
 var appConfig = require("./config/appconfig");
 
@@ -36,7 +36,7 @@ app.getPort = function() {
 }
 
 app.use('/watchloopservice', watchloopservice_routes);
-app.use('/watchloopservice/watchloop', distwatchloop_router);
+app.use('/watchloopservice/watchloop', distwatchloopservice_routes);
 
 logger.info("Starting distributed Watchloop service...");
 setImmediate(distWatchLoopRunner);

@@ -3,6 +3,7 @@ var disExecuteWatchList = require('./watchlistexecutor');
 var WatchListSchema = require('../watchlists/watchlists.js');
 var dataProvider = require('../core/datamodelprovider');
 var watchExecutor = require('./watchlistexecutor');
+var watchProcStore = require('./watchprocessstore');
 var logger = require('../../applogger.js');
 
 distwatchloop_router.post('/watchlist/:orgsite/:watchlistname', function(req, res) {
@@ -39,6 +40,27 @@ distwatchloop_router.post('/watchlist/:orgsite/:watchlistname', function(req, re
   res.status(200).json({
     status: 'success'
   })
+});
+
+distwatchloop_router.get('/watchprocessors', function(req, res) {
+  watchProcStore.getWatchProcessorMap(function(procMap){
+    // logger.debug("Processor map from router ", procMap);
+    return res.status(200).json(procMap);
+  });
+
+  //
+  //
+  // return new Promise(function(resolve,reject){
+  //   return watchProcStore.getWatchProcessorMap(function(processorObj){
+  //     return resolve(processorObj);
+  //   });
+  // }).then(function(processorObj){
+  //   logger.debug("successfully retrieved watch processor map",processorObj);
+  //   return res.status(200).json(processorObj);
+  // },function(err){
+  //   logger.error("Failed to fetch processor map, error", err);
+  //   return res.status(500).json({error: "Internal error..!"});
+  // })
 });
 
 module.exports = distwatchloop_router;

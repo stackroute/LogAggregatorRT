@@ -37,7 +37,7 @@ var distExecuteWatchList = function(wlstDef) {
         }));
 
         //Publish event about watch lists starting on processors
-        var chnl = 'watchlist::onWatchListExec::' + wlstDef.orgsite + '::' + wlstDef.name;
+        var chnl = 'watchloop::onWatchListJoin';
         redisClient.publish(chnl, JSON.stringify({name:wlstDef.name, orgsite: wlstDef.orgsite}));
         logger.debug("Published ", chnl);
       }, 5000);

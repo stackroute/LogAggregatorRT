@@ -10,7 +10,8 @@ var procRegister = function(myPort){
     json: {
       url: ('localhost' + ':' + myPort),
       host: 'localhost',
-      port: myPort
+      port: myPort,
+      tasks: []
     }
   };
 
