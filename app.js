@@ -25,9 +25,10 @@ var datasourcesrouter = require('./tattvaserver/datasources/datasources_routes.j
 var mongoose = require('mongoose');
 var stream_router = require('./tattvaserver/datastream/stream_routes.js');
 var summary_router = require('./tattvaserver/designsummary/summary_routes.js')
-var watchloop_router = require('./tattvaserver/watchloop/watchloop_routes.js')
+// var watchloop_router = require('./tattvaserver/watchloop/watchloop_routes.js')
 var Orguser_router = require('./tattvaserver/organisation/orgRoutes.js');
 var admin_router = require('./tattvaserver/adminDashboard/admin_routes.js');
+var distwatchloop_router = require('./tattvaserver/watchloop/distwatchloop_routes.js');
 // var watchloopExecutor = require('./tattvaserver/watchloop/watchlooprunner.js')
 
 //Express App created
@@ -110,8 +111,9 @@ app.use('/watchlist',isAuthenticated,  watchlist_router);
 app.use('/datastream',isAuthenticated,  stream_router);
 app.use('/watchslide',isAuthenticated, watchlistslide_router);
 app.use('/appsummary',isAuthenticated, summary_router);
-app.use('/watchloop',isAuthenticated,  watchloop_router);
+// app.use('/watchloop',isAuthenticated,  watchloop_router);
 app.use('/adminDashboard',isAuthenticated, admin_router);
+app.use('/distwatchloop', isAuthenticated,  distwatchloop_router);
 
 // logger.info("Starting watch list executor...!");
 // watchloopExecutor();
