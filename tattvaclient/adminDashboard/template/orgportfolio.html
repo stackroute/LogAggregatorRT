@@ -1,31 +1,21 @@
-<!-- <div layout="center center"> -->
-<!-- <div> -->
-<md-whitefield class="md-whiteframe-3dp" flex-sm="100" flex-gt-sm="100" flex-gt-md="100" style="margin:auto">
-
+<md-content class='apportcontainer'>
   <div class='subtitle' layout="row" flex>
-    <div flex="100">
-      <h3 class="tabHeading">
-        watchlists for selection : {{selection}}
-      </h3>
-      </div>
+    <h3 class="tabHeading">
+      Watchlists for selection : {{selection}}
+    </h3>
   </div>
+  <md-grid-list
+  md-cols-xs="1" md-cols-sm="8" md-cols-md="16" md-cols-gt-md="10"
+  md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="10px" md-gutter-gt-sm="18px">
+  <md-grid-tile ng-repeat="watch in watches" md-rowspan="2" md-colspan="3" md-colspan-sm="1" md-colspan-xs="1" ng-click="appClick($event,watch)" style="cursor:pointer;background-size:contain;background-repeat:no-repeat">
+    <md-grid-tile-header>
+      <h3>{{watch.name}}</h3>
+    </md-grid-tile-header>
+    <md-grid-tile-footer>
+      <h3>Namespace:{{watch.namespace}}</h3>
+    </md-grid-tile-footer>
+  </md-grid-tile>
 
-</md-toolbar>
- <span flex></span>
-<div flex-offset="5" flex="90">
-<md-grid-list  md-cols-xs="2" md-cols-sm="8" md-cols-md="16" md-cols-gt-md="10" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="10px" md-gutter-gt-sm="18px">
-
-<md-grid-tile ng-repeat="x in watches" md-rowspan="2" md-colspan="2" ng-click="appClick($event,x)" style="cursor:pointer;background-size:contain;background-repeat:no-repeat">
-  <md-grid-tile-header>
-    <h3>{{x.name}}</h3>
-  </md-grid-tile-header>
-<md-icon class"material-icons" style="font-size:72px;margin: 70px 150px 120px 80px" aria-label="Graph dialog">show_chart</md-icon>
-  <md-grid-tile-footer>
-    <h3>namespace:{{x.namespace}}</h3>
-  </md-grid-tile-footer>
-</md-grid-tile>
-<!-- </div> -->
 </md-grid-list>
 
-</md-whitefield>
-<!-- </div> -->
+</md-content>

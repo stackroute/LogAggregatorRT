@@ -11,35 +11,41 @@
   </md-toolbar>
 
   <md-dialog-content class="md-padding">
+
     <watchwidget class="flex-item" flex="{{watch.publishers.dashboard.displaySize}}" watchdefn="watch" eventobj="socket">
     </watchwidget>
+    <md-content class="md-padding" layout-xs="column" layout="row">
 
-    <md-whiteframe class="md-whiteframe-10dp" flex="column"  layout layout-align="center center">
-      <!-- <span>.md-whiteframe-10dp</span> -->
-      <md-card flex="column">
+      <md-whiteframe class="md-whiteframe-3dp" flex="20">
+        dgrgergerjjkkmm
+      </md-whiteframe>
+
+      <md-whiteframe class="md-whiteframe-3dp" flex="column" flex="20" flex-offset>
+        dgrgergerjjkkmm
+      </md-whiteframe>
+
+      <md-whiteframe class="md-whiteframe-3dp" flex="column" flex="20">
+        dgrgergerjjkkmm
+      </md-whiteframe>
+
+      <md-whiteframe class="md-whiteframe-3dp" flex="column">
         <md-content>
           <md-list>
             <md-list-item class="md-5-line" >
-
               <div class="md-list-item-text">
-
                 <h5><b>EDITED BY: {{watch.editedBy}}<b></h6>
-                <h6>EDITED ON: {{watch.editedBy}}</h6>
-                <h5><b>CREATED BY: {{watch.editedBy}}</b></h5>
-                <h6>CREATED ON: {{watch.editedBy}}</h5>
+                  <h6>EDITED ON: {{watch.editedOn}}</h6>
+                  <h5><b>CREATED BY: {{watch.createdBy}}</b></h5>
+                  <h6>CREATED ON: {{watch.createdOn}}</h5>
+                  </div>
+                </md-list-item>
+              </md-list>
+            </md-content>
+          </md-whiteframe>
 
-              </div>
-              <div class="md-list-item-text" style="margin:-100px 0px 0px 840px;";>
-                <h4><b>STATUS:</b></h4>
-              </div>
-
-            </md-list-item>
-          </md-list>
         </md-content>
-      </md-card>
-    </md-whiteframe>
 
 
-  </md-dialog-content>
+</md-dialog-content>
 
 </md-dialog>

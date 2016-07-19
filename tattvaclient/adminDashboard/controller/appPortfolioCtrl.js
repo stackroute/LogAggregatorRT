@@ -3,7 +3,7 @@ angular.module('tattva')
 function($scope, $http, $state,$mdDialog,adminFactory) {
 
   adminFactory.orgList().then(function(res){
-    $scope.orgs=res.data;
+    $scope.orgColln=res.data;
       // console.log('$scope.orgs',$scope.orgs);
     console.log('$scope.orgs',$scope.orgs);
   },function(res){
