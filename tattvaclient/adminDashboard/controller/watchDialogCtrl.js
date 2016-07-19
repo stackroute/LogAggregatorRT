@@ -23,4 +23,66 @@ function($scope, $mdDialog, watch, orgSite, adminFactory) {
     $mdDialog.cancel();
   }
 
+  $scope.processorMap = [
+    {
+      "watchName": "consequat",
+      "watchTask": "cupidatat"
+    },
+    {
+      "watchName": "minim",
+      "watchTask": "adipisicing"
+    },
+    {
+      "watchName": "ea",
+      "watchTask": "pariatur"
+    },
+    {
+      "watchName": "deserunt",
+      "watchTask": "fugiat"
+    },
+    {
+      "watchName": "minim",
+      "watchTask": "mollit"
+    },
+    {
+      "watchName": "officia",
+      "watchTask": "veniam"
+    },
+    {
+      "watchName": "incididunt",
+      "watchTask": "occaecat"
+    },
+    {
+      "watchName": "commodo",
+      "watchTask": "est"
+    },
+    {
+      "watchName": "quis",
+      "watchTask": "sint"
+    },
+    {
+      "watchName": "Lorem",
+      "watchTask": "occaecat"
+    },
+    {
+      "watchName": "sint",
+      "watchTask": "est"
+    },
+    {
+      "watchName": "commodo",
+      "watchTask": "officia"
+    },
+    {
+      "watchName": "commodo",
+      "watchTask": "ex"
+    },
+    {
+      "watchName": "commodo",
+      "watchTask": "irure"
+    }
+
+  ];
+  $scope.processorName = "processor1";
+  $scope.watchtaskfilter = watch.name;
+
 }]);
