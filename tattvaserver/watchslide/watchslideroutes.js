@@ -42,7 +42,7 @@ router.get('/userdefaultslide/:slidename/:username', function (req, res) {
       console.log("Error in finding watchslide, error:", err);
       return res.status(500).json({error:"Internal error..!"})
     }
-    console.log("from routes"+watchslideData+"find");
+    // console.log("from routes"+watchslideData+"find");
     return res.send(watchslideData);
   });
 });
@@ -58,7 +58,7 @@ router.get('/userslides/:slidename/:username', function (req, res) {
       console.log("Error in finding watchslide using username,error: ",err);
       return res.status(500).json({error:"Internal error..!"})
     }
-    console.log("from routes of getting a patricular slide"+watchslideData+"find");
+    // console.log("from routes of getting a patricular slide"+watchslideData+"find");
     return res.send(watchslideData);
   });
 });
@@ -106,7 +106,7 @@ router.get('/orgwatchlists', function (req, res) {
       console.log("Error in finding watchlist model,error: ",err);
       return res.status(500).json({error:"Internal error..!"})
     }
-    console.log("from routes"+watchslideData+"find");
+    // console.log("from routes"+watchslideData+"find");
     return res.send(watchslideData);
   });
 });

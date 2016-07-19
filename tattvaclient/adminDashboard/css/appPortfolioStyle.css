@@ -4,25 +4,28 @@
   position: relative;
   background: #fff;
   margin: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
 }
 /*form {
   position: absolute;
   right: 10px;
   top: 10px;}*/
 path {
-  stroke: #fff;
+  /*stroke: #fff;*/
   fill-rule: evenodd;}
 
 /*legend dialog*/
   #explanation {
     position: absolute;
-    top: 200px;
-    left: 130px;
+    top: 265px;
+    left: 140px;
     width: 140px;
     height: 20px;
     text-align: center;
     color: #666;
-    z-index: 1000;
+    z-index: 1;
   }
 /*only sunburst styling added so far*/
 
@@ -43,3 +46,40 @@ path {
   height: 100%;
   border-radius: 0;
 }
+
+/*for heat map*/
+rect.bordered {
+      stroke: #E6E6E6;
+      stroke-width:2px;
+    }
+
+rect.cell-hover {
+      stroke: #F00;
+      stroke-width:0.3px;
+    }
+
+    #tooltip {
+      position: absolute;
+      width: 200px;
+      height: auto;
+      padding: 10px;
+      background-color: white;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+      -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+
+    #tooltip.hidden {
+      display: none;
+    }
+
+    #tooltip p {
+      margin: 0;
+      font-family: sans-serif;
+      font-size: 12px;
+      line-height: 20px;
+    }

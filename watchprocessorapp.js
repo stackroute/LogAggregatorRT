@@ -12,6 +12,7 @@ var appConfig = require("./config/appconfig");
 var logger = require("./applogger");
 
 var processRoutes = require('./tattvaserver/watchprocessor/processRoutes');
+var processHandler = require('./tattvaserver/watchprocessor/watchprocesshandler');
 
 //Express App created
 var app = express();
@@ -26,62 +27,17 @@ var myPort = "";
 
 app.onAppStart = function(addr) {
   myPort = addr.port;
-
   logger.info("Tattva Watch Processor app is now Running on port:", myPort);
-
-  var options = {
-    method: 'POST',
-    url: 'http://' + appConfig.watchloop.url + '/watchloopservice/watchprocessor',
-    json: {
-      url: ('localhost' + ':' + myPort),
-      host: 'localhost',
-      port: myPort
-    }
-  };
-
-  return request(options, function(err, res, body) {
-    if (err) {
-      logger.error("Error in self registering with watchloop, error: ", err);
-      process.exit(1);
-    } else {
-      if (res === undefined || res.statusCode === undefined) {
-        logger.error("Error in self registering with watchloop, returned with out any status");
-        process.exit(1);
-      } else if (res.statusCode >= 200 && res.statusCode <= 299) {
-        logger.info("Successfully registered with watchloop");
-      }
-    }
-  });
+  processHandler.procRegister(myPort);
 }
 
-process.on('SIGINT', function() {
-  logger.info("Going to terminate all active connections...!");
-
-  var options = {
-    method: 'DELETE',
-    url: 'http://' + appConfig.watchloop.url + '/watchloopservice/watchprocessor',
-    json: {
-      url: ('localhost' + ':' + myPort),
-      host: 'localhost',
-      port: myPort
-    }
-  };
-
-  return request(options, function(err, res, body) {
-    if (err) {
-      logger.error("Error in deregistering with watchloop, error: ", err);
-      process.exit(1);
-    } else {
-      if (res === undefined || res.statusCode === undefined) {
-        logger.error("Error in deregistering with watchloop, returned with out any status");
-        process.exit(1);
-      } else if (res.statusCode >= 200 && res.statusCode <= 299) {
-        logger.info("Successfully deregistering with watchloop");
-        process.exit(0);
-      }
-    }
-  });
-
+process.on('exit', function(err) {
+  console.log('On process exit: ', err);
+  processHandler.procDeRegister(myPort);
+});
+process.on('uncaughtException', function(err) {
+  console.log('On uncaughtException: ', err);
+  // processHandler.procDeRegister(myPort);
 });
 
 app.getPort = function() {
@@ -91,7 +47,6 @@ app.getPort = function() {
     port = process.argv[2];
     logger.debug("Port ", port, " was passed");
   }
-
 
   return port;
 }
