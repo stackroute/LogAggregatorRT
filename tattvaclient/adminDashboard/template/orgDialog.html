@@ -1,5 +1,5 @@
 <md-dialog  aria-label="Full Screen Dialog Test" class="fullscreen-dialog">
-  
+
   <md-toolbar>
     <div class="md-toolbar-tools">
       <h2><b>ORGANISATIONAL OVERVIEW</b></h2>
@@ -85,7 +85,7 @@
             <md-list>
               <md-list-item class="md-3-line" >
                 <div class="md-list-item-text">
-                  <h3><b>UPDATED ON:- {{activity.editedOn}}</b></h3>
+                  <h3><b>UPDATED ON:- {{activity.editedOn| date:"medium"}}</b></h3>
                   <h5><b>WATCHLIST NAME:- {{activity.name}}</b></h5>
                   <h6><b>EDITED BY:- {{activity.editedBy}}</b></h6>
                 </div>

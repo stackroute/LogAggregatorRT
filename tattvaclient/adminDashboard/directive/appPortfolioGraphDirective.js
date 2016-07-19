@@ -12,9 +12,8 @@ angular.module('tattva').directive('portfolio',function(){
       $scope.selectedinstance={};
       $scope.hoverStats = {};
       setdefaultHover = function(count){
-        $scope.hoverStats["collection"] = "organisations";
+        $scope.hoverStats["collection"] = "Organisations";
         $scope.hoverStats["count"] = count;
-
       }
 
       setRootNode = function(root){
@@ -39,12 +38,12 @@ angular.module('tattva').directive('portfolio',function(){
       hover = function(d){
         $scope.$apply(function(){
           if(d.instanceType == "super User"){
-            $scope.hoverStats["collection"] = "organisations";
+            $scope.hoverStats["collection"] = "Organisations";
             $scope.hoverStats["count"] = d.children.length;
             $scope.hoverStats["orgSite"] ="";
           }
           else{
-            $scope.hoverStats["collection"] = "watchlists for ";
+            $scope.hoverStats["collection"] = "Watchlists for ";
             $scope.hoverStats["orgSite"] = d.orgSite;
             if(d.orgsite){
               $scope.hoverStats["orgSite"] = d.orgsite;
@@ -74,8 +73,8 @@ angular.module('tattva').directive('portfolio',function(){
       // var width = element[0].clientWidth*0.6,
       // height = element[0].clientHeight*0.6,
       // radius = Math.min(width, height) / 2;
-      var width = 350,
-      height = 400,
+      var width = 400,
+      height = 450,
       radius = Math.min(width, height) / 2;
 
       var x = d3.scale.linear()
