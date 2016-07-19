@@ -27,7 +27,7 @@ function sourceConnectorTask(subscribeFrom, publishTo, payload) {
 
       dataObj = JSON.parse(data);
 
-      var dataSourceIp = "127.0.0.1";
+      var dataSourceIp = "172.23.238.251";
       var dataSourcePort = "7070";
       var wsstream = websocket('ws://' + dataSourceIp + ':' + dataSourcePort);
       highland(wsstream).each(function(streamData) {
