@@ -1,7 +1,7 @@
 var logger = require('../../applogger');
 
 var nextAvailableProcessor = function() {
-  var processorMap = [];
+  watchProcStore.getWatchProcessorMap(function(procMap){});
 
   processorMap.push({
     url: '127.0.0.1:8091',

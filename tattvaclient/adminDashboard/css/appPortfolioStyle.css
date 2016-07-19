@@ -19,8 +19,8 @@ path {
 /*legend dialog*/
   #explanation {
     position: absolute;
-    top: 265px;
-    left: 140px;
+    top: 285px;
+    left: 155px;
     width: 140px;
     height: 20px;
     text-align: center;
@@ -45,6 +45,10 @@ path {
   width: 100%;
   height: 100%;
   border-radius: 0;
+}
+
+.apportcontainer{
+  padding: 4px;
 }
 
 /*for heat map*/
@@ -83,3 +87,6 @@ rect.cell-hover {
       font-size: 12px;
       line-height: 20px;
     }
+.footer{
+  background-color: rgba(38, 166, 154, 0.66);
+}
