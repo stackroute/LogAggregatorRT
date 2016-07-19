@@ -17,6 +17,7 @@ var logger = require("./applogger");
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var function_router = require('./tattvaserver/functions/functions_routes.js');
+var constant_router = require('./tattvaserver/constants/constant_routes.js');
 var sideNav_router = require('./tattvaserver/Home/home_routes.js');
 var watchlist_router = require('./tattvaserver/watchlists/watchlist_routes.js');
 var watchlistslide_router = require('./tattvaserver/watchslide/watchslideroutes.js');
@@ -105,6 +106,7 @@ app.use('/users',isAuthenticated,  users);
 app.use('/organisation/user',isAuthenticated,  Orguser_router);
 app.use('/instance',isAuthenticated,  datasourcesrouter);
 app.use('/function',isAuthenticated,  function_router);
+app.use('/constant',isAuthenticated,  constant_router);
 app.use('/sideNav',isAuthenticated, sideNav_router);
 app.use('/namespaces',isAuthenticated, namespace_router);
 app.use('/watchlist',isAuthenticated,  watchlist_router);
@@ -119,28 +121,26 @@ app.use('/distwatchloop', isAuthenticated,  distwatchloop_router);
 // watchloopExecutor();
 
 app.use(function(req, res, next) {
+  var err = new Error('Resource not found');
   err.status = 404;
-  // return res.status(404).json({error: "Requested resource not found..!"});
-  next(err);
+  return res.status(err.status).json({
+    "error": err.message
+  });
 });
 
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
-    logger.error("Unhandled error: ", err);
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+    logger.error("Internal error in watch processor: ", err);
+    return res.status(err.status || 500).json({
+      "error": err.message
     });
   });
 }
 
 app.use(function(err, req, res, next) {
-  logger.error("Unhandled error: ", err);
-  res.status(err.status || 500).json;
-  res.render('error', {
-    message: err.message,
-    error: err
+  logger.error("Internal error in watch processor: ", err);
+  return res.status(err.status || 500).json({
+    "error": err.message
   });
 });
 

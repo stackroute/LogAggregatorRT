@@ -1,0 +1,42 @@
+<div>
+  <h2 flex-offset="30" class="md-headline"> Create your own constant</h2>
+  <md-whiteframe   class="md-whiteframe-1dp" layout="row" flex="60" flex-offset="15" >
+    <form name="createconstant" ng-submit="savedata()" flex layout="column" flex-offset="5">
+      <div layout="column" >
+        <md-input-container class="md-block" >
+          <label>Name</label>
+          <input  required name="name" ng-minlength="3" ng-maxlength="20" ng-model="createconstant.con_name" >
+          <div ng-messages="createconstant.name.$error">
+            <div ng-message="required">This is required.</div>
+            <p ng-message="minlength">Namespace name is too short.</p>
+            <p ng-message="maxlength">Namespace name is too long.</p>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout="column">
+        <md-input-container class="md-block" >
+          <label>Values</label>
+          <input  required name="values" ng-model="createconstant.value" type="text">
+          <div ng-messages="createconstant.values.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout="column">
+        <md-input-container class="md-block">
+          <label>Description</label>
+          <input required name="description" ng-model="newconstant.Descr" type="text">
+          <div ng-messages="createconstant.description.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout layout-align="center center">
+        <md-button class="md-raised " ui-sref="design.constant">Cancel</md-button>
+        <md-button type="submit" class="md-raised md-primary">Create</md-button>
+      </div>
+
+    </form>
+  </md-whiteframe>
+</div>

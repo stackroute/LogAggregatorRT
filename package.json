@@ -20,6 +20,7 @@
     "ejs": "~2.4.2",
     "express": "~4.14.0",
     "express-session": "^1.13.0",
+    "forever": "^0.15.2",
     "highland": "^2.8.1",
     "jsonwebtoken": "^7.0.1",
     "log4js": "^0.6.37",
