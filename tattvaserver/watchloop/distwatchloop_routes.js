@@ -6,6 +6,46 @@ var dataProvider = require('../core/datamodelprovider');
 var appConfig = require('../../config/appconfig');
 var logger = require('../../applogger.js');
 
+// router.post('/watchloop/:watchname',function (req, res) {
+router.post('/watchloop/',function (req, res) {
+  saveWatchloopEntries(req.body, req.user.orgsite)
+  .then(submitWatchListForExecution)
+  .then(function(watchLoopEntry) {
+    logger.debug("Successfully submitted watchlist to distributed service response: ", watchLoopEntry);
+    return res.status(200).json(watchLoopEntry);
+  })
+  .catch(function(err) {
+    logger.error("Failed to submit new watchlist ", watchLoopEntry.watchname, " to distributed execution service, error", err);
+    return res.status(500).json({error: "Internal error..!"});
+  });
+});
+
+// router.put('/watchloop/:watchname',function (req, res) {
+router.put('/watchloop',function (req, res) {
+  editWatchloopEntries(req.body, req.user.orgsite)
+  .then(submitWatchListForExecution)
+  .then(function(watchLoopEntry) {
+    logger.debug("Successfully updated watchlist to distributed service response: ", watchLoopEntry);
+    return res.status(200).json(watchLoopEntry);
+  })
+  .catch(function(err) {
+    logger.error("Failed to update new watchlist ", watchLoopEntry.watchname, " to distributed execution service, error", err);
+    return res.status(500).json({error: "Internal error..!"});
+  });
+});
+
+router.get('/watchprocessors',function(req,res){
+  getWatchProcessorMap()
+    .then(function(response){
+      logger.debug("Successfully retrieved Processors Map: ", response);
+      return res.status(200).json(response);
+    })
+    .catch(function(err){
+      logger.error("Failed to retrieve the Processor Map, error", err);
+      return res.status(500).json({error: "Internal error in obtaining watch processor details"});
+    })
+});
+
 var saveWatchloopEntries = function(watchLoopEntry, orgsite){
   return new Promise(function(resolve, reject){
     logger.debug("Requested to add a new watchlist to watch loop ", watchLoopEntry.watchname);
@@ -77,30 +117,24 @@ var submitWatchListForExecution = function(watchLoopEntry){
   });
 };
 
-router.post('/watchloop',function (req, res) {
-  saveWatchloopEntries(req.body, req.user.orgsite)
-  .then(submitWatchListForExecution)
-  .then(function(watchLoopEntry) {
-    logger.debug("Successfully submitted watchlist to distributed service response: ", watchLoopEntry);
-    return res.status(200).json(watchLoopEntry);
-  })
-  .catch(function(err) {
-    logger.error("Failed to submit new watchlist ", watchLoopEntry.watchname, " to distributed execution service, error", err);
-    return res.status(500).json({error: "Internal error..!"});
-  });
-});
+var getWatchProcessorMap = function(){
+  return new Promise(function(resolve, reject){
+    var options = {
+      method: 'GET',
+      json:true,
+      url: 'http://' + appConfig.watchloop.url + '/watchloopservice/watchloop/watchprocessors'
+    };
 
-router.put('/watchloop',function (req, res) {
-  editWatchloopEntries(req.body, req.user.orgsite)
-  .then(submitWatchListForExecution)
-  .then(function(watchLoopEntry) {
-    logger.debug("Successfully updated watchlist to distributed service response: ", watchLoopEntry);
-    return res.status(200).json(watchLoopEntry);
-  })
-  .catch(function(err) {
-    logger.error("Failed to update new watchlist ", watchLoopEntry.watchname, " to distributed execution service, error", err);
-    return res.status(500).json({error: "Internal error..!"});
+    request(options, function (err, res, body) {
+      if (err || res === undefined || res.statusCode === undefined){
+        logger.error("Error in fetching watch processorMap for distributed execution, err: ", err);
+        reject({error:err});
+      } else if(res.statusCode >= 200 && res.statusCode <= 299) {
+        logger.debug("Successfully retrieved watch processorMap to distributed service ");
+        resolve(body);
+      }
+    });
   });
-});
+};
 
 module.exports = router;

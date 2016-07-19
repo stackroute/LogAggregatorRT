@@ -8,6 +8,7 @@ var processAllocateTask = function(watchTask) {
     watchProcStore.getWatchProcessorMap(function(procMap) {
       logger.debug("Selecting next available processors from ", procMap);
       processorObj = nextAvailableProcessor(procMap);
+      logger.debug("Next available processor is ", processorObj);
 
       //@TODO make HTTP request to Processor
       var options = {
@@ -29,6 +30,16 @@ var processAllocateTask = function(watchTask) {
             return false;
           } else if (res.statusCode >= 200 && res.statusCode <= 299) {
             logger.info("Successfully allocated task: ", watchTask.name, " to processor: ", processorObj.url, " response ", body);
+            var watchTaskObj={
+              "name": watchTask.name,
+              "type": watchTask.type,
+              "subFrom": watchTask.subFrom,
+              "pubTo": watchTask.pubTo,
+              "watchName": watchTask.watchName,
+              "orgsite": watchTask.orgsite
+            }
+            watchProcStore.registerWatchTask(processorObj.url, watchTaskObj);
+
             callback(null, {processor: processorObj.url, watchtask: watchTask, result: true, status: res.statusCode, error: err, body: body });
             return true;
           }
