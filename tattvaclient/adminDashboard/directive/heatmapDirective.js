@@ -46,10 +46,10 @@ angular.module('tattva').directive('heatmap',function(){
             }
           }
         }
-      console.log("data",data);
+      // console.log("data",data);
 
-      console.log("element[0].clientWidth:",attrs);
-      console.log(element[0].clientWidth);
+      // console.log("element[0].clientWidth:",attrs);
+      // console.log(element[0].clientWidth);
       var margin = { top: 50, right: 0, bottom: 100, left: 30 },
       width = 150 - margin.left - margin.right,
       height = 150 - margin.top - margin.bottom,
@@ -67,7 +67,7 @@ angular.module('tattva').directive('heatmap',function(){
 
       function heatmapChart(data) {
         colors = ["#ffffd9","#e5ffe5","#b2ffb2","#7fff7f","#4cff4c","#00e500","#00b200","#007f00","#003300"];
-        console.log("data:",data);
+        console.log("data to heatmapChart:",data);
         var colorScale = d3.scale.quantile()
         .domain([0, buckets - 1, d3.max(data, function (d) { return d.value; })])
         .range(colors);

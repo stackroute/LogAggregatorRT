@@ -1,30 +1,40 @@
 var redis = require('redis');
+var appConfig = require('../../../config/appconfig');
+
+var logger = require('../../../applogger');
 
 function pubDashboardTask(subscribeFrom, publishTo, payload) {
-  // var channelClient = redis.createClient({host:appConfig.redishost, port:appConfig.redisport});
-  var subChannelClient = redis.createClient({host:appConfig.redis.host, port:appConfig.redis.port});
-  var pubChannelClient = redis.createClient({host:appConfig.redis.host, port:appConfig.redis.port});
-
-  if(payload['watch'] === undefined) {
+  if (payload['watch'] === undefined) {
     throw new Error("Watch list definition is not passed for processing..!");
   }
-  var wlstDef = payload.watch;
+
+  var subChannelClient = redis.createClient({
+    host: appConfig.redis.host,
+    port: appConfig.redis.port
+  });
+  var pubChannelClient = redis.createClient({
+    host: appConfig.redis.host,
+    port: appConfig.redis.port
+  });
+
   this.doTask = function() {
     // console.log("Now i will do the work");
     subChannelClient.subscribe(subscribeFrom);
 
     subChannelClient.on('message', function(channel, data) {
+      // logger.debug("Got message from channel: ", channel, " with data: ", data);
+
       execObj = JSON.parse(data);
 
-      var channelName = wlstDef.orgsite + "::" + wlstDef.name;
+      var channelName = payload.watch.orgsite + "::" + payload.watch.name;
 
-      if (wlstDef.publishers.dashboard) {
+      if (payload.watch.publishers.dashboard) {
         var watchResult = false;
         //If graph was selected
-        if(wlstDef.publishers.dashboard.graphType) {
-          if(execObj.path) {
-            if(execObj.path.watchresult)
-            watchResult = execObj.path.watchresult;
+        if (payload.watch.publishers.dashboard.graphType) {
+          if (execObj.path) {
+            if (execObj.path.watchresult)
+              watchResult = execObj.path.watchresult;
           }
         }
 
@@ -41,6 +51,6 @@ function pubDashboardTask(subscribeFrom, publishTo, payload) {
       }
     });
   }
-}//end of module function
+} //end of module function
 
 module.exports = pubDashboardTask;
