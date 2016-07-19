@@ -208,7 +208,7 @@ sideNav_router.get('/:userRole', function(req, res) {
       ]
     };
   }
-  else if(userRole==="tattvaAdmin"){
+  else if(userRole==="TATTVAADM"){
     var navItems = {
       topNav: [
         {
