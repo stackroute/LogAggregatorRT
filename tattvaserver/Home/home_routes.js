@@ -200,7 +200,7 @@ sideNav_router.get('/:userRole', function(req, res) {
       ]
     };
   }
-  else if(userRole==="TATTVAADM"){
+  else if(userRole==="tattvaAdmin"){
     var navItems = {
       topNav: [
         {
@@ -214,6 +214,11 @@ sideNav_router.get('/:userRole', function(req, res) {
           "link"  : "adminHome",
           "icon"  :  "dashboard",
         },
+        {
+          "menu"  : "Processor Control Panel",
+          "link"  : "processorControlPanel",
+          "icon"  : "memory"
+        }
       ]
     };
   } else{
