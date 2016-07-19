@@ -46,8 +46,8 @@ md-list-item a {
 }
 
 .person{
-  width: 80%;
-  height: 90%;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   box-shadow: -1px 0px 5px 1px #0A6969;
   padding: 10px;
