@@ -11,6 +11,15 @@
   </md-toolbar>
 
   <md-dialog-content class="md-padding">
+    <div layout="row" layout-align="none none">
+      <!-- <div><heatmap data="procObj" filter="watchtaskfilter" processorName="procName">
+    </heatmap></div> -->
+    <div ng-repeat="(procName, procObj) in processors">
+      <heatmap data="procObj" filter="watchtaskfilter" processorName="procName" style="min-height: 250px;">
+      </heatmap>
+    </div>
+  </heatmap>
+</div>
     <watchwidget class="flex-item" flex="{{watch.publishers.dashboard.displaySize}}" watchdefn="watch" eventobj="socket">
       <span>
         <div style='margin:5px;'>
@@ -21,18 +30,6 @@
       </span>
     </watchwidget>
 
-    <div>
-      <div flex="15">
-        <md-card md-theme="dark-grey" md-theme-watch>
-          <md-card-header style="background:#eae1e1;">
-            <md-card-header-text>
-              <span class="md-headline">{{processorName}}</span>
-            </md-card-header-text>
-          </md-card-header>
-          <md-divider></md-divider>
-          <heatmap data="processorMap" filter="watchtaskfilter" style="background:#F7F7F7"></heatmap>
-        </md-card>
-      </div>
-    </div>
+
   </md-dialog-content>
 </md-dialog>

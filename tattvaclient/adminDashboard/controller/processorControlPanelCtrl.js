@@ -32,7 +32,11 @@ angular.module('tattva')
       getProcessorMap();
     }
   });
-
+  $scope.$on('$destroy', function(){
+    if($scope.socket){
+      $scope.socket.disconnect();
+    }
+  });
 }])
 .config(function($mdThemingProvider){
   $mdThemingProvider.theme('dark-grey').backgroundPalette('grey');
