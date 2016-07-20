@@ -14,21 +14,6 @@ angular.module('tattva').directive('heatmap',function(){
     }],*/
     link:function(scope, element, attrs){
       console.log("processorObj is ", scope.processorObj, " for processor ", scope.processorName);
-      // scope.$watch('processorObj', function(nv, ov) {
-      //   saveprocessorName(scope.processorName);
-      //   // console.log("filter",scope.filter);
-      //   // console.log("scope.processorMap",scope.processorObj);
-      //   // scope.processorMap = scope.processorObj.tasks;
-      //   if(scope.filter!="none"){
-      //     var temp=[];
-      //     for(var i=0;i<scope.processorObj.tasks.length;i++){
-      //       if(scope.processorObj.tasks[i].watchName == scope.filter){
-      //         temp.push(scope.processorObj.tasks[i]);
-      //       }
-      //     }
-      //     scope.processorObj.tasks = temp;
-      //   }
-      // });
       var data = [];
       var nop = scope.processorObj.tasks.length;
       var ncols = 5;
@@ -47,7 +32,7 @@ angular.module('tattva').directive('heatmap',function(){
                 "column" : col,
                 "watchName" : scope.processorObj.tasks[index].watchName,
                 "value" : 1,
-                "watchTask" : scope.processorObj.tasks[index].watchTask,
+                "watchTask" : scope.processorObj.tasks[index].type,
                 "processorName": "processor1"
               });
               index++;
@@ -65,7 +50,9 @@ angular.module('tattva').directive('heatmap',function(){
       // legendElementWidth = gridSize*2,
       buckets = 9;
 
-      var svg = d3.select("#chart").append("svg")
+      // var svg = d3.select(divId).append("svg")
+      var rawSvg=element.find('svg');
+      var svg = d3.select(rawSvg[0])
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -101,7 +88,7 @@ angular.module('tattva').directive('heatmap',function(){
           .style("left", (d3.event.pageX+10) + "px")
           .style("top", (d3.event.pageY-10) + "px")
           .select("#value")
-          .text("wlst: "+d.watchName+"\n"+"Task"+": "+d.watchTask);
+          .text("Watch : " + d.watchName + "  Task" + ":" + d.watchTask);
           d3.select("#tooltip").classed("hidden", false);
         })
         .on("mouseout", function(){
@@ -120,6 +107,3 @@ angular.module('tattva').directive('heatmap',function(){
     }
   };
 });
-// .config(function($mdThemingProvider) {
-//   $mdThemingProvider.theme('grey').backgroundPalette('grey');
-//

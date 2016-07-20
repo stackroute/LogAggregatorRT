@@ -1,17 +1,29 @@
-<div flex="15">
-  <md-card>
-    <md-card-header md-theme="dark-grey" style="background:#eae1e1;">
-      <md-card-header-text>
-        <!-- <span class="md-headline">{{processorName}}</span> -->
-        <!-- <span class="md-headline">{{processorObj.url}}</span> -->
-        <!-- <span class="md-headline">Processor:{{processorObj.port}}</span> -->
-        <span class="md-title">Processor:{{processorObj.port}}</span>
-      </md-card-header-text>
-    </md-card-header>
-    <md-divider></md-divider>
-    <div layout="row" layout-align="center center" style="background:#F7F7F7">
-       <div id="tooltip" class="hidden"><p><span id="value"></p></div>
-         <div id="chart"></div>
-      </div>
-    </md-card>
-    </div>
+<!-- <div class='processorbox'>
+  <span class="md-title">Processor:{{processorObj.port}}</span>
+  <svg width='250' height='200'></svg>
+  </div>
+</div> -->
+
+<!-- <div flex="15"> -->
+<md-card>
+  <md-card-header md-theme="dark-grey" style="background:#eae1e1;">
+    <md-card-header-text>
+      <span class="md-title">Processor:{{processorObj.port}}</span>
+    </md-card-header-text>
+  </md-card-header class='processorbox'>
+  <!-- <div layout='row' layout-align="center center" style="background:#F7F7F7"> -->
+      <!-- <div class='processorbox'> -->
+        <!-- <span class="md-title">Processor:{{processorObj.port}}</span> -->
+        <svg class='proboxcsvg' width='250' height='200'></svg>
+        <div id="tooltip" class="hidden">
+        <p>
+        <span id="value">
+        </p>
+        </div>
+        <!-- <div id="{{prochart}}+processorObj.port"> -->
+        <!-- </div> -->
+      <!-- <div id="chart">
+      </div> -->
+    <!-- </div> -->
+  </md-card>
+<!-- </div> -->

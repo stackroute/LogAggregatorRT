@@ -8,6 +8,20 @@
   padding-right: 30px;
   padding-bottom: 30px;
 }
+
+.processorbox {
+  min-width: 150px;
+  min-height: 300px;
+  padding: 5px;
+  margin: 10px;
+  border: 1px solid #f9f9f9;
+  /*background-color: #f9f9f9;*/
+}
+
+.proboxcsvg {
+  padding: 5px;
+  margin:auto;
+}
 /*form {
   position: absolute;
   right: 10px;

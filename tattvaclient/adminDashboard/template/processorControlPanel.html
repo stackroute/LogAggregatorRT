@@ -1,4 +1,4 @@
-<div style="margin-top:100px;margin-left:30px;">
+<!-- <div style="margin-top:100px;margin-left:30px;">
   <div flex="100">
     <md-content>
       <h3 class="md-title">Active Watchlists : </h3>
@@ -8,15 +8,24 @@
     <md-content>
       <h3 class="md-title">Active Processors : {{nop}}</h3>
     </md-content>
-  </div>
-        <!-- <pre ng-repeat="(procName, procObj) in processors">
-          {{processorMap}}
-          <br>
-          {{procName}}
-        </pre> -->
+  </div> -->
 
-      <heatmap ng-repeat="(procName, procObj) in processors" data="procObj" filter="watchtaskfilter" processorName="procName">
+<div style="margin-top:100px;margin-left:30px;">
+<div layout="row" layout-align="center center">
+  <!-- <div><heatmap data="procObj" filter="watchtaskfilter" processorName="procName">
+  </heatmap></div> -->
+  <div ng-repeat="(procName, procObj) in processors">
+    <heatmap data="procObj" filter="watchtaskfilter" processorName="procName" style="min-height: 250px;">
     </heatmap>
-    <!-- </md-card>
-    </div> -->
+  </div>
+  </heatmap>
 </div>
+</div>
+
+  <!-- <div ng-repeat="(procName, procObj) in processors">
+    <div>
+      <heatmap data="procObj" filter="watchtaskfilter" processorName="procName">
+      </heatmap>
+    </div>
+  </div> -->
+<!-- </div> -->
