@@ -21,7 +21,4 @@ function($scope, $http, $state,$mdDialog,adminFactory) {
       fullscreen: true
     });
   };
-
-
-
 }]);

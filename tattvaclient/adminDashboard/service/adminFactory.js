@@ -23,7 +23,12 @@ angular.module('tattva').factory('adminFactory',['$http',function($http){
 
     getOrgActivity : function(orgSite){
       return $http.get('/adminDashboard/getOrgActivity/'+orgSite);
+    },
+
+    getprocessors : function(){
+      return $http.get('/distwatchloop/watchprocessors');
     }
+
   };
 
   return factory;

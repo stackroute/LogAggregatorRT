@@ -11,16 +11,18 @@ angular.module('tattva').directive('heatmap',function(){
     }],
     link:function(scope,element,attrs){
 
-      console.log("filter",scope.filter);
-      if(scope.filter!="none"){
-        var temp=[];
-        for(var i=0;i<scope.processorMap.length;i++){
-          if(scope.processorMap[i].watchName == scope.filter){
-            temp.push(scope.processorMap[i]);
+      scope.$watch('processorMap', function(nv, ov) {
+        console.log("filter",scope.filter);
+        if(scope.filter!="none"){
+          var temp=[];
+          for(var i=0;i<scope.processorMap.length;i++){
+            if(scope.processorMap[i].watchName == scope.filter){
+              temp.push(scope.processorMap[i]);
+            }
           }
+          scope.processorMap = temp;
         }
-        scope.processorMap = temp;
-      }
+      });
       var data = [];
       var nop = scope.processorMap.length;
       var ncols = 5;
@@ -93,8 +95,7 @@ angular.module('tattva').directive('heatmap',function(){
           .style("left", (d3.event.pageX+10) + "px")
           .style("top", (d3.event.pageY-10) + "px")
           .select("#value")
-          .text("watchlist: "+d.watchName+"\n"+"Task"+": "+d.watchTask);
-          // .text("("+d.row+","+d.column+")"+"\n"+scope.info.countfor+":"+d.value);
+          .text("wlst: "+d.watchName+"\n"+"Task"+": "+d.watchTask);
           d3.select("#tooltip").classed("hidden", false);
         })
         .on("mouseout", function(){
