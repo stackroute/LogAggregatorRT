@@ -9,21 +9,20 @@ var dataProvider = require('../core/datamodelprovider');
 module.exports = function(app) {
 
   app.get("/signout", function(req, res, next) {
-      console.log("Logging out user...!");
-      // req.session.destroy();
-      return res.status(200).json();
+    console.log("Logging out user...!");
+    // req.session.destroy();
+    return res.status(200).json();
   });
 
   app.post('/signup', function(req, res, next) {
 
-    if (!req.body.orgname || !req.body.orgsite || !req.body.orglogo || !req.body.orglocation || !req.body.name || !req.body.email || !req.body.password)
-    {
+    if (!req.body.orgname || !req.body.orgsite || !req.body.orglogo || !req.body.orglocation || !req.body.name || !req.body.email || !req.body.password) {
       return res.status(400).json({
         message: 'Provide valid credentials...!'
       });
     }
 
-    var OrganisationsModel = dataProvider.getModel(OrganisationSchema,"tattva");
+    var OrganisationsModel = dataProvider.getModel(OrganisationSchema, "tattva");
     //Create the organisation
     var newOrganisation = new OrganisationsModel({
       "orgName": req.body.orgname,
@@ -35,32 +34,32 @@ module.exports = function(app) {
     });
     //console.log("body:" ,req.body);
     //Save the organisation
-    var user = newOrganisation.save(function(err,orgObj) {
-      if(err){
+    var user = newOrganisation.save(function(err, orgObj) {
+      if (err) {
 
         console.log("Error in new org creation:", err);
-        var err=new Error("Invalid Input....!");
-        err.status=401;
+        var err = new Error("Invalid Input....!");
+        err.status = 401;
         throw err;
       }
-      var UserModel = dataProvider.getModel(UserSchema,"tattva");
+      var UserModel = dataProvider.getModel(UserSchema, "tattva");
       //After organisation is created User is created
       var newUser = new UserModel({
-        "name":req.body.name,
+        "name": req.body.name,
         "email": req.body.email,
         "password": req.body.password,
         "orgsite": req.body.orgsite,
-        "role":'ORGADM'
+        "role": 'ORGADM'
       });
 
       //Save the user of that organisation
-      newUser.save(function(err,userObj){
-        if(err){
+      newUser.save(function(err, userObj) {
+        if (err) {
           return res.status(401).json(err);
         }
 
-console.log("org site:",userObj.orgsite);
-        var WatchSlideModel = dataProvider.getModel(WatchSlideSchema,userObj.orgsite);
+        console.log("org site:", userObj.orgsite);
+        var WatchSlideModel = dataProvider.getModel(WatchSlideSchema, userObj.orgsite);
         //After user is created, add a default watchslide
         var userDefaultSlide = new WatchSlideModel({
           "username": userObj.email,
@@ -88,7 +87,9 @@ console.log("org site:",userObj.orgsite);
               // return done(null, false, {
               //   message: 'Invalid user credentials, please retry with valid credentials..!'
               // });
-                return res.status(401).json({message:'Invalid user credentials, please retry with valid credentials..!'});
+              return res.status(401).json({
+                message: 'Invalid user credentials, please retry with valid credentials..!'
+              });
             }
 
             var sessionUserUp = {
@@ -103,7 +104,7 @@ console.log("org site:",userObj.orgsite);
 
             //IF SUCCESSFUL LOGIN, I.E., USER FOUND AND PASSWORD MATCHES
             // return done(null, sessionUser);
-            generateJWTToken(req,res,sessionUserUp);//generate JWTToken
+            generateJWTToken(req, res, sessionUserUp); //generate JWTToken
           });
 
         });
@@ -112,84 +113,86 @@ console.log("org site:",userObj.orgsite);
 
   });
 
-  app.post('/signin', function(req,res,next) {
+  app.post('/signin', function(req, res, next) {
     if (!req.body.email || !req.body.password) {
       res.json({
         error: "Please try with valid credentials..!"
       });
       return;
     }
-    var UserModel = dataProvider.getModel(UserSchema,"tattva");
+    var UserModel = dataProvider.getModel(UserSchema, "tattva");
     UserModel.findOne({
-      email: req.body.email
-    }, {
-      _id: 0,
-      __v: 0
-    },
-    function(err, user) {
+        email: req.body.email
+      }, {
+        _id: 0,
+        __v: 0
+      },
+      function(err, user) {
 
-      if (err) {
-        logger.error("Database error in finding user, error: ", err);
-        res.status(500).json({
-          error: "Failed to process request, please try later..!"
-        });
-        return;
-      }
-
-      if (!user) {
-        console.error('User ', req.body.email, ' not found..!');
-        res.status(403).json({
-          error: "Invalid credentials...!"
-        });
-        return;
-      }
-
-      if (!user.validPassword(req.body.password)) {
-        res.status(403).json({
-          error: "Invalid credentials password...!"
-        });
-        return;
-      }
-
-      var OrganisationsModel = dataProvider.getModel(OrganisationSchema,"tattva");
-      OrganisationsModel.findOne({
-        'orgSite': user.orgsite
-      }, function(err, org) {
         if (err) {
-          console.log("Error in finding organisation of the user: ", err, " User: ", email, " org: ", user.orgsite);
-          //return done(err);
-          return res.status(500).json(err);
+          logger.error("Database error in finding user, error: ", err);
+          res.status(500).json({
+            error: "Failed to process request, please try later..!"
+          });
+          return;
         }
 
-        if (!org) {
-          // return done(null, false, {
-          //   message: 'Invalid user credentials, please retry with valid credentials..!'
-          // });
-
-            return res.status(401).json({message:'Invalid user credentials, please retry with valid credentials..!'});
+        if (!user) {
+          console.error('User ', req.body.email, ' not found..!');
+          res.status(403).json({
+            error: "Invalid credentials...!"
+          });
+          return;
         }
 
-        var sessionUser = {
-          "name": user.name,
-          "email": user.email,
-          "orgsite": user.orgsite,
-          "role": user.role,
-          "orgName": org.orgName,
-          "orgLogo": org.orgLogo,
-          "orgLocation": org.orgLocation
-        };
+        if (!user.validPassword(req.body.password)) {
+          res.status(403).json({
+            error: "Invalid credentials password...!"
+          });
+          return;
+        }
 
-        //IF SUCCESSFUL LOGIN, I.E., USER FOUND AND PASSWORD MATCHES
-        // return done(null, sessionUser);
-        generateJWTToken(req,res,sessionUser); //generate JWTToken
-      });
+        var OrganisationsModel = dataProvider.getModel(OrganisationSchema, "tattva");
+        OrganisationsModel.findOne({
+          'orgSite': user.orgsite
+        }, function(err, org) {
+          if (err) {
+            console.log("Error in finding organisation of the user: ", err, " User: ", email, " org: ", user.orgsite);
+            //return done(err);
+            return res.status(500).json(err);
+          }
+
+          if (!org) {
+            // return done(null, false, {
+            //   message: 'Invalid user credentials, please retry with valid credentials..!'
+            // });
+
+            return res.status(401).json({
+              message: 'Invalid user credentials, please retry with valid credentials..!'
+            });
+          }
+
+          var sessionUser = {
+            "name": user.name,
+            "email": user.email,
+            "orgsite": user.orgsite,
+            "role": user.role,
+            "orgName": org.orgName,
+            "orgLogo": org.orgLogo,
+            "orgLocation": org.orgLocation
+          };
+
+          //IF SUCCESSFUL LOGIN, I.E., USER FOUND AND PASSWORD MATCHES
+          // return done(null, sessionUser);
+          generateJWTToken(req, res, sessionUser); //generate JWTToken
+        });
 
 
-    }); //end of user find query
+      }); //end of user find query
 
   });
 
-  function generateJWTToken(req,res,user){
+  function generateJWTToken(req, res, user) {
     var payload = {
       email: user.email,
       org: user.orgsite,
@@ -198,10 +201,10 @@ console.log("org site:",userObj.orgsite);
     var secretOrPrivateKey = 'tattvasecretishere';
     var options = {
       algorithm: "HS256",
-      expiresIn: 3600,
+      expiresIn: 36000,
       issuer: user.email
     };
-    console.log("payload:" ,payload);
+    console.log("payload:", payload);
 
     jwt.sign(payload, secretOrPrivateKey, options, function(err, jwtToken) {
       if (err) {
@@ -212,7 +215,7 @@ console.log("org site:",userObj.orgsite);
         });
       }
 
-      if(!jwtToken) {
+      if (!jwtToken) {
         console.error("Empty token generated...!");
         // var err = new Error("Internal error in processing request, please retry later..!");
         // err.status=401;
