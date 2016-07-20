@@ -9,7 +9,7 @@ router.post('/watchprocessor', function(req, res) {
   var watchprocessor = req.body;
   logger.debug("Register request from processor: ", watchprocessor);
 
-  //@TODO have to verify the watch processor 
+  //@TODO have to verify the watch processor
   watchProcStore.addWatchProcessor(watchprocessor);
 
   res.status(200).json({
