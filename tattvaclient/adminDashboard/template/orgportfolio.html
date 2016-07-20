@@ -1,4 +1,4 @@
-<md-whiteframe class="md-whiteframe-3dp" layout="row" layout-align="none none">
+<md-whiteframe class="md-whiteframe-3dp" layout="row" layout-align="none none" ng-cloak>
 <md-content class='apportcontainer' flex="100"  style="height:550px;">
 
   <div class='subtitle' layout="row" >
@@ -13,8 +13,8 @@
   <md-grid-tile
   ng-repeat="watch in watches" md-rowspan="2" md-colspan="3" md-colspan-sm="1" md-colspan-xs="1"
   ng-click="appClick($event,watch)"
-  style="cursor:pointer;background-color:{{random()}};background-size:contain;background-repeat:no-repeat">
-  
+  style="cursor:pointer;background-color:#3C524C;background-size:contain;background-repeat:no-repeat">
+  <md-icon class"material-icons" style="font-size:12em;margin: 0px 170px 200px 0px" aria-label="Graph dialog">show_chart</md-icon>
     <md-grid-tile-footer class="footer">
       <h3>Namespace:{{watch.name}}</h3>
     </md-grid-tile-footer>

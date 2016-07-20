@@ -79,5 +79,4 @@ function($scope, $mdDialog, watch, orgSite, adminFactory) {
     $mdDialog.cancel();
   }
 
-
 }]);

@@ -3,26 +3,34 @@ angular.module('tattva').directive('heatmap',function(){
     restrict:'EA',
     templateUrl:"adminDashboard/template/processorGraph.html",
     scope : {
-      processorMap:"<data",
-      filter:"<filter"
+      processorObj:"<data",
+      filter:"<filter",
+      processorName:"<processorName"
     },
-    controller: ['$scope',function ($scope){
-
-    }],
-    link:function(scope,element,attrs){
-
-      console.log("filter",scope.filter);
-      if(scope.filter!="none"){
-        var temp=[];
-        for(var i=0;i<scope.processorMap.length;i++){
-          if(scope.processorMap[i].watchName == scope.filter){
-            temp.push(scope.processorMap[i]);
-          }
-        }
-        scope.processorMap = temp;
-      }
+    /*controller: ['$scope',function ($scope){
+      saveprocessorName = function(name){
+        // $scope.processorName = name;
+      };
+    }],*/
+    link:function(scope, element, attrs){
+      console.log("processorObj is ", scope.processorObj, " for processor ", scope.processorName);
+      // scope.$watch('processorObj', function(nv, ov) {
+      //   saveprocessorName(scope.processorName);
+      //   // console.log("filter",scope.filter);
+      //   // console.log("scope.processorMap",scope.processorObj);
+      //   // scope.processorMap = scope.processorObj.tasks;
+      //   if(scope.filter!="none"){
+      //     var temp=[];
+      //     for(var i=0;i<scope.processorObj.tasks.length;i++){
+      //       if(scope.processorObj.tasks[i].watchName == scope.filter){
+      //         temp.push(scope.processorObj.tasks[i]);
+      //       }
+      //     }
+      //     scope.processorObj.tasks = temp;
+      //   }
+      // });
       var data = [];
-      var nop = scope.processorMap.length;
+      var nop = scope.processorObj.tasks.length;
       var ncols = 5;
       var nrows = Math.floor(nop/ncols);
       if(nop%ncols){
@@ -32,14 +40,14 @@ angular.module('tattva').directive('heatmap',function(){
       var index = 0;
       for(var row=0;row<nrows;row++){
         for(var col=0;col<ncols;col++){
-          if(scope.processorMap[index]){
+          if(scope.processorObj.tasks[index]){
             data.push(
               {
                 "row" : row,
                 "column" : col,
-                "watchName" : scope.processorMap[index].watchName,
+                "watchName" : scope.processorObj.tasks[index].watchName,
                 "value" : 1,
-                "watchTask" : scope.processorMap[index].watchTask,
+                "watchTask" : scope.processorObj.tasks[index].watchTask,
                 "processorName": "processor1"
               });
               index++;
@@ -93,8 +101,7 @@ angular.module('tattva').directive('heatmap',function(){
           .style("left", (d3.event.pageX+10) + "px")
           .style("top", (d3.event.pageY-10) + "px")
           .select("#value")
-          .text("watchlist: "+d.watchName+"\n"+"Task"+": "+d.watchTask);
-          // .text("("+d.row+","+d.column+")"+"\n"+scope.info.countfor+":"+d.value);
+          .text("wlst: "+d.watchName+"\n"+"Task"+": "+d.watchTask);
           d3.select("#tooltip").classed("hidden", false);
         })
         .on("mouseout", function(){
