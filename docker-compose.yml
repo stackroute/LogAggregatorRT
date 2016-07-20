@@ -2,8 +2,8 @@ version: '2'
 services:
   webapp:
     container_name: tattva-webapp
-    build: .
-    image: tattva/tattva-webapp:0.1.0
+    build: ./
+    image: tattva/tattva-webapp:v0.1.0
     network_mode: host
     restart: always
     expose:
@@ -22,7 +22,7 @@ services:
   watchloop:
     container_name: tattva-distwatchloop
     build: ./tattva-docker-distwatchloop
-    image: tattva/tattva-distwatchloop:0.1.0
+    image: tattva/tattva-distwatchloop:v0.1.0
     network_mode: host
     restart: always
     expose:
@@ -38,30 +38,34 @@ services:
       MONGO_DB_NAME: tattva    
       REDIS_HOST: localhost
       REDIS_PORT: 6379
-  mongodb:
+  mongodb:    
     container_name: mongodb
     image: mvertes/alpine-mongo
+    network_mode: host
     restart: always
+    volumes:
+      - /data:/data/db
     expose:
       - 27017
     ports:
-      - 27017:27017
+      - "27017:27017"
   redis:
-    container_name: redis
-    image: smebberson/alpine-redis
-    restart: always
-    expose:
-      - 6379
-    ports:
-      - 6379:6379
+   container_name: redis
+   image: smebberson/alpine-redis
+   restart: always
+   expose:
+     - 6379
+   ports:
+     - "6379:6379"
   fluentd:
-    container_name: tattva-fluentd
-    image: tattva/tattva-fluentlogger:0.1.0
+    container_name: tattva-git-logger
+    image: tattva-git-logger:v1.0.0
     network_mode: host
     restart: always
     expose:
       - 24224
       - 7070
     ports:
-      - 24224:24224
-      - 7070:7070
+      - "24224:24224"
+      - "7070:7070"
+      

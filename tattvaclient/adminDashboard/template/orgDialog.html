@@ -21,7 +21,8 @@
           <md-whiteframe  layout-align>
             <h3>{{orgContactInfo.orgName}}</h3>
             <h4>  {{orgSite}}</h4>
-            <h5>{{orgContactInfo.contactName}} <{{orgContactInfo.contactEmail}}></h5>
+            <!-- <h5>{{orgContactInfo.contactName}} <{{orgContactInfo.contactEmail}}></h5> -->
+            <h5><a href="{{orgContactInfo.contactEmail}}">{{orgContactInfo.contactName}}</a></h5>
           </md-whiteframe>
         </div>
       </div>
@@ -32,7 +33,8 @@
       <div layout="row" flex layout-xs="column" >
         <md-whiteframe class="md-whiteframe-10dp" flex="40">
           <div>
-            <md-subheader><h2><b>ABOUT</b></h2></md-subheader>
+            <md-subheader><h1 class="md-subhead">ABOUT</h1></md-subheader>
+            <md-divider></md-divider>
             <md-list>
               <md-list-item class="md-3-line">
                 <div class="md-list-item-text">
@@ -77,23 +79,28 @@
 
         <md-whiteframe class="md-whiteframe-10dp" flex="70" flex-offset="5">
           <div layout="row" flex layout-xs="column" >
-            <md-subheader><h2><b>RECENT ACTIVITY</b></h2></md-subheader>
+            <md-subheader><h3>RECENT ACTIVITY</h3></md-subheader>
+
           </div>
-        </md-content>
-        <div layout="column">
-          <md-card ng-repeat="activity in recentActivity">
-            <md-list>
-              <md-list-item class="md-3-line" >
-                <div class="md-list-item-text">
-                  <h3><b>UPDATED ON:- {{activity.editedOn| date:"medium"}}</b></h3>
-                  <h5><b>WATCHLIST NAME:- {{activity.name}}</b></h5>
-                  <h6><b>EDITED BY:- {{activity.editedBy}}</b></h6>
-                </div>
-              </md-list-item>
-            </md-list>
-          </md-card>
-        </div>
-      </md-whiteframe>
-    </div>
-  </md-dialog-content>
+        <md-divider></md-divider>
+      </md-content>
+      <div layout="column">
+        <md-card ng-repeat="activity in recentActivity">
+          <md-list>
+            <md-list-item class="md-3-line" >
+              <div class="md-list-item-text">
+                <h3 style="md-display-1">{{activity.name}}</h3>
+                <h4>Created on <b>{{activity.createdOn| date:"medium"}}</b> by <b>{{activity.createdBy}}</b></h4>
+                <p>Last modified by <b>{{activity.editedBy}}</b> on <b>{{activity.editedOn| date:"medium"}}</b></p>
+                <!-- <h3><b>UPDATED ON:- {{activity.editedOn| date:"medium"}}</b></h3>
+                <h5><b>WATCHLIST NAME:- {{activity.name}}</b></h5>
+                <h6><b>EDITED BY:- {{activity.editedBy}}</b></h6> -->
+              </div>
+            </md-list-item>
+          </md-list>
+        </md-card>
+      </div>
+    </md-whiteframe>
+  </div>
+</md-dialog-content>
 </md-dialog>

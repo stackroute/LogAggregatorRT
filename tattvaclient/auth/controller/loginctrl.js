@@ -12,7 +12,7 @@ function($scope, $http, $state,AuthService) {
   $scope.login = function() {
     $scope.error = "";
     AuthService.signIn($scope.user).then(function(user) {
-      if(user.role=="tattvaAdmin"){
+      if(user.role=="TATTVAADM"){
         $state.go("adminHome");
       } else {
       $state.go("home");
