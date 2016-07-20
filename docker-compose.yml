@@ -41,22 +41,23 @@ services:
   mongodb:
     container_name: mongodb
     image: mvertes/alpine-mongo
+    network_mode: host
     restart: always
     expose:
       - 27017
     ports:
       - 27017:27017
-  redis:
-    container_name: redis
-    image: smebberson/alpine-redis
-    restart: always
-    expose:
-      - 6379
-    ports:
-      - 6379:6379
+ redis:
+   container_name: redis
+   image: smebberson/alpine-redis
+   restart: always
+   expose:
+     - 6379
+   ports:
+     - 6379:6379
   fluentd:
-    container_name: tattva-fluentd
-    image: tattva/tattva-fluentlogger:0.1.0
+    container_name: tattva-git-logger
+    image: tattva-git-logger:v1.0.0
     network_mode: host
     restart: always
     expose:
