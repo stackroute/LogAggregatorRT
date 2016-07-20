@@ -1,19 +1,22 @@
 <div style="margin-top:100px;margin-left:30px;">
   <div flex="100">
     <md-content>
-      Total number of watchlists running under tattva :
+      <h3 class="md-title">Active Watchlists : </h3>
     </md-content>
   </div>
-    <div flex="15">
-      <md-card>
-        <md-card-header md-theme="dark-grey" style="background:#eae1e1;">
-          <md-card-header-text>
-            <span class="md-headline">{{processorName}}</span>
-          </md-card-header-text>
-        </md-card-header>
-        <md-divider></md-divider>
-        <!-- {{watchtaskfilter}} -->
-      <heatmap data="processorMap" filter="watchtaskfilter" style="background:#F7F7F7"></heatmap>
-    </md-card>
-    </div>
+  <div flex="100">
+    <md-content>
+      <h3 class="md-title">Active Processors : {{nop}}</h3>
+    </md-content>
+  </div>
+        <!-- <pre ng-repeat="(procName, procObj) in processors">
+          {{processorMap}}
+          <br>
+          {{procName}}
+        </pre> -->
+
+      <heatmap ng-repeat="(procName, procObj) in processors" data="procObj" filter="watchtaskfilter" processorName="procName">
+    </heatmap>
+    <!-- </md-card>
+    </div> -->
 </div>

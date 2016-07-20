@@ -34,6 +34,7 @@ function pubDbTask(subscribeFrom, publishTo, payload) {
         // logger.debug("Got message from channel: ", channel, " with data: ", data);
 
         execObj = JSON.parse(data);
+        execObj['outon'] = new Date();
 
         push(null, execObj);
         next();
