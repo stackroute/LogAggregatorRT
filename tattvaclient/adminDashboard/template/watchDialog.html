@@ -12,34 +12,27 @@
 
   <md-dialog-content class="md-padding">
     <watchwidget class="flex-item" flex="{{watch.publishers.dashboard.displaySize}}" watchdefn="watch" eventobj="socket">
+      <span>
+        <div style='margin:5px;'>
+          <h4 style='display:inline'>By {{watch.createdBy}}</h4>
+          <p style='display:inline'>On {{watch.createdOn| date:"medium"}}</p>
+          <p>Modified by {{watch.editedBy}} on {{watch.editedOn| date:"medium"}}</p>
+        </div>
+      </span>
     </watchwidget>
 
-    <md-whiteframe class="md-whiteframe-10dp" flex="column"  layout layout-align="center center">
-      <!-- <span>.md-whiteframe-10dp</span> -->
-      <md-card flex="column">
-        <md-content>
-          <md-list>
-            <md-list-item class="md-5-line" >
-
-              <div class="md-list-item-text">
-
-                <h5><b>EDITED BY: {{watch.editedBy}}<b></h6>
-                <h6>EDITED ON: {{watch.editedBy}}</h6>
-                <h5><b>CREATED BY: {{watch.editedBy}}</b></h5>
-                <h6>CREATED ON: {{watch.editedBy}}</h5>
-
-              </div>
-              <div class="md-list-item-text" style="margin:-100px 0px 0px 840px;";>
-                <h4><b>STATUS:</b></h4>
-              </div>
-
-            </md-list-item>
-          </md-list>
-        </md-content>
-      </md-card>
-    </md-whiteframe>
-
-
+    <div>
+      <div flex="15">
+        <md-card md-theme="dark-grey" md-theme-watch>
+          <md-card-header style="background:#eae1e1;">
+            <md-card-header-text>
+              <span class="md-headline">{{processorName}}</span>
+            </md-card-header-text>
+          </md-card-header>
+          <md-divider></md-divider>
+          <heatmap data="processorMap" filter="watchtaskfilter" style="background:#F7F7F7"></heatmap>
+        </md-card>
+      </div>
+    </div>
   </md-dialog-content>
-
 </md-dialog>

@@ -2,7 +2,12 @@ angular.module('tattva')
   .controller("processorControlPanelCtrl",['$scope','$http','adminFactory',
   function($scope,$http,adminFactory){
   //api call for all the available processors
-
+  adminFactory.getprocessors().then(function(res){
+    console.log("processors res.data",res.data);
+  },function(res){
+    //error
+    console.log("Failed to get proccessors info error:",res.data.error);
+  });
   //api call for the watchlists running in a particular processor
 $scope.processorMap = [
   {
