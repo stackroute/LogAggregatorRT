@@ -16,4 +16,5 @@ RUN npm install && npm install -g bower && bower install
 
 EXPOSE 9090
 
+WORKDIR /usr/src/app
 CMD [ "npm", "run", "dwatch" ]

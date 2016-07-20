@@ -16,4 +16,5 @@ RUN npm install && npm install -g bower && bower install
 
 EXPOSE 8080
 
+WORKDIR /usr/src/app
 CMD [ "npm", "start" ]
