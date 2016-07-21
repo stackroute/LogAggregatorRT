@@ -1,9 +1,11 @@
 version: '2'
 services:
   webapp:
-    container_name: tattva-webapp
-    build: ./
     image: tattva/tattva-webapp:v0.1.0
+    build:
+      context: ./
+      dockerfile: Dockerfile-Tattva-Webapp
+    container_name: tattva-webapp
     network_mode: host
     restart: always
     expose:
@@ -11,8 +13,9 @@ services:
     ports:
     - "8080:8080"
     depends_on:
+    - watchloop
     - mongodb
-    - fluentd
+    - redis
     environment:
       MONGO_HOST: localhost
       MONGO_PORT: 27017
@@ -20,25 +23,46 @@ services:
       REDIS_HOST: localhost
       REDIS_PORT: 6379
   watchloop:
-    container_name: tattva-distwatchloop
-    build: ./tattva-docker-distwatchloop
-    image: tattva/tattva-distwatchloop:v0.1.0
+    image: tattva/tattva-watchloop:v0.1.0
+    build: 
+      context: ./
+      dockerfile: Dockerfile-Tattva-Watchloop
+    container_name: tattva-watchloop
     network_mode: host
     restart: always
     expose:
       - 9090
-    ports:
-    - "9090:9090"
     depends_on:
     - mongodb
-    - fluentd
+    - redis
     environment:
       MONGO_HOST: localhost
       MONGO_PORT: 27017
       MONGO_DB_NAME: tattva    
       REDIS_HOST: localhost
       REDIS_PORT: 6379
-  mongodb:    
+  watchprocessor:
+    image: tattva/tattva-watchprocessor:v0.1.0
+    build: 
+      context: ./
+      dockerfile: Dockerfile-Tattva-Watchprocessor
+    container_name: tattva-watchprocessor
+    network_mode: host
+    restart: always
+    expose:
+      - 8091
+    depends_on:
+    - watchloop
+    - mongodb
+    - redis
+    # - tattva-logcollector
+    environment:
+      MONGO_HOST: localhost
+      MONGO_PORT: 27017
+      MONGO_DB_NAME: tattva    
+      REDIS_HOST: localhost
+      REDIS_PORT: 6379
+  mongodb:
     container_name: mongodb
     image: mvertes/alpine-mongo
     network_mode: host
@@ -57,15 +81,15 @@ services:
      - 6379
    ports:
      - "6379:6379"
-  fluentd:
-    container_name: tattva-git-logger
-    image: tattva-git-logger:v1.0.0
-    network_mode: host
-    restart: always
-    expose:
-      - 24224
-      - 7070
-    ports:
-      - "24224:24224"
-      - "7070:7070"
+  # fluentd:
+  #   container_name: tattva-git-logger
+  #   image: tattva-git-logger:v1.0.0
+  #   network_mode: host
+  #   restart: always
+  #   expose:
+  #     - 24224
+  #     - 7070
+  #   ports:
+  #     - "24224:24224"
+  #     - "7070:7070"
       
