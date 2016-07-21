@@ -33,6 +33,7 @@ angular.module('tattva')
         } else if (eventData.channel == 'watchloop::onWatchListJoin') {
           //Show toast notification
           getProcessorMap();
+          $scope.$apply();
         }
       });
       $scope.$on('$destroy', function() {
