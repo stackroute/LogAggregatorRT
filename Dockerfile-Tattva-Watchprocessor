@@ -11,4 +11,5 @@ RUN npm install
 EXPOSE 8091
 
 WORKDIR /usr/src/app
-CMD [ "npm", "run", "processor" "8091"]
+#CMD [ "npm", "run", "processor" "8091"]
+CMD [ "node", "./bin/processor", "8091"]

@@ -5,7 +5,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile-Tattva-Webapp
-    container_name: tattva-webapp
+   # container_name: tattva-webapp
     network_mode: host
     restart: always
     expose:
@@ -27,7 +27,7 @@ services:
     build: 
       context: ./
       dockerfile: Dockerfile-Tattva-Watchloop
-    container_name: tattva-watchloop
+    # container_name: tattva-watchloop
     network_mode: host
     restart: always
     expose:
@@ -46,7 +46,7 @@ services:
     build: 
       context: ./
       dockerfile: Dockerfile-Tattva-Watchprocessor
-    container_name: tattva-watchprocessor
+    # container_name: tattva-watchprocessor
     network_mode: host
     restart: always
     expose:
@@ -63,7 +63,7 @@ services:
       REDIS_HOST: localhost
       REDIS_PORT: 6379
   mongodb:
-    container_name: mongodb
+    # container_name: mongodb
     image: mvertes/alpine-mongo
     network_mode: host
     restart: always
@@ -74,7 +74,7 @@ services:
     ports:
       - "27017:27017"
   redis:
-   container_name: redis
+   # container_name: redis
    image: smebberson/alpine-redis
    restart: always
    expose:
