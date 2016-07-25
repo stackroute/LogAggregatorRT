@@ -1,5 +1,9 @@
-var tattva= function(func){
-  var fnobj= require("./primitives/"+func);
+var path = require('path');
+
+var tattva = function(func) {
+  func = func.toLowerCase();
+  var fnobj = require(path.join(__dirname, ("/primitives/" + func)));
   return new fnobj();
 }
-module.exports=tattva;
+
+module.exports = tattva;

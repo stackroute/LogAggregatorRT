@@ -1,10 +1,10 @@
-function RecordAccumulator () {
+function RecordAccumulator() {
   var recordBucket = [];
 
   var slideCount = undefined;
 
   this.accumulateTill = function(count) {
-    if(!count) {
+    if (!count) {
       throw new Error("Invalid arguments passed for accumulation");
     }
 
@@ -16,13 +16,13 @@ function RecordAccumulator () {
   this.collectData = function(usrRecord) {
     var result = undefined;
 
-    if(usrRecord === null || usrRecord === undefined) {
+    if (usrRecord === null || usrRecord === undefined) {
       return false;
     }
 
     pushToBucket(usrRecord)
 
-    if( recordBucket.length == slideCount) {
+    if (recordBucket.length == slideCount) {
       //Accumulation is now reached
       var dataBucket = recordBucket.slice();
 
@@ -34,7 +34,7 @@ function RecordAccumulator () {
     return false;
   };
 
-  function pushToBucket (usrRecord) {
+  function pushToBucket(usrRecord) {
     recordBucket.push(usrRecord);
     return;
   }
