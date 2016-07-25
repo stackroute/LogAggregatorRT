@@ -1,41 +1,32 @@
+var functionProvider = require("../../datafunctionlib/datafnprovider");
+var logger = require("../../../applogger");
 
-var functionfield = {
+var functionFieldMapper = {
   map: function(fieldConfig, dataObj) {
     var result = undefined;
     var functionName = fieldConfig['function'];
-    var fnParams = fieldConfig['functionparam'];
-    fnParams = fnParams.split(","); //as function parameters are stored with comma separated value
+    var fnParamFields = fieldConfig['functionparam'];
+    fnParamFields = fnParamFields.split(","); //as function parameters are stored with comma separated value
 
-    if(functionName == "Sum") {
-      result=0;
-      for(i in fnParams) {
-        result += dataObj[fnParams[i]];
-      }
+    var fnParamData=[];
+    for(i in fnParamFields) {
+      var fieldData = dataObj[fnParamFields[i]];
+      fnParamData.push(fieldData);
     }
 
-    if(functionName == "Multiply") {
-      result=1;
-      for(i in fnParams) {
-        result *= dataObj[fnParams[i]];
-      }
-    }
+    var functionModule = new functionProvider(functionName);
+    var fnResult = functionModule.evaluate(fnParamData);
 
-    if(functionName == "Subtract") {
-      result=0;
-      for(i in fnParams) {
-        result -= dataObj[fnParams[i]];
-      }
-    }
-
-    if(functionName == "Divide") {
-      result=1;
-      for(i in fnParams) {
-        result /= dataObj[fnParams[i]];
-      }
+    if(!fnResult.error){
+      result=fnResult.output;
+        // logger.debug(result, " = ", functionName, "(", fnParamData, ")", "  data: ", dataObj);
+    } else {
+      logger.debug("Error in executing function ", functionName, " with parameters ", fnParamData);
+      result = undefined;
     }
 
     return result;
   }
 }
 
-module.exports = functionfield;
+module.exports = functionFieldMapper;

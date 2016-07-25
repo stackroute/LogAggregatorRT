@@ -1,0 +1,106 @@
+#sbrst {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  position: relative;
+  background: #fff;
+  margin: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+
+.processorbox {
+  min-width: 150px;
+  min-height: 300px;
+  padding: 5px;
+  margin: 10px;
+  border: 1px solid #f9f9f9;
+  /*background-color: #f9f9f9;*/
+}
+
+.proboxcsvg {
+  padding: 5px;
+  margin:auto;
+}
+/*form {
+  position: absolute;
+  right: 10px;
+  top: 10px;}*/
+path {
+  /*stroke: #fff;*/
+  fill-rule: evenodd;}
+
+/*legend dialog*/
+  #explanation {
+    position: absolute;
+    top: 285px;
+    left: 155px;
+    width: 140px;
+    height: 20px;
+    text-align: center;
+    color: #666;
+    z-index: 1;
+  }
+/*only sunburst styling added so far*/
+
+/* for orgwatch dialog*/
+.full-dialog{
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+/* for orgInfo dialog*/
+.fullscreen-dialog{
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+.apportcontainer{
+  padding: 4px;
+}
+
+/*for heat map*/
+rect.bordered {
+      stroke: #E6E6E6;
+      stroke-width:2px;
+    }
+
+rect.cell-hover {
+      stroke: #F00;
+      stroke-width:0.3px;
+    }
+
+    #tooltip {
+      position: absolute;
+      width: 200px;
+      height: auto;
+      padding: 10px;
+      background-color: white;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+      -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+
+    #tooltip.hidden {
+      display: none;
+    }
+
+    #tooltip p {
+      margin: 0;
+      font-family: sans-serif;
+      font-size: 12px;
+      line-height: 20px;
+    }
+.footer{
+  background-color: rgba(38, 166, 154, 0.66);
+}

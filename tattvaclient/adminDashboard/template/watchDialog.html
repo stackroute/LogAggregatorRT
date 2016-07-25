@@ -1,0 +1,35 @@
+<md-dialog aria-label="Full Screen dialog" class="full-dialog">
+
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2><b>{{orgSite}}</b></h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon class"material-icons" aria-label="Close dialog">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content class="md-padding">
+    <div layout="row" layout-align="none none">
+      <!-- <div><heatmap data="procObj" filter="watchtaskfilter" processorName="procName">
+    </heatmap></div> -->
+    <div ng-repeat="(procName, procObj) in processors">
+      <heatmap data="procObj" filter="watchtaskfilter" processorName="procName" style="min-height: 250px;">
+      </heatmap>
+    </div>
+  </heatmap>
+</div>
+    <watchwidget class="flex-item" flex="{{watch.publishers.dashboard.displaySize}}" watchdefn="watch" eventobj="socket">
+      <span>
+        <div style='margin:5px;'>
+          <h4 style='display:inline'>By {{watch.createdBy}}</h4>
+          <p style='display:inline'>On {{watch.createdOn| date:"medium"}}</p>
+          <p>Modified by {{watch.editedBy}} on {{watch.editedOn| date:"medium"}}</p>
+        </div>
+      </span>
+    </watchwidget>
+
+
+  </md-dialog-content>
+</md-dialog>

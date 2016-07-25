@@ -25,18 +25,26 @@ $scope.editparams=undefined;
   }
 
   $scope.removeExpression=function(index,expr) {
-      // console.log(index);
-      // if(index>1){
-      //   $scope.wlstdef.expressions[index].parent=$scope.wlstdef.expressions[index-1].tag;
-      //   // $scope.wlstdef.expressions[index-1].child=$scope.wlstdef.expressions[index-1].tag;
-      // }
+      // console.log("removed exp index:",index);
+      if(index===0){
+        $scope.wlstdef.expressions[index+1].parent="";
+      }
+      else if(index===$scope.wlstdef.expressions.length-1){
+        $scope.wlstdef.expressions[index-1].child="";
+      }
+      else{
+        $scope.wlstdef.expressions[index-1].child=$scope.wlstdef.expressions[index+1].tag;
+        $scope.wlstdef.expressions[index+1].parent=$scope.wlstdef.expressions[index-1].tag;
+      }
       $scope.wlstdef.expressions.splice(index,1);
     }
 
 
     $scope.addNewExpression=function(index,expr) {
+      // console.log("$scope.index:",$scope.index);
+      // console.log("index:",index);
         var newExpr = {
-          "tag": ("Expressions::" + ($scope.wlstdef.expressions.length + 1)),
+          "tag": ("Expression::" + ($scope.wlstdef.expressions.length + 1)),
           "parent":"",
           "child":"",
           "joinBy": "And",
@@ -56,13 +64,13 @@ $scope.editparams=undefined;
           $scope.index = $scope.wlstdef.expressions.length;
           if($scope.index!=0)
           {
-            console.log($scope.index);
-            $scope.wlstdef.expressions[$scope.index-1].child="tag::"+($scope.index+1);
+            // console.log($scope.index);
+            $scope.wlstdef.expressions[$scope.index-1].child="Expression::"+($scope.index+1);
           }
           if($scope.wlstdef.expressions.length>0)
           {
-            console.log($scope.index,$scope.wlstdef.expressions.length);
-            console.log($scope.wlstdef.expressions[0]);
+            // console.log($scope.index,$scope.wlstdef.expressions.length);
+            // console.log($scope.wlstdef.expressions[0]);
             newExpr.parent=$scope.wlstdef.expressions[$scope.index-1].tag;
           }
         }
@@ -85,20 +93,16 @@ $scope.editparams=undefined;
 
   $scope.savewatchlist=function()
   {
-
     if ($scope.editNamespace) {
       saveToDB.editwatchlistdata($scope.wlstdef)
       .then(
         function(res){
             console.log("ctrl success");
-
           $scope.showWatchManager();
         },
         function(res){
-
         }
       );
-
     }
     else{
       saveToDB.savewatchlistdata($scope.wlstdef)
@@ -239,19 +243,56 @@ $scope.watchlistCancel = function(){
 $scope.editWatchlist = function(){
   $scope.editFlag = false;
 }
-$scope.showConfirm = function(ev) {
-  // Appending dialog to document.body to cover sidenav in docs app
-  var confirm = $mdDialog.confirm()
-  .title('Are you sure you want to cancel it')
-  .ariaLabel('Lucky day')
-  .targetEvent(ev)
-  .ok('Yes')
-  .cancel('No');
-  $mdDialog.show(confirm).then(function() {
-    $state.go("design.watchlist")
-  }, function() {
-    $state.go("design.createwatchlist")
-  });
-};
+
+// $scope.removeWatchlist = function(){
+//   saveToDB.removeWatchlist($scope.wlstdef)
+//   .then(
+//     function(res){
+//         console.log("watchlist removed");
+//         $state.go('design.watchlist');
+//     },
+//     function(res){
+//
+//     }
+//   );
+// }
+// $scope.showRemoveConfirm = function(ev) {
+//     var confirm = $mdDialog.confirm()
+//           .title('Would you like to delete your watchlist?')
+//           .targetEvent(ev)
+//           .ok('Confirm')
+//           .cancel('Cancel');
+//     $mdDialog.show(confirm).then(function() {
+//       $scope.removeWatchlist();
+//     }, function() {
+//       $scope.status = 'You decided to keep your watchlist.';
+//     });
+//   };
+  $scope.showEditConfirm = function(ev) {
+      var confirm = $mdDialog.confirm()
+            .title('Would you like to stop currently running watclist?')
+            .targetEvent(ev)
+            .ok('Confirm')
+            .cancel('Cancel');
+      $mdDialog.show(confirm).then(function() {
+        $scope.editWatchlist();
+      }, function() {
+        $scope.status = 'You decided to keep your watchlist.';
+      });
+    };
+// $scope.showConfirm = function(ev) {
+//   // Appending dialog to document.body to cover sidenav in docs app
+//   var confirm = $mdDialog.confirm()
+//   .title('Are you sure you want to cancel it')
+//   .ariaLabel('Lucky day')
+//   .targetEvent(ev)
+//   .ok('Yes')
+//   .cancel('No');
+//   $mdDialog.show(confirm).then(function() {
+//     $state.go("design.watchlist")
+//   }, function() {
+//     $state.go("design.createwatchlist")
+//   });
+// };
 
 }]);

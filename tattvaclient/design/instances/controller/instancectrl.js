@@ -8,10 +8,23 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
   $scope.selectedIndex = 1;
   $scope.submitInstance = function() {
     $state.go('instance.submitInstance');
-
   }
 
-  namespaceFactory.getNameSpace().then(function(response){$scope.data=response;});
+  namespaceFactory.getNameSpace().then(function(response){$scope.data=response;
+    $scope.selectedRow = $scope.data[0].name;
+    $state.go("design.instance.viewInstance",{name:$scope.data[0].name});
+  });
+
+  $scope.setClickedRow = function(index){  //function that sets the value of selectedRow to current index
+    $scope.selectedRow = index;
+  }
+
+  $scope.predicate = 'name';
+  $scope.reverse = false;
+  $scope.order = function(predicate) {
+    $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+    $scope.predicate = predicate;
+  };
 
   $scope.status = '';
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
@@ -28,8 +41,6 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
       /* scope:{success:'false'}*/
     });
 
-
-
     $scope.$watch(function() {
       return $mdMedia('xs') || $mdMedia('sm');
     }, function(wantsFullScreen) {
@@ -37,8 +48,6 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
     });
 
     function DialogController($scope, $state, $mdDialog, $http) {
-
-
       namespaceFactory.getNameSpace().then(function(response){  $scope.namespaceSelect=response;});
 
       $scope.formtype="CREATE";
@@ -50,18 +59,18 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
         port: "",
         description: "",
         location: ""
-
       };
 
       $scope.createMsg = "";
       $scope.instanceSubmit = function() {
-
+        $scope.resError = "";
         $http({
           method: 'POST',
           url: 'instance/createdialogInstance',
           data: $scope.dInstance
-        }).success(function(response) {
+        }).then(function(response) {
           var data = {};
+          console.log("success");
           // if (data.errors) {
           //     $scope.errorName = data.errors.name;
           //     $scope.errorUserName = data.errors.username;
@@ -74,7 +83,6 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
           // {
           $scope.success = true;
           $scope.createMsg = "Instance Saved Successfully...!";
-
           // }
 
           /*  $mdDialog.templateUrl="partials/status.html";*/
@@ -85,27 +93,26 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
 
         /* console.dir($state);
 
-
         /*if($scope.nspname===null)
         $state.go("design.instance");
         else*/
         // $state.go("design.instance.viewInstance.addInstance({name: '"+$scope.dInstance.namespace+"' })");
-
+        // $scope.flag=true;
+      }, function(res){
+        $scope.resError = res.data.error;
+//        console.log(res.data.error);
       });
     }
-
     $scope.ok=function(){
       // if($scope.nspname===null)
-        $state.go("design.instance");
+      $state.go("design.instance");
       // else
       // $state.go("design.instance.viewInstance({name: '"+$scope.dInstance.namespace+"' })");
       $mdDialog.cancel();
     }
-
     $scope.cancel = function() {
       $mdDialog.cancel();
     }
-
   }
 }
 }

@@ -1,0 +1,26 @@
+<md-whiteframe class="md-whiteframe-3dp" layout="row" layout-align="none none">
+  <md-content class='apportcontainer' flex="100"  style="height:550px;">
+    <div class='subtitle' layout="row">
+      <h3 class="tabHeading">
+        Organisations
+      </h3>
+    </div>
+
+    <md-grid-list
+    md-cols-xs="1" md-cols-sm="8" md-cols-md="16" md-cols-gt-md="10"
+    md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="10px" md-gutter-gt-sm="18px">
+    <md-grid-tile ng-repeat="org in orgColln"
+    md-rowspan="2"
+    md-colspan="3" md-colspan-sm="1" md-colspan-xs="1"
+    ng-click="orgClick($event, org.orgSite)"
+    style="background-image: url({{org.orgLogo}}); background-size: contain;background-repeat:no-repeat;background-position:center;cursor:pointer">
+    <!-- rgba(0, 0, 0, 0.37); -->
+
+    <md-grid-tile-footer class="footer">
+      <h3>{{org.orgName}}</h3>
+    </md-grid-tile-footer>
+
+  </md-grid-tile>
+</md-grid-list>
+</md-content>
+</md-whiteframe>

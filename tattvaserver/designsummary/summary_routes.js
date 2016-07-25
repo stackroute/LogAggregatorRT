@@ -1,9 +1,10 @@
 var asyncModel = require('async');
 var summary_router = require('express').Router();
-var StreamModel = require('../datastream/stream.js');
-var NamespaceModel = require('../namespace/namespaces.js');
-var datasourceModel = require('../datasources/datasource.js');
-var WatchlistModel = require('../watchlists/watchlists.js');
+var StreamSchema = require('../datastream/stream.js');
+var NamespaceSchema = require('../namespace/namespaces.js');
+var DatasourceSchema = require('../datasources/datasource.js');
+var WatchlistSchema = require('../watchlists/watchlists.js');
+var dataProvider = require('../core/datamodelprovider');
 
 var summaryStats = [];
 summary_router.get('/',function(req, res, next){
@@ -11,18 +12,21 @@ summary_router.get('/',function(req, res, next){
   asyncModel.parallel( [
 
     function namespace(callback){
+      var NamespaceModel = dataProvider.getModel(NamespaceSchema, req.user.orgsite);
       NamespaceModel.count(function(err,count){
         callback(null,{name:"namespace", value: count});
       })
     },
 
     function datasource(callback){
-      datasourceModel.count(function(err,count){
+      var DatasourceModel = dataProvider.getModel(DatasourceSchema, req.user.orgsite);
+      DatasourceModel.count(function(err,count){
         callback(null,{name:"datasource", value: count});
       });
     },
 
     function stream(callback){
+      var StreamModel = dataProvider.getModel(StreamSchema, req.user.orgsite);
       StreamModel.count(function(err,count){
         callback(null, {name:"streams", value: count});
       });
@@ -30,6 +34,7 @@ summary_router.get('/',function(req, res, next){
 
 
     function watchlist(callback){
+      var WatchlistModel = dataProvider.getModel(WatchlistSchema, req.user.orgsite);
       WatchlistModel.count(function(err,count){
         callback(null,{name:"watchlist", value: count});
       });

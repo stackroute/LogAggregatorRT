@@ -23,6 +23,8 @@ angular.module('tattva')
       $scope.streamsData.user_streamName = $scope.editStream.streamname;
       $scope.streamsData.stringDescription = $scope.editStream.description;
       $scope.streamsData.queryBuilder = $scope.editStream.query;
+    },function(response){
+      $scope.resError = response.data.error;
     });
   }
 
@@ -76,9 +78,10 @@ angular.module('tattva')
   }
 
   $scope.save=function(){
-    // console.log("Inside Factory");
     if ($stateParams.streamName) {
       // console.log("streams=====",$stateParams.streamName);
+        // console.log(res.data.error);
+        // $scope.resError = res.data.error;
       var streamData={namespace : $scope.user_namespace , instance : $scope.user_instance , streamname : $scope.streamsData.user_streamName, description : $scope.streamsData.stringDescription , query : $scope.streamsData.queryBuilder };
       streamsservice.saveEditedStream(streamData);
       $scope.editStreamFlag = true;
@@ -86,7 +89,17 @@ angular.module('tattva')
     else {
       var streamData={namespace : $scope.user_namespace , instance : $scope.user_instance, streamname : $scope.streamsData.user_streamName, description : $scope.streamsData.stringDescription , query : $scope.streamsData.queryBuilder };
       // console.log("streamData = ",streamData);
-      streamsservice.saveStream(streamData);
+      streamsservice.saveStream(streamData).then(function(successCB){
+        console.log(streamData);
+        // $scope.showAlert("Stream saved successfully");
+        // var savedDialog = $mdDialog.confirm()
+        //                         .title('Stream')
+        //success---change the state
+      },function(errorCB){
+        //error
+        // console.log(errorCB.data.error);
+        $scope.resError = errorCB.data.error;
+      });
       $scope.editStreamFlag = true;
     }
     $state.go("design.streams.viewStreams");

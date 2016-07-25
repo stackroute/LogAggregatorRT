@@ -1,0 +1,106 @@
+version: '2'
+services:
+  webapp:
+    image: tattva/tattva-webapp:v0.1.0
+    build:
+      context: ./
+      dockerfile: Dockerfile-Tattva-Webapp
+   # container_name: tattva-webapp
+    network_mode: host
+    restart: always
+    expose:
+      - 8080
+    ports:
+    - "8080:8080"
+    depends_on:
+    - watchloop
+    - mongodb
+    - redis
+    environment:
+      MONGO_HOST: localhost
+      MONGO_PORT: 27017
+      MONGO_DB_NAME: tattva
+      REDIS_HOST: localhost
+      REDIS_PORT: 6379
+  watchloop:
+    image: tattva/tattva-watchloop:v0.1.0
+    build: 
+      context: ./
+      dockerfile: Dockerfile-Tattva-Watchloop
+    # container_name: tattva-watchloop
+    network_mode: host
+    restart: always
+    expose:
+      - 9090
+    depends_on:
+    - mongodb
+    - redis
+    environment:
+      MONGO_HOST: localhost
+      MONGO_PORT: 27017
+      MONGO_DB_NAME: tattva    
+      REDIS_HOST: localhost
+      REDIS_PORT: 6379
+  watchprocessor:
+    image: tattva/tattva-watchprocessor:v0.1.0
+    build: 
+      context: ./
+      dockerfile: Dockerfile-Tattva-Watchprocessor
+    # container_name: tattva-watchprocessor
+    network_mode: host
+    restart: always
+    expose:
+      - 8091
+    depends_on:
+    - watchloop
+    - mongodb
+    - redis
+    - tattva-git-logger
+    environment:
+      MONGO_HOST: localhost
+      MONGO_PORT: 27017
+      MONGO_DB_NAME: tattva    
+      REDIS_HOST: localhost
+      REDIS_PORT: 6379
+  mongodb:
+    # container_name: mongodb
+    image: mvertes/alpine-mongo
+    network_mode: host
+    restart: always
+    volumes:
+      - /data:/data/db
+    expose:
+      - 27017
+    ports:
+      - "27017:27017"
+  redis:
+   # container_name: redis
+   image: smebberson/alpine-redis
+   restart: always
+   expose:
+     - 6379
+   ports:
+     - "6379:6379"
+  tattva-git-logger:
+    image: tattva/tattva-git-logger:v0.1.0
+    # container_name: tattva-git-logger
+    network_mode: host
+    restart: always
+    depends_on:
+    - fluentd
+    environment:
+      FLUENTD_HOST: localhost
+      FLUENTD_FWD_PORT: 24242
+  fluentd:
+    image: fluentd/fluentd-websocket-output:v0.1.0
+    # container_name: fluentd-websocket
+    network_mode: host
+    restart: always
+    expose:
+      - 24224
+      - 24242
+      - 24284
+      - 5140
+      - 7070
+    ports:
+      - "7070:7070"   

@@ -5,7 +5,7 @@ angular.module("tattva")
     var watchloopdata={watchname:watchlistData1.name,execstatus:"active",execstartedon:"",execstoppedon:"",watcherrors:""};
     $http({
       method : 'post',
-      url : '/watchloop',
+      url : '/distwatchloop/watchloop',
       data : watchloopdata
     }).then(function(response)
     {
@@ -13,7 +13,7 @@ angular.module("tattva")
         // Showing errors.
         $scope.errorName = response.data.errors.name;
       } else {
-        $scope.message = response.data.message;
+        // $scope.message = response.data.message;
       }
     },function(err){
     });
@@ -22,10 +22,10 @@ angular.module("tattva")
 this.savewatchloopeditdata=function(watchlistData1){
     $http({
       method : 'put',
-      url : '/watchloop',
+      url : '/distwatchloop/watchloop',
       data : watchlistData1
     }).then(function(response)
-    { 
+    {
     },function(err){
       //console.log(err);
     });
@@ -121,11 +121,27 @@ this.savewatchloopeditdata=function(watchlistData1){
 
   };
 
+  // this.removeWatchlist=function(watchlistData1){
+  //   var watchlistData=watchlistData1;
+  //   return $q(function(resolve, reject) {
+  //     $http.delete('/watchlist/'+watchlistData.name)
+  //     .then(function(res) {
+  //       //success
+  //           console.log("remove from db success");
+  //         resolve(res.data);
+  //     },
+  //     function(res) {
+  //       //error
+  //       reject(res.data);
+  //     }
+  //   );
+  // })
+  // };
+
 
   this.getwatchlistdata=function()
   {
-    $http.get('/watchlistdata',function()
-    {
+    $http.get('/watchlistdata',function() {
     });
   };
 }]);

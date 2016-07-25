@@ -11,7 +11,15 @@ box-shadow: 0px 0px 5px 0px rgba(188,194,194,1);
 .viewInst .md-button{
   text-transform: none;
 }
-
+.md-fab{
+  margin-top: 10px;
+}
+.selected {
+    background-color: rgba(158,158,158,0.2);
+}
+md-input-container{
+  margin-bottom: 0px;
+}
 .instance md-input-container,.instanceDialog md-input-container{
 
   height:3em;
@@ -50,7 +58,9 @@ md-input-container label{
 .searchbox md-input-container .md-errors-spacer {
   min-height: 0;
 }
-
+.error{
+  color:red;
+}
 .instance{
   padding-top:5%;
   margin-left:30%;

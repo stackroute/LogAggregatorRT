@@ -56,7 +56,8 @@ function($scope,$mdDialog,publisherSettingFactory, publisherData,namespaceFactor
       "widgetTabs": [
         {"name":"Graph","value":"graph"},
         {"name":"Log Format","value":"logFormat"},
-        {"name":"Flow Map","value":"flowmap"}
+        {"name":"Flow Map","value":"flowmap"},
+        {"name":"Historic Data","value":"historicData"}
       ],
       "graphTypes": [
         {"name":"Line","value":"line","icon":"show_chart"},

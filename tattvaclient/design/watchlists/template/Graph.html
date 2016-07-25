@@ -1,0 +1,6 @@
+<md-content class="md-padding fix" ng-if="watchdefn.publishers.dashboard.graphType === 'donut'">
+  <donutchart></donutchart>
+</md-content>
+<md-content class="md-padding fix" ng-if="watchdefn.publishers.dashboard.graphType === 'line'">
+  <linear-chart watchname="watchdefn.name" orgsite="watchdefn.orgsite" eventobj="eventobj" configobj="watchdefn.publishers.dashboard"></linear-chart>
+</md-content>

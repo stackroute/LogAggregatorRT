@@ -1,0 +1,59 @@
+Terms frequently going to use in Tattva
+
+Operational intelligence
+----------------------------------
+Operational intelligence (OI) is a category of real-time dynamic, business analytics
+that delivers visibility and insight into data, streaming events and business
+operations. Operational Intelligence solutions run queries against streaming
+data feeds and event data to deliver real-time analytic results.
+          Operational Intelligence provides organizations the ability to make decisions and
+immediately act on these analytic insights, through manual or automated actions.
+
+The purpose of OI is to monitor business activities and identify and detect situations relating
+to inefficiencies, opportunities, and threats and provide operational solutions.
+Some definitions define operational intelligence an event-centric approach to
+delivering information that empowers people to make better decisions.
+
+Complex Event Processing(CEP)
+---------------------------------------
+Event
+----------------------------
+An event can be defined as "a significant change in state"
+    An event is an action or occurrence recognised by software that may be handled
+by the software. Computer events can be generated or triggered by the system,
+by the user or in other ways.
+
+Distributed computing?
+-----------------------------------------
+ A distributed system is a model in which components located on networked computers
+ communicate and coordinate their actions by passing messages. The components interact
+ with each other in order to achieve a common goal.
+
+ What is distributed in Distributed Computing?
+ --------------------------------------------------
+ The word distributed in terms such as "distributed system", "distributed programming",
+ and "distributed algorithm" originally referred to computer networks where individual
+ computers were physically distributed within some geographical area. Something which is
+ present not in same place physically or virtually.
+
+ Cluster Computing:
+ ----------------------
+ A computer cluster consists of a set of loosely or tightly connected computers
+ that work together so that, in many respects, they can be viewed as a single system.
+
+Dedicated Server
+-------------------------
+ A dedicated server is a type of remote server that is entirely dedicated
+ to an individual, organization or application.
+
+ Scalability
+ ----------------------------
+ Scalability is the capability of a system, network, or process to handle a growing
+ amount of work, or its potential to be enlarged in order to accommodate that growth.
+ For example, it can refer to the capability of a system to increase its total output
+ under an increased load when resources (typically hardware) are added.
+
+ In other words, Scalability is the ability of a program to scale.
+ For example, if you can do something on a small database (say less than 1000 records),
+ a program that is highly scalable would work well on a small set as well as working
+ well on a large set (say millions, or billions of records).

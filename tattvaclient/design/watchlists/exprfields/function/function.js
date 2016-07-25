@@ -1,11 +1,11 @@
 angular.module("tattva")
 .controller('FunctionCtrl',['$scope','$mdDialog','fieldData','loadExprData','fieldData2','namespaceFactory',function($scope,$mdDialog,fieldData,loadExprData,fieldData2,namespaceFactory)
 {
-$scope.function=[];
+  $scope.function=[];
   $scope.namespace=fieldData2.namespace;
   loadExprData.getFunction().then(function(result){
     var data=result.data;
-    
+
     return data;
   }).then(function(data)
   {

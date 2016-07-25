@@ -5,7 +5,7 @@ body {
 }
 
 .content{
-  padding-top: 70px;
+  margin-top: 80px;
 }
 
 .main-bar{
@@ -46,11 +46,15 @@ md-list-item a {
 }
 
 .person{
-  width: 80%;
-  height: 90%;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   box-shadow: -1px 0px 5px 1px #0A6969;
   padding: 10px;
+}
+
+.footer-margin-top {
+  margin-top: 100px;
 }
 
 .footer_part1{

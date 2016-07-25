@@ -2,9 +2,10 @@ var mongoose = require( 'mongoose' );
 var Schema=mongoose.Schema;
 
 var watchLoopSchema= new Schema({
-      "watchid": {type:Schema.Types.ObjectId,ref: 'watchlists'},
-      "watchname":{type:String,required:true},
-      "execstatus":{type:String,required:true,default:"active"},
+      "orgsite":{type:String,required:true},
+      "watchname":{type:String,required:true,unique:true},
+      "status":{type:String,required:true,default:"active"},
+      "execstatus":{type:String,required:true,default:"created"},
       "execstartedon":{type:String,default:Date.now},
       "execstoppedon":{type:String},
       "watcherrors": [
@@ -13,7 +14,7 @@ var watchLoopSchema= new Schema({
         "error":{type:String}
         }
       ]
-    });
+    },{collection: "watchloops"});
 
-var watchloop = mongoose.model('watchloop', watchLoopSchema);
-module.exports = watchloop;
+// var watchloop = mongoose.model('watchloop', watchLoopSchema);
+module.exports = watchLoopSchema;

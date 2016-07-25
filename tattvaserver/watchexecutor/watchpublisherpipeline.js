@@ -6,12 +6,7 @@ var fs = require('fs');
 var watchPublishPipeline = function(wlstDef) {
   var myProcessors = [];
   var socket = new socketClient('http://localhost:8080/');
-  var roomName = wlstDef.orgsite + "::" + wlstDef.name;
-  socket.emit('join:room', {
-    'room': roomName
-  });
-
-  console.log("Watch room ", roomName);
+  var channelName = wlstDef.orgsite + "::" + wlstDef.name;
 
   var outLogFile = wlstDef.name;
   outLogFile = outLogFile.replace(" ", "_") + ".log";
@@ -20,35 +15,41 @@ var watchPublishPipeline = function(wlstDef) {
   if (wlstDef.publishers.dashboard) {
     myProcessors.push(highland.map(function(execObj) {
       // console.log("Emmitting data over socket room");
-      socket.emit('watchlist:onResult', {
-        'room': {
-          'name': roomName
-        },
-        'message': {
-          'data': execObj
+
+      var watchResult = false;
+      //If graph was selected
+      if(wlstDef.publishers.dashboard.graphType) {
+        if(execObj.path) {
+          if(execObj.path.watchresult)
+          watchResult = execObj.path.watchresult;
         }
-      });
-      return execObj;
-    }));
+      }
 
-    myProcessors.push(highland.each(function(execObj) {
-      //outtream.write("\n" + JSON.stringify(execObj) + "\n");
-      outtream.write(".");
+      socket.emit('watchlist:onResultPublish', {'channel': channelName,
+      'logdata': execObj.data,
+      'watchresult': watchResult,
+      'path': execObj.path
+    });
+    return execObj;
+  }));
 
-      // console.log("Result: ", execObj.path)
-      return execObj;
-    }));
-  }
+  myProcessors.push(highland.each(function(execObj) {
+    // outtream.write("\n" + JSON.stringify(execObj) + "\n");
+    outtream.write(".");
+    //  console.log("Result: ", execObj.path)
+    return execObj;
+  }));
+}
 
-  if (wlstDef.publishers.database.saveas) {
-    //Add a database publisher
-  }
+if (wlstDef.publishers.database.saveas) {
+  //Add a database publisher
+}
 
-  if (wlstDef.publishers.outstream.streamname) {
-    //Add a output stream publisher
-  }
+if (wlstDef.publishers.outstream.streamname) {
+  //Add a output stream publisher
+}
 
-  return highland.pipeline.apply(null, myProcessors);
+return highland.pipeline.apply(null, myProcessors);
 }
 
 module.exports = watchPublishPipeline;

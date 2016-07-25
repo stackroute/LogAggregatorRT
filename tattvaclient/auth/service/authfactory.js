@@ -27,7 +27,6 @@ angular.module("tattva")
     var u = $window.localStorage['member-user'];
     if (u !== undefined)
     u = JSON.parse(u);
-
     return u;
   };
 
@@ -56,78 +55,21 @@ angular.module("tattva")
   };
 
   auth.getUserNavItem = function() {
-    if(auth.isMember()) {
-      navItems = {
-        topNav: [
-          {
-            'menu': 'Sign out',
-            'link': 'signout'
-          }
-        ],
-        sideNav: [
-          {
-            "menu" : "Dashboard",
-            "link" : "home",
-            "icon" : "dashboard",
-          },
-          {
-            "menu" : "Design",
-            "link" : "design.summary",
-            "icon" : "playlist_add",
-            "children" : [
-              {
-                "menu" : "Namespace",
-                "link" : "design.namespace"
-              },
-              {
-                "menu" : "Instance",
-                "link" : "design.instance"
-              },
-              {
-                "menu" : "Streams",
-                "link" : "design.streams"
-              },
-              {
-                "menu" : "Functions",
-                "link" : "design.function"
-              },
-              {
-                "menu" : "Watchlists",
-                "link" : "design.watchlist"
-              }
-            ]
-          },
-          {
-            "menu" : "Organisation",
-            "link" : "organisation",
-            "icon" : "group"
-          },
-          {
-            "menu" : "Action",
-            "link" : "action",
-            "icon" : "gavel"
-          },
-          {
-            "menu" : "Notification",
-            "link" : "notification",
-            "icon" :  "notifications"
-
-          }
-        ]
-      }
-      return navItems;
+    var url = "";
+    if (auth.isMember()) {
+      url = '/sideNav/' + auth.getUser().role;
+    } else {
+      url = '/guest';
     }
-    else {
-      navItems = {
-        topNav: [{'link': 'signin',
-        'menu': 'Sign in'
-      }
-    ],
-    sideNav: []
-  }
-  return navItems;
-}
-}
+
+    return $http.get(url).then(function(res) {
+      data =  res.data;
+      return data;
+    }, function(res) {
+      console.log("Error in completing the request: ", res);
+      return undefined;
+    });
+  };
 
 auth.signIn = function(signinFormData) {
   //Returning a promise object
@@ -140,9 +82,17 @@ auth.signIn = function(signinFormData) {
         auth.removeUser(); //ensuring user is not saved locally
         reject(res.data);
       } else if (res.status >= 200 && res.status <= 299) {
-        //Successfully authenticated
-        auth.saveUser(res.data);
-        resolve(auth.getCurrentUser());
+        if(res.data.user && res.data.token ) {
+          res.data.user.token = res.data.token;
+          //Successfully authenticated
+          auth.saveUser(res.data.user);
+          //console.log("response",res.data.token);
+          resolve(auth.getCurrentUser());
+        } else {
+          //Login request passed but required data was not returned
+          auth.removeUser();
+          reject(res.data);
+        }
       }
     },
     function(res) {
@@ -188,10 +138,21 @@ auth.signUp = function(signupFormData) {
         auth.removeUser(); //ensuring user is not saved locally
         reject(res.data);
       } else if (res.status >= 200 && res.status <= 299) {
+        if(res.data.user && res.data.token ) {
+          res.data.user.token = res.data.token;
+          //Successfully authenticated
+          auth.saveUser(res.data.user);
+          //console.log("response",res.data.token);
+          resolve(auth.getCurrentUser());
+        } else {
+          //Signup request passed but required data was not returned
+          auth.removeUser();
+          reject(res.data);
+        }
         //Successfully authenticated
-        console.log("Successfull signup of user: ", res.data);
-        auth.saveUser(res.data);
-        resolve(auth.getCurrentUser());
+        // console.log("Successfull signup of user: ", res.data);
+        // auth.saveUser(res.data);
+        // resolve(auth.getCurrentUser());
       }
     },
     function(res) {
@@ -203,6 +164,6 @@ auth.signUp = function(signupFormData) {
 });
 };
 
-// console.log(auth);
+ //console.log(auth);
 return auth;
 });

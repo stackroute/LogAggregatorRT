@@ -24,7 +24,7 @@
     <div layout="row">
       <md-input-container class="md-block" flex="35">
         <label class="lowercase">Name of Stream</label>
-        <input required name="streamName" ng-model="streamsData.user_streamName" ng-disabled="editParameter">
+        <input required name="streamName" ng-model="streamsData.user_streamName" ng-disabled="editParameter" ng-required="true">
         <div ng-messages="projectForm.streamName.$error">
           <div ng-message="required">This is required.</div>
         </div>
@@ -81,7 +81,10 @@
       </div>
     </div>
   </fieldset>
-  <div layout="row" flex-offset="40">
+  <div layout-margin>
+  <span flex="60" class="error">{{resError}}</span>
+  </div>
+  <div layout="row" flex-offset="40" layout-margin>
     <md-button class="md-raised" ui-sref="design.streams.viewStreams">Cancel</md-button>
     <md-button class="md-raised md-primary" type="submit" ng-disabled="projectForm.$invalid" ng-if="!editStream && !editStreamFlag">Create</md-button>
     <md-button class="md-raised md-primary" type="submit" ng-disabled="projectForm.$invalid" ng-if="editStream && !editStreamFlag">Save</md-button>

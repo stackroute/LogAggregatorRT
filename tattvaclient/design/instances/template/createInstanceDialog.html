@@ -19,10 +19,9 @@
           </md-input-container>
 
           <md-input-container class="md-block" >
-
             <label>Name of Instance</label>
             <md-icon class="material-icons">label</md-icon>
-            <input type="text" ng-model="dInstance.name" ng-disabled="flag" ng-required="true" >
+            <input type="text" ng-model="dInstance.name" name="instanceName" ng-disabled="flag" ng-required="true" >
             <div flex layout-align="right" ng-messages="createInstance.ip.$error" class="error" id="myerr" role="alert">
               <div ng-message-exp="['required']">
                 *required
@@ -85,8 +84,12 @@
                 *required
               </div>
             </div>
+            <div layout-margin>
+            <span flex="60" class="error">{{resError}}</span>
+          </div>
+
           </md-input-container>
-          <div layout="row" ng-hide="success">
+          <div layout="row" ng-hide="success" layout-margin>
             <div flex="30" flex-offset="20" layout-align="center">
               <md-button  class="md-raised " type="button" ng-click="cancel()">CANCEL</md-button>
             </div>
