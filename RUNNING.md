@@ -52,6 +52,10 @@ You also need a source for logs, currently git commit logs are available for thi
 
 		cd Git-Log-Fetcher
 
+- Create a logs folder, which by default ignored by gitignore
+
+		mkdir logs
+		
 - This project too runs as a Docker container, however first we need to build the docker image, we will not be running this image directly, instead tattva will run this image. To build this image, execute below command 
 
 		sudo docker-compose build -d
@@ -87,6 +91,17 @@ Once you have required prerequisites, proceed to checkout Tattva project to your
 		cd LogAggregatorRT 
 
 - PS: All git commands, docker command should always be executed from the root folder of your project
+
+- Create a logs folder, which by default ignored by gitignore
+
+		mkdir logs
+
+- Then install npm and bower modules, which are needed for the project to run (especially bower modules, as they are not installed from inside of the docker container unlike node modules)
+
+		sudo npm install --no-bin-links
+		sudo bower install --allow-root
+		
+	> PS: If you get any error in installing these modules, please resole them before proceeding
 
 - Execute below command to build the docker images of Tattva services, using below command
 
