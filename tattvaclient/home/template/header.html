@@ -12,7 +12,7 @@
       </div>
       <span flex></span>
       <md-button ng-if="notification_show" ng-click="showDialog($event)" class="md-fab md-mini md-primary"><md-icon><i class="material-icons">notifications</i></md-icon></md-button>
-      <!-- <md-button ng-if="notification_show" class="md-icon-button" style="width:auto"><md-icon><i class="material-icons">account_circle </i></md-icon> {{user.name}}</md-button> -->
+      <md-button ng-if="notification_show" class="md-icon-button" style="width:auto"><md-icon><i class="material-icons">account_circle </i></md-icon> {{user.name}}</md-button>
       <div ng-repeat="topNavItem in userNavItems.topNav">
         <a class="linkClr" ui-sref="{{topNavItem.link}}"><md-button>{{topNavItem.menu}}</md-button></a>
       </div>
