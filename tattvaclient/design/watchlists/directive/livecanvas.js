@@ -82,8 +82,6 @@ angular.module('tattva').directive('linearChart', function($interval) {
           tickColor = anomalyTickColor;
         }
         
-
-
         //prune excess data, no point in keeping it accumulated
         if (graphData.length > maxData) {
           console.log('in max')

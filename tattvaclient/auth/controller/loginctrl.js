@@ -15,7 +15,6 @@ function($scope, $http, $state,AuthService) {
   $scope.signUp=function(){
     $scope.selectedIndex = 1;
   }
-
   $scope.signIn=function(){
     $scope.selectedIndex = 0;
   }
