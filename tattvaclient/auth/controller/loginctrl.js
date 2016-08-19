@@ -1,4 +1,15 @@
 angular.module('tattva')
+.directive('validPasswordC', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, elm, attrs, ctrl) {
+            ctrl.$parsers.unshift(function (viewValue, $scope) {
+                var noMatch = viewValue != scope.registerForm.password.$viewValue
+                ctrl.$setValidity('noMatch', !noMatch)
+            })
+        }
+    }
+})    
 .controller('LoginCtrl', ['$scope', '$http', '$state','AuthService',
 function($scope, $http, $state,AuthService) {
   $scope.signUp=function(){
@@ -10,7 +21,7 @@ function($scope, $http, $state,AuthService) {
   }
   $scope.success="true";
   $scope.login = function() {
-    $scope.error = "";
+    $scope.error = " ";
     AuthService.signIn($scope.user).then(function(user) {
       if(user.role=="TATTVAADM"){
         $state.go("adminHome");
@@ -18,7 +29,8 @@ function($scope, $http, $state,AuthService) {
       $state.go("home");
       }
     }, function(err) {
-      $scope.error = err.message;
+      console.log(err.error);
+      $scope.error = err.error;
     });
   }
 

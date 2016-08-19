@@ -19,6 +19,8 @@ angular.module('tattva').directive('linearChart', function($interval) {
       var xattrValue = xattr.replace(/([A-Z]+)*([A-Z][a-z])/g, "$1 $2").toUpperCase();
       var yattrValue = yattr.replace(/([A-Z]+)*([A-Z][a-z])/g, "$1 $2").toUpperCase();
       var parsedDate = null;
+      var normalTickColor = "blue";
+      var anomalyTickColor = "red";
 
       //Generate a unique ID for each graph div, so that data is not mixed up and each graph is plotted/updated individually
       var chartElemId = 'cntr-' + scope.watchname.replace(/\s+/g, '-').toLowerCase();
@@ -42,7 +44,7 @@ angular.module('tattva').directive('linearChart', function($interval) {
           title: yattrValue,
           interlacedColor: '#f9f9f9',
           gridColor: '#d9d9d9',
-          tickColor: 'red',
+          tickColor: "blue",
           titleFontSize: 12,
           labelFontSize: 10
         },
@@ -52,7 +54,7 @@ angular.module('tattva').directive('linearChart', function($interval) {
           dataPoints: graphData
         }]
       });
-      // chart.render();
+      //chart.render();
 
       $interval(function() {
         chart.render();
@@ -62,19 +64,29 @@ angular.module('tattva').directive('linearChart', function($interval) {
       scope.eventobj.on(eventName, function(data) {
         var date = new Date(data.logdata[xattr]);
         parsedDate = new Date(date.getUTCFullYear(),
-          date.getUTCMonth(),
-          date.getUTCDate(),
-          date.getUTCHours(),
-          date.getUTCMinutes(),
-          date.getUTCSeconds());
+        date.getUTCMonth(),
+        date.getUTCDate(),
+        date.getUTCHours(),
+        date.getUTCMinutes(),
+        date.getUTCSeconds());
+
+        //changing the color of anomalies and pushing the data
 
         graphData.push({
           x: parsedDate,
-          y: data.logdata[yattr]
+          y: data.logdata[yattr],
+          color:normalTickColor
         });
 
-        //prune excess data, no point in keeping it accumulated 
+        if(data.watchresult) {
+          tickColor = anomalyTickColor;
+        }
+        
+
+
+        //prune excess data, no point in keeping it accumulated
         if (graphData.length > maxData) {
+          console.log('in max')
           graphData.shift();
         }
         //updateChart();
@@ -82,4 +94,6 @@ angular.module('tattva').directive('linearChart', function($interval) {
 
     }
   };
+
+
 });
