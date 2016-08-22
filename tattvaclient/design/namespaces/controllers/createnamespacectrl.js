@@ -1,30 +1,58 @@
 angular.module('tattva')
-.controller("createNamespaceCtrl", ["$scope", "$state", "$http", "$mdDialog", "$mdToast", "namespaceFactory", "$stateParams",
-function($scope, $state, $http, $mdDialog, $mdToast, namespaceFactory, $stateParams) {
+.controller("createNamespaceCtrl", ["$scope", "$state", "$http", "$mdDialog", "$mdToast", "namespaceFactory", "$stateParams", "jsonFilter",
+  function($scope, $state, $http, $mdDialog, $mdToast, namespaceFactory, $stateParams, jsonFilter) {
 
-  $scope.temp = $scope.uploadJSONText;
-  $scope.uploadJSONFlag = false;
-  $scope.editData = undefined;
+    $scope.temp = $scope.uploadJSONText;
+    $scope.uploadJSONFlag = false;
+    $scope.editData = undefined;
 
-  $scope.nameSpace = {
-    dataSchema: [{
-      type: "dimension"
-    }]
-  };
+    $scope.nameSpace = {
+      dataSchema: [{
+        type: "dimension"
+      }]
+    };
 
-  $scope.editNamespaceFlag = true;
-  if ($stateParams.editNamespaceData) {
-    $scope.error="";
-    $scope.editData = $stateParams.editNamespaceData;
-    console.log($scope.editData);
-    namespaceFactory.getNamespaceDetails($scope.editData)
-    .then(function(data) {
-      $scope.nameSpace = data;
-    }, function(data) {
-      $scope.error = data.error;
+    $scope.hideError = function(){
+      $scope.parsingError = "";
     }
-  );
-};
+
+    $scope.editNamespaceFlag = true;
+    if ($stateParams.editNamespaceData) {
+      $scope.error="";
+      $scope.editData = $stateParams.editNamespaceData;
+      console.log($scope.editData);
+      namespaceFactory.getNamespaceDetails($scope.editData)
+      .then(function(data) {
+        $scope.nameSpace = data;
+      }, function(data) {
+        $scope.error = data.error;
+      }
+      );
+    };
+
+    $scope.watchChanges = function(){
+      var tempSchema = {};
+      $scope.nanError="";
+      for (i = 0; i < $scope.nameSpace.dataSchema.length; i++) {
+        if ((typeof $scope.nameSpace.dataSchema[i]) === 'object') {
+          var name = $scope.nameSpace.dataSchema[i].name,
+          sample =  $scope.nameSpace.dataSchema[i].sample;
+          if($scope.nameSpace.dataSchema[i].type == 'measure'){
+            if(isNaN(sample)){
+              alert("Sample Data is NaN");
+              $scope.nameSpace.dataSchema[i]["type"] = "dimension";
+            }
+            else{
+              sample = parseFloat(sample);
+            }
+          }
+          tempSchema[name] = sample;
+          $scope.uploadJSONText = jsonFilter(tempSchema);
+
+        }
+      }
+  //console.log($scope.uploadJSONText);
+}
 
 $scope.deleteDataFormat = function(index) {
   $scope.nameSpace.dataSchema.splice(index, 1);
@@ -137,7 +165,7 @@ $scope.showAlert = function(ev, dialougeText) {
     .ariaLabel('Namespace updated.')
     .ok('Ok')
     .targetEvent(ev)
-  );
+    );
   $state.go("design.namespace")
 };
 
@@ -146,80 +174,70 @@ $scope.createNamespaceCancel = function() {
 }
 
 $scope.uploadJSON = function(inputJSONText) {
-  // try {
-  //
-  //   var outputJSONText = null;
-  //   outputJSONText = JSON.parse(inputJSONText);
-  //
-  // } catch (e) {
-  //   if(outputJSONText == null){
-  //
-  //   }
-  // }
-  // if($scope.nameSpace.dataSchema){
-  //   schema = $scope.nameSpace.dataSchema;
-  //   console.log(schema);
-  //     var data = [];
-  //     for ( i in $scope.nameSpace.dataSchema){
-  //       data.push({"name":$scope.nameSpace.dataSchema[i].name, "type": $scope.nameSpace.dataSchema[i].type} )
-  //     }
-  //     var data = JSON.stringify(data)
-  //     $scope.uploadJSONText = data;
-  // }
-
-  $scope.nameSpace.dataSchema = parseSampleToJSON(inputJSONText)
+  $scope.nameSpace.dataSchema = parseSampleToJSON(inputJSONText);
   $scope.uploadJSONFlag = false;
 }
 
 $scope.uploadJSONFlagToggle = function() {
   if ($scope.uploadJSONFlag)
-  $scope.uploadJSONFlag = false;
+    $scope.uploadJSONFlag = false;
   else
-  $scope.uploadJSONFlag = true;
+    $scope.uploadJSONFlag = true;
 }
 
 function parseSampleToJSON(sampleLogData) {
-  // console.log("inputJSONObj = ",JSON.stringify(inputJSONObj));
-  /*if (sampleLogData[0]) {
-  var dataObj = sampleLogData[0];
-} else {
-var dataObj = sampleLogData;
-}*/
 
-var dataObj = parseToGetObject(sampleLogData);
+  var outputData=[];
 
-var outputData = [];
-var type;
-for (var i in dataObj) {
-  if (isNaN(dataObj[i])) {
-    type = "dimension"
-  } else {
-    type = "measure"
-  }
-  outputData.push({
-    "alias": i,
-    "name": i,
-    "type": type
-  });
+  try{
+    var dataObj = angular.fromJson(sampleLogData);
+    $scope.parsingError="";
+  }catch(e){
+ $scope.parsingError = e.toString(); //error in the above string
 }
+var fieldCount = -1;
+for (var i in dataObj){
+  fieldCount = fieldCount+1;
+  if ((typeof dataObj[i]) === 'object') {
+    var type;
+    console.log(dataObj[i]);
+    for (var j in dataObj[i]) {
+      if (isNaN(dataObj[i][j])) {
+        type = "dimension"
+      } else {
+        type = "measure"
+      }
+      outputData.push({
+        "alias": j,
+        "name": j,
+        "sample": dataObj[i][j],
+        "type": type
+      });
+    }
+  }
+  else if ((typeof i) === 'string' && fieldCount != i) {
+    var type;
+  console.log(i,dataObj[i]);
+    if (typeof dataObj[i] === 'string') {
+      type = "dimension"
+    } else {
+      type = "measure"
+    }
+    outputData.push({
+      "alias": i,
+      "name": i,
+      "sample": dataObj[i],
+      "type": type
+    });
+  }
+}
+
 console.log("outputData= ", outputData);
 return outputData;
 }
 
-function parseToGetObject(data) {
-  if ((typeof data) === 'string') {
-    // console.log('***** Data is string');
-    data = JSON.parse(data);
-  }
-
-  if (Array.isArray(data)) {
-    // console.log('***** Data is ARRAY');
-    for (i = 0; i < data.length; i++) {
-      if ((typeof data[i]) === 'object') {
-        // console.log('***** Returning object');
-        return data[i];
-      }
-    }
-  }
+$scope.restructureTextArea = function(){
+  $scope.watchChanges();
 }
+
 }]);
