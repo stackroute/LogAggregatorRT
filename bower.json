@@ -12,6 +12,8 @@
         "angular-ui-ace": "bower",
         "font-awesome": "^4.6.3",
         "material-icons": "^0.1.0",
-        "d3": "^3.5.17"
+        "d3": "^3.5.17",
+        "ngclipboard": "^1.1.1"
+
     }
 }
