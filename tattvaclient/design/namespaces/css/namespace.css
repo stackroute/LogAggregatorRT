@@ -1,5 +1,5 @@
-
-.noSubscriber{
+.noSubscriber
+{
    background:#F6F6F6;
    text-align: center;
    height: 600px;
@@ -9,6 +9,30 @@
    background:#F6F6F6;
    text-align: center;
  }
+
+ #errorField{
+  color: red;
+  font-size: 12px;
+ }
+
+ /*label b h3{
+  color: rgb(38,166,154);
+ }*/
+
+ .md-button.md-fab {
+     z-index: 0;
+   }
+#add, #remove{
+  background-color: #F3F0EE;
+}
+
+/*#measure:hover{
+/*Measure (measurable field)*/
+}
+
+#dimension:hover{
+  /*Dimension (differentiates data)*/
+} */
 
 .editNamespace input{
    color:#868686 !important;
