@@ -12,8 +12,10 @@
       </div>
       <span flex></span>
       <div ng-if="displayTopNavIcon">
+      <div layout="row" layout-padding>
        <notify-panel ng-if="user.role=='ORGADM'"></notify-panel><!--display the notification icon in header topnav-->
        <user-panel></user-panel><!--display the User icon in header topnav-->
+       </div>
      </div>
      <div ng-if="!displayTopNavIcon">
       <div layout="column" ng-repeat="topNavItem in userNavItems.topNav">
