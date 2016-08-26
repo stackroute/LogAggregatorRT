@@ -1,6 +1,6 @@
 <div  ng-controller="HeaderCtrl" >
   <md-toolbar class="main-bar">
-    <div class="md-toolbar-tools" layout="row">
+    <div class="md-toolbar-tools md-whiteframe-z2" layout="row">
       <div ng-if="userNavItems.sideNav.length">
         <md-icon class=" editbtn material-icons" ng-click="openLeftMenu()">menu</md-icon>
       </div>
@@ -8,46 +8,50 @@
         <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="tattva">TATTVA - Complex Event Processor</a></h2>
       </div>
       <div ng-if="userNavItems.sideNav.length" class="leftpadding">
-        <h2 class="md-display-1 md-flex" ng-model="header"><a>{{user.orgName}}</a></h2>
+        <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="home">{{user.orgName}}</a></h2>
       </div>
       <span flex></span>
-      <md-button ng-if="notification_show" ng-click="showDialog($event)" class="md-fab md-mini md-primary"><md-icon><i class="material-icons">notifications</i></md-icon></md-button>
-      <md-button ng-if="notification_show" class="md-icon-button" style="width:auto"><md-icon><i class="material-icons">account_circle </i></md-icon>{{user.name}}</md-button>
-      <div ng-repeat="topNavItem in userNavItems.topNav">
-        <a class="linkClr" ui-sref="{{topNavItem.link}}"><md-button>{{topNavItem.menu}}</md-button></a>
-      </div>
-    </div>
-  </md-toolbar>
-  <md-sidenav md-component-id="left" class="md-sidenav-left" layout="column" style="background-color:#0F423E">
-    <div layout="row" class="snvhead" flex="15">
-      <!--inline styling has to be removed later-->
-      <span flex="30"><img class="logo" style="height:35px; width:55px;" ng-src="{{user.orgLogo}}"/></span>
-      <span flex="70"><h3 class="linkClr">{{user.orgName}}</h3></span>
-    </div>
-    <md-divider></md-divider>
-    <md-list flex="70">
-      <md-list-item ng-repeat="item in items" >
-        <div ng-mouseover="sublist=true" ng-mouseleave="sublist=false">
-          <md-icon class="material-icons" style="color:#DEF7F5;">{{item.icon}}</md-icon>
-          <a class="linkClr" ui-sref="{{item.link}}">{{item.menu}}</a>
-          <md-list ng-if="item.children.length > 0">
-            <md-list-item  ng-show="sublist" ng-repeat="child in item.children">
-              <a class="linkClr" ui-sref="{{child.link}}">{{child.menu}}</a>
-            </md-list-item>
-          </md-list>
-        </div>
-      </md-list-item>
-    </md-list>
-    <md-divider></md-divider>
-    <div flex="15">
-      <md-list>
-        <md-list-item>
-          <a class="linkClr" href="https://en.wikipedia.org/wiki/Complex_event_processing">About us</a>
-          </md-list-item>
-          <md-list-item>
-            <a class="linkClr" href="#">Privacy</a><pre> & </pre><a class="linkClr" href="#">Terms</a>
+      <div ng-if="displayTopNavIcon">
+       <notify-panel ng-if="user.role=='ORGADM'"></notify-panel><!--display the notification icon in header topnav-->
+       <user-panel></user-panel><!--display the User icon in header topnav-->
+     </div>
+     <div ng-if="!displayTopNavIcon">
+      <div layout="column" ng-repeat="topNavItem in userNavItems.topNav">
+       <a class="linkClr" ui-sref="{{topNavItem.link}}"><md-button>{{topNavItem.menu}}</md-button></a>
+     </div>
+   </div>
+ </div>
+</md-toolbar>
+<md-sidenav md-component-id="left" class="md-sidenav-left" layout="column" style="background-color:#0F423E">
+  <div layout="row" class="snvhead" flex="15">
+    <!--inline styling has to be removed later-->
+    <span flex="30"><img class="logo" style="height:35px; width:55px;" ng-src="{{user.orgLogo}}"/></span>
+    <span flex="70"><h3 class="linkClr">{{user.orgName}}</h3></span>
+  </div>
+  <md-divider></md-divider>
+  <md-list flex="70">
+    <md-list-item ng-repeat="item in items" >
+      <div ng-mouseover="sublist=true" ng-mouseleave="sublist=false">
+        <md-icon class="material-icons" style="color:#DEF7F5;">{{item.icon}}</md-icon>
+        <a class="linkClr" ui-sref="{{item.link}}">{{item.menu}}</a>
+        <md-list ng-if="item.children.length > 0">
+          <md-list-item  ng-show="sublist" ng-repeat="child in item.children">
+            <a class="linkClr" ui-sref="{{child.link}}">{{child.menu}}</a>
           </md-list-item>
         </md-list>
       </div>
-    </md-sidenav>
+    </md-list-item>
+  </md-list>
+  <md-divider></md-divider>
+  <div flex="15">
+    <md-list>
+      <md-list-item>
+        <a class="linkClr" href="https://en.wikipedia.org/wiki/Complex_event_processing">About us</a>
+      </md-list-item>
+      <md-list-item>
+        <a class="linkClr" href="#">Privacy</a><pre> & </pre><a class="linkClr" href="#">Terms</a>
+      </md-list-item>
+    </md-list>
   </div>
+</md-sidenav>
+</div>

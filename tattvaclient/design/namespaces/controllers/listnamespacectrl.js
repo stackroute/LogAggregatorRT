@@ -5,7 +5,7 @@ angular.module('tattva')
   $scope.stateChange="design.createNamespace"
 
   $scope.nameSpaceListdata = nameSpaceColln;
-  console.log( "namespace list ", $scope.nameSpaceListdata);
+  //console.log( "namespace list ", $scope.nameSpaceListdata);
 
   $scope.showSearchBox = function(){
     if($scope.showSearch){
