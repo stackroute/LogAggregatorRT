@@ -243,7 +243,6 @@
 
             }
         ]);
-=======
 angular.module('tattva')
 .controller("createNamespaceCtrl", ["$scope", "$state", "$http", "$mdDialog", "$mdToast", "namespaceFactory", "$stateParams", "jsonFilter",
   function($scope, $state, $http, $mdDialog, $mdToast, namespaceFactory, $stateParams, jsonFilter) {
@@ -487,4 +486,4 @@ $scope.restructureTextArea = function(){
 }
 
 }]);
->>>>>>> 1867e833678885851e1c23d6d995ae58fe0e7eb7
+

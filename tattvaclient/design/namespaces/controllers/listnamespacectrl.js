@@ -9,12 +9,10 @@ $scope.currentPage = 0;
   $scope.stateChange="design.createNamespace";
 
   $scope.nameSpaceListdata = nameSpaceColln;
-<<<<<<< HEAD
+
   console.log( "namespace list ", $scope.nameSpaceListdata);
   console.log($scope.nameSpaceListdata.length);
-=======
-  
->>>>>>> 1867e833678885851e1c23d6d995ae58fe0e7eb7
+
 
   $scope.showSearchBox = function(){
     if($scope.showSearch){
