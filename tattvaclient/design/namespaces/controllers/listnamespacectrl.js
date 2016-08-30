@@ -25,7 +25,7 @@ $scope.currentPage = 0;
     console.log("Show preview from here");
 
     $mdDialog.show({
-//targetEvent:$event,
+
       templateUrl: "design/namespaces/template/createNamespacedialog.html",
        controller:"createNamespaceCtrl"
 

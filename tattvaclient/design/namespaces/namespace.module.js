@@ -24,5 +24,6 @@
                         templateUrl: "/design/namespaces/template/createNamespace.html",
                         controller: "createNamespaceCtrl"
                     })
+                    
             }
         ]);

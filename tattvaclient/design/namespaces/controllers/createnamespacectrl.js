@@ -12,6 +12,7 @@
                     }]
                 };
 
+
                 $scope.editNamespaceFlag = true;
                 if ($stateParams.editNamespaceData) {
                     $scope.error = "";
