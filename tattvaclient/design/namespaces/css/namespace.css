@@ -1,9 +1,9 @@
+<<<<<<< HEAD
 .noSubscriber {
     background: #F6F6F6;
     text-align: center;
     height: 600px;
 }
-
 
 .noSubscriberinst {
     background: #F6F6F6;
@@ -32,6 +32,63 @@
 }
 
 .uploadJSON {
+=======
+.noSubscriber
+{
+   background:#F6F6F6;
+   text-align: center;
+   height: 600px;
+ }
+ .noSubscriberinst
+ {
+   background:#F6F6F6;
+   text-align: center;
+ }
+
+ #errorField{
+  color: red;
+  font-size: 12px;
+ }
+
+ /*label b h3{
+  color: rgb(38,166,154);
+ }*/
+
+ .md-button.md-fab {
+     z-index: 0;
+   }
+#add, #remove{
+  background-color: #F3F0EE;
+}
+
+/*#measure:hover{
+/*Measure (measurable field)*/
+}
+
+#dimension:hover{
+  /*Dimension (differentiates data)*/
+} */
+
+.editNamespace input{
+   color:#868686 !important;
+   font-size: 16px;
+ }
+.editNamespace textarea{
+   color:#868686 !important;
+   font-size: 14px;
+   border:0px !important;
+ }
+.editNamespace md-radio-button{
+   color:#868686 !important;
+   font-size: 14px;
+ }
+.editNamespace label{
+   color:#868686 !important;
+   font-size: 13px;
+ }
+
+ .uploadJSON{
+>>>>>>> 1867e833678885851e1c23d6d995ae58fe0e7eb7
     color: #BDBDBD;
     font-size: 9pt;
 }

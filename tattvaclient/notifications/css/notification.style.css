@@ -1,0 +1,9 @@
+.fixcontain{
+padding-top: 80px;
+}
+.notification-list-item:nth-child(even){
+background-color: #EBEBE7;
+}
+.notification-list-item:nth-child(odd){
+background-color: #F5F5EF;
+}

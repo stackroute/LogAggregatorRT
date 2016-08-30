@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="/design/constant/css/constant.style.css">
   <link rel="stylesheet" href="/organization/css/organisationstyle.css">
   <link rel="stylesheet" href="/design/functions/css/function.style.css">
+  <link rel="stylesheet" href="/notifications/css/notification.style.css">
   <link rel="stylesheet" href="/dashboard/css/dashboarstyle.css">
   <link rel="stylesheet" href="/design/designhome/css/designsummerystyle.css">
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
@@ -32,11 +33,13 @@
   </div>
 
   <script src="/angular/angular.min.js" charset="utf-8"></script>
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
   <script src="/angular-animate/angular-animate.min.js" charset="utf-8"></script>
   <script src="/angular-aria/angular-aria.min.js" charset="utf-8"></script>
   <script src="/angular-messages/angular-messages.min.js" charset="utf-8"></script>
   <script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
   <script src="/angular-material-icons/angular-material-icons.min.js" charset="utf-8"></script>
+  <script src="/ngclipboard/dist/ngclipboard.min.js"></script>
   <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/ng-letter-avatar/dist/ngletteravatar.min.js"></script>
   <script src="/ace-builds/src-min-noconflict/ace.js"></script>
@@ -128,6 +131,7 @@
   <script src="/design/watchlists/exprfields/inputValue/inputValue.js" charset="utf-8"></script>
   <script src="/design/watchlists/controller/streamCtrl.js" charset="utf-8"></script>
   <script src="/design/watchlists/controller/watchlistctrl.js" charset="utf-8"></script>
+  <script src="/design/watchlists/filter/watchExprFormatFilter.js" charset="utf-8"></script>
   <script src="/design/watchlists/controller/linechartcontroller.js" charset="utf-8"></script>
   <script src="/design/watchlists/controller/publisherctrl.js" charset="utf-8"></script>
   <script src="/design/watchlists/service/uiPublisher.factory.js" charset="utf-8"></script>
@@ -161,5 +165,14 @@
   <script src="/home/controller/approutectrl.js" charset="utf-8"></script>
   <script src="/home/controller/headerctrl.js" charset="utf-8"></script>
   <!-- End Home Module -->
+  <!--User-->
+  <script src="/home/directive/userIcon_directive.js" charset="utf-8"></script>
+  <!--User End-->
+  <!-- Notification Module -->
+  <script src="/home/directive/notificationPannel_directive.js" charset="utf-8"></script>
+  <script src="/notifications/notification.module.js" charset="utf-8"></script>
+  <script src="/notifications/factory/notificationfactory.js" charset="utf-8"></script>
+  <script src="/notifications/controller/notificationctrl.js" charset="utf-8"></script>
+  <!-- End Notification Module -->
 </body>
 </html>

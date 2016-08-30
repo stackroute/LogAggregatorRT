@@ -32,9 +32,9 @@
               </div>
             </div>
           </md-input-container>
+          <span layout="row" class="loginerror" layout-align="center right" ng-show="error">{{error}}</span>
 
           <md-input-container class="bottom" layout="column" layout-align="center">
-              <div layout="row" class="loginerror" layout-align="center right">{{error}}</span></div>
             <div layout="row" layout-align="center center">
               <!-- <md-button type="submit" class="md-raised md-primary" ui-sref="user" flex=80>Submit</md-button> -->
               <md-button type="submit" class="md-raised md-primary" flex=80>Submit</md-button>
@@ -120,7 +120,7 @@
             <div layout="column">
               <div flex>
                 <input ng-model="user.cfpwd" type="password" name="cfpassword"
-                valid-password-c="user.pwd" required >
+                valid-password-c required >
               </div>
               <div flex layout-align="right" ng-messages="registerForm.cfpassword.$error" class="error"  role="alert">
                 <div ng-message-exp="required">This is required </div>

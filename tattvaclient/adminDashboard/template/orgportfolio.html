@@ -1,24 +1,26 @@
 <md-whiteframe class="md-whiteframe-3dp" layout="row" layout-align="none none" ng-cloak>
-<md-content class='apportcontainer' flex="100"  style="height:550px;">
+  <md-content class='apportcontainer' flex="100"  style="height:550px;">
 
-  <div class='subtitle' layout="row" >
-    <h3 class="tabHeading">
-      Watchlists for selection : {{selection}}
-    </h3>
-  </div>
-
-  <md-grid-list
-  md-cols-xs="1" md-cols-sm="8" md-cols-md="16" md-cols-gt-md="10"
-  md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="10px" md-gutter-gt-sm="18px">
+    <div class='subtitle' layout="row" >
+      <h3 class="tabHeading">
+        Watchlists for selection : {{selection}}
+      </h3>
+    </div>
+  <md-grid-list layout-padding 
+  md-cols-gt-md="10" md-cols="3" md-cols-md="6"
+  md-row-height-gt-md="1:1" md-row-height="2:2"
+  md-gutter-gt-md="18px" md-gutter-md="12px" md-gutter="8px">
   <md-grid-tile
-  ng-repeat="watch in watches" md-rowspan="2" md-colspan="3" md-colspan-sm="1" md-colspan-xs="1"
+  ng-repeat="watch in watches" 
+  md-rowspan="2" 
+  md-colspan="3"
   ng-click="appClick($event,watch)"
   style="cursor:pointer;background-color:#3C524C;background-size:contain;background-repeat:no-repeat">
   <md-icon class"material-icons" style="font-size:12em;margin: 0px 170px 200px 0px" aria-label="Graph dialog">show_chart</md-icon>
-    <md-grid-tile-footer class="footer">
-      <h3>Namespace:{{watch.name}}</h3>
-    </md-grid-tile-footer>
-  </md-grid-tile>
+  <md-grid-tile-footer class="footer">
+    <h3>Namespace:{{watch.name}}</h3>
+  </md-grid-tile-footer>
+</md-grid-tile>
 </md-grid-list>
 
 </md-content>

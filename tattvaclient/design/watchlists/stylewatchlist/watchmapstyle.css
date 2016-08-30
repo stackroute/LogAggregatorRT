@@ -202,6 +202,23 @@ g:hover > .function-btn{
 .watchmapheader span.md-subheader-content{
   height:8px;
 }
-.exprHeading{
-  margin: 1% 0% 0% 1%;
+.exprHeading {
+    margin: 1% 1% 1% 1%;
+    height: 6%;
+}
+.firstRow {
+    height: 120px;
+}
+.md-button.md-fab.md-mini {
+    margin: 0% 1% 1% 0%;
+    line-height: 35px;
+    width: 35px;
+    height: 35px;
+    z-index: 0;
+}
+.preview{
+    margin:0% 0%;
+}
+.watchlistlayout{
+  margin:0% 10%;
 }
