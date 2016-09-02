@@ -4,7 +4,6 @@ function($scope, $http, $stateParams, wlstDataService,namespaceFactory,loadExprD
   $scope.objectJson=$stateParams.namespaceobject;
 
   $scope.watchlistalldata=[];
-
   $scope.getwatchlistdata=function(objectJson){
     $scope.filternamespace=objectJson;
     loadExprData.getwatchlistdata($scope.filternamespace).then(function(data){
