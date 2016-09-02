@@ -48,9 +48,9 @@
 
 /* md-card.NamespaceCard{
   background-color:#F6F6F6;
-} */
+  } */
 
-.createNamespacePage {
+  .createNamespacePage {
     padding-left: 100px;
     padding-right: 100px;
 }
@@ -86,4 +86,15 @@ h2.ng-binding {
 
 pre.datajson.ng-binding.ng-scope.layout-align-center-center {
     margin-left: 50px;
+}
+
+#errorField{
+  color: red;
+  font-size: 12px;
+}
+.md-button.md-fab {
+   z-index: 0;
+}
+#add, #remove{
+  background-color: #F3F0EE;
 }
