@@ -5,7 +5,7 @@ sideNav_router.use(function(req, res, next) {
   var items = [{
     "_id" : "item1",
     "menu" : "Dashboard",
-    "link" : "tattva.home",
+    "link" : "home",
     "icon" : "dashboard",
   },
   {
@@ -49,13 +49,13 @@ sideNav_router.use(function(req, res, next) {
   {
     "_id" : "item3",
     "menu" : "Organisation",
-    "link" : "tattva.organisation",
+    "link" : "organisation",
     "icon" : "group"
   },
   {
     "_id" : "item4",
     "menu" : "Action",
-    "link" : "tattva.action",
+    "link" : "action",
     "icon" : "gavel"
   },
   {
@@ -87,7 +87,7 @@ sideNav_router.get('/:userRole', function(req, res) {
       sideNav: [
       {
         "menu" : "Dashboard",
-        "link" : "tattva.home",
+        "link" : "home",
         "icon" : "dashboard",
       },
       {
@@ -127,12 +127,12 @@ sideNav_router.get('/:userRole', function(req, res) {
       },
       {
         "menu" : "Organisation",
-        "link" : "tattva.organisation",
+        "link" : "organisation",
         "icon" : "group"
       },
       {
         "menu" : "Action",
-        "link" : "tattva.action",
+        "link" : "action",
         "icon" : "gavel"
       },
       {
@@ -154,7 +154,7 @@ sideNav_router.get('/:userRole', function(req, res) {
       sideNav: [
       {
         "menu" : "Dashboard",
-        "link" : "tattva.home",
+        "link" : "home",
         "icon" : "dashboard",
       },
       {
@@ -194,7 +194,7 @@ sideNav_router.get('/:userRole', function(req, res) {
       },
       {
         "menu" : "Action",
-        "link" : "tattva.action",
+        "link" : "action",
         "icon" : "gavel"
       },
       {
