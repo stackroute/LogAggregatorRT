@@ -32,7 +32,6 @@ function($scope, $http, $state,AuthService) {
       $scope.error = err.error;
     });
   }
-
   $scope.register=function() {
     AuthService.signUp($scope.user).then(function(user) {
       $state.go("home");

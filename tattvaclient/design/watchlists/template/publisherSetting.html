@@ -7,30 +7,34 @@
   <md-dialog-content>
     <div class="md-dialog-content">
       <form layout-padding ng-submit="updateBackPublisher(Data)">
-        <div layout="row" layout-wrap flex >
-          <label flex="25"><md-subheader>Watch Display Size</md-subheader></label>
+        <div layout="row" layout-wrap>
+          <div layout="row" flex="25">
+            <label class="md-subheader">
+              Watch Display Size
+            </label>
+          </div>
           <md-radio-group ng-model="publisherData.displaySize" flex="75">
-            <div layout="row">
-              <md-radio-button ng-repeat="widgetSize in uiPublisherConfig.widgetSizes" value="{{widgetSize.value}}" class="md-primary" flex="35" ng-required="true">
-                {{widgetSize.name}}
-              </md-radio-button>
+            <div layout="row" layout-wrap>
+              <div ng-repeat="widgetSize in uiPublisherConfig.widgetSizes" flex-offset="5">
+                <md-radio-button value="{{widgetSize.value}}" class="md-primary" ng-required="true" >
+                  {{widgetSize.name}}
+                </md-radio-button>
+              </div>
             </div>
           </md-radio-group>
         </div>
-
         <md-divider></md-divider>
-
         <div layout="row" layout-wrap flex >
-          <label flex="25"><md-subheader>Watch Tabs</md-subheader></label>
+          <label flex="25" class="md-subheader">Watch Tabs</label>
           <div layout="row" flex="75" layout-wrap>
-            <div class="leftpadding" ng-repeat="tab in widgetTabs">
+            <div ng-repeat="tab in widgetTabs" flex-offset="5">
               <md-checkbox ng-model="tab.selected" value="{{tab.value}}" layout="row" ng-required="true">
                 {{ tab.name }}
               </md-checkbox>
             </div>
           </div>
         </div>
-        <div flex-offset="30" layout="row">
+        <div flex-offset="20" layout="row">
           <div>
             <md-input-container flex>
               <md-select ng-model="publisherData.xaxis" required>
@@ -38,51 +42,63 @@
                 <md-option ng-repeat="object in xParam">{{object}}</md-option>
               </md-select>
             </md-input-container>
-            </div>
+          </div>
           <div flex="20">
-
           </div>
           <div>
-            <md-input-container flex>
-              <md-select ng-model="publisherData.yaxis" required>
-                <label>Y Axis</label>
-                <md-option ng-repeat="object in xParam">{{object}}</md-option>
+            <md-input-container class="watchlistcheckbox" flex>
+              <label>Y Axis</label>
+              <md-select ng-model="publisherData.yaxis" multiple required>
+                <md-optgroup>
+                  <md-option ng-repeat="object in xParam">
+                    <span>{{object}}</span>
+                  </md-option>
+                </md-optgroup>
               </md-select>
             </md-input-container>
-            </div>
+          </div>
         </div>
-
         <md-divider></md-divider>
-
-        <div layout="row" layout-wrap flex >
-          <label flex="25"><md-subheader>Watch Graph type</md-subheader></label>
+        <div layout="row" layout-wrap>
+        <div layout="row" flex="25">
+            <label class="md-subheader">
+              Watch Graph type
+            </label>
+          </div>
           <md-radio-group ng-model="publisherData.graphType" flex="75">
-            <div layout="row">
-              <md-radio-button ng-repeat="graphTypes in uiPublisherConfig.graphTypes" value="{{graphTypes.value}}" class="md-primary" flex="50" ng-required="true">
-                <md-icon class="material-icons">{{graphTypes.icon}}</md-icon>
-              </md-radio-button>
+            <div layout="row" layout-wrap>
+              <div ng-repeat="graphTypes in uiPublisherConfig.graphTypes" flex-offset="5">
+                <md-radio-button value="{{graphTypes.value}}" class="md-primary" ng-required="true" >
+                  <md-icon class="material-icons">{{graphTypes.icon}}</md-icon>
+                </md-radio-button>
+              </div>
             </div>
           </md-radio-group>
         </div>
 
         <md-divider></md-divider>
-
-        <div layout="row" layout-wrap flex >
-          <label flex="25"><md-subheader>Watch Log Data Display Type</md-subheader></label>
+        <div layout="row" layout-wrap>
+          <div layout="row" flex="25">
+            <label class="md-subheader">
+              Watch Log Data Display Type
+            </label>
+          </div>
           <md-radio-group ng-model="publisherData.logFormat" flex="75">
             <div layout="row" layout-wrap>
-              <md-radio-button class="leftpadding md-primary" ng-repeat="displayTypes in uiPublisherConfig.logDataDisplayType" value="{{displayTypes.value}}" class="md-primary" ng-required="true" flex-offset="5">
-                {{displayTypes.name}}
-              </md-radio-button>
+              <div ng-repeat="displayTypes in uiPublisherConfig.logDataDisplayType" flex-offset="5">
+                <md-radio-button class="md-primary" value="{{displayTypes.value}}" class="md-primary" ng-required="true" >
+                  {{displayTypes.name}}
+                </md-radio-button>
+              </div>
             </div>
           </md-radio-group>
         </div>
-      </md-dialog-content>
-      <md-dialog-actions layout="row">
-        <span flex></span>
-        <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
-        <md-button type="submit" class="md-raised md-primary">OK</md-button>
-      </md-dialog-actions>
-    </form>
-  </div>
+        <md-dialog-actions layout="row">
+          <span flex></span>
+          <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+          <md-button type="submit" class="md-raised md-primary">OK</md-button>
+        </md-dialog-actions>
+      </form>
+    </div>
+  </md-dialog-content>
 </md-dialog>

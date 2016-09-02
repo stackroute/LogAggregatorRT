@@ -84,3 +84,19 @@ md-list-item a {
 .linkClr{
   color:#DEF7F5;
 }
+.design-dialog {
+  background: #fefefe;
+  box-shadow: 0 0px 5px;
+  border-radius: 4px;
+  width: 480px; 
+}
+.closebutton{
+  min-width: 10px;
+  border-radius: 40px;
+}
+.user-profile-design {
+  background-color: #FAF8F8;
+  box-shadow: 0 0px 5px;
+  border-radius: 4px;
+  width: auto; 
+}

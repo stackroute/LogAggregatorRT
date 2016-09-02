@@ -15,7 +15,7 @@
   padding: 5px;
   margin: 10px;
   border: 1px solid #f9f9f9;
-  /*background-color: #f9f9f9;*/
+/* background-color: #f9f9f9;*/
 }
 
 .proboxcsvg {
@@ -27,7 +27,7 @@
   right: 10px;
   top: 10px;}*/
 path {
-  /*stroke: #fff;*/
+  stroke: #fff;
   fill-rule: evenodd;}
 
 /*legend dialog*/
