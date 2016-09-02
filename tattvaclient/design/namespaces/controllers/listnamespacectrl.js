@@ -9,10 +9,7 @@ angular.module('tattva')
         $scope.stateChange = "design.createNamespace";
 
         $scope.nameSpaceListdata = nameSpaceColln;
-        $scope.nameSpaceListdata = nameSpaceColln;
-        console.log("namespace list ", $scope.nameSpaceListdata);
-        console.log($scope.nameSpaceListdata.length);
-
+        console.log($scope.nameSpaceListdata[0]);
         $scope.showSearchBox = function() {
             if ($scope.showSearch) {
                 $scope.showSearch = false;
@@ -21,19 +18,19 @@ angular.module('tattva')
             }
         }
 
-        $scope.showNamespacePreview = function() {
-            console.log("Show preview from here");
-
+        $scope.showNamespacePreview = function(index) {
             $mdDialog.show({
 
                 templateUrl: "design/namespaces/template/createNamespacedialog.html",
-                controller: "createNamespaceCtrl"
+                controller: "dataschemaNamespaceCtrl",
+                locals:{
+                    dataSchema:$scope.nameSpaceListdata[index].uploadJSONText,
+                }
             });
         }
-        $scope.getData = function() {
-            console.log($filter('filter')($scope.nameSpaceListdata, $scope.q));
-            return $filter('filter')($scope.nameSpaceListdata, $scope.q)
 
+        $scope.getData = function() {
+            return $filter('filter')($scope.nameSpaceListdata, $scope.q);
         }
 
         $scope.numberOfPages = function() {

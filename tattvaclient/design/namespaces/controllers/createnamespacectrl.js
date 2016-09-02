@@ -1,11 +1,11 @@
 angular.module('tattva')
-.controller("createNamespaceCtrl", ["$scope", "$state", "$http", "$mdDialog", "namespaceFactory", "$stateParams", "jsonFilter",
-	function($scope, $state, $http, $mdDialog, namespaceFactory, $stateParams, jsonFilter) {
+.controller("createNamespaceCtrl", ["$scope","AuthService", "$state", "$http", "$mdDialog", "namespaceFactory", "$stateParams", "jsonFilter",
+	function($scope,AuthService, $state, $http, $mdDialog, namespaceFactory, $stateParams, jsonFilter) {
 		$scope.nameSpace={};
 		$scope.temp = $scope.nameSpace.uploadJSONText;
 		$scope.uploadJSONFlag = false;
 		$scope.editData = undefined;
-
+		
 		$scope.nameSpace = {
 			dataSchema: [{
 				type: "dimension"
@@ -42,7 +42,8 @@ angular.module('tattva')
 								$mdDialog.alert()
 								.parent(angular.element(document.querySelector('#popupContainer')))
 								.clickOutsideToClose(true)
-								.title('Invalid Sample Data!! unable to Measure non-numeric value')
+								.title('Invalid Sample Data..!')
+								.textContent('Unable to Measure non-numeric value')
 								.ariaLabel('Parsing Error.')
 								.ok('Ok')
 								.targetEvent(ev)
@@ -55,7 +56,6 @@ angular.module('tattva')
 					}
 					tempSchema[name] = sample;
 					$scope.nameSpace.uploadJSONText = jsonFilter(tempSchema);
-
 				}
 			}
 		}
@@ -89,6 +89,9 @@ angular.module('tattva')
 							.ok('Yes')
 							.cancel('No');
 							$mdDialog.show(confirm).then(function() {
+								var timestamp = new Date();
+								$scope.nameSpace.editedOn = timestamp;
+								$scope.nameSpace.editedBy = AuthService.getUser().name;
 								namespaceFactory.setNamespaceDetails($scope.nameSpace, $scope.nameSpace.name)
 								.then(function(res) {
 								//success
@@ -128,15 +131,13 @@ angular.module('tattva')
 				});
 				}
 			} else { //create namespace page  - save function
-
-				var timestamp = Date.now()
+				var timestamp = new Date();
 				$scope.nameSpace.createdOn = timestamp;
 				$scope.nameSpace.editedOn = timestamp;
-				$scope.nameSpace.editedBy = "userName";
-				$scope.nameSpace.createdBy = "userName";
+				$scope.nameSpace.editedBy = AuthService.getUser().name;
+				$scope.nameSpace.createdBy = AuthService.getUser().name;
 				$scope.nameSpace.organisation = "Wipro";
 				$scope.nameSpace.status = "active";
-				console.log($scope.nameSpace.editedBy);
 				if (!$scope.nameSpace.dataSchema.length) {
 					$scope.nameSpace.dataSchema.push({
 						type: "dimension"

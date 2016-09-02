@@ -4,7 +4,7 @@
                 $stateProvider
                     .state('design.namespace', {
                         url: "/namespaces",
-                        templateUrl: "/design/namespaces/template/NamespaceList.html",
+                        templateUrl: "/design/namespaces/template/listNamespace.html",
                         controller: "listNamespaceCtrl",
                         resolve: {
                             nameSpaceColln: function(namespaceFactory) {
