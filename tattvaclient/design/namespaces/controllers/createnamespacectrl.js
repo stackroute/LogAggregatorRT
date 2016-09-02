@@ -1,8 +1,8 @@
 angular.module('tattva')
 .controller("createNamespaceCtrl", ["$scope", "$state", "$http", "$mdDialog", "$mdToast", "namespaceFactory", "$stateParams", "jsonFilter",
   function($scope, $state, $http, $mdDialog, $mdToast, namespaceFactory, $stateParams, jsonFilter) {
-
-    $scope.temp = $scope.uploadJSONText;
+    $scope.nameSpace={};
+    $scope.temp = $scope.nameSpace.uploadJSONText;
     $scope.uploadJSONFlag = false;
     $scope.editData = undefined;
 
@@ -20,7 +20,6 @@ angular.module('tattva')
     if ($stateParams.editNamespaceData) {
       $scope.error="";
       $scope.editData = $stateParams.editNamespaceData;
-      console.log($scope.editData);
       namespaceFactory.getNamespaceDetails($scope.editData)
       .then(function(data) {
         $scope.nameSpace = data;
@@ -30,7 +29,7 @@ angular.module('tattva')
       );
     };
 
-    $scope.watchChanges = function(){
+    $scope.watchChanges = function(ev){
       var tempSchema = {};
       $scope.nanError="";
       for (i = 0; i < $scope.nameSpace.dataSchema.length; i++) {
@@ -39,7 +38,15 @@ angular.module('tattva')
           sample =  $scope.nameSpace.dataSchema[i].sample;
           if($scope.nameSpace.dataSchema[i].type == 'measure'){
             if(isNaN(sample)){
-              alert("Sample Data is NaN");
+              $mdDialog.show(
+                $mdDialog.alert()
+                .parent(angular.element(document.querySelector('#popupContainer')))
+                .clickOutsideToClose(true)
+                .title('Invalid Sample Data!! unable to Measure non-numeric value')
+                .ariaLabel('Parsing Error.')
+                .ok('Ok')
+                .targetEvent(ev)
+                );
               $scope.nameSpace.dataSchema[i]["type"] = "dimension";
             }
             else{
@@ -47,11 +54,10 @@ angular.module('tattva')
             }
           }
           tempSchema[name] = sample;
-          $scope.uploadJSONText = jsonFilter(tempSchema);
+          $scope.nameSpace.uploadJSONText = jsonFilter(tempSchema);
 
         }
       }
-  //console.log($scope.uploadJSONText);
 }
 
 $scope.deleteDataFormat = function(index) {
@@ -200,7 +206,6 @@ for (var i in dataObj){
   fieldCount = fieldCount+1;
   if ((typeof dataObj[i]) === 'object') {
     var type;
-    console.log(dataObj[i]);
     for (var j in dataObj[i]) {
       if (isNaN(dataObj[i][j])) {
         type = "dimension"
@@ -217,7 +222,6 @@ for (var i in dataObj){
   }
   else if ((typeof i) === 'string' && fieldCount != i) {
     var type;
-  console.log(i,dataObj[i]);
     if (typeof dataObj[i] === 'string') {
       type = "dimension"
     } else {
@@ -232,7 +236,6 @@ for (var i in dataObj){
   }
 }
 
-console.log("outputData= ", outputData);
 return outputData;
 }
 

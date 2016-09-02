@@ -34,11 +34,16 @@ sideNav_router.use(function(req, res, next) {
       },
       {
         "_id" : "item2_4",
+        "menu" : "Historic Queries",
+        "link" : "design.historicFunction"
+      },
+      {
+        "_id" : "item2_5",
         "menu" : "Functions",
         "link" : "design.function"
       },
       {
-        "_id" : "item2_5",
+        "_id" : "item2_6",
         "menu" : "Watch Lists",
         "link" : "design.watchlist"
       }
@@ -117,6 +122,10 @@ sideNav_router.get('/:userRole', function(req, res) {
               "link" : "design.streams"
             },
             {
+              "menu" : "Historic Queries",
+              "link" : "design.historicFunction"
+            },
+            {
               "menu" : "Functions",
               "link" : "design.function"
             },
@@ -179,6 +188,10 @@ sideNav_router.get('/:userRole', function(req, res) {
             {
               "menu" : "Streams",
               "link" : "design.streams"
+            },
+            {
+              "menu" : "Historic Queries",
+              "link" : "design.historicFunction"
             },
             {
               "menu" : "Functions",

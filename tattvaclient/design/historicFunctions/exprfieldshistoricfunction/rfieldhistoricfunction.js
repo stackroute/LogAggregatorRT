@@ -1,5 +1,5 @@
 angular.module("tattva")
-.controller('rfield',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData','watchlistconfg', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData,watchlistconfg) {
+.controller('rfieldhistoricfunction',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData','historicfunctionconfg', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData,historicfunctionconfg) {
   $scope.fieldData={};
   var self = this;
   self.simulateQuery = false;
@@ -8,9 +8,8 @@ angular.module("tattva")
   self.querySearch   = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
-  if ( $scope.$parent.editNamespace) {
-    self.selectedItem =   $scope.expr.watch.rfield.fieldType;
-  }
+  
+  
   function querySearch (query) {
     var results = query ? "self.options.filter( createFilterFor(query) )" : self.options,
     deferred;
@@ -26,32 +25,26 @@ angular.module("tattva")
     $log.info('Text changed to ' + text);
   }
 
-  function selectedItemChange(item, expr) {
-
+  function selectedItemChange(item,index) {
     if(item === undefined) return;
-    var dialogTemplate = '/design/watchlists/exprfields/'+item.template+'/' + item.template+'.html';
-console.log('/design/watchlists/exprfields/'+item.template+'/' + item.template+'.html')
-    if(expr.watch.rfield.fieldType !== undefined) {
-      expr.watch.rfield.fieldType = item.type;
-    } else if(expr.watch.rfield.fieldType != item.type) {
-      expr.watch.rfield = { fieldType : item.type };
-      // expr.watch.rfield=null;
-    }
+    var dialogTemplate = '/design/historicFunctions/exprfieldshistoricfunction/'+item.template+'/' + item.template+'.html';
 
     $scope.showDialog = function(ev) {
       $mdDialog.show({
         controller:item.controller,
         templateUrl: dialogTemplate,
+        locals:{
+          fndef:$scope.$parent.fndef,
+          index:index
+        },
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose: false,
-        escapeToClose : false,
-        locals: { "fieldData": expr.watch.rfield,"fieldData2":$scope.wlstdef}
+        escapeToClose : false
       }).then(function(response) {
-        expr.watch.rfield = response;
-        //console.log("RESOLVED with response: ", response, " data in autocomplete ctrl: ", expr.watch.rfield);
+
       }, function(response) {
-        //console.log("** REJECTED ** with response: ", response, " data in autocomplete ctrl: ", expr.watch.rfield);
+        
       }).finally(function() {
       });
     };
@@ -59,7 +52,7 @@ console.log('/design/watchlists/exprfields/'+item.template+'/' + item.template+'
   }
 
   function loadAll() {
-var fieldOptions=watchlistconfg.getfieldOption();
+  var fieldOptions=historicfunctionconfg.getfieldOption();
     return fieldOptions;
   }
 

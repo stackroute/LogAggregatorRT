@@ -16,6 +16,7 @@ var logger = require("./applogger");
 //Tattva components
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var historicfunctions_router = require('./tattvaserver/historicfunctions/historicfunctions_routes');
 var function_router = require('./tattvaserver/functions/functions_routes');
 var constant_router = require('./tattvaserver/constants/constant_routes');
 var sideNav_router = require('./tattvaserver/Home/home_routes');
@@ -105,6 +106,7 @@ app.get('/guest', function(req, res){
 app.use('/users',isAuthenticated,  users);
 app.use('/organisation/user',isAuthenticated,  Orguser_router);
 app.use('/instance',isAuthenticated,  datasourcesrouter);
+app.use('/historicfunctions',isAuthenticated,  historicfunctions_router);
 app.use('/function',isAuthenticated,  function_router);
 app.use('/constant',isAuthenticated,  constant_router);
 app.use('/sideNav',isAuthenticated, sideNav_router);

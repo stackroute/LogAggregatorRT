@@ -25,7 +25,6 @@ $scope.editparams=undefined;
   }
 
   $scope.removeExpression=function(index,expr) {
-      // console.log("removed exp index:",index);
       if(index===0){
         $scope.wlstdef.expressions[index+1].parent="";
       }

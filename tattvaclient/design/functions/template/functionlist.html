@@ -4,18 +4,14 @@
   <md-list>
     <md-list-item class="md-3-line hover" ng-repeat="item in data">
       <span class='md-avatar'><ng-letter-avatar fontSize="20"  charCount=2 data="{{ data[$index].name  }}" shape="round" avatarcustombgcolor="#ff944d"></ng-letter-avatar></span>
-      <!-- <ng-letter-avatar data="{{ data[$index].fun_name  }}" shape="round" avatarcustombgcolor="#ff944d"></ng-letter-avatar> -->
       <div class="md-list-item-text" layout="column">
-        <h3>{{ item.name }}</h3>
+        <h3>{{ item.name | capitalize}}</h3>
         <p>{{data[$index].description}}</p>
       </div>
-      <!-- <md-button class="md-fab md-mini md-secondary" aria-label="Comment" ui-sref="design.functionEdit({functionname: data[$index].name })"> -->
-      <md-subheader md-no-sticky>
-        <md-button class="md-fab md-mini md-secondary" aria-label="Comment">
-          <ng-md-icon icon="mode_edit"></ng-md-icon>
-        </md-button>
-      </md-subheader>
-      <md-divider ng-if="!$last" style="margin: 10px 0px 10px 0px;"></md-divider>
+      <md-button class="md-fab md-mini md-secondary" aria-label="Comment">
+        <ng-md-icon icon="mode_edit"></ng-md-icon>
+      </md-button>
+      <md-divider ng-if="!$last"></md-divider>
     </md-list-item>
   </md-list>
 </div>

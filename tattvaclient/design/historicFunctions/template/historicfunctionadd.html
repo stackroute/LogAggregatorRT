@@ -1,0 +1,255 @@
+<form name="addhistoricfunction" ng-submit="savehistoricfunction()" ng-init="">
+  <fieldset class="fieldset">
+    <div layout="column" layout-sm="column" layout-xs="column" layout-padding class="watchlistlayout">
+      <div layout="row" layout-sm="column" layout-xs="column">
+        <md-input-container flex="50">
+          <label>Name of Query</label>
+          <input ng-required="true" name="historicfunctionName" flex="90" type="text" ng-model="fndef.name">
+          <div flex layout-align="right" ng-messages="historicfunctionadd.historicfunctionName.$error" class="error" id="myerr" role="alert">
+            <div ng-message-exp="['required']">
+              Name of Query is required
+            </div>
+          </div>
+        </md-input-container>
+        <md-input-container flex="50">
+          <label>Description about Query</label>
+          <input ng-required="true" name="historicfunctionFunctionality" flex="100" type="text" ng-model="fndef.description">
+          <div flex layout-align="right" ng-messages="historicfunctionadd.historicfunctionFunctionality.$error" class="error" id="myerr" role="alert">
+            <div ng-message-exp="['required']">
+              Description is required
+            </div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div>
+        <md-whiteframe class="md-whiteframe-1dp" layout="column" layout layout-padding>
+          <div layout="row">
+            <div id="watchListnamespace" layout layout-align="center center" ng-controller="namespacectrlhistoricfunction as ctrl" flex="45">
+              <md-autocomplete 
+              required
+              md-input-name="atoCmpNmsp"
+              md-input-minlength="1"
+              ng-disabled="ctrl.isDisabled"
+              md-no-cache="ctrl.noCache"
+              md-selected-item="ctrl.selectedItem"
+              md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+              md-search-text="ctrl.searchText"
+              md-selected-item-change="ctrl.selectedItemChange(item)"
+              md-items="item in ctrl.querySearch(ctrl.searchText)"
+              md-item-text="item"
+              md-min-length="0"
+              placeholder="Select Watchlist"
+              flex="100">
+              <md-item-template>
+                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
+              </md-item-template>
+              <div ng-messages="watchlistcreate.atoCmpNmsp.$error" ng-if="watchlistcreate.atoCmpNmsp.$touched">
+                <div ng-message="required">This field is required</div>
+              </div>
+              <md-not-found>
+                No watchlist matching "{{ctrl.searchText}}" were found.
+              </md-not-found>
+            </md-autocomplete>
+          </div>
+          <div flex="10"></div>
+          <div layout="column" flex="45" layout-align="center center">
+            <md-subheader layout layout-align="center center">Define Query Time Period :</md-subheader>
+            <div layout="row" >
+              <mdp-date-picker mdp-placeholder="From Date" ng-model="fromDate"></mdp-date-picker>
+              <mdp-time-picker mdp-placeholder="From Time" mdp-auto-switch="true" ng-model="fromTime"></mdp-time-picker>
+            </div>
+            <div layout="row">
+              <mdp-date-picker mdp-placeholder="To Date" ng-model="toDate"></mdp-date-picker>
+              <mdp-time-picker mdp-placeholder="To Time" mdp-auto-switch="true" ng-model="toTime"></mdp-time-picker>
+            </div>
+          </div>
+        </div>
+
+        
+        <md-whiteframe ng-show="outputcriteria.length" class="md-whiteframe-2dp" layout="column" ng-if="expectedOutput" flex>
+          <label class="md-subhead" layout layout-padding layout-align="left left" flex>Expected Output :</label>
+          <div layout="row"  ng-repeat="outputcriteria in outputcriteria" flex>
+            <md-subheader>{{outputcriteria.index}}) </md-subheader>
+            <div id="watchListnamespace" layout="row" ng-controller="requiredfieldsoptionctrl as ctrl4" flex="90">
+              <md-autocomplete
+              class="autocom"
+              required md-input-name="atoCmpRfield"
+              ng-disabled="ctrl4.isDisabled"
+              md-input-name="autocompleteForrfieldwatchlist"
+              md-no-cache="ctrl4.noCache"
+              md-selected-item="ctrl4.selectedItem"
+              md-search-text-change="ctrl4.searchTextChange(ctrl4.searchText)"
+              md-search-text="ctrl4.searchText"
+              md-selected-item-change="ctrl4.selectedItemChange(item,$index)"
+              md-items="item in ctrl4.querySearch(ctrl4.searchText)"
+              md-item-text="item.name"
+              md-min-length="0"
+              placeholder="Select Query functions"
+              md-menu-class="autocomplete-custom-template"
+              flex="100">
+              <md-item-template>
+                <span class="item-title">
+                  <md-icon class="material-icons">{{item.icon}}</md-icon>
+                  <span> {{item.name}} </span>
+
+                </span>
+                <span class="item-metadata">
+                  <span class="item-metastat">
+                    Query : <strong>{{item.shortexpr}}</strong>
+                  </span>
+                  <span class="item-metastat">
+                    {{item.tip}}
+                  </span>
+                </span>
+              </md-item-template>
+              <md-item-template>
+                <span md-highlight-text="ctrl4.searchText" md-highlight-flags="^i">{{item.name}}</span>
+              </md-item-template>
+              <md-not-found>
+                No namespace matching "{{ctrl4.searchText}}" were found.
+              </md-not-found>
+            </md-autocomplete>
+          </div>
+          <span flex></span>
+          <md-button layout layout-align="center center" class="float-right" ng-click="removeOutputExpression($index);" aria-label=""><md-icon layout layout-align="top right" class="material-icons">clear</md-icon></md-icon><md-tooltip md-direction="left">
+            Remove
+          </md-tooltip></md-button>
+        </div>
+        <div>
+          <md-button id="add" class="float-right md-fab md-mini md-accent" ng-click="addOutputExpression();" aria-label="">
+            <md-icon class="material-icons">
+              add
+            </md-icon><md-tooltip md-direction="left">
+            Define Expected Output
+          </md-tooltip></md-button>
+        </div>
+
+      </md-whiteframe>
+
+      <md-whiteframe ng-show="querycriteria.length" class="md-whiteframe-2dp" layout="column" ng-if="queryCriteria">
+        <label class="md-subhead" layout layout-padding layout-align="left left">Query Criteria :</label>
+        <div ng-repeat="criteria in querycriteria" layout="row">
+          <md-subheader>{{criteria.index}})</md-subheader>
+          <div ng-controller="lfieldhistoricfunction as ctrl1" ng-cloak=""  flex="40">
+            <md-autocomplete
+            required
+            md-input-name="atoCmpStream"
+            ng-disabled="ctrl1.isDisabled"
+            md-no-cache="ctrl1.noCache"
+            md-selected-item="ctrl1.selectedItem"
+            md-search-text-change="ctrl1.searchTextChange(ctrl1.searchText)"
+            md-search-text="ctrl1.searchText"
+            md-selected-item-change="ctrl1.selectedItemChange(item,criteria.index)"
+            md-items="item in ctrl1.querySearch(ctrl1.searchText)"
+            md-item-text="item"
+            md-min-length="0"
+            placeholder="Left Hand Expression">
+            <md-item-template>
+              <span md-highlight-text="ctrl1.searchText" md-highlight-flags="^i">{{item}}</span>
+            </md-item-template>
+            <div ng-messages="watchlistcreate.atoCmpStream.$error" ng-if="watchlistcreate.atoCmpStream.$touched">
+              <div ng-message="required">This field is required</div>
+            </div>
+            <md-not-found>
+              No matching "{{ctrl1.searchText}}" was found.
+            </md-not-found>
+          </md-autocomplete>
+        </div>
+
+        <div ng-controller="operatorhistoricfunction as ctrl2" flex-offset="5" flex="30">
+          <md-autocomplete
+          class="autocom" flex="5"
+          required md-input-name="atoCmpOperator"
+          ng-disabled="ctrl2.isDisabled"
+          md-no-cache="ctrl2.noCache"
+          md-selected-item="ctrl2.selectedItem"
+          md-search-text-change="ctrl2.searchTextChange(ctrl2.searchText)"
+          md-search-text="ctrl2.searchText"
+          md-selected-item-change="ctrl2.selectedItemChange(item,criteria.index)"
+          md-items="item in ctrl2.querySearch(ctrl2.searchText)"
+          md-item-text="item"
+          md-min-length="0"
+          placeholder="Operator">
+          <md-item-template>
+            <span md-highlight-text="ctrl2.searchText" md-highlight-flags="^i">{{item}}</span>
+          </md-item-template>
+          <md-not-found>
+            No operator matching "{{ctrl2.searchText}}" were found.
+          </md-not-found>
+        </md-autocomplete>
+      </div>
+
+      <div ng-controller="rfieldhistoricfunction as ctrl3" flex-offset="5" flex="40">
+        <md-autocomplete
+        class="autocom" flex="90"
+        required md-input-name="atoCmpRfield"
+        ng-disabled="ctrl3.isDisabled"
+        md-input-name="autocompleteForrfieldwatchlist"
+        md-no-cache="ctrl3.noCache"
+        md-selected-item="ctrl3.selectedItem"
+        md-search-text-change="ctrl3.searchTextChange(ctrl3.searchText)"
+        md-search-text="ctrl3.searchText"
+        md-selected-item-change="ctrl3.selectedItemChange(item,criteria.index)"
+        md-items="item in ctrl3.querySearch(ctrl3.searchText)"
+        md-item-text="item.name"
+        md-min-length="0"
+        placeholder="Right Hand Expression"  md-menu-class="autocomplete-custom-template">
+        <md-item-template>
+          <span class="item-title">
+            <md-icon class="material-icons">{{item.icon}}</md-icon>
+            <span> {{item.name}} </span>
+
+          </span>
+          <span class="item-metadata">
+            <span class="item-metastat">
+              FORMULA : <strong>{{item.shortexpr}}</strong>
+            </span>
+            <span class="item-metastat">
+              {{item.tip}}
+            </span>
+          </span>
+        </md-item-template>
+        <md-item-template>
+          <span md-highlight-text="ctrl3.searchText" md-highlight-flags="^i">{{item.name}}</span>
+        </md-item-template>
+        <md-not-found>
+          No namespace matching "{{ctrl3.searchText}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+    </div>
+
+    <md-button class="float-right md-mini"  ng-click="removeExpression($index);" aria-label=""><md-icon layout layout-align="center center" class="material-icons">clear</md-icon></md-icon><md-tooltip md-direction="left">
+      Remove Criteria
+    </md-tooltip></md-button>
+  </div>
+  <div>
+    <md-button class="md-fab float-right md-mini md-accent" id="add" ng-click="addNewExpression();" aria-label="">
+      <md-icon class="material-icons">
+        add
+      </md-icon><md-tooltip md-direction="left">
+      Add Query Criteria
+    </md-tooltip></md-button>
+  </div>
+</md-whiteframe>
+
+<div layout layout-align="center center">
+<button class="md-raised float-left md-button md-ink-ripple" ng-click="expectedOutput = true;addOutputExpression();" ng-show="!outputcriteria.length" type="button" aria-label="Define Expected Output"><span class="ng-scope">Define Expected Output</button>
+<button class="md-raised float-right md-button md-ink-ripple" ng-show="!querycriteria.length" ng-click="queryCriteria = true;addNewExpression();" type="button" aria-label="Define Query Criteria"><span class="ng-scope">Define Query Criteria</button>
+</div>
+</md-whiteframe>
+</div>
+
+<div flex></div>
+<pre class="preview2" ng-show="test" aria-hidden="false">
+  <md-button id="remove" class="float-right md-mini" ng-click="test = 0" aria-label="delete format"><md-icon><i class="material-icons">&#xE15B;</i></md-icon></md-button>
+</pre>
+<div>
+  <button class="md-raised float-left md-button md-ink-ripple" ng-click="test = 1" type="button" aria-label="Test"><span class="ng-scope">Test</span></button>
+  <button class="md-raised float-right md-primary md-button ng-scope md-ink-ripple" ng-if="!editFlag" type="submit" aria-label="save"><span class="ng-scope">save</span></button>
+  <button class="md-raised float-right md-button md-ink-ripple" ng-click="cancelhistoricfunctionadd()" type="button" aria-label="Cancel"><span class="ng-scope">Cancel</button>
+</div>
+
+</div>
+</fieldset>
+</form>

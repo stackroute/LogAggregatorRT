@@ -8,9 +8,11 @@ var namespaceSchema = new mongoose.Schema({
     {
       "alias":{type: String, required : true},
       "name":{type: String, required : true},
+      "sample":{type: String,required : true},
       "type":{type: String, default:"dimension"}
     }
   ],
+  "uploadJSONText":{type: String, required : true},
   "status":{type:String, default:"active"},
   "description":{ type : String},
   "createdBy":String,
