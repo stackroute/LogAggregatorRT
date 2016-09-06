@@ -1,6 +1,7 @@
 angular.module("tattva")
 .controller('WatchListCtrl', ['$scope','$mdDialog', '$log',"$state",'loadExprData','saveToDB','$stateParams','selectedWlstdef','watchlistconfg',
 function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, selectedWlstdef,watchlistconfg) {
+  $scope.wtchexpr=false;
   $scope.loadWatchlistData = function(){
     $scope.wlstdef = {
       namespace:"",
@@ -25,7 +26,6 @@ $scope.editparams=undefined;
   }
 
   $scope.removeExpression=function(index,expr) {
-      // console.log("removed exp index:",index);
       if(index===0){
         $scope.wlstdef.expressions[index+1].parent="";
       }
@@ -41,6 +41,7 @@ $scope.editparams=undefined;
 
 
     $scope.addNewExpression=function(index,expr) {
+          $scope.wtchexpr=true;
       // console.log("$scope.index:",$scope.index);
       // console.log("index:",index);
         var newExpr = {

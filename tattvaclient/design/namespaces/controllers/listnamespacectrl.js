@@ -1,18 +1,47 @@
 angular.module('tattva')
-.controller('listNamespaceCtrl',['$scope','namespaceFactory','nameSpaceColln',function($scope,namespaceFactory,nameSpaceColln){
+.controller('listNamespaceCtrl', ['$scope', '$mdDialog', 'namespaceFactory', 'nameSpaceColln', '$filter',
+    function($scope, $mdDialog, namespaceFactory, nameSpaceColln, $filter) {
+        $scope.currentPage = 0;
+        $scope.pageSize = 5;
+        $scope.nameSpaceListdata = [];
+        $scope.q = '';
+        $scope.tabTitle = "Namespaces";
+        $scope.stateChange = "design.createNamespace";
 
-  $scope.tabTitle ="Namespaces";
-  $scope.stateChange="design.createNamespace"
+        $scope.nameSpaceListdata = nameSpaceColln;
+        console.log($scope.nameSpaceListdata[0]);
+        $scope.showSearchBox = function() {
+            if ($scope.showSearch) {
+                $scope.showSearch = false;
+            } else {
+                $scope.showSearch = true;
+            }
+        }
 
-  $scope.nameSpaceListdata = nameSpaceColln;
-  //console.log( "namespace list ", $scope.nameSpaceListdata);
+        $scope.showNamespacePreview = function(index) {
+            $mdDialog.show({
 
-  $scope.showSearchBox = function(){
-    if($scope.showSearch){
-      $scope.showSearch= false;
+                templateUrl: "design/namespaces/template/createNamespacedialog.html",
+                controller: "dataschemaNamespaceCtrl",
+                locals:{
+                    dataSchema:$scope.nameSpaceListdata[index].uploadJSONText,
+                }
+            });
+        }
+
+        $scope.getData = function() {
+            return $filter('filter')($scope.nameSpaceListdata, $scope.q);
+        }
+
+        $scope.numberOfPages = function() {
+            return Math.ceil($scope.getData().length / $scope.pageSize);
+        }
     }
-    else{
-      $scope.showSearch = true;
+    ])
+
+.filter('startFrom', function() {
+    return function(input, start) {
+        start = +start;
+        return input.slice(start);
     }
-  }
-}]);
+});

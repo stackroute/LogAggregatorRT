@@ -1,83 +1,100 @@
-.noSubscriber
-{
-   background:#F6F6F6;
-   text-align: center;
-   height: 600px;
- }
- .noSubscriberinst
- {
-   background:#F6F6F6;
-   text-align: center;
- }
-
- #errorField{
-  color: red;
-  font-size: 12px;
- }
-
- /*label b h3{
-  color: rgb(38,166,154);
- }*/
-
- .md-button.md-fab {
-     z-index: 0;
-   }
-#add, #remove{
-  background-color: #F3F0EE;
+.noSubscriber {
+    background: #F6F6F6;
+    text-align: center;
+    height: 600px;
 }
 
-/*#measure:hover{
-/*Measure (measurable field)*/
+.noSubscriberinst {
+    background: #F6F6F6;
+    text-align: center;
 }
 
-#dimension:hover{
-  /*Dimension (differentiates data)*/
-} */
+.editNamespace input {
+    color: #868686 !important;
+    font-size: 16px;
+}
 
-.editNamespace input{
-   color:#868686 !important;
-   font-size: 16px;
- }
-.editNamespace textarea{
-   color:#868686 !important;
-   font-size: 14px;
-   border:0px !important;
- }
-.editNamespace md-radio-button{
-   color:#868686 !important;
-   font-size: 14px;
- }
-.editNamespace label{
-   color:#868686 !important;
-   font-size: 13px;
- }
+.editNamespace textarea {
+    color: #868686 !important;
+    font-size: 14px;
+    border: 0px !important;
+}
 
- .uploadJSON{
+.editNamespace md-radio-button {
+    color: #868686 !important;
+    font-size: 14px;
+}
+
+.editNamespace label {
+    color: #868686 !important;
+    font-size: 13px;
+}
+
+.uploadJSON {
     color: #BDBDBD;
     font-size: 9pt;
 }
- .uploadJSONFormat{
-    height:200px !important;
-    width:98%;
-    border:1px solid #BDBDBD;
+
+.uploadJSONFormat {
+    height: 200px !important;
+    width: 98%;
+    border: 1px solid #BDBDBD;
 }
 
-.NamespaceListCardHeader{
-  cursor:pointer;
+.NamespaceListCardHeader {
+    cursor: pointer;
 }
 
-md-card.NamespaceCard{
+
+/* md-card.NamespaceCard{
   background-color:#F6F6F6;
+  } */
+
+  .createNamespacePage {
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
-.createNamespacePage{
-  padding-left: 100px;
-  padding-right: 100px;
+.fieldsetNamespace {
+    border: white;
 }
-.fieldsetNamespace{
-  border: white;
+
+.internalerror {
+    color: rgb(216, 67, 21) !important;
 }
-.internalerror
-{
-  color:rgb(216,67,21) !important;
+
+md-icon.material-icons.float-right {
+    padding-left: 250px;
+}
+
+md-icon.material-icons.float-right {
+    margin-right: 25px;
+}
+
+.dialogname:hover {
+    box-shadow: 0 14px 28px rgba(25, 25, 25, 25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+h2.ng-binding {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.material-icons-cursor {
+    cursor: pointer;
+}
+
+pre.datajson.ng-binding.ng-scope.layout-align-center-center {
+    margin-left: 50px;
+}
+
+#errorField{
+  color: red;
+  font-size: 12px;
+}
+.md-button.md-fab {
+   z-index: 0;
+}
+#add, #remove{
+  background-color: #F3F0EE;
 }

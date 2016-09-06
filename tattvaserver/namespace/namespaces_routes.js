@@ -4,7 +4,7 @@ var dataProvider = require('../core/datamodelprovider');
 
 namespace_router.get('/', function(req, res){
   var NamespaceModel = dataProvider.getModel(NamespaceSchema, req.user.orgsite);
-  NamespaceModel.find({},{name:1, dataSchema:1}, function(err, namespaceListData){
+  NamespaceModel.find({},{editedBy:1,name:1,uploadJSONText:1,editedOn:1}, function(err, namespaceListData){
     if(err){
       return res.status(400).json(err);
     }

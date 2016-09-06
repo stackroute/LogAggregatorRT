@@ -7,6 +7,7 @@
     // 'ui.router.stateHelper',
     'ui.ace',
     'ngLetterAvatar',
-    'ngMessages'
+    'ngMessages',
+    'mdPickers'
   ]);
 })();

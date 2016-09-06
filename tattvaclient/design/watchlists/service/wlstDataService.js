@@ -4,6 +4,6 @@ angular.module("tattva")
     return $http.get('/viewwatchlist');
   }
   this.getWatchlistData = function(watchlistName) {
-    return $http.get('/watchlist/detail/'+watchlistName);
+    return $http.get('/watchlist/data/'+watchlistName);
   }
 }]);

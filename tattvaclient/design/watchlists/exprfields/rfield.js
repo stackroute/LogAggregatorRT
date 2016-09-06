@@ -30,8 +30,7 @@ angular.module("tattva")
 
     if(item === undefined) return;
     var dialogTemplate = '/design/watchlists/exprfields/'+item.template+'/' + item.template+'.html';
-
-
+console.log('/design/watchlists/exprfields/'+item.template+'/' + item.template+'.html')
     if(expr.watch.rfield.fieldType !== undefined) {
       expr.watch.rfield.fieldType = item.type;
     } else if(expr.watch.rfield.fieldType != item.type) {

@@ -23,17 +23,22 @@
           </md-input-container>
         </div>
         <div flex layout layout-align="center center" >
-            <label class="md-title" layout flex="35">Define DataSchema for NameSpace</label>
+          <label class="md-title" layout flex="35">Define DataSchema for NameSpace</label>
         </div>
         <div flex></div>
         <div  flex layout>
           <div ng-if="!uploadJSONFlag" flex="55">
+
+                <div layout="column" layout-align="center center" ng-if="parsingError" layout-sm="column" layout-align="space-around">
+                  <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                  <md-subheader>Parsing...</md-subheader>
+                </div>
             <div layout="column" flex ng-repeat="dataFormatObj in nameSpace.dataSchema">
               <div layout="row">
                 <md-input-container>
                   <label>{{nameSpace.dataSchema.indexOf(dataFormatObj)+1}}.</label>
                 </md-input-container>
-
+                
                 <md-input-container flex="20" flex-offset="5">
                   <label>Alias</label>
                   <input type="text" ng-model="dataFormatObj.alias" ng-change="watchChanges()" name="fieldAlias" value={{}} required>
@@ -81,12 +86,12 @@
           <div flex></div>
 
           <div layout-align="right right" layout="column" flex="40">
-            <textarea heigth="auto" class="uploadJSONFormat" placeholder="Paste Sample Data JSON format here" ng-click="hideError()" ng-change="uploadJSON(uploadJSONText)" name="JSONFormat" ng-model="uploadJSONText" required></textarea>
+            <textarea heigth="auto" class="uploadJSONFormat preview2 md-body-2" placeholder="Paste Sample Data JSON format here" ng-click="hideError()" ng-change="uploadJSON(nameSpace.uploadJSONText)" name="JSONFormat" ng-model="nameSpace.uploadJSONText" required></textarea>
             <div ng-messages="createNameSpace.description.$error">
               <p id="errorField" ng-model="parsingError">{{parsingError}}</p>
             </div>
             <md-input-container>
-            <md-button class="float-right md-raised" ng-click="uploadJSON(uploadJSONText);restructureTextArea()" class="md-raised">Parse</md-button>
+              <md-button class="float-right md-raised" ng-click="uploadJSON(nameSpace.uploadJSONText);restructureTextArea()" class="md-raised">Parse</md-button>
             </md-input-container>
           </div>
         </div>
