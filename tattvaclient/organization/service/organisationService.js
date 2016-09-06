@@ -4,37 +4,37 @@ angular.module('tattva')
     saveUser: function(createUsermData) {
       $http({
         method  : 'post',
-        url     : '/organisation/user/'+createUsermData.name,
+        url     : '/organisation/'+createUsermData.name,
         data    : createUsermData
       })
       .then(function(response)
       {
         if (response.data.errors) {
-          $scope.errorName = response.data.errors.name;
+         return response.errorName = response.data.errors.name;
         } else {
-          $scope.message = response.data.message;
+          alert("New User created successfully..!");
+         return response.message = "New User created successfully..!";
         }
       });
     },
-
-
     getUserName: function() {
-      return $http.get('/organisation/user/:userName').then(function(response) {
-        return response.data;
+      return $http.get('/organisation/:userName').then(function(response) {
+        var data = response.data;
+        return data;
       });
     },
     editUser: function(userData) {
       $http({
         method  : 'put',
-        url     : '/organisation/user/'+userData.name,
+        url     : '/organisation/'+userData.name,
         data    : userData
       })
       .then(function(response)
       {
         if (response.data.errors) {
-          $scope.errorName = response.data.errors.name;
+          return response.errorName = response.data.errors.name;
         } else {
-          $scope.message = response.data.message;
+          return response.message = "User details updated..!";
         }
       });
     }

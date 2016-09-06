@@ -8,12 +8,12 @@
         <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="tattva">TATTVA - Complex Event Processor</a></h2>
       </div>
       <div ng-if="userNavItems.sideNav.length" class="leftpadding">
-        <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="home">{{user.orgName}}</a></h2>
+        <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="tattva.home">{{user.orgName}}</a></h2>
       </div>
       <span flex></span>
       <div ng-if="displayTopNavIcon">
       <div layout="row" layout-padding>
-       <notify-panel ng-if="user.role=='ORGADM'"></notify-panel><!--display the notification icon in header topnav-->
+       <notify-panel ng-if="user.role!='TATTVAADM'"></notify-panel><!--display the notification icon in header topnav-->
        <user-panel></user-panel><!--display the User icon in header topnav-->
        </div>
      </div>
@@ -32,13 +32,13 @@
   </div>
   <md-divider></md-divider>
   <md-list flex="70">
-    <md-list-item ng-repeat="item in items" >
+    <md-list-item ng-repeat="item in items">
       <div ng-mouseover="sublist=true" ng-mouseleave="sublist=false">
         <md-icon class="material-icons" style="color:#DEF7F5;">{{item.icon}}</md-icon>
-        <a class="linkClr" ui-sref="{{item.link}}">{{item.menu}}</a>
+        <a class="linkClr" ui-sref="{{item.link}}" ng-click="openLeftMenu()">{{item.menu}}</a>
         <md-list ng-if="item.children.length > 0">
           <md-list-item  ng-show="sublist" ng-repeat="child in item.children">
-            <a class="linkClr" ui-sref="{{child.link}}">{{child.menu}}</a>
+            <a class="linkClr" ui-sref="{{child.link}}" ng-click="openLeftMenu()">{{child.menu}}</a>
           </md-list-item>
         </md-list>
       </div>

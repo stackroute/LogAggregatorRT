@@ -4,8 +4,7 @@ var dataProvider = require('../core/datamodelprovider');
 
 Orguser_router.get('/:userName', function(req, res){
   var UserModel = dataProvider.getModel(UserSchema,"tattva");
-  UserModel.find({'role' : 'USER'}, function(err, userData){
-    // console.log("Use data comin from server ",userData);
+  UserModel.find([{'role' : 'ORGUSER'},{'role' : 'ORGADM'}], function(err, userData){
     if(err){
       console.log("error in finding users");
       return res.status(500).json({error: "Internal error occurred..!"});
@@ -20,6 +19,7 @@ Orguser_router.post('/:name',function (req, res) {
     "name" : request.body.name,
     "email" : request.body.email,
     "password" : request.body.password,
+    "orgsite":req.body.orgsite,
     "role" : request.body.role
   });
   newUser.save(function(err, user){
