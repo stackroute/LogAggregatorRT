@@ -53,9 +53,9 @@ md-list-item a {
   padding: 10px;
 }
 
-/*.footer-margin-top {
-  margin-top: 30px;
-}*/
+.footer-margin-top {
+  margin-top: 100px;
+}
 
 .footer_part1{
   height:100px;
