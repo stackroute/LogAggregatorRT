@@ -25,13 +25,13 @@
  </div>
 </md-toolbar>
 <md-sidenav md-component-id="left" class="md-sidenav-left" layout="column" style="background-color:#0F423E">
-  <div layout="row" class="snvhead" flex="15">
+  <div layout="row" class="snvhead" flex="10">
     <!--inline styling has to be removed later-->
     <span flex="30"><img class="logo" style="height:35px; width:55px;" ng-src="{{user.orgLogo}}"/></span>
     <span flex="70"><h3 class="linkClr">{{user.orgName}}</h3></span>
   </div>
   <md-divider></md-divider>
-  <md-list flex="70">
+  <md-list flex="80">
     <md-list-item ng-repeat="item in items">
       <div ng-mouseover="sublist=true" ng-mouseleave="sublist=false">
         <md-icon class="material-icons" style="color:#DEF7F5;">{{item.icon}}</md-icon>
@@ -45,7 +45,7 @@
     </md-list-item>
   </md-list>
   <md-divider></md-divider>
-  <div flex="15">
+  <div flex="12">
     <md-list>
       <md-list-item>
         <a class="linkClr" href="https://en.wikipedia.org/wiki/Complex_event_processing">About us</a>
