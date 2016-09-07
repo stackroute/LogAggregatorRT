@@ -16,11 +16,11 @@ Orguser_router.get('/:userName', function(req, res){
 Orguser_router.post('/:name',function (req, res) {
   var UserModel = dataProvider.getModel(UserSchema,"tattva");
   var newUser = new UserModel({
-    "name" : request.body.name,
-    "email" : request.body.email,
-    "password" : request.body.password,
+    "name" : req.body.name,
+    "email" : req.body.email,
+    "password" : req.body.password,
     "orgsite":req.body.orgsite,
-    "role" : request.body.role
+    "role" : req.body.role
   });
   newUser.save(function(err, user){
     if(err) {
@@ -33,7 +33,7 @@ Orguser_router.post('/:name',function (req, res) {
   // console.log("the saving data is here");
 });
 
-Orguser_router.put('/:name',function(req,res){
+Orguser_router.patch('/:name',function(req,res){
   // console.log("update user ",req.body);
   var editUser= req.body;
   // console.log("edit user",editUser.name);
@@ -43,7 +43,7 @@ Orguser_router.put('/:name',function(req,res){
       console.log("Updating user object failed:",err);
       return res.status(500).json({error: "Internal error occurred..!"});
     }
-    res.json(editUser);
+    return res.json(editUser);
   });
 });
 

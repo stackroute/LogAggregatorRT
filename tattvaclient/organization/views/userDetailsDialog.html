@@ -6,7 +6,7 @@
   </md-toolbar>
   <md-dialog-content>
     <div flex ng-cloak>
-      <form name="editdtls" flex="80" flex-offset="10">
+      <form name="registerForm" flex="80" ng-submit="editUser()" flex-offset="10">
         <md-input-container class="mic md-icon-float md-block">
           <label>Contact Name</label>
           <md-icon class="material-icons">person</md-icon>
@@ -61,7 +61,7 @@
           <div layout="row" ng-hide="success"  class="float-right" layout-padding>
             <div flex-offset="20" layout-align="center" layout="row">
               <md-button ng-click="closeDialog()" class="md-raised">CANCEL</md-button>
-              <md-button  class="md-raised md-primary" type="button" ng-click="changepwd()">Apply</md-button>
+              <md-button  class="md-raised md-primary" type="submit">Apply</md-button>
             </div>
           </div>
         </form>

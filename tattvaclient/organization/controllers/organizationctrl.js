@@ -1,6 +1,7 @@
 angular.module('tattva')
 .controller('orgCtrl',['$scope','$mdDialog','$http','AuthService','userservice','$filter', function($scope, $mdDialog, $http,AuthService, userservice,$filter) {
 	var data = userservice.getUserName(data);
+	$scope.org = AuthService.getCurrentUser();
 	$scope.currentPage = 0;
 	$scope.pageSize = 5;
 	$scope.user = [];
@@ -34,9 +35,15 @@ angular.module('tattva')
 			},
 			controller: DialogController
 		});
-		function DialogController($scope, $mdDialog, user,index) {
+		function DialogController($scope, userservice,$mdDialog, user,index) {
 			$scope.user = user;
-			//console.log($scope.user);
+			console.log($scope.user);
+			$scope.editUser=function(){
+					var userData={name : $scope.user.name , email : $scope.user.email , password : $scope.user.password,role : $scope.user.role};
+					console.log(userData);
+					$scope.editUser(userData);
+				$state.go('tattva.organisation');
+			}
 			$scope.index=index;
 			$scope.closeDialog = function() {
 				$mdDialog.hide();

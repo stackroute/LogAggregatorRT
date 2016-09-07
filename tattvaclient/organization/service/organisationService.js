@@ -25,7 +25,7 @@ angular.module('tattva')
     },
     editUser: function(userData) {
       $http({
-        method  : 'put',
+        method  : 'patch',
         url     : '/organisation/'+userData.name,
         data    : userData
       })
