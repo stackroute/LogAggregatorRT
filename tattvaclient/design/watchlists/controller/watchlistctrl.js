@@ -270,6 +270,7 @@ $scope.editWatchlist = function(){
 //     });
 //   };
   $scope.showEditConfirm = function(ev) {
+      $scope.wtchexpr = true;
       var confirm = $mdDialog.confirm()
             .title('Would you like to stop currently running watclist?')
             .targetEvent(ev)
