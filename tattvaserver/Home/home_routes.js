@@ -32,7 +32,7 @@ sideNav_router.use(function(req, res, next) {
     {
       "_id" : "item2_4",
       "menu" : "Historic Queries",
-      "link" : "design.historicFunction"
+      "link" : "design.historicQuery"
     },
     {
       "_id" : "item2_5",
@@ -109,7 +109,7 @@ sideNav_router.get('/:userRole', function(req, res) {
         },
         {
           "menu" : "Historic Queries",
-          "link" : "design.historicFunction"
+          "link" : "design.historicQuery"
         },
         {
           "menu" : "Functions",
@@ -176,7 +176,7 @@ sideNav_router.get('/:userRole', function(req, res) {
         },
         {
           "menu" : "Historic Queries",
-          "link" : "design.historicFunction"
+          "link" : "design.historicQuery"
         },
         {
           "menu" : "Functions",

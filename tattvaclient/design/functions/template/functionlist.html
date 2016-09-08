@@ -1,14 +1,14 @@
 <div ng-include src="'/design/designhome/template/subTitleTab.html'"></div>
 
 <div>
-  <md-list>
+  <md-list layout-padding>
     <md-list-item class="md-3-line hover" ng-repeat="item in data">
-      <span class='md-avatar'><ng-letter-avatar fontSize="20"  charCount=2 data="{{ data[$index].name  }}" shape="round" avatarcustombgcolor="#ff944d"></ng-letter-avatar></span>
+      <span class='md-avatar'><ng-letter-avatar fontSize="20"  charCount=2 data="{{ data[$index].name  }}" shape="round"></ng-letter-avatar></span>
       <div class="md-list-item-text" layout="column">
         <h3>{{ item.name | capitalize}}</h3>
         <p>{{data[$index].description}}</p>
       </div>
-      <md-button class="md-fab md-mini md-secondary" aria-label="Comment">
+      <md-button class="md-fab md-mini md-raised greyBackground" aria-label="Comment">
         <ng-md-icon icon="mode_edit"></ng-md-icon>
       </md-button>
       <md-divider ng-if="!$last"></md-divider>

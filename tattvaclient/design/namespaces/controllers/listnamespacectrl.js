@@ -9,7 +9,6 @@ angular.module('tattva')
         $scope.stateChange = "design.createNamespace";
 
         $scope.nameSpaceListdata = nameSpaceColln;
-        console.log($scope.nameSpaceListdata[0]);
         $scope.showSearchBox = function() {
             if ($scope.showSearch) {
                 $scope.showSearch = false;
@@ -21,7 +20,7 @@ angular.module('tattva')
         $scope.showNamespacePreview = function(index) {
             $mdDialog.show({
 
-                templateUrl: "design/namespaces/template/createNamespacedialog.html",
+                templateUrl: "design/namespaces/template/createnamespacedialog.html",
                 controller: "dataschemaNamespaceCtrl",
                 locals:{
                     dataSchema:$scope.nameSpaceListdata[index].uploadJSONText,

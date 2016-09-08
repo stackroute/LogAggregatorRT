@@ -1,0 +1,25 @@
+<div>
+    <md-autocomplete
+    required
+    md-input-name="atoCmpStream"
+    ng-disabled="tattvaHistQQueryCriteriaLeftFieldctrl.isDisabled"
+    md-no-cache="tattvaHistQQueryCriteriaLeftFieldctrl.noCache"
+    md-selected-item="tattvaHistQQueryCriteriaLeftFieldctrl.selectedItem"
+    md-search-text-change="tattvaHistQQueryCriteriaLeftFieldctrl.searchTextChange(tattvaHistQQueryCriteriaLeftFieldctrl.searchText)"
+    md-search-text="tattvaHistQQueryCriteriaLeftFieldctrl.searchText"
+    md-selected-item-change="tattvaHistQQueryCriteriaLeftFieldctrl.selectedItemChange(item,criteria)"
+    md-items="item in tattvaHistQQueryCriteriaLeftFieldctrl.querySearch(tattvaHistQQueryCriteriaLeftFieldctrl.searchText)"
+    md-item-text="item"
+    md-min-length="0"
+    placeholder="Left Hand Expression">
+    <md-item-template>
+      <span md-highlight-text="tattvaHistQQueryCriteriaLeftFieldctrl.searchText" md-highlight-flags="^i">{{item}}</span>
+  </md-item-template>
+  <div ng-messages="watchlistcreate.atoCmpStream.$error" ng-if="watchlistcreate.atoCmpStream.$touched">
+      <div ng-message="required">This field is required</div>
+  </div>
+  <md-not-found>
+      No matching "{{tattvaHistQQueryCriteriaLeftFieldctrl.searchText}}" was found.
+  </md-not-found>
+</md-autocomplete>
+</div>

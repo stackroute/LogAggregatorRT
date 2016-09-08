@@ -7,7 +7,7 @@
 </div>
 <div ng-init="$scope.nameSpaceListdata = namespaceFactory.getNameSpace()" ng-if="nameSpaceListdata.length">
     <div ng-include src="'/design/designhome/template/subTitleTab.html'">
-        <!-- This is for subheader of the view         -->
+        <!-- This is for subheader of the view  -->
     </div>
 </div>
 <md-content layout='row' layout-align="center center" flex>
@@ -18,7 +18,7 @@
             </div>
             <div class="" style="width: 500px;">
                 <div class="md-padding md-list-item-text" layout="column" layout-align="start">
-                    <a ui-sref="design.editNamespace({editNamespaceData: '{{ns.name}}'})"><h3 class="md-body4">{{ ns.name }}</h3></a>
+                    <a ui-sref="design.editNamespace({editNamespaceData: '{{ns.name}}'})"><h3 class="md-body4">{{ ns.name | capitalize}}</h3></a>
                     <!-- <h4></h4> -->
                     <p>Last modified on {{ns.editedOn | date:'dd-mm-yyyy  hh:mm:ss a'}} by {{ns.editedBy | capitalize}}</p>
                 </div>

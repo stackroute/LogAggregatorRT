@@ -92,9 +92,11 @@ pre.datajson.ng-binding.ng-scope.layout-align-center-center {
   color: red;
   font-size: 12px;
 }
+
 .md-button.md-fab {
    z-index: 0;
 }
-#add, #remove{
+
+.greyBackground{
   background-color: #F3F0EE;
 }

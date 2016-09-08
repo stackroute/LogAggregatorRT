@@ -1,0 +1,31 @@
+<div>
+	<div layout="row" flex class="noSubscriber" layout-align="center center" ng-if="!historicQueryListdata.length">
+		<div  flex layout-padding layout-margin layout-align="start">
+			<h2>You are yet to create an Historic Query</h2>
+			<p>Historic Query is used to fetch data from Database,can filter data on conditions.</p>
+			<md-button class="md-raised md-primary" ui-sref='design.historicQueryAdd'>Create</md-button>
+		</div>
+	</div>
+
+	<div ng-init="$scope.historicQueryListdata = historicQueryFactory.getHistoricQuery()" ng-if="historicQueryListdata.length">
+		<div ng-include src="'/design/designhome/template/subTitleTab.html'" class="ng-scope"></div>
+		<md-content>
+			<div>
+				<md-list layout-padding>
+					<md-list-item class="md-3-line hover" ui-serf="design.historicQueryAdd" ng-repeat="item in historicQueryListdata">
+						<span class='md-avatar'><ng-letter-avatar fontSize="20"  charCount=2 data="{{ historicQueryListdata[$index].name  }}" shape="round"></ng-letter-avatar></span>
+						<div class="md-list-item-text" layout="column">
+							<h3>{{ item.name | capitalize}}</h3>
+							<p>{{historicQueryListdata[$index].description}}</p>
+						</div>
+						<md-button class="md-fab md-mini md-raised greyBackground" ui-sref="design.historicQueryEdit({ editHistoricQueryData: '{{item.name}}'})" aria-label="Comment">
+							<ng-md-icon icon="mode_edit"></ng-md-icon>
+						</md-button>
+						<md-divider ng-if="!$last"></md-divider>
+					</md-list-item>
+				</md-list>
+			</div>
+		</md-content>
+		</div>
+	</div>
+</div>

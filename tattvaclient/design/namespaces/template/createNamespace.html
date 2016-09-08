@@ -3,7 +3,6 @@
     <fieldset class="fieldsetNamespace" ng-disabled="editData && editNamespaceFlag">
 
       <div layout="column" layout-padding flex>
-        <!-- <md-whiteframe class="md-whiteframe-1dp" flex layout="column"> -->
         <div  flex layout>
           <md-input-container flex="45" >
             <label>Name of NameSpace</label>
@@ -65,7 +64,7 @@
                 </md-input-container>
                 <div flex></div>
                 <div>
-                  <md-button id="remove" class="float-right md-fab md-mini" ng-click="deleteDataFormat($index); watchChanges()" aria-label="delete format"><md-icon><i class="material-icons">&#xE15B;</i></md-icon></md-button>
+                  <md-button class="float-right md-raised md-fab md-mini greyBackground" ng-click="deleteDataFormat($index); watchChanges()" aria-label="delete format"><md-icon><i class="material-icons">&#xE15B;</i></md-icon></md-button>
                 </div>
               </div>
               <div layout="row" flex>
@@ -78,7 +77,7 @@
               </div>
             </div><!--ng repeat div-->
             <div flex>
-              <md-button id="add" class="float-right md-fab md-mini" ng-click="addDataFormat()"  class="md-raised"><md-icon><i class="material-icons">&#xE145;</i></md-icon></md-button>
+              <md-button class="float-right md-raised md-fab md-mini greyBackground" ng-click="addDataFormat()"><md-icon><i class="material-icons">&#xE145;</i></md-icon></md-button>
             </div>
           </div>
           <div flex></div>
@@ -86,7 +85,7 @@
           <div flex></div>
 
           <div layout-align="right right" layout="column" flex="40">
-            <textarea heigth="auto" class="uploadJSONFormat preview2 md-body-2" placeholder="Paste Sample Data JSON format here" ng-click="hideError()" ng-change="uploadJSON(nameSpace.uploadJSONText)" name="JSONFormat" ng-model="nameSpace.uploadJSONText" required></textarea>
+            <textarea class="uploadJSONFormat preview2 md-body-2" placeholder="Paste Sample Data JSON format here" ng-click="hideError()" ng-change="uploadJSON(nameSpace.uploadJSONText)" name="JSONFormat" ng-model="nameSpace.uploadJSONText" required></textarea>
             <div ng-messages="createNameSpace.description.$error">
               <p id="errorField" ng-model="parsingError">{{parsingError}}</p>
             </div>
@@ -97,7 +96,6 @@
         </div>
       </fieldset>
 
-      <!-- </md-whiteframe> -->
       <div layout layout-align="center center" >
         <md-button class="md-raised" ng-click="createNamespaceCancel()" ng-if="editData && editNamespaceFlag">Cancel</md-button><!--view namespace-->
         <md-button class="md-raised" ng-click="showConfirm($event)" ng-if="editData && !editNamespaceFlag">Cancel</md-button><!--edit namespace-->
