@@ -67,7 +67,7 @@
         </div>
 
         <div>
-          <md-whiteframe ng-show="fndef.outputFields.length" class="md-whiteframe-2dp" layout="column" ng-if="fndef.outputFields.length" flex>
+          <md-whiteframe ng-show="fndef.outputFields.length" class="md-whiteframe-2dp" layout="column" style="border-radius:1%;" ng-if="fndef.outputFields.length" flex>
             <label class="md-subhead" layout layout-padding layout-align="left left" flex>Output Data(DataFields) :</label>
             <div layout="row"  ng-repeat="field in fndef.outputFields" flex>
               <md-subheader>{{field.index}}) </md-subheader>
@@ -90,7 +90,7 @@
           </md-whiteframe>
         </div>
         <div>
-          <md-whiteframe ng-show="fndef.queryCriteria.length" class="md-whiteframe-2dp" layout="column" ng-if="fndef.queryCriteria.length">
+          <md-whiteframe ng-show="fndef.queryCriteria.length" class="md-whiteframe-2dp" style="border-radius: 1%;" layout="column" ng-if="fndef.queryCriteria.length">
             <label class="md-subhead" layout layout-padding layout-align="left left">Query Criteria :</label>
             <div ng-repeat="criteria in fndef.queryCriteria" layout="row">
               <md-subheader>{{criteria.index}})</md-subheader>
