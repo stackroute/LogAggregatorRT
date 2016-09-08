@@ -1,10 +1,15 @@
-<form name="userForm" ng-submit="saveUser()">
+<form name="registerForm" ng-submit="saveUser()">
   <md-card flex = "45" flex-offset="30"  layout-align="center" class="content" class="layout-padding">
+  <md-card-header>
+    <md-card-header-text style="color: #8c8c8c;" layout="row" layout-align="center center">ADD USER
+    </md-card-header-text>
+  </md-card-header>
+  <md-divider></md-divider>
     <md-card-content>
       <md-input-container class="mic md-icon-float md-block">
         <label>Contact Name</label>
         <md-icon class="material-icons">person</md-icon>
-        <input ng-model="user.name" type="text" ng-disabled="userDisableName" >
+        <input ng-model="user.name" type="text" ng-disabled="userDisableName" name="username" required="true" md-maxlength="15">
       </md-input-container>
 
       <md-input-container class="mic md-icon-float md-block">
@@ -38,7 +43,7 @@
         <div layout="column">
           <div flex>
             <input ng-model="user.cfpwd" type="password" name="cfpassword"
-            valid-password-c="user.pwd" required >
+            valid-password-c required >
           </div>
           <div flex layout-align="right" ng-messages="registerForm.cfpassword.$error" class="error"  role="alert">
             <div ng-message-exp="required">This is required </div>
@@ -49,16 +54,14 @@
         </md-input-container>
         <md-input-container class="mic md-icon-float md-block" >
           <md-radio-group layout="row" ng-model="user.role">
-            <!-- <div layout="row">
-              <div layout="50"></div>
-              <div> -->
-              <md-radio-button value="ADMIN" class="md-primary" flex-offset="5" >Organisation Admin</md-radio-button>
-              <md-radio-button value="USER" class="md-primary"> User </md-radio-button>
-            <!-- </div> -->
+              <md-radio-button value="ORGADM" class="md-primary" flex-offset="5" >Organisation Admin</md-radio-button>
+              <md-radio-button value="ORGUSER" class="md-primary"> User </md-radio-button>
           </md-radio-group>
         </md-input-container>
       </md-card-content>
+    <md-card-actions layout="row" layout-align="center center">
+    <md-button class="md-raised" ng-click ="cancel()">Cancel</md-button>
+    <md-button flex-offset="40" class="md-primary md-raised" type="submit" ng-disabled="registerForm.$invalid && !user.role">Save</md-button>
+    </md-card-actions>
     </md-card>
-    <md-button flex-offset="40" class="md-accent md-raised md-hue-1" type="submit">Save</md-button>
-    <md-button class="md-accent md-raised md-hue-1" ng-click ="cancel()">Cancel</md-button>
   </form>

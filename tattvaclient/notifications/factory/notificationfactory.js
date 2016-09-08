@@ -21,7 +21,7 @@ angular.module('tattva')
       resolve(data); 
     },function(res) {
       //error
-      reject("Unable to connect to the Server...!");
+      reject("No New Notification to show...! ");
     });
     });
   }

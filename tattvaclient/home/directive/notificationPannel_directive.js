@@ -2,7 +2,7 @@ angular.module('tattva')
 .directive('notifyPanel', function() {
 	return{
 		restrict : 'E',
-		template :'<md-button ng-click="showPanel($event)" class="md-fab md-mini md-primary"><md-icon class="material-icons">{{userNavItems.sideNav[4].icon}}</md-icon></md-button>',
+		template :'<md-button ng-click="showPanel($event)" class="md-fab md-raised md-mini"><md-icon class="material-icons">notifications</md-icon></md-button>',
 		controller: function($scope,AuthService,$mdPanel){
 
 			$this=this;

@@ -2,7 +2,7 @@ angular.module('tattva')
 .directive('userPanel', function() {
 	return{
 		restrict : 'E',
-		template :'<md-button style="font-size: 22px;" ng-click="profilePanel($event)" class="md-fab md-mini md-primary">{{user.name[0]}}</md-button>',
+		template :'<md-button style="font-size: 22px;" ng-click="profilePanel($event)" class="md-fab md-raised md-mini">{{user.name[0]}}</md-button>',
 		controller: function($scope,AuthService,$mdPanel){
 
 			$this=this;

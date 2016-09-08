@@ -8,12 +8,12 @@
         <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="tattva">TATTVA - Complex Event Processor</a></h2>
       </div>
       <div ng-if="userNavItems.sideNav.length" class="leftpadding">
-        <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="home">{{user.orgName}}</a></h2>
+        <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="tattva.home">{{user.orgName}}</a></h2>
       </div>
       <span flex></span>
       <div ng-if="displayTopNavIcon">
       <div layout="row" layout-padding>
-       <notify-panel ng-if="user.role=='ORGADM'"></notify-panel><!--display the notification icon in header topnav-->
+       <notify-panel ng-if="user.role!='TATTVAADM'"></notify-panel><!--display the notification icon in header topnav-->
        <user-panel></user-panel><!--display the User icon in header topnav-->
        </div>
      </div>
@@ -25,27 +25,27 @@
  </div>
 </md-toolbar>
 <md-sidenav md-component-id="left" class="md-sidenav-left" layout="column" style="background-color:#0F423E">
-  <div layout="row" class="snvhead" flex="15">
+  <div layout="row" class="snvhead" flex="10">
     <!--inline styling has to be removed later-->
     <span flex="30"><img class="logo" style="height:35px; width:55px;" ng-src="{{user.orgLogo}}"/></span>
     <span flex="70"><h3 class="linkClr">{{user.orgName}}</h3></span>
   </div>
   <md-divider></md-divider>
-  <md-list flex="70">
-    <md-list-item ng-repeat="item in items" >
+  <md-list flex="80">
+    <md-list-item ng-repeat="item in items">
       <div ng-mouseover="sublist=true" ng-mouseleave="sublist=false">
         <md-icon class="material-icons" style="color:#DEF7F5;">{{item.icon}}</md-icon>
-        <a class="linkClr" ui-sref="{{item.link}}">{{item.menu}}</a>
+        <a class="linkClr" ui-sref="{{item.link}}" ng-click="openLeftMenu()">{{item.menu}}</a>
         <md-list ng-if="item.children.length > 0">
           <md-list-item  ng-show="sublist" ng-repeat="child in item.children">
-            <a class="linkClr" ui-sref="{{child.link}}">{{child.menu}}</a>
+            <a class="linkClr" ui-sref="{{child.link}}" ng-click="openLeftMenu()">{{child.menu}}</a>
           </md-list-item>
         </md-list>
       </div>
     </md-list-item>
   </md-list>
   <md-divider></md-divider>
-  <div flex="15">
+  <div flex="12">
     <md-list>
       <md-list-item>
         <a class="linkClr" href="https://en.wikipedia.org/wiki/Complex_event_processing">About us</a>

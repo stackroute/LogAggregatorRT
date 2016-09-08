@@ -104,7 +104,7 @@ app.get('/guest', function(req, res){
   res.json(navItems);
 });
 app.use('/users',isAuthenticated,  users);
-app.use('/organisation/user',isAuthenticated,  Orguser_router);
+app.use('/organisation',isAuthenticated,  Orguser_router);
 app.use('/instance',isAuthenticated,  datasourcesrouter);
 app.use('/historicQuery',isAuthenticated,  historicQuery_router);
 app.use('/function',isAuthenticated,  function_router);

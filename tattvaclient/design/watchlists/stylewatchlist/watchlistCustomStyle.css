@@ -78,7 +78,7 @@ padding-top: 10px;
 }
 .watchlistDialog {
   width: 550px;
-  height: 500px;
+  height: auto;
 }
 .outputDialog{
   width: 50%;
