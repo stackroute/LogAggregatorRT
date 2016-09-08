@@ -7,14 +7,14 @@
 </div>
 
 <div class="viewInst" ng-if="streamResultData.length!=0">
-  <md-subheader ng-if="nsname" class="leftpadding md-primary md-title">Data streams from {{nsname}}</md-subheader>
+  <md-subheader ng-if="nsname" class="leftpadding md-primary md-title">Data streams from {{nsname | capitalize}}</md-subheader>
   <md-divider></md-divider>
   <div ng-init="getStreamData(nsname)">
     <md-grid-list md-cols="4" md-row-height="100px" md-gutter="12px" >
       <md-grid-tile flex ng-repeat="stream in streamResultData">
         <md-button class="leftpadding" ui-sref="design.edit({ streamName: '{{stream.streamname}}' }) " layout="row" flex>
-          <ng-letter-avatar fontSize="20" data={{stream.instance}} shape="round" avatarcustombgcolor="#2e2eb8"  charCount="2"></ng-letter-avatar>
-          <h4 class="leftpadding">{{stream.streamname}}</h4>
+          <ng-letter-avatar fontSize="20" data={{stream.instance}} shape="round" charCount="2"></ng-letter-avatar>
+          <h4 class="leftpadding">{{stream.streamname | capitalize}}</h4>
         </md-button>
       </md-grid-tile>
     </md-grid-list>

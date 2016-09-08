@@ -1,0 +1,40 @@
+<div layout="row">
+  <md-autocomplete
+  class="autocom"
+  required md-input-name="atoCmpRfield"
+  ng-disabled="tattvaHistQOutputFieldctrl.isDisabled"
+  md-input-name="autocompleteForrfieldwatchlist"
+  md-no-cache="tattvaHistQOutputFieldctrl.noCache"
+  md-selected-item="tattvaHistQOutputFieldctrl.selectedItem"
+  md-search-text-change="tattvaHistQOutputFieldctrl.searchTextChange(tattvaHistQOutputFieldctrl.searchText)"
+  md-search-text="tattvaHistQOutputFieldctrl.searchText"
+  md-selected-item-change="tattvaHistQOutputFieldctrl.selectedItemChange(item,field)"
+  md-items="item in tattvaHistQOutputFieldctrl.querySearch(tattvaHistQOutputFieldctrl.searchText)"
+  md-item-text="item.name"
+  md-min-length="0"
+  placeholder="Select Query functions"
+  md-menu-class="autocomplete-custom-template"
+  flex="100">
+  <md-item-template>
+    <span class="item-title">
+      <md-icon class="material-icons">{{item.icon}}</md-icon>
+      <span> {{item.name}} </span>
+
+    </span>
+    <span class="item-metadata">
+      <span class="item-metastat">
+        Query : <strong>{{item.shortexpr}}</strong>
+      </span>
+      <span class="item-metastat">
+        {{item.tip}}
+      </span>
+    </span>
+  </md-item-template>
+  <md-item-template>
+    <span md-highlight-text="tattvaHistQOutputFieldctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
+  </md-item-template>
+  <md-not-found>
+    No namespace matching "{{tattvaHistQOutputFieldctrl.searchText}}" were found.
+  </md-not-found>
+</md-autocomplete>
+</div>

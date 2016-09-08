@@ -25,17 +25,16 @@ function($scope, $http, $state,AuthService) {
       if(user.role=="TATTVAADM"){
         $state.go("adminHome");
       } else {
-      $state.go("home");
+      $state.go("tattva.home");
       }
     }, function(err) {
       console.log(err.error);
       $scope.error = err.error;
     });
   }
-
   $scope.register=function() {
     AuthService.signUp($scope.user).then(function(user) {
-      $state.go("home");
+      $state.go("tattva.home");
     }, function(err) {
       $scope.error = err.err;
     });

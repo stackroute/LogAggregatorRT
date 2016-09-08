@@ -17,6 +17,11 @@
   <link rel="stylesheet" href="/design/constant/css/constant.style.css">
   <link rel="stylesheet" href="/organization/css/organisationstyle.css">
   <link rel="stylesheet" href="/design/functions/css/function.style.css">
+
+  <link rel="stylesheet" href="https://cdn.rawgit.com/alenaksu/mdPickers/0.7.4/dist/mdPickers.min.css">
+
+  <link rel="stylesheet" href="/notifications/css/notification.style.css">
+
   <link rel="stylesheet" href="/dashboard/css/dashboarstyle.css">
   <link rel="stylesheet" href="/design/designhome/css/designsummerystyle.css">
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
@@ -32,11 +37,13 @@
   </div>
 
   <script src="/angular/angular.min.js" charset="utf-8"></script>
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
   <script src="/angular-animate/angular-animate.min.js" charset="utf-8"></script>
   <script src="/angular-aria/angular-aria.min.js" charset="utf-8"></script>
   <script src="/angular-messages/angular-messages.min.js" charset="utf-8"></script>
   <script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
   <script src="/angular-material-icons/angular-material-icons.min.js" charset="utf-8"></script>
+  <script src="/ngclipboard/dist/ngclipboard.min.js"></script>
   <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/ng-letter-avatar/dist/ngletteravatar.min.js"></script>
   <script src="/ace-builds/src-min-noconflict/ace.js"></script>
@@ -56,9 +63,9 @@
   <!-- End of Login module -->
   <!-- Organization module -->
   <script src="/organization/organization.module.js"></script>
-  <script src="/organization/controllers/organization.controller.js"></script>
+  <script src="/organization/controllers/organizationctrl.js"></script>
   <script src="/organization/service/organisationService.js"></script>
-  <script src="/organization/controllers/organizatioEdit.controller.js"></script>
+  <script src="/organization/controllers/organizatioEditctrl.js"></script>
   <!-- End of Organization module -->
   <!-- designhome -->
   <script src="/design/designhome/controller/summarycontroller.js" charset="utf-8"></script>
@@ -69,6 +76,7 @@
   <script src="design/namespaces/factory/namespacefactory.js" charset="utf-8"></script>
   <script src="design/namespaces/controllers/createnamespacectrl.js" charset="utf-8"></script>
   <script src="design/namespaces/controllers/listnamespacectrl.js" charset="utf-8"></script>
+  <script src="design/namespaces/controllers/dataschemaNamespaceCtrl.js" charset="utf-8"></script>
   <!--end of namespace module-->
   <!-- function module -->
   <script src="/design/functions/function.module.js"></script>
@@ -77,11 +85,11 @@
   <script src="/design/functions/controller/function.contoller.js"></script>
   <!-- end of function module -->
   <!-- constant module -->
-<script src="/design/constant/constant.module.js"></script>
-<script src="/design/constant/controller/constant.controller.js"></script>
-<script src="design/constant/factory/constantFactory.js" charset="utf-8"></script>
-<!-- end of constant module -->
-<!--instance module scripts-->
+  <script src="/design/constant/constant.module.js"></script>
+  <script src="/design/constant/controller/constant.controller.js"></script>
+  <script src="design/constant/factory/constantFactory.js" charset="utf-8"></script>
+  <!-- end of constant module -->
+  <!--instance module scripts-->
   <script src="/design/instances/instance.module.js" charset="utf-8"></script>
   <script src="/design/instances/controller/instancectrl.js" charset="utf-8"></script>
   <script src="/design/instances/controller/viewinstancectrl.js" charset="utf-8"></script>
@@ -114,6 +122,7 @@
   <!-- <script src="/design/watchlists/directive/linechart_directive.js" charset="utf-8"></script> -->
   <script src="/design/watchlists/directive/livecanvas.js" charset="utf-8"></script>
   <script src="/design/watchlists/directive/logdata.js" charset="utf-8"></script>
+  <script src="/design/watchlists/directive/watchlistexpr_directive.js" charset="utf-8"></script>
   <!-- <script src="/design/watchlists/directive/historicdata.js" charset="utf-8"></script> -->
   <script src="/design/watchlists/directive/watchlistmap.js" charset="utf-8"></script>
   <script src="/design/watchlists/controller/namespacebasedwatchlist.js" charset="utf-8"></script>
@@ -132,8 +141,30 @@
   <script src="/design/watchlists/controller/watchlistctrl.js" charset="utf-8"></script>
   <script src="/design/watchlists/controller/linechartcontroller.js" charset="utf-8"></script>
   <script src="/design/watchlists/controller/publisherctrl.js" charset="utf-8"></script>
+  <script src="/design/watchlists/filter/watchListExprFrmt_filter.js" charset="utf-8"></script>
   <script src="/design/watchlists/service/uiPublisher.factory.js" charset="utf-8"></script>
   <!-- End of Watchlists module -->
+  <!--historicFunction module-->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js" charset="utf-8"></script>
+  <script src="https://cdn.rawgit.com/alenaksu/mdPickers/0.7.4/dist/mdPickers.min.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/filters/capitalize.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/directive/tattvaHistQOutputField/tattvaHistQOutputField.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/directive/tattvaHistQQueryCriteriaOperator/tattvaHistQQueryCriteriaOperator.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/directive/tattvaHistQQueryCriteriaRightField/tattvaHistQQueryCriteriaRightField.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/directive/tattvaHistQQueryCriteriaLeftField/tattvaHistQQueryCriteriaLeftField.js" charset="utf-8"></script>      
+  <script src="design/historicDataQuery/controller/historicQueryNamespaceCtrl.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/controller/historicQueryFormCtrl.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/controller/historicQueryListCtrl.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/outputDataOptions/datafields/historicDataFieldCtrl.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/outputDataOptions/function/mongodbFunctionCtrl.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/historicQuery.module.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/factory/historicQueryFactory.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/services/historicQueryConfg.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/exprFieldsHistoricQuery/inputValue/historicInputValueCtrl.js" charset="utf-8"></script>
+  <script src="design/historicDataQuery/exprFieldsHistoricQuery/dataFields/historicDatafieldsCtrl.js" charset="utf-8"></script>
+
+  <!--end of historicFunction module-->
   <!-- Design Home module -->
   <script src="/design/designhome/designhome.module.js" charset="utf-8"></script>
   <!-- End of Design Home module -->
@@ -163,5 +194,17 @@
   <script src="/home/controller/approutectrl.js" charset="utf-8"></script>
   <script src="/home/controller/headerctrl.js" charset="utf-8"></script>
   <!-- End Home Module -->
+  <!--User-->
+  <script src="/home/directive/userIcon_directive.js" charset="utf-8"></script>
+  <!--User End-->
+  <!-- Notification Module -->
+  <script src="/home/directive/notificationPannel_directive.js" charset="utf-8"></script>
+  <script src="/notifications/notification.module.js" charset="utf-8"></script>
+  <script src="/notifications/factory/notificationfactory.js" charset="utf-8"></script>
+  <script src="/notifications/controller/notificationctrl.js" charset="utf-8"></script>
+  <!-- End Notification Module -->
+  <!--filter for user role-->
+  <script src="/organization/filter/role.js" charset="utf-8"></script>
+  <!--End of filter for user role-->
 </body>
 </html>

@@ -1,0 +1,38 @@
+<div>
+  <md-autocomplete
+  class="autocom" flex="90"
+  required md-input-name="atoCmpRfield"
+  ng-disabled="tattvaHistQQueryCriteriaRightFieldctrl.isDisabled"
+  md-input-name="autocompleteForrfieldwatchlist"
+  md-no-cache="tattvaHistQQueryCriteriaRightFieldctrl.noCache"
+  md-selected-item="tattvaHistQQueryCriteriaRightFieldctrl.selectedItem"
+  md-search-text-change="tattvaHistQQueryCriteriaRightFieldctrl.searchTextChange(tattvaHistQQueryCriteriaRightFieldctrl.searchText)"
+  md-search-text="tattvaHistQQueryCriteriaRightFieldctrl.searchText"
+  md-selected-item-change="tattvaHistQQueryCriteriaRightFieldctrl.selectedItemChange(item,criteria)"
+  md-items="item in tattvaHistQQueryCriteriaRightFieldctrl.querySearch(tattvaHistQQueryCriteriaRightFieldctrl.searchText)"
+  md-item-text="item.name"
+  md-min-length="0"
+  placeholder="Right Hand Expression"  md-menu-class="autocomplete-custom-template">
+  <md-item-template>
+    <span class="item-title">
+      <md-icon class="material-icons">{{item.icon}}</md-icon>
+      <span> {{item.name}} </span>
+
+    </span>
+    <span class="item-metadata">
+      <span class="item-metastat">
+        FORMULA : <strong>{{item.shortexpr}}</strong>
+      </span>
+      <span class="item-metastat">
+        {{item.tip}}
+      </span>
+    </span>
+  </md-item-template>
+  <md-item-template>
+    <span md-highlight-text="tattvaHistQQueryCriteriaRightFieldctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
+  </md-item-template>
+  <md-not-found>
+    No option matching "{{tattvaHistQQueryCriteriaRightFieldctrl.searchText}}" were found.
+  </md-not-found>
+</md-autocomplete>
+</div>

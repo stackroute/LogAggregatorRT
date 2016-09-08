@@ -7,7 +7,7 @@
 </div>
 
 <div class="viewInst" ng-if="instance.length!=0">
-  <md-subheader class="md-primary md-title" flex-offset="5">Data sources from {{nspname}}</md-subheader>
+  <md-subheader class="md-primary md-title" flex-offset="5">Data sources from {{nspname | capitalize}}</md-subheader>
   <md-divider></md-divider>
   <div layout="row">
     <md-list flex>
@@ -17,12 +17,12 @@
           <md-button class="instancebtn" flex-offset="10" aria-label="Favorite" layout-padding ng-class="{'selected-item': $index == selectedInstanceIndex}" ng-click="selectInstanceIndex($index)">
             <md-item-content layout="row">
               <div flex="20">
-                <ng-letter-avatar data={{instance[$index].name}} avatarcustombgcolor="#2e2eb8" fontSize="20" charCount=2 size=16px shape="round"></ng-letter-avatar>
+                <ng-letter-avatar data={{instance[$index].name}} fontSize="20" charCount=2 size=16px shape="round"></ng-letter-avatar>
               </div>
 
               <div flex="80" class="detail" layout="row">
                 <div flex="80" class="eachinst md-list-item-text" layout="column" ng-hide="editEnable">
-                  <h3>{{instance[$index].name}}</h3>
+                  <h3>{{instance[$index].name | capitalize}}</h3>
                   <div layout="row">
                     <!-- <md-icon flex="10" md-svg-src="image/svg/ip.svg"></md-icon> -->
                     <p flex>{{instance[$index].ipaddr}}</p>
@@ -60,7 +60,7 @@
         <md-button class="instancebtn" flex-offset="10" aria-label="Favorite" ng-if="instance.length > $index+1" layout-padding ng-class="{'selected-item': ($index+1) == selectedInstanceIndex }" ng-click="selectInstanceIndex($index+1)">
           <md-item-content layout="row" >
             <div flex="20" ng-if="instance.length > $index+1">
-              <ng-letter-avatar  data={{instance[$index+1].name}} fontSize="20" charCount=2 avatarcustombgcolor="#2e2eb8" size=12px shape="round"></ng-letter-avatar>
+              <ng-letter-avatar  data={{instance[$index+1].name}} fontSize="20" charCount=2 size=12px shape="round"></ng-letter-avatar>
             </div>
             <div flex="80" class="detail" layout="row">
               <div flex="70" class="eachinst md-list-item-text" layout="column" ng-if="instance.length > $index+1" >

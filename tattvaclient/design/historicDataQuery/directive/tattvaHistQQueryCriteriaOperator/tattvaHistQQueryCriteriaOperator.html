@@ -1,0 +1,22 @@
+<div>
+  <md-autocomplete
+  class="autocom" flex="5"
+  required md-input-name="atoCmpOperator"
+  ng-disabled="tattvaHistQQueryCriteriaOperatorctrl.isDisabled"
+  md-no-cache="tattvaHistQQueryCriteriaOperatorctrl.noCache"
+  md-selected-item="tattvaHistQQueryCriteriaOperatorctrl.selectedItem"
+  md-search-text-change="tattvaHistQQueryCriteriaOperatorctrl.searchTextChange(tattvaHistQQueryCriteriaOperatorctrl.searchText)"
+  md-search-text="tattvaHistQQueryCriteriaOperatorctrl.searchText"
+  md-selected-item-change="tattvaHistQQueryCriteriaOperatorctrl.selectedItemChange(item,criteria)"
+  md-items="item in tattvaHistQQueryCriteriaOperatorctrl.querySearch(tattvaHistQQueryCriteriaOperatorctrl.searchText)"
+  md-item-text="item"
+  md-min-length="0"
+  placeholder="Operator">
+  <md-item-template>
+    <span md-highlight-text="tattvaHistQQueryCriteriaOperatorctrl.searchText" md-highlight-flags="^i">{{item}}</span>
+  </md-item-template>
+  <md-not-found>
+    No operator matching "{{tattvaHistQQueryCriteriaOperatorctrl.searchText}}" were found.
+  </md-not-found>
+</md-autocomplete>
+</div>

@@ -10,6 +10,4 @@ function($scope, $state, AuthService) {
     $state.go("signin");
     // , {error: "Invalid signin attempt, please retry with valid credentials"});
   });
-
-
 }]);

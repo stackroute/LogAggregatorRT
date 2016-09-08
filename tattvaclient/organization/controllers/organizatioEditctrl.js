@@ -1,7 +1,8 @@
 angular.module('tattva')
-.controller('orgEditCtrl', ['$scope', '$stateParams','userservice','$state',
-function($scope,$stateParams,userservice,$state) {
-
+.controller('orgEditCtrl', ['$scope', '$stateParams','userservice','$state','AuthService',
+function($scope,$stateParams,userservice,$state,AuthService) {
+  $scope.org = AuthService.getCurrentUser();
+  console.log($scope.org);
   var name=$stateParams.userName;
   if($stateParams.userName){
     $scope.userDisableName= true;
@@ -19,7 +20,6 @@ function($scope,$stateParams,userservice,$state) {
           $scope.user.role = $scope.user[i].role;
         }
       }
-      console.log($scope.user);
      });
   }
   $scope.loadData();
@@ -28,17 +28,18 @@ function($scope,$stateParams,userservice,$state) {
     if($stateParams.userName){
 
       $scope.userDisableName= $stateParams.userName;
-      var userData={name : $scope.user.name , email : $scope.user.email , password : $scope.user.password,role : $scope.user.role };
+      var userData={name : $scope.user.name , email : $scope.user.email , password : $scope.user.password,role : $scope.user.role ,orgsite : $scope.org.orgsite};
       userservice.editUser(userData);
     } else {
-      var userData={name : $scope.user.name , email : $scope.user.email , password : $scope.user.password ,role : $scope.user.role};
+      var userData={name : $scope.user.name , email : $scope.user.email , password : $scope.user.password ,role : $scope.user.role ,orgsite : $scope.org.orgsite};
+      console.log(userData);
       userservice.saveUser(userData);
     }
-    $state.go('organisation');
+    $state.go('tattva.organisation');
   }
 
   $scope.cancel = function() {
-    $state.go('organisation');
+    $state.go('tattva.organisation');
   }
 }
 

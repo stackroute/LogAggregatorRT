@@ -1,0 +1,75 @@
+<!-- <div layout="row" flex class="fixcontain">
+  <span flex="20"></span>
+  <div class="md-whiteframe-z1" flex="60" layout="column">
+    <md-toolbar md-theme="LightCyan" layout="row" >
+      <div flex="10" layout="row" ng-repeat="topNavItem in userNavItems.topNav" layout-align="none center">
+        <md-icon class="material-icons">{{userNavItems.sideNav[4].icon}}</md-icon>  
+      </div>
+      <h3 flex="90">{{userNavItems.sideNav[4].menu}}</h3>
+    </md-toolbar>
+    <md-list style="padding: 0px;">
+      <md-content>
+        <md-list-item ng-repeat="item in notify" md-ink-ripple class="notification-list-item"  layout="row">
+          <md-item-content flex="100" layout="row" layout-align="center center">
+            <div flex="10" layout="row" layout-align="none center">
+              <ng-letter-avatar fontSize="20" width="40" height="40" data={{item.who}} shape="round" charCount="1"></ng-letter-avatar>  
+            </div>
+            <div flex="90" layout="row" style="">
+              <p><b>{{item.who+" "}}</b>{{item.did+" "}}
+                <span><a href="" style="color:black;font-size:14px;"><u>{{item.what}}</u></a></span>
+                <span><a href="" style="color:black;font-size:14px;">{{"on"+" "}}<u>{{item.where}}</u></a></span>
+                <span style="font-size:14px;color:#8c8c8c;">{{" "+item.when+" "}}</span></p>
+              </div>
+            </md-item-content>
+          </md-list-item>
+          <div ng-if="notifyerror" style="color: #8c8c8c;">
+            <md-list-item layout="row" layout-align="center center">
+              <md-item-content layout="row" layout-align="center center">
+                <div md-ink-ripple layout="row" style="">
+                  <p>{{notifyerror}}</p>
+                </div>
+              </md-item-content>
+            </md-list-item>
+          </div>
+          <section layout="row" layout-align="center center" >
+            <md-button class="md-primary md-hue-1" ng-click="showDialog($event)">Load More</md-button>
+          </section>
+        </md-content>
+      </md-list>
+    </div>
+  </div>   -->
+<div class="content">
+    <div class="subtitle" layout="row">
+      <div flex="90" layout="column" layout-padding style="color:#6b7171;font-weight: bold;">
+          <span style="text-transform: uppercase;">Notifications</span>
+      </div>
+    </div>
+  </div>
+  <div layout="row" layout-align="center center">
+  <md-content  layout-padding>
+    <md-list flex="">
+      <md-list-item class="md-3-line" ng-repeat="item in notify" ng-click="null">
+        <span class='md-avatar'><ng-letter-avatar fontSize="20" width="40" height="40" data={{item.who}} shape="round" charCount="1"></ng-letter-avatar></span>
+        <div flex="90" layout="row" style="">
+              <p style="line-height: 25px;"><b>{{item.who+" "}}</b>{{item.did+" "}}
+                <span><a href="" style="color:black;font-size:14px;"><u>{{item.what}}</u></a></span>
+                <span><a href="" style="color:black;font-size:14px;">{{"on"+" "}}<u>{{item.where}}</u></a></span>
+                <span style="font-size:14px;color:#8c8c8c;">{{" "+item.when+" "}}</span></p>
+              </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+      <div ng-if="notifyerror" style="color: #8c8c8c;">
+            <md-list-item layout="row" layout-align="center center">
+              <md-item-content layout="row" layout-align="center center">
+                <div md-ink-ripple layout="row" style="">
+                  <p>{{notifyerror}}</p>
+                </div>
+              </md-item-content>
+            </md-list-item>
+          </div>
+          <section layout="row" layout-align="center center" >
+            <md-button class="md-primary md-hue-1" ng-click="showDialog($event)">Load More</md-button>
+          </section>
+    </md-list>
+  </md-content>
+</div>

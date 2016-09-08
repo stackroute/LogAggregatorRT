@@ -16,6 +16,7 @@ var logger = require("./applogger");
 //Tattva components
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var historicQuery_router = require('./tattvaserver/historicQuery/historicQuery_routes');
 var function_router = require('./tattvaserver/functions/functions_routes');
 var compositefunction_schema=require('./tattvaserver/compositefunction/compositefunction_schema');
 var compositefunction_router = require('./tattvaserver/compositefunction/compositefunction_routes');
@@ -105,8 +106,9 @@ app.get('/guest', function(req, res){
   res.json(navItems);
 });
 app.use('/users',isAuthenticated,  users);
-app.use('/organisation/user',isAuthenticated,  Orguser_router);
+app.use('/organisation',isAuthenticated,  Orguser_router);
 app.use('/instance',isAuthenticated,  datasourcesrouter);
+app.use('/historicQuery',isAuthenticated,  historicQuery_router);
 app.use('/function',isAuthenticated,  function_router);
 app.use('/constant',isAuthenticated,  constant_router);
 app.use('/sideNav',isAuthenticated, sideNav_router);

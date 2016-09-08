@@ -7,11 +7,11 @@ float:right;
 }
 .preview
 {
-background-color:#404040;
+background-color:rgb(85, 83, 83);
 border-radius: 4px;
 margin:1%;
 padding: 20px;
-color:#A6E22E;
+color:white;
 }
 
 .preview2
@@ -78,7 +78,7 @@ padding-top: 10px;
 }
 .watchlistDialog {
   width: 550px;
-  height: 500px;
+  height: auto;
 }
 .outputDialog{
   width: 50%;

@@ -78,7 +78,7 @@ function($stateProvider, $urlRouterProvider) {
         templateUrl: "/home/template/header.html",
         controller: "HeaderCtrl"
       },
-      "content": {
+      "content@": {
         templateUrl: "/home/template/content.html"
       },
       "footer": {

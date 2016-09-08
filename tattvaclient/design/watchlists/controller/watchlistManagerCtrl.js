@@ -8,7 +8,7 @@ angular.module("tattva")
 
   $scope.updateBackPublisher=function(){
     saveToDB.savewatchloopdata(data);
-    $state.go('home');
+    $state.go('tattva.home');
     $mdDialog.hide();
 }
 
