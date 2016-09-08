@@ -1,4 +1,4 @@
-angular.module("tattva")
+ angular.module("tattva")
 .controller('WatchListCtrl', ['$scope','$mdDialog', '$log',"$state",'loadExprData','saveToDB','$stateParams','selectedWlstdef','watchlistconfg',
 function( $scope,$mdDialog, $log,$state,loadExprData,saveToDB,$stateParams, selectedWlstdef,watchlistconfg) {
   $scope.loadWatchlistData = function(){
@@ -58,7 +58,7 @@ $scope.editparams=undefined;
             }
           },
         };
-        $scope.getOutcomeOptions=watchlistconfg.getOutcomeOptions();
+        //$scope.getOutcomeOptions=watchlistconfg.getOutcomeOptions();
         $scope.index = 0;
         if(isNaN(index)){
           $scope.index = $scope.wlstdef.expressions.length;

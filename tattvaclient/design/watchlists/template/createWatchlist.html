@@ -1,4 +1,4 @@
-<form name="watchlistcreate" ng-submit="savewatchlist()" ng-init="loadWatchlistData()">
+ <form name="watchlistcreate" ng-submit="savewatchlist()" ng-init="loadWatchlistData()">
   <fieldset ng-disabled="editFlag" class="fieldset">
     <div layout="column" layout-sm="column" layout-xs="column" layout-padding class="watchlistlayout">
       <div layout="row" layout-sm="column" layout-xs="column">
@@ -264,7 +264,6 @@
 </fieldset>
 <div class="publishlayout" layout="column" layout-padding>
   <div>
-    <span flex></span>
     <div style="float:right;">
       <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
       <md-button class="md-raised md-primary" ng-click='showEditConfirm($event)' ng-if="editFlag">Edit</md-button>

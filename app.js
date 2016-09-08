@@ -17,6 +17,8 @@ var logger = require("./applogger");
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var function_router = require('./tattvaserver/functions/functions_routes');
+var compositefunction_schema=require('./tattvaserver/compositefunction/compositefunction_schema');
+var compositefunction_router = require('./tattvaserver/compositefunction/compositefunction_routes');
 var constant_router = require('./tattvaserver/constants/constant_routes');
 var sideNav_router = require('./tattvaserver/Home/home_routes');
 var watchlist_router = require('./tattvaserver/watchlists/watchlist_routes');
@@ -116,6 +118,7 @@ app.use('/appsummary',isAuthenticated, summary_router);
 // app.use('/watchloop',isAuthenticated,  watchloop_router);
 app.use('/adminDashboard',isAuthenticated, admin_router);
 app.use('/distwatchloop', isAuthenticated,  distwatchloop_router);
+app.use('/compositefunction',isAuthenticated,  compositefunction_router);
 
 // logger.info("Starting watch list executor...!");
 // watchloopExecutor();
