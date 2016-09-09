@@ -48,11 +48,12 @@
 
 
 
-	<md-whiteframe  class="md-whiteframe-z2" layout="column" >
-		<div layout="column" flex="100" ng-repeat="expr in functionData.expression">
-			<div layout="row" style="padding-bottom:10px;">
+	<md-whiteframe  class="md-whiteframe-z2 frame " layout="column">
+		<div layout="column" ng-repeat="expr in functionData.expression">
+			<div layout="row">
 
-				<label >{{expr.tag}}</label>
+				<label class="expression">{{expr.tag}}</label>
+				<span flex="3"></span>
 				<md-input-container flex="30">
 					<label>Functions</label>
 					<md-select ng-model="expr.lhs.name">
