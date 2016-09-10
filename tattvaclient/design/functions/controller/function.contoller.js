@@ -1,36 +1,49 @@
 angular.module('tattva')
-.controller('functionlistCtrl', ['$scope', '$http','$mdDialog',
-function($scope, $http, $mdDialog) {
-  $scope.tabTitle ="Function List";
-  // $scope.stateChange="design.addfunction"
-  $scope.stateChange="design.function";
+.controller('functionlistCtrl', ['$scope', '$http','$mdDialog',"functionFactory",
+  function($scope, $http, $mdDialog,functionFactory) {
+    $scope.tabTitle ="Function List";
+    $scope.stateChange="design.addfunction"
+//  $scope.stateChange="design.function";
+/*$scope.loadData = function() {
+  $http.get('/compositefunction').then(function(response){
+    $scope.data = response.data;
+  });*/
   $scope.loadData = function() {
-    $http.get('/function').then(function(response){
-      $scope.data = response.data;
-    });
+    functionFactory.getFunction()
+   .then(function(data) {
+          //success
+          console.log(data);
+          $scope.data=data;
+        },
+        function(data) {
+          console.log(data);
+          $scope.error=data.error;
+        })
+
+
+}
+$scope.loadData();
+$scope.selectedUserIndex = undefined;
+$scope.selectUserIndex = function (index) {
+  if ($scope.selectedUserIndex !== index) {
+    $scope.selectedUserIndex = index;
   }
-  $scope.loadData();
-  $scope.selectedUserIndex = undefined;
-  $scope.selectUserIndex = function (index) {
-    if ($scope.selectedUserIndex !== index) {
-      $scope.selectedUserIndex = index;
-    }
-    else {
-      $scope.selectedUserIndex = undefined;
-    }
-  };
+  else {
+    $scope.selectedUserIndex = undefined;
+  }
+};
 
-  $scope.selectedUserIndex1 = undefined;
-  $scope.selectUserIndex1 = function (index) {
-    if ($scope.selectedUserIndex1 !== index) {
-      $scope.selectedUserIndex1 = index;
-    }
-    else {
-      $scope.selectedUserIndex1 = undefined;
-    }
-  };
+$scope.selectedUserIndex1 = undefined;
+$scope.selectUserIndex1 = function (index) {
+  if ($scope.selectedUserIndex1 !== index) {
+    $scope.selectedUserIndex1 = index;
+  }
+  else {
+    $scope.selectedUserIndex1 = undefined;
+  }
+};
 
-  $scope.deleteMe = function(ev) {
+$scope.deleteMe = function(ev) {
     //  Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.confirm()
     .title('Delete')
@@ -43,11 +56,12 @@ function($scope, $http, $mdDialog) {
   };
 }
 ])
+//////////////////////////////////
 .controller('functionEditCtrl', ['$scope', '$http','$mdDialog','$stateParams',
-function($scope, $http, $mdDialog,$stateParams) {
+  function($scope, $http, $mdDialog,$stateParams) {
 
-  var name=$stateParams.functionname;
-  $scope.loadData = function() {
+    var name=$stateParams.functionname;
+    $scope.loadData = function() {
     // $http.get('/func_link_data').then(function(response){ $scope.data = response.data;
     //   for(var i in $scope.data) {
     //     if($scope.data[i].fun_name===name){
@@ -76,6 +90,7 @@ function($scope, $http, $mdDialog,$stateParams) {
     //   }
     // });
   };
+
 
 }
 ]);

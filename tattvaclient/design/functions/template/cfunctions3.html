@@ -1,0 +1,100 @@
+<h2 flex-offset="40" class="md-headline"> Create your own function</h2>
+<div layout="column" layout-sm="column" layout-xs="column" layout-padding="" class="functionlayout layout-padding layout-xs-column layout-sm-column layout-column" ng-init="loadFunctionData()">
+	<form >
+		<div layout="row" layout-sm="column" layout-xs="column" class="layout-xs-column layout-sm-column layout-row">
+			<md-input-container flex="50" class="flex-50 md-input-invalid">
+				<label for="input_217"> Name</label>
+				<input ng-required="true" name="functionName" flex="90" type="text" ng-model="functionData.name" class="ng-pristine md-input flex-90 ng-empty ng-invalid ng-invalid-required ng-touched" id="input_217" required="required" aria-invalid="true" style="">
+				<div class="md-errors-spacer"></div>
+				<div flex="" layout-align="right" ng-messages="functionName.$error" class="error md-input-messages-animation md-auto-hide layout-align-start-stretch flex ng-active" id="myerr" role="alert" aria-live="assertive">
+					<!-- ngMessageExp: ['required'] -->
+					<div ng-message-exp="['required']" class="md-input-message-animation ng-scope" style="opacity: 1; margin-top: 0px;">
+						Required!
+					</div>
+				</div>
+			</md-input-container>
+			<md-input-container flex="50" class="flex-50">
+				<label for="input_218">DESCRIPTION</label>
+				<input ng-required="true" name="functionDescription" flex="100" type="text" ng-model="functionData.description" class="ng-pristine ng-untouched md-input flex-100 ng-empty ng-invalid ng-invalid-required" id="input_218" required="required" aria-invalid="true"><div class="md-errors-spacer"></div>
+				<div flex="" layout-align="right" ng-messages="functionDescription.$error" class="error md-input-messages-animation md-auto-hide layout-align-start-stretch flex 	ng-active" id="myerr" role="alert" aria-live="assertive">
+					<!-- ngMessageExp: ['required'] -->
+					<div ng-message-exp="['required']" class="md-input-message-animation ng-scope">
+						Description is required
+					</div>
+				</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-xs="row" layout-xs="row" layout-padding flex layout-wrap>
+			<div flex-gt-xs="10" ng-show="parameters.length>1"><md-button class="material-icons ng-scope remove md-fab md-mini " ng-click="removeParam()">
+				<md-icon class="material-icons">remove</md-icon>
+			</md-button>
+		</div>
+		<div  data-ng-repeat="choice in parameters" flex-gt-xs="20" >	
+			<!-- <br ng-if="$index%4==0"> -->
+			<md-input-container>
+				<label>ADD PARAMETER</label>
+				<input type="text" ng-model="choice.name" name="" />
+			</md-input-container>			
+		</div>
+		<div flex-gt-xs></div>	
+		<div flex-gt-xs="20">
+			<button class="addfields md-raised  md-button md-ink-ripple" ng-click="addNewParam()">Add Parameters</button>
+		</div>	
+	</div>
+
+	<div class="preview" spellcheck="false">
+
+	</div>
+
+
+
+	<md-whiteframe  class="md-whiteframe-z2 frame " layout="column">
+		<div layout="column" ng-repeat="expr in functionData.expression">
+			<div layout="row">
+
+				<label class="expression">{{expr.tag}}</label>
+				<span flex="3"></span>
+				<md-input-container flex="30">
+					<label>Functions</label>
+					<md-select ng-model="expr.lhs.name">
+
+						<md-option ng-repeat="object in function" ng-click="openDialogBox($event,object,'lhs',$parent.$index)">{{object.name}}</md-option>
+					</md-select>
+				</md-input-container>
+
+				<md-input-container layout="column" flex="20">
+					<label>Operator</label>
+					<md-select ng-model="expr.operator.name" >
+						<md-option >ADD</md-option>
+						<md-option >SUB</md-option>
+						<md-option >MUL</md-option>
+						<md-option >DIV</md-option>
+					</md-select>
+				</md-input-container>
+				<md-input-container layout="column" flex="30" >
+					<label>Functions</label>
+					<md-select ng-model="expr.rhs.name">
+						<md-option ng-click="openDialogBox($event,object,'rhs',$parent.$index)" ng-repeat="object in function">{{object.name}}</md-option>
+					</md-select>
+				</md-input-container>
+				<md-button class="md-fab float-right md-mini " aria-label="">
+					<md-icon class="material-icons" ng-click="removeExpr($index)">clear</md-icon>
+				</md-button>
+			</div>
+		</div>
+	</md-whiteframe>
+
+	<div>
+		<md-button class="md-raised" style="float:right;" aria-label="newExpression" ng-click="addNewExpr()" >ADD NEW EXPRESSION</md-button></div>
+		<div>
+			<div style="float:right;">	
+				<md-button class="md-raised" ng-click="functionCancel()">Cancel</md-button>
+				<md-button type="submit" ng-click="create()" class="md-raised md-primary">Create</md-button>
+			</div>
+		</div>
+	</form>
+	<div>
+		<md-checkbox ng-model="isViewAsJSON1">View as JSON Structure</md-checkbox>
+		<pre class="jsonStructureExpression1  preview3 " ng-show="isViewAsJSON1">{{functionData | json }}</pre>
+	</div>
+</div>
