@@ -1,4 +1,4 @@
- angular.module('tattva')
+  angular.module('tattva')
  .controller('functionCreateCtrl', ['$scope', '$http','loadExprData',"functionFactory","$state",'$mdDialog',"functionFactory",
   function($scope, $http, loadExprData,functionFactory,$state,$mdDialog) {
 
@@ -77,7 +77,12 @@
        "targetvar": ""
      }
      ]
-   }};  
+   },
+   "join_By":{
+    "type":"operator",
+    "name":""
+   }
+ };  
    $scope.functionData.expression.push(newExpr);
    console.log($scope.functionData.expression.length);
    };

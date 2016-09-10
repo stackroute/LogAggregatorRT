@@ -3,8 +3,8 @@
  var compositeFunctionSchema = require('./compositefunction_schema.js');
  var dataProvider = require('../core/datamodelprovider');
 
- /*compositefunction_router.get("/",function(req,res){
- 	var result=compositefunction.execute("function",{"area":12,"length":2});
+/* compositefunction_router.get("/",function(req,res){
+ 	var result=compositefunction.execute("qwert",{"area":12,"length":2,"breadth":3});
  	console.log(result);
  });
 */

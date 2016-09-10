@@ -1,4 +1,4 @@
-<h2 flex-offset="40" class="md-headline"> Create your own function</h2>
+<h2 flex-offset="40" layout-sm="column" layout-xs="column" class="md-headline"> Create your own function</h2>
 <div layout="column" layout-sm="column" layout-xs="column" layout-padding="" class="functionlayout layout-padding layout-xs-column layout-sm-column layout-column" ng-init="loadFunctionData()">
 	<form >
 		<div layout="row" layout-sm="column" layout-xs="column" class="layout-xs-column layout-sm-column layout-row">
@@ -43,15 +43,11 @@
 	</div>
 
 	<div class="preview" spellcheck="false">
-
+		
 	</div>
-
-
-
 	<md-whiteframe  class="md-whiteframe-z2 frame " layout="column">
 		<div layout="column" ng-repeat="expr in functionData.expression">
-			<div layout="row">
-
+			<div layout="row" layout-sm="row" layout-xs="column">
 				<label class="expression">{{expr.tag}}</label>
 				<span flex="3"></span>
 				<md-input-container flex="30">
@@ -65,10 +61,10 @@
 				<md-input-container layout="column" flex="20">
 					<label>Operator</label>
 					<md-select ng-model="expr.operator.name" >
-						<md-option >ADD</md-option>
-						<md-option >SUB</md-option>
-						<md-option >MUL</md-option>
-						<md-option >DIV</md-option>
+						<md-option >ADD +</md-option>
+						<md-option >SUB -</md-option>
+						<md-option >MUL *</md-option>
+						<md-option >DIV /</md-option>
 					</md-select>
 				</md-input-container>
 				<md-input-container layout="column" flex="30" >
@@ -81,6 +77,19 @@
 					<md-icon class="material-icons" ng-click="removeExpr($index)">clear</md-icon>
 				</md-button>
 			</div>
+			<!-- <div layout="row " layout-align="center center">
+				<label layout="row" style="padding-top:30px;">JOIN WITH</label>
+				<span flex="5"></span>
+				<md-input-container layout="row">
+					<label>Operator</label>
+					<md-select ng-model="expr.join_By.name" >
+						<md-option >ADD +</md-option>
+						<md-option >SUB -</md-option>
+						<md-option >MUL *</md-option>
+						<md-option >DIV /</md-option>
+					</md-select>
+				</md-input-container>
+			</div> -->
 		</div>
 	</md-whiteframe>
 

@@ -41,6 +41,10 @@ var compositeFunctionSchema = new mongoose.Schema({
           "targetvar": {type:String}
         }
       ]
-    }}]
+    },
+   "join_By":{
+    "type":{type:String},
+    "name":{type:String}
+   }}]
 },{collection: "compositefunctions"});
 module.exports = compositeFunctionSchema;
