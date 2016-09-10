@@ -17,15 +17,16 @@ angular.module('tattva')
             }
         }
 
-        $scope.showNamespacePreview = function(index) {
-            $mdDialog.show({
-
-                templateUrl: "design/namespaces/template/createnamespacedialog.html",
-                controller: "dataschemaNamespaceCtrl",
-                locals:{
-                    dataSchema:$scope.nameSpaceListdata[index].uploadJSONText,
-                }
-            });
+        $scope.showNamespacePreview = function(nsname) {
+            namespaceFactory.getNamespaceDetails(nsname).then( function(data){
+                $mdDialog.show({
+                    templateUrl: "design/namespaces/template/createnamespacedialog.html",
+                    controller: "dataschemaNamespaceCtrl",
+                    locals:{
+                        dataSchema:data.uploadJSONText
+                    }
+                });
+            })
         }
 
         $scope.getData = function() {

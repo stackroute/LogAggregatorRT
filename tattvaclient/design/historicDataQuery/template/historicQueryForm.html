@@ -70,7 +70,7 @@
           <md-whiteframe ng-show="fndef.outputFields.length" class="md-whiteframe-2dp" layout="column" style="border-radius:1%;" ng-if="fndef.outputFields.length" flex>
             <label class="md-subhead" layout layout-padding layout-align="left left" flex>Output Data(DataFields) :</label>
             <div layout="row"  ng-repeat="field in fndef.outputFields" flex>
-              <md-subheader>{{field.index}}) </md-subheader>
+              <md-subheader>{{$index+1}}) </md-subheader>
               <!-- Tattva Historic Query Output Field -->
               <!-- tattvaHistQOutputField -->
               <tattva-hist-q-output-field field="field" flex="90"></tattva-hist-q-output-field>
@@ -93,7 +93,7 @@
           <md-whiteframe ng-show="fndef.queryCriteria.length" class="md-whiteframe-2dp" style="border-radius: 1%;" layout="column" ng-if="fndef.queryCriteria.length">
             <label class="md-subhead" layout layout-padding layout-align="left left">Query Criteria :</label>
             <div ng-repeat="criteria in fndef.queryCriteria" layout="row">
-              <md-subheader>{{criteria.index}})</md-subheader>
+              <md-subheader>{{$index+1}})</md-subheader>
               <!-- Tattva Historic Query query criteria left field-->
               <!-- tattvaHistQQueryCriteriaLeftField -->
               <tattva-hist-q-query-criteria-left-field criteria="criteria" ng-cloak=""  flex="40"></tattva-hist-q-query-criteria-left-field>
@@ -126,11 +126,12 @@
     </div>
 
     <div>
-    <button ng-if="edit" class="md-raised float-right md-primary md-button md-ink-ripple" ng-click="updateHistoricfunction();" type="button" aria-label="Update"><span class="ng-scope">Update</span></button> 
+      <button ng-if="edit" class="md-raised float-right md-primary md-button md-ink-ripple" ng-click="updateHistoricfunction();" type="button" aria-label="Update"><span class="ng-scope">Update</span></button> 
       <button ng-if="!edit" class="md-raised float-right md-primary md-button ng-scope md-ink-ripple" type="submit" aria-label="save"><span class="ng-scope">save</span></button>
       <button class="md-raised float-right md-button md-ink-ripple" ng-click="cancelhistoricfunctionadd()" type="button" aria-label="Cancel"><span class="ng-scope">Cancel</button>
     </div>
-
+    <!-- <button class="md-raised md-button md-ink-ripple" ng-click="test()" type="button" aria-label="Test"><span class="ng-scope">Test</button> -->
   </div>
 </fieldset>
 </form>
+

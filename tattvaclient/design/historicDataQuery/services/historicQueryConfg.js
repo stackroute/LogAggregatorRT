@@ -58,12 +58,12 @@ angular.module("tattva")
 	}
 
 	this.getFunctionsOption=function(){
-		return ["SUM","MULTIPLY","AVERAGE","MINIMUM","MAXIMUM","FIRST","LAST","COUNT","STANDARD DEVIATION","Sort(Asc)","Sort(Des)"]
+		return ["SUM","AVERAGE","MINIMUM","MAXIMUM","FIRST","LAST","COUNT","STANDARD DEVIATION"];
 	}
 
 
 	this.getoperatorOption=function(){
-		return ["NotEqualTo", "GreaterThan", "GreaterThanEqualTo", "LessThan", "LessThanEqualTo","EqualTo", "ElementMatch", "Exists"]
+		return ["NotEqualTo", "GreaterThan", "GreaterThanEqualTo", "LessThan", "LessThanEqualTo","EqualTo", "ElementMatch", "Exists"];
 	}
 
 }]);
