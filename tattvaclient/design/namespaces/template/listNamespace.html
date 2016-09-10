@@ -20,12 +20,12 @@
                 <div class="md-padding md-list-item-text" layout="column" layout-align="start">
                     <a ui-sref="design.editNamespace({editNamespaceData: '{{ns.name}}'})"><h3 class="md-body4">{{ ns.name | capitalize}}</h3></a>
                     <!-- <h4></h4> -->
-                    <p>Last modified on {{ns.editedOn | date:'dd-mm-yyyy  hh:mm:ss a'}} by {{ns.editedBy | capitalize}}</p>
+                    <p>Last modified on {{ns.editedOn | date}} at {{ns.editedOn | date:" hh:mm a"}} by {{ns.editedBy | capitalize}}</p>
                 </div>
             </div>
             <div class="" layout="row">
                 <md-icon class="md-padding material-icons-cursor" ui-sref="design.editNamespace({editNamespaceData: '{{ns.name}}'})">create</md-icon>
-                <md-icon class="material-icons-cursor" ng-click="showNamespacePreview($index)">remove_red_eye</md-icon>
+                <md-icon class="material-icons-cursor" ng-click="showNamespacePreview(ns.name)">remove_red_eye</md-icon>
             </div>
             <md-divider></md-divider>
         </md-list-item>

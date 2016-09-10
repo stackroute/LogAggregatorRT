@@ -17,7 +17,7 @@ angular.module('tattva')
 			self.searchTextChange   = searchTextChange;
 
 			if ($stateParams.editHistoricQueryData) {
-				self.selectedItem = $scope.criteria.rhs.type;console.log($scope.criteria.rhs.type);
+				self.selectedItem = $scope.criteria.rhs.type;
 			}
 
 			function querySearch (query) {

@@ -1,14 +1,14 @@
-<md-dialog flex="30">
+<md-dialog flex="35">
     <md-toolbar>
         <div class="md-toolbar-tools md-padding">
             <h2 class="md-title">DataSchema</h2>
         </div>
     </md-toolbar>
     <md-dialog-content>
-        <div class="md-padding" >
-        <div class="preview2 md-body2" style="width:95%">
-        <pre layout layout-align="center center">{{dataSchema}}</pre>
-        </div>
+        <div class="md-padding">
+            <div class="preview2 md-body2" style="width:95%">
+            <pre layout layout-align="center center" style="white-space: pre-line;overflow-wrap: break-word;word-wrap: break-word;">{{dataSchema}}</pre>
+            </div>
         </div>
         <md-button class="md-raised float-right" ng-click="cancel();" type="button">ok</md-button>
     </md-dialog-content>

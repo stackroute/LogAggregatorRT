@@ -212,12 +212,29 @@ angular.module('tattva')
 						} else {
 							type = "measure"
 						}
-						outputData.push({
-							"alias": j,
-							"name": j,
-							"sample": dataObj[i][j],
-							"type": type
-						});
+						if(typeof dataObj[i][j] == 'object' && !(Array.isArray(dataObj[i][j]))){
+							for (var k in dataObj[i][j]){
+								if (isNaN(dataObj[i][j][k])){
+									type = "dimension"
+								} else {
+									type = "measure"
+								}
+								outputData.push({
+									"alias": j+"."+k,
+									"name": j+"."+k,
+									"sample": dataObj[i][j][k],
+									"type": type
+								});
+							}
+						}
+						else{
+							outputData.push({
+								"alias": j,
+								"name": j,
+								"sample": dataObj[i][j],
+								"type": type
+							});
+						}
 					}
 				}
 				else if ((typeof i) === 'string' && fieldCount != i) {
@@ -227,12 +244,29 @@ angular.module('tattva')
 					} else {
 						type = "measure"
 					}
-					outputData.push({
-						"alias": i,
-						"name": i,
-						"sample": dataObj[i],
-						"type": type
-					});
+					if(typeof dataObj[i] == 'object'){
+						for (var j in dataObj[i]){
+							if (isNaN(dataObj[i][j])) {
+								type = "dimension"
+							} else {
+								type = "measure"
+							}
+							outputData.push({
+								"alias": i+"."+j,
+								"name": i+"."+j,
+								"sample": dataObj[i][j],
+								"type": type
+							});
+						}
+					}
+					else{
+						outputData.push({
+							"alias": i,
+							"name": i,
+							"sample": dataObj[i],
+							"type": type
+						});
+					}
 				}
 			}
 			return outputData;
