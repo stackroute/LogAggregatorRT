@@ -18,7 +18,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var historicQuery_router = require('./tattvaserver/historicQuery/historicQuery_routes');
 var function_router = require('./tattvaserver/functions/functions_routes');
-var compositefunction_schema=require('./tattvaserver/compositefunction/compositefunction_schema');
 var compositefunction_router = require('./tattvaserver/compositefunction/compositefunction_routes');
 var constant_router = require('./tattvaserver/constants/constant_routes');
 var sideNav_router = require('./tattvaserver/Home/home_routes');

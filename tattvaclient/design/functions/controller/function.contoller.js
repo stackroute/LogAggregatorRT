@@ -19,6 +19,17 @@ $scope.loadData = function() {
           console.log(data);
           $scope.error=data.error;
         })*/
+       var result= functionFactory.getFunction()
+   .then(function(data) {
+          //success
+          console.log(data);
+          $scope.data=data;
+        },
+        function(data) {
+          console.log(data);
+          $scope.error=data.error;
+        })
+   console.log(result);
 
 
 }
