@@ -10,11 +10,12 @@ function($stateProvider){
   })
   .state('design.functionEdit', {
     url: '/functional/:functionname',
-    templateUrl: '/design/functions/template/cfunctions.html',
+    templateUrl: '/design/functions/template/cfunctions3.html',
     controller: 'functionEditCtrl'
   })
   .state('design.addfunction', {
     url:"/addFunction",
-    templateUrl:"/design/functions/template/cfunctions.html"
+    templateUrl:"/design/functions/template/cfunctions3.html",
+    controller: 'functionCreateCtrl'
   })
 }]);

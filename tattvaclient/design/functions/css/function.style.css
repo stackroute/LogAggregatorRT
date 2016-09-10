@@ -4,12 +4,51 @@
   border-radius:3px;
 }
 
+.operator{
+  margin-top: 3%;
+}
 .funcCheck md-checkbox{
   font-size:10pt;
   font-color:#1e222f;
 }
-
-
+.addfields{
+  height:40px;
+  padding-top: 2px;
+}
+.remove{
+  height:40px;
+  padding-top: 2px;
+}
+.frame{
+  margin-left:10px;
+  margin-right:10px;
+}
+.expression{
+  padding-top:30px; 
+  padding-left:2px;
+}
+.preview
+{
+background-color:#404040;
+border-radius: 4px;
+margin:1%;
+padding: 20px;
+color:#A6E22E;
+height: 70px;
+}
+.preview3
+{
+background-color:#404040;
+border-radius: 4px;
+margin:1%;
+padding: 20px;
+color:#A6E22E;
+height:200px;
+overflow-y: scroll;
+}
+.functionlayout {
+  margin: 2% 10% 0% 10%;
+}
 .ace_editor
 { height: 350px;
 width:92%;
@@ -18,7 +57,10 @@ margin-top:10px;
 margin-right:30px;
 border:2px #00cccc solid;
 border-radius:7px;}
+.dialo{
 
+  min-width: 30%;
+}
 #save{
   background-color: #008080;
  width:40%;
