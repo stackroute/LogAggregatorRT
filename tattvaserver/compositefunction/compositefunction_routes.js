@@ -2,12 +2,14 @@
  var compositefunction_router = express.Router();
  var compositeFunctionSchema = require('./compositefunction_schema.js');
  var dataProvider = require('../core/datamodelprovider');
+ var compositefunction=require('./compositefunction.js');
 
-/* compositefunction_router.get("/",function(req,res){
+ /*compositefunction_router.get("/",function(req,res){
  	var result=compositefunction.execute("qwert",{"area":12,"length":2,"breadth":3});
  	console.log(result);
- });
-*/
+  return result;
+ });*/
+
 compositefunction_router.get('/', function(request, res) {
   var functionModel = dataProvider.getModel(compositeFunctionSchema, request.user.orgsite);
   functionModel.find({},{name:1, parameters:1}, function(err, data){
