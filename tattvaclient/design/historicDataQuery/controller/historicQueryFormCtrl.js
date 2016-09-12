@@ -5,10 +5,15 @@ angular.module('tattva')
 	$scope.fndef.queryCriteria=[];
 	$scope.fndef.outputFields=[];
 	$scope.edit=false;
-
+	$scope.view=false;
+	
 	if($stateParams.editHistoricQueryData){
 		var historicQueryObject = $stateParams.editHistoricQueryData;
-		$scope.edit=true;
+		if(! $stateParams.view){
+			$scope.edit=true;	
+		}else{
+			$scope.view=true;
+		}
 		historicQueryFactory.getHistoricQueryDetails(historicQueryObject).then(function(data)
 		{
 			$scope.fndef=data;
@@ -67,6 +72,16 @@ angular.module('tattva')
 		},
 		function(data) {
 			$scope.error=data.error;
+			$mdDialog.show(
+				$mdDialog.alert()
+				.parent(angular.element(document.querySelector('#popupContainer')))
+				.clickOutsideToClose(true)
+				.title('Invalid Data!')
+				.textContent(data.message)
+				.ariaLabel('Historic Query Creation unsuccessfully Terminated!')
+				.ok('Ok')
+				.targetEvent(ev)
+				);
 		})
 	} 
 
@@ -95,60 +110,114 @@ angular.module('tattva')
 		},
 		function(data) {
 			$scope.error=data.error;
+			$mdDialog.show(
+				$mdDialog.alert()
+				.parent(angular.element(document.querySelector('#popupContainer')))
+				.clickOutsideToClose(true)
+				.title('Historic Query updation Failed!')
+				.ariaLabel('Historic Query updation Failed!')
+				.textContent(data.message)
+				.ok('Ok')
+				.targetEvent(ev)
+				);
 		})
 	}
 
-	// $scope.test = function() {
-	// 	setQueryTime();
-	// 	var query1 = "use db."+$scope.fndef.orgsite+"_historic;"; // query for switch to required database
-	// 	var collection = $scope.fndef.watchlist.replace(/\s+/g, '_').toLowerCase()+"_outcomes";
-	// 	var groupAggregate = {};
-	// 	for(field in $scope.fndef.outputFields){
-	// 		if($scope.fndef.outputFields[field].function != undefined){
-	// 			var dbFunction = getDBFunction($scope.fndef.outputFields[field].function);
-	// 			var functionResult1 = $scope.fndef.outputFields[field].function.toLowerCase();
-	// 			for(dataField in $scope.fndef.outputFields[field].dataFields){
-	// 				var functionResult2 = $filter('capitalize')($scope.fndef.outputFields[field].dataFields[dataField]);
-	// 				var functionResult = functionResult1+functionResult2;
-	// 				var functionObj = {};
-	// 				functionObj[dbFunction] = "$"+$scope.fndef.outputFields[field].dataFields[dataField];
-	// 				groupAggregate[functionResult] = functionObj;
-	// 			}
-	// 		}
-	// 		else{
-	// 			for(dataField in $scope.fndef.outputFields[field].dataFields){
-	// 				var functionResult = $scope.fndef.outputFields[field].dataFields[dataField];
-	// 				groupAggregate[functionResult]=$scope.fndef.outputFields[field].dataFields[dataField];
-	// 			}
-	// 		}
-	// 	}
-	// 	var query2 = "db."+collection+".aggregate([{$group:"+$filter('json')(groupAggregate)+"}])";
-	// 	console.log(query1);
-	// 	console.log(query2);
-	// }
+	$scope.test = function() {
+		var query1 = "use db."+$scope.fndef.orgsite+"_historic;"; // query for switch to required database
+		if($scope.fndef.watchlist != undefined){
+			var collection = $scope.fndef.watchlist.replace(/\s+/g, '_').toLowerCase()+"_outcomes";
+		}
+		var groupAggregate = {_id : "$orgsite"};
+		var nonAggregate = {};
+		for(field in $scope.fndef.outputFields){
+			if($scope.fndef.outputFields[field].function != undefined){
+				var dbFunction = getDBFunction($scope.fndef.outputFields[field].function);
+				var functionResult1 = $scope.fndef.outputFields[field].function.toLowerCase();
+				for(dataField in $scope.fndef.outputFields[field].dataFields){
+					var functionResult2 = $filter('capitalize')($scope.fndef.outputFields[field].dataFields[dataField]);
+					var functionResult = functionResult1+functionResult2;
+					var functionObj = {};
+					functionObj[dbFunction] = "$"+$scope.fndef.outputFields[field].dataFields[dataField];
+					groupAggregate[functionResult] = functionObj;
+				}
+			}
+			else{
+				for(dataField in $scope.fndef.outputFields[field].dataFields){
+					var functionResult = $scope.fndef.outputFields[field].dataFields[dataField];
+					nonAggregate[functionResult]=1;
+				}
+			}
+		}
+		$scope.fndef.fromDateTime = $filter('date')(moment($scope.fromDate).format('YYYY-MM-DD')+'T'+moment($scope.fromTime).format('HH:mm:ss')+'.000Z','yyyy-MM-dd HH:mm:ss Z','+0000');
+		$scope.fndef.toDateTime = $filter('date')(moment($scope.toDate).format('YYYY-MM-DD')+'T'+moment($scope.toTime).format('HH:mm:ss')+'.000Z','yyyy-MM-dd HH:mm:ss Z','+0000');		
+		var timeIn = [$scope.fndef.fromDateTime,$scope.fndef.toDateTime];
+		var matchObject = {queryTime : {$in : timeIn}};
+		setQueryTime();
+		for(criteria in $scope.fndef.queryCriteria){
+			var comparisonFunction = getComparisonFunction($scope.fndef.queryCriteria[criteria].operator);
+			var comparisonObject = {};
+			comparisonObject[comparisonFunction] = $scope.fndef.queryCriteria[criteria].rhs.value;
+			matchObject[$scope.fndef.queryCriteria[criteria].lhs] = comparisonObject;			
+		}
 
-	// getDBFunction = function(fnName){
-	// 	if(fnName === 'AVERAGE'){
-	// 		return '$avg';
-	// 	}
-	// 	if(fnName === 'SUM'){
-	// 		return '$sum';
-	// 	}
-	// 	if(fnName === 'FIRST'){
-	// 		return '$first';
-	// 	}
-	// 	if(fnName === 'LAST'){
-	// 		return '$last';
-	// 	}
-	// 	if(fnName === 'MAXIMUM'){
-	// 		return '$max';
-	// 	}
-	// 	if(fnName === 'MINIMUM'){
-	// 		return '$min';
-	// 	}
-	// 	if(fnName === 'STANDARD DEVIATION'){
-	// 		return '$stdDevSamp';
-	// 	}
-	// }
+		var query2 = "db."+collection+".aggregate([{$match:"+$filter('json')(matchObject)+"},{$group:"+$filter('json')(groupAggregate)+"}])";
+		var query3 = "db."+collection+".find("+$filter('json')(matchObject)+","+$filter('json')(nonAggregate)+")";
+		
+		$scope.query1= query1;// console.log("query1",query1);
+		$scope.query2= query2;// console.log("query2",query2);
+		$scope.query3= query3;// console.log("query3",query3);
+	}
+
+	getDBFunction = function(fnName){
+		if(fnName === 'AVERAGE'){
+			return '$avg';
+		}
+		if(fnName === 'SUM'){
+			return '$sum';
+		}
+		if(fnName === 'FIRST'){
+			return '$first';
+		}
+		if(fnName === 'LAST'){
+			return '$last';
+		}
+		if(fnName === 'MAXIMUM'){
+			return '$max';
+		}
+		if(fnName === 'MINIMUM'){
+			return '$min';
+		}
+		if(fnName === 'STANDARD DEVIATION'){
+			return '$stdDevSamp';
+		}
+	}
+
+	getComparisonFunction = function(fnName){
+		if(fnName === '=='){
+			return '$eq';
+		}
+		if(fnName === '!='){
+			return '$ne';
+		}
+		if(fnName === '>='){
+			return '$gte';
+		}
+		if(fnName === '>'){
+			return '$gt';
+		}
+		if(fnName === '<'){
+			return '$lt';
+		}
+		if(fnName === '<='){
+			return '$lte';
+		}
+		if(fnName === 'like'){
+			return '$elemMatch';
+		}
+		if(fnName === 'exists'){
+			return '$exists';
+		}
+	}
 
 }]);

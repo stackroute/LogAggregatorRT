@@ -63,7 +63,7 @@ angular.module("tattva")
 
 
 	this.getoperatorOption=function(){
-		return ["NotEqualTo", "GreaterThan", "GreaterThanEqualTo", "LessThan", "LessThanEqualTo","EqualTo", "ElementMatch", "Exists"];
+		return ["!=", ">", ">=", "<", "<=","==", "like", "exists"];
 	}
 
 }]);

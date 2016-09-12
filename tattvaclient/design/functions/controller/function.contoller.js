@@ -4,11 +4,11 @@ angular.module('tattva')
     $scope.tabTitle ="Function List";
     $scope.stateChange="design.addfunction"
 //  $scope.stateChange="design.function";
-$scope.loadData = function() {
-  $http.get('/function').then(function(response){
+//$scope.loadData = function() {
+  /*$http.get('/function').then(function(response){
     $scope.data = response.data;
-  });
-  /*$scope.loadData = function() {
+  });*/
+  $scope.loadData = function() {
     functionFactory.getFunction()
    .then(function(data) {
           //success
@@ -18,7 +18,7 @@ $scope.loadData = function() {
         function(data) {
           console.log(data);
           $scope.error=data.error;
-        })*/
+        });
 
 
 }
@@ -55,6 +55,7 @@ $scope.deleteMe = function(ev) {
     $mdDialog.show(confirm);
   };
 }
+
 ])
 //////////////////////////////////
 .controller('functionEditCtrl', ['$scope', '$http','$mdDialog','$stateParams',

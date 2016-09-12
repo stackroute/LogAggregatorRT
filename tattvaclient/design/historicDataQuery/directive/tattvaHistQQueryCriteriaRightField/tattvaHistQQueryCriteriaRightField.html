@@ -1,6 +1,6 @@
-<div>
+<div layout="row">
   <md-autocomplete
-  class="autocom" flex="90"
+  class="autocom" 
   required md-input-name="atoCmpRfield"
   ng-disabled="tattvaHistQQueryCriteriaRightFieldctrl.isDisabled"
   md-input-name="autocompleteForrfieldwatchlist"
@@ -12,7 +12,8 @@
   md-items="item in tattvaHistQQueryCriteriaRightFieldctrl.querySearch(tattvaHistQQueryCriteriaRightFieldctrl.searchText)"
   md-item-text="item.name"
   md-min-length="0"
-  placeholder="Right Hand Expression"  md-menu-class="autocomplete-custom-template">
+  placeholder="Right Hand Expression"  md-menu-class="autocomplete-custom-template"
+  flex>
   <md-item-template>
     <span class="item-title">
       <md-icon class="material-icons">{{item.icon}}</md-icon>
