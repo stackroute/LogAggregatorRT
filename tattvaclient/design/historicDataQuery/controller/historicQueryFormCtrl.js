@@ -124,7 +124,9 @@ angular.module('tattva')
 	}
 
 	$scope.test = function() {
-		var query1 = "use db."+$scope.fndef.orgsite+"_historic;"; // query for switch to required database
+		$scope.isQuery2='false';
+		$scope.isQuery3='false';
+		var query1 = "use "+$scope.fndef.orgsite+"_historic;"; // query for switch to required database
 		if($scope.fndef.watchlist != undefined){
 			var collection = $scope.fndef.watchlist.replace(/\s+/g, '_').toLowerCase()+"_outcomes";
 		}
@@ -132,17 +134,19 @@ angular.module('tattva')
 		var nonAggregate = {};
 		for(field in $scope.fndef.outputFields){
 			if($scope.fndef.outputFields[field].function != undefined){
+				$scope.isQuery2='true';
 				var dbFunction = getDBFunction($scope.fndef.outputFields[field].function);
 				var functionResult1 = $scope.fndef.outputFields[field].function.toLowerCase();
 				for(dataField in $scope.fndef.outputFields[field].dataFields){
 					var functionResult2 = $filter('capitalize')($scope.fndef.outputFields[field].dataFields[dataField]);
 					var functionResult = functionResult1+functionResult2;
 					var functionObj = {};
-					functionObj[dbFunction] = "$"+$scope.fndef.outputFields[field].dataFields[dataField];
+					functionObj[dbFunction] = "$data."+$scope.fndef.outputFields[field].dataFields[dataField];
 					groupAggregate[functionResult] = functionObj;
 				}
 			}
 			else{
+				$scope.isQuery3='true';
 				for(dataField in $scope.fndef.outputFields[field].dataFields){
 					var functionResult = $scope.fndef.outputFields[field].dataFields[dataField];
 					nonAggregate[functionResult]=1;
@@ -152,16 +156,16 @@ angular.module('tattva')
 		$scope.fndef.fromDateTime = $filter('date')(moment($scope.fromDate).format('YYYY-MM-DD')+'T'+moment($scope.fromTime).format('HH:mm:ss')+'.000Z','yyyy-MM-dd HH:mm:ss Z','+0000');
 		$scope.fndef.toDateTime = $filter('date')(moment($scope.toDate).format('YYYY-MM-DD')+'T'+moment($scope.toTime).format('HH:mm:ss')+'.000Z','yyyy-MM-dd HH:mm:ss Z','+0000');		
 		var timeIn = [$scope.fndef.fromDateTime,$scope.fndef.toDateTime];
-		var matchObject = {queryTime : {$in : timeIn}};
+		var matchObject = {"data.commitDateTime" : {$in : timeIn}};
 		setQueryTime();
 		for(criteria in $scope.fndef.queryCriteria){
 			var comparisonFunction = getComparisonFunction($scope.fndef.queryCriteria[criteria].operator);
 			var comparisonObject = {};
-			comparisonObject[comparisonFunction] = $scope.fndef.queryCriteria[criteria].rhs.value;
-			matchObject[$scope.fndef.queryCriteria[criteria].lhs] = comparisonObject;			
+			comparisonObject[comparisonFunction] = "data."+$scope.fndef.queryCriteria[criteria].rhs.value;
+			matchObject["data."+$scope.fndef.queryCriteria[criteria].lhs] = comparisonObject;			
 		}
 
-		var query2 = "db."+collection+".aggregate([{$match:"+$filter('json')(matchObject)+"},{$group:"+$filter('json')(groupAggregate)+"}])";
+		var query2 = "db."+collection+".aggregate([{$group:"+$filter('json')(groupAggregate)+"}])";
 		var query3 = "db."+collection+".find("+$filter('json')(matchObject)+","+$filter('json')(nonAggregate)+")";
 		
 		$scope.query1= query1;// console.log("query1",query1);

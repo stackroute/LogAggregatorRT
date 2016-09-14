@@ -12,7 +12,6 @@ self.searchTextChange   = searchTextChange;
 
 if ( $scope.$parent.editNamespace) {
   self.selectedItem =   $scope.expr.watch.lfield.fieldType;
-  console.log("Data in lfield : ", $scope.expr);
     //console.log("Namespace name from namespace ctrl", $scope.$parent.wlstdef.namespace);
   }
 // @todo Implement filter for loading data
@@ -36,13 +35,13 @@ function selectedItemChange(item, expr) {
 
   var dialogTemplate = '/design/watchlists/exprfields/'+item.template +'/'+ item.template +'.html';
 
+  expr.watch.lfield={};
   if(expr.watch.lfield.fieldType !== undefined) {
     expr.watch.lfield.fieldType = item.type;
   } else if(expr.watch.lfield.fieldType != item.type) {
     expr.watch.lfield = { fieldType : item.type };
           // expr.watch.lfield=null;
         }
-
 
         $scope.showDialog = function(ev) {
           $mdDialog.show({

@@ -1,6 +1,6 @@
 var functionProvider = require("../datafunctionlib/datafnprovider");
 var compositeFunction_router=require("./compositefunction_routes.js")
-/*function getCompositFunctionDefn() {
+function getCompositFunctionDefn() {
   return final= {
     "name": "qwert",
     "description": "qwert",
@@ -126,7 +126,7 @@ var compositeFunction_router=require("./compositefunction_routes.js")
     }
     ]
   }
-}*/
+}
 
 
 var execute = function (fkn_name, paramObj) {

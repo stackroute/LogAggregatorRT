@@ -2,7 +2,6 @@
  var compositefunction_router = express.Router();
  var compositeFunctionSchema = require('./compositefunction_schema.js');
  var dataProvider = require('../core/datamodelprovider');
- var compositefunction=require('./compositefunction.js');
 
  compositefunction_router.get("/:functionName",function(req,res){
   var functionModel = dataProvider.getModel(compositeFunctionSchema,req.user.orgsite);

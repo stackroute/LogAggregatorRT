@@ -30,14 +30,14 @@ angular.module("tattva")
 
     if(item === undefined) return;
     var dialogTemplate = '/design/watchlists/exprfields/'+item.template+'/' + item.template+'.html';
-console.log('/design/watchlists/exprfields/'+item.template+'/' + item.template+'.html')
+
+    expr.watch.rfield={};
     if(expr.watch.rfield.fieldType !== undefined) {
       expr.watch.rfield.fieldType = item.type;
     } else if(expr.watch.rfield.fieldType != item.type) {
       expr.watch.rfield = { fieldType : item.type };
       // expr.watch.rfield=null;
     }
-
     $scope.showDialog = function(ev) {
       $mdDialog.show({
         controller:item.controller,

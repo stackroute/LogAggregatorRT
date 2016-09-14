@@ -16,7 +16,6 @@ angular.module("tattva")
   $scope.cancel = function() {
     $mdDialog.cancel();
   };
-  
   $scope.DataFieldFunctions=[];
 
   $scope.DataFieldFunctions= historicQueryConfg.getFunctionsOption();
