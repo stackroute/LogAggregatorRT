@@ -131,7 +131,7 @@
 </fieldset>
 <div class="publishlayout">
   <button ng-if="edit && !view" class="md-raised float-right md-primary md-button md-ink-ripple" ng-click="updateHistoricfunction();" type="button" aria-label="Update"><span class="ng-scope">Update</span></button> 
-  <button ng-if="!edit && !view" class="md-raised float-right md-primary md-button ng-scope md-ink-ripple" type="submit" aria-label="save"><span class="ng-scope">save</span></button>
+  <button ng-if="!edit && !view" class="md-raised float-right md-primary md-button ng-scope md-ink-ripple" type="submit" ng-disabled="!fndef.outputFields.length" aria-label="save"><span class="ng-scope">save</span></button>
   <button ng-if="!view" class="md-raised float-right md-button md-ink-ripple" ng-click="cancelhistoricfunctionadd()" type="button" aria-label="Cancel"><span class="ng-scope">Cancel</button>
   <md-checkbox ng-click="test()" class="float-left ng-scope" ng-show="fndef.watchlist && fndef.outputFields.length" ng-model="Query">
     View Query Structure
@@ -139,11 +139,9 @@
   <button class="md-raised float-right md-button md-ink-ripple" ng-click="cancelhistoricfunctionadd()" ng-if="view" type="button" aria-label="Back"><span class="ng-scope">Back</span></button>
 </div>
 <div layout="row" ng-show="Query" class="publishlayout">
-  <pre class="preview2" >{{query1}}
-
-{{query2}}
-
-{{query3}}</pre>
+  <pre class="preview2" ><p ng-if="fndef.watchlist">{{query1}}</p>
+<p ng-if="isQuery2">{{query2}}</p>
+<p ng-if="isQuery3">{{query3}}</p></pre>
 </div>
 </form>
 
