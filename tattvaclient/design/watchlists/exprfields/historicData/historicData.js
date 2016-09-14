@@ -1,15 +1,14 @@
 
 angular.module("tattva")
-.controller('HistoricDataCtrl',['$scope','$mdDialog','fieldData','historicfunctionsFactory',function($scope,$mdDialog,fieldData,historicfunctionsFactory)
+.controller('HistoricDataCtrl',['$scope','$mdDialog','fieldData','historicQueryFactory',function($scope,$mdDialog,fieldData,historicQueryFactory)
 {
   $scope.fieldData=fieldData;
   //console.log("dialogueData data within publisherCtrl is : ", $scope.fieldData);
   $scope.hide = function() {
     $mdDialog.hide();
   };
- var historicData = historicfunctionsFactory.gethistoricfunctions().then(function(response){
+ var historicData = historicQueryFactory.getHistoricQuery().then(function(response){
       $scope.historiclist = response;
-      console.log($scope.historiclist);
       //console.log(response);
       //return response;
     });
@@ -24,7 +23,7 @@ angular.module("tattva")
   };
 
   $scope.getExprAsText =function(){
- return $scope.fieldData.historicfunction+"("+$scope.fieldData.historicfunctionparam+")";
+ return $scope.fieldData.historicfunction;
   }
 
 }]);

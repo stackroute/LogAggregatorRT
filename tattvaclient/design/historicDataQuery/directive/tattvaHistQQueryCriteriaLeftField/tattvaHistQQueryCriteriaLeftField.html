@@ -1,4 +1,4 @@
-<div>
+<div layout="row">
     <md-autocomplete
     required
     md-input-name="atoCmpStream"
@@ -11,7 +11,8 @@
     md-items="item in tattvaHistQQueryCriteriaLeftFieldctrl.querySearch(tattvaHistQQueryCriteriaLeftFieldctrl.searchText)"
     md-item-text="item"
     md-min-length="0"
-    placeholder="Left Hand Expression">
+    placeholder="Left Hand Expression"
+    flex>
     <md-item-template>
       <span md-highlight-text="tattvaHistQQueryCriteriaLeftFieldctrl.searchText" md-highlight-flags="^i">{{item}}</span>
   </md-item-template>

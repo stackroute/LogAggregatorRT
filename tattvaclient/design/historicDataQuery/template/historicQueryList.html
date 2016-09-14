@@ -12,9 +12,9 @@
 		<md-content>
 			<div>
 				<md-list layout-padding>
-					<md-list-item class="md-3-line hover" ui-serf="design.historicQueryAdd" ng-repeat="item in historicQueryListdata">
-						<span class='md-avatar'><ng-letter-avatar fontSize="20"  charCount=2 data="{{ historicQueryListdata[$index].name  }}" shape="round"></ng-letter-avatar></span>
-						<div class="md-list-item-text" layout="column">
+					<md-list-item class="md-3-line hover" ng-repeat="item in historicQueryListdata">
+						<span class='md-avatar' ui-sref="design.historicQueryView({ editHistoricQueryData: '{{item.name}}'})"><ng-letter-avatar fontSize="20"  charCount=2 data="{{ historicQueryListdata[$index].name  }}" shape="round"></ng-letter-avatar></span>
+						<div ui-sref="design.historicQueryView({ editHistoricQueryData: '{{item.name}}'})" class="md-list-item-text" layout="column">
 							<h3>{{ item.name | capitalize}}</h3>
 							<p>{{historicQueryListdata[$index].description}}</p>
 						</div>
