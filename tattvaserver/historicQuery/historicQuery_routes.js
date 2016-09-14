@@ -50,7 +50,6 @@ historicQuery_router.get('/:historicqueryName', function(req, res){
       //   return res.status(500).json({error:"Intentional error for testing erro scenario"});
       return res.status(500).json(err);
     } else{
-      console.log(res.status(200).json(historicqueryData));
       return res.status(200).json(historicqueryData);
     }
   });
