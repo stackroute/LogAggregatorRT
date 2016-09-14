@@ -24,6 +24,7 @@ var watchListSchema=new mongoose.Schema({
           "Constants":{type: String},
           "function":{type: String},
           "functionparam": {type: String},
+          "functionparameters": {type: Object},
           "AccumulateOn": {type: String},
           "AccumulateTill": {type: String},
           "FunctionenPostAccumulation": {type: String},

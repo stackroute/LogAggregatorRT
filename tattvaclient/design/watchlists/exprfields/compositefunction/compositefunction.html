@@ -20,7 +20,7 @@
       </div>
       <div ng-repeat="i in params" layout layout-sm="column">
        <md-input-container flex layout-padding>
-          <md-select name="compositeFunctionOperands" md-on-close="clearSearchTerm()" ng-model="fieldData.functionparam[i.name]" required>
+          <md-select name="compositeFunctionOperands" md-on-close="clearSearchTerm()" ng-model="fieldData.functionparameters[i.name]" required>
             <label>{{i.name}}</label>
             <md-option ng-repeat="datafield in datafields">{{datafield}} </md-option>
           </md-select>

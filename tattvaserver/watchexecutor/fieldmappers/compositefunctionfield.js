@@ -5,14 +5,14 @@ var compositeFunctionFieldMapper = {
   map: function(fieldConfig, dataObj) {
     var result = undefined;
     var compositeFunctionName = fieldConfig['function'];
-    var fnParamFields = fieldConfig['functionparam'];
+    var fnParamFields = fieldConfig['functionparameters'];
     fnParamFields = fnParamFields.split(","); //as function parameters are stored with comma separated value
 
-    var fnParamData=[];
-    for(i in fnParamFields) {
-      var fieldData = dataObj[fnParamFields[i]];
-      fnParamData.push(fieldData);
-    }
+    var fnParamData=fnParamFields;
+    // for(i in fnParamFields) {
+    //   var fieldData = dataObj[fnParamFields[i]];
+    //   fnParamData.push(fieldData);
+    // }
 
     var compositeFunctionModule = new compositeFunctionProvider(compositeFunctionName);
     var fnResult = compositeFunctionModule.evaluate(fnParamData);

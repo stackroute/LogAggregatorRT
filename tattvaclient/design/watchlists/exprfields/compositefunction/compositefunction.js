@@ -15,7 +15,7 @@ angular.module("tattva")
   });
 
   $scope.loadParameters = function(){
-    fieldData.functionparam={};
+    fieldData.functionparameters={};
     for(params in $scope.compositeFunction){
       if($scope.compositeFunction[params].name == fieldData.function){
         $scope.params=$scope.compositeFunction[params].parameters;
@@ -32,8 +32,8 @@ angular.module("tattva")
 
   $scope.getExprAsText =function(){
     var fnParameters = [];
-    for(params in fieldData.functionparam){
-      fnParameters.push(fieldData.functionparam[params]);
+    for(params in fieldData.functionparameters){
+      fnParameters.push(fieldData.functionparameters[params]);
     }
   return fieldData.function+"("+fnParameters+")";  // logic for converting the data to human redable easy format of the expression
 }
