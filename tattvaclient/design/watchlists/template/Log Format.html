@@ -1,5 +1,15 @@
-<md-content class="md-padding fix" >
-  <pre style="background-color:#f0f3f3;padding:5%;">
+<md-content class="md-padding fix" ng-if="watchdefn.publishers.dashboard.logFormat === 'json'">
+    <pre>
     <div logdata watchname="watchdefn.name" orgsite="watchdefn.orgsite" eventobj="eventobj" configobj="watchdefn.publishers.dashboard" ></div>
   </pre>
+</md-content>
+<md-content class="md-padding fix" ng-if="watchdefn.publishers.dashboard.logFormat === 'rawdata'">
+    <pre>
+    <div rawdata watchname="watchdefn.name" orgsite="watchdefn.orgsite" eventobj="eventobj" configobj="watchdefn.publishers.dashboard" ></div>
+  </pre>
+</md-content>
+<md-content class="md-padding fix" ng-if="watchdefn.publishers.dashboard.logFormat === 'table'">
+    <pre>
+      <div logtable watchname="watchdefn.name" orgsite="watchdefn.orgsite" eventobj="eventobj" configobj="watchdefn.publishers.dashboard"></div>
+    </pre>
 </md-content>
