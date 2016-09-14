@@ -27,23 +27,16 @@
     
    $scope.parameters = [{id: 'parameter1'}];
    $scope.removeExpr=function(index){
-    console.log(index);
-
      $scope.functionData.expression.splice(index,1);
      for(i in $scope.functionData.expression)
      {
-      console.log(i);
       var j=i;
       j++;
       $scope.functionData.expression[i].tag=("Expression::"+j);
      }
-     
-
-
    };
 
    $scope.addNewExpr=function () {
-    console.log('hi');
     var newExpr={
       "tag":("Expression::"+($scope.functionData.expression.length + 1)),
       "lhs":{
@@ -84,7 +77,6 @@
    }
  };  
    $scope.functionData.expression.push(newExpr);
-   console.log($scope.functionData.expression.length);
    };
    $scope.addNewParam = function() {
      var newItemNo = $scope.parameters.length+1;
@@ -94,7 +86,6 @@
     $state.go("design.function");
   }
   $scope.create=function () { 
-   $scope.functionData.parameters=$scope.parameters;
    functionFactory.saveFunction($scope.functionData)
    .then(function(data) {
           //success
@@ -110,7 +101,7 @@
    $scope.parameters.splice(lastItem);
  };
  $scope.openDialogBox = function(eve,object,side,index) {
-  console.log($scope.functionData);
+  $scope.functionData.parameters=$scope.parameters;
   $mdDialog.show({
     controller: DialogController,
     templateUrl: '/design/functions/template/createFunctionDialog.html',
@@ -118,15 +109,12 @@
      parameters: $scope.parameters,
      object:object,
      keys:object
-
    },
   parent: angular.element(document.body),
    targetEvent: eve,
    clickOutsideToClose:true,
-
  })
   .then(function(answer) {
-    console.log(index);
    $scope.functionData.expression[index][side].varmap=answer;
   }, function() {
   });
@@ -141,7 +129,6 @@ function DialogController($scope, $mdDialog, parameters,object) {
   $scope.obj={};
   var varmap1=[];
   var comma=object.variables.split(",");
-
   for(i in comma)
   {
     var param={};
@@ -150,8 +137,6 @@ function DialogController($scope, $mdDialog, parameters,object) {
     $scope.keys.push(param);
   }
   $scope.parameters = parameters;
-
-
   $scope.closeDialog = function() {
     $mdDialog.hide();
   }
@@ -167,7 +152,6 @@ function DialogController($scope, $mdDialog, parameters,object) {
     varmap1[j].targetvar=$scope.obj[key];
     j++;
   }
-
   $mdDialog.hide(varmap1);
 }
 $scope.cancel = function() {

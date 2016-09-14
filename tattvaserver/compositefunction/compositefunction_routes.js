@@ -4,14 +4,21 @@
  var dataProvider = require('../core/datamodelprovider');
  var compositefunction=require('./compositefunction.js');
 
- /*compositefunction_router.get("/",function(req,res){
- 	var result=compositefunction.execute("qwert",{"area":12,"length":2,"breadth":3});
- 	console.log(result);
-  return result;
- });*/
+ compositefunction_router.get("/:functionName",function(req,res){
+  var functionModel = dataProvider.getModel(compositeFunctionSchema,req.user.orgsite);
+  console.log(req.params.functionName);
+  functionModel.find({name:req.params.functionName},function(err, data){
+    if(err){
+      console.log("Error in find functions, error: ", err);
+      res.status(500).json({error:"Internal error occurred..!"})
+    }
+    res.send(data);
+  });
+ });
 
 compositefunction_router.get('/', function(request, res) {
-  var functionModel = dataProvider.getModel(compositeFunctionSchema, request.user.orgsite);
+  var functionModel = dataProvider.getModel(compositeFunctionSchema,request.user.orgsite);
+  //console.log(request.user.orgsite);
   functionModel.find({},{name:1, parameters:1}, function(err, data){
     if(err){
       console.log("Error in find functions, error: ", err);
