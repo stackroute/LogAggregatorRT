@@ -218,10 +218,6 @@ angular.module("tattva")
           $scope.status = 'You decided to keep your watchlist.';
         });
       };
-
-<<<<<<< HEAD
     }
+
   ]);
-=======
-}]);
->>>>>>> abda3d29c6f316b1fea5f12066c4a9f2417482ed
