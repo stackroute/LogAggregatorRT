@@ -37,5 +37,8 @@
     "socket.io": "^1.4.6",
     "stream-to-mongo": "^0.1.5",
     "websocket-stream": "^3.2.1"
+  },
+  "devDependencies": {
+    "supertest": "^2.0.0"
   }
 }
