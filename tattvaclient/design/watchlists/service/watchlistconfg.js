@@ -55,6 +55,15 @@ angular.module("tattva")
             "tip":"Compare against a Function returned Value"
         },
         {
+          "type": "compositefunction",
+          "name": "Composite Function",
+          "controller": "CompositeFunctionCtrl",
+          "template": "compositefunction",
+          "icon":"streetview",
+            "shortexpr":"Composite Function Name(<Param>)",
+            "tip":"Compare against a Composite Function returned Value"
+        },
+        {
           "type": "historicData",
           "name": "Historic Data",
           "controller": "HistoricDataCtrl",

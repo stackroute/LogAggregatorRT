@@ -2,6 +2,10 @@ angular.module('tattva')
 .factory('historicQueryFactory', ['$http','$q', function($http, $q){
 var factory={
 
+  testHistoricQuery: function(testHistoricQuery) {
+      return
+    },
+
 	saveHistoricQuery: function(createHistoricQuery) {
       return $q(function(resolve, reject) {
         $http.post('/historicQuery/'+createHistoricQuery.name, createHistoricQuery)

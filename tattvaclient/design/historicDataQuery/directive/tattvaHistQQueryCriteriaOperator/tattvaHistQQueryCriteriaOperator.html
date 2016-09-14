@@ -1,6 +1,6 @@
-<div>
+<div layout="row">
   <md-autocomplete
-  class="autocom" flex="5"
+  class="autocom"
   required md-input-name="atoCmpOperator"
   ng-disabled="tattvaHistQQueryCriteriaOperatorctrl.isDisabled"
   md-no-cache="tattvaHistQQueryCriteriaOperatorctrl.noCache"
@@ -11,7 +11,8 @@
   md-items="item in tattvaHistQQueryCriteriaOperatorctrl.querySearch(tattvaHistQQueryCriteriaOperatorctrl.searchText)"
   md-item-text="item"
   md-min-length="0"
-  placeholder="Operator">
+  placeholder="Operator"
+  flex>
   <md-item-template>
     <span md-highlight-text="tattvaHistQQueryCriteriaOperatorctrl.searchText" md-highlight-flags="^i">{{item}}</span>
   </md-item-template>

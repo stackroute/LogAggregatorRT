@@ -1,5 +1,5 @@
 <form name="addhistoricfunction" ng-submit="savehistoricfunction()" ng-init="">
-  <fieldset class="fieldset">
+  <fieldset class="fieldset" ng-disabled="view">
     <div layout="column" layout-sm="column" layout-xs="column" layout-padding class="watchlistlayout">
       <div layout="row" layout-sm="column" layout-xs="column">
         <md-input-container flex="50">
@@ -67,15 +67,15 @@
         </div>
 
         <div>
-          <md-whiteframe ng-show="fndef.outputFields.length" class="md-whiteframe-2dp" layout="column" style="border-radius:1%;" ng-if="fndef.outputFields.length" flex>
-            <label class="md-subhead" layout layout-padding layout-align="left left" flex>Output Data(DataFields) :</label>
+          <md-whiteframe ng-show="fndef.outputFields.length" class="md-whiteframe-1dp" layout="column" ng-if="fndef.outputFields.length" flex>
+            <label class="md-subhead" layout layout-padding layout-align="left left" flex>Output Data :</label>
             <div layout="row"  ng-repeat="field in fndef.outputFields" flex>
-              <md-subheader>{{field.index}}) </md-subheader>
+              <md-subheader>{{$index+1}}) </md-subheader>
               <!-- Tattva Historic Query Output Field -->
               <!-- tattvaHistQOutputField -->
               <tattva-hist-q-output-field field="field" flex="90"></tattva-hist-q-output-field>
               <span flex></span>
-              <md-button layout layout-align="center center" class="float-right" ng-click="removeOutputExpression($index);" aria-label=""><md-icon layout layout-align="top right" class="material-icons">clear</md-icon></md-icon><md-tooltip md-direction="left">
+              <md-button layout layout-align="center center" class="md-icon-button float-right" ng-click="removeOutputExpression($index);" aria-label=""><md-icon layout layout-align="top right" class="material-icons">clear</md-icon><md-tooltip md-direction="right">
                 Remove
               </md-tooltip></md-button>
             </div>
@@ -90,21 +90,23 @@
           </md-whiteframe>
         </div>
         <div>
-          <md-whiteframe ng-show="fndef.queryCriteria.length" class="md-whiteframe-2dp" style="border-radius: 1%;" layout="column" ng-if="fndef.queryCriteria.length">
-            <label class="md-subhead" layout layout-padding layout-align="left left">Query Criteria :</label>
-            <div ng-repeat="criteria in fndef.queryCriteria" layout="row">
-              <md-subheader>{{criteria.index}})</md-subheader>
-              <!-- Tattva Historic Query query criteria left field-->
-              <!-- tattvaHistQQueryCriteriaLeftField -->
-              <tattva-hist-q-query-criteria-left-field criteria="criteria" ng-cloak=""  flex="40"></tattva-hist-q-query-criteria-left-field>
-              <!-- Tattva Historic Query query criteria operator-->
-              <!-- tattvaHistQQueryCriteriaOperator -->
-              <tattva-hist-q-query-criteria-operator criteria="criteria" flex-offset="5" flex="30"></tattva-hist-q-query-criteria-operator>
-              <!-- Tattva Historic Query query criteria right field-->
-              <!-- tattvaHistQQueryCriteriaRightField -->
-              <tattva-hist-q-query-criteria-right-field criteria="criteria" flex-offset="5" flex="40"></tattva-hist-q-query-criteria-right-field>
-              
-              <md-button class="float-right md-mini"  ng-click="removeExpression($index);" aria-label=""><md-icon layout layout-align="center center" class="material-icons">clear</md-icon></md-icon><md-tooltip md-direction="left">
+          <md-whiteframe ng-show="fndef.queryCriteria.length" class="md-whiteframe-1dp" layout="column" ng-if="fndef.queryCriteria.length" flex>
+            <label class="md-subhead" layout layout-padding layout-align="left left" flex>Query Criteria :</label>
+            <div layout="row" ng-repeat="criteria in fndef.queryCriteria" flex>
+              <md-subheader>{{$index+1}}) </md-subheader>
+              <div flex="90" layout="row">
+                <!-- Tattva Historic Query query criteria left field-->
+                <!-- tattvaHistQQueryCriteriaLeftField -->
+                <tattva-hist-q-query-criteria-left-field criteria="criteria" flex="40"></tattva-hist-q-query-criteria-left-field>
+                <!-- Tattva Historic Query query criteria operator-->
+                <!-- tattvaHistQQueryCriteriaOperator -->
+                <tattva-hist-q-query-criteria-operator criteria="criteria" flex="20"></tattva-hist-q-query-criteria-operator>
+                <!-- Tattva Historic Query query criteria right field-->
+                <!-- tattvaHistQQueryCriteriaRightField -->
+                <tattva-hist-q-query-criteria-right-field criteria="criteria" flex="40"></tattva-hist-q-query-criteria-right-field>
+              </div>
+              <span flex></span>
+              <md-button class="md-icon-button float-right md-mini" ng-click="removeExpression($index);" aria-label=""><md-icon layout layout-align="center center" class="material-icons">clear</md-icon></md-icon><md-tooltip md-direction="right">
                 Remove Query Criteria
               </md-tooltip></md-button>
             </div>
@@ -124,13 +126,24 @@
         </div>
       </md-whiteframe>
     </div>
-
-    <div>
-    <button ng-if="edit" class="md-raised float-right md-primary md-button md-ink-ripple" ng-click="updateHistoricfunction();" type="button" aria-label="Update"><span class="ng-scope">Update</span></button> 
-      <button ng-if="!edit" class="md-raised float-right md-primary md-button ng-scope md-ink-ripple" type="submit" aria-label="save"><span class="ng-scope">save</span></button>
-      <button class="md-raised float-right md-button md-ink-ripple" ng-click="cancelhistoricfunctionadd()" type="button" aria-label="Cancel"><span class="ng-scope">Cancel</button>
-    </div>
-
+    <!-- <button class="md-raised md-button md-ink-ripple" ng-click="test()" type="button" aria-label="Test"><span class="ng-scope">Test</button> -->
   </div>
 </fieldset>
+<div class="publishlayout">
+  <button ng-if="edit && !view" class="md-raised float-right md-primary md-button md-ink-ripple" ng-click="updateHistoricfunction();" type="button" aria-label="Update"><span class="ng-scope">Update</span></button> 
+  <button ng-if="!edit && !view" class="md-raised float-right md-primary md-button ng-scope md-ink-ripple" type="submit" aria-label="save"><span class="ng-scope">save</span></button>
+  <button ng-if="!view" class="md-raised float-right md-button md-ink-ripple" ng-click="cancelhistoricfunctionadd()" type="button" aria-label="Cancel"><span class="ng-scope">Cancel</button>
+  <md-checkbox ng-click="test()" class="float-left ng-scope" ng-show="fndef.watchlist && fndef.outputFields.length" ng-model="Query">
+    View Query Structure
+  </md-checkbox>
+  <button class="md-raised float-right md-button md-ink-ripple" ng-click="cancelhistoricfunctionadd()" ng-if="view" type="button" aria-label="Back"><span class="ng-scope">Back</span></button>
+</div>
+<div layout="row" ng-show="Query" class="publishlayout">
+  <pre class="preview2" >{{query1}}
+
+{{query2}}
+
+{{query3}}</pre>
+</div>
 </form>
+

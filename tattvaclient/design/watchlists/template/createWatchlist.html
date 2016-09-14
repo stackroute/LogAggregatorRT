@@ -125,12 +125,22 @@
             <md-icon class="material-icons">add</md-icon>
           </md-button>
         </div>
+<<<<<<< HEAD
       </md-whiteframe>
       <!-- ========================== END OF LOOPING EXPRESSIONS ========================================= -->
       <!-- end of ng repeat start for "stmt in wlstdef.statements -->
       <!--<div ng-repeat-end>
                  <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
 
+=======
+      </div>
+    </md-whiteframe>
+    <!-- ========================== END OF LOOPING EXPRESSIONS ========================================= -->
+  </div>
+  <!-- end of ng repeat start for "stmt in wlstdef.statements -->
+  <div ng-repeat-end>
+                <!-- <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
+>>>>>>> abda3d29c6f316b1fea5f12066c4a9f2417482ed
     <md-button style="text-align:left" ng-class="{'last':$last}" class="md-raised">Join With {{expr.joinWith}}</md-button>
     <md-button style="text-align:left" class="md-raised">And With {{expr.joinWith}}</md-button>
   </div>-->
@@ -172,6 +182,7 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   </fieldset>
   <div class="publishlayout" layout="column" layout-padding>
     <div>
@@ -182,6 +193,19 @@
         <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag" ng-disabled="!saveToDB && !outputStream && !publishToDashboard">save</md-button>
         <!-- <md-button class="md-raised md-warn" ng-click='showRemoveConfirm($event)' ng-if="editFlag">Remove</md-button> -->
       </div>
+=======
+  </div>
+</div>
+</fieldset>
+<div class="publishlayout" layout="column">
+  <div>
+    <span flex></span>
+    <div style="float:right;">
+      <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
+      <md-button class="md-raised md-primary" ng-click='showEditConfirm($event)' ng-if="editFlag">Edit</md-button>
+      <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag" ng-disabled="!saveToDB && !outputStream && !publishToDashboard">save</md-button>
+      <!-- <md-button class="md-raised md-warn" ng-click='showRemoveConfirm($event)' ng-if="editFlag">Remove</md-button> -->
+>>>>>>> abda3d29c6f316b1fea5f12066c4a9f2417482ed
     </div>
 </form>
 <div>
