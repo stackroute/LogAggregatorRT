@@ -8,19 +8,17 @@
           <span style="text-transform: uppercase;">{{org.orgsite}}</span>
           <div layout="column">
             <span style="text-transform: capitalize;" class="md-subhead">{{org.orgLocation}}</span>
-          </div>    
+          </div>
         </div>
       </div>
-        <!-- <div layout="row" style="padding-right:20px" layout-align="center center">
-         <div layout="row" class="searchBorderStyle">
-           <a layout="row" class="md-mini" aria-label="Search">
-             <md-icon>search</md-icon>
-           </a>
-           <md-input-container>
-          <input class="md-input-focused" style="width:200px" ng-model="search.name" placeholder="enter search">
-        </md-input-container>
-      </div> -->
-    <ng-md-icon style="cursor:pointer;" flex="5" aria-label="" icon="person_add" ui-sref="tattva.organisation.organisationEdit" size="30px"></ng-md-icon>
+        <div layout="row" style="padding-right:40px" layout-align="center center">
+           <div layout="row">
+              <md-input-container>
+              <input ng-model="username" id="search" placeholder="search">
+              </md-input-container>
+              <md-icon ng-click="searchUser()" style="cursor:pointer;margin-top: 26px;">search</md-icon>
+            </div>
+    <ng-md-icon style="cursor:pointer;" flex-offset="5" aria-label="" icon="person_add" ui-sref="tattva.organisation.organisationEdit" size="30px"></ng-md-icon>
   </div>
 </div>
 <md-content layout-padding>

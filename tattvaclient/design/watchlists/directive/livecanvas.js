@@ -73,14 +73,16 @@ angular.module('tattva').directive('linearChart', function($interval) {
         //changing the color of anomalies and pushing the data
 
         graphData.push({
-          x: parsedDate,
-          y: data.logdata[yattr],
-          color:normalTickColor
-        });
-
-        if(data.watchresult) {
-          tickColor = anomalyTickColor;
-        }
+         x: parsedDate,
+         y: data.logdata[yattr],
+         color: normalTickColor
+       });
+       console.log(normalTickColor);
+       if (data.watchresult) {
+         normalTickColor = anomalyTickColor;
+       } else {
+         normalTickColor = 'blue';
+       }
         
         //prune excess data, no point in keeping it accumulated
         if (graphData.length > maxData) {

@@ -1,0 +1,39 @@
+<md-dialog flex="35">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2> Composite Functions</h2>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content layout="column" class="md-padding" flex>
+    <form name="FrmDataField" ng-submit="updateBackPublisher()">
+      <div layout layout-padding layout-sm="column">
+        <md-input-container flex>
+          <md-select name="compositeFunctionOption" ng-model="fieldData.function" md-on-close="clearSearchTerm()" ng-change="loadParameters()" required>
+            <label>Select Composite Function</label>
+            <md-option ng-repeat="i in compositeFunctionOption">{{i}} </md-option>
+          </md-select>
+          <div ng-messages="FrmDataField.compositeFunctionOption.$error">
+            <div ng-message="required">This is required!</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div ng-repeat="i in params" layout layout-sm="column">
+       <md-input-container flex layout-padding>
+          <md-select name="compositeFunctionOperands" md-on-close="clearSearchTerm()" ng-model="fieldData.functionparameters[i.name]" required>
+            <label>{{i.name}}</label>
+            <md-option ng-repeat="datafield in datafields">{{datafield}} </md-option>
+          </md-select>
+          <div ng-messages="FrmDataField.compositeFunctionOperands.$error">
+            <div ng-message="required">This is required!</div>
+          </div>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" flex layout-align="end end">
+      <span flex></span>
+      <md-button ng-click="cancel()"> Cancel </md-button>
+      <md-button type="submit" class="md-primary md-raised" > OK </md-button>
+    </form>
+  </md-dialog-actions>
+</md-dialog>

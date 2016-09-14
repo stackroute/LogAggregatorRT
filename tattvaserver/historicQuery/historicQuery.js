@@ -1,7 +1,7 @@
 var mongoose = require( 'mongoose' );
 
 var historicQuerySchema = new mongoose.Schema({
-  "name":{type: String, required:true, unique:true},
+  "name":{type: String, unique:true, required:true},
   "description":{type: String, required:true},
   "watchlist":{type:String,required:true},
   "orgsite":{type:String,required:true},

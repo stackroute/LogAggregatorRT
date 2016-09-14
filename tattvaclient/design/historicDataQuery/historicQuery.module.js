@@ -26,6 +26,11 @@ angular.module('tattva')
       url: "/historicQuery/:editHistoricQueryData",
       templateUrl:"/design/historicDataQuery/template/historicQueryForm.html",
       controller: 'historicQueryFormCtrl'
-
-   })
+    })
+    .state('design.historicQueryView',{
+      url: "/historicQueryView/:editHistoricQueryData",
+      templateUrl:"/design/historicDataQuery/template/historicQueryForm.html",
+      controller: 'historicQueryFormCtrl',
+      params: { view : 'true' }
+    })
   }]);
