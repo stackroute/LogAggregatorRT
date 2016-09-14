@@ -26,7 +26,7 @@ module.exports = {
   masterdb: 'tattva',
   mongo: {
     host: '127.0.0.1',
-    port: 27018
+    port: 27017
   },
   redis: {
     host: "127.0.0.1",
