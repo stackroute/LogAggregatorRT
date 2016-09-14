@@ -119,7 +119,7 @@ app.use('/appsummary',isAuthenticated, summary_router);
 // app.use('/watchloop',isAuthenticated,  watchloop_router);
 app.use('/adminDashboard',isAuthenticated, admin_router);
 app.use('/distwatchloop', isAuthenticated,  distwatchloop_router);
-app.use('/compositefunction',isAuthenticated,  compositefunction_router);
+app.use('/compositefunction', isAuthenticated,compositefunction_router);
 
 // logger.info("Starting watch list executor...!");
 // watchloopExecutor();

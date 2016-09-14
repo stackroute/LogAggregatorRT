@@ -17,12 +17,26 @@ angular.module('tattva')
       });
     },
 
+    /*getFunctionByName: function(fkn) {
+    return $q(function(resolve, reject) {
+      console.log(fkn);
+      $http.get('/compositefunction/'+fkn)
+      .then(function(res) {
+        //success
+        resolve(res.data);
+      },
+      function(res) {
+        //error
+        reject(res.data);
+      });
+    });
+  },*/
+
     getFunction: function() {
     return $q(function(resolve, reject) {
       $http.get('/compositefunction')
       .then(function(res) {
         //success
-        // console.log(res.data);
         resolve(res.data);
       },
       function(res) {

@@ -51,147 +51,138 @@
       </div>
       <div></div>
       <!--================================ Watchlist d3 Mindmap ================================= -->
-            <!--       <div>
+      <!--       <div>
     <md-whiteframe class="md-whiteframe-2dp" layout="row" >
       <md-subheader class="watchmapheader subtitle"><span class="md-body-1" flex-offset="40">Watchlist Flow Map</span></md-subheader>
       <watchlistmap watch="wlstdef" flex></watchlistmap>
     </md-whiteframe>
   </div> -->
-  <!--================================ Watchlist d3 ExpressionFormat ================================= -->
-
-  <watchlistexpr watch="wlstdef" ng-show="wtchexpr" flex></watchlistexpr>
-
-  <!-- =============================== STARTING TO LOOP ==================================== -->
-  <div class="watchListnamespace" ng-repeat-start="expr in wlstdef.expressions" layout-sm="column" layout-xs="column" flex>
-    <label class="md-subheader">{{expr.tag}}</label>
-    <md-whiteframe class="md-whiteframe-1dp" layout flex style="height:90px;">
-      <div class="flex container" layout="row">
-        <div class="lfieldwatchlist watchlistAutoComplete" ng-controller="lfield as ctrl" flex="40">
-          <md-autocomplete class="autocom" required md-input-name="atoCmpLfield" ng-disabled="ctrl.isDisabled" md-input-name="autocompleteForlfieldwatchlist" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item, expr)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" md-min-length="0" placeholder="Left Hand Expression" md-menu-class="autocomplete-custom-template">
-            <md-item-template>
-              <span class="item-title">
+      <!--================================ Watchlist d3 ExpressionFormat ================================= -->
+      <watchlistexpr watch="wlstdef" ng-show="wtchexpr" flex></watchlistexpr>
+      <!-- =============================== STARTING TO LOOP ==================================== -->
+      <md-whiteframe class="md-whiteframe-2dp" layout="column" ng-show="wtchexpr" flex style="margin:8px;">
+        <div ng-repeat="expr in wlstdef.expressions" layout="row">
+          <md-subheader>{{expr.tag}}</md-subheader>
+          <div ng-controller="lfield as ctrl" flex="33">
+            <md-autocomplete class="autocom" required md-input-name="atoCmpLfield" ng-disabled="ctrl.isDisabled" md-input-name="autocompleteForlfieldwatchlist" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item, expr)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" md-min-length="0" placeholder="Left Hand Expression" md-menu-class="autocomplete-custom-template">
+              <md-item-template>
+                <span class="item-title">
                 <md-icon class="material-icons">{{item.icon}}</md-icon>
                 <span> {{item.name}} </span>
-              </span>
-              <span class="item-metadata">
+                </span>
+                <span class="item-metadata">
                 <span class="item-metastat">
                   FORMULA : <strong>{{item.shortexpr}}</strong>
                 </span>
                 <span class="item-metastat">
                   {{item.tip}}
                 </span>
-              </span>
-            </md-item-template>
-            <md-not-found>
-              No LField option matching "{{ctrl.searchText}}" were found.
-            </md-not-found>
-          </md-autocomplete>
-        </div>
-        <div class="operatorwatchlist" ng-controller="operator as ctrl">
-          <md-autocomplete class="autocom" required md-input-name="atoCmpOperator" ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item,expr)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item" md-min-length="0" placeholder="Operator">
-            <md-item-template>
-              <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
-            </md-item-template>
-            <md-not-found>
-              No operator matching "{{ctrl.searchText}}" were found.
-            </md-not-found>
-          </md-autocomplete>
-        </div>
-        <div class="rfieldwatchlist" ng-controller="rfield as ctrl" flex="40">
-          <md-autocomplete class="autocom" required md-input-name="atoCmpRfield" ng-disabled="ctrl.isDisabled" md-input-name="autocompleteForrfieldwatchlist" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item,expr)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" md-min-length="0" placeholder="Right Hand Expression" md-menu-class="autocomplete-custom-template">
-            <md-item-template>
-              <span class="item-title">
+                </span>
+              </md-item-template>
+              <md-not-found>
+                No LField option matching "{{ctrl.searchText}}" were found.
+              </md-not-found>
+            </md-autocomplete>
+          </div>
+          <div ng-controller="operator as ctrl" flex="20">
+            <md-autocomplete class="autocom" required md-input-name="atoCmpOperator" ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item,expr)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item" md-min-length="0" placeholder="Operator">
+              <md-item-template>
+                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
+              </md-item-template>
+              <md-not-found>
+                No operator matching "{{ctrl.searchText}}" were found.
+              </md-not-found>
+            </md-autocomplete>
+          </div>
+          <div ng-controller="rfield as ctrl" flex="33">
+            <md-autocomplete class="autocom" required md-input-name="atoCmpRfield" ng-disabled="ctrl.isDisabled" md-input-name="autocompleteForrfieldwatchlist" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item,expr)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" md-min-length="0" placeholder="Right Hand Expression" md-menu-class="autocomplete-custom-template">
+              <md-item-template>
+                <span class="item-title">
                 <md-icon class="material-icons">{{item.icon}}</md-icon>
                 <span> {{item.name}} </span>
-              </span>
-              <span class="item-metadata">
+                </span>
+                <span class="item-metadata">
                 <span class="item-metastat">
                   FORMULA : <strong>{{item.shortexpr}}</strong>
                 </span>
                 <span class="item-metastat">
                   {{item.tip}}
                 </span>
-              </span>
-            </md-item-template>
-            <md-item-template>
-              <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
-            </md-item-template>
-            <md-not-found>
-              No namespace matching "{{ctrl.searchText}}" were found.
-            </md-not-found>
-          </md-autocomplete>
+                </span>
+              </md-item-template>
+              <md-item-template>
+                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
+              </md-item-template>
+              <md-not-found>
+                No namespace matching "{{ctrl.searchText}}" were found.
+              </md-not-found>
+            </md-autocomplete>
+          </div>
+          <md-button ng-show="wlstdef.expressions.length>1" ng-click="removeExpression($index);" aria-label="" class="clr">
+            <md-icon>clear</md-icon>
+          </md-button>
+          <md-button ng-show="wlstdef.expressions.length>1 && !$last" ng-click="addNewExpression($index,expr);" aria-label="" class="add">
+            <md-icon>add</md-icon>
+          </md-button>
         </div>
-        <div layout="column">
-        <div>
-        <md-button class="md-raised md-fab md-mini" ng-show="wlstdef.expressions.length>1" ng-click="removeExpression($index);" aria-label="" style="cursor: pointer;margin-top:1px;">
-            <md-icon class="material-icons">clear</md-icon>
-            </md-button>
-        </div>
-        <div>
-        <md-button class="md-raised md-fab md-mini" ng-show="wlstdef.expressions.length>1 && !$last" ng-click="addNewExpression($index,expr);" aria-label="" style="cursor: pointer;margin-top:1px;">
-            <md-icon class="material-icons">add</md-icon>
-            </md-button>
-        </div>
-        </div>
-      </div>
-    </md-whiteframe>
-    <!-- ========================== END OF LOOPING EXPRESSIONS ========================================= -->
-  </div>
-  <!-- end of ng repeat start for "stmt in wlstdef.statements -->
-  <div ng-repeat-end>
-                <!-- <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
+      </md-whiteframe>
+      <!-- ========================== END OF LOOPING EXPRESSIONS ========================================= -->
+      <!-- end of ng repeat start for "stmt in wlstdef.statements -->
+      <!--<div ng-repeat-end>
+                 <md-divider ng-class="{'last':$last}" class="vertical-divider"></md-divider>
+
     <md-button style="text-align:left" ng-class="{'last':$last}" class="md-raised">Join With {{expr.joinWith}}</md-button>
-    <md-button style="text-align:left" class="md-raised">And With {{expr.joinWith}}</md-button> -->
-  </div>
-  <md-button flex="100" id="watchlistpadding" class="md-raised" aria-label="" ng-click="addNewExpression()">Add Expression</md-button>
-</div>
-<div layout="row" hide-xs hide-sm hide-md layout-align="center center">
-  <md-subheader><strong>Manage output publishing</strong></md-subheader>
-</div>
-<div class="publishlayout">
-  <div id="watchListnamespace" layout="row">
-    <div flex="32">
-      <md-checkbox ng-model="saveToDB" ng-change="toggleSavetoDB()" ng-true-value="'checkedBox'" ng-disabled="editFlag" ng-required="true">
-        Save to Database
-      </md-checkbox>
-      <md-icon ng-show="saveToDB" flex-offset="10" ng-click="(saveToDB)?opneSaveToDBDialogWindow():''" class="function-bg md-primary material-icons">
-        settings
-      </md-icon>
-      <div flex layout-align="right" ng-messages="watchlistcreate.watchlistSave.$error" class="error" id="myerr" role="alert">
-        <div ng-message="required">
-          This is required
+    <md-button style="text-align:left" class="md-raised">And With {{expr.joinWith}}</md-button>
+  </div>-->
+      <md-button flex="100" id="watchlistpadding" class="md-raised" aria-label="" ng-click="addNewExpression()">Add Expression</md-button>
+    </div>
+    <div layout="row" hide-xs hide-sm hide-md layout-align="center center">
+      <md-subheader><strong>Manage output publishing</strong></md-subheader>
+    </div>
+    <div class="publishlayout">
+      <div id="watchListnamespace" layout="row">
+        <div flex="32">
+          <md-checkbox ng-model="saveToDB" ng-change="toggleSavetoDB()" ng-true-value="'checkedBox'" ng-disabled="editFlag" ng-required="true">
+            Save to Database
+          </md-checkbox>
+          <md-icon ng-show="saveToDB" flex-offset="10" ng-click="(saveToDB)?opneSaveToDBDialogWindow():''" class="function-bg md-primary material-icons">
+            settings
+          </md-icon>
+          <div flex layout-align="right" ng-messages="watchlistcreate.watchlistSave.$error" class="error" id="myerr" role="alert">
+            <div ng-message="required">
+              This is required
+            </div>
+          </div>
+        </div>
+        <div flex="32">
+          <md-checkbox ng-change="toggleOutputToStream()" ng-model="outputStream" ng-disabled="editFlag" ng-required="true">
+            Output to Output Stream
+          </md-checkbox>
+          <md-icon ng-show="outputStream" flex-offset="10" ng-click="(outputStream)?opneOutputStreamDialog():''" class="function-bg md-primary material-icons">
+            settings
+          </md-icon>
+        </div>
+        <div flex="32">
+          <md-checkbox ng-change="togglePublishToDashboard()" ng-model="publishToDashboard" ng-disabled="editFlag" ng-required="true">
+            Publish to Dashboard
+          </md-checkbox>
+          <md-icon ng-show="publishToDashboard" flex-offset="10" ng-click="(publishToDashboard)?opnePublisherDialogWindow():''" class="function-bg md-primary material-icons">
+            settings
+          </md-icon>
         </div>
       </div>
     </div>
-    <div flex="32">
-      <md-checkbox ng-change="toggleOutputToStream()" ng-model="outputStream" ng-disabled="editFlag" ng-required="true">
-        Output to Output Stream
-      </md-checkbox>
-      <md-icon ng-show="outputStream" flex-offset="10" ng-click="(outputStream)?opneOutputStreamDialog():''" class="function-bg md-primary material-icons">
-        settings
-      </md-icon>
+  </fieldset>
+  <div class="publishlayout" layout="column" layout-padding>
+    <div>
+      <span flex></span>
+      <div style="float:right;">
+        <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
+        <md-button class="md-raised md-primary" ng-click='showEditConfirm($event)' ng-if="editFlag">Edit</md-button>
+        <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag" ng-disabled="!saveToDB && !outputStream && !publishToDashboard">save</md-button>
+        <!-- <md-button class="md-raised md-warn" ng-click='showRemoveConfirm($event)' ng-if="editFlag">Remove</md-button> -->
+      </div>
     </div>
-    <div flex="32">
-      <md-checkbox ng-change="togglePublishToDashboard()" ng-model="publishToDashboard" ng-disabled="editFlag" ng-required="true">
-        Publish to Dashboard
-      </md-checkbox>
-      <md-icon ng-show="publishToDashboard" flex-offset="10" ng-click="(publishToDashboard)?opnePublisherDialogWindow():''" class="function-bg md-primary material-icons">
-        settings
-      </md-icon>
-    </div>
-  </div>
-</div>
-</fieldset>
-<div class="publishlayout" layout="column">
-  <div>
-    <span flex></span>
-    <div style="float:right;">
-      <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
-      <md-button class="md-raised md-primary" ng-click='showEditConfirm($event)' ng-if="editFlag">Edit</md-button>
-      <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag" ng-disabled="!saveToDB && !outputStream && !publishToDashboard">save</md-button>
-      <!-- <md-button class="md-raised md-warn" ng-click='showRemoveConfirm($event)' ng-if="editFlag">Remove</md-button> -->
-    </div>
-  </div>
 </form>
 <div>
   <md-checkbox ng-model="isViewAsJSON">View as JSON Structure</md-checkbox>

@@ -5,33 +5,17 @@ angular.module('tattva')
     $scope.stateChange="design.addfunction"
 //  $scope.stateChange="design.function";
 $scope.loadData = function() {
-  $http.get('/function').then(function(response){
+  /*$http.get('/function').then(function(response){
     $scope.data = response.data;
-  });
-  /*$scope.loadData = function() {
-    functionFactory.getFunction()
-   .then(function(data) {
-          //success
-          console.log(data);
-          $scope.data=data;
-        },
-        function(data) {
-          console.log(data);
-          $scope.error=data.error;
-        })*/
+  });*/
        var result= functionFactory.getFunction()
    .then(function(data) {
           //success
-          console.log(data);
           $scope.data=data;
         },
         function(data) {
-          console.log(data);
           $scope.error=data.error;
-        })
-   console.log(result);
-
-
+        });
 }
 $scope.loadData();
 $scope.selectedUserIndex = undefined;

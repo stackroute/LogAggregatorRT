@@ -7,10 +7,17 @@
   <md-dialog-content>
     <div flex ng-cloak>
       <form name="registerForm" flex="80" ng-submit="editUser()" flex-offset="10">
-        <md-input-container class="mic md-icon-float md-block">
+        <md-input-container class=" mic md-icon-float md-block">
           <label>Contact Name</label>
-          <md-icon class="material-icons">person</md-icon>
-          <input ng-model="user[index].name" type="text" ng-disabled="userDisableName" name="username" required="true" md-maxlength="15">
+          <md-icon class="material-icons">people</md-icon>
+          <div layout=column>
+            <div>
+              <input ng-model="user[index].name" name="username" type="text" ng-required="true" maxlength="15">
+            </div>
+            <div flex layout-align="right" ng-messages="registerForm.username.$error" class="error" role="alert">
+              <div ng-message-exp="['required']">Name is required</div>
+            </div>
+          </div>
         </md-input-container>
         <md-input-container class="mic md-icon-float md-block">
           <md-icon class="material-icons">email</md-icon>
@@ -28,43 +35,40 @@
           <md-icon class="material-icons">lock</md-icon>
           <div layout="column">
             <div flex>
-              <input ng-model="user.password" type="password" name="password"  ng-required="true" minlength="8" maxlength="30" ng-pattern="/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^*()_+])[A-Za-z\d][A-Za-z\d!@#$%^*()_+]{7,19}$/">
+              <input ng-model="user[index].password" type="password" name="password" ng-required="true" minlength="8" maxlength="30" ng-pattern="/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^*()_+])[A-Za-z\d][A-Za-z\d!@#$%^*()_+]{7,19}$/">
             </div>
-            <div flex layout-align="right" ng-messages="registerForm.password.$error" class="error"  role="alert">
+            <div flex layout-align="right" ng-messages="registerForm.password.$error" class="error" role="alert">
               <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">Password should be 8-20 characters </div>
-
             </div>
           </div>
         </md-input-container>
-
-        <md-input-container class="mic md-icon-float md-block" >
+        <md-input-container class="mic md-icon-float md-block">
           <label>Confirm Password</label>
           <md-icon class="material-icons">lock</md-icon>
           <div layout="column">
             <div flex>
-              <input ng-model="user.cfpwd" type="password" name="cfpassword"
-              valid-password-c required >
+              <input ng-model="user.cfpwd" type="password" name="cfpassword" valid-password-c required>
             </div>
-            <div flex layout-align="right" ng-messages="registerForm.cfpassword.$error" class="error"  role="alert">
+            <div flex layout-align="right" ng-messages="registerForm.cfpassword.$error" class="error" role="alert">
               <div ng-message-exp="required">This is required </div>
               <div class="msg-error" ng-show="registerForm.cfpassword.$error.noMatch">
                 passwords do not match</div>
-              </div>
-            </div>
-          </md-input-container>
-          <md-input-container class="mic md-icon-float md-block" >
-            <md-radio-group layout="row" ng-model="user[index].role">
-              <md-radio-button value="ORGADM" class="md-primary" flex-offset="5" >Organisation Admin</md-radio-button>
-              <md-radio-button value="ORGUSER" class="md-primary"> User </md-radio-button>
-            </md-radio-group>
-          </md-input-container>
-          <div layout="row" ng-hide="success"  class="float-right" layout-padding>
-            <div flex-offset="20" layout-align="center" layout="row">
-              <md-button ng-click="closeDialog()" class="md-raised">CANCEL</md-button>
-              <md-button  class="md-raised md-primary" type="submit">Apply</md-button>
             </div>
           </div>
-        </form>
-      </div>
-    </md-dialog-content>
-  </md-dialog>
+        </md-input-container>
+        <md-input-container class="mic md-icon-float md-block">
+          <md-radio-group layout="row" ng-model="user[index].role">
+            <md-radio-button value="ORGADM" class="md-primary" flex-offset="5">Organisation Admin</md-radio-button>
+            <md-radio-button value="ORGUSER" class="md-primary"> User </md-radio-button>
+          </md-radio-group>
+        </md-input-container>
+        <div layout="row" ng-hide="success" class="float-right" layout-padding>
+          <div flex-offset="20" layout-align="center" layout="row">
+            <md-button ng-click="closeDialog()" class="md-raised">CANCEL</md-button>
+            <md-button class="md-raised md-primary" ng-click="closeDialog()" type="submit">Apply</md-button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </md-dialog-content>
+</md-dialog>
