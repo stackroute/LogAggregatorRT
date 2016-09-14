@@ -1,5 +1,5 @@
 var functionProvider = require("../datafunctionlib/datafnprovider");
-var compositeFunction_router=require("tattvaserver/compositefunction_routes.js")
+var compositeFunction_router=require("./compositefunction_routes.js")
 /*function getCompositFunctionDefn() {
   return final= {
     "name": "qwert",
