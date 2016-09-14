@@ -4,7 +4,7 @@
  var dataProvider = require('../core/datamodelprovider');
  var compositefunction=require('./compositefunction.js');
 
- /*compositefunction_router.get("/:functionName",function(req,res){
+ compositefunction_router.get("/:functionName",function(req,res){
   var functionModel = dataProvider.getModel(compositeFunctionSchema,req.user.orgsite);
   console.log(req.params.functionName);
   functionModel.find({name:req.params.functionName},function(err, data){
@@ -14,7 +14,7 @@
     }
     res.send(data);
   });
- });*/
+ });
 
 compositefunction_router.get('/', function(request, res) {
   var functionModel = dataProvider.getModel(compositeFunctionSchema,request.user.orgsite);

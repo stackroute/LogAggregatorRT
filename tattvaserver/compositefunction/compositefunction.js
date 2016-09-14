@@ -1,5 +1,6 @@
 var functionProvider = require("../datafunctionlib/datafnprovider");
-function getCompositFunctionDefn() {
+var compositeFunction_router=require("tattvaserver/compositefunction_routes.js")
+/*function getCompositFunctionDefn() {
   return final= {
     "name": "qwert",
     "description": "qwert",
@@ -125,11 +126,11 @@ function getCompositFunctionDefn() {
     }
     ]
   }
-}
+}*/
 
 
 var execute = function (fkn_name, paramObj) {
-  var response = getCompositFunctionDefn(fkn_name);
+  var response = compositeFunction_router.get('/compositefunction/'+fkn_name);
   var result=[];
   var i=0;
 
