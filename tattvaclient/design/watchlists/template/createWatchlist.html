@@ -179,13 +179,13 @@
       <div style="float:right;">
         <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
         <md-button class="md-raised md-primary" ng-click='showEditConfirm($event)' ng-if="editFlag">Edit</md-button>
-        <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag" ng-disabled="!saveToDB && !outputStream && !publishToDashboard">save</md-button>
-        <!-- <md-button class="md-raised md-warn" ng-click='showRemoveConfirm($event)' ng-if="editFlag">Remove</md-button> -->
+        <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag" ng-disabled=!publishToDashboard ">save</md-button>
+        <!-- <md-button class="md-raised md-warn " ng-click='showRemoveConfirm($event)' ng-if="editFlag ">Remove</md-button> -->
       </div>
     </div>
 </form>
 <div>
-  <md-checkbox ng-model="isViewAsJSON">View as JSON Structure</md-checkbox>
-  <pre class="jsonStructureExpression  preview2" ng-show="isViewAsJSON">{{wlstdef | json }}</pre>
+  <md-checkbox ng-model="isViewAsJSON ">View as JSON Structure</md-checkbox>
+  <pre class="jsonStructureExpression preview2 " ng-show="isViewAsJSON ">{{wlstdef | json }}</pre>
 </div>
 </div>
