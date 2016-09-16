@@ -16,16 +16,5 @@ angular.module('tattva').config(['$stateProvider', '$urlRouterProvider', functio
           controller: "orgEditCtrl"
         }
       }
-    }).state('tattva.organisation.search', {
-      url: '/search',
-      views: {
-        "content@": {
-          templateUrl: "organization/views/searchresult.html",
-          controller: "orgCtrl"
-        }
-      },
-      params: {
-        'name': ''
-      }
-    });
+    })
 }]);

@@ -3,6 +3,7 @@ var constMapper = require('../../watchexecutor/fieldmappers/constantfield');
 var accumulatorMapper = require('../../watchexecutor/fieldmappers/accumulatorfield');
 var datafieldMapper = require('../../watchexecutor/fieldmappers/dataFields');
 var functionMapper = require('../../watchexecutor/fieldmappers/functionfield');
+var compositeFunctionMapper = require('../../watchexecutor/fieldmappers/compositefunctionfield');
 var historicMapper = require('../../watchexecutor/fieldmappers/historicfield');
 var inputMapper = require('../../watchexecutor/fieldmappers/inputvaluefield');
 var constantMapper = require('../../watchexecutor/fieldmappers/constantfield');
@@ -11,11 +12,11 @@ var operatorMapper = require('../../watchexecutor/fieldOperator');
 
 var logger = require('../../../applogger');
 
-var exprProcessor = function(expr, execObj) {
+var exprProcessor = function(expr, orgsite, execObj) {
   // logger.debug("Processing expression: ", expr, " with data: ", execObj);
   //process a expression
-  var lhs = mapExprField(expr.watch.lfield, execObj.data);
-  var rhs = mapExprField(expr.watch.rfield, execObj.data);
+  var lhs = mapExprField(expr.watch.lfield, orgsite, execObj.data);
+  var rhs = mapExprField(expr.watch.rfield, orgsite, execObj.data);
   var oprtr = expr.watch.operator;
   var result = operatorMapper.evaluate(oprtr, lhs, rhs);
 
@@ -31,7 +32,7 @@ var exprProcessor = function(expr, execObj) {
   return execObj;
 };
 
-function mapExprField(field, dataObj) {
+function mapExprField(field, orgsite, dataObj) {
   var result = undefined;
 
   if (field.fieldType == "DataFields") {
@@ -42,7 +43,9 @@ function mapExprField(field, dataObj) {
     result = constantMapper.map(field, dataObj);
   } else if (field.fieldType == "Function") {
     result = functionMapper.map(field, dataObj);
-  } else if (field.fieldType == "Accumulator") {
+  } else if (field.fieldType == "compositefunction") {
+    result = compositeFunctionMapper.map(field, orgsite, dataObj);
+  } else if (field.fieldType == "Accumulate") {
     result = accumulatorMapper.map(field, dataObj);
   } else {
     result = undefined;

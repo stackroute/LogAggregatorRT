@@ -40,7 +40,8 @@ angular.module("tattva")
       $scope.addNewExpression = function(index, expr) {
         $scope.wtchexpr = true;
         var newExpr = {
-          "tag": $scope.wlstdef.expressions.length + 1,
+
+          "tag": ("Expression::" + ($scope.wlstdef.expressions.length + 1)),
           "parent": "",
           "child": "",
           "joinBy": "And",
@@ -202,8 +203,9 @@ angular.module("tattva")
 
       $scope.editWatchlist = function() {
         $scope.editFlag = false;
-        $scope.wtchexpr = true;
+        // $scope.wtchexpr = true;
       }
+      $scope.wtchexpr = true;
 
       $scope.showEditConfirm = function(ev) {
         var confirm = $mdDialog.confirm()
