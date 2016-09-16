@@ -1,45 +1,63 @@
   angular.module('tattva')
- .controller('functionCreateCtrl', ['$scope', '$http','loadExprData',"functionFactory","$state",'$mdDialog',"functionFactory",
-  function($scope, $http, loadExprData,functionFactory,$state,$mdDialog) {
+  .controller('functionCreateCtrl', ['$scope', '$http','loadExprData',"functionFactory","$state",'$mdDialog',"functionFactory",
+    function($scope, $http, loadExprData,functionFactory,$state,$mdDialog) {
 
-    $scope.function=[]; 
-    loadExprData.getFunction().then(function(result){
-      var data=result.data;
-      return data;
-    }).then(function(data)
-    {
-      for(i in data)
+      $scope.function=[]; 
+      loadExprData.getFunction().then(function(result){
+        var data=result.data;
+        return data;
+      }).then(function(data)
       {
-        $scope.function.push(data[i]);
-      }
-    });
+        for(i in data)
+        {
+          $scope.function.push(data[i]);
+        }
+      });
 
-    $scope.loadFunctionData = function(){
-      $scope.functionData = {
-        "name":"",
-        "description": "",
-        "parameters":[],
-        "returnresult":"",
-        "expression": []
+      $scope.loadFunctionData = function(){
+        $scope.functionData = {
+          "name":"",
+          "description": "",
+          "parameters":[],
+          "returnresult":"",
+          "expression": []
+        }
+
+      };
+
+      $scope.parameters = [{id: 'parameter1'}];
+      $scope.removeExpr=function(index){
+       $scope.functionData.expression.splice(index,1);
+       for(i in $scope.functionData.expression)
+       {
+        var j=i;
+        j++;
+        $scope.functionData.expression[i].tag=("Expression::"+j);
       }
-      
     };
-    
-   $scope.parameters = [{id: 'parameter1'}];
-   $scope.removeExpr=function(index){
-     $scope.functionData.expression.splice(index,1);
-     for(i in $scope.functionData.expression)
-     {
-      var j=i;
-      j++;
-      $scope.functionData.expression[i].tag=("Expression::"+j);
-     }
-   };
 
-   $scope.addNewExpr=function () {
-    var newExpr={
-      "tag":("Expression::"+($scope.functionData.expression.length + 1)),
-      "lhs":{
+    $scope.addNewExpr=function () {
+      var newExpr={
+        "tag":("Expression::"+($scope.functionData.expression.length + 1)),
+        "lhs":{
+          "type":"function",
+          "name":"",
+          "varmap": [
+          { 
+           "srcvar": "",
+           "targetvar": ""
+         },
+         { 
+           "srcvar": "",
+           "targetvar": ""
+         }
+         ]
+       },
+       "operator": {
+        "type": "operator",
+        "name": ""
+      },
+      "rhs":{
         "type":"function",
         "name":"",
         "varmap": [
@@ -53,54 +71,46 @@
        }
        ]
      },
-     "operator": {
-      "type": "operator",
-      "name": ""
-    },
-    "rhs":{
-      "type":"function",
-      "name":"",
-      "varmap": [
-      { 
-       "srcvar": "",
-       "targetvar": ""
-     },
-     { 
-       "srcvar": "",
-       "targetvar": ""
-     }
-     ]
-   },
-   "join_By":{
-    "type":"operator",
-    "name":""
-   }
- };  
-   $scope.functionData.expression.push(newExpr);
-   };
-   $scope.addNewParam = function() {
-     var newItemNo = $scope.parameters.length+1;
-     $scope.parameters.push({'id':'parameter'+newItemNo});
-   };
-   $scope.functionCancel = function(){
-    $state.go("design.function");
-  }
-  $scope.create=function () { 
-   functionFactory.saveFunction($scope.functionData)
-   .then(function(data) {
+     "join_By":{
+      "type":"operator",
+      "name":""
+    }
+  };  
+  $scope.functionData.expression.push(newExpr);
+};
+$scope.addNewParam = function() {
+ var newItemNo = $scope.parameters.length+1;
+ $scope.parameters.push({'id':'parameter'+newItemNo});
+};
+$scope.functionCancel = function(){
+  $state.go("design.function");
+}
+$scope.create=function () { 
+ functionFactory.saveFunction($scope.functionData)
+ .then(function(data) {
           //success
-          alert("Function saved successfully!");
+          
+
+          $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.body))
+            .clickOutsideToClose(true)
+            .title('FUNCTION SAVED SUCCESSFULLY!')
+            .ariaLabel('Alert Dialog ')
+            .ok('OK')
+            );
+          
           $state.go("design.function");
         },
         function(data) {
           $scope.error=data.error;
         })
- }
- $scope.removeParam = function() {
-   var lastItem = $scope.parameters.length-1;
-   $scope.parameters.splice(lastItem);
- };
- $scope.openDialogBox = function(eve,object,side,index) {
+}
+$scope.removeParam = function() {
+ var lastItem = $scope.parameters.length-1;
+ $scope.parameters.splice(lastItem);
+};
+$scope.openDialogBox = function(eve,object,side,index) {
   $scope.functionData.parameters=$scope.parameters;
   $mdDialog.show({
     controller: DialogController,
@@ -110,14 +120,14 @@
      object:object,
      keys:object
    },
-  parent: angular.element(document.body),
+   parent: angular.element(document.body),
    targetEvent: eve,
    clickOutsideToClose:true,
  })
   .then(function(answer) {
    $scope.functionData.expression[index][side].varmap=answer;
-  }, function() {
-  });
+ }, function() {
+ });
  // $scope.functionData.expression=$scope.newExpr;
 };
 
