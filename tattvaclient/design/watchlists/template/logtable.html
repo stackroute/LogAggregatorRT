@@ -1,0 +1,14 @@
+Packets:{{logs.length}}
+<md-button style="position:fixed;" class="md-fab md-mini md-fab-top-right" aria-label="Content Copy" ngclipboard data-clipboard-action="copy" data-clipboard-target="#copying">
+    <md-icon class="material-icons">content_copy</md-icon>
+</md-button>
+<div layout="column" id="copying">
+    <table border="black">
+        <tr>
+            <td ng-repeat="(key,value) in logs[0]">{{key}}</td>
+        </tr>
+        <tr ng-repeat="item in logs" ng-style='(logs.watchresult)?{color:"red"}:{color:"blue"}'>
+            <td ng-repeat="(key,value) in item">{{value}}</td>
+        </tr>
+    </table>
+</div>

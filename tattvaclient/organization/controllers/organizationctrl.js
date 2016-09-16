@@ -1,5 +1,6 @@
 angular.module('tattva')
   .controller('orgCtrl', ['$scope', '$mdDialog', '$http', 'AuthService', 'userservice', '$filter', '$state', '$location', '$stateParams', function($scope, $mdDialog, $http, AuthService, userservice, $filter, $state, $location, $stateParams) {
+    $scope.showsrch = true;
     var data = userservice.getUserName(data);
     $scope.org = AuthService.getCurrentUser();
     $scope.currentPage = 0;
@@ -9,6 +10,9 @@ angular.module('tattva')
     $scope.searchedUser = [];
     $scope.org = AuthService.getCurrentUser();
     $scope.loadData = function() {
+      $scope.username = "";
+      $scope.showinput = false;
+      // $scope.showclr = false;
       userservice.getUserName().then(function(response) {
         $scope.user = response;
         $scope.getData = function() {
@@ -20,18 +24,15 @@ angular.module('tattva')
         }
       });
     }
-    $scope.searchData = function(name) {
-      userservice.getUser(name).then(function(response) {
-        $scope.user = response;
-      });
-    }
-    if ($location.path() == "/tattva/organisation") {
-      $scope.loadData();
-    } else {
-      $scope.searchData($stateParams.name);
-    }
+    $scope.loadData();
+
     $scope.searchUser = function() {
-      $state.go("tattva.organisation.search", { 'name': $scope.username });
+      userservice.getUser($scope.username).then(function(response) {
+        $scope.user = response;
+        $scope.showinput = true;
+        // $scope.username = "";
+
+      })
     }
 
     $scope.showConfirm = function(index) {

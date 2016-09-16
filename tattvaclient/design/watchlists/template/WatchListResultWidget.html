@@ -1,6 +1,7 @@
 
 <div class="shad">
-  <div class="pray">{{watchdefn.name}}</div>
+ <div class="pray" layout="row">{{watchdefn.name}}
+  <md-icon class="md-padding material-icons-cursor float-right" ui-sref="design.viewdata({watchlistName: '{{watchdefn.name}}'})">create</md-icon></div>
   <md-tabs md-dynamic-height md-border-bottom>
     <!-- <md-tab label="Graph"> -->
     <!-- <mygraph type="myresult.charttype"></mygraph> -->

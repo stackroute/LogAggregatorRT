@@ -1,7 +1,6 @@
 angular.module("tattva")
   .controller('WatchListCtrl', ['$scope', '$mdDialog', '$log', "$state", 'loadExprData', 'saveToDB', '$stateParams', 'selectedWlstdef', 'watchlistconfg',
     function($scope, $mdDialog, $log, $state, loadExprData, saveToDB, $stateParams, selectedWlstdef, watchlistconfg) {
-      $scope.wtchexpr = false;
       $scope.loadWatchlistData = function() {
         $scope.wlstdef = {
           namespace: "",
@@ -41,6 +40,7 @@ angular.module("tattva")
       $scope.addNewExpression = function(index, expr) {
         $scope.wtchexpr = true;
         var newExpr = {
+
           "tag": ("Expression::"+ ($scope.wlstdef.expressions.length + 1)),
           "parent": "",
           "child": "",
@@ -203,10 +203,10 @@ angular.module("tattva")
 
       $scope.editWatchlist = function() {
         $scope.editFlag = false;
+        $scope.wtchexpr = true;
       }
 
       $scope.showEditConfirm = function(ev) {
-        $scope.wtchexpr = true;
         var confirm = $mdDialog.confirm()
           .title('Would you like to stop currently running watclist?')
           .targetEvent(ev)
@@ -218,6 +218,7 @@ angular.module("tattva")
           $scope.status = 'You decided to keep your watchlist.';
         });
       };
+
     }
 
   ]);
