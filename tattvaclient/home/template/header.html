@@ -8,7 +8,7 @@
         <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="tattva">TATTVA - Complex Event Processor</a></h2>
       </div>
       <div ng-if="userNavItems.sideNav.length" class="leftpadding">
-        <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="tattva.home">{{user.orgName}}</a></h2>
+        <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="{{userNavItems.sideNav[0].link}}">{{user.orgName}}</a></h2>
       </div>
       <span flex></span>
       <div ng-if="displayTopNavIcon">
