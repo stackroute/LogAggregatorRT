@@ -77,10 +77,11 @@ angular.module('tattva').directive('linearChart', function($interval) {
          y: data.logdata[yattr],
          color: normalTickColor
        });
-       console.log(normalTickColor);
        if (data.watchresult) {
+        console.log("anamoly");
          normalTickColor = anomalyTickColor;
        } else {
+        console.log("not an anamoly");
          normalTickColor = 'blue';
        }
         

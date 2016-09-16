@@ -1,6 +1,6 @@
 <h2 flex-offset="40" layout-sm="column" layout-xs="column" class="md-headline"> Create your own function</h2>
 <div layout="column" layout-sm="column" layout-xs="column" layout-padding="" class="functionlayout layout-padding layout-xs-column layout-sm-column layout-column" ng-init="loadFunctionData()">
-	<form >
+	<form ng-submit="create()">
 		<div layout="row" layout-sm="column" layout-xs="column" class="layout-xs-column layout-sm-column layout-row">
 			<md-input-container flex="50" class="flex-50 md-input-invalid">
 				<label for="input_217"> Name</label>
@@ -9,7 +9,7 @@
 				<div flex="" layout-align="right" ng-messages="functionName.$error" class="error md-input-messages-animation md-auto-hide layout-align-start-stretch flex ng-active" id="myerr" role="alert" aria-live="assertive">
 					<!-- ngMessageExp: ['required'] -->
 					<div ng-message-exp="['required']" class="md-input-message-animation ng-scope" style="opacity: 1; margin-top: 0px;">
-						Required!
+						Name is Required!
 					</div>
 				</div>
 			</md-input-container>
@@ -30,7 +30,6 @@
 			</md-button>
 		</div>
 		<div  data-ng-repeat="choice in parameters" flex-gt-xs="20" >	
-			<!-- <br ng-if="$index%4==0"> -->
 			<md-input-container>
 				<label>ADD PARAMETER</label>
 				<input type="text" ng-model="choice.name" name="" />
@@ -98,7 +97,7 @@
 		<div>
 			<div style="float:right;">	
 				<md-button class="md-raised" ng-click="functionCancel()">Cancel</md-button>
-				<md-button type="submit" ng-click="create()" class="md-raised md-primary">Create</md-button>
+				<md-button type="submit" class="md-raised md-primary">Create</md-button>
 			</div>
 		</div>
 	</form>
