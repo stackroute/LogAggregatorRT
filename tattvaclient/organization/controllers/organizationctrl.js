@@ -59,7 +59,6 @@ angular.module('tattva')
         };
           
         userservice.editUser(userData).then(function(response){
-          alert("User details Updated successfully..!")
         });
         $state.go('tattva.organisation');
         $mdDialog.hide();
