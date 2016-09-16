@@ -19,7 +19,6 @@ angular.module("tattva")
     for(params in $scope.compositeFunction){
       if($scope.compositeFunction[params].name == fieldData.function){
         $scope.params=$scope.compositeFunction[params].parameters;
-        fieldData.functionobject=$scope.compositeFunction[params];
       }
     }
     

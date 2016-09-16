@@ -2,9 +2,9 @@ var compositeFunctionProvider = require("../../datafunctionlib/datacompositefnpr
 var logger = require("../../../applogger");
 
 var compositeFunctionFieldMapper = {
-  map: function(fieldConfig, dataObj) {
+  map: function(fieldConfig, orgsite, dataObj) {
     var result = undefined;
-    var compositeFunctionName = fieldConfig['functionobject'];
+    var compositeFunctionName = fieldConfig['function'];
     var fnParamFields = fieldConfig['functionparameters'];
     
     var fnParamData={};
@@ -14,7 +14,7 @@ var compositeFunctionFieldMapper = {
     }
 
     var compositeFunctionModule = new compositeFunctionProvider();
-    var fnResult = compositeFunctionModule.execute(compositeFunctionName,fnParamData);
+    var fnResult = compositeFunctionModule.execute(compositeFunctionName, orgsite, fnParamData);
     if(!fnResult.error){
       result=fnResult.output;
     } else {

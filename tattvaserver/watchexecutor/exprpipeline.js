@@ -36,13 +36,13 @@ var exprPipeline = function(wlstDef) {
       //As a convention we will set it in LHS
       execObj.path[expr.tag] = {};
 
-      execObj.path[expr.tag]['lhs'] = mapExprField(expr.watch.lfield, execObj.data);
+      execObj.path[expr.tag]['lhs'] = mapExprField(expr.watch.lfield, wlstDef.orgsite, execObj.data);
       return execObj;
     }));//end of left hand side field
 
     //RHS
     myProcessors.push(highland.map(function(execObj) {
-      execObj.path[expr.tag]['rhs'] = mapExprField(expr.watch.rfield, execObj.data);
+      execObj.path[expr.tag]['rhs'] = mapExprField(expr.watch.rfield, wlstDef.orgsite, execObj.data);
       return execObj;
     }));//end of left hand side field
 
@@ -73,7 +73,7 @@ var exprPipeline = function(wlstDef) {
 }//end of expression pipeline
 
 //Helper method
-function mapExprField(field, dataObj) {
+function mapExprField(field, orgsite, dataObj) {
   var result = undefined;
 
   if (field.fieldType == "DataFields") {
@@ -85,7 +85,7 @@ function mapExprField(field, dataObj) {
   } else if (field.fieldType == "Function") {
     result = functionMapper.map(field, dataObj);
   } else if (field.fieldType == "compositefunction") {
-    result = compositeFunctionMapper.map(field, dataObj);
+    result = compositeFunctionMapper.map(field, orgsite, dataObj);
   } else if (field.fieldType == "Accumulate") {
     result = accumulatorMapper.map(field, dataObj);
   } else {
