@@ -35,7 +35,7 @@
           <md-icon class="material-icons">lock</md-icon>
           <div layout="column">
             <div flex>
-              <input ng-model="user[index].password" type="password" name="password" ng-required="true" minlength="8" maxlength="30" ng-pattern="/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^*()_+])[A-Za-z\d][A-Za-z\d!@#$%^*()_+]{7,19}$/">
+              <input ng-model="user.password" type="password" name="password" ng-required="true" minlength="8" maxlength="30" ng-pattern="/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^*()_+])[A-Za-z\d][A-Za-z\d!@#$%^*()_+]{7,19}$/">
             </div>
             <div flex layout-align="right" ng-messages="registerForm.password.$error" class="error" role="alert">
               <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">Password should be 8-20 characters </div>
