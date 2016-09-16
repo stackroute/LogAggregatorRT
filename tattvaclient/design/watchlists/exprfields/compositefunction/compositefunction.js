@@ -5,8 +5,8 @@ angular.module("tattva")
   functionFactory.getFunction().then(function(data) {
     $scope.compositeFunctionOption=[];
     $scope.compositeFunction=data;
-    for(fnname in data){
-      $scope.compositeFunctionOption.push(data[fnname].name);
+    for(fn in data){
+      $scope.compositeFunctionOption.push(data[fn]);
     }
   },
 
@@ -14,13 +14,15 @@ angular.module("tattva")
     $scope.error=data.error;
   });
 
-  $scope.loadParameters = function(){
+  $scope.loadParameters = function(index){
     fieldData.functionparameters={};
     for(params in $scope.compositeFunction){
       if($scope.compositeFunction[params].name == fieldData.function){
         $scope.params=$scope.compositeFunction[params].parameters;
+        fieldData.functionobject=$scope.compositeFunction[params];
       }
     }
+    
   }
 
   namespaceFactory.getNamespaceDetails(fieldData2.namespace).then(function(data){

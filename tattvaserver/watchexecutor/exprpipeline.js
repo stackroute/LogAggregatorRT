@@ -5,6 +5,7 @@ var constMapper = require('./fieldmappers/constantfield');
 var accumulatorMapper = require('./fieldmappers/accumulatorfield');
 var datafieldMapper = require('./fieldmappers/dataFields');
 var functionMapper = require('./fieldmappers/functionfield');
+var compositeFunctionMapper = require('./fieldmappers/compositefunctionfield');
 var historicMapper = require('./fieldmappers/historicfield');
 var inputMapper = require('./fieldmappers/inputvaluefield');
 var constantMapper=require('./fieldmappers/constantfield')
@@ -83,6 +84,8 @@ function mapExprField(field, dataObj) {
     result = constantMapper.map(field, dataObj);
   } else if (field.fieldType == "Function") {
     result = functionMapper.map(field, dataObj);
+  } else if (field.fieldType == "compositefunction") {
+    result = compositeFunctionMapper.map(field, dataObj);
   } else if (field.fieldType == "Accumulate") {
     result = accumulatorMapper.map(field, dataObj);
   } else {

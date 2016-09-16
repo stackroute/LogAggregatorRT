@@ -41,7 +41,7 @@ angular.module("tattva")
       $scope.addNewExpression = function(index, expr) {
         $scope.wtchexpr = true;
         var newExpr = {
-          "tag": (($scope.wlstdef.expressions.length + 1) + ")"),
+          "tag": ("Expression::"+ ($scope.wlstdef.expressions.length + 1)),
           "parent": "",
           "child": "",
           "joinBy": "And",

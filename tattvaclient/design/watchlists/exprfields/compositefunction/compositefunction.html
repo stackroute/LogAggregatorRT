@@ -11,7 +11,7 @@
         <md-input-container flex>
           <md-select name="compositeFunctionOption" ng-model="fieldData.function" md-on-close="clearSearchTerm()" ng-change="loadParameters()" required>
             <label>Select Composite Function</label>
-            <md-option ng-repeat="i in compositeFunctionOption">{{i}} </md-option>
+            <md-option ng-repeat="i in compositeFunctionOption">{{i.name}} </md-option>
           </md-select>
           <div ng-messages="FrmDataField.compositeFunctionOption.$error">
             <div ng-message="required">This is required!</div>

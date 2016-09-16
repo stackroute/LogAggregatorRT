@@ -25,7 +25,6 @@ function exprProcessTask(subscribeFrom, publishTo, payload) {
       // logger.debug("Got message from channel: ", channel, " with data: ", data);
 
       var execObj = JSON.parse(data);
-
       execObj = exprProcessor.processExpression(payload.expr, execObj);
 
       pubChannelClient.publish(publishTo, JSON.stringify(execObj));

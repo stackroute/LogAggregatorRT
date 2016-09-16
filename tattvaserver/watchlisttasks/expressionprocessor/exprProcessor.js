@@ -3,6 +3,7 @@ var constMapper = require('../../watchexecutor/fieldmappers/constantfield');
 var accumulatorMapper = require('../../watchexecutor/fieldmappers/accumulatorfield');
 var datafieldMapper = require('../../watchexecutor/fieldmappers/dataFields');
 var functionMapper = require('../../watchexecutor/fieldmappers/functionfield');
+var compositeFunctionMapper = require('../../watchexecutor/fieldmappers/compositefunctionfield');
 var historicMapper = require('../../watchexecutor/fieldmappers/historicfield');
 var inputMapper = require('../../watchexecutor/fieldmappers/inputvaluefield');
 var constantMapper = require('../../watchexecutor/fieldmappers/constantfield');
@@ -42,6 +43,8 @@ function mapExprField(field, dataObj) {
     result = constantMapper.map(field, dataObj);
   } else if (field.fieldType == "Function") {
     result = functionMapper.map(field, dataObj);
+  } else if (field.fieldType == "compositefunction") {
+    result = compositeFunctionMapper.map(field, dataObj);
   } else if (field.fieldType == "Accumulator") {
     result = accumulatorMapper.map(field, dataObj);
   } else {
