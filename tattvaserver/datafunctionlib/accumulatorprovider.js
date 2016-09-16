@@ -1,7 +1,7 @@
 var path = require('path');
 
 accumulatorProvider = function(accumulator) {
-  func = func.toLowerCase();
+  accumulator = accumulator.toLowerCase();
   var acc = require(path.join(__dirname, ("/accumulators/accumulateby" + accumulator)));
   return new acc();
 }

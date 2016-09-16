@@ -45,7 +45,7 @@ function mapExprField(field, orgsite, dataObj) {
     result = functionMapper.map(field, dataObj);
   } else if (field.fieldType == "compositefunction") {
     result = compositeFunctionMapper.map(field, orgsite, dataObj);
-  } else if (field.fieldType == "Accumulator") {
+  } else if (field.fieldType == "Accumulate") {
     result = accumulatorMapper.map(field, dataObj);
   } else {
     result = undefined;
