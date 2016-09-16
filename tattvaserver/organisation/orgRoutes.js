@@ -44,26 +44,34 @@ Orguser_router.post('/:name', function(req, res) {
   // console.log("the saving data is here");
 });
 
-Orguser_router.patch('/:name', function(req, res) {
-  console.log("update user ", req.body);
-  var editUser = req.body;
-  console.log("edit user", editUser);
-  var UserModel = dataProvider.getModel(UserSchema, "tattva");
-  UserModel.findOneAndUpdate({ name: editUser.name }, {
-    $set: {
-      "name": editUser.name,
-      "email": editUser.email,
-      "password": editUser.password,
-      "role": editUser.role
-    }
-  }, { new: true }, function(err, editUser) {
-    console.log("updated user", editUser);
-    if (err) {
-      console.log("Updating user object failed:", err);
-      return res.status(500).json({ error: "Internal error occurred..!" });
-    }
-    return res.json(editUser);
-  });
+Orguser_router.patch('/:name',function(req,res){
+
+ var editUser= req.body;
+ 
+ var UserModel = dataProvider.getModel(UserSchema,"tattva");
+ 
+ var editUser = new UserModel({
+  "name" : req.body.name,
+  "email" : req.body.email,
+  "password" : req.body.password,
+  "orgsite":req.body.orgsite,
+  "role" : req.body.role
+});
+ UserModel.update({email : editUser.email},{$set:{
+  "name" : editUser.name,
+  "email" : editUser.email,
+  "hash_password":editUser.hash_password,
+  "orgsite":editUser.orgsite,
+  "role" : editUser.role
+}},
+function(err,editUser){
+
+  if(err){
+    console.log("Updating user object failed:",err);
+    return res.status(500).json({error: "Internal error occurred..!"});
+  }
+  return res.json(editUser);
+});
 });
 
 module.exports = Orguser_router;

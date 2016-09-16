@@ -1,17 +1,17 @@
 angular.module('tattva')
-  .controller('orgCtrl', ['$scope', '$mdDialog', '$http', 'AuthService', 'userservice', '$filter', '$state', '$location', '$stateParams', function($scope, $mdDialog, $http, AuthService, userservice, $filter, $state, $location, $stateParams) {
-    $scope.showsrch = true;
-    var data = userservice.getUserName(data);
-    $scope.org = AuthService.getCurrentUser();
-    $scope.currentPage = 0;
-    $scope.pageSize = 5;
-    $scope.user = [];
-    $scope.q = '';
-    $scope.searchedUser = [];
-    $scope.org = AuthService.getCurrentUser();
-    $scope.loadData = function() {
-      $scope.username = "";
-      $scope.showinput = false;
+.controller('orgCtrl', ['$scope', '$mdDialog', '$http', 'AuthService', 'userservice', '$filter', '$state', function($scope, $mdDialog, $http, AuthService, userservice, $filter, $state) {
+  $scope.showsrch = true;
+   // var data = userservice.getUserName(data);
+   $scope.org = AuthService.getCurrentUser();
+   $scope.currentPage = 0;
+   $scope.pageSize = 5;
+   $scope.user = [];
+   $scope.q = '';
+   $scope.searchedUser = [];
+   
+   $scope.loadData = function() {
+    $scope.username = "";
+    $scope.showinput = false;
       // $scope.showclr = false;
       userservice.getUserName().then(function(response) {
         $scope.user = response;
@@ -45,21 +45,29 @@ angular.module('tattva')
         controller: DialogController
       });
 
-      function DialogController($scope, userservice, $mdDialog, user, index) {
-        $scope.user = user;
-        console.log($scope.user[index]);
-        $scope.editUser = function() {
-          var userData = { name: $scope.user[index].name, email: $scope.user[index].email, password: $scope.user.password, role: $scope.user[index].role };
-          userservice.editUser(userData).then(function(response) {
-            $scope.user = response;
-            console.log($scope.user);
-            //$state.go('tattva.organisation');
-          });
-        }
-        $scope.index = index;
-        $scope.closeDialog = function() {
-          $mdDialog.hide();
-        }
+    function DialogController($scope,AuthService, $state,userservice,$mdDialog, user,index) {
+      $scope.user=user;
+      $scope.org = AuthService.getCurrentUser();
+
+      $scope.editUser=function(){
+        var userData={
+          name : $scope.user[index].name ,
+          email : $scope.user[index].email , 
+          password : $scope.user.password,
+          orgsite : $scope.org.orgsite,
+          role : $scope.user[index].role
+        };
+          
+        userservice.editUser(userData).then(function(response){
+          alert("User details Updated successfully..!")
+        });
+        $state.go('tattva.organisation');
+        $mdDialog.hide();
+      }
+      $scope.index=index;
+      $scope.closeDialog = function() {
+        $mdDialog.hide();
       }
     }
+  }
   }]);
