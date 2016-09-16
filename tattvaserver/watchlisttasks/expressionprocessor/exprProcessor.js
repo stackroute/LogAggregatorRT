@@ -28,6 +28,10 @@ var exprProcessor = function(expr, execObj) {
   execObj.path[expr.tag]['rhs'] = rhs;
   execObj.path[expr.tag]['oprtr'] = oprtr;
   execObj.path[expr.tag]['result'] = result;
+  // console.log("LHS:",lhs);
+  // console.log("LHS:",oprtr);
+  // console.log("LHS:",rhs);
+  // console.log("LHS:",result);
 
   return execObj;
 };
@@ -45,7 +49,7 @@ function mapExprField(field, dataObj) {
     result = functionMapper.map(field, dataObj);
   } else if (field.fieldType == "compositefunction") {
     result = compositeFunctionMapper.map(field, dataObj);
-  } else if (field.fieldType == "Accumulator") {
+  } else if (field.fieldType == "Accumulate") {
     result = accumulatorMapper.map(field, dataObj);
   } else {
     result = undefined;
