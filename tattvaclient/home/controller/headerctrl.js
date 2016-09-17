@@ -1,9 +1,12 @@
 angular.module('tattva')
-.controller('HeaderCtrl',function($scope,$http,AuthService,$mdSidenav){
+.controller('HeaderCtrl',function($scope,$http,AuthService,$mdSidenav,$rootScope){
 
 	$scope.openLeftMenu = function() {
 		$mdSidenav('left').toggle();
 	};
+	$scope.onchange=function(name){
+		$rootScope.$emit("index",{sname:name});
+	}
 
 	AuthService.getUserNavItem().then(function(response){
 		$scope.userNavItems = response;
