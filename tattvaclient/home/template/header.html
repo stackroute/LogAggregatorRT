@@ -50,7 +50,7 @@
           <a class="linkClr" ui-sref="{{item.link}}" ng-click="openLeftMenu()">{{item.menu}}</a>
           <md-list ng-if="item.children.length > 0">
             <md-list-item  ng-show="sublist" ng-repeat="child in item.children">
-              <a class="linkClr" ui-sref="{{child.link}}" ng-click="openLeftMenu()">{{child.menu}}</a>
+              <a class="linkClr" ui-sref="{{child.link}}" ng-click="openLeftMenu();onchange(child.link)">{{child.menu}}</a>
             </md-list-item>
           </md-list>
         </div>
