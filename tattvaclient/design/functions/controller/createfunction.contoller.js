@@ -106,9 +106,11 @@ $scope.create=function () {
           $scope.error=data.error;
         })
 }
-$scope.removeParam = function() {
- var lastItem = $scope.parameters.length-1;
- $scope.parameters.splice(lastItem);
+$scope.removeParam = function(index) {
+ //var lastItem = $scope.parameters.length-1;
+ console.log(index);
+ console.log($scope.parameters);
+ $scope.parameters.splice(index,1);
 };
 $scope.openDialogBox = function(eve,object,side,index) {
   $scope.functionData.parameters=$scope.parameters;
