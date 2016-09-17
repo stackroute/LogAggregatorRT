@@ -60,7 +60,7 @@ angular.module("tattva")
         if (isNaN(index)) {
           $scope.index = $scope.wlstdef.expressions.length;
           if ($scope.index != 0) {
-            $scope.wlstdef.expressions[$scope.index - 1].child = $scope.index + 1;
+            $scope.wlstdef.expressions[$scope.index - 1].child = "Expression::" + ($scope.index + 1);
           }
           if ($scope.wlstdef.expressions.length > 0) {
             newExpr.parent = $scope.wlstdef.expressions[$scope.index - 1].tag;
