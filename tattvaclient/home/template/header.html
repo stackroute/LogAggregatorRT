@@ -8,7 +8,7 @@
         <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="tattva">TATTVA - Complex Event Processor</a></h2>
       </div>
       <div ng-if="userNavItems.sideNav.length" class="leftpadding">
-        <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="{{userNavItems.sideNav[0].link}}">{{user.orgName}}</a><span style="font-size:14px;">{{" ("+user.orgsite+"@tattva.com)"}}</span></h2>
+        <h2 class="md-display-1 md-flex" ng-model="header"><a ui-sref="{{userNavItems.sideNav[0].link}}">{{user.orgName | camelcase}}</a><span style="font-size:14px;">{{" ("+user.orgsite+"@tattva.com)"}}</span></h2>
       </div>
       <span flex></span>
       <div ng-if="displayTopNavIcon">
