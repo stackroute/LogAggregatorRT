@@ -58,9 +58,9 @@
     </md-whiteframe>
   </div> -->
       <!--================================ Watchlist d3 ExpressionFormat ================================= -->
-      <watchlistexpr watch="wlstdef" ng-if="wtchexpr" flex></watchlistexpr>
+      <watchlistexpr watch="wlstdef" ng-if="wtchexpr && wlstdef.expressions.length" flex></watchlistexpr>
       <!-- =============================== STARTING TO LOOP ==================================== -->
-      <md-whiteframe class="md-whiteframe-2dp" layout="column" ng-show="wtchexpr" flex style="margin:8px;">
+      <md-whiteframe class="md-whiteframe-2dp" layout="column" ng-show="wtchexpr" flex style="margin:8px;" ng-if="wlstdef.expressions.length">
         <div ng-repeat="expr in wlstdef.expressions" layout="row">
           <md-subheader>{{$index+1}}</md-subheader>
           <div ng-controller="lfield as ctrl" flex="33">
@@ -118,10 +118,10 @@
               </md-not-found>
             </md-autocomplete>
           </div>
-          <md-button ng-show="wlstdef.expressions.length>1" ng-click="removeExpression($index);" aria-label="" class="clr">
+          <md-button class="clrbtn" ng-show="wlstdef.expressions.length>1" ng-click="removeExpression($index);" aria-label="">
             <md-icon>clear</md-icon>
           </md-button>
-          <md-button ng-show="wlstdef.expressions.length>1 && !$last" ng-click="addNewExpression($index,expr);" aria-label="" class="add">
+          <md-button class="addbtn" ng-show="wlstdef.expressions.length>1 && !$last" ng-click="addNewExpression($index,expr);" aria-label="">
             <md-icon>add</md-icon>
           </md-button>
         </div>
@@ -179,13 +179,13 @@
       <div style="float:right;">
         <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
         <md-button class="md-raised md-primary" ng-click='showEditConfirm($event)' ng-if="editFlag">Edit</md-button>
-        <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag" ng-disabled="!saveToDB && !outputStream && !publishToDashboard">save</md-button>
-        <!-- <md-button class="md-raised md-warn" ng-click='showRemoveConfirm($event)' ng-if="editFlag">Remove</md-button> -->
+        <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag" ng-disabled=!publishToDashboard ">save</md-button>
+        <!-- <md-button class="md-raised md-warn " ng-click='showRemoveConfirm($event)' ng-if="editFlag ">Remove</md-button> -->
       </div>
     </div>
 </form>
 <div>
-  <md-checkbox ng-model="isViewAsJSON">View as JSON Structure</md-checkbox>
-  <pre class="jsonStructureExpression  preview2" ng-show="isViewAsJSON">{{wlstdef | json }}</pre>
+  <md-checkbox ng-model="isViewAsJSON ">View as JSON Structure</md-checkbox>
+  <pre class="jsonStructureExpression preview2 " ng-show="isViewAsJSON ">{{wlstdef | json }}</pre>
 </div>
 </div>

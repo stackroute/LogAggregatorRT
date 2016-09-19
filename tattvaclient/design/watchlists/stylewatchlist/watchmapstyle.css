@@ -251,9 +251,10 @@ g:hover > .function-btn {
   margin: 0% 10%;
 }
 
-.clr,
-.add {
+.clrbtn,
+.addbtn {
   min-width: 10px;
   border-radius: 40px;
   cursor: pointer;
+  margin-right: 0px;
 }

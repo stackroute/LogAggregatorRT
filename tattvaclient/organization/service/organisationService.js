@@ -28,20 +28,20 @@ angular.module('tattva')
           });
         },
         editUser: function(userData) {
-          console.log(userData);
-          return $http({
-              method: 'patch',
-              url: '/organisation/' + userData.name,
-              data: userData
-            })
-            .then(function(response) {
-              if (response.data.errors) {
-                return response.errorName = response.data.errors.name;
-              } else {
-                return response.message = "User details updated..!";
-              }
-            });
+      return $http({
+        method  : 'patch',
+        url     : '/organisation/'+userData.name,
+        data    : userData
+      })
+      .then(function(response)
+      {
+        if (response.data.errors) {
+          return response.errorName = response.data.errors.name;
+        } else {
+          return response.message = "User details updated..!";
         }
-      } //end of factory definition
-    return factory;
-  }]);
+      });
+    }
+  } //end of factory definition
+  return factory;
+}]);
