@@ -5,10 +5,12 @@ Packets:{{logs.length}}
 <div layout="column" id="copying">
     <table border="black">
         <tr>
-            <td ng-repeat="(key,value) in logs[0]">{{key}}</td>
+            <td ng-repeat="(key,value) in logs[0].logdata">{{key}}</td></tr>
+          
+        <!-- <tr><td ng-repeat=" (key,value) in logs[0]logdata.commiter">{{key}}</td></tr> -->
+        <tr ng-repeat="data in logs" ng-style='(data.watchresult)?{color:"blue"}:{color:"red"}'>
+            <td ng-repeat="(key,value) in data.logdata">{{value}}</td>
         </tr>
-        <tr ng-repeat="item in logs" ng-style='(logs.watchresult)?{color:"red"}:{color:"blue"}'>
-            <td ng-repeat="(key,value) in item">{{value}}</td>
-        </tr>
+      <!--     -->
     </table>
 </div>

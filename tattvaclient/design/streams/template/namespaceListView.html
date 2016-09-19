@@ -37,7 +37,7 @@
             ng-click="setClickedRow(object.name)" ng-class="{'selected':object.name == selectedRow}">
             <md-item-content layout="row" flex>
               <div class="md-list-item-text md-tile-left inset" flex="30">
-                <ng-letter-avatar fontSize="20" data={{object.name}} shape="round" charCount=2></ng-letter-avatar>
+                <ng-letter-avatar fontSize="20" data={{object.name}} shape="round" charCount=2 avatarcustombgcolor="#339933"></ng-letter-avatar>
               </div>
               <div class="md-tile-content" flex="70">
                 <h4>{{object.name | capitalize}}</h4>
