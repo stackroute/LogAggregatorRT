@@ -8,7 +8,7 @@ angular.module('tattva')
    $scope.user = [];
    $scope.q = '';
    $scope.searchedUser = [];
-   
+
    $scope.loadData = function() {
     $scope.username = "";
     $scope.showinput = false;
@@ -52,12 +52,12 @@ angular.module('tattva')
       $scope.editUser=function(){
         var userData={
           name : $scope.user[index].name ,
-          email : $scope.user[index].email , 
+          email : $scope.user[index].email ,
           password : $scope.user.password,
           orgsite : $scope.org.orgsite,
           role : $scope.user[index].role
         };
-          
+
         userservice.editUser(userData).then(function(response){
         });
         $state.go('tattva.organisation');

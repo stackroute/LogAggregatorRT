@@ -85,17 +85,16 @@ angular.module('tattva').directive('portfolio',function(){
       var organizationColor = d3.scale.category20();
       // var namespaceColor = d3.scale.category20c();
       var namespaceColor = d3.scale.ordinal()
-      .range(["#5687d1","#7b615c","#de783b","#6ab975","#a173d1","#bbbbbb"]);
+      .range(["#396AB1","#DA7C30","#3E9651","#CC2529","#535154","#6B4C9A","#922428","#948B3D","#bbbbbb","#22D635"]);
       // var datasourceColor = d3.scale.category20();
       var datasourceColor = d3.scale.ordinal()
-      .range(["#396AB1","#DA7C30","#3E9651","#CC2529","#535154","#6B4C9A","#922428","#948B3D"]);
+      .range(["#C4C8E7","#565D94","#0F1963","#85799B","#91799B","#CA99DF","#5E157E","#BB6AA6","#4B143D","#D47A8F"]);
       // var streamColor = d3.scale.category20();
       var datasourceColor = d3.scale.ordinal()
-      .range(["#5687d1","#7b615c","#de783b","#6ab975","#a173d1","#bbbbbb"]);
-
+      .range(["#82F4E1","#D4987A","#F27B40","#F7AB43","#ECCE3B","#E0E88F","#ACDC2B","#CED1C8","#B8DBB9","#88FFC2"]);
       // var watchColor = d3.scale.category20();
       var watchColor = d3.scale.ordinal()
-      .range(["#396AB1","#DA7C30","#3E9651","#CC2529","#535154","#6B4C9A","#922428","#948B3D"]);
+      .range(["#66958D","#31536C","#776899","#AD8BC7","#F7F3F7","#FB95D3","#67183B","#13635D","#334353","#87427A"]);
 
       var svg = d3.select('#sunburstcontainer').append("svg")
       .attr("width", width)

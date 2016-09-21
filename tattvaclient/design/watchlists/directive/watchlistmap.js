@@ -83,11 +83,13 @@ angular.module('tattva').directive('watchlistmap', function() {
         //color code array for namespace,streams and expressions
         var colorcode = [{
           name: "namespace",
-          color: "#009999"
-        }, {
+          color: "#339933"
+        },
+         {
           name: "datasources",
-          color: "#0000b3"
-        }, {
+          color: "#663399"
+        },
+          {
           name: "expressions",
           color: "#871287"
         }, {
