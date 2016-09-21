@@ -36,7 +36,7 @@ angular.module("tattva")
     for(params in fieldData.functionparameters){
       fnParameters.push(fieldData.functionparameters[params]);
     }
-  return fieldData.function+"("+fnParameters+")";  // logic for converting the data to human redable easy format of the expression
+  return "CompositeFunction("+fieldData.function+"("+fnParameters+"))";  // logic for converting the data to human redable easy format of the expression
 }
 
 $scope.fieldData=fieldData;

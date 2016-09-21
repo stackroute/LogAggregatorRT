@@ -1,51 +1,49 @@
 module.exports=function()
 {
   var functionProvider = require("../datafnprovider");
-  var compositeFunction_router = require("../../compositefunction/compositefunction_routes");
-
+  
   return{
-    execute : function(fkn, orgsite, paramObj) {
+    execute : function(functionObject, paramObj) {
      var result=[];
      var i=0;
+     if(functionObject != undefined){
+       if(functionObject[0] != undefined){
+         for(expr in functionObject[0].expression)
+         {
+          if(expr < functionObject[0].expression.length){
+            var fnParamData=[];
 
-     var functionObject = compositeFunction_router.getFunctionByName(fkn, orgsite); 
-     
-     if(functionObject[0] != undefined){
-       for(expr in functionObject[0].expression)
-       {
-        if(expr < functionObject[0].expression.length){
-          var fnParamData=[];
+            fnParamData.push(paramObj[functionObject[0].expression[expr].lhs.varmap[0].targetvar]);
+            fnParamData.push(paramObj[functionObject[0].expression[expr].lhs.varmap[1].targetvar]);
+            var functionModule = new functionProvider(functionObject[0].expression[expr].lhs.name);
+            var lhs = functionModule.evaluate(fnParamData);
 
-          fnParamData.push(paramObj[functionObject[0].expression[expr].lhs.varmap[0].targetvar]);
-          fnParamData.push(paramObj[functionObject[0].expression[expr].lhs.varmap[1].targetvar]);
-          var functionModule = new functionProvider(functionObject[0].expression[expr].lhs.name);
-          var lhs = functionModule.evaluate(fnParamData);
+            var fnParamData=[];
+            fnParamData.push(paramObj[functionObject[0].expression[expr].rhs.varmap[0].targetvar]);
+            fnParamData.push(paramObj[functionObject[0].expression[expr].rhs.varmap[1].targetvar]);
+            var functionModule = new functionProvider(functionObject[0].expression[expr].rhs.name);
+            var rhs = functionModule.evaluate(fnParamData);
 
-          var fnParamData=[];
-          fnParamData.push(paramObj[functionObject[0].expression[expr].rhs.varmap[0].targetvar]);
-          fnParamData.push(paramObj[functionObject[0].expression[expr].rhs.varmap[1].targetvar]);
-          var functionModule = new functionProvider(functionObject[0].expression[expr].rhs.name);
-          var rhs = functionModule.evaluate(fnParamData);
-
-          if(functionObject[0].expression[expr].operator.name=="ADD +")
-          {
-            result[i]= lhs.output+rhs.output;
+            if(functionObject[0].expression[expr].operator.name=="ADD +")
+            {
+              result[i]= lhs.output+rhs.output;
+            }
+            if(functionObject[0].expression[expr].operator.name=="SUB -")
+            {
+              result[i]= lhs.output-rhs.output;
+            }
+            if(functionObject[0].expression[expr].operator.name=="MUL *")
+            {
+              result[i]= lhs.output*rhs.output;
+            }
+            if(functionObject[0].expression[expr].operator.name=="DIV /")
+            {
+              result[i]= lhs.output/rhs.output;
+            } 
+            i++;
+            result[i]=functionObject[0].expression[expr].join_By.name; 
+            i++;
           }
-          if(functionObject[0].expression[expr].operator.name=="SUB -")
-          {
-            result[i]= lhs.output-rhs.output;
-          }
-          if(functionObject[0].expression[expr].operator.name=="MUL *")
-          {
-            result[i]= lhs.output*rhs.output;
-          }
-          if(functionObject[0].expression[expr].operator.name=="DIV /")
-          {
-            result[i]= lhs.output/rhs.output;
-          } 
-          i++;
-          result[i]=functionObject[0].expression[expr].join_By.name; 
-          i++;
         }
       }
     }

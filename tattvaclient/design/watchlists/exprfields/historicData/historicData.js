@@ -23,7 +23,7 @@ angular.module("tattva")
   };
 
   $scope.getExprAsText =function(){
- return $scope.fieldData.historicfunction;
+ return "HistoricQuery("+$scope.fieldData.historicfunction+")";
   }
 
 }]);

@@ -1,0 +1,17 @@
+<div layout="column" ng-controller="historicQueryFormCtrl">
+	<label class="md-subheader">Historic Query Expression:</label>
+	<div layout="row">
+		<div layout layout-align="center center">
+		<md-button ng-if="!queryResult" class="md-fab md-mini md-raised greyBackground" ng-click="test(field)" type="button" aria-label="Test"><i class="material-icons" layout layout-padding layout-align="center center">&#xE869;</i><md-tooltip md-direction="left">
+				Test Historic Query
+			</md-tooltip></md-button>
+		<md-button ng-if="queryResult" class="md-fab md-mini md-raised greyBackground" ng-click="clearQueryResult()" type="button" aria-label="clear"><i class="material-icons" layout layout-padding layout-align="center center">&#xE86B;</i><md-tooltip md-direction="left">
+				Clear Result
+			</md-tooltip></md-button>
+		</div>
+		<pre layout="column" class="preview2" flex="100" spellcheck="false" style="white-space: pre-line;overflow-wrap: break-word;word-wrap: break-word; width:auto">
+			<p layout layout-align="center center">{{field | tattvaHistQExpressionFilter}}</p>
+			<span style="color:red;" layout layout-align="end end" ng-if="queryResult" flex="100" spellcheck="false">Result: {{queryResult}}</span>
+		</pre>
+	</div>	
+</div>
