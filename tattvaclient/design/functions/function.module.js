@@ -11,7 +11,11 @@ function($stateProvider){
   .state('design.functionEdit', {
     url: '/functional/:functionname',
     templateUrl: '/design/functions/template/cfunctions3.html',
-    controller: 'functionEditCtrl'
+    controller: 'functionCreateCtrl',
+    params:{
+      data:{},
+      view:true
+    }
   })
   .state('design.addfunction', {
     url:"/addFunction",

@@ -12,6 +12,10 @@ angular.module('tattva')
 'startfrom',function(){
 		return function(value,start){
 			start =+start;
-			return value.slice(start);
+			if(value!=undefined){
+			return value.slice(start);}
+			else{
+				return value;
+			}
 		}
 	});

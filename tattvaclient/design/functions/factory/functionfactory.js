@@ -17,20 +17,34 @@ angular.module('tattva')
       });
     },
 
-  //   getFunctionByName: function(fkn) {
-  //   return $q(function(resolve, reject) {
-  //     console.log(fkn);
-  //     $http.get('/compositefunction/'+fkn)
-  //     .then(function(res) {
-  //       //success
-  //       resolve(res.data);
-  //     },
-  //     function(res) {
-  //       //error
-  //       reject(res.data);
-  //     });
-  //   });
-  // },
+    getFunctionByName: function(fkn) {
+    return $q(function(resolve, reject) {
+      console.log(fkn);
+      $http.get('/compositefunction/'+fkn)
+      .then(function(res) {
+        //success
+        resolve(res.data);
+      },
+      function(res) {
+        //error
+        reject(res.data);
+      });
+    });
+  },
+
+  saveTest: function(fkn) {
+    return $q(function(resolve, reject) {
+      $http.post('/compositefunction/test',fkn)
+      .then(function(res) {
+        //success
+        resolve(res.data);
+      },
+      function(res) {
+        //error
+        reject(res.data);
+      });
+    });
+  },
 
     getFunction: function() {
     return $q(function(resolve, reject) {

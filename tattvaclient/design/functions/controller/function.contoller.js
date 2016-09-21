@@ -1,21 +1,28 @@
 angular.module('tattva')
-.controller('functionlistCtrl', ['$scope', '$http','$mdDialog',"functionFactory",
-  function($scope, $http, $mdDialog,functionFactory) {
+.controller('functionlistCtrl', ['$scope', '$filter','$http','$mdDialog',"functionFactory",
+  function($scope,$filter, $http, $mdDialog,functionFactory) {
     $scope.tabTitle ="Function List";
     $scope.stateChange="design.addfunction"
-//  $scope.stateChange="design.function";
+    $scope.currentPage=0;
+    $scope.pageSize=5;
 $scope.loadData = function() {
   /*$http.get('/function').then(function(response){
     $scope.data = response.data;
   });*/
+        $scope.flag=false;
        var result= functionFactory.getFunction()
    .then(function(data) {
           //success
+          $scope.flag=true;
           $scope.data=data;
+          $scope.numberOfPages = function() {
+          return Math.ceil($scope.data.length / $scope.pageSize);
+        }
         },
         function(data) {
           $scope.error=data.error;
         });
+
 }
 $scope.loadData();
 $scope.selectedUserIndex = undefined;
