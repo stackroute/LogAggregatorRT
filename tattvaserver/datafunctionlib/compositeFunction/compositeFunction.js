@@ -30,18 +30,18 @@ module.exports=function(){
       var functionModule = new functionProvider(functionObject.expression[expr].rhs.name);
       var rhs = functionModule.evaluate(fnParamData);
       console.log("rhs"+rhs.output);
-      if(functionObject.expression[expr].operator.name=="ADD +"){
+      if(functionObject.expression[expr].operator.name=="+"){
         console.log("in add");
         result[i]= lhs.output+rhs.output;
       }
-      if(functionObject.expression[expr].operator.name=="SUB -"){
+      if(functionObject.expression[expr].operator.name=="-"){
         console.log("in sub");
         result[i]= lhs.output-rhs.output;
       }
-      if(functionObject.expression[expr].operator.name=="MUL *"){
+      if(functionObject.expression[expr].operator.name=="*"){
         result[i]= lhs.output*rhs.output;
       }
-      if(functionObject.expression[expr].operator.name=="DIV /"){
+      if(functionObject.expression[expr].operator.name=="/"){
         result[i]= lhs.output/rhs.output;
       } 
       i++;

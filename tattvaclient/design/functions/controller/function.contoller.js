@@ -15,6 +15,7 @@ angular.module('tattva')
                             //success
                             $scope.flag = true;
                             $scope.data = data;
+                            console.log(data);
                             $scope.numberOfPages = function() {
                                 return Math.ceil($scope.data.length / $scope.pageSize);
                             }

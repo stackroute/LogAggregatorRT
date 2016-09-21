@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="preview" spellcheck="false">
-            <!-- <span ng-repeat="expr in functionData.expression">{{expr.lhs.name(}}</span>		 -->
+            <span>{{functionData | functionListExpr}}</span>
         </div>
         <md-whiteframe class="md-whiteframe-z2 frame " layout="column">
             <div layout="column" ng-repeat="expr in functionData.expression">
@@ -43,10 +43,10 @@
                     <md-input-container layout="column" flex="20">
                         <label>Operator</label>
                         <md-select ng-disabled="view" ng-model="expr.operator.name">
-                            <md-option>ADD +</md-option>
-                            <md-option>SUB -</md-option>
-                            <md-option>MUL *</md-option>
-                            <md-option>DIV /</md-option>
+                            <md-option>+</md-option>
+                            <md-option>-</md-option>
+                            <md-option>*</md-option>
+                            <md-option>/</md-option>
                         </md-select>
                     </md-input-container>
                     <span flex="2"></span>
@@ -66,10 +66,10 @@
                     <md-input-container layout="row">
                         <label>Operator</label>
                         <md-select ng-disabled="view" ng-model="expr.join_By.name">
-                            <md-option>ADD +</md-option>
-                            <md-option>SUB -</md-option>
-                            <md-option>MUL *</md-option>
-                            <md-option>DIV /</md-option>
+                            <md-option>+</md-option>
+                            <md-option>-</md-option>
+                            <md-option>*</md-option>
+                            <md-option>/</md-option>
                         </md-select>
                     </md-input-container>
                 </div>
