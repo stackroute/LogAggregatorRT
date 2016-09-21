@@ -2,6 +2,28 @@ var historicQuery_router = require('express').Router();
 var historicQuerySchema = require('./historicQuery.js');
 var dataProvider = require('../core/datamodelprovider');
 
+historicQuery_router.getQueryByName = function(name,orgsite,successCallback,errorCallback){
+  var functionModel = dataProvider.getModel(historicQuerySchema,orgsite);
+  functionModel.find({name:name},{}, function(err, res){
+    if(err){
+      return errorCallback(err)
+    }
+    for(obj in res){
+      return successCallback(res[obj])
+    }
+  });
+}
+
+historicQuery_router.post('/historicqueryObjectTest/:queryObject', function (req, res) {
+  var historicQueryProvider = require("../datafunctionlib/datahistoricQprovider");
+  var historicQueryModule = new historicQueryProvider();
+  historicQueryModule.test(req.body, function(queryResult) {
+    return res.status(200).json(queryResult);
+  },function(err){
+    return res.status(400).json(err);
+  });
+});
+
 historicQuery_router.get('/', function(req, res){
   var historicqueryModel = dataProvider.getModel(historicQuerySchema, req.user.orgsite);
   historicqueryModel.find({},{name:1, description:1}, function(err, historicfunctionsListData){

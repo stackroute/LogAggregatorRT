@@ -58,7 +58,7 @@ angular.module("tattva")
 	}
 
 	this.getFunctionsOption=function(){
-		return ["SUM","AVERAGE","MINIMUM","MAXIMUM","FIRST","LAST","COUNT","STANDARD DEVIATION"];
+		return ["SUM","AVERAGE","MINIMUM","MAXIMUM","FIRST","LAST","STANDARD DEVIATION"];
 	}
 
 

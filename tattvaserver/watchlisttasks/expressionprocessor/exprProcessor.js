@@ -12,11 +12,11 @@ var operatorMapper = require('../../watchexecutor/fieldOperator');
 
 var logger = require('../../../applogger');
 
-var exprProcessor = function(expr, orgsite, execObj) {
+var exprProcessor = function(expr, requiredObject, histQResult, execObj) {
   // logger.debug("Processing expression: ", expr, " with data: ", execObj);
   //process a expression
-  var lhs = mapExprField(expr.watch.lfield, orgsite, execObj.data);
-  var rhs = mapExprField(expr.watch.rfield, orgsite, execObj.data);
+  var lhs = mapExprField(expr.watch.lfield, requiredObject, histQResult, execObj.data);
+  var rhs = mapExprField(expr.watch.rfield, requiredObject, histQResult, execObj.data);
   var oprtr = expr.watch.operator;
   var result = operatorMapper.evaluate(oprtr, lhs, rhs);
 
@@ -32,7 +32,7 @@ var exprProcessor = function(expr, orgsite, execObj) {
   return execObj;
 };
 
-function mapExprField(field, orgsite, dataObj) {
+function mapExprField(field, requiredObject, histQResult, dataObj) {
   var result = undefined;
 
   if (field.fieldType == "DataFields") {
@@ -44,13 +44,17 @@ function mapExprField(field, orgsite, dataObj) {
   } else if (field.fieldType == "Function") {
     result = functionMapper.map(field, dataObj);
   } else if (field.fieldType == "compositefunction") {
-    result = compositeFunctionMapper.map(field, orgsite, dataObj);
+    result = compositeFunctionMapper.map(field, requiredObject, dataObj);
   } else if (field.fieldType == "Accumulate") {
     result = accumulatorMapper.map(field, dataObj);
-  } else {
-    result = undefined;
+  } else if (field.fieldType == "historicData") {
+    for(i in histQResult){
+    result = histQResult[i];
   }
-  return result;
+ } else {
+  result = undefined;
+}
+return result;
 }
 
 module.exports = {

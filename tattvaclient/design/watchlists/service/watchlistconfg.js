@@ -69,7 +69,7 @@ angular.module("tattva")
           "controller": "HistoricDataCtrl",
           "template": "historicData",
           "icon":"archive",
-            "shortexpr":"Historic function(<Param>)",
+            "shortexpr":"Historic function(function name)",
             "tip":"Compare against Historic Data"
         }
         ]

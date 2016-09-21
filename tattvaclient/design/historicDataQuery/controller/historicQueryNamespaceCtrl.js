@@ -1,8 +1,6 @@
 angular.module("tattva")
 .controller('historicQueryNamespaceCtrl',['$scope','historicQueryFactory','$stateParams', 'namespaceFactory', '$mdDialog','$timeout', '$q', '$log','loadExprData','wlstDataService' ,function($scope,historicQueryFactory,$stateParams,namespaceFactory,$mdDialog,$timeout, $q, $log,loadExprData,wlstDataService) {
 
-  $scope.DataField=[];
-  
   var self = this;
   self.simulateQuery = false;
   self.isDisabled    = false;
@@ -10,6 +8,7 @@ angular.module("tattva")
   self.querySearch   = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;
+
 
   if ($stateParams.editHistoricQueryData) {
     historicQueryFactory.getHistoricQueryDetails($stateParams.editHistoricQueryData).then(function(data)
@@ -39,18 +38,21 @@ angular.module("tattva")
     if(item!=undefined)
     {
       var fieldData=[];
+      $scope.$parent.timeFieldOption=[];
       $scope.fndef.watchlist=item;
       wlstDataService.getWatchlistData(item).then(function(watchlistdata){
+        $scope.wtstdef=watchlistdata.data;
         $scope.fndef.namespace=watchlistdata.data.namespace;
         $scope.fndef.orgsite=watchlistdata.data.orgsite;
         namespaceFactory.getNamespaceDetails(watchlistdata.data.namespace).then(function(data){
           for (i in data.dataSchema){
-            fieldData.push(data.dataSchema[i].name)
-          }
-        })
+            fieldData.push(data.dataSchema[i].name);
+            if(data.dataSchema[i].type === "time"){
+             $scope.$parent.timeFieldOption.push(data.dataSchema[i].name);
+           }
+         }
+       })
       })
-      $scope.DataField= fieldData;
-
     }
     else {
       $scope.fndef.watchlist=undefined;

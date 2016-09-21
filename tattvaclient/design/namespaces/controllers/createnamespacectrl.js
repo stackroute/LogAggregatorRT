@@ -54,6 +54,21 @@ angular.module('tattva')
 							sample = parseFloat(sample);
 						}
 					}
+					if($scope.nameSpace.dataSchema[i].type == 'time'){
+						if(!moment(sample,moment.ISO_8601).isValid()){
+							$mdDialog.show(
+								$mdDialog.alert()
+								.parent(angular.element(document.querySelector('#popupContainer')))
+								.clickOutsideToClose(true)
+								.title('Invalid Sample Time Format..!')
+								.textContent('Follow Valid Time Format (format: moment.ISO_8601)')
+								.ariaLabel('Parsing Error.')
+								.ok('Ok')
+								.targetEvent(ev)
+								);
+							$scope.nameSpace.dataSchema[i]["type"] = "dimension";
+						}
+					}
 					tempSchema[name] = sample;
 					$scope.nameSpace.uploadJSONText = jsonFilter(tempSchema);
 				}
@@ -207,17 +222,27 @@ angular.module('tattva')
 				if ((typeof dataObj[i]) === 'object') {
 					var type;
 					for (var j in dataObj[i]) {
-						if (isNaN(dataObj[i][j])) {
-							type = "dimension"
-						} else {
-							type = "measure"
+						if(moment(dataObj[i][j],moment.ISO_8601).isValid()){
+							type = "time"
+						}
+						else{
+							if (isNaN(dataObj[i][j])) {
+								type = "dimension"
+							} else {
+								type = "measure"
+							}
 						}
 						if(typeof dataObj[i][j] == 'object' && !(Array.isArray(dataObj[i][j]))){
 							for (var k in dataObj[i][j]){
-								if (isNaN(dataObj[i][j][k])){
-									type = "dimension"
-								} else {
-									type = "measure"
+								if(moment(dataObj[i][j][k],moment.ISO_8601).isValid()){
+									type = "time"
+								}
+								else{
+									if (isNaN(dataObj[i][j][k])){
+										type = "dimension"
+									} else {
+										type = "measure"
+									}
 								}
 								outputData.push({
 									"alias": j+"."+k,
@@ -239,17 +264,27 @@ angular.module('tattva')
 				}
 				else if ((typeof i) === 'string' && fieldCount != i) {
 					var type;
-					if (typeof dataObj[i] === 'string') {
-						type = "dimension"
-					} else {
-						type = "measure"
+					if(moment(dataObj[i],moment.ISO_8601).isValid()){
+						type = "time"
+					}
+					else{
+						if (typeof dataObj[i] === 'string') {
+							type = "dimension"
+						} else {
+							type = "measure"
+						}
 					}
 					if(typeof dataObj[i] == 'object'){
 						for (var j in dataObj[i]){
-							if (isNaN(dataObj[i][j])) {
-								type = "dimension"
-							} else {
-								type = "measure"
+							if(moment(dataObj[i][j],moment.ISO_8601).isValid()){
+								type = "time"
+							}
+							else{
+								if (isNaN(dataObj[i][j])) {
+									type = "dimension"
+								} else {
+									type = "measure"
+								}
 							}
 							outputData.push({
 								"alias": i+"."+j,

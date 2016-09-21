@@ -2,20 +2,21 @@
  var compositefunction_router = express.Router();
  var compositeFunctionSchema = require('./compositefunction_schema.js');
  var dataProvider = require('../core/datamodelprovider');
+
  var compositeFunctionProvider = require("../datafunctionlib/datacompositefnprovider");
- var dataobj;
 
- compositefunction_router.getFunctionByName = function(name, orgsite) {
-
+ compositefunction_router.getFunctionByName = function(name, orgsite, successCallback, errorCallback) {
      var functionModel = dataProvider.getModel(compositeFunctionSchema, orgsite);
      functionModel.find({ name: name }, {}, function(err, res) {
          if (err) {
-             dataobj = err;
+             return errorCallback(err)
          }
-         dataobj = res;
+         for (obj in res) {
+             return successCallback(res[obj])
+         }
      });
-     return dataobj;
  }
+
 
  compositefunction_router.get('/:functionName', function(request, res) {
      var functionModel = dataProvider.getModel(compositeFunctionSchema, request.user.orgsite);
@@ -27,6 +28,7 @@
          res.send(data);
      });
  });
+
 
  compositefunction_router.post('/test', function(request, res) {
      var compositeFunctionModule = new compositeFunctionProvider();
@@ -45,6 +47,26 @@
          res.send(data);
      });
  });
+
+ compositefunction_router.post('/test', function(request, res) {
+     var compositeFunctionProvider = require('../datafunctionlib/datacompositefnprovider');
+     var compositeFunctionModule = new compositeFunctionProvider();
+     var result = compositeFunctionModule.execute(request.body[0], request.body[1]);
+     console.log(result.output)
+     res.send(result);
+ });
+
+ compositefunction_router.get('/', function(request, res) {
+     var functionModel = dataProvider.getModel(compositeFunctionSchema, request.user.orgsite);
+     functionModel.find({}, { name: 1, parameters: 1, description: 1 }, function(err, data) {
+         if (err) {
+             console.log("Error in find functions, error: ", err);
+             res.status(500).json({ error: "Internal error occurred..!" })
+         }
+         res.send(data);
+     });
+ });
+
 
  compositefunction_router.post("/:functionName", function(req, res) {
      var functionModel = dataProvider.getModel(compositeFunctionSchema, req.user.orgsite);

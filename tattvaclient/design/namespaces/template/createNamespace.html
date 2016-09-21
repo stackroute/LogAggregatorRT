@@ -28,10 +28,10 @@
         <div  flex layout>
           <div ng-if="!uploadJSONFlag" flex="55">
 
-                <div layout="column" layout-align="center center" ng-if="parsingError" layout-sm="column" layout-align="space-around">
-                  <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-                  <md-subheader>Parsing...</md-subheader>
-                </div>
+            <div layout="column" layout-align="center center" ng-if="parsingError" layout-sm="column" layout-align="space-around">
+              <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+              <md-subheader>Parsing...</md-subheader>
+            </div>
             <div layout="column" flex ng-repeat="dataFormatObj in nameSpace.dataSchema">
               <div layout="row">
                 <md-input-container>
@@ -70,8 +70,9 @@
               <div layout="row" flex>
                 <md-input-container flex="5">
                   <md-radio-group layout="row" ng-model="dataFormatObj.type" ng-change="watchChanges()" class="md-primary" required >
-                    <md-radio-button value="dimension" ng-disabled="editData && editNamespaceFlag"><i id="dimensions" class="material-icons">&#xE84D;</i></md-radio-button>
-                    <md-radio-button value="measure" ng-disabled="editData && editNamespaceFlag"><i id="measure" class="material-icons">&#xE41C;</i></md-radio-button>
+                    <md-radio-button value="dimension" ng-disabled="editData && editNamespaceFlag"><md-tooltip md-direction="top">Dimension</md-tooltip><i id="dimensions" class="material-icons">&#xE84D;</i></md-radio-button>
+                    <md-radio-button value="measure" ng-disabled="editData && editNamespaceFlag"><md-tooltip md-direction="top">Measure</md-tooltip><i id="measure" class="material-icons">&#xE41C;</i></md-radio-button>
+                    <md-radio-button value="time" ng-disabled="editData && editNamespaceFlag"><md-tooltip md-direction="top">Time</md-tooltip><i id="time" class="material-icons">&#xE01B;</i></md-radio-button>
                   </md-radio-group>
                 </md-input-container>
               </div>

@@ -2,7 +2,7 @@
 	<div layout="row" flex class="noSubscriber" layout-align="center center" ng-if="!historicQueryListdata.length">
 		<div  flex layout-padding layout-margin layout-align="start">
 			<h2>You are yet to create an Historic Query</h2>
-			<p>Historic Query is used to fetch data from Database,can filter data on conditions.</p>
+			<p>Historic Query is used to request for data or information from a Database.</p>
 			<md-button class="md-raised md-primary" ui-sref='design.historicQueryAdd'>Create</md-button>
 		</div>
 	</div>
@@ -12,7 +12,7 @@
 		<md-content>
 			<div>
 				<md-list layout-padding>
-					<md-list-item class="md-3-line hover" ng-repeat="item in historicQueryListdata">
+					<md-list-item class="md-3-line hover" ng-repeat="item in historicQueryListdata | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize">
 						<span class='md-avatar' ui-sref="design.historicQueryView({ editHistoricQueryData: '{{item.name}}'})"><ng-letter-avatar fontSize="20"  charCount=2 data="{{ historicQueryListdata[$index].name  }}" shape="round" avatarcustombgcolor="	#808000"></ng-letter-avatar></span>
 						<div ui-sref="design.historicQueryView({ editHistoricQueryData: '{{item.name}}'})" class="md-list-item-text" layout="column">
 							<h3>{{ item.name | capitalize}}</h3>
@@ -23,9 +23,20 @@
 						</md-button>
 						<md-divider ng-if="!$last"></md-divider>
 					</md-list-item>
+					<div layout='row' layout-align="end center">
+						<md-button class="md-fab md-mini md-raised" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+							<md-icon>arrow_back</md-icon>
+						</md-button>
+						<p class="md-subheader">
+							<span>{{currentPage+1}}</span>/{{numberOfPages()}}
+						</p>
+						<md-button class="md-fab md-mini md-raised" ng-disabled="currentPage >= getData().length/pageSize-1" ng-click="currentPage=currentPage+1">
+							<md-icon>arrow_forward</md-icon>
+						</md-button>         
+					</div>
 				</md-list>
 			</div>
 		</md-content>
-		</div>
 	</div>
+</div>
 </div>

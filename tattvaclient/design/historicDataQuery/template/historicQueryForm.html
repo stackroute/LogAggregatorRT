@@ -21,40 +21,55 @@
           </div>
         </md-input-container>
       </div>
-
       <div>
-        <md-whiteframe class="md-whiteframe-1dp" layout="column" layout layout-padding>
-          <div layout="row">
-            <div id="watchListnamespace" layout layout-align="center center" ng-controller="historicQueryNamespaceCtrl as ctrl" flex="45">
-              <md-autocomplete 
-              required
-              md-input-name="atoCmpNmsp"
-              md-input-minlength="1"
-              ng-disabled="ctrl.isDisabled"
-              md-no-cache="ctrl.noCache"
-              md-selected-item="ctrl.selectedItem"
-              md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-              md-search-text="ctrl.searchText"
-              md-selected-item-change="ctrl.selectedItemChange(item)"
-              md-items="item in ctrl.querySearch(ctrl.searchText)"
-              md-item-text="item"
-              md-min-length="0"
-              placeholder="Select Watchlist"
-              flex="100">
-              <md-item-template>
-                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
-              </md-item-template>
-              <div ng-messages="watchlistcreate.atoCmpNmsp.$error" ng-if="watchlistcreate.atoCmpNmsp.$touched">
-                <div ng-message="required">This field is required</div>
-              </div>
-              <md-not-found>
-                No watchlist matching "{{ctrl.searchText}}" were found.
-              </md-not-found>
-            </md-autocomplete>
-          </div>
+        <md-whiteframe class="md-whiteframe-1dp" layout="column" layout-padding>
+          <div layout="row" layout-sm="column" layout-xs="column" flex>
+            <div layout="column" layout-padding flex="45" ng-controller="historicQueryNamespaceCtrl as ctrl">
+              <div layout="row">
+                <md-subheader flex="20">From :</md-subheader>
+                <md-autocomplete 
+                required
+                md-input-name="atoCmpNmsp"
+                md-input-minlength="1"
+                ng-disabled="ctrl.isDisabled"
+                md-no-cache="ctrl.noCache"
+                md-selected-item="ctrl.selectedItem"
+                md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+                md-search-text="ctrl.searchText"
+                md-selected-item-change="ctrl.selectedItemChange(item)"
+                md-items="item in ctrl.querySearch(ctrl.searchText)"
+                md-item-text="item"
+                md-min-length="0"
+                placeholder="Select Watchlist"
+                flex="80">
+                <md-item-template>
+                  <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
+                </md-item-template>
+                <div ng-messages="watchlistcreate.atoCmpNmsp.$error" ng-if="watchlistcreate.atoCmpNmsp.$touched">
+                  <div ng-message="required">This field is required</div>
+                </div>
+                <md-not-found>
+                  No watchlist matching "{{ctrl.searchText}}" were found.
+                </md-not-found>
+              </md-autocomplete>
+            </div>
+            <div flex="10"></div>
+            <watchlistexpr watch="wtstdef" ng-if="fndef.watchlist && wtstdef" flex="100"></watchlistexpr>
+          </div>       
           <div flex="10"></div>
           <div layout="column" flex="45" layout-align="center center">
-            <md-subheader layout layout-align="center center">Define Query Time Period :</md-subheader>
+            <div layout="row" layout-sm="column" layout-xs="column">
+              <md-subheader layout layout-padding layout-align="top left">Define Query Time Period :</md-subheader>
+              <md-input-container layout="column" ng-controller="historicQueryNamespaceCtrl" layout-padding style="margin-top:0px;">
+                <md-select name="timeFieldOption"  ng-model="fndef.queryTimeField" required>
+                  <label>Select Time Field</label>
+                  <md-option ng-repeat="i in timeFieldOption">{{i}}</md-option>
+                </md-select>
+                <div ng-messages="addhistoricfunction.timeFieldOption.$error">
+                  <div ng-message="required">This is required!</div>
+                </div>
+              </md-input-container>
+            </div>
             <div layout="row" >
               <mdp-date-picker mdp-placeholder="From Date" ng-model="fromDate"></mdp-date-picker>
               <mdp-time-picker mdp-placeholder="From Time" mdp-auto-switch="true" ng-model="fromTime"></mdp-time-picker>
@@ -65,10 +80,14 @@
             </div>
           </div>
         </div>
-
+        <div layout="row">
+          <!-- Tattva Historic Query Expression -->
+          <!-- tattvaHistQExpression -->
+          <tattva-hist-q-expression style="white-space: pre-line;overflow-wrap: break-word;word-wrap: break-word;" field="fndef" ng-if="fndef.watchlist && fndef.outputFields.length" flex="100"></tattva-hist-q-expression>
+        </div>
         <div>
           <md-whiteframe ng-show="fndef.outputFields.length" class="md-whiteframe-1dp" layout="column" ng-if="fndef.outputFields.length" flex>
-            <label class="md-subhead" layout layout-padding layout-align="left left" flex>Output Data :</label>
+            <md-subheader layout layout-align="left left" flex>Select :</md-subheader>
             <div layout="row"  ng-repeat="field in fndef.outputFields" flex>
               <md-subheader>{{$index+1}}) </md-subheader>
               <!-- Tattva Historic Query Output Field -->
@@ -91,8 +110,8 @@
         </div>
         <div>
           <md-whiteframe ng-show="fndef.queryCriteria.length" class="md-whiteframe-1dp" layout="column" ng-if="fndef.queryCriteria.length" flex>
-            <label class="md-subhead" layout layout-padding layout-align="left left" flex>Query Criteria :</label>
-            <div layout="row" ng-repeat="criteria in fndef.queryCriteria" flex>
+            <md-subheader layout layout-align="left left" flex>Where :</md-subheader>
+            <div layout="row" layout-sm="column" layout-xs="column" ng-repeat="criteria in fndef.queryCriteria" flex>
               <md-subheader>{{$index+1}}) </md-subheader>
               <div flex="90" layout="row">
                 <!-- Tattva Historic Query query criteria left field-->
@@ -120,28 +139,28 @@
             </div>
           </md-whiteframe>
         </div>
-        <div layout layout-align="center center">
-          <button class="md-raised float-left md-button md-ink-ripple" ng-click="addOutputExpression();" ng-show="!fndef.outputFields.length" type="button" aria-label="Define Expected Output"><span class="ng-scope">Define Output Data</button>
-          <button class="md-raised float-right md-button md-ink-ripple" ng-show="!fndef.queryCriteria.length" ng-click="addNewExpression();" type="button" aria-label="Define Query Criteria"><span class="ng-scope">Define Query Criteria</button>
+        <div layout layout-sm="column" layout-xs="column" layout-align="center center">
+          <button class="md-raised float-left md-button md-ink-ripple" ng-click="addOutputExpression();" ng-show="!fndef.outputFields.length" type="button" aria-label="Define Expected Output"><span class="ng-scope">Define Output Data</span><md-tooltip md-direction="top">what U need As Result?
+          </md-tooltip></button>
+          <button class="md-raised float-right md-button md-ink-ripple" ng-show="!fndef.queryCriteria.length" ng-click="addNewExpression();" type="button" aria-label="Define Query Criteria"><span class="ng-scope">Define Query Criteria</span><md-tooltip md-direction="top">Here: Provide Conditions To Filter Historic Data Before Calcuting Result!!!
+          </md-tooltip></button>
         </div>
       </md-whiteframe>
     </div>
-    <!-- <button class="md-raised md-button md-ink-ripple" ng-click="test()" type="button" aria-label="Test"><span class="ng-scope">Test</button> -->
   </div>
 </fieldset>
-<div class="publishlayout">
-  <button ng-if="edit && !view" class="md-raised float-right md-primary md-button md-ink-ripple" ng-click="updateHistoricfunction();" type="button" aria-label="Update"><span class="ng-scope">Update</span></button> 
+<div class="publishlayout" layout-sm="column" layout-xs="column">
+  <button ng-if="edit && !view" class="md-raised float-right md-primary md-button md-ink-ripple" ng-click="updateHistoricfunction();" type="button" aria-label="Update"><span class="ng-scope">Update</span></button>
+  <button ng-if="!edit && view" class="md-raised float-right md-primary md-button md-ink-ripple" ng-click="toggleToEdit()" type="button" aria-label="Edit"><span class="ng-scope">Edit</span></button>  
   <button ng-if="!edit && !view" class="md-raised float-right md-primary md-button ng-scope md-ink-ripple" type="submit" ng-disabled="!fndef.outputFields.length" aria-label="save"><span class="ng-scope">save</span></button>
-  <button ng-if="!view" class="md-raised float-right md-button md-ink-ripple" ng-click="cancelhistoricfunctionadd()" type="button" aria-label="Cancel"><span class="ng-scope">Cancel</button>
-  <md-checkbox ng-click="test()" class="float-left ng-scope" ng-show="fndef.watchlist && fndef.outputFields.length" ng-model="Query">
-    View Query Structure
+  <md-checkbox class="float-left ng-scope" ng-model="Query">
+    View JSON Structure
   </md-checkbox>
   <button class="md-raised float-right md-button md-ink-ripple" ng-click="cancelhistoricfunctionadd()" ng-if="view" type="button" aria-label="Back"><span class="ng-scope">Back</span></button>
+  <button ng-if="!view" class="md-raised float-right md-button md-ink-ripple" ng-click="cancelhistoricfunctionadd()" type="button" aria-label="Cancel"><span class="ng-scope">Cancel</button>
 </div>
 <div layout="row" ng-show="Query" class="publishlayout">
-  <pre class="preview2" ><p ng-if="fndef.watchlist">{{query1}}</p>
-<p ng-if="isQuery2">{{query2}}</p>
-<p ng-if="isQuery3">{{query3}}</p></pre>
-</div>
+  <pre class="preview2" >{{fndef | json}}
+  </div>
 </form>
 
