@@ -1,34 +1,37 @@
 <div ng-include src="'/design/designhome/template/subTitleTab.html'"></div>
 <div layout="row" flex class="noSubscriber" layout-align="center center" ng-if="!data.length">
-  <div  flex layout-padding layout-margin layout-align="start">
-    <h2>You are yet to create your Own Functions</h2>
-    <p></p>
-    <md-button class="md-raised md-primary" ui-sref='design.addfunction'>Create</md-button>
-  </div>
+    <div flex layout-padding layout-margin layout-align="start">
+        <h2>You are yet to create your Own Functions</h2>
+        <p></p>
+        <md-button class="md-raised md-primary" ui-sref='design.addfunction'>Create</md-button>
+    </div>
 </div>
 <div>
- <md-list layout-padding>
-   <md-list-item class="md-3-line hover" ng-repeat="item in data | startfrom:currentPage*pageSize | limitTo:pageSize">
-     <span class='md-avatar'><ng-letter-avatar fontSize="20"  charCount=2 data="{{ data[$index].name  }}" shape="round"  avatarcustombgcolor="#20B2AA "></ng-letter-avatar></span>
-     <div class="md-list-item-text" layout="column">
-       <h3>{{ item.name | capitalize}}</h3>
-       <p>{{data[$index].description}}</p>
-     </div>
-     <md-button class="md-fab md-mini md-raised greyBackground" aria-label="Comment">
-       <ng-md-icon icon="mode_edit"></ng-md-icon>
-     </md-button>
-     <md-divider ng-if="!$last"></md-divider>
-   </md-list-item>
-   <div layout='row' layout-align="end center">
-    <md-button class="md-fab md-mini md-raised" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
-      <md-icon>arrow_back</md-icon>
-    </md-button>
-    <p style="margin-right:15px" class="md-subheader">
-      {{currentPage+1}}/{{numberOfPages()}}
-    </p>
-    <md-button class="md-fab md-mini md-raised" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
-      <md-icon>arrow_forward</md-icon>
-    </md-button>
-  </div>
-</md-list>
+    <md-list layout-padding>
+        <md-list-item class="md-3-line hover" ng-repeat="item in data | startfrom:currentPage*pageSize | limitTo:pageSize">
+            <span class='md-avatar'><ng-letter-avatar fontSize="20"  charCount=2 data="{{ data[$index].name  }}" shape="round"  avatarcustombgcolor="#20B2AA "></ng-letter-avatar></span>
+            <div class="md-list-item-text" layout="column">
+                <h3>{{ item.name | capitalize}}</h3>
+                <p>
+                    <span ng-repeat="parameter in data[$index].parameters">
+                    <span ng-if="$first">[</span>{{parameter.name}}<span ng-if="!$last">, </span><span ng-if="$last">]</span></span>
+                </p>
+            </div>
+            <md-button class="md-fab md-mini md-raised greyBackground" ui-sref="design.functionEdit({functionname: '{{item.name}}'})" aria-label="Comment">
+                <ng-md-icon icon="mode_edit"></ng-md-icon>
+            </md-button>
+            <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+        <div layout='row' layout-align="end center">
+            <md-button class="md-fab md-mini md-raised" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+                <md-icon>arrow_back</md-icon>
+            </md-button>
+            <p style="margin-right:15px" class="md-subheader">
+                {{currentPage+1}}/{{numberOfPages()}}
+            </p>
+            <md-button class="md-fab md-mini md-raised" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+                <md-icon>arrow_forward</md-icon>
+            </md-button>
+        </div>
+    </md-list>
 </div>

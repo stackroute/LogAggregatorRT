@@ -1,111 +1,105 @@
 <div layout="column" layout-sm="column" layout-xs="column" layout-padding="" class="functionlayout layout-padding layout-xs-column layout-sm-column layout-column" ng-init="loadFunctionData()">
-	<form ng-submit="create()" >
-		<div layout="row" layout-sm="column" layout-xs="column" class="layout-xs-column layout-sm-column layout-row">
-			<md-input-container flex="50" class="flex-50 md-input-invalid">
-				<label for="input_217"> Name</label>
-				<input ng-required="true" ng-disabled="view" name="functionName" flex="90" type="text" ng-model="functionData.name" class="ng-pristine md-input flex-90 ng-empty ng-invalid ng-invalid-required ng-touched" id="input_217" required="required" aria-invalid="true" style="">
-			</md-input-container>
-			<md-input-container flex="50" class="flex-50">
-				<label for="input_218">DESCRIPTION</label>
-				<input ng-required="true" ng-disabled="view" name="functionDescription" flex="100" type="text" ng-model="functionData.description" class="ng-pristine ng-untouched md-input flex-100 ng-empty ng-invalid ng-invalid-required" id="input_218" required="required" aria-invalid="true">
-			</md-input-container>
-		</div>
-		<div layout-gt-xs="row" layout-xs="row" layout-padding flex layout-wrap>
-			<div  layout="row" data-ng-repeat="choice in parameters" flex-gt-xs="20" >
-				
-				<md-input-container>
-					<label>ADD PARAMETER</label>
-					<input type="text" required ng-disabled="view" ng-model="choice.name" name="" />
-				</md-input-container>	
-				<md-button ng-disabled="view" class="clr" ng-show="parameters.length>1">
-					<md-icon class="material-icons" ng-click="removeParam($index)">close</md-icon>
-				</md-button>		
-			</div>
-			<div flex-gt-xs></div>	
-			<div flex-gt-xs="20">
-				<input type="button" ng-disabled="view" value="ADD PARAMETER" class="addfields md-raised  md-button md-ink-ripple" ng-click="addNewParam()">
-			</div>	
-		</div>
-		<div class="preview"  spellcheck="false">
-			<!-- <span ng-repeat="expr in functionData.expression">{{expr.lhs.name(}}</span>		 -->	
-		</div>
-		
-		<md-whiteframe  class="md-whiteframe-z2 frame " layout="column">
-			<div layout="column" ng-repeat="expr in functionData.expression">
-
-				<div layout="row" layout-sm="row" layout-xs="column">
-					<label class="expression" flex>{{$index +1}})</label>
-					<!-- <span flex="2"></span> -->
-					<md-input-container flex="33">
-						<label>Functions</label>
-						<md-select ng-disabled="view" ng-model="expr.lhs.name">
-
-							<md-option ng-repeat="object in function" ng-click="openDialogBox($event,object,'lhs',$parent.$index)">{{object.name}}</md-option>
-						</md-select>
-					</md-input-container>
-					<span flex="2"></span>
-					<md-input-container layout="column" flex="20">
-						<label>Operator</label>
-						<md-select ng-disabled="view" ng-model="expr.operator.name" >
-							<md-option >ADD +</md-option>
-							<md-option >SUB -</md-option>
-							<md-option >MUL *</md-option>
-							<md-option >DIV /</md-option>
-						</md-select>
-					</md-input-container>
-					<span flex="2"></span>
-					<md-input-container layout="column" flex="33" >
-						<label>Functions</label>
-						<md-select ng-disabled="view" ng-model="expr.rhs.name">
-							<md-option ng-click="openDialogBox($event,object,'rhs',$parent.$index)" ng-repeat="object in function">{{object.name}}</md-option>
-						</md-select>
-					</md-input-container>
-					<md-button ng-disabled="view" class="md-fab float-right md-mini " aria-label="">
-						<md-icon class="material-icons" ng-click="removeExpr($index)">clear</md-icon>
-					</md-button>
-				</div>
-				<div ng-hide="$last" layout="row " layout-align="center center">
-					<label layout="row" style="padding-top:30px;">JOIN WITH</label>
-					<span flex="5"></span>
-					<md-input-container layout="row">
-						<label>Operator</label>
-						<md-select  ng-disabled="view" ng-model="expr.join_By.name" >
-							<md-option >ADD +</md-option>
-							<md-option >SUB -</md-option>
-							<md-option >MUL *</md-option>
-							<md-option >DIV /</md-option>
-						</md-select>
-					</md-input-container>
-				</div>
-			</div>
-		</md-whiteframe>
-		<div layout="column">
-			<div layout layout-align="end center">
-				<md-button class="md-raised" ng-disabled="view" aria-label="newExpression" ng-click="addNewExpr()" >ADD NEW EXPRESSION</md-button>
-			</div>
-			<div layout-gt-xs="row" layout-xs="row" layout-padding flex layout-wrap>
-				<div  layout="row" data-ng-repeat="parameter in functionData.parameters" flex-gt-xs="20" >
-					<md-input-container >
-						<label>{{parameter.name}}</label>
-						<input type="text" ng-model="paramObj[parameter.name]">
-					</md-input-container>
-				</div>
-				<div flex-gt-xs></div>	
-				<div flex-gt-xs="10">
-					<md-button  class="md-raised" ng-disabled="view" ng-click="functionTest()">TEST</md-button>
-				</div>
-				
-			</div>
-			<div layout layout-align="center center" >
-				<!-- <md-button class="md-raised" ng-disabled="view" ng-click="functionTest()">TEST</md-button> -->
-				<md-button class="md-raised" ng-click="functionCancel()">Cancel</md-button>
-				<md-button type="submit" ng-disabled="view" class="md-raised md-primary">SAVE</md-button>
-
-			</div>
-		</div>
-	</form>
-	<div>
-		<md-checkbox ng-model="isViewAsJSON1">View as JSON Structure</md-checkbox>
-		<pre class="jsonStructureExpression1  preview3 " ng-show="isViewAsJSON1">{{functionData | json }}</pre>
-	</div>
+    <form ng-submit="create()">
+        <div layout="row" layout-sm="column" layout-xs="column" class="layout-xs-column layout-sm-column layout-row">
+            <md-input-container flex="50" class="flex-50 md-input-invalid">
+                <label for="input_217"> Name</label>
+                <input ng-required="true" ng-disabled="view" name="functionName" flex="90" type="text" ng-model="functionData.name" class="ng-pristine md-input flex-90 ng-empty ng-invalid ng-invalid-required ng-touched" id="input_217" required="required" aria-invalid="true" style="">
+            </md-input-container>
+            <md-input-container flex="50" class="flex-50">
+                <label for="input_218">DESCRIPTION</label>
+                <input ng-required="true" ng-disabled="view" name="functionDescription" flex="100" type="text" ng-model="functionData.description" class="ng-pristine ng-untouched md-input flex-100 ng-empty ng-invalid ng-invalid-required" id="input_218" required="required" aria-invalid="true">
+            </md-input-container>
+        </div>
+        <div layout-gt-xs="row" layout-xs="row" layout-padding flex layout-wrap>
+            <div layout="row" data-ng-repeat="choice in parameters" flex-gt-xs="20">
+                <md-input-container>
+                    <label>ADD PARAMETER</label>
+                    <input type="text" required ng-disabled="view" ng-model="choice.name" name="" />
+                </md-input-container>
+                <md-button ng-disabled="view" class="clr" ng-show="parameters.length>1">
+                    <md-icon class="material-icons" ng-click="removeParam($index)">close</md-icon>
+                </md-button>
+            </div>
+            <div flex-gt-xs></div>
+            <div flex-gt-xs="20">
+                <input type="button" ng-disabled="view" value="ADD PARAMETER" class="addfields md-raised  md-button md-ink-ripple" ng-click="addNewParam()">
+            </div>
+        </div>
+        <div class="preview" spellcheck="false">
+            <!-- <span ng-repeat="expr in functionData.expression">{{expr.lhs.name(}}</span>		 -->
+        </div>
+        <md-whiteframe class="md-whiteframe-z2 frame " layout="column">
+            <div layout="column" ng-repeat="expr in functionData.expression">
+                <div layout="row" layout-sm="row" layout-xs="column">
+                    <label class="expression" flex>{{$index +1}})</label>
+                    <!-- <span flex="2"></span> -->
+                    <md-input-container flex="33">
+                        <label>Functions</label>
+                        <md-select ng-disabled="view" ng-model="expr.lhs.name">
+                            <md-option ng-repeat="object in function" ng-click="openDialogBox($event,object,'lhs',$parent.$index)">{{object.name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <span flex="2"></span>
+                    <md-input-container layout="column" flex="20">
+                        <label>Operator</label>
+                        <md-select ng-disabled="view" ng-model="expr.operator.name">
+                            <md-option>ADD +</md-option>
+                            <md-option>SUB -</md-option>
+                            <md-option>MUL *</md-option>
+                            <md-option>DIV /</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <span flex="2"></span>
+                    <md-input-container layout="column" flex="33">
+                        <label>Functions</label>
+                        <md-select ng-disabled="view" ng-model="expr.rhs.name">
+                            <md-option ng-click="openDialogBox($event,object,'rhs',$parent.$index)" ng-repeat="object in function">{{object.name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-button ng-disabled="view" class="md-fab float-right md-mini " aria-label="">
+                        <md-icon class="material-icons" ng-click="removeExpr($index)">clear</md-icon>
+                    </md-button>
+                </div>
+                <div ng-hide="$last" layout="row " layout-align="center center">
+                    <label layout="row" style="padding-top:30px;">JOIN WITH</label>
+                    <span flex="5"></span>
+                    <md-input-container layout="row">
+                        <label>Operator</label>
+                        <md-select ng-disabled="view" ng-model="expr.join_By.name">
+                            <md-option>ADD +</md-option>
+                            <md-option>SUB -</md-option>
+                            <md-option>MUL *</md-option>
+                            <md-option>DIV /</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-whiteframe>
+        <div layout="column">
+            <div layout layout-align="end center">
+                <md-button class="md-raised" ng-disabled="view" aria-label="newExpression" ng-click="addNewExpr()">ADD NEW EXPRESSION</md-button>
+            </div>
+            <div layout-gt-xs="row" layout-xs="row" layout-padding flex layout-wrap>
+                <div layout="row" data-ng-repeat="parameter in functionData.parameters" flex-gt-xs="20">
+                    <md-input-container>
+                        <label>{{parameter.name}}</label>
+                        <input type="text" ng-model="paramObj[parameter.name]">
+                    </md-input-container>
+                </div>
+                <div flex-gt-xs></div>
+                <div flex-gt-xs="10">
+                    <md-button class="md-raised" ng-click="functionTest()">TEST</md-button>
+                </div>
+            </div>
+            <div layout layout-align="center center">
+                <!-- <md-button class="md-raised" ng-disabled="view" ng-click="functionTest()">TEST</md-button> -->
+                <md-button class="md-raised" ng-click="functionCancel()">Cancel</md-button>
+                <md-button type="submit" ng-disabled="view" class="md-raised md-primary">SAVE</md-button>
+            </div>
+        </div>
+    </form>
+    <div>
+        <md-checkbox ng-model="isViewAsJSON1">View as JSON Structure</md-checkbox>
+        <pre class="jsonStructureExpression1  preview3 " ng-show="isViewAsJSON1">{{functionData | json }}</pre>
+    </div>
 </div>

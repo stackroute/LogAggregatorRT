@@ -1,31 +1,28 @@
 <md-dialog aria-label="Select Parameters" class="dialo">
-	<form ng-cloak>
-		<md-toolbar>
-			<div class="md-toolbar-tools" layout="row">
-				<h2> Map your Parameters</h2>
-			</div>
-		</md-toolbar>
-
-		<md-dialog-content>
-			<div class="md-dialog-content">
-				<div ng-repeat="key in keys" layout="row">
-					<span  style="padding-top:27px;" flex="30" ng-model="obj[key.id]">{{key.value}}</span>
-					<span flex="90"><md-select ng-model="obj[key.value]">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools" layout="row">
+                <h2> Map your Parameters</h2>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div ng-repeat="key in keys" layout="row">
+                    <span style="padding-top:27px;" flex="30" ng-model="obj[key.id]">{{key.value}}</span>
+                    <span flex="90"><md-select ng-model="obj[key.value]">
 						<md-option data-ng-repeat="parameter in parameters" >{{parameter.name}}</md-option>
 					</md-select></span>
-					
-				</div>
-			</div>
-		</md-dialog-content>
-
-		<md-dialog-actions layout="row">
-			<span flex></span>
-			<md-button class="md-raised" ng-click="cancel()">
-				CANCEL
-			</md-button>
-			<md-button class="md-primary md-raised" ng-click="save()" type="submit"   ng-click="">
-				OK
-			</md-button>
-		</md-dialog-actions>
-	</form>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="md-raised" ng-click="cancel()">
+                CANCEL
+            </md-button>
+            <md-button class="md-primary md-raised" ng-click="save()" type="submit" ng-click="">
+                OK
+            </md-button>
+        </md-dialog-actions>
+    </form>
 </md-dialog>
