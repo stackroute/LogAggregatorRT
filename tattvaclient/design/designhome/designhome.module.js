@@ -9,7 +9,8 @@ angular.module("tattva")
         controller: "HeaderCtrl"
       },
       "content@" : {
-        templateUrl: "/design/designhome/template/designhome.html"
+        templateUrl: "/design/designhome/template/designhome.html",
+        controller: "designController"
       },
       "footer" : {
         templateUrl: "/home/template/footer.html"

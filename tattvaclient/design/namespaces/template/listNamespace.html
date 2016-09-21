@@ -14,7 +14,7 @@
     <md-list ng-cloak layout-align="start center">
         <md-list-item ng-repeat="ns in nameSpaceListdata | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize" ng-click="null" class="md-2-line">
             <div class="" layout="row" layout-align="start center">
-                <ng-letter-avatar fontSize="18" data={{ns.name}} shape="round" charCount="2"></ng-letter-avatar>
+                <ng-letter-avatar fontSize="18" data={{ns.name}} shape="round" avatarcustombgcolor="#339933"  charCount="2" ></ng-letter-avatar>
             </div>
             <div class="" style="width: 500px;">
                 <div class="md-padding md-list-item-text" layout="column" layout-align="start">

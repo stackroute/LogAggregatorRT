@@ -1,8 +1,0 @@
-<div layout="column" style="padding:15px 10px;">
-	<span flex><b>{{user.name}}</b></span>
-	<span flex>{{user.email}}</span>
-</div>
-<md-divider></md-divider>
-<div ng-repeat="topNavItem in userNavItems.topNav" layout="row" layout-align="center center">
-	<a class="linkClr" ui-sref="{{topNavItem.link}}"><md-button class="md-primary md-hue-1" ng-click="ctrl.closePanel()">{{topNavItem.menu}}</md-button></a>
-</div>

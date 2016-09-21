@@ -31,7 +31,7 @@
       <md-subheader class="md-no-sticky">List of User : {{user.length}}</md-subheader>
       <md-divider></md-divider>
       <p ng-if="user.length===0">No Result Found</p>
-      <md-list-item style="cursor:pointer;" class="md-3-line" ng-repeat="person in user | filter:search | startfrom:currentPage*pageSize | limitTo:pageSize" ng-click="showConfirm($index)">
+      <md-list-item style="cursor:pointer;" class="md-3-line" ng-repeat="person in user | startfrom:currentPage*pageSize | limitTo:pageSize" ng-click="showConfirm($index)">
         <span class='md-avatar'><ng-letter-avatar width="40" height="40" fontSize="20" charCount=1 data="{{person.name}}" shape="round"></ng-letter-avatar></span>
         <div class="md-list-item-text" layout="column" disabled>
           <h3 style="text-transform: capitalize;font-weight: bold;">{{ person.name }}</h3>

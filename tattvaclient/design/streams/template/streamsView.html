@@ -13,7 +13,7 @@
     <md-grid-list md-cols="4" md-row-height="100px" md-gutter="12px" >
       <md-grid-tile flex ng-repeat="stream in streamResultData">
         <md-button class="leftpadding" ui-sref="design.edit({ streamName: '{{stream.streamname}}' }) " layout="row" flex>
-          <ng-letter-avatar fontSize="20" data={{stream.instance}} shape="round" charCount="2"></ng-letter-avatar>
+          <ng-letter-avatar fontSize="20" data={{stream.instance}} shape="round" charCount="2" avatarcustombgcolor="#663399"></ng-letter-avatar>
           <h4 class="leftpadding">{{stream.streamname | capitalize}}</h4>
         </md-button>
       </md-grid-tile>

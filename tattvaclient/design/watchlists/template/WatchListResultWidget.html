@@ -1,35 +1,16 @@
-
-<div class="shad">
- <div class="pray" layout="row">{{watchdefn.name}}
-  <md-icon class="md-padding material-icons-cursor float-right" ui-sref="design.viewdata({watchlistName: '{{watchdefn.name}}'})">create</md-icon></div>
-  <md-tabs md-dynamic-height md-border-bottom>
-    <!-- <md-tab label="Graph"> -->
-    <!-- <mygraph type="myresult.charttype"></mygraph> -->
-    <!-- <div ng-include src="getChartTemplate()"></div> -->
-    <!-- <div ng-include src="'/design/watchlists/template/' + myresult.charttype + '.html'"></div> -->
-    <!-- <div ng-include src="'/design/watchlists/template/flow.html'"></div> -->
-    <!-- </md-tab>
-    <md-tab label="log Data">
-    <!- <div ng-include src="'/design/watchlists/template/' + myresult.datatype + '.html'"></div> -->
-    <!-- <div ng-include src="'/design/watchlists/template/finaljsondata.html'"></div>
-  </md-tab>
-  <md-tab label="Flow map">
-  <md-content class="md-padding fix">
-  <watchlistmap watch="watchdata" flex>
-</watchlistmap>
-</md-content>
-</md-tab> -->
-<div ng-repeat="tab in watchdefn.publishers.dashboard.tabs">
-  <md-tab label="{{tab}}">
-    <div ng-include src="'/design/watchlists/template/' + tab + '.html'"></div>
-  </md-tab>
-</div>
-</md-tabs>
-<md-divider></md-divider>
-<!-- <label layout-padding class="editbtn">Add to slide</label> -->
-<!-- <div ng-controller="dashboardcontroller" layout="row" layout-align="end end">
-<div><md-button  class="md-raised md-primary" ng-click="viewWatchlist()">Watch View</md-button></div>
-<div><md-icon class="editbtn material-icons" ng-click="addwatchlist()">add</md-icon></div>
-</div> -->
-<ng-transclude></ng-transclude>
+<div class="shad" flex="100">
+    <div class="pray" flex="100" style="background-color: rgba(158,158,158,0.2);">{{watchdefn.name | camelcase}}
+        <md-icon class="material-icons  float-right" style="padding-left:70px; cursor:pointer" ui-sref="design.viewdata({watchlistName: '{{watchdefn.name}}'})">create</md-icon>
+    </div>
+    <div>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <div ng-repeat="tab in watchdefn.publishers.dashboard.tabs">
+                <md-tab label="{{tab}}">
+                    <div ng-include src="'/design/watchlists/template/' + tab + '.html'"></div>
+                </md-tab>
+            </div>
+        </md-tabs>
+    </div>
+    <md-divider></md-divider>
+    <ng-transclude></ng-transclude>
 </div>

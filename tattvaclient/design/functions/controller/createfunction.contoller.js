@@ -1,8 +1,9 @@
-  angular.module('tattva')
- .controller('functionCreateCtrl', ['$scope', '$http','loadExprData',"functionFactory","$state",'$mdDialog',"functionFactory",
-  function($scope, $http, loadExprData,functionFactory,$state,$mdDialog) {
+ angular.module('tattva')
+ .controller('functionCreateCtrl', ['$scope', '$http','$stateParams','loadExprData',"functionFactory","$state",'$mdDialog',"functionFactory",
+  function($scope, $http,$stateParams, loadExprData,functionFactory,$state,$mdDialog) {
 
     $scope.function=[]; 
+    
     loadExprData.getFunction().then(function(result){
       var data=result.data;
       return data;
@@ -22,21 +23,40 @@
         "returnresult":"",
         "expression": []
       }
+      $scope.view=false;
+      
+
+      if(! $stateParams.view){
+        $scope.edit=true; 
+      }else{
+        $scope.view=true;
+      }
+      if($scope.view){
+        functionFactory.getFunctionByName($stateParams.data.name)
+        .then(function(data) {
+          $scope.functionData = data[0];
+          $scope.parameters=$scope.functionData.parameters;
+        }, function(data) {
+          $scope.error = data.error;
+        }
+        );
+      }
       
     };
-    
-   $scope.parameters = [{id: 'parameter1'}];
-   $scope.removeExpr=function(index){
+
+    $scope.parameters = [{id: 'parameter1'}];
+    $scope.paramObj={};
+    $scope.removeExpr=function(index){
      $scope.functionData.expression.splice(index,1);
      for(i in $scope.functionData.expression)
      {
       var j=i;
       j++;
       $scope.functionData.expression[i].tag=("Expression::"+j);
-     }
-   };
+    }
+  };
 
-   $scope.addNewExpr=function () {
+  $scope.addNewExpr=function () {
     var newExpr={
       "tag":("Expression::"+($scope.functionData.expression.length + 1)),
       "lhs":{
@@ -74,34 +94,42 @@
    "join_By":{
     "type":"operator",
     "name":""
-   }
- };  
-   $scope.functionData.expression.push(newExpr);
-   };
-   $scope.addNewParam = function() {
-     var newItemNo = $scope.parameters.length+1;
-     $scope.parameters.push({'id':'parameter'+newItemNo});
-   };
-   $scope.functionCancel = function(){
-    $state.go("design.function");
   }
-  $scope.create=function () { 
-   functionFactory.saveFunction($scope.functionData)
-   .then(function(data) {
-          //success
-          alert("Function saved successfully!");
-          $state.go("design.function");
-        },
-        function(data) {
-          $scope.error=data.error;
-        })
- }
- $scope.removeParam = function() {
-   var lastItem = $scope.parameters.length-1;
-   $scope.parameters.splice(lastItem);
- };
- $scope.openDialogBox = function(eve,object,side,index) {
+};  
+$scope.functionData.expression.push(newExpr);
+};
+$scope.addNewParam = function() {
+ var newItemNo = $scope.parameters.length+1;
+ $scope.parameters.push({'id':'parameter'+newItemNo});
+};
+$scope.functionCancel = function(){
+  $state.go("design.function");
+}
+$scope.create=function () { 
   $scope.functionData.parameters=$scope.parameters;
+  functionFactory.saveFunction($scope.functionData)
+  .then(function(data) {
+    $mdDialog.show(
+      $mdDialog.alert()
+      .parent(angular.element(document.body))
+      .clickOutsideToClose(true)
+      .title('FUNCTION SAVED SUCCESSFULLY!')
+      .ariaLabel('Alert Dialog ')
+      .ok('OK')
+      );
+
+    $state.go("design.function");
+  },
+  function(data) {
+    $scope.error=data.error;
+  })
+}
+$scope.removeParam = function(index) {
+ console.log(index);
+ console.log($scope.parameters);
+ $scope.parameters.splice(index,1);
+};
+$scope.openDialogBox = function(eve,object,side,index) {
   $mdDialog.show({
     controller: DialogController,
     templateUrl: '/design/functions/template/createFunctionDialog.html',
@@ -110,19 +138,18 @@
      object:object,
      keys:object
    },
-  parent: angular.element(document.body),
+   parent: angular.element(document.body),
    targetEvent: eve,
    clickOutsideToClose:true,
  })
   .then(function(answer) {
    $scope.functionData.expression[index][side].varmap=answer;
-  }, function() {
-  });
- // $scope.functionData.expression=$scope.newExpr;
+ }, function() {
+ });
 };
 
 $scope.getExprAsText =function(){
-  /*return $scope.fieldData.function+"("+$scope.fieldData.functionparam+")";*/
+
 }
 function DialogController($scope, $mdDialog, parameters,object) {
   $scope.keys=[];
@@ -146,7 +173,6 @@ function DialogController($scope, $mdDialog, parameters,object) {
      varmap1.push({'srcvar':$scope.keys[i].value,'targetvar':"" })
    }
    var j=0;
-   /* var keys =Object.keys($scope.obj);*/
    for(var key in $scope.obj)
    {
     varmap1[j].targetvar=$scope.obj[key];
@@ -158,4 +184,69 @@ $scope.cancel = function() {
   $mdDialog.cancel();
 };
 };
+$scope.functionTest=function(){
+  $scope.functionData.parameters=$scope.parameters;
+  
+  console.log($scope.testObj);
+  var arr=[];
+  arr[0]=$scope.functionData;
+  arr[1]=$scope.paramObj;
+
+  $scope.result="";
+  functionFactory.saveTest(arr)
+  .then(function(data) {
+    $scope.result=data.output;
+    if($scope.result!=null)
+    {
+    $mdDialog.show(
+      $mdDialog.alert()
+      .parent(angular.element(document.body))
+      .clickOutsideToClose(true)
+      .title('TEST RESULT')
+      .ariaLabel('Alert Dialog ')
+      .textContent('RESULT:'+$scope.result)
+      .ok('OK')
+      );
+  }
+
+  })
+};
+/*$scope.functionTest = function(eve,index) {
+  $scope.functionData.parameters=$scope.parameters;
+  $mdDialog.show({
+    controller: TestDialogController,
+    templateUrl: '/design/functions/template/TestDialog.html',
+    locals: {
+      parameters: $scope.parameters,
+      functionData:$scope.functionData
+    },
+    parent: angular.element(document.body),
+    targetEvent: eve,
+    clickOutsideToClose:true,
+  })
+  .then(function(answer) {
+
+  }, function() {
+  });
+};
+function TestDialogController($scope, $mdDialog,parameters,functionData) {
+  $scope.parameters = parameters;
+  //console.log($scope.paramObj);
+  $scope.paramObj={}
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+  $scope.test=function(){
+    console.log($scope.paramObj);
+    var arr=[];
+    arr[0]=functionData;
+    arr[1]=$scope.paramObj;
+    console.log(arr);
+    $scope.result="";
+    functionFactory.saveTest(arr)
+    .then(function(data) {
+      $scope.result=data;
+    })
+  };
+};*/
 }])

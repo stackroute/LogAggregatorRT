@@ -1,10 +1,9 @@
- var express = require('express');
- var compositefunction_router = express.Router();
- var compositeFunctionSchema = require('./compositefunction_schema.js');
- var dataProvider = require('../core/datamodelprovider');
- 
- compositefunction_router.getFunctionByName = function(name,orgsite,successCallback,errorCallback){
-  var functionModel = dataProvider.getModel(compositeFunctionSchema,orgsite);
+var compositefunction_router = express.Router();
+var compositeFunctionSchema = require('./compositefunction_schema.js');
+var dataProvider = require('../core/datamodelprovider');
+
+historicQuery_router.getQueryByName = function(name,orgsite,successCallback,errorCallback){
+  var functionModel = dataProvider.getModel(historicQuerySchema,orgsite);
   functionModel.find({name:name},{}, function(err, res){
     if(err){
       return errorCallback(err)
@@ -14,6 +13,25 @@
     }
   });
 }
+
+compositefunction_router.get('/:functionName', function(request, res) {
+  var functionModel = dataProvider.getModel(compositeFunctionSchema,request.user.orgsite);
+  //console.log(request.user.orgsite);
+  functionModel.find({}, function(err, data){
+    if(err){
+      console.log("Error in find functions, error: ", err);
+      res.status(500).json({error:"Internal error occurred..!"})
+    }
+    res.send(data);
+  });
+});
+
+compositefunction_router.post('/test', function(request, res) {
+  var compositeFunctionModule = new compositeFunctionProvider();
+  var result=compositeFunctionModule.execute(request.body[0],request.body[1]);
+  console.log(result.output)
+  res.send(result);
+});
 
 compositefunction_router.get('/', function(request, res) {
   var functionModel = dataProvider.getModel(compositeFunctionSchema,request.user.orgsite);
