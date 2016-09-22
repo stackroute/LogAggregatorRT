@@ -13,9 +13,10 @@
             <div class="md-list-item-text" layout="column">
                 <h3>{{ item.name | capitalize}}</h3>
                 <p>
-                    <span ng-repeat="parameter in data[$index].parameters">
+                    <span ng-repeat="parameter in item.parameters">
                     <span ng-if="$first">[</span>{{parameter.name}}<span ng-if="!$last">, </span><span ng-if="$last">]</span></span>
                 </p>
+                <p>{{item | functionListExpr}}</p>
             </div>
             <md-button class="md-fab md-mini md-raised greyBackground" ui-sref="design.functionEdit({functionname: '{{item.name}}'})" aria-label="Comment">
                 <ng-md-icon icon="mode_edit"></ng-md-icon>

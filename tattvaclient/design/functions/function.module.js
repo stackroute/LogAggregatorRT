@@ -13,7 +13,6 @@ function($stateProvider){
     templateUrl: '/design/functions/template/cfunctions3.html',
     controller: 'functionCreateCtrl',
     params:{
-      data:{},
       view:true
     }
   })

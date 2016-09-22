@@ -23,6 +23,7 @@ angular.module('tattva')
                     $http.get('/compositefunction/' + fkn)
                         .then(function(res) {
                                 //success
+                                console.log(res.data);
                                 resolve(res.data);
                             },
                             function(res) {
