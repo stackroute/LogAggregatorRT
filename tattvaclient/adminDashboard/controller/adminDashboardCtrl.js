@@ -2,6 +2,7 @@ angular.module('tattva').controller("adminDashboardCtrl",['$scope','$http','$sta
 function($scope, $http,$state,adminFactory){
   var currentInstance=null;
   $scope.stats=null;
+  $scope.orgColor={};
   adminFactory.appDetails().then(function(res){
     $scope.sunburstData=res.data;
     // console.log($scope.sunburstData);

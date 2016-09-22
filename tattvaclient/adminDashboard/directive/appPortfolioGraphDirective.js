@@ -5,6 +5,7 @@ angular.module('tattva').directive('portfolio',function(){
     scope:{
       data:"<data",
       stats:"&stats",
+      color:"<color"
       // hover:"&hover"
     },
     controller: ['$scope',function ($scope){
@@ -132,12 +133,14 @@ angular.module('tattva').directive('portfolio',function(){
         .attr("d", arc)
         .style("fill", function(d) {
           if(d.instanceType=="super User"){return tattvaColor;}
-          if(d.instanceType=="organization"){return namespaceColor(d.name)};
-          if(d.instanceType=="namespace"){return namespaceColor(d.name)};
-          if(d.instanceType=="datasource"){return datasourceColor(d.name)};
-          if(d.instanceType=="stream"){return namespaceColor(d.name)}
-          if(d.instanceType=="watchlist"){return datasourceColor(d.name)};
-        })
+          if(d.instanceType=="organization"){
+            scope.color[d.name]=namespaceColor(d.name);
+            return namespaceColor(d.name)};
+            if(d.instanceType=="namespace"){return namespaceColor(d.name)};
+            if(d.instanceType=="datasource"){return datasourceColor(d.name)};
+            if(d.instanceType=="stream"){return namespaceColor(d.name)}
+              if(d.instanceType=="watchlist"){return datasourceColor(d.name)};
+          })
         .on("click", click)
         .on("mouseover",updateLegend)
         // .on("mouseout",removelegend)

@@ -14,7 +14,7 @@
     md-colspan="3"
     ng-click="orgClick($event, org.orgSite)"
     style="background-image: url({{org.orgLogo}}); background-size: contain;background-repeat:no-repeat;background-position:center;cursor:pointer">
-    <md-grid-tile-footer class="footer">
+    <md-grid-tile-footer style="background-color:{{orgColor[org.orgName]}}">
       <h3>{{org.orgName}}</h3>
   </md-grid-tile-footer>
 
