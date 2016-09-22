@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" ng-controller="contributersctrl  ">
   <div layout="column" id="hero" class="full_width">
     <img class="mainImg" src="/images/content1.jpg" alt="" />
     <!-- <ng-md-icon id="start" class="nav-start" ng-click="gotoSlide1()" icon="arrow_drop_down_circle" style="fill: #0CD4D4" size="40"></ng-md-icon> -->
@@ -76,53 +76,12 @@
       </div>
     </div>
   </div>
-
-  <div class="full_width" layout="column" id="slide2">
-    <h1 class="pad">COLLABORATORS</h1>
-    <!-- <ng-md-icon id="start" class="navlast" ng-click="gotoSlide3()" icon="arrow_drop_down_circle" style="fill: #0CD4D4" size="40"></ng-md-icon> -->
-    <div id="slide2Content" autoscroll='false'>
-      <md-grid-list md-cols="4" md-cols-sm="8" md-row-height="60px" md-gutter="40px">
-        <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-          <img class="person" src="/images/shubu.jpg" alt="" />
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-          <img class="person" src="/images/gurleen.jpg" alt="" />
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-          <img class="person" src="/images/tapas.jpg" alt="" />
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-          <img class="person" src="/images/navi.jpg" alt="" />
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-          <img class="person" src="/images/kunju.jpg" alt="" />
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-          <img class="person" src="/images/prassana.jpg" alt="" />
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-          <img class="person" src="/images/rahul.jpg" alt="" />
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-          <img class="person" src="/images/surya.jpg" alt="" />
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-          <img class="person" src="/images/jasjeet.JPG" alt="" />
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-          <img class="person" src="/images/swagat.jpg" alt="" />
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-          <img class="person" src="/images/surya_pic.jpg" alt="" />
-        </md-grid-tile>
-        <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-          <img class="person" src="/images/prarthna.jpg" alt="" />
-        </md-grid-tile>
-
-        <!-- <md-grid-tile md-rowspan="3" md-colspan="1" md-colspan-sm="4" md-colspan-xs="1">
-        <img class="person" src="/images/pooja.jpg" alt="" />
-      </md-grid-tile> -->
-    </md-grid-list>
-  </div>
-</div>
+  <h2>Contributors</h2>
+ <div layout="row" layout-padding layout-align="center center" ng-repeat="row in columns">
+   <div class=" column " ng-repeat="user in row">
+     <a href="{{user.url}} "><img style="border-radius: 1%; " class="person" src="{{user.avatar_url}} " alt=" " />
+       <h5 layout="column " layout-align="center center ">{{user.login}}</h5>
+     </a>
+   </div>
+ </div>
 </div>
