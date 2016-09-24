@@ -7,7 +7,7 @@
 				<mdp-time-picker mdp-placeholder="From Time" mdp-auto-switch="true" ng-model="fromTime"></mdp-time-picker>
 			</div>
 			<div class="publishlayout" layout-sm="column" layout-xs="column">
-				<button class="md-raised float-right md-primary md-button md-ink-ripple" ng-click="showHistoricData();" type="button" aria-label="Start"><span class="ng-scope">Start</span></button>
+				<button ng-disabled="!fromDate || !fromTime" class="md-raised float-right md-primary md-button md-ink-ripple" ng-click="showHistoricData();" type="button" aria-label="Start"><span class="ng-scope">Start</span></button>
 			</div>		
 		</div>
 	</div>
