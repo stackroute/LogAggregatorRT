@@ -7,6 +7,8 @@ var compositeFunctionMapper = require('../../watchexecutor/fieldmappers/composit
 var historicMapper = require('../../watchexecutor/fieldmappers/historicfield');
 var inputMapper = require('../../watchexecutor/fieldmappers/inputvaluefield');
 var constantMapper = require('../../watchexecutor/fieldmappers/constantfield');
+var prevExprResultMapper = require('../../watchexecutor/fieldmappers/prevexprresultfield');
+
 //Operators
 var operatorMapper = require('../../watchexecutor/fieldOperator');
 
@@ -15,8 +17,8 @@ var logger = require('../../../applogger');
 var exprProcessor = function(expr, requiredObject, histQResult, execObj) {
   // logger.debug("Processing expression: ", expr, " with data: ", execObj);
   //process a expression
-  var lhs = mapExprField(expr.watch.lfield, requiredObject, histQResult, execObj.data);
-  var rhs = mapExprField(expr.watch.rfield, requiredObject, histQResult, execObj.data);
+  var lhs = mapExprField(expr.watch.lfield, requiredObject, histQResult, execObj.data, execObj);
+  var rhs = mapExprField(expr.watch.rfield, requiredObject, histQResult, execObj.data, execObj);
   var oprtr = expr.watch.operator;
   var result = operatorMapper.evaluate(oprtr, lhs, rhs);
 
@@ -32,7 +34,7 @@ var exprProcessor = function(expr, requiredObject, histQResult, execObj) {
   return execObj;
 };
 
-function mapExprField(field, requiredObject, histQResult, dataObj) {
+function mapExprField(field, requiredObject, histQResult, dataObj, execObj) {
   var result = undefined;
 
   if (field.fieldType == "DataFields") {
@@ -48,13 +50,15 @@ function mapExprField(field, requiredObject, histQResult, dataObj) {
   } else if (field.fieldType == "Accumulate") {
     result = accumulatorMapper.map(field, dataObj);
   } else if (field.fieldType == "historicData") {
-    for(i in histQResult){
-    result = histQResult[i];
+    for (i in histQResult) {
+      result = histQResult[i];
+    }
+  } else if (field.fieldType == "PrevExprResult") {
+    result = prevExprResultMapper.map(field, execObj, dataObj);
+  } else {
+    result = undefined;
   }
- } else {
-  result = undefined;
-}
-return result;
+  return result;
 }
 
 module.exports = {

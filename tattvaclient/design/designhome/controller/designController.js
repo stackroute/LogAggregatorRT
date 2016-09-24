@@ -23,5 +23,7 @@ angular.module('tattva')
             //console.log(data);
             checkState(data);
         });
+        //console.log($state.current.name);
+
         checkState({ sname: $state.current.name })
     }]);

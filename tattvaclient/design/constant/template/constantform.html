@@ -5,7 +5,7 @@
       <div layout="column" >
         <md-input-container class="md-block" >
           <label>Name</label>
-          <input  required name="name" ng-minlength="3" ng-maxlength="20" ng-model="createconstant.con_name" >
+          <input  required name="name" ng-minlength="3" ng-maxlength="20" ng-model="newconstant.con_name" >
           <div ng-messages="createconstant.name.$error">
             <div ng-message="required">This is required.</div>
             <p ng-message="minlength">Namespace name is too short.</p>
@@ -16,7 +16,7 @@
       <div layout="column">
         <md-input-container class="md-block" >
           <label>Values</label>
-          <input  required name="values" ng-model="createconstant.value" type="text">
+          <input  required name="values" ng-model="newconstant.value" type="text">
           <div ng-messages="createconstant.values.$error">
             <div ng-message="required">This is required.</div>
           </div>

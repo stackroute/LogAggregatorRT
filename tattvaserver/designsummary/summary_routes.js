@@ -38,6 +38,19 @@ summary_router.get('/',function(req, res, next){
       WatchlistModel.count(function(err,count){
         callback(null,{name:"watchlist", value: count});
       });
+    },
+
+    function runningWatchlist(callback){
+      var WatchlistModel = dataProvider.getModel(WatchlistSchema, req.user.orgsite);
+      WatchlistModel.find({},function(err,data){
+        var count=0;
+        for(i in data){
+          if(data[i].status === 'active'){
+            count++;
+          }
+        }
+         callback(null,{name:"actvwatchlist", value: count});
+      });
     }
     //
     // StreamModel.count(function(err,count){

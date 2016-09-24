@@ -1,77 +1,86 @@
 angular.module("tattva")
-.controller('lfield',['$scope', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData','watchlistconfg', function($scope,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData,watchlistconfg) {
-  $scope.dialogueData={};
-// //console.log($scope.wlstdef.namespace);
-var self = this;
-self.simulateQuery = false;
-self.isDisabled    = false;
-self.options       = loadAll();
-self.querySearch   = querySearch;
-self.selectedItemChange = selectedItemChange;
-self.searchTextChange   = searchTextChange;
+  .controller('lfield', ['$scope', '$rootScope', '$mdDialog', '$timeout', '$q', '$log', 'loadExprData', 'watchlistconfg', function($scope, $rootScope, $mdDialog, $timeout, $q, $log, loadExprData, watchlistconfg) {
+    $scope.dialogueData = {};
+    // //console.log($scope.wlstdef.namespace);
+    var self = this;
+    self.simulateQuery = false;
+    self.isDisabled = false;
+    self.options = loadAll();
+    self.querySearch = querySearch;
+    self.selectedItemChange = selectedItemChange;
+    self.searchTextChange = searchTextChange;
 
-if ( $scope.$parent.editNamespace) {
-  self.selectedItem =   $scope.expr.watch.lfield.fieldType;
-    //console.log("Namespace name from namespace ctrl", $scope.$parent.wlstdef.namespace);
-  }
-// @todo Implement filter for loading data
-function querySearch (query) {
-  var results = query ? "aa": self.options,
-  deferred;
-  if (self.simulateQuery) {
-    deferred = $q.defer();
-    $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-    return deferred.promise;
-  } else {
-    return results;
-  }
-}
-function searchTextChange(text) {
-  $log.info('SEARCH Text changed to ' + text);
-}
+    if ($scope.$parent.editNamespace) {
+      self.selectedItem = $scope.expr.watch.lfield.fieldType;
+      //console.log("Namespace name from namespace ctrl", $scope.$parent.wlstdef.namespace);
+    }
+    // @todo Implement filter for loading data
+    function querySearch(query) {
+      var results = query ? "aa" : self.options,
+        deferred;
+      if (self.simulateQuery) {
+        deferred = $q.defer();
+        $timeout(function() { deferred.resolve(results); }, Math.random() * 1000, false);
+        return deferred.promise;
+      } else {
+        return results;
+      }
+    }
 
-function selectedItemChange(item, expr) {
-  if(item === undefined) return;
+    function searchTextChange(text) {
+      $log.info('SEARCH Text changed to ' + text);
+    }
 
-  var dialogTemplate = '/design/watchlists/exprfields/'+item.template +'/'+ item.template +'.html';
+    function selectedItemChange(item, expr) {
+      if (item === undefined) return;
 
-  expr.watch.lfield={};
-  if(expr.watch.lfield.fieldType !== undefined) {
-    expr.watch.lfield.fieldType = item.type;
-  } else if(expr.watch.lfield.fieldType != item.type) {
-    expr.watch.lfield = { fieldType : item.type };
-          // expr.watch.lfield=null;
+      var dialogTemplate = '/design/watchlists/exprfields/' + item.template + '/' + item.template + '.html';
+
+      expr.watch.lfield = {};
+      if (expr.watch.lfield.fieldType !== undefined) {
+        expr.watch.lfield.fieldType = item.type;
+      } else if (expr.watch.lfield.fieldType != item.type) {
+        expr.watch.lfield = { fieldType: item.type };
+        // expr.watch.lfield=null;
+      }
+
+      $scope.showDialog = function(ev) {
+        $mdDialog.show({
+          controller: item.controller,
+          templateUrl: dialogTemplate,
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose: false,
+          escapeToClose: false,
+          locals: { fieldData: expr.watch.lfield, fieldData2: $scope.wlstdef }
+        }).then(function(response) {
+          expr.watch.lfield = response;
+          //console.log("RESOLVED with response: ", response, " data in autocomplete ctrl: ", expr.watch.lfield);
+        }, function(response) {
+          //console.log("** REJECTED ** with response: ", response, " data in autocomplete ctrl: ", expr.watch.lfield);
+        }).finally(function() {})
+      };
+      $scope.showDialog();
+    }
+
+    function loadAll() {
+      var fieldOptions = watchlistconfg.getfieldOption();
+      var fieldOptions1 = [];
+      if ($scope.wlstdef.expressions.length <= 1) {
+        for (var i = 0; i < fieldOptions.length - 1; i++) {
+          fieldOptions1.push(fieldOptions[i]);
         }
+        return fieldOptions1;
+      } else {
+        return fieldOptions;
+      }
 
-        $scope.showDialog = function(ev) {
-          $mdDialog.show({
-            controller: item.controller,
-            templateUrl: dialogTemplate,
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose: false,
-            escapeToClose : false,
-            locals: { fieldData: expr.watch.lfield,fieldData2:$scope.wlstdef}
-          }).then(function(response) {
-            expr.watch.lfield = response;
-        //console.log("RESOLVED with response: ", response, " data in autocomplete ctrl: ", expr.watch.lfield);
-      }, function(response) {
-        //console.log("** REJECTED ** with response: ", response, " data in autocomplete ctrl: ", expr.watch.lfield);
-      }).finally(function() {
-      })
-    };
-    $scope.showDialog();
-  }
+    }
 
-  function loadAll() {
-    var fieldOptions=watchlistconfg.getfieldOption();
-    return fieldOptions;
-  }
-
-  function createFilterFor(query) {
-    var lowercaseQuery = query;
-    return function filterFn(fieldOptions) {
-      return (fieldOptions===(lowercaseQuery));
-    };
-  }
-}]);
+    function createFilterFor(query) {
+      var lowercaseQuery = query;
+      return function filterFn(fieldOptions) {
+        return (fieldOptions === (lowercaseQuery));
+      };
+    }
+  }]);

@@ -1,0 +1,36 @@
+<md-dialog class="watchlistDialog">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Result</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content class="md-padding">
+    <form name="exprRslt" ng-submit="updateBackPublisher()">
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <md-select name="function" ng-model="fieldData.exprtag" required>
+            <label>Select result</label>
+            <md-option ng-repeat="object in expression">{{object.tag}}</md-option>
+          </md-select>
+          <div ng-messages="exprRslt.$error">
+            <div ng-message="required">This is required!</div>
+          </div>
+        </md-input-container>
+      </div>
+  </md-dialog-content>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <md-dialog-actions layout="row">
+    <span flex></span>
+    <md-button ng-click="cancel()"> Cancel </md-button>
+    <md-button type="submit" class="md-primary md-raised"> OK </md-button>
+    </form>
+  </md-dialog-actions>
+</md-dialog>

@@ -152,6 +152,7 @@ angular.module('tattva')
 	$scope.test = function(fndefObj) {
 		setQueryTime();
 		$scope.queryResult="";
+		$scope.loading=true;
 		historicQueryFactory.testHistoricQuery(fndefObj).then(function(data){
 		$scope.queryResult=data;
 		})
@@ -159,6 +160,7 @@ angular.module('tattva')
 
 	$scope.clearQueryResult = function(ev) {
 		$scope.queryResult=undefined;
+		$scope.loading=false;
 	}
 
 }]);

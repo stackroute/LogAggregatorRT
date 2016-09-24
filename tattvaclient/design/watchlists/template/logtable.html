@@ -8,7 +8,7 @@ Packets:{{logs.length}}
             <td ng-repeat="(key,value) in logs[0].logdata">{{key}}</td></tr>
           
         <!-- <tr><td ng-repeat=" (key,value) in logs[0]logdata.commiter">{{key}}</td></tr> -->
-        <tr ng-repeat="data in logs" ng-style='(data.watchresult)?{color:"blue"}:{color:"red"}'>
+        <tr ng-repeat="data in logs" ng-style='(data.watchresult)?{color:"red"}:{color:"blue"}'>
             <td ng-repeat="(key,value) in data.logdata">{{value}}</td>
         </tr>
       <!--     -->

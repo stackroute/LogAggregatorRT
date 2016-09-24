@@ -15,8 +15,8 @@
 					<md-list-item class="md-3-line hover" ng-repeat="item in historicQueryListdata | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize">
 						<span class='md-avatar' ui-sref="design.historicQueryView({ editHistoricQueryData: '{{item.name}}'})"><ng-letter-avatar fontSize="20"  charCount=2 data="{{ historicQueryListdata[$index].name  }}" shape="round" avatarcustombgcolor="	#808000"></ng-letter-avatar></span>
 						<div ui-sref="design.historicQueryView({ editHistoricQueryData: '{{item.name}}'})" class="md-list-item-text" layout="column">
-							<h3>{{ item.name | capitalize}}</h3>
-							<p>{{historicQueryListdata[$index].description}}</p>
+							<h3>{{ item.name | capitalize}}</h3>							
+							<p class="md-body2">{{item | tattvaHistQExpressionFilter}}</p>
 						</div>
 						<md-button class="md-fab md-mini md-raised greyBackground" ui-sref="design.historicQueryEdit({ editHistoricQueryData: '{{item.name}}'})" aria-label="Comment">
 							<ng-md-icon icon="mode_edit"></ng-md-icon>

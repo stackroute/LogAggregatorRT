@@ -5,7 +5,7 @@ angular.module('tattva').directive('logdata', function($interval) {
     // template:'Packets:{{logs.length}}<div ng-repeat="line in logs"><pre>{{$index }} : {{ line | json }}</pre><hr/></div>',
     // template: 'Packets:{{logs.length}}<div><pre>{{ logs | json | logDataFilter}}</pre></div>',
     //It will highlight anomaly on Log data tab
-    template: 'Packets:{{logs.length}}<md-button style="position:fixed;" class="md-fab md-mini md-fab-top-right" aria-label="Content Copy" ngclipboard data-clipboard-action="copy" data-clipboard-target="#copying"><md-icon class="material-icons">content_copy</md-icon></md-button><div id="copying"><p ng-repeat="data in logs" ng-style=\'(data.watchresult)?{color:"blue"}:{color:"red"}\'>{{ data | json }}</p></div>',
+    template: 'Packets:{{logs.length}}<md-button style="position:fixed;" class="md-fab md-mini md-fab-top-right" aria-label="Content Copy" ngclipboard data-clipboard-action="copy" data-clipboard-target="#copying"><md-icon class="material-icons">content_copy</md-icon></md-button><div id="copying"><p ng-repeat="data in logs" ng-style=\'(data.watchresult)?{color:"red"}:{color:"blue"}\'>{{ data | json }}</p></div>',
 
     scope: {
       watchname: "<watchname",

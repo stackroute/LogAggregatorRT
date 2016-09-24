@@ -7,7 +7,6 @@ var dataProvider = require('../core/datamodelprovider');
 <!--save WatchList-->
 watchlist_router.post('/',function (request, response) {
   var watchlistObj = request.body;
-  watchlistObj.status="active";
   watchlistObj.orgsite=request.user.orgsite;
   watchlistObj.createdBy= request.user.name,
   watchlistObj.createdOn= new Date(),
@@ -38,7 +37,6 @@ watchlist_router.put('/:watchlistname',function (request, response) {
   var watchlistObj = request.body;
   watchlistObj["editedBy"] = request.user.name;
   watchlistObj["editedOn"] = new Date();
-  watchlistObj.status="active";
   // var o_id = ObjectId(watchlistObj._id);
   var watchname=watchlistObj.name;
   var WatchListModel = dataProvider.getModel(WatchListSchema, request.user.orgsite);

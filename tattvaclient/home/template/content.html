@@ -1,87 +1,71 @@
 <div class="content" ng-controller="contributersctrl  ">
-  <div layout="column" id="hero" class="full_width">
-    <img class="mainImg" src="/images/content1.jpg" alt="" />
-    <!-- <ng-md-icon id="start" class="nav-start" ng-click="gotoSlide1()" icon="arrow_drop_down_circle" style="fill: #0CD4D4" size="40"></ng-md-icon> -->
-  </div>
-
-  <div class="full_width" id="slide1">
-    <!-- <ng-md-icon id="start" class="nav" ng-click="gotoSlide2()" icon="arrow_drop_down_circle" style="fill: #0CD4D4" size="40"></ng-md-icon> -->
-    <h1 class="md-primary pad">Key Design Solutions & Scope</h1>
-    <div layout="row" layout-xs="column" layout-wrap>
-      <div flex="32">
-        <md-card>
-          <md-card-title>
-            <md-card-title-text>
-              <span class="md-headline">Dynamic Disributed Streaming</span>
-            </md-card-title-text>
-          </md-card-title>
-          <img src="/images/stream.jpg" class="md-card-images" alt="Washed Out">
-          <md-card-content>
-            <p>
-              There is a large class of emerging applications in which data, generated in a distributed environment,
-              is pushed asynchronously to servers for processing.In stream-processing applications, data streams produced by sensors or other data sources are composed and aggregated by operators to
-              produce some output of interest.<br><br>
-              A data stream is a continuous sequence of attribute-value tuples that all conform to some pre-defined schema (sequence of typed attributes).
-              Operators are functions that transform one or more input streams into one or more output streams
-
-            </p>
-          </md-card-content>
-        </md-card>
-      </div>
-      <div flex="32">
-        <md-card>
-          <md-card-title>
-            <md-card-title-text>
-              <span class="md-headline">Multi-Tenancy</span>
-            </md-card-title-text>
-          </md-card-title>
-          <img src="/images/db1.jpg" class="md-card-images" alt="Washed Out" style="height:250px;">
-          <md-card-content>
-            <p>
-              Multi-tenancy is an architecture in which a single instance of a software application serves multiple customers.
-              Each customer is a Tenant.<br><br>
-              A software-as-a-service (SaaS) provider, for example, can run one instance of its application on
-              one instance of a database and provide web access to multiple customers.
-              In such a scenario, each tenant's data is isolated and remains invisible to other tenants.
-              With this approach application infrastructure is shared with a single
-              logical instance of database and business logic is also leveraged across all users.A multi-tenent app
-              archiectute has several key benifts for a  SaaS (Sustainable Software-as-a-Service) provider.
-
-            </p>
-          </md-card-content>
-        </md-card>
-      </div>
-      <div flex="32">
-        <md-card>
-          <md-card-title>
-            <md-card-title-text>
-              <span class="md-headline">Stateless vs Statefull Authentication</span>
-            </md-card-title-text>
-          </md-card-title>
-          <img src="/images/s5.jpg" class="md-card-images" alt="Washed Out">
-          <md-card-content>
-            <p>
-
-
-              In computing, a stateless protocol is a communications protocol that treats each request as an independent transaction that is
-              unrelated to any previous request so that the communication consists of independent pairs of request and response.
-              A stateless protocol does not require the server to retain session information or status about each communications partner for
-              the duration of multiple requests.<br><br>
-              In contrast, a protocol which requires keeping of the internal state on the server is known as a Stateful protocol.
-              A stateless app is an application program that does not record data generated in one session
-
-            </p>
-          </md-card-content>
-        </md-card>
-      </div>
+    <div layout="column" id="hero" class="full_width">
+        <img class="mainImg" src="/images/content1.jpg" alt="" />
+        <!-- <ng-md-icon id="start" class="nav-start" ng-click="gotoSlide1()" icon="arrow_drop_down_circle" style="fill: #0CD4D4" size="40"></ng-md-icon> -->
     </div>
-  </div>
-  <h2>Contributors</h2>
- <div layout="row" layout-padding layout-align="center center" ng-repeat="row in columns">
-   <div class=" column " ng-repeat="user in row">
-     <a href="{{user.url}} "><img style="border-radius: 1%; " class="person" src="{{user.avatar_url}} " alt=" " />
-       <h5 layout="column " layout-align="center center ">{{user.login}}</h5>
-     </a>
-   </div>
- </div>
+    <div class="full_width" id="slide1">
+        <!-- <ng-md-icon id="start" class="nav" ng-click="gotoSlide2()" icon="arrow_drop_down_circle" style="fill: #0CD4D4" size="40"></ng-md-icon> -->
+        <h1 class="md-primary pad">Key Design Solutions & Scope</h1>
+        <div layout="row" layout-xs="column" layout-wrap>
+            <div flex="32">
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Dynamic Disributed Streaming</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <img src="/images/stream.jpg" class="md-card-images" alt="Washed Out">
+                    <md-card-content>
+                        <p>
+                            There is a large class of emerging applications in which data, generated in a distributed environment, is pushed asynchronously to servers for processing.In stream-processing applications, data streams produced by sensors or other data sources are composed and aggregated by operators to produce some output of interest.
+                            <br>
+                            <br> A data stream is a continuous sequence of attribute-value tuples that all conform to some pre-defined schema (sequence of typed attributes). Operators are functions that transform one or more input streams into one or more output streams
+                        </p>
+                    </md-card-content>
+                </md-card>
+            </div>
+            <div flex="32">
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Multi-Tenancy</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <img src="/images/db1.jpg" class="md-card-images" alt="Washed Out" style="height:250px;">
+                    <md-card-content>
+                        <p>
+                            Multi-tenancy is an architecture in which a single instance of a software application serves multiple customers. Each customer is a Tenant.
+                            <br>
+                            <br> A software-as-a-service (SaaS) provider, for example, can run one instance of its application on one instance of a database and provide web access to multiple customers. In such a scenario, each tenant's data is isolated and remains invisible to other tenants. With this approach application infrastructure is shared with a single logical instance of database and business logic is also leveraged across all users.A multi-tenent app archiectute has several key benifts for a SaaS (Sustainable Software-as-a-Service) provider.
+                        </p>
+                    </md-card-content>
+                </md-card>
+            </div>
+            <div flex="32">
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Stateless vs Statefull Authentication</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <img src="/images/s5.jpg" class="md-card-images" alt="Washed Out">
+                    <md-card-content>
+                        <p>
+                            In computing, a stateless protocol is a communications protocol that treats each request as an independent transaction that is unrelated to any previous request so that the communication consists of independent pairs of request and response. A stateless protocol does not require the server to retain session information or status about each communications partner for the duration of multiple requests.
+                            <br>
+                            <br> In contrast, a protocol which requires keeping of the internal state on the server is known as a Stateful protocol. A stateless app is an application program that does not record data generated in one session
+                        </p>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </div>
+    </div>
+    <h2>Contributors</h2>
+    <div layout="row" layout-padding layout-align="none center" ng-repeat="row in columns">
+        <div class=" column " ng-repeat="user in row">
+            <a href="{{user.url}} "><img style="border-radius: 1%; " class="person" src="{{user.avatar_url}} " alt=" " />
+                <h5 layout="column " layout-align="center center ">{{user.login}}</h5>
+            </a>
+        </div>
+    </div>
 </div>
