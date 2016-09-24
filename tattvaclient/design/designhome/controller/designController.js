@@ -20,9 +20,9 @@ angular.module('tattva')
             }
         }
         $rootScope.$on("index", function(event, data) {
-            console.log(data);
+            //console.log(data);
             checkState(data);
         });
-        console.log($state.current.name);
+        //console.log($state.current.name);
         checkState({ sname: $state.current.name })
     }]);

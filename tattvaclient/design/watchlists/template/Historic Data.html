@@ -1,3 +1,26 @@
-<!-- <md-content class="md-padding fix" ng-if="watchdefn.publishers.dashboard.graphType === 'line'">
-  <historic-linear-chart watchname="watchdefn.name" orgsite="watchdefn.orgsite" eventobj="eventobj" configobj="watchdefn.publishers.dashboard"></linear-chart>
-</md-content> -->
+<md-content layout ng-controller="historicDataCtrl" flex="100" class="md-padding fix" ng-if="watchdefn.publishers.dashboard.graphType === 'line'" style="padding:0px;">
+	<div ng-hide="HistoricData" layout flex layout-align="center center">
+		<div class="md-whiteframe-8dp" flex="40" layout="column" layout-padding layout-sm="column" layout-xs="column" style="min-width: 360px; !important">
+			<label class="md-title" layout layout-padding layout-align="center center">Watch Historic Data From Time :</label>
+			<div layout="row" layout-xs="column" layout-align="center center">
+				<mdp-date-picker mdp-placeholder="From Date" ng-model="fromDate"></mdp-date-picker>
+				<mdp-time-picker mdp-placeholder="From Time" mdp-auto-switch="true" ng-model="fromTime"></mdp-time-picker>
+			</div>
+			<div class="publishlayout" layout-sm="column" layout-xs="column">
+				<button class="md-raised float-right md-primary md-button md-ink-ripple" ng-click="showHistoricData();" type="button" aria-label="Start"><span class="ng-scope">Start</span></button>
+			</div>		
+		</div>
+	</div>
+	<div ng-if="HistoricData" flex>
+		<historic-linear-chart watchname="watchdefn.name" orgsite="watchdefn.orgsite" configobj="watchdefn.publishers.dashboard" control="focusinControl" flex></historic-linear-chart> 
+	</div>
+	<div ng-show="HistoricData" layout="column" layout-align="end end" layout-sm="column" layout-xs="column">
+		<div layout="column" layout-align="end center">
+			<md-button class="md-fab md-mini md-raised" ng-if="focusinControl.skip" ng-click="focusinControl.skip=focusinControl.skip-300;focusinControl.renderGraph();"><md-icon>arrow_back</md-icon></md-button>
+			<md-button class="md-fab md-mini md-raised" ng-if="focusinControl.records" ng-click="focusinControl.skip=focusinControl.skip+300;focusinControl.renderGraph();"><md-icon>arrow_forward</md-icon></md-button>
+		</div>     
+		<md-button class="md-fab md-mini md-raised greyBackground" ng-click="HistoricData=0;" type="button" aria-label="clear" style="background-color: {{focusinControl.bColor}}"><i class="material-icons" layout layout-padding layout-align="center center">&#xE047;</i><md-tooltip md-direction="left">
+			{{focusinControl.text}}
+		</md-tooltip></md-button>
+	</div>
+</md-content>
