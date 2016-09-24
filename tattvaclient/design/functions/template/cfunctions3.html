@@ -3,7 +3,7 @@
         <div layout="row" layout-sm="column" layout-xs="column" class="layout-xs-column layout-sm-column layout-row">
             <md-input-container flex="50" class="flex-50 md-input-invalid">
                 <label for="input_217"> Name</label>
-                <input ng-required="true" ng-disabled="view" name="functionName" flex="90" type="text" ng-model="functionData.name" class="ng-pristine md-input flex-90 ng-empty ng-invalid ng-invalid-required ng-touched" id="input_217" required="required" aria-invalid="true" style="">
+                <input pattern=".{5,15}" required title="5 to 15 characters" ng-required="true" ng-disabled="view" name="functionName" flex="90" type="text" ng-model="functionData.name" class="ng-pristine md-input flex-90 ng-empty ng-invalid ng-invalid-required ng-touched" id="input_217" required="required" aria-invalid="true" style="">
             </md-input-container>
             <md-input-container flex="50" class="flex-50">
                 <label for="input_218">DESCRIPTION</label>
