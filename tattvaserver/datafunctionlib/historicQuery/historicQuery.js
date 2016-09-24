@@ -100,10 +100,10 @@ module.exports=function()
           }
         }
         else{
-          for(dataField in queryObject.outputFields[field].dataFields){
-            var functionResult = queryObject.outputFields[field].dataFields[dataField];
-            groupAggregate[functionResult]="'$"+functionResult+"'";
-          }
+          // for(dataField in queryObject.outputFields[field].dataFields){
+          //   var functionResult = queryObject.outputFields[field].dataFields[dataField];
+          //   groupAggregate[functionResult]="'$"+functionResult+"'";
+          // }
         }
       }
 

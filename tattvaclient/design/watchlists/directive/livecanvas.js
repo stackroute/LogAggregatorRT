@@ -1,7 +1,7 @@
 angular.module('tattva').directive('linearChart', function($interval) {
     return {
         restrict: 'EA',
-        template: '<div id="container">',
+        template: '<div id="container"></div>',
         scope: {
             watchname: "<watchname",
             orgsite: "<orgsite",
@@ -10,8 +10,9 @@ angular.module('tattva').directive('linearChart', function($interval) {
         },
         link: function(scope, elem, attrs) {
             var graphData = [];
+
             var graphLineColor = "#0000b3";
-            var maxData = 30;
+            var maxData = 300;
             var updateInterval = 1000;
             var xattr = scope.configobj.xaxis;
             var yattr = scope.configobj.yaxis;
@@ -19,17 +20,15 @@ angular.module('tattva').directive('linearChart', function($interval) {
             var yattrValue = yattr.replace(/([A-Z]+)*([A-Z][a-z])/g, "$1 $2").toUpperCase();
             var parsedDate = null;
             var normalTickColor = "blue";
-
+            var anomalyTickColor = "red";
 
             //Generate a unique ID for each graph div, so that data is not mixed up and each graph is plotted/updated individually
-
             var chartElemId = 'cntr-' + scope.watchname.replace(/\s+/g, '-').toLowerCase();
             var cntr = angular.element('<div id="' + chartElemId + '"></div>');
             elem.append(cntr);
 
             var chart = new CanvasJS.Chart(chartElemId, {
                 zoomEnabled: true,
-
                 animationEnabled: true,
                 title: {
                     text: ""
@@ -49,7 +48,6 @@ angular.module('tattva').directive('linearChart', function($interval) {
                     titleFontSize: 12,
                     labelFontSize: 10
                 },
-
                 data: [{
                     type: "spline",
                     markerSize: 8,
@@ -57,9 +55,7 @@ angular.module('tattva').directive('linearChart', function($interval) {
                     dataPoints: graphData
                 }]
             });
-            chart.render();
-
-
+            //chart.render();
 
             $interval(function() {
                 chart.render();
@@ -78,22 +74,20 @@ angular.module('tattva').directive('linearChart', function($interval) {
                 //changing the color of anomalies and pushing the data
 
                 graphData.push({
-                    // click:onClick,
                     x: parsedDate,
                     y: data.logdata[yattr],
-                    color: normalTickColor,
-
+                    color: normalTickColor
                 });
-
                 if (data.watchresult) {
-                    normalTickColor = 'blue';
+                    //console.log("anamoly");
+                    normalTickColor = anomalyTickColor;
                 } else {
-                    normalTickColor = 'red';
+                    //console.log("not an anamoly");
+                    normalTickColor = 'blue';
                 }
 
                 //prune excess data, no point in keeping it accumulated
                 if (graphData.length > maxData) {
-
                     graphData.shift();
                 }
                 //updateChart();

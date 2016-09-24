@@ -22,7 +22,7 @@
           </md-input-container>
         </div>
         <div flex layout layout-align="center center" >
-          <label class="md-title" layout flex="35">Define DataSchema for NameSpace</label>
+          <label class="md-title" layout layout-align="center center" flex>Define DataSchema for NameSpace</label>
         </div>
         <div flex></div>
         <div  flex layout>
@@ -86,7 +86,7 @@
           <div flex></div>
 
           <div layout-align="right right" layout="column" flex="40">
-            <textarea class="uploadJSONFormat preview2 md-body-2" placeholder="Paste Sample Data JSON format here" ng-click="hideError()" ng-change="uploadJSON(nameSpace.uploadJSONText);restructureTextArea();" name="JSONFormat" ng-model="nameSpace.uploadJSONText" required></textarea>
+            <textarea id="jsonSample" ng-keydown="autoExpand($event)" class="uploadJSONFormat preview2 md-body-2" placeholder="Paste Sample Data JSON format here" ng-click="hideError()" ng-change="uploadJSON(nameSpace.uploadJSONText);restructureTextArea();" name="JSONFormat" ng-model="nameSpace.uploadJSONText" required></textarea>
             <div ng-messages="createNameSpace.description.$error">
               <p id="errorField" ng-model="parsingError">{{parsingError}}</p>
             </div>
