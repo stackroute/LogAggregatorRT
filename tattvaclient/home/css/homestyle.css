@@ -46,11 +46,11 @@ md-list-item a {
 }
 
 .person{
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   box-shadow: -1px 0px 5px 1px #0A6969;
-  padding: 10px;
+  padding: 20px;
 }
 
 .footer-margin-top {
@@ -103,4 +103,8 @@ md-list-item a {
 
 *[id^='menu_container']{
   margin-top: 58px;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
 }

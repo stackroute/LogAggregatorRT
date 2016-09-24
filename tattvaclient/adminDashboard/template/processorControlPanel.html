@@ -1,31 +1,24 @@
-<!-- <div style="margin-top:100px;margin-left:30px;">
-  <div flex="100">
-    <md-content>
-      <h3 class="md-title">Active Watchlists : </h3>
-    </md-content>
-  </div>
-  <div flex="100">
-    <md-content>
-      <h3 class="md-title">Active Processors : {{nop}}</h3>
-    </md-content>
-  </div> -->
-
-<div style="margin-top:100px;margin-left:30px;">
-<div layout="row" layout-align="center center">
-  <!-- <div><heatmap data="procObj" filter="watchtaskfilter" processorName="procName">
-  </heatmap></div> -->
-  <div ng-repeat="(procName, procObj) in processors">
-    <heatmap data="procObj" filter="watchtaskfilter" processorName="procName" style="min-height: 250px;">
-    </heatmap>
-  </div>
-  </heatmap>
-</div>
-</div>
-
-  <!-- <div ng-repeat="(procName, procObj) in processors">
-    <div>
-      <heatmap data="procObj" filter="watchtaskfilter" processorName="procName">
-      </heatmap>
+<div layout="row" style="margin-top:70px;">
+    <div flex="100" style="background-color: rgba(158,158,158,0.2);">
+        <h3 class="subh">Process Control Panel</h3>
     </div>
-  </div> -->
-<!-- </div> -->
+</div>
+<br>
+<div layout="column">
+    <div layout="row">
+        <div flex="30">
+            <div ng-repeat=" watchn in processors" >
+                <div ng-repeat="watchl in watchn['tasks']" ng-style="{color: watchl.color}" >
+                    <h3>{{watchl.watchName}}</h3>
+                </div>
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <div ng-repeat="(procName, procObj) in processors ">
+            <heatmap data="procObj " filter="watchtaskfilter " processorName="procName " style="min-height: 250px;">
+            </heatmap>
+        </div>
+    </div>
+</div>
+
+  

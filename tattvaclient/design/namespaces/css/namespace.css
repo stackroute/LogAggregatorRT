@@ -36,9 +36,16 @@
 }
 
 .uploadJSONFormat {
-    height: 200px !important;
+    min-height: 200px !important;
+    height:auto;
+    overflow:hidden;
     width: 98%;
     border: 1px solid #BDBDBD;
+    -webkit-transition: height 2s ease;
+    -moz-transition: height 2s ease;
+    -ms-transition: height 2s ease;
+    -o-transition: height 2s ease;
+    transition: height 2s ease;
 }
 
 .NamespaceListCardHeader {
@@ -94,7 +101,7 @@ pre.datajson.ng-binding.ng-scope.layout-align-center-center {
 }
 
 .md-button.md-fab {
-   z-index: 0;
+ z-index: 0;
 }
 
 .greyBackground{

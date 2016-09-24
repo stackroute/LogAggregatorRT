@@ -4,7 +4,7 @@
       <div layout="row" layout-sm="column" layout-xs="column">
         <md-input-container flex="50">
           <label>Watch List Name</label>
-          <input ng-required="true" name="watchlistName" flex="90" type="text" ng-model="wlstdef.name">
+          <input ng-required="true" name="watchlistName" ng-disabled="disableName" flex="90" type="text" ng-model="wlstdef.name">
           <div flex layout-align="right" ng-messages="watchlistcreate.watchlistName.$error" class="error" id="myerr" role="alert">
             <div ng-message-exp="['required']">
               WatchList Name is required
@@ -178,7 +178,7 @@
       <span flex></span>
       <div style="float:right;">
         <md-button class="md-raised" ng-click="watchlistCancel()">Cancel</md-button>
-        <md-button class="md-raised md-primary" ng-click='showEditConfirm($event)' ng-if="editFlag">Edit</md-button>
+        <md-button class="md-raised md-primary" ng-click='showEditConfirm($event);' ng-if="editFlag">Edit</md-button>
         <md-button type="submit" class="md-raised md-primary" ng-if="!editFlag" ng-disabled=!publishToDashboard ">save</md-button>
         <!-- <md-button class="md-raised md-warn " ng-click='showRemoveConfirm($event)' ng-if="editFlag ">Remove</md-button> -->
       </div>
