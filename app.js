@@ -33,6 +33,7 @@ var Orguser_router = require('./tattvaserver/organisation/orgRoutes');
 var admin_router = require('./tattvaserver/adminDashboard/admin_routes');
 var distwatchloop_router = require('./tattvaserver/watchloop/distwatchloop_routes');
 // var watchloopExecutor = require('./tattvaserver/watchloop/watchlooprunner.js')
+var notify = require('./tattvaserver/notifications/notify');
 
 //Express App created
 var app = express();

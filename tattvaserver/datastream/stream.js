@@ -6,10 +6,10 @@ var streamSchema=new mongoose.Schema({
   "description": {type: String},
   "namespace":{type: String},
   "instance":{type:String},
-  "createdBy":{type:String},
-  "createdOn":{type:Date},
-  "editedBy":{type:String},
-  "editedOn":{type:Date},
+  "createdBy":{ type: String},
+  "createdOn": { type : Date, default : Date.now },
+  "editedBy": { type: String },
+  "editedOn": { type : Date, default : Date.now },
   "status":{type:String, required:true},
   "query": [
     {

@@ -3,7 +3,11 @@ var compositeFunctionSchema = new mongoose.Schema({
 	"name":{type:String},
 	"description": {type:String},
 	"parameters":[{"id":{type:String},
-  "name":{type:String}
+  "name":{type:String},
+  "createdBy":{ type: String},
+  "createdOn": { type : Date, default : Date.now },
+  "editedBy": { type: String },
+  "editedOn": { type : Date, default : Date.now }
   }],
 "returnresult":{type:String},
 "expression": [

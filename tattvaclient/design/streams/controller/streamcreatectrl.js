@@ -1,5 +1,5 @@
 angular.module('tattva')
-.controller('streamCreateCtrl', ['$scope', '$http','namespaceFactory', 'LoadDataSources','streamsservice','$stateParams','streamFactory','$state', function($scope, $http, namespaceFactory, LoadDataSources,streamsservice, $stateParams,streamFactory,$state){
+.controller('streamCreateCtrl', ['$rootScope','$scope', '$http','namespaceFactory', 'LoadDataSources','streamsservice','$stateParams','streamFactory','$state', function($rootScope,$scope, $http, namespaceFactory, LoadDataSources,streamsservice, $stateParams,streamFactory,$state){
 
   $scope.streamsData={
     queryBuilder : [],
@@ -79,18 +79,39 @@ angular.module('tattva')
 
   $scope.save=function(){
     if ($stateParams.streamName) {
-      // console.log("streams=====",$stateParams.streamName);
-        // console.log(res.data.error);
-        // $scope.resError = res.data.error;
+
       var streamData={namespace : $scope.user_namespace , instance : $scope.user_instance , streamname : $scope.streamsData.user_streamName, description : $scope.streamsData.stringDescription , query : $scope.streamsData.queryBuilder };
-      streamsservice.saveEditedStream(streamData);
+    streamsservice.saveEditedStream(streamData).then(function(success){
+        console.log("edited",success.data);
+        var arr = [];
+
+        arr.push(success.data.editedBy);
+        arr.push("updated the stream");
+        arr.push(success.data.streamname);
+        arr.push("on");
+        arr.push(moment().startOf(success.data.editedOn).format('MMMM Do YYYY, h:mm:ss a'));
+
+        $rootScope.socket1.emit('notification',arr);
+      },function(error){
+
+        $scope.resError = error.data.error;
+      });
       $scope.editStreamFlag = true;
     }
     else {
       var streamData={namespace : $scope.user_namespace , instance : $scope.user_instance, streamname : $scope.streamsData.user_streamName, description : $scope.streamsData.stringDescription , query : $scope.streamsData.queryBuilder };
       // console.log("streamData = ",streamData);
       streamsservice.saveStream(streamData).then(function(successCB){
-        console.log(streamData);
+        //console.log("created",successCB.data);
+        var arr = [];
+        //console.log("chandan",$scope.nameSpace.editedOn);
+        arr.push(successCB.data.createdBy);
+        arr.push("created the stream");
+        arr.push(successCB.data.streamname);
+        arr.push("on");
+        arr.push(moment().startOf(successCB.data.createdOn).format('MMMM Do YYYY, h:mm:ss a'));
+        //console.log(arr);
+        $rootScope.socket1.emit('notification',arr);
         // $scope.showAlert("Stream saved successfully");
         // var savedDialog = $mdDialog.confirm()
         //                         .title('Stream')

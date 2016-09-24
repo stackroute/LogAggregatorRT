@@ -1,5 +1,5 @@
 angular.module('tattva')
-.controller('historicQueryFormCtrl',['$scope', '$stateParams', '$filter','historicQueryFactory', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData','$http','$mdpDatePicker', '$mdpTimePicker', '$state', function($scope,$stateParams,$filter,historicQueryFactory,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData,$http,$mdpDatePicker,$mdpTimePicker,$state){
+.controller('historicQueryFormCtrl',['$rootScope','$scope', '$stateParams', '$filter','historicQueryFactory', '$rootScope','$mdDialog','$timeout', '$q', '$log','loadExprData','$http','$mdpDatePicker', '$mdpTimePicker', '$state', function($rootScope,$scope,$stateParams,$filter,historicQueryFactory,$rootScope,$mdDialog,$timeout, $q, $log,loadExprData,$http,$mdpDatePicker,$mdpTimePicker,$state){
 	
 	$scope.fndef={};
 	$scope.timeFieldOption=[];
@@ -60,6 +60,16 @@ angular.module('tattva')
 	$scope.savehistoricfunction=function(ev) {
 		setQueryTime();
 		historicQueryFactory.saveHistoricQuery($scope.fndef).then(function(data) {
+			//console.log("created",data);
+			var arr = [];
+			//console.log("chandan",data.editedOn);
+			arr.push(data.createdBy);
+			arr.push("created the historic querry");
+			arr.push(data.name);
+			arr.push("on");
+			arr.push(moment().startOf(data.editedOn).format('MMMM Do YYYY, h:mm:ss a'));
+			//console.log(arr);
+			$rootScope.socket1.emit('notification',arr);
 			$mdDialog.show(
 				$mdDialog.alert()
 				.parent(angular.element(document.querySelector('#popupContainer')))
@@ -98,6 +108,16 @@ angular.module('tattva')
 	$scope.updateHistoricfunction=function(ev){
 		setQueryTime();
 		historicQueryFactory.setHistoricQueryDetails($scope.fndef,$scope.fndef.name).then(function(data) {
+			//console.log("updated",data);
+			var arr = [];
+			//console.log("chandan",data.editedOn);
+			arr.push(data.editedBy);
+			arr.push("update the historic querry");
+			arr.push(data.name);
+			arr.push("on");
+			arr.push(moment().startOf(data.editedOn).format('MMMM Do YYYY, h:mm:ss a'));
+			//console.log(arr);
+			$rootScope.socket1.emit('notification',arr);
 			$mdDialog.show(
 				$mdDialog.alert()
 				.parent(angular.element(document.querySelector('#popupContainer')))

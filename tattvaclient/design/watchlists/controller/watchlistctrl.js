@@ -1,6 +1,6 @@
 angular.module("tattva")
-  .controller('WatchListCtrl', ['$scope', '$mdDialog', '$log', "$state", 'loadExprData', 'saveToDB', '$stateParams', 'selectedWlstdef', 'watchlistconfg',
-    function($scope, $mdDialog, $log, $state, loadExprData, saveToDB, $stateParams, selectedWlstdef, watchlistconfg) {
+  .controller('WatchListCtrl', ['$rootScope','$scope', '$mdDialog', '$log', "$state", 'loadExprData', 'saveToDB', '$stateParams', 'selectedWlstdef', 'watchlistconfg',
+    function($rootScope,$scope, $mdDialog, $log, $state, loadExprData, saveToDB, $stateParams, selectedWlstdef, watchlistconfg) {
       $scope.loadWatchlistData = function() {
         $scope.wlstdef = {
           namespace: "",
@@ -85,6 +85,16 @@ angular.module("tattva")
           saveToDB.editwatchlistdata($scope.wlstdef)
             .then(
               function(res) {
+                // console.log(res);
+                //console.log("chandan",$scope.nameSpace.editedOn);
+                var arr = [];
+                arr.push(res.editedBy);
+                arr.push("update the watchlist");
+                arr.push(res.name);
+                arr.push("on");
+                arr.push(moment().startOf(res.editedOn).format('MMMM Do YYYY, h:mm:ss a'));
+                //console.log(arr);
+                $rootScope.socket1.emit('notification',arr);
                 console.log("ctrl success");
                 $scope.showWatchManager();
               },
@@ -94,6 +104,15 @@ angular.module("tattva")
           saveToDB.savewatchlistdata($scope.wlstdef)
             .then(
               function(res) {
+                //console.log(res);
+                var arr = [];
+                arr.push(res.createdBy);
+                arr.push("created the watchlist");
+                arr.push(res.name);
+                arr.push("on");
+                arr.push(moment().startOf(res.createdOn).format('MMMM Do YYYY, h:mm:ss a'));
+                //console.log(arr);
+                $rootScope.socket1.emit('notification',arr);
                 console.log("ctrl success");
                 $scope.showWatchManager();
               },

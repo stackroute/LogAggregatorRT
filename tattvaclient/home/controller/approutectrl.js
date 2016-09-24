@@ -5,7 +5,16 @@ angular.module('tattva')
         "AuthService",
         "$rootScope",
         function($scope, $state, AuthService, $rootScope) {
-
+           // $scope.org = AuthService.getCurrentUser();
+            //console.log($scope.org.orgsite);
+            // $rootScope.socket1 = io('/'+$scope.org.orgsite);
+            // $rootScope.socket1.on('notification',function(msg){
+            //     //console.log(msg);
+            //     if(!$rootScope.notify) 
+            //     $rootScope.notify=[]
+            //     $rootScope.notify.unshift(msg);
+            //     //console.log($rootScope.notify);
+            // });
             $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {
                 //Sates which don't need authentication
                 //login, tattva, signout

@@ -70,12 +70,18 @@
 
  compositefunction_router.post("/:functionName", function(req, res) {
      var functionModel = dataProvider.getModel(compositeFunctionSchema, req.user.orgsite);
+     var compositedata = req.body;
+     req.body.createdBy= req.user.name;
+        req.body.createdOn= new Date();
+        req.body.editedBy= req.user.name;
+        req.body.editedOn= new Date();
      var newfunction = new functionModel(req.body);
+
      newfunction.save(function(err, savedFunction) {
          if (err) {
              return res.status(400).json(err);
          } else {
-             return res.status(200).json(savedFunction);
+             return res.status(200).json(compositedata);
          }
      });
  });

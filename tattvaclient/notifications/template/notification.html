@@ -1,33 +1,33 @@
 <div>
-	<div layout="row" flex class="noSubscriber" layout-align="center center" ng-if="notifyerror">
-		<div  flex layout-padding layout-margin layout-align="start">
-			<h2>You have no pending notifications to catchup</h2>
-		</div>
-	</div>
-	<div  ng-if="!notifyerror" class="content">
-		<div class="subtitle" layout="row">
-			<div flex="90" layout="column" layout-padding style="color:#6b7171;font-weight: bold;">
-				<span style="text-transform: uppercase;">Notifications</span>
-			</div>
-		</div>
-		<div layout="row" layout-align="center center">
-			<md-content  layout-padding>
-				<md-list flex="">
-					<md-list-item class="md-3-line" ng-repeat="item in notify" ng-click="null">
-						<span class='md-avatar'><ng-letter-avatar fontSize="20" width="40" height="40" data={{item.who}} shape="round" charCount="1"></ng-letter-avatar></span>
-						<div flex="90" layout="row" style="">
-							<p style="line-height: 25px;"><b>{{item.who+" "}}</b>{{item.did+" "}}
-								<span><a href="" style="color:black;font-size:14px;"><u>{{item.what}}</u></a></span>
-								<span><a href="" style="color:black;font-size:14px;">{{"on"+" "}}<u>{{item.where}}</u></a></span>
-								<span style="font-size:14px;color:#8c8c8c;">{{" "+item.when+" "}}</span></p>
-							</div>
-							<md-divider ng-if="!$last"></md-divider>
-						</md-list-item>
-					<section layout="row" layout-align="center center" >
+    <div layout="row" ng-if="notify || notify.length!=0" ng-hide="notify.length >0" flex class="noSubscriber" layout-align="center center">
+        <div flex layout-padding layout-margin layout-align="start">
+            <h2>You have no pending notifications to catchup</h2>
+        </div>
+    </div>
+    <div class="content" ng-if="notify && notify.length>0">
+        <div class="subtitle" layout="row">
+            <div flex="90" layout="column" layout-padding style="color:#6b7171;font-weight: bold;">
+                <span style="text-transform: uppercase;">Notifications</span>
+            </div>
+        </div>
+        <div layout="row" layout-align="center center">
+            <md-content layout-padding>
+                <md-list flex="">
+                    <md-list-item class="md-3-line" ng-click="null" ng-repeat="item in notify | limitTo : 10">
+                        <span class='md-avatar'><ng-letter-avatar fontSize="20" width="40" height="40" data={{item[0]}} shape="round" charCount="1"></ng-letter-avatar></span>
+                        <div flex="90" layout="row">
+                            <p style="line-height: 25px;"><b>{{item[0] | camelcase}}</b>{{" "+item[1]+" "}}
+                                <span><a href="" style="color:black;font-size:14px;"><u><b>{{item[2]}}</b></u></a></span>
+                                <span>{{" "+item[3]+ " "}}</span>
+                                <span style="font-size:14px;color:#8c8c8c;">{{item[4]}}</span></p>
+                        </div>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+                    <!-- <section layout="row" layout-align="center center" >
 						<md-button class="md-primary md-hue-1" ng-click="showDialog($event)">Load More</md-button>
-					</section>
-				</md-list>
-			</md-content>
-		</div>
-	</div>
+					</section> -->
+                </md-list>
+            </md-content>
+        </div>
+    </div>
 </div>

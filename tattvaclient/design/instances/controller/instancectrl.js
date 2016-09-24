@@ -1,6 +1,6 @@
 angular.module('tattva')
-.controller("InstanceCtrl", ["$scope", "$state", "$http", "$stateParams", "$mdDialog", "$mdMedia","namespaceFactory",
-function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFactory) {
+.controller("InstanceCtrl", ["$rootScope","$scope", "$state", "$http", "$stateParams", "$mdDialog", "$mdMedia","namespaceFactory",
+function($rootScope,$scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFactory) {
 
   $scope.tabTitle = "Recent Data Sources";
   $scope.stateChange = "design.createwatchlist"
@@ -70,7 +70,7 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
           data: $scope.dInstance
         }).then(function(response) {
           var data = {};
-          console.log("success");
+          //console.log("success");
           // if (data.errors) {
           //     $scope.errorName = data.errors.name;
           //     $scope.errorUserName = data.errors.username;
@@ -81,6 +81,14 @@ function($scope, $state, $http, $stateParams, $mdDialog, $mdMedia, namespaceFact
 
           // if(Object.is($scope.updatedInstance,$scope.dInstance))
           // {
+          var arr=[];
+          arr.push($scope.updatedInstance.createdBy);
+          arr.push("created an instance");
+          arr.push(response.config.data.name);
+          arr.push("on");
+          arr.push(moment().startOf($scope.updatedInstance.createdOn).format('MMMM Do YYYY, h:mm:ss a'));
+          //console.log(arr);
+          $rootScope.socket1.emit('notification',arr);
           $scope.success = true;
           $scope.createMsg = "Instance Saved Successfully...!";
           // }

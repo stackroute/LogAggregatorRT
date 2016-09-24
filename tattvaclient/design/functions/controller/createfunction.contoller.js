@@ -1,6 +1,6 @@
  angular.module('tattva')
-     .controller('functionCreateCtrl', ['$scope', '$http', '$stateParams', 'loadExprData', "functionFactory", "$state", '$mdDialog', "functionFactory",
-         function($scope, $http, $stateParams, loadExprData, functionFactory, $state, $mdDialog) {
+     .controller('functionCreateCtrl', ['$rootScope','$scope', '$http', '$stateParams', 'loadExprData', "functionFactory", "$state", '$mdDialog', "functionFactory",
+         function($rootScope,$scope, $http, $stateParams, loadExprData, functionFactory, $state, $mdDialog) {
 
              $scope.function = [];
 
@@ -101,6 +101,16 @@
                  $scope.functionData.parameters = $scope.parameters;
                  functionFactory.saveFunction($scope.functionData)
                      .then(function(data) {
+                        //console.log(data);
+                        var arr = [];
+                            //console.log("chandan",data.editedOn);
+                            arr.push(data.createdBy);
+                            arr.push("created the composite function");
+                            arr.push(data.name);
+                            arr.push("on");
+                            arr.push(moment().startOf(data.editedOn).format('MMMM Do YYYY, h:mm:ss a'));
+                            //console.log(arr);
+                            $rootScope.socket1.emit('notification',arr);
                              $mdDialog.show(
                                  $mdDialog.alert()
                                  .parent(angular.element(document.body))

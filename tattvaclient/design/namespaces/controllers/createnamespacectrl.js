@@ -1,6 +1,6 @@
 angular.module('tattva')
-.controller("createNamespaceCtrl", ["$scope","AuthService", "$state", "$http", "$mdDialog", "namespaceFactory", "$stateParams", "jsonFilter",
-	function($scope,AuthService, $state, $http, $mdDialog, namespaceFactory, $stateParams, jsonFilter) {
+.controller("createNamespaceCtrl", ["$rootScope","$scope","AuthService", "$state", "$http", "$mdDialog", "namespaceFactory", "$stateParams", "jsonFilter",
+	function($rootScope,$scope,AuthService, $state, $http, $mdDialog, namespaceFactory, $stateParams, jsonFilter) {
 		$scope.nameSpace={};
 		$scope.temp = $scope.nameSpace.uploadJSONText;
 		$scope.uploadJSONFlag = false;
@@ -107,6 +107,15 @@ angular.module('tattva')
 								var timestamp = new Date();
 								$scope.nameSpace.editedOn = timestamp;
 								$scope.nameSpace.editedBy = AuthService.getUser().name;
+								var arr = [];
+								//console.log("chandan",$scope.nameSpace.editedOn);
+								arr.push($scope.nameSpace.editedBy);
+								arr.push("update the namespace");
+								arr.push($scope.nameSpace.name);
+								arr.push("on");
+								arr.push(moment().startOf($scope.nameSpace.editedOn).format('MMMM Do YYYY, h:mm:ss a'));
+								//console.log(arr);
+								$rootScope.socket1.emit('notification',arr);
 								namespaceFactory.setNamespaceDetails($scope.nameSpace, $scope.nameSpace.name)
 								.then(function(res) {
 								//success
@@ -160,6 +169,13 @@ angular.module('tattva')
 				}
 
 				if ($scope.createNameSpace.$valid) {
+					var arr = [];
+					arr.push($scope.nameSpace.createdBy);
+					arr.push("created a new namespace");
+					arr.push($scope.nameSpace.name);
+					arr.push("on");
+					arr.push(moment().startOf($scope.nameSpace.createdOn).format('MMMM Do YYYY, h:mm:ss a'));
+					$rootScope.socket1.emit('notification',arr);
 					$scope.error = "";
 					namespaceFactory.saveNameSpace($scope.nameSpace)
 					.then(function(data) {

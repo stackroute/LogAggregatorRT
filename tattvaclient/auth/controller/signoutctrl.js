@@ -1,9 +1,11 @@
 angular.module('tattva')
-.controller('SignoutCtrl', ['$scope', '$state', 'AuthService',
-function($scope, $state, AuthService) {
+.controller('SignoutCtrl', ['$rootScope','$scope', '$state', 'AuthService',
+function($rootScope,$scope, $state, AuthService) {
 
   AuthService.signout()
   .then(function(res){
+  	$rootScope.notifyindicator=false;
+  	$rootScope.socket1.disconnect();
     $state.go("tattva");
   },
   function(res){

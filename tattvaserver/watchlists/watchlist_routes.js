@@ -9,9 +9,9 @@ watchlist_router.post('/',function (request, response) {
   var watchlistObj = request.body;
   watchlistObj.status="active";
   watchlistObj.orgsite=request.user.orgsite;
-  watchlistObj.createdBy= request.user.email,
+  watchlistObj.createdBy= request.user.name,
   watchlistObj.createdOn= new Date(),
-  watchlistObj.editedBy= request.user.email,
+  watchlistObj.editedBy= request.user.name,
   watchlistObj.editedOn= new Date()
   //console.log("reached watchlist with body data");
   watchlistObj.id = watchlistObj.name;
@@ -49,7 +49,7 @@ watchlist_router.put('/:watchlistname',function (request, response) {
       response.status(500).json({error: "unable to find the required watchlist for saving..!"});
     }
     else{
-        watchlistObj.editedBy= request.user.email,
+        watchlistObj.editedBy= request.user.name,
         watchlistObj.editedOn= new Date()
       }
     WatchListModel.update({"name":watchname}, watchlistObj, function(err, updatedObj) {
@@ -59,7 +59,8 @@ watchlist_router.put('/:watchlistname',function (request, response) {
         response.status(500).json({error: "Internal error occurred in completing operation..!"});
       }
       //console.log("Updated Watchlists ",updatedObj.name);
-      response.status(200).json(updatedObj);
+       console.log("chamdam",watchlistObj);
+      response.status(200).json(watchlistObj);
     });
   });
 });

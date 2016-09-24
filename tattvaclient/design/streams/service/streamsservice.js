@@ -29,14 +29,12 @@ angular.module('tattva')
     }).then(successCB,errorCB);
   }
 
-  this.saveEditedStream=function(streamsData){
-  console.log("streamsData = ",streamsData);
-    $http({
+  this.saveEditedStream=function(streamsData,data,error){
+  //console.log("streamsData = ",streamsData);
+    return $http({
       method : 'put',
       url : '/datastream/'+streamsData.streamname,
       data : streamsData
-    }).success(function(data){
-      
-    });
+    }).then(data,error);
   }
 }]);

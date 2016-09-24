@@ -39,6 +39,10 @@ historicQuery_router.get('/', function(req, res){
 historicQuery_router.post('/:historicqueryName', function (req, res) {
   var historicqueryModel = dataProvider.getModel(historicQuerySchema, req.user.orgsite);
   var historicfunctionsObj = req.body;
+  historicfunctionsObj.createdBy= req.user.name;
+  historicfunctionsObj.createdOn= new Date();
+  historicfunctionsObj.editedBy= req.user.name;
+  historicfunctionsObj.editedOn= new Date();
   // console.log("reached stream post route to save ", streamObj);
   historicfunctionsObj.orgsite=req.user.orgsite;
   var historicfunctions1 = new historicqueryModel(req.body);
@@ -54,12 +58,15 @@ historicQuery_router.post('/:historicqueryName', function (req, res) {
 
 historicQuery_router.put('/:historicqueryName',  function (req, res) {
   var historicqueryModel = dataProvider.getModel(historicQuerySchema, req.user.orgsite);
+  req.body.editedBy= req.user.name;
+  req.body.editedOn= new Date();
   historicqueryModel.update({_id:req.body._id}, req.body, {}, function(err, updatedhistoricqueryData){
     if(err){
       return res.status(400).json(err);
     }
     else{
-      return res.status(200).json(updatedhistoricqueryData);
+      //console.log(req.body);
+      return res.status(200).json(req.body);
     }
   });
 });

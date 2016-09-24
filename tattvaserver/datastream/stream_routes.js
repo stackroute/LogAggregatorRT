@@ -43,7 +43,14 @@ stream_router.post('/:streamName',function (request, response) {
   // console.log("reached stream post route to save ", streamObj);
   streamObj.orgsite=request.user.orgsite;
   streamObj.status="active";
+  streamObj.createdBy= request.user.name;
+  streamObj.createdOn= new Date();
+  streamObj.editedBy= request.user.name;
+  streamObj.editedOn= new Date();
+
+  //console.log(streamObj);
   var stream1 = new StreamModel(streamObj);
+  //console.log(response.body);
   stream1.save(function(err, savestreamdata){
     if(err) {
       console.log("Error in saving a new stream, error: ", err);
@@ -53,6 +60,7 @@ stream_router.post('/:streamName',function (request, response) {
         return response.status(500).json({error:"Internal error in saving..!"});
       }
     }
+    console.log(savestreamdata);
     return response.status(200).json(savestreamdata);
   });
 });
@@ -60,13 +68,16 @@ stream_router.post('/:streamName',function (request, response) {
 stream_router.put('/:streamname',function (request, response) {
   console.log("Updating streams");
   var streamObj = request.body;
+  request.body.editedBy= request.user.name;
+  request.body.editedOn= new Date();
+  console.log(streamObj);
   var StreamModel = dataProvider.getModel(StreamSchema, request.user.orgsite);
   StreamModel.update({streamname : streamObj.streamname}, streamObj, function(err, updatedObj){
     if(err) {
       console.log("PUT request could not be completed for stream ",streamObj.streamname," error: ",err);
       response.status(500).json({error:"Operation failed with internal errors..!"})
     }
-    return response.json(updatedObj);
+    response.json(streamObj);
   });
 });
 

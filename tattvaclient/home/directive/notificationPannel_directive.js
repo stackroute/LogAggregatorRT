@@ -2,8 +2,8 @@ angular.module('tattva')
 .directive('notifyPanel', function() {
 	return{
 		restrict : 'E',
-		template :'<md-button ng-click="showPanel($event)" class="md-fab md-raised md-mini"><md-icon class="material-icons">notifications</md-icon></md-button>',
-		controller: function($scope,AuthService,$mdPanel){
+		template :'<md-button ng-click="showPanel($event)" class="md-fab md-raised md-mini" ng-class="{\'md-warn\':notifyindicator}"><md-icon class="material-icons">notifications</md-icon><span ng-if="count>0">{{count}}</span></md-button>',
+		controller: function($rootScope,$scope,AuthService,$mdPanel){
 
 			$this=this;
 			$this._mdPanel = $mdPanel;
@@ -13,7 +13,8 @@ angular.module('tattva')
   	.absolute()
   	.right('5px')
   	.top('68px');
-  	
+  	$rootScope.count=0;
+    console.log($rootScope.count);
   	var config = {
   		animation: undefined,
   		attachTo: angular.element(document.body),
@@ -29,14 +30,14 @@ angular.module('tattva')
   	$this._mdPanel.open(config);
   };
   
-  function PanelCtrl(mdPanelRef,$scope,notificationFactory) {
-  	notificationFactory.getNotificationItems().then(function(res){
-  		$scope.notify = res;
-  	},
-  	
-  	function(res){
-  		$scope.notifyerror = res;
-  	});
+  function PanelCtrl(mdPanelRef,$scope,$rootScope) {
+    $scope.notify = $rootScope.notify;
+    if($rootScope.count == 0)
+      {
+        $rootScope.notifyindicator=false;
+      }
+    $scope.notifyindicator=$rootScope.notifyindicator;
+    $scope.count = $rootScope.count;
   	
   	AuthService.getUserNavItem().then(function(response){
   		$scope.userNavItems = response;

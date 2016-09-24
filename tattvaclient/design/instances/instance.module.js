@@ -24,7 +24,7 @@ config(['$stateProvider','$urlRouterProvider', function($stateProvider){
   //   controller:"InstanceCtrl"
   //   })
   //
-  .state('desig n.instance.viewInstance.edit',{
+  .state('design.instance.viewInstance.edit',{
     url:'/edit'
 
   })

@@ -9,7 +9,11 @@ var historicQuerySchema = new mongoose.Schema({
   "queryCriteria":{type:Array},
   "outputFields":{type:Array,required:true},
   "toDateTime":{type:Date,required:true},
-  "fromDateTime":{type:Date,required:true}
+  "fromDateTime":{type:Date,required:true},
+  "createdBy":{ type: String},
+  "createdOn": { type : Date, default : Date.now },
+  "editedBy": { type: String },
+  "editedOn": { type : Date, default : Date.now }
 },{collection: "historicQuery"});
 
 module.exports = historicQuerySchema;

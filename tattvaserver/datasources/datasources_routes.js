@@ -65,17 +65,18 @@ datasourcesroutes.put('/editdialogInstance', function(req, res) {
           port: req.body.port,
           location: req.body.location,
           description: req.body.description,
-          editedBy: req.user.email,
+          editedBy: req.user.name,
           editedOn: new Date()
         }
+        //console.log(pushdata);
         DatasourceModel.update({
           _id: req.body.selectedInstance
         }, pushdata, {}, function(err, updatedObj) {
           if (err) {
             console.error("Error in updating datasource object, error:", err);
           }
-          //console.log('Updated Doc = ', updatedObj);
-          res.send(updatedObj);
+          //console.log('Updated Doc = ', pushdata);
+          res.send(pushdata);
         });
       }
     }); //outer datasource
