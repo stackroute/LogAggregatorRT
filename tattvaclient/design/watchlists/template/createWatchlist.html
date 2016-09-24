@@ -62,7 +62,7 @@
       <!-- =============================== STARTING TO LOOP ==================================== -->
       <md-whiteframe class="md-whiteframe-2dp" layout="column" ng-show="wtchexpr" flex style="margin:8px;" ng-if="wlstdef.expressions.length">
         <div ng-repeat="expr in wlstdef.expressions" layout="row">
-          <md-subheader>{{$index+1}}+)</md-subheader>
+          <md-subheader>{{$index+1}})</md-subheader>
           <div ng-controller="lfield as ctrl" flex="33">
             <md-autocomplete class="autocom" required md-input-name="atoCmpLfield" ng-disabled="ctrl.isDisabled" md-input-name="autocompleteForlfieldwatchlist" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item, expr)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" md-min-length="0" placeholder="Left Hand Expression" md-menu-class="autocomplete-custom-template">
               <md-item-template>
