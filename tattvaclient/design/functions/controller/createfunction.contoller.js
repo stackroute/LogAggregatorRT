@@ -115,7 +115,7 @@
                                  $mdDialog.alert()
                                  .parent(angular.element(document.body))
                                  .clickOutsideToClose(true)
-                                 .title('FUNCTION SAVED SUCCESSFULLY!')
+                                 .title('Function created Successfully..!')
                                  .ariaLabel('Alert Dialog ')
                                  .ok('OK')
                              );

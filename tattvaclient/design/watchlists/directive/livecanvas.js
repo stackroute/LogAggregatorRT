@@ -80,10 +80,10 @@ angular.module('tattva').directive('linearChart', function($interval) {
                 });
                 if (data.watchresult) {
                     //console.log("anamoly");
-                    normalTickColor = anomalyTickColor;
+                    normalTickColor = 'blue';
                 } else {
                     //console.log("not an anamoly");
-                    normalTickColor = 'blue';
+                    normalTickColor = anomalyTickColor;
                 }
 
                 //prune excess data, no point in keeping it accumulated

@@ -3,7 +3,7 @@ angular.module('tattva').directive('rawdata', function($interval) {
 
         restrict: 'EA',
 
-        template: 'Packets:{{logs.length}}<md-button style="position:fixed;" class="md-fab md-mini md-fab-top-right" aria-label="Content Copy" ngclipboard data-clipboard-action="copy" data-clipboard-target="#copying"><md-icon class="material-icons">content_copy</md-icon></md-button><div id="copying"><p ng-repeat="data in logs" ng-style=\'(data.watchresult)?{color:"red"}:{color:"blue"}\'>{{data}}</p></div>',
+        template: 'Packets:{{logs.length}}<md-button style="position:fixed;" class="md-fab md-mini md-fab-top-right" aria-label="Content Copy" ngclipboard data-clipboard-action="copy" data-clipboard-target="#copying"><md-icon class="material-icons">content_copy</md-icon></md-button><div id="copying"><p ng-repeat="data in logs" ng-style=\'(data.watchresult)?{color:"blue"}:{color:"red"}\'>{{data}}</p></div>',
 
         scope: {
             watchname: "<watchname",
