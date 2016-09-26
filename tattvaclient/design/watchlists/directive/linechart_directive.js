@@ -7,7 +7,7 @@ angular.module('tattva').directive('linearChart', function($parse, $window){
       configobj:"<configobj"
     },
     link: function(scope, elem, attrs){
-      console.log("LineChart");
+      //console.log("LineChart");
       var graphData = [];
       var xattr=scope.configobj.xaxis;
       var yattr=scope.configobj.yaxis;

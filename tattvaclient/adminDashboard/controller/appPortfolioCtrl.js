@@ -7,7 +7,7 @@ function($scope, $http, $state,$mdDialog,adminFactory) {
       // console.log('$scope.orgs',$scope.orgs);
     //console.log('$scope.orgs',$scope.orgColln);
   },function(res){
-    console.log("error",res.data.error);
+    //console.log("error",res.data.error);
   })
 
   $scope.orgClick = function(ev,orgSite){

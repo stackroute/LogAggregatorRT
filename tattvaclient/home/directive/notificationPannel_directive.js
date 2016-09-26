@@ -14,7 +14,7 @@ angular.module('tattva')
   	.right('5px')
   	.top('68px');
   	$rootScope.count=0;
-    console.log($rootScope.count);
+    //console.log($rootScope.count);
   	var config = {
   		animation: undefined,
   		attachTo: angular.element(document.body),

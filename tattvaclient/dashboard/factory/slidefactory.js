@@ -53,14 +53,14 @@ angular.module('tattva')
         $http.get('/watchslide/orgwatchlists').then(function(response) {
           cb(response.data);
         }, function(response) {
-            console.log("Error occurred in request: ", response);
+            //console.log("Error occurred in request: ", response);
           });
       },
 
 
       getwldata: function(username, slideName) {
         var userObj = factory.getUserObj(username);
-        console.log("Fetching slides for : ", slideName);
+        //console.log("Fetching slides for : ", slideName);
         if(slideName == "org") {
           //@TODO watchlistFactory.getOrgWatchlists(userObj.organization);
           return [{"id":"1"},{"id" : "2"},{"id" : "3"},{"id" : "4"},{"id" : "5"},{"id" : "6"}];
@@ -74,13 +74,13 @@ angular.module('tattva')
       },
 
       getDefaultSlide: function(cb) {
-         console.log("fetchin the defualt slide because no stateParams");
+        // console.log("fetchin the defualt slide because no stateParams");
         var username=AuthService.getCurrentUser().email;
         var slidename="org";
         $http.get('/watchslide/userdefaultslide/'+slidename+"/"+username).then(function(response) {
           cb(response.data);
         }, function(response) {
-            console.log("Error occurred in request: ", response);
+            //console.log("Error occurred in request: ", response);
           });
         },
 
@@ -93,12 +93,12 @@ angular.module('tattva')
         //@TODO we may have to get slides in a paginated way later on
         //getAllSlides: function(username, currentPage, slidesPerPage) {
         getAllSlides: function(cb) {
-          console.log("inside all slide get");
+          //console.log("inside all slide get");
           var username=AuthService.getCurrentUser().email;
           $http.get('/watchslide/allslides/'+username).then(function(response) {
             cb(response.data);
           }, function(response) {
-              console.log("Error occurred in request: ", response);
+              //console.log("Error occurred in request: ", response);
             });
           },
 
@@ -123,11 +123,11 @@ angular.module('tattva')
           //@TODO metdata can be a array having all other required details about the new slide being created
           createNewSlide: function(slideName,cb) {
             var username=AuthService.getCurrentUser().email;
-            console.log("hello inside factory");
+            //console.log("hello inside factory");
           $http.put('/watchslide/user/'+username+"/slide/"+slideName).then(function(response) {
             cb(response.data);
           }, function(response) {
-              console.log("Error occurred in request: ", response);
+              //console.log("Error occurred in request: ", response);
             });
           },
           //@TODO

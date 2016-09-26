@@ -19,13 +19,13 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
   if($stateParams.slidename !== null){
     $scope.currentSlide = slideFactory.getSlide($stateParams.slidename,function(data){
       $scope.currentSlide=data;
-      console.log("Slide data:when stateparams is not null ", $scope.currentSlide);
+      //console.log("Slide data:when stateparams is not null ", $scope.currentSlide);
     });
   }
   else {
     $scope.currentSlide = slideFactory.getDefaultSlide(function(data){
       $scope.currentSlide=data;
-      console.log("Slide data: ", $scope.currentSlide);
+      //console.log("Slide data: ", $scope.currentSlide);
     });
   }
 
@@ -45,7 +45,7 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
   $scope.userSlides=[];
   $scope.userSlides=slideFactory.getAllSlides(function(data){
     $scope.userSlides=data;
-    console.log("Slide data: ", $scope.userSlides);
+    //console.log("Slide data: ", $scope.userSlides);
   });
 
   // $scope.wldata=slideFactory.getwldata($scope.username, $scope.currentSlide.slideName);
@@ -57,9 +57,9 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
   // }
 
   $scope.goToSlide = function() {
-    console.log("I am asked to go to a slide ", $scope.selectedSlide)
+    //console.log("I am asked to go to a slide ", $scope.selectedSlide)
     if($scope.selectedSlide !== undefined && $scope.selectedSlide != '' && $scope.selectedSlide !== null ) {
-      console.log("Changing to slide: ", $scope.selectedSlide)
+      //console.log("Changing to slide: ", $scope.selectedSlide)
       $state.go("home", { slidename: $scope.selectedSlide } );
     }
   }
@@ -75,14 +75,14 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
       locals:{watchslidename:$scope.watchslidename}
     }).then(function(response) {
       watchslidename = response;
-      console.log("watchslidename is: ", response.slidename);
+      //console.log("watchslidename is: ", response.slidename);
       $scope.slidecreate=slideFactory.createNewSlide(response.slidename,function(data){
         $scope.slidecreate=data;
-        console.log("slide created ", $scope.slidecreate);
+        //console.log("slide created ", $scope.slidecreate);
       });
     },
     function(response) {
-      console.log("**REJECTED** with response: ", response);
+      //console.log("**REJECTED** with response: ", response);
     }).finally(function() {
     });
   };
@@ -98,11 +98,11 @@ function($scope,$mdDialog,$state, $stateParams, slideFactory,wlstDataService,sea
       locals:{watchslidename:$scope.watchslidename}
     }).then(function(response) {
       watchslidename = response;
-      console.log("watchslidename is: ", response);
+      //console.log("watchslidename is: ", response);
       // $scope.createslide=slideFactory.createNewSlide(response);
     },
     function(response) {
-      console.log("**REJECTED** with response: ", response);
+      //console.log("**REJECTED** with response: ", response);
     }).finally(function() {
     });
   };

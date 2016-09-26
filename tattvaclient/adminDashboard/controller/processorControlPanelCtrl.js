@@ -4,7 +4,7 @@ angular.module('tattva')
       //api call for all the available processors
       function getProcessorMap() {
         adminFactory.getprocessors().then(function(res) {
-          console.log("processors res.data", res.data);
+          //console.log("processors res.data", res.data);
           $scope.watchtaskfilter = "none";
           $scope.processors = res.data;
           $scope.nop = Object.keys($scope.processors).length;
@@ -18,7 +18,7 @@ angular.module('tattva')
       $scope.socket = io();
       $scope.socket.emit('subscribe::adminevents', {});
       $scope.socket.on('watchloop::onAdminEvent', function(eventData) {
-        console.log("Got admin event ", eventData);
+        //console.log("Got admin event ", eventData);
 
         if (eventData.channel == 'watchloop::onWatchProcessorJoin') {
           // console.log("Url: ", eventData.data.url, " data: ", eventData.data);

@@ -66,11 +66,11 @@ stream_router.post('/:streamName',function (request, response) {
 });
 
 stream_router.put('/:streamname',function (request, response) {
-  console.log("Updating streams");
+  //console.log("Updating streams");
   var streamObj = request.body;
   request.body.editedBy= request.user.name;
   request.body.editedOn= new Date();
-  console.log(streamObj);
+  //console.log(streamObj);
   var StreamModel = dataProvider.getModel(StreamSchema, request.user.orgsite);
   StreamModel.update({streamname : streamObj.streamname}, streamObj, function(err, updatedObj){
     if(err) {

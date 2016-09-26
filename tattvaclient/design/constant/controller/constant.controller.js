@@ -12,12 +12,12 @@ function($scope, $mdDialog,constantFactory,$state) {
   $scope.loadData = function() {
     constantFactory.loadconstantlist().then(function(res){
       $scope.data = res;
-      console.log(res);
+      //console.log(res);
     });
   };
 
   $scope.savedata = function() {
-  console.log("Saving a new constant ", $scope.newconstant);
+  //console.log("Saving a new constant ", $scope.newconstant);
     constantFactory.savedata($scope.newconstant)
     .then(function(data) {
       //success

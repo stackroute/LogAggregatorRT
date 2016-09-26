@@ -48,7 +48,7 @@ function($rootScope,$scope, $state, $http, $stateParams, $mdDialog, $mdMedia, Lo
       //md-dialog controller
 
       function DialogController($scope, $state, $mdDialog, $http, dsdata, nspname,flag) {
-        console.log(flag);
+        //console.log(flag);
         $scope.success = false;
         $http.get('/instance').then(function(response) {
           $scope.namespaceSelect = response.data;
