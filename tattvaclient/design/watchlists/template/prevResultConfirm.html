@@ -1,0 +1,19 @@
+<md-dialog flex="40">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Details</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div flex-offset="5">
+      <h3>This expression is representing another expression</h3>
+      <h4 class="subheader">Are you sure you Want to continue?</h4>
+    </div>
+    <div layout="row" ng-hide="success" class="float-right" layout-padding>
+      <div layout-align="center" layout="row">
+        <md-button ng-click="closeDialog()" class="md-raised">No</md-button>
+        <md-button class="md-primary md-raised" ng-click="applySplice()">Yes</md-button>
+      </div>
+    </div>
+  </md-dialog-content>
+</md-dialog>

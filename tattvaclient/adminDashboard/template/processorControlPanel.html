@@ -1,24 +1,27 @@
 <div layout="row" style="margin-top:70px;">
-    <div flex="100" style="background-color: rgba(158,158,158,0.2);">
-        <h3 class="subh">Process Control Panel</h3>
-    </div>
+  <div flex="100" style="background-color: rgba(158,158,158,0.2);">
+    <h3 style="color:grey;margin-left:30px;">Process Control Panel</h3>
+  </div>
 </div>
+<!-- <br>
+<div layout="column" style="margin-left:30px;">
+   <div layout="row">
+      <div flex="30">
+          <div ng-repeat=" watchn in processors">
+              <div ng-repeat="watchl in watchn['tasks']">
+                  <h3 style="color:">{{$index+1}}. {{watchl.watchName}}</h3>
+              </div>
+          </div>
+      </div>
+       <div ng-repeat="(procName, procObj) in processors ">
+           <heatmap color="col" data="procObj " filter="watchtaskfilter " processorName="procName " style="min-height: 250px;">
+           </heatmap>
+       </div>
+   </div> -->
 <br>
-<div layout="column">
-    <div layout="row">
-        <div flex="30">
-            <div ng-repeat=" watchn in processors" >
-                <div ng-repeat="watchl in watchn['tasks']" ng-style="{color: watchl.color}" >
-                    <h3>{{watchl.watchName}}</h3>
-                </div>
-            </div>
-        </div>
-        <md-divider></md-divider>
-        <div ng-repeat="(procName, procObj) in processors ">
-            <heatmap data="procObj " filter="watchtaskfilter " processorName="procName " style="min-height: 250px;">
-            </heatmap>
-        </div>
-    </div>
+<div layout="row">
+  <div ng-repeat="(procName, procObj) in processors">
+    <heatmap data="procObj" filter="watchtaskfilter" processorName="procName" style="min-height: 250px;">
+    </heatmap>
+  </div>
 </div>
-
-  
