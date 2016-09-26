@@ -66,13 +66,13 @@
                     "url": "https://github.com/kritikasingla17",
                     "avatar_url": "https://avatars2.githubusercontent.com/u/7893355?v=3&s=72"
                 }, {
-                    "login": "inderjeet",
-                    "url": "https://github.com/inderjeet",
-                    "avatar_url": "https://camo.githubusercontent.com/fcf8a0a2282bce5385d64ad2724c68a4307c1677/68747470733a2f2f302e67726176617461722e636f6d2f6176617461722f32623838333133383035663532666465373262386264363937343331303661323f643d68747470732533412532462532466173736574732d63646e2e6769746875622e636f6d253246696d6167657325324667726176617461727325324667726176617461722d757365722d3432302e706e6726723d7826733d313430"
+                    "login": "inderjeetsingh14",
+                    "url": "https://github.com/inderjeetsingh14",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/20180659?v=3&s=72"
                 }, {
                     "login": "khatwachandan5",
                     "url": "https://github.com/khatwachandan5",
-                    "avatar_url": "https://avatars2.githubusercontent.com/u/20160916?v=3&s=72"
+                    "avatar_url": "https://avatars.githubusercontent.com/u/20160916?v=3&s=72"
                 }
 
             ]
