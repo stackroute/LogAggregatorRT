@@ -23,7 +23,7 @@ watchlist_router.post('/',function (request, response) {
   var watchlist1 = new WatchListModel(watchlistObj);
   watchlist1.save(function(err, savewatchlistdata){
     if(err) {
-      console.log("Error in saving watch list, error:", err);
+      //console.log("Error in saving watch list, error:", err);
       return response.status(400).json({error:"Internal error in completing the operation"});
     }
     //console.log(savewatchlistdata);
@@ -57,7 +57,6 @@ watchlist_router.put('/:watchlistname',function (request, response) {
         response.status(500).json({error: "Internal error occurred in completing operation..!"});
       }
       //console.log("Updated Watchlists ",updatedObj.name);
-       console.log("chamdam",watchlistObj);
       response.status(200).json(watchlistObj);
     });
   });

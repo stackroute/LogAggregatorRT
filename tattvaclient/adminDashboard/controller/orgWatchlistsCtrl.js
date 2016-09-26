@@ -17,9 +17,9 @@ function($scope, $http, $stateParams,$mdDialog,adminFactory) {
   }
   $scope.selection = selection;
 
-  console.log("$stateParams",$stateParams,"orgSite",orgSite);
+  //console.log("$stateParams",$stateParams,"orgSite",orgSite);
   adminFactory.getWatchlists(orgSite).then(function(res){
-    console.log("response watches:",res.data);
+    //console.log("response watches:",res.data);
     $scope.watches = res.data;
     if($stateParams.namespace!=null){
       //filter on namespace
@@ -34,7 +34,7 @@ function($scope, $http, $stateParams,$mdDialog,adminFactory) {
       }
     }
       function filterOnNamespace(watches,namespace){
-        console.log("filtering on namespace");
+        //console.log("filtering on namespace");
         var filtered = [];
           for(var i=0;i<watches.length;i++){
             if(watches[i].namespace === namespace)
@@ -44,7 +44,7 @@ function($scope, $http, $stateParams,$mdDialog,adminFactory) {
         }
 
         function filterOnDatasource(watches,datasource){
-          console.log("filtering on datasource");
+          //console.log("filtering on datasource");
           var filtered = [];
           for(var i=0;i<watches.length;i++){
             if(watches[i].datasource === datasource)
@@ -54,7 +54,7 @@ function($scope, $http, $stateParams,$mdDialog,adminFactory) {
         }
 
         function filterOnStream(watches,stream){
-          console.log("filtering on stream");
+          //console.log("filtering on stream");
           var filtered = [];
           for(var i=0;i<watches.length;i++){
             if(watches[i].stream === stream)
@@ -69,7 +69,7 @@ function($scope, $http, $stateParams,$mdDialog,adminFactory) {
     // console.log("OrgSite:",orgSite);
     //console.log("response:",res);
     $scope.watches = res.data;
-     console.log("org watches res:",res.data);
+     //console.log("org watches res:",res.data);
   },function(res){
     $scope.error = res.data.error;
     console.log("Error in getting watches from server error:",res.data.error);

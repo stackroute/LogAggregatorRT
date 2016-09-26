@@ -22,7 +22,7 @@ var watchlist = [];
 // console.log("namespaces,",namespace);
 namespace.find({},{name:1, dataSchema:1}, function(err, namespaceListData){
   if(err){
-    console.log("Error occurred in getting namespaces ", err);
+    //console.log("Error occurred in getting namespaces ", err);
     return res.status(400).json({error:"Internal error occurred..!"});
   } else{
     return res.status(200).json(namespaceListData);

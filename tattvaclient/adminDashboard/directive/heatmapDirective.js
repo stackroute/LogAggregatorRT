@@ -13,7 +13,7 @@ angular.module('tattva').directive('heatmap',function(){
       };
     }],*/
     link:function(scope, element, attrs){
-      console.log("processorObj is ", scope.processorObj, " for processor ", scope.processorName);
+      //console.log("processorObj is ", scope.processorObj, " for processor ", scope.processorName);
       var data = [];
       var nop = scope.processorObj.tasks.length;
       var ncols = 5;
@@ -62,7 +62,7 @@ angular.module('tattva').directive('heatmap',function(){
 
       function heatmapChart(data) {
         colors = ["#ffffd9","#e5ffe5","#b2ffb2","#7fff7f","#4cff4c","#00e500","#00b200","#007f00","#003300"];
-        console.log("data to heatmapChart:",data);
+        //console.log("data to heatmapChart:",data);
         var colorScale = d3.scale.quantile()
         .domain([0, buckets - 1, d3.max(data, function (d) { return d.value; })])
         .range(colors);

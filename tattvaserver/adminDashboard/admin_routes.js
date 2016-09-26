@@ -192,8 +192,8 @@ admin_routes.get('/',function(req,res){
         level : 1,
         children : response
       };
-      console.log("******************************tattva********************************");
-      console.log(JSON.stringify(tattva));
+      //console.log("******************************tattva********************************");
+      //console.log(JSON.stringify(tattva));
       res.status(200).json(tattva);
         });
   });
@@ -211,7 +211,7 @@ admin_routes.get('/appPortfolio',function(req,res){
 });
 
 admin_routes.get('/getWatchlists/:orgSite',function(req,res){
-  console.log("params to getWatchlist:",req.params.orgSite);
+  //console.log("params to getWatchlist:",req.params.orgSite);
   var orgSites = [];
   var data = [];
   if(req.params.orgSite!="tattva"){
@@ -221,7 +221,7 @@ admin_routes.get('/getWatchlists/:orgSite',function(req,res){
   var watchModel = dataModelProvider.getModel(watchListSchema,orgSite);
   watchModel.find({},function(err,data){
     if(err){
-      console.log("Watchlists get request error for "+orgSite+" error:",err);
+      //console.log("Watchlists get request error for "+orgSite+" error:",err);
       res.status(500).json({error:"Internal Server Error"});
       }
     return res.send(data);
@@ -230,7 +230,7 @@ admin_routes.get('/getWatchlists/:orgSite',function(req,res){
 });
 
 admin_routes.get('/getOrganisationInfo/:orgSite',function(req,res){
-  console.log("params to getOrgInfo:",req.params);
+  //console.log("params to getOrgInfo:",req.params);
   var orgStats = {};
 
   asyncRunner.parallel([
@@ -293,13 +293,13 @@ admin_routes.get('/getOrganisationInfo/:orgSite',function(req,res){
         console.log("Error in callback module error:",err);
         res.status(500).json({error:"error in getting summery stats for orgSite:",orgSite})
       }
-    console.log('orgStats contents',orgStats);
+    //console.log('orgStats contents',orgStats);
     res.json(orgStats);
     });
 });
 
 admin_routes.get('/getOrgActivity/:orgSite',function(req,res){
-  console.log("org activity query for ",req.params.orgSite);
+  //console.log("org activity query for ",req.params.orgSite);
   var watchModel = dataModelProvider.getModel(watchListSchema,req.params.orgSite);
   var recentActivity = [];
   watchModel.find({},null,{sort:{"editedOn":-1}},function(err,activity){
@@ -307,7 +307,7 @@ admin_routes.get('/getOrgActivity/:orgSite',function(req,res){
       console.log("Error in getting org recent activity");
       res.status(500).json({error:"error in getting recent activity for organisation:"+req.params.orgSite});
     }
-    console.log('activity',activity);
+    //console.log('activity',activity);
     res.send(activity);
   })
 });
@@ -320,7 +320,7 @@ admin_routes.get('/getorgContactInfo/:orgSite',function(req,res){
       console.log("error in getting org contact info");
       res.status(500).json({error:"error in getting orgLogo for organisation:"+req.params.orgSite});
     }
-    console.log("Org Contact Info",Org[0]);
+    //console.log("Org Contact Info",Org[0]);
     res.send(Org[0]);
   })
 });

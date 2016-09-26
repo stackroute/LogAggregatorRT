@@ -54,7 +54,7 @@ this.savewatchloopeditdata=function(watchlistData1){
 
   this.savewatchlistdata=function(watchlistData1){
     var watchlistData=watchlistData1;
-    console.log("watchlistData =", watchlistData);
+    //console.log("watchlistData =", watchlistData);
     // $http({
     //   method : 'post',
     //   url : '/watchlist',
@@ -75,7 +75,7 @@ this.savewatchloopeditdata=function(watchlistData1){
       $http.post('/watchlist', watchlistData)
       .then(function(res) {
         //success
-            console.log("save to db success");
+            //console.log("save to db success");
           resolve(res.data);
       },
       function(res) {

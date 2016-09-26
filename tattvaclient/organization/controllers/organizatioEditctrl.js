@@ -2,7 +2,7 @@ angular.module('tattva')
 .controller('orgEditCtrl', ['$scope', '$stateParams','userservice','$state','AuthService',
 function($scope,$stateParams,userservice,$state,AuthService) {
   $scope.org = AuthService.getCurrentUser();
-  console.log($scope.org);
+  //console.log($scope.org);
   var name=$stateParams.userName;
   if($stateParams.userName){
     $scope.userDisableName= true;
@@ -32,7 +32,7 @@ function($scope,$stateParams,userservice,$state,AuthService) {
       userservice.editUser(userData);
     } else {
       var userData={name : $scope.user.name , email : $scope.user.email , password : $scope.user.password ,role : $scope.user.role ,orgsite : $scope.org.orgsite};
-      console.log(userData);
+      //console.log(userData);
       userservice.saveUser(userData);
     }
     $state.go('tattva.organisation');

@@ -19,11 +19,11 @@ angular.module('tattva')
 
             getFunctionByName: function(fkn) {
                 return $q(function(resolve, reject) {
-                    console.log(fkn);
+                    //console.log(fkn);
                     $http.get('/compositefunction/' + fkn)
                         .then(function(res) {
                                 //success
-                                console.log(res.data);
+                                //console.log(res.data);
                                 resolve(res.data);
                             },
                             function(res) {

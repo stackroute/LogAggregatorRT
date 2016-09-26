@@ -14,14 +14,14 @@ function($scope, $http,$state,adminFactory){
 
   stats = function(selectionObj){
     $scope.tattvaStats = selectionObj;
-    console.log("selectionObj",selectionObj);
+    //console.log("selectionObj",selectionObj);
 
     if($scope.tattvaStats.instanceType == "super User"){
       $state.go('adminHome.appPortfolio');
     }
     else{
       prms = watchParams($scope.tattvaStats);
-      console.log("changing state to orgwatches with params as ", prms);
+      //console.log("changing state to orgwatches with params as ", prms);
       $state.go('adminHome.orgwatches', prms );
     }
   };

@@ -31,7 +31,6 @@
 
 
  compositefunction_router.post('/test', function(request, res) {
-    console.log("kritikaroute");
      var compositeFunctionModule = new compositeFunctionProvider();
      var result = compositeFunctionModule.execute(request.body[0], request.body[1]);
      res.send(result);
@@ -53,7 +52,7 @@
      var compositeFunctionProvider = require('../datafunctionlib/datacompositefnprovider');
      var compositeFunctionModule = new compositeFunctionProvider();
      var result = compositeFunctionModule.execute(request.body[0], request.body[1]);
-     console.log(result.output)
+     //console.log(result.output)
      res.send(result);
  });
 
