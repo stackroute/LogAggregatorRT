@@ -37,43 +37,48 @@
                     "login": "kunjarani",
                     "avatar_url": "https://avatars.githubusercontent.com/u/18570657?v=3",
                     "url": "https://github.com/kunjarani"
-                }, {
-                    "login": "RahulSKinkar",
-                    "avatar_url": "https://avatars.githubusercontent.com/u/17717032?v=3",
-                    "url": "https://github.com/RahulSKinkar"
-                }, {
+                }, 
+{
+                    "login": "inderjeetsingh14",
+                    "url": "https://github.com/inderjeetsingh14",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/20180659?v=3&s=72"
+                },
+
+                {
                     "login": "GurleenArneja",
                     "avatar_url": "https://avatars.githubusercontent.com/u/18570564?v=3",
                     "url": "https://github.com/GurleenArneja"
-                }, {
-                    "login": "rajiff",
-                    "avatar_url": "https://avatars.githubusercontent.com/u/1080415?v=3",
-                    "url": "https://github.com/rajiff"
                 }, {
                     "login": "PrasannaKainkaryam2",
                     "avatar_url": "https://avatars.githubusercontent.com/u/18571894?v=3",
                     "url": "https://github.com/PrasannaKainkaryam2"
                 }, {
+                    "login": "kritikasingla17",
+                    "url": "https://github.com/kritikasingla17",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/7893355?v=3"
+                },
+                  
+                {
+                    "login": "rajiff",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/1080415?v=3",
+                    "url": "https://github.com/rajiff"
+                },{
                     "login": "Bhavaniuditha",
                     "url": "https://github.com/Bhavaniuditha",
                     "avatar_url": "https://avatars2.githubusercontent.com/u/20160522?v=3&s=466"
+                },{
+                    "login": "khatwachandan5",
+                    "url": "https://github.com/khatwachandan5",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/20160916?v=3&s=72"
                 }, {
                     "login": "divyamorukurthi",
                     "url": "https://github.com/divyamorukurthi",
                     "avatar_url": "https://avatars0.githubusercontent.com/u/20160612?v=3&s=466"
-                }, {
-                    "login": "kritikasingla17",
-                    "url": "https://github.com/kritikasingla17",
-                    "avatar_url": "https://avatars2.githubusercontent.com/u/7893355?v=3&s=72"
-                }, {
-                    "login": "inderjeetsingh14",
-                    "url": "https://github.com/inderjeetsingh14",
-                    "avatar_url": "https://avatars.githubusercontent.com/u/20180659?v=3&s=72"
-                }, {
-                    "login": "khatwachandan5",
-                    "url": "https://github.com/khatwachandan5",
-                    "avatar_url": "https://avatars.githubusercontent.com/u/20160916?v=3&s=72"
-                }
+                },{
+                    "login": "RahulSKinkar",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/17717032?v=3",
+                    "url": "https://github.com/RahulSKinkar"
+                },
 
             ]
             $scope.columns = columnize($scope.users, 3);
