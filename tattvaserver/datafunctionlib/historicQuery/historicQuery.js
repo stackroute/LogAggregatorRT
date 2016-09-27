@@ -121,8 +121,13 @@ module.exports=function()
             comparisonObject[comparisonFunction] = "data."+queryObject.queryCriteria[criteria].rhs.value;
           }
           else{
+            try{
+            comparisonObject[comparisonFunction] = parseFloat(queryObject.queryCriteria[criteria].rhs.value);  
+            }
+            catch(e){
             comparisonObject[comparisonFunction] = queryObject.queryCriteria[criteria].rhs.value;
           }
+        }
           matchObject["data."+queryObject.queryCriteria[criteria].lhs] = comparisonObject; 
         }           
       }
