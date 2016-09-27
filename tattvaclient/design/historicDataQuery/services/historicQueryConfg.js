@@ -23,7 +23,7 @@ angular.module("tattva")
 			"type": "DataFields",
 			"name": "Data fields from LogData",
 			"controller": "historicDataFieldsCtrl",
-			"template": "dataFields",
+			"template": "datafields",
 			"icon":"text_format",
 			"shortexpr":"DataField(<Selected DataField>)",
 			"tip":"Use a Field from the selected LogData"
@@ -48,7 +48,7 @@ angular.module("tattva")
 			"type": "DataFields",
 			"name": "Data fields from LogData",
 			"controller": "historicDataFieldCtrl",
-			"template": "dataFields",
+			"template": "datafields",
 			"icon":"text_format",
 			"shortexpr":"DataField(<Selected DataField>)",
 			"tip":"Select Output Field from the selected LogData"

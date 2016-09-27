@@ -14,7 +14,7 @@
             <div layout="row" data-ng-repeat="choice in parameters" flex-gt-xs="20">
                 <md-input-container>
                     <label>ADD PARAMETER</label>
-                    <input type="text" required ng-disabled="view" ng-model="choice.name" name="" />
+                    <input type="text" pattern=".{3,7}" required title="3 to 7 characters" ng-required="true" ng-disabled="view" required="required" ng-model="choice.name" name="" />
                 </md-input-container>
                 <md-button ng-disabled="view" class="clr" ng-show="parameters.length>1">
                     <md-icon class="material-icons" ng-click="removeParam($index)">close</md-icon>

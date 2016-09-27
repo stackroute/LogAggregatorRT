@@ -19,7 +19,6 @@ angular.module('tattva')
 
             getFunctionByName: function(fkn) {
                 return $q(function(resolve, reject) {
-                    //console.log(fkn);
                     $http.get('/compositefunction/' + fkn)
                         .then(function(res) {
                                 //success
@@ -38,12 +37,10 @@ angular.module('tattva')
                     $http.post('/compositefunction/test', fkn)
                         .then(function(res) {
                                 //success
-                                console.log("kritikafactory");
                                 resolve(res.data);
                             },
                             function(res) {
                                 //error
-                                console.log("kritikafactory");
                                 reject(res.data);
                             });
                 });

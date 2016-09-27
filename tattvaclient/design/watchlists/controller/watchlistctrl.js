@@ -29,7 +29,7 @@ angular.module("tattva")
           if ($scope.wlstdef.expressions[index].child) {
             var flag = 0;
             for (var i = 0; i < $scope.wlstdef.expressions.length; i++) {
-              if (($scope.wlstdef.expressions[i].watch.lfield.fieldType == "PrevExprResult" || $scope.wlstdef.expressions[i].watch.rfield.fieldType == "PrevExprResult") && ($scope.wlstdef.expressions[index].tag === ($scope.wlstdef.expressions[i].watch.lfield.exprtag || $scope.wlstdef.expressions[i].watch.rfield.exprtag))) {
+              if (($scope.wlstdef.expressions[i].watch.lfield.fieldType == "prevexprresult" || $scope.wlstdef.expressions[i].watch.rfield.fieldType == "prevexprresult") && ($scope.wlstdef.expressions[index].tag === ($scope.wlstdef.expressions[i].watch.lfield.exprtag || $scope.wlstdef.expressions[i].watch.rfield.exprtag))) {
                 flag = 1;
                 break;
               }
@@ -48,10 +48,10 @@ angular.module("tattva")
           if ($scope.wlstdef.expressions[index].child) {
             var flag = 0;
             for (var i = index + 1; i < $scope.wlstdef.expressions.length; i++) {
-              if (($scope.wlstdef.expressions[i].watch.lfield.fieldType == "PrevExprResult" || $scope.wlstdef.expressions[i].watch.rfield.fieldType == "PrevExprResult") && ($scope.wlstdef.expressions[index].tag === ($scope.wlstdef.expressions[i].watch.lfield.exprtag || $scope.wlstdef.expressions[i].watch.rfield.exprtag))) {
+              if (($scope.wlstdef.expressions[i].watch.lfield.fieldType == "prevexprresult" || $scope.wlstdef.expressions[i].watch.rfield.fieldType == "prevexprresult") && ($scope.wlstdef.expressions[index].tag === ($scope.wlstdef.expressions[i].watch.lfield.exprtag || $scope.wlstdef.expressions[i].watch.rfield.exprtag))) {
                 flag = 1;
                 break;
-              } else if (($scope.wlstdef.expressions[i].watch.lfield.fieldType == "PrevExprResult" && $scope.wlstdef.expressions[i].watch.rfield.fieldType == "PrevExprResult")) {
+              } else if (($scope.wlstdef.expressions[i].watch.lfield.fieldType == "prevexprresult" && $scope.wlstdef.expressions[i].watch.rfield.fieldType == "prevexprresult")) {
                 flag = 1;
                 break;
               }
@@ -68,6 +68,7 @@ angular.module("tattva")
       }
 
       $scope.showAlert = function(index) {
+        console.log("show dialog");
         $mdDialog.show({
           parent: angular.element(document.body),
           templateUrl: '/design/watchlists/template/prevResultConfirm.html',
@@ -88,8 +89,8 @@ angular.module("tattva")
             $mdDialog.hide();
             $scope.wlstdef.expressions.splice(index, 1);
             for (var i = index; i < $scope.wlstdef.expressions.length; i++) {
-              if ($scope.wlstdef.expressions[i].watch.lfield.fieldType == "PrevExprResult" || $scope.wlstdef.expressions[i].watch.rfield.fieldType == "PrevExprResult") {
-                if ($scope.wlstdef.expressions[i].watch.lfield.fieldType == "PrevExprResult") {
+              if ($scope.wlstdef.expressions[i].watch.lfield.fieldType == "prevexprresult" || $scope.wlstdef.expressions[i].watch.rfield.fieldType == "prevexprresult") {
+                if ($scope.wlstdef.expressions[i].watch.lfield.fieldType == "prevexprresult") {
                   $scope.wlstdef.expressions[i].watch.lfield.exprAsText = "";
                 } else {
                   $scope.wlstdef.expressions[i].watch.rfield.exprAsText = "";

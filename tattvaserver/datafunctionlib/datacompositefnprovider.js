@@ -1,7 +1,7 @@
 var path = require('path');
 
 var tattvaCompositeFunction = function() { 
-  var datacompositefnobj = require(path.join(__dirname, "/compositeFunction/compositefunction"));
+  var datacompositefnobj = require(path.join(__dirname, "/compositefunction/compositefunction"));
   return new datacompositefnobj();
 }
 

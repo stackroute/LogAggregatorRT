@@ -60,8 +60,8 @@
             </div>
         </div>
     </div>
-    <h2>Contributors</h2>
-    <div layout="row" layout-padding layout-align="none center" ng-repeat="row in columns">
+    <h2 layout-padding>Contributors</h2>
+    <div layout="row" layout-padding layout-align="center center" ng-repeat="row in columns">
         <div class=" column " ng-repeat="user in row">
             <a href="{{user.url}} "><img style="border-radius: 1%; " class="person" src="{{user.avatar_url}} " alt=" " />
                 <h5 layout="column " layout-align="center center ">{{user.login}}</h5>

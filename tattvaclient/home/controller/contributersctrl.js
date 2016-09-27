@@ -76,7 +76,7 @@
                 }
 
             ]
-            $scope.columns = columnize($scope.users, 2);
+            $scope.columns = columnize($scope.users, 3);
 
             function columnize(input, cols) {
                 var arr = [];

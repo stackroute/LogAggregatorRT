@@ -66,10 +66,10 @@ angular.module("tattva")
           "shortexpr": "Historic function(function name)",
           "tip": "Compare against Historic Data"
         }, {
-          "type": "PrevExprResult",
+          "type": "prevexprresult",
           "name": "Result of Previouse Expression",
-          "controller": "prevExprRsltCtrl",
-          "template": "prevExprRslt",
+          "controller": "prevexprrsltctrl",
+          "template": "prevexprrslt",
           "icon": "done_all",
           "shortexpr": "Prevoius Expression Result(<Param>)",
           "tip": "Comparing previous expression Result"
